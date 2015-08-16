@@ -2,7 +2,7 @@
 title       : Lehigh University Research Computing
 subtitle    : Library & Technology Services
 author      : Alex Pacheco
-job         : 
+job         : https://researchcomputing.lehigh.edu
 logo        : lu.png
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : prettify      # {highlight.js, prettify, highlight}
@@ -79,15 +79,20 @@ time faculty with 1TB of storage space.
 
 --- .rcr 
 
-## Upcoming Training Events
+## Training Events
 
-* HPC resources at Lehigh
-* Storage Options at Lehigh
-* Introduction to Linux
-* Shell Scripting
-* Programming in Matlab & GNU Octave 
-* Programming in R
-* XSEDE HPC Monthly Workshop: Big Data
+* Upcoming events
+  * HPC resources at Lehigh
+  * Storage Options at Lehigh
+  * Introduction to Linux
+  * Shell Scripting
+  * Programming in Matlab & GNU Octave 
+  * Programming in R
+  * XSEDE HPC Monthly Workshop: Big Data
+* Past events
+  * Fortran & C Programming Workshop
+  * XSEDE HPC Monthly Workshop: OpenACC
+  * XSEDE HPC Summer BootCamp
 
 --- .rcr
 
