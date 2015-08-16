@@ -1,3 +1,8 @@
+body{
+  font-family: 'Georgia', 'Helvetica', sanserif;
+  font-size: 1em;
+  color: black;
+}
 .title-slide {
   background-color: #663700; /* LU Brown */
   /* background-color: #CBE7A5; #EDE0CF; ; #CA9F9D*/
@@ -14,22 +19,33 @@
 .title-slide hgroup > h1, 
 .title-slide hgroup > h2 {
   color: #FFFFFF; /*#535E43 ;  /* ; #EF5150*/
+/*
   text-align: right;
-  margin-right: 15px;
+  margin-right: 0px;
+*/
 }
 
 .title-slide hgroup h1 {
   font-size: 50px;
   letter-spacing: -2px;
+/*
+  text-align: right;
+*/
 }
 .title-slide hgroup h2 {
   font-size: 30px;
+/* 
+  text-align: right;
+*/
 }
 .title-slide hgroup > p {
   color: #F1E7C8;
-  text-align: right;
   font-size: 2rem;
+/*
+  text-align: right;
   margin-right: 15px;
+*/
+
 }
 
 aside.gdbar {
@@ -87,6 +103,7 @@ aside.gdbar img {
  
 .rcr article {
   height: 582px;
+  color: black;
 }
 
 .rcr footer {
@@ -137,4 +154,21 @@ ul > li:before {
 
 ul li ul li:before {
   content: '\274F';
+}
+
+ul li ul li ul li:before {
+  content: '\2746';
+}
+
+em {
+  font-style: oblique;
+}
+
+strong {
+  font-weight: bold;
+}
+
+pre > code {
+  font-size: 12px;
+  background-color: #e7e2d8;
 }

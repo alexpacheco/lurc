@@ -3,7 +3,7 @@ title       : Lehigh University Research Computing
 subtitle    : Library & Technology Services
 author      : Alex Pacheco
 job         : 
-logo        : LURC.png
+logo        : lu.png
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : prettify      # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
@@ -20,11 +20,11 @@ mode        : selfcontained # {standalone, draft}
   - We enable Lehigh Faculty, Researchers and Scholars achieve their goals by providing various computational resources; hardware, software, and storage; consulting and training.
   
 * Research Computing Staff
-  - Alex Pacheco, Manager
+  - Alex Pacheco, Manager & XSEDE Campus Champion
   - Steve Anthony, HPC User Support & System Administrator
+  - Dan Brashler, Computing Consultant
   - Steve Lidie, System Administrator
   - Mary Jo Schulze, Software Specialist
-  - Dan Brashler, Computing Consultant
 
 ---.rcr
 
@@ -93,8 +93,28 @@ time faculty with 1TB of storage space.
 
 ## Research Computing in the Classroom
 
-* Hello
+We can assist in
 
+* Incorporating HPC training materials in your courses.
+* Designing homework assignments and projects.
+
+Plan on using Research Computing resources for your courses?
+* HPC account for rostered class for one semester.
+* Computing time on Corona (Maia is free but there is no guarantee if time will be available).
+* Ceph storage project (valid for a year to enable reuse of course material).
+
+
+--- .rcr
+
+## Contact Us
+
+* Issue with running jobs or need help to get started: 
+  * Open a help ticket: <http://go.lehigh.edu/rchelp>
+* My contact info
+  * eMail:  <alp514@lehigh.edu>
+  * Tel: (610) 758-6735 
+  * Location: Room 296, EWFM Computing Center
+  * [My Schedule] (https://www.google.com/calendar/embed?src=alp514%40lehigh.edu&ctz=America/New_York )
 
 
 
