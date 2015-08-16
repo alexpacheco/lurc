@@ -1,0 +1,22 @@
+<slide class="{{ slide.class }}" id="{{ slide.id }}" style="background:#F1E7C8;">
+  {{# slide.header }}
+  <hgroup class=rcr>
+    {{{ slide.header}}}
+  </hgroup>
+  {{/ slide.header }}
+  <article data-timings="{{ slide.dt }}">
+    {{{ slide.content }}}
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+  {{# slide.pnotes }}
+  <aside class="note" id="{{ id }}">
+    <section>
+      {{{ html }}}
+    </section>
+  </aside>
+  {{/ slide.pnotes }}
+</slide>
+

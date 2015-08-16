@@ -1,0 +1,140 @@
+.title-slide {
+  background-color: #663700; /* LU Brown */
+  /* background-color: #CBE7A5; #EDE0CF; ; #CA9F9D*/
+  /* background-image:url(http://goo.gl/EpXln); */
+}
+
+
+.title-slide hgroup > h1, 
+.title-slide hgroup > h2,
+.title-slide hgroup > p {
+ font-family: 'Georgia', 'Helvetica', sanserif; 
+}
+
+.title-slide hgroup > h1, 
+.title-slide hgroup > h2 {
+  color: #FFFFFF; /*#535E43 ;  /* ; #EF5150*/
+  text-align: right;
+  margin-right: 15px;
+}
+
+.title-slide hgroup h1 {
+  font-size: 50px;
+  letter-spacing: -2px;
+}
+.title-slide hgroup h2 {
+  font-size: 30px;
+}
+.title-slide hgroup > p {
+  color: #F1E7C8;
+  text-align: right;
+  font-size: 2rem;
+  margin-right: 15px;
+}
+
+aside.gdbar {
+  height:125px;
+  width: 215px;
+  position: absolute;
+  left: -1px;
+  top: 125px;
+  right: 0;
+  left: -moz-initial;
+  left: initial;
+  -webkit-border-radius: 0 0px 0px 0;
+  -moz-border-radius: 0 0px 0px 0;
+  -ms-border-radius: 0 0px 0px 0;
+  -o-border-radius: 0 0px 0px 0;
+  border-radius: 0 0px 0px 0;
+  background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #663700), color-stop(100%, #663700)) no-repeat;
+  background: -webkit-linear-gradient(left, #663700, #663700) no-repeat;
+  background: -moz-linear-gradient(left, #663700, #663700) no-repeat;
+  background: -o-linear-gradient(left, #663700, #663700) no-repeat;
+  background: -ms-linear-gradient(left, #663700, #663700) no-repeat;
+  background: linear-gradient(left, #663700, #663700) no-repeat;
+  -webkit-background-size: 0% 100%;
+  -moz-background-size: 0% 100%;
+  -o-background-size: 0% 100%;
+  background-size: 0% 100%;
+  -webkit-transition: all 0.5s ease-out 0.5s;
+  -moz-transition: all 0.5s ease-out 0.5s;
+  -ms-transition: all 0.5s ease-out 0.5s;
+  -o-transition: all 0.5s ease-out 0.5s;
+  transition: all 0.5s ease-out 0.5s;
+}
+
+aside.gdbar img {
+  width: 250px;
+  height: 50px;
+  position: absolute;
+  right: 0;
+  margin: -50px 40px;
+}
+
+.rcr hgroup {
+  background: #663700;
+  height: 80px;
+  margin-left: -60px;
+  margin-top: -40px;
+  margin-right: -60px;
+}
+
+.rcr hgroup >  h2 {
+  color: white;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+ 
+.rcr article {
+  height: 582px;
+}
+
+.rcr footer {
+  background: #502D0F;
+  margin-left: -60px;
+  margin-right: -60px;
+}
+
+.rcr footer img {
+  height: 20px;  
+}
+
+.rcr footer p {
+  padding-left: 30px;
+  background: #fff;
+  color: #000;
+}
+
+.pagination {
+   position: relative;
+   bottom: 100px;
+   left:600px;
+}
+ 
+.pagination ul li:before {
+   content: "";
+}
+
+
+slides > slide:not(.nobackground):after {
+  font-size: 12pt;
+  color: white;
+  content: attr(data-slide-num) "/" attr(data-total-slides);
+  position: absolute;
+  bottom: -4px;
+  right: 20px;
+  line-height: 1.9;
+}
+
+
+ul > li:before {
+  content: '\27A4';
+  color: #663700;
+  margin-left: -1em;
+  position: absolute;
+  font-weight: 600;
+}
+
+ul li ul li:before {
+  content: '\274F';
+}
