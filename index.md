@@ -119,6 +119,9 @@ Plan on using Research Computing resources for your courses?
   * eMail:  <alp514@lehigh.edu>
   * Tel: (610) 758-6735 
   * Location: Room 296, EWFM Computing Center
+  * Subscribe
+     * Research Computing Mailing List: <https://lists.lehigh.edu/mailman/listinfo/hpc-l>
+     * HPC Training Google Groups: <mailto:hpctraining-list+subscribe@lehigh.edu>
   * [My Schedule] (https://www.google.com/calendar/embed?src=alp514%40lehigh.edu&ctz=America/New_York )
 
 
