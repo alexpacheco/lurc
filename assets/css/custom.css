@@ -147,7 +147,7 @@ slides > slide:not(.nobackground):after {
 ul > li:before {
   content: '\27A4';
   color: #663700;
-  margin-left: -1em;
+  margin-left: -1.5em;
   position: absolute;
   font-weight: 600;
 }

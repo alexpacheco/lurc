@@ -1,0 +1,108 @@
+---
+title       : Lehigh University Research Computing
+subtitle    : Library & Technology Services
+author      : https://researchcomputing.lehigh.edu
+job         : 
+logo        : lu.png
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : prettify      # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+--- .rcr
+
+## About Us?
+
+* Who?
+  - Unit of Lehigh's Library & Technology Services within the Center for Innovation inTeaching & Learning
+
+* Our Mission
+  - We enable Lehigh Faculty, Researchers and Scholars achieve their goals by providing various computational resources; hardware, software, and storage; consulting and training.
+  
+* Research Computing Staff
+  - Alex Pacheco, Manager & XSEDE Campus Champion
+  - Steve Anthony, HPC User Support & System Administrator
+  - Dan Brashler, Computing Consultant
+  - Steve Lidie, System Administrator
+  - Mary Jo Schulze, Software Specialist
+
+---.rcr
+
+## What do we do?
+
+* Hardware Support
+  - Provide system administration and support for Lehigh's HPC clusters.
+     - 5 University owned and 3 Faculty owned clusters
+  - Assist with purchase, installation and administration of servers and clusters for research and education.
+* Software Support
+  - Provide technical support for software applications, install software as requested and assist with purchase of software for research and education.
+* Data Storage
+  - Provide data management services including storing and sharing data. 
+* Training & Consulting
+  - Provide education and training programs to facilitate use of HPC resources and general scientific computing needs.
+  - Provide consultation and support for code development and visualization.
+
+--- .rcr
+
+## Research Computing Resources
+
+* <strong> Maia </strong>
+  - Free 32-core Symmetric Multiprocessor (SMP) system available to all Lehigh Faculty, Staff and Students
+  - dual 16-core AMD Opteron 6380 2.5GHz CPU
+  - 128GB RAM and 4TB HDD
+  - Theoretical Performance: 640 GFlops (640 billion floating point operations per second)
+  - [Apply for an account] (https://idmweb.cc.lehigh.edu/accounts/?page=hpc): Go to LTS website
+      - Click on Services > Account & Password > Lehigh Computing Account > Request an account
+      - Click on the big blue button "Start Special Account Request" > Research Computing Account > "FREE Linux command-line computing"
+  - To use Maia, login to polaris.cc.lehigh.edu and submit request to the batch scheduler.
+      - More on this later.
+
+--- .rcr
+
+## Research Computing Resources
+
+* <strong> Corona </strong>
+  - Lehigh's Flagship High Performance Computing Cluster
+  - 40 nodes, dual 8-core AMD Opteron 6128 2GHz CPU
+      - 32GB RAM and 1TB HDD
+  - 24 nodes, dual 8-core AMD Opteron 6128 2GHz CPU 
+      - 64GB RAM and 2TB HDD, 
+      - Infiniband QDR (40Gb/s) interconnect fabric.
+  - Theoretical Performance: 8.2TFlops (8.2 trillion Flops)
+  - Can access corona login node directly via `ssh username@corona.cc.lehigh.edu` 
+  - Usage access via a batch scheduler
+
+--- .rcr
+
+## Research Computing Resources
+
+* <strong> Trit </strong>
+  - Three SunFire x2270 Servers each with
+    -  dual 4-core Intel Xeon X5570, 2.95GHz, 48GB RAM, 500GB HDD
+  - Theoretical Performance: 283.2GFlops
+
+* <strong> Capella </strong>
+  - One node, quad 4-core AMD Opteron 8384, 2GHz, 64GB RAM, 2x 146GB HDD
+  - Theoretical Performance: 128GFlops
+
+* <strong> Cuda0 </strong>
+  - One node, 6-core Intel Xeon X5650, 2.66GHz, 24GB RAM, 200GB HDD
+  - 4 nVIDIA Fermi Devices (C2050, C2070, 2x M2070)
+  - Theoretical Performance: 63.840 GFlops (CPU) + 2.06 TFlops (GPU)
+
+* Trits, Capella and Cuda0 do not have a batch scheduler for usage i.e. 
+ free for all
+
+--- .rcr
+
+
+## Research Computing Resources
+
+* Requesting an account on Corona, Trits, Capella and Cuda0
+  - Account application: same as Maia but select "Fee-based research computing"
+  - Annual charge of $50/account paid by Lehigh Faculty or Research Staff.  
+  - Annual charge of $450 for one node-year of computing access, also know as allocation block 
+     - continous computing on one node of Corona for one year
+     - 140,160 hours on one cpu
+     - paid for by your account sponsor
+  - Free access to Corona at low priority after allocation is expended
