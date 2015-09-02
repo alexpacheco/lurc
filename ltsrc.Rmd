@@ -20,7 +20,7 @@ mode        : selfcontained # {standalone, draft}
   - We enable Lehigh Faculty, Researchers and Scholars achieve their goals by providing various computational resources; hardware, software, and storage; consulting and training.
   
 * Research Computing Staff
-  - Alex Pacheco, Manager & XSEDE Campus Champion
+  - __Alex Pacheco, Manager & XSEDE Campus Champion__
   - Steve Anthony, HPC User Support & System Administrator
   - Dan Brashler, Computing Consultant
   - Steve Lidie, System Administrator
@@ -253,7 +253,7 @@ mode        : selfcontained # {standalone, draft}
   - the system admin may not want install it system wide for just one user
 * Add the directory where you will install the module files to the variable 
   MODULEPATH in .bashrc/.tcshrc
-```{bash eval=FALSE}
+```{sh eval=FALSE}
 # My .bashrc file
 export MODULEPATH=${MODULEPATH}:/zhome/alp514/modulefiles
 ```
@@ -273,7 +273,7 @@ export MODULEPATH=${MODULEPATH}:/zhome/alp514/modulefiles
 <table>
 <tr><th>Queue Name</th><th>Max Walltime</th><th>Max Simultaneous Core-hours</th></tr>
 <tr><td>smp-test</td><td>1 hour</td><td>4 core hours</td></tr>
-<tr><td>smp</td><td>96 hours</td><td>3844 core hours</td></tr>
+<tr><td>smp</td><td>96 hours</td><td>384 core hours</td></tr>
 </table>
 
 * Corona
@@ -299,9 +299,7 @@ export MODULEPATH=${MODULEPATH}:/zhome/alp514/modulefiles
        - memory per node
    - How long do you want the resources
        - have an estimate for how long your job will run
-   - Which queue to submit jobs to
-       - Maia: smp-test (max 1 hours) or smp (max 3 days)
-       - Corona: s, normal, p (all max 4 days, 3 days for free usaage)
+   - Which queue to submit jobs
 
 --- .rcr
 
@@ -333,7 +331,7 @@ exit
 #PBS -N myjob
 
 module load openmpi/1.8/intel/14.0.1
-NPROCS=$(wc -l $PBS_NODEFILE | awk '{print $1}')
+NPROCS=$(wc -l ${PBS_NODEFILE} | awk '{print $1}')
 cd ${PBS_O_WORKDIR}
 mpirun -np ${NPROCS} -machinefile ${PBS_NODEFILE} ./myjob < filename.in > filename.out
 
@@ -502,3 +500,104 @@ exit
   - XSEDE HPC Monthly Workshop: Big Data (Nov. 2015)
 
 
+--- .rcr &twocol_width
+
+## XSEDE
+
+* The E<b>x</b>treme <b>S</b>cience and <b>E</b>ngineering <b>D</b>iscovery <b>E</b>nvironment (<strong>XSEDE</strong>) is the most advanced, powerful, and robust collection of integrated advanced digital resources and services in the world. 
+
+* It is a single virtual system that scientists can use to interactively share computing resources, data, and expertise.
+
+* Scientists and engineers around the world use these resources and services—things like supercomputers, collections of data, and new tools—to make our lives healthier, safer, and better. 
+
+* XSEDE, and the experts who lead the program, will make these resources easier to use and help more people use them.
+
+
+*** =left width:60%
+* The five-year, $121-million project is supported by the National Science Foundation. 
+
+* It replaces and expands on the NSF TeraGrid project.
+
+*** =right width:40%
+
+<img width = '400px' src = 'assets/img/xsede.png'>
+
+--- .rcr &twocol_width
+
+## XSEDE Resources
+
+* XSEDE is composed of multiple partner institutions known as Service Providers or SPs, each of which contributes one or more allocatable services. 
+
+* Resources include High Performance Computing (HPC) machines, High Throughput Computing (HTC) machines, visualization, data storage, testbeds, and services. 
+
+*** =left width:50%
+
+* Texas Advanced Computing Center (TACC) 
+   - Stampede: 9.6 PFlops (8<sup>th</sup> fastest supercomputer in the world)
+   -  Wrangler for Data Analytics
+* Louisiana State University
+   -  SuperMIC: 925 TFlops (116<sup>th</sup> fastest)
+* National Institute for Computational Sciences (NICS) 
+   - Darter: 248.9 TFlops
+
+
+
+*** =right width:45%
+
+* San Diego Supercomputing Center (SDSC) 
+   - Comet: 2PFlops
+   - Gordon: 341 TFlops
+   - Gordon Ion
+
+* In Development
+   - Indiana University: Jetstream
+   - Pittsburgh Supercomputing Center: Bridges 
+
+<img width = '400px' src = 'assets/img/xsede.png'>
+
+
+--- .rcr
+
+## XSEDE Service Providers and Partners
+
+<img width = '900px' src = 'assets/img/main.svg'>
+
+
+--- .rcr 
+
+## How do I get started on XSEDE?
+
+* Apply for an account at the [XSEDE Portal](https://portal.xsede.org).
+* There is no charge to get an XSEDE portal account.  
+* You need a portal account to register for XSEDE Tutorials and Workshops
+* To use XSEDE's compute and data resources, you need to have an allocation.
+* An allocation on a particular resource activates your account on that allocation.
+* Researchers and Educators from US universities and federal research labs can 
+serve as Principle Investigators on XSEDE allocation.
+* A PI can add students to his/her allocations.
+* XSEDE also has a Campus Champion Program
+* A XSEDE Campus Champion is a local source of knowledge about high-performance 
+and high-throughput computing and other digital services, opportunities and resources. 
+* A Campus Champion can request start up allocations on all XSEDE resources to help 
+ local users with getting started on XSEDE resources.
+
+--- .rcr
+
+## Contact Us
+
+* Issue with running jobs or need help to get started: 
+  * Open a help ticket: <http://go.lehigh.edu/rchelp>
+* My contact info
+  * eMail:  <alp514@lehigh.edu>
+  * Tel: (610) 758-6735 
+  * Location: Room 296, EWFM Computing Center
+  * [My Schedule] (https://www.google.com/calendar/embed?src=alp514%40lehigh.edu&ctz=America/New_York )
+* More Information
+  * [Research Computing] (https://researchcomputing.lehigh.edu)
+  * [Research Computing Training] (https://researchcomputing.lehigh.edu/training)
+* Subscribe
+     * Research Computing Mailing List: <https://lists.lehigh.edu/mailman/listinfo/hpc-l>
+     * HPC Training Google Groups: <mailto:hpctraining-list+subscribe@lehigh.edu>
+
+
+ 
