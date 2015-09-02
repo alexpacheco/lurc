@@ -173,7 +173,26 @@ strong {
   font-weight: bold;
 }
 
+.small article { font-size: 12px;}
+
+.smaller pre {
+  font-size: 8px;
+  background-color: #e7e2d8;
+}
+`
 pre > code {
   font-size: 12px;
   background-color: #e7e2d8;
+}
+
+table th, table td {
+	text-align: center;
+}
+
+table.pbs td:first-child {
+ width: 330px;
+}
+
+table.pbs td {
+ text-align: left;
 }

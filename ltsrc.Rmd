@@ -5,16 +5,16 @@ author      : https://researchcomputing.lehigh.edu
 job         : 
 logo        : lu.png
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
-highlighter : prettify      # {highlight.js, prettify, highlight}
+highlighter : highlight.js      # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
-widgets     : []            # {mathjax, quiz, bootstrap}
+widgets     : [mathjax]            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 --- .rcr
 
 ## About Us?
 
 * Who?
-  - Unit of Lehigh's Library & Technology Services within the Center for Innovation inTeaching & Learning
+  - Unit of Lehigh's Library & Technology Services within the Center for Innovation in Teaching & Learning
 
 * Our Mission
   - We enable Lehigh Faculty, Researchers and Scholars achieve their goals by providing various computational resources; hardware, software, and storage; consulting and training.
@@ -34,10 +34,10 @@ mode        : selfcontained # {standalone, draft}
   - Provide system administration and support for Lehigh's HPC clusters.
      - 5 University owned and 3 Faculty owned 
   - Assist with purchase, installation and administration of servers and clusters.
-* Software Support
-  - Provide technical support for software applications, install software as requested and assist with purchase of software.
 * Data Storage
   - Provide data management services including storing and sharing data. 
+* Software Support
+  - Provide technical support for software applications, install software as requested and assist with purchase of software.
 * Training & Consulting
   - Provide education and training programs to facilitate use of HPC resources and general scientific computing needs.
   - Provide consultation and support for code development and visualization.
@@ -52,6 +52,10 @@ mode        : selfcontained # {standalone, draft}
   - 128GB RAM and 4TB HDD
   - Theoretical Performance: 640 GFlops (640 billion floating point operations per second)
   - Access: Batch Scheduled, no interactive access to Maia
+
+  $$latex
+  GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
+  $$
 
 --- .rcr
 
@@ -150,6 +154,9 @@ mode        : selfcontained # {standalone, draft}
 * HPC users can write job output directly to their Ceph volume
 * Ceph volume can be mounted as a network drive on Windows or CIFS on Mac and Linux
   - [See Ceph FAQ] (http://lts.lehigh.edu/services/faq/ceph-faq) for more details
+* HPC User home directory quota
+  - Maia: 5GB
+  - Other Clusters: 150GB shared between Corona, Capella, Cuda and Trits
 
 --- .rcr
 
@@ -157,11 +164,17 @@ mode        : selfcontained # {standalone, draft}
 
 * Most software is installed in /zhome/Apps
   - may also be accessible from some workstations on campus
-  - some software like CUDA compilers are local to GPU resources like Cuda0
+  - some software are installed locally. For e.g. CUDA compilers are local to Cuda0
 * Software is managed using module environment
   - Why? We may have different versions of same software or software built with different compilers
   - Module environment allows you to dynamically change your *nix environment based on software being used
-  - Standard on many Universtit and national High Performance Computing resource since circa 2011
+  - Standard on many University and national High Performance Computing resource since circa 2011
+
+--- .rcr
+
+## Software on Corona
+
+<img width = '900px' src = 'assets/img/module.png'>
 
 --- .rcr
 
@@ -245,13 +258,33 @@ mode        : selfcontained # {standalone, draft}
 export MODULEPATH=${MODULEPATH}:/zhome/alp514/modulefiles
 ```
 
---- .rcr .small
+--- .rcr
 
 ## Module File Example
 
-```{bash echo=FALSE}
-cat mcr.mod
-```
+<img width = '900px' src = 'assets/img/mcr.png'>
+
+--- .rcr
+
+## Available Queues
+
+* Maia
+
+<table>
+<tr><th>Queue Name</th><th>Max Walltime</th><th>Max Simultaneous Core-hours</th></tr>
+<tr><td>smp-test</td><td>1 hour</td><td>4 core hours</td></tr>
+<tr><td>smp</td><td>96 hours</td><td>3844 core hours</td></tr>
+</table>
+
+* Corona
+
+<table>
+<tr><th>Queue Name</th><th>Max Walltime</th><th>Max Simultaneous Core-hours</th><th>Notes</th></tr>
+<tr><td>p-ib</td><td>96/72</td><td>No Limit/288</td><td>Min 2 nodes/job, Max 24 nodes/user</td></tr>
+<tr><td>normal</td><td>96/72</td><td>26880/7680</td><td>Max 34 nodes/user</td></tr>
+<tr><td>short</td><td>24/12</td><td>384/192</td><td></td></tr>
+<tr><td>bf</td><td>96</td><td></td><td>Max 65 nodes/user</td></tr>
+</table>
 
 --- .rcr
 
@@ -269,5 +302,203 @@ cat mcr.mod
    - Which queue to submit jobs to
        - Maia: smp-test (max 1 hours) or smp (max 3 days)
        - Corona: s, normal, p (all max 4 days, 3 days for free usaage)
+
+--- .rcr
+
+## Minimal submit script for Serial Jobs on Maia
+
+```{bash eval=FALSE}
+#!/bin/bash
+#PBS -q smp
+#PBS -l walltime=1:00:00
+#PBS -l nodes=1:ppn=1
+#PBS -l mem=4GB
+#PBS -N myjob
+
+cd ${PBS_O_WORKDIR}
+./myjob < filename.in > filename.out
+
+exit
+```
+
+--- .rcr
+
+## Minimal submit script for MPI Jobs on Corona
+
+```{bash eval=FALSE}
+#!/bin/bash
+#PBS -q p-ib
+#PBS -l walltime=1:00:00
+#PBS -l nodes=2:ppn=16
+#PBS -N myjob
+
+module load openmpi/1.8/intel/14.0.1
+NPROCS=$(wc -l $PBS_NODEFILE | awk '{print $1}')
+cd ${PBS_O_WORKDIR}
+mpirun -np ${NPROCS} -machinefile ${PBS_NODEFILE} ./myjob < filename.in > filename.out
+
+exit
+```
+
+--- .rcr
+
+## Minimal submit script for OpenMP Jobs on Corona
+
+```{bash eval=FALSE}
+#!/bin/bash
+#PBS -q p
+# Directive with same flags can be combined on one line
+#PBS -l walltime=1:00:00,nodes=1:ppn=16
+#PBS -N myjob
+
+cd ${PBS_O_WORKDIR}
+# Use either
+export OMP_NUM_THREADS=16
+./myjob < filename.in > filename.out
+
+# OR
+OMP_NUM_THREADS=16 ./myjob < filename.in > filename.out
+
+exit
+```
+
+
+--- .rcr .small
+
+## Useful PBS Directives
+
+<table class="pbs">
+<tr>
+<td><code>#PBS -q queuename</code></td><td> Submit job to the <em>queuename</em> queue.</td>
+</tr>
+<tr>
+<td><code>#PBS -l walltime=hh:mm:ss</code></td><td> Request resources to run job for <em>hh</em> hours, <em>mm</em> minutes and <em>ss</em> seconds.</td>
+</tr>
+<tr>
+<td><code>#PBS -l nodes=m:ppn=n</code></td><td> Request resources to run job on <em>n</em> processors each on <em>m</em> nodes.</td>
+</tr>
+<tr>
+<td><code>#PBS -l mem=xGB</code></td><td> Request <em>xGB</em> per node requested, applicable on Maia only</td>
+</tr>
+<tr>
+<td><code>#PBS -N jobname</code></td><td> Provide a name, <em>jobname</em> to your job.</td>
+</tr>
+<tr>
+<td><code>#PBS -o filename.out</code></td><td> Write PBS standard output to file filename.out.</td>
+</tr>
+<tr>
+<td><code>#PBS -e filename.err</code></td><td> Write PBS standard error to file filename.err.</td>
+</tr>
+<tr>
+<td><code>#PBS -j oe</code></td><td> Combine PBS standard output and error to the same file.</td>
+</tr>
+<tr>
+<td><code>#PBS -m status</code></td><td> Send an email after job status status is reached. <br />
+ status can be a (abort), b (begin) or e (end) <br />
+ The arguments can be combined, for e.g. abe will send email when job begins and either aborts or ends</td>
+</tr>
+<td><code>#PBS -M your email address</code></td><td> Address to send email.</td>
+</tr>
+</table>
+
+--- .rcr
+
+## Useful PBS environmental variables
+
+<table class="pbs">
+<tr>
+ <td><code> PBS_O_WORKDIR</code></td><td> Directory where the <code>qsub</code> command was executed</td>
+</tr>
+<tr>
+ <td><code> PBS_NODEFILE</code></td><td> Name of the file that contains a list of the HOSTS provided for the job</td>
+</tr>
+<tr>
+ <td><code> PBS_JOBID</code></td><td> Job ID number given to this job</td>
+</tr>
+<tr>
+ <td><code> PBS_QUEUE</code></td><td> Queue job is running in</td>
+</tr>
+<tr>
+ <td><code> PBS_WALLTIME</code></td><td> Walltime in secs requested</td>
+</tr>
+<tr>
+ <td><code> PBS_JOBNAME</code></td><td> Name of the job. This can be set using the -N option in the PBS script</td>
+</tr>
+<tr>
+ <td><code> PBS_ENVIRONMENT</code></td><td> Indicates job type, PBS_BATCH or PBS_INTERACTIVE</td>
+</tr>
+<tr>
+ <td><code> PBS_O_SHELL</code></td><td>	value of the SHELL variable in the environment in which qsub was executed</td>
+</tr>
+<tr>
+ <td><code> PBS_O_HOME</code></td><td> Home directory of the user running qsub</td>
+</tr>
+</table>
+
+--- .rcr
+
+## Submitting & Monitoring Jobs
+
+<table>
+<tr><th>Command</th><th>Description</th></tr>
+<tr>
+  <td><code>qsub filename</code></td><td>Submit <em>filename</em> to job scheduler</td>
+</tr>
+<tr>
+  <td><code>qstat</code> </td><td>check job status (all jobs)</td>
+</tr>
+<tr>
+  <td><code>qstat -u username</code></td><td>check job status of user <em>username</em></td>
+</tr>
+<tr>
+  <td><code>qstat -a</code></td><td>More information than that given by <em>qstat</em></td>
+</tr>
+<tr>
+  <td><code>qdel jobid</code></td><td>Cancel your job identified by <em>jobid</em></td>
+</tr>
+<tr>
+  <td><code>showstart jobid</code></td><td>Show <strong>estimated</strong> start time of job identified by <em>jobid</em></td>
+</tr>
+<tr>
+  <td><code>checkjob jobid</code></td><td>Check status of your job identified by <em>jobid</em></td>
+</tr>
+<tr>
+  <td><code>qhold jobid</code></td><td>Put your job identified by <em>jobid</em> on hold</td>
+</tr>
+<tr>
+  <td><code>qrls jobid</code></td><td>Release the hold that <strong>you put</strong> on <em>jobid</em></td>
+</tr>
+</table>
+
+
+--- .rcr
+
+## Training
+
+* Provide weekly training on topics that are of interest to HPC users.
+* Fall 2015 Training is held in CITL Classroom (EWFM 379) on Tuesdays from 2PM - 4PM.
+* Trainings are webcast using Google Hangouts and recorded. See [Research Computing Training](https://researchcomputing.lehigh.edu/training) for slides and recordings
+* Fall 2015 Schedule
+  - Storage Options at Lehigh (Sep. 1)
+  - A Brief Introduction to Linux (Sep. 8)
+  - Linux: Basic Commands & Environment (Sep. 15)
+  - Research Computing at Lehigh (Sep. 22)
+  - Shell Scripting ( Sep. 29 and Oct. 6, two part session)
+  - Programming in MATLAB and GNU Octave (Oct. 13)
+  - Programming in R (Oct. 20)
+ 
+
+--- .rcr
+
+## Full Day Workshops
+
+* During the summer we provide full day workshops on programming topics
+* Summer 2015 Workshops
+  - Modern Fortran Programming
+  - C Programming
+* We also host full day workshops broadcast from other Supercomputing Centers
+  - XSEDE HPC Monthly Workshop: OpenACC (Dec. 2014)
+  - XSEDE HPC Summer BootCamp: OpenMP, OpenACC, MPI and Hybrid Programming (Jun. 2015)
+  - XSEDE HPC Monthly Workshop: Big Data (Nov. 2015)
 
 
