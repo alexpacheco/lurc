@@ -122,6 +122,11 @@ aside.gdbar img {
   color: #000;
 }
 
+#slide-14 pre {
+  font-size: 12px;
+  line-height: 15px;
+}
+
 .pagination {
    position: relative;
    bottom: 100px;
