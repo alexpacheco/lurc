@@ -131,13 +131,13 @@ mode        : selfcontained # {standalone, draft}
 * Corona: `ssh username@corona.cc.lehigh.edu`
 * Capella: `ssh username@capella.cc.lehigh.edu`
 * Cuda0: `ssh username@cuda0.cc.lehigh.edu`
-* Trits{1,2,3}: `ssh username@trits{1,2,3}.cc.lehigh.edu`
+* Trit{1,2,3}: `ssh username@trit{1,2,3}.cc.lehigh.edu`
 * Maia: No direct access to Maia, instead login to the polaris
 * Polaris: `ssh username@polaris.cc.lehigh.edu`
   - Polaris is a gateway that also hosts the batch scheduler for Maia.
   - No computing software including compilers is available on Polaris.
   - Login to Maia to request computing time on Maia including interactive access to Maia.
-* If you are not Lehigh's network, login to the ssh gateway to get Research Computing resources.
+* If you are not on Lehigh's network, login to the ssh gateway to get Research Computing resources.
   - `ssh username@ssh.cc.lehigh.edu`
 
 --- .rcr
@@ -343,15 +343,15 @@ exit
 ## Minimal submit script for OpenMP Jobs on Corona
 
 ```{bash eval=FALSE}
-#!/bin/bash
-#PBS -q p
+#!/bin/tcsh
+#PBS -q normal
 # Directive with same flags can be combined on one line
 #PBS -l walltime=1:00:00,nodes=1:ppn=16
 #PBS -N myjob
 
 cd ${PBS_O_WORKDIR}
 # Use either
-export OMP_NUM_THREADS=16
+setenv OMP_NUM_THREADS 16
 ./myjob < filename.in > filename.out
 
 # OR
@@ -545,7 +545,7 @@ exit
 *** =right width:45%
 
 * San Diego Supercomputing Center (SDSC) 
-   - Comet: 2PFlops
+   - Comet: 2 PFlops
    - Gordon: 341 TFlops
    - Gordon Ion
 

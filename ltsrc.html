@@ -305,7 +305,7 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
 <li>Corona: <code>ssh username@corona.cc.lehigh.edu</code></li>
 <li>Capella: <code>ssh username@capella.cc.lehigh.edu</code></li>
 <li>Cuda0: <code>ssh username@cuda0.cc.lehigh.edu</code></li>
-<li>Trits{1,2,3}: <code>ssh username@trits{1,2,3}.cc.lehigh.edu</code></li>
+<li>Trit{1,2,3}: <code>ssh username@trit{1,2,3}.cc.lehigh.edu</code></li>
 <li>Maia: No direct access to Maia, instead login to the polaris</li>
 <li>Polaris: <code>ssh username@polaris.cc.lehigh.edu</code>
 
@@ -314,7 +314,7 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
 <li>No computing software including compilers is available on Polaris.</li>
 <li>Login to Maia to request computing time on Maia including interactive access to Maia.</li>
 </ul></li>
-<li>If you are not Lehigh&#39;s network, login to the ssh gateway to get Research Computing resources.
+<li>If you are not on Lehigh&#39;s network, login to the ssh gateway to get Research Computing resources.
 
 <ul>
 <li><code>ssh username@ssh.cc.lehigh.edu</code></li>
@@ -695,15 +695,15 @@ exit
     <h2>Minimal submit script for OpenMP Jobs on Corona</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code class="bash">#!/bin/bash
-#PBS -q p
+    <pre><code class="bash">#!/bin/tcsh
+#PBS -q normal
 # Directive with same flags can be combined on one line
 #PBS -l walltime=1:00:00,nodes=1:ppn=16
 #PBS -N myjob
 
 cd ${PBS_O_WORKDIR}
 # Use either
-export OMP_NUM_THREADS=16
+setenv OMP_NUM_THREADS 16
 ./myjob &lt; filename.in &gt; filename.out
 
 # OR
@@ -974,7 +974,7 @@ exit
 <li><p>San Diego Supercomputing Center (SDSC) </p>
 
 <ul>
-<li>Comet: 2PFlops</li>
+<li>Comet: 2 PFlops</li>
 <li>Gordon: 341 TFlops</li>
 <li>Gordon Ion</li>
 </ul></li>
