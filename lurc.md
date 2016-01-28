@@ -50,13 +50,15 @@ mode        : selfcontained # {standalone, draft}
 
 --- .rcr
 
-## Research Computing Resources
+## LTS Managed Faculty Owned Clusters
 
-* Faculty Owned Clusters
+* Ben Felzer, Earth and Environmental Science
   - Eight nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
      * Theoretical Performance: 2.662TFlops
+* Jonas Baltrusaitis, Chemical Engineering 
   - Three nodes, dual 16-core AMD Opteron 6376, 2.3Ghz, 128GB RAM
      * Theoretical Performance: 1.766TFlops
+* Keith Moored, Mechanical Engineering and Mechanics
   - Six nodes, dual 10-core Intel Xeon E5-2650v3, 2.3GHz, 64GB RAM, nVIDIA Tesla K80
      * Theoretical Performance: 4.416 TFlops (CPU) + 17.46TFlops (GPU)
 
@@ -68,18 +70,21 @@ mode        : selfcontained # {standalone, draft}
 
 --- .rcr
 
-## Planned Upgrade
+## Proposed Upgrade
 
-* 64 node cluster to replace Corona, Capella, Trits and Cuda0
+* 40 node cluster to replace Corona, Capella, Trits and Cuda0
   - dual 10-core Intel Xeon E5-2650v3, 2.3GHz
   - 128GB RAM
-  - nVIDIA Tesla K80
   - 1TB HDD
   - Fully non-blocking Infiniband EDR
+  - Total Cores: 800 (CPU)
+  - Theoretical Performance: 29.4TFlops (CPU)
+  - Total Memory: 5.12TB (CPU)
+* FY 2016-17 Upgrade
   - 50TB CephFS distributed storage
-  - Total Cores: 1280 (CPU) + 319488 (GPU)
-  - Theoretical Performance: 47TFlops (CPU) + 186TFlops (GPU)
-  - Total Memory: 8.2TB (CPU) + 1.5TB (GPU)
+  - Add 40 identical nodes with nVIDIA K80 GPU each
+  - Total Theoretical Performance: 58.8TFlops (CPU) + 116.4TFlops (GPU)
+  - Total Memory: 10.24TB (CPU) + 960GB (GPU) 
 
 --- .rcr
 
