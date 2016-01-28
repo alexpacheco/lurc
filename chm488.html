@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Introduction to Linux &amp; HPC</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Introduction to Linux &amp; HPC">
+  <meta name="author" content="https://researchcomputing.lehigh.edu">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/custom.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <aside class="gdbar">
+    <img src="assets/img/lu.png">
+  </aside>
+  <hgroup class="auto-fadein">
+    <h1>Introduction to Linux &amp; HPC</h1>
+    <h2>Library &amp; Technology Services</h2>
+    <p>https://researchcomputing.lehigh.edu<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="rcr" id="slide-1" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>About Us?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Who?</p>
+
+<ul>
+<li>Unit of Lehigh&#39;s Library &amp; Technology Services within the Center for Innovation in Teaching &amp; Learning</li>
+</ul></li>
+<li><p>Our Mission</p>
+
+<ul>
+<li>We enable Lehigh Faculty, Researchers and Scholars achieve their goals by providing various computational resources; hardware, software, and storage; consulting and training.</li>
+</ul></li>
+<li><p>Research Computing Staff</p>
+
+<ul>
+<li><strong>Alex Pacheco, Manager &amp; XSEDE Campus Champion</strong></li>
+<li>Steve Anthony, HPC User Support &amp; System Administrator</li>
+<li>Dan Brashler, Computing Consultant</li>
+<li>Mary Jo Schulze, Software Specialist</li>
+</ul></li>
+</ul>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="rcr" id="slide-2" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>What do we do?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Hardware Support
+
+<ul>
+<li>Provide system administration and support for Lehigh&#39;s HPC clusters.
+
+<ul>
+<li>5 University owned and 4 Faculty owned </li>
+</ul></li>
+<li>Assist with purchase, installation and administration of servers and clusters.</li>
+</ul></li>
+<li>Data Storage
+
+<ul>
+<li>Provide data management services including storing and sharing data. </li>
+</ul></li>
+<li>Software Support
+
+<ul>
+<li>Provide technical support for software applications, install software as requested and assist with purchase of software.</li>
+</ul></li>
+<li>Training &amp; Consulting
+
+<ul>
+<li>Provide education and training programs to facilitate use of HPC resources and general scientific computing needs.</li>
+<li>Provide consultation and support for code development and visualization.</li>
+</ul></li>
+</ul>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="rcr" id="slide-3" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Research Computing Resources</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p><strong> Maia </strong></p>
+
+<ul>
+<li>Free 32-core Symmetric Multiprocessor (SMP) system available to all Lehigh Faculty, Staff and Students</li>
+<li>dual 16-core AMD Opteron 6380 2.5GHz CPU</li>
+<li>128GB RAM and 4TB HDD</li>
+<li>Theoretical Performance: 640 GFlops (640 billion floating point operations per second)</li>
+<li>Access: Batch Scheduled, no interactive access to Maia</li>
+</ul>
+
+<p>\[
+GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
+\]</p></li>
+</ul>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="rcr" id="slide-4" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Research Computing Resources</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><strong> Corona </strong>
+
+<ul>
+<li>Lehigh&#39;s Flagship High Performance Computing Cluster</li>
+<li>40 nodes, dual 8-core AMD Opteron 6128 2GHz CPU
+
+<ul>
+<li>32GB RAM and 1TB HDD</li>
+</ul></li>
+<li>24 nodes, dual 8-core AMD Opteron 6128 2GHz CPU 
+
+<ul>
+<li>64GB RAM and 2TB HDD, </li>
+<li>Infiniband QDR (40Gb/s) interconnect fabric.</li>
+</ul></li>
+<li>Theoretical Performance: 8.2TFlops (8.2 trillion Flops)</li>
+<li>Access: Batch scheduled, interactive on login node for compiling, editing only 
+
+<ul>
+<li>computer intensive tasks on the login node is strictly forbidden</li>
+</ul></li>
+</ul></li>
+</ul>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="rcr" id="slide-5" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Research Computing Resources</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p><strong> Trit </strong></p>
+
+<ul>
+<li>Three SunFire x2270 Servers each with</li>
+<li> dual 4-core Intel Xeon X5570, 2.95GHz, 48GB RAM, 500GB HDD</li>
+<li>Theoretical Performance: 283.2GFlops</li>
+</ul></li>
+<li><p><strong> Capella </strong></p>
+
+<ul>
+<li>One node, quad 4-core AMD Opteron 8384, 2GHz, 64GB RAM, 2x 146GB HDD</li>
+<li>Theoretical Performance: 128GFlops</li>
+</ul></li>
+<li><p><strong> Cuda0 </strong></p>
+
+<ul>
+<li>One node, 6-core Intel Xeon X5650, 2.66GHz, 24GB RAM, 200GB HDD</li>
+<li>4 nVIDIA Fermi Devices (C2050, C2070, 2x M2070)</li>
+<li>Theoretical Performance: 63.840 GFlops (CPU) + 2.06 TFlops (GPU)</li>
+</ul></li>
+<li><p>Access: Interactive (make sure that resources are available for your compute intensive tasks)</p></li>
+</ul>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="rcr" id="slide-6" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Faculty Owned Resources</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Eight nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
+
+<ul>
+<li>Theoretical Performance: 2.662TFlops</li>
+</ul></li>
+<li>Twenty nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
+
+<ul>
+<li>Theoretical Performance: 6.656TFlops</li>
+</ul></li>
+<li>Three nodes, dual 16-core AMD Opteron 6376, 2.3Ghz, 128GB RAM
+
+<ul>
+<li>Theoretical Performance: 1.766TFlops</li>
+</ul></li>
+<li>Six nodes, dual 10-core Intel Xeon E5-2650v3, 2.3GHz, 64GB RAM, nVIDIA Tesla K80
+
+<ul>
+<li>Theoretical Performance: 4.416 TFlops (CPU) + 17.46TFlops (GPU)</li>
+</ul></li>
+</ul>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="rcr" id="slide-7" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Apply for an account</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p><a href="https://idmweb.cc.lehigh.edu/accounts/?page=hpc">Apply for an account at the LTS website</a></p>
+
+<ul>
+<li>Click on Services &gt; Account &amp; Password &gt; Lehigh Computing Account &gt; Request an account</li>
+<li>Click on the big blue button &quot;Start Special Account Request&quot; &gt; Research Computing Account </li>
+<li>For Maia: click on &quot;FREE Linux command-line computing&quot;</li>
+<li>For other resources: click on &quot;Fee-based research computing&quot;</li>
+</ul></li>
+<li><p>Annual charge of $50/account paid by Lehigh Faculty or Research Staff.  </p></li>
+<li><p>Annual charge of $450 for one node-year of computing access, also know as allocation block </p>
+
+<ul>
+<li>continous computing on one node of Corona for one year</li>
+<li>140,160 hours on one cpu</li>
+<li>paid for by your account sponsor</li>
+<li>Free access to Corona at low priority after allocation is expended</li>
+</ul></li>
+</ul>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="rcr" id="slide-8" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Accessing Research Computing Resources</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>All Research Computing resources are accessible using ssh while on Lehigh&#39;s network</li>
+<li>Corona: <code>ssh username@corona.cc.lehigh.edu</code></li>
+<li>Capella: <code>ssh username@capella.cc.lehigh.edu</code></li>
+<li>Cuda0: <code>ssh username@cuda0.cc.lehigh.edu</code></li>
+<li>Trit{1,2,3}: <code>ssh username@trit{1,2,3}.cc.lehigh.edu</code></li>
+<li>Maia: No direct access to Maia, instead login to the polaris</li>
+<li>Polaris: <code>ssh username@polaris.cc.lehigh.edu</code>
+
+<ul>
+<li>Polaris is a gateway that also hosts the batch scheduler for Maia.</li>
+<li>No computing software including compilers is available on Polaris.</li>
+<li>Login to Maia to request computing time on Maia including interactive access to Maia.</li>
+</ul></li>
+<li>If you are not on Lehigh&#39;s network, login to the ssh gateway to get Research Computing resources.
+
+<ul>
+<li><code>ssh username@ssh.cc.lehigh.edu</code></li>
+</ul></li>
+</ul>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="rcr" id="slide-9" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>What about Storage resources</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>LTS provides various storage options.</li>
+<li>Some of these are in the cloud and subject to Lehigh&#39;s Cloud Policy</li>
+<li>For research, LTS provides a 1PB storage system called Ceph</li>
+<li>Ceph is based on the Ceph software</li>
+<li>Research groups can purchase a project space on Ceph @ $200/TB/year that can be shared</li>
+<li>Ceph is in-house, built, operated and administered by LTS Research Computing Staff.
+
+<ul>
+<li>located in Data Center in EWFM with a backup cluster in Packard Lab</li>
+</ul></li>
+<li>HPC users can write job output directly to their Ceph volume</li>
+<li>Ceph volume can be mounted as a network drive on Windows or CIFS on Mac and Linux
+
+<ul>
+<li><a href="http://lts.lehigh.edu/services/faq/ceph-faq">See Ceph FAQ</a> for more details</li>
+</ul></li>
+<li>HPC User home directory quota
+
+<ul>
+<li>Maia: 5GB</li>
+<li>Other Clusters: 150GB shared between Corona, Capella, Cuda and Trits</li>
+</ul></li>
+</ul>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="rcr" id="slide-10" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>How do I get started using HPC resources for this course</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Login to plasma: <code>ssh -X username@plasma.cc.lehigh.edu</code></p>
+
+<ul>
+<li>Plasma is a login host exclusive to Department of Chemistry for interactive access with X-Forwarding</li>
+<li> You will need the X-Forwarding for visualizing output from software, Gaussian and Quantum Espresso</li>
+<li>If you are using a Windows PC, download and install MobaXterm from <a href="https://software.lehigh.edu">https://software.lehigh.edu</a></li>
+<li>If you are using a Mac, download and install XQuartz from <a href="http://www.xquartz.org/">http://www.xquartz.org/</a></li>
+</ul></li>
+<li><p>Linux is the Operating System installed on all HPC resources.</p>
+
+<ul>
+<li>You should see something like <code>[alp514@plasma ~]$</code> if you are logged into plasma</li>
+<li>This is known as the command prompt</li>
+</ul></li>
+</ul>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="rcr" id="slide-11" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Directory Structure</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>All files are arranged in a hierarchial structure, like an inverted tree.</li>
+<li> The top of the hierarchy is traditionally called <strong>root</strong> (written as a slash / )</li>
+</ul>
+
+<p><img width = '900px' src = 'assets/img/LinuxFS.png'></p>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="rcr" id="slide-12" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Relative &amp; Absolute Path</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Path means a position in the directory tree.</li>
+<li>You can use either the relative path or absolute path</li>
+<li>In relative path expression
+
+<ul>
+<li class=''>(one dot or period) is the current working directory</li>
+<li class='.'>(two dots or periods) is one directory up</li>
+<li> You can combine . and .. to navigate the le system hierarchy.</li>
+<li> the path is not dened uniquely and does depend on the current path.</li>
+<li class='./../tmp'>is unique only if your current working directory is your home directory.</li>
+</ul></li>
+<li>In absolute path expression
+
+<ul>
+<li> the path is dened uniquely and does not depend on the current path</li>
+<li> /tmp is unique since /tmp is the abolute path</li>
+</ul></li>
+</ul>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="rcr" id="slide-13" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Some Linux Terms (also called variables)</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><strong>HOME</strong> : Your Home Directory on the system, /home/username
+
+<ul>
+<li>This is where you should be when you login the first time</li>
+<li>Don&#39;t believe me, type <code>pwd</code> and hit enter</li>
+</ul></li>
+<li><strong>PATH</strong> : List of directories to search when executing a command
+
+<ul>
+<li>Enter <code>avogadro</code> at the command prompt</li>
+<li>You should see an error saying <code>command not found</code></li>
+</ul></li>
+</ul>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="rcr" id="slide-14" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Linux Commands</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><code>pwd</code>: print working directory, gives the absolute path of your current location in the directory hierarchy</li>
+<li><code>cd dirname</code>: change to folder called <code>dirname</code>
+
+<ul>
+<li>If you omit directory name, you will end up in your home directory</li>
+<li>Enter <code>cd /share/ceph/hej213chm488/</code>.</li>
+</ul></li>
+<li><code>mkdir dirname</code>: create a directory called <code>dirname</code>
+
+<ul>
+<li>Create a directory replacing dirname with your username and cd to that directory (This is the location where you will save all your work for this course.)</li>
+<li>I would enter the command <code>mkdir alp514</code> followed by <code>cd alp514</code></li>
+<li>Use the <code>pwd</code> command to check your current location </li>
+</ul></li>
+<li><code>cp file1 file2</code>: command to copy file1 to file2
+
+<ul>
+<li>You can use absolute or relative path for the source and destination <code>cp ../file .</code></li>
+<li>If you need to copy over a directory and its contents, add a <code>-r flag</code></li>
+<li><code>cp -r ../alp514/examples .</code></li>
+</ul></li>
+</ul>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="rcr" id="slide-15" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Linux Command (contd)</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><code>rm file1</code>: delete a file called file1 
+
+<ul>
+<li>Unlike other OS&#39;s, once you delete a file it cannot be deleted.</li>
+</ul></li>
+<li><code>ls</code>: list contents of current directory
+
+<ul>
+<li>If you provide a directory path as an argument, then the contents of that directory will be listed</li>
+</ul></li>
+<li><code>echo</code>: prints whatever follows to the screen
+
+<ul>
+<li><code>echo $HOME</code>: prints the contents of the variable <strong>HOME</strong> i.e. your home directory to the screen</li>
+</ul></li>
+</ul>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="rcr" id="slide-16" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>File Editing</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>The two most commonly used editors on Linux/Unix systems are:
+
+<ul>
+<li> vi or vim (vi improved)</li>
+<li> emacs</li>
+</ul></li>
+<li>vi/vim is installed by default on Linux/Unix systems and has only a command line interface (CLI).</li>
+<li>emacs has both a CLI and a graphical user interface (GUI).</li>
+<li>Other editors that you may come across on *nix systems
+
+<ul>
+<li>kate: default editor for KDE.</li>
+<li>gedit: default text editor for GNOME desktop environment.</li>
+<li>gvim: GUI version of vim</li>
+<li>pico: console based plain text editor</li>
+<li>nano: GNU.org clone of pico</li>
+<li>kwrite: editor by KDE.</li>
+</ul></li>
+</ul>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="rcr" id="slide-17" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>vi commands</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:45%;'>
+  <table>
+<tr><th>Inserting/Appending Text</th><th>Command</th></tr>
+<tr>
+<td>insert at cursor</td><td>i</td>
+</tr><tr>
+<td>insert at beginning of line</td><td>I</td>
+</tr><tr>
+<td>append after cursor</td><td>a</td>
+</tr><tr>
+<td>append at end of line</td><td>A</td>
+</tr><tr>
+<td>newline after cursor in insert mode</td><td>o</td>
+</tr><tr>
+<td>newline before cursor in insert mode</td><td>O</td>
+</tr><tr>
+<td>append at end of line</td><td>ea</td>
+</tr><tr>
+<td>exit insert mode</td><td>ESC</td>
+</tr>
+</table>
+
+</div>
+<div style='float:right;width:45%;'>
+  <table>
+<tr><th>Cursor Movement</th><th>Command</th></tr>
+<tr><td>move left</td><td>h</td></tr>
+<tr><td>move down</td><td>j</td></tr>
+<tr><td>move up</td><td>k</td></tr>
+<tr><td>move right</td><td>l</td></tr>
+<tr><td>jump to beginning of line</td><td>^</td></tr>
+<tr><td>jump to end of line</td><td>$</td></tr>
+<tr><td>goto line n</td><td>nG</td></tr>
+<tr><td>goto top of file</td><td>1G</td></tr>
+<tr><td>goto end of file</td><td>G</td></tr>
+<tr><td>move one page up</td><td>CNTRL-u</td></tr>
+<tr><td>move one page down</td><td>CNTRL-d</td></tr>
+</table>
+
+</div>
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="rcr" id="slide-18" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>vi commands</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:45%;'>
+  <table>
+<tr><th>File Manipulation</th><th>Command</th></tr>
+<tr><td>save file</td><td>:w</td></tr>
+<tr><td>save file and exit</td><td>:wq</td></tr>
+<tr><td>quit</td><td>:q</td></tr>
+<tr><td>quit without saving</td><td>:q!</td></tr>
+<tr><td>delete a line</td><td>dd</td></tr>
+<tr><td>delete n lines</td><td>ndd</td></tr>
+<tr><td>paste deleted line after cursor</td><td>p</td></tr>
+<tr><td>paste before cursor</td><td>P</td></tr>
+<tr><td>undo edit</td><td>u</td></tr>
+<tr><td>delete from cursor to end of line</td><td>D</td></tr>
+</table>
+
+</div>
+<div style='float:right;width:45%;'>
+  <table>
+<tr><th>File Manipulation</th><th>Command</th></tr>
+<tr><td>replace a character</td><td>r</td></tr>
+<tr><td>join next line to current</td><td>J</td></tr>
+<tr><td>change a line</td><td>cc</td></tr>
+<tr><td>change a word</td><td>cw</td></tr>
+<tr><td>change to end of line</td><td>c$</td></tr>
+<tr><td>delete a character</td><td>x</td></tr>
+<tr><td>delete a word</td><td>dw</td></tr>
+<tr><td>edit/open file </td><td>:e file</td></tr>
+<tr><td>insert file </td><td>:r file</td></tr>
+</table>
+
+</div>
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="rcr" id="slide-19" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Software available on HPC systems</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Most software is installed in /zhome/Apps</li>
+<li>Software is managed using module environment
+
+<ul>
+<li>Why? We may have different versions of same software or software built with different compilers</li>
+<li>Module environment allows you to dynamically change your *nix environment based on software being used</li>
+<li>Standard on many University and national High Performance Computing resource since circa 2011</li>
+</ul></li>
+</ul>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="rcr" id="slide-20" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Software on Corona</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img width = '900px' src = 'assets/img/module.png'></p>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="rcr" id="slide-21" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>How does module work?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><code>module avail</code>: show list of software available on resource</li>
+<li><code>module load abc</code>: add software <code>abc</code> to your environment</li>
+<li><code>module unload abc</code>: remove <code>abc</code> from your envionment</li>
+<li><code>module swap abc1 abc2</code>: swap <code>abc1</code> with <code>abc2</code> in your environment</li>
+<li><code>module purge</code>: remove all modules from your environment</li>
+<li><code>module show abc</code>: display what variables are added or modified in your environment</li>
+</ul>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="rcr" id="slide-22" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Installed Software</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:45%;'>
+  <ul>
+<li>Chemistry/Materials Science
+
+<ul>
+<li>Gaussian</li>
+<li>VASP</li>
+</ul></li>
+<li>Computational Fluid Dynamics
+
+<ul>
+<li>Abaqus</li>
+<li>Ansys</li>
+<li>Comsol</li>
+<li>OpenFOAM</li>
+</ul></li>
+<li>Math
+
+<ul>
+<li>Maple</li>
+<li>Mathematica</li>
+<li>Matlab</li>
+</ul></li>
+</ul>
+
+</div>
+<div style='float:right;width:45%;'>
+  <ul>
+<li>Molecular Dynamics
+
+<ul>
+<li>GROMACS</li>
+<li>LAMMPS</li>
+</ul></li>
+<li>Scripting Languages
+
+<ul>
+<li>R</li>
+<li>Python</li>
+</ul></li>
+<li>Compilers
+
+<ul>
+<li>GNU</li>
+<li>Intel</li>
+<li>PGI</li>
+</ul></li>
+<li>Parallel Programming
+
+<ul>
+<li>OpenMPI</li>
+</ul></li>
+</ul>
+
+</div>
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="rcr" id="slide-23" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>More Software</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:30%;'>
+  <ul>
+<li><p>Libraries</p>
+
+<ul>
+<li>FFTW</li>
+<li>Intel MKL</li>
+<li>Magma</li>
+<li>Scalapack</li>
+<li>HDF5</li>
+<li>NetCDF</li>
+</ul></li>
+<li><p>Other Tools</p>
+
+<ul>
+<li>CMake</li>
+<li>Gams</li>
+<li>GaussView</li>
+<li>Gurobi </li>
+</ul></li>
+</ul>
+
+</div>
+<div style='float:right;width:70%;'>
+  <ul>
+<li>You can always install a software in your home directory</li>
+<li>Stay compliant with software licensing</li>
+<li>Modify your .bashrc/.tcshrc to add software to your path, OR</li>
+<li>create a module and dynamically load it so that it doesn&#39;t interfere 
+with other software installed on the system
+
+<ul>
+<li>e.g. You might want a different version of openmpi installed </li>
+<li>the system admin may not want install it system wide for just one user</li>
+</ul></li>
+<li>Add the directory where you will install the module files to the variable 
+MODULEPATH in .bashrc/.tcshrc</li>
+</ul>
+
+<pre><code class="sh"># My .bashrc file
+export MODULEPATH=${MODULEPATH}:/zhome/alp514/modulefiles
+</code></pre>
+
+</div>
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="rcr" id="slide-24" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Module File Example</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img width = '900px' src = 'assets/img/mcr.png'></p>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="rcr" id="slide-25" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Software for this course</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Quantum Chemistry Software (module key)</p>
+
+<ul>
+<li>Gaussian (gaussian09)</li>
+<li>Quantum Espresso</li>
+</ul></li>
+<li><p>Visualization Software</p>
+
+<ul>
+<li>Avogadro (avogadro/1.1.1)</li>
+<li>GaussView (gview)</li>
+</ul></li>
+<li><p>Exercise</p>
+
+<ul>
+<li>Use Avogadro to create a small molecule
+
+<ul>
+<li><code>module load avogadro/1.1.1</code></li>
+</ul></li>
+<li>Obtain it&#39;s equilibrium geometry and vibrational spectra</li>
+</ul></li>
+</ul>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="rcr" id="slide-26" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Available Queues</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Maia</li>
+</ul>
+
+<table>
+<tr><th>Queue Name</th><th>Max Walltime</th><th>Max Simultaneous Core-hours</th></tr>
+<tr><td>smp-test</td><td>1 hour</td><td>4 core hours</td></tr>
+<tr><td>smp</td><td>96 hours</td><td>384 core hours</td></tr>
+</table>
+
+<ul>
+<li>Corona</li>
+</ul>
+
+<table>
+<tr><th>Queue Name</th><th>Max Walltime</th><th>Max Simultaneous Core-hours</th><th>Notes</th></tr>
+<tr><td>p-ib</td><td>96/72</td><td>No Limit/288</td><td>Min 2 nodes/job, Max 24 nodes/user</td></tr>
+<tr><td>normal</td><td>96/72</td><td>26880/7680</td><td>Max 34 nodes/user</td></tr>
+<tr><td>short</td><td>24/12</td><td>384/192</td><td></td></tr>
+<tr><td>bf</td><td>96</td><td></td><td>Max 65 nodes/user</td></tr>
+</table>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="rcr" id="slide-27" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>How to run jobs on Maia/Corona</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Write a PBS submit script 
+
+<ul>
+<li>need to have some background in shell scripting (bash/tcsh)</li>
+</ul></li>
+<li>Need to specify
+
+<ul>
+<li>Resources required (which depends on configuration)
+
+<ul>
+<li>number of nodes</li>
+<li>number of processes per node</li>
+<li>memory per node</li>
+</ul></li>
+<li>How long do you want the resources
+
+<ul>
+<li>have an estimate for how long your job will run</li>
+</ul></li>
+<li>Which queue to submit jobs</li>
+</ul></li>
+</ul>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="rcr" id="slide-28" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Minimal submit script for Serial Jobs on Maia</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="bash">#!/bin/bash
+#PBS -q smp
+#PBS -l walltime=1:00:00
+#PBS -l nodes=1:ppn=1
+#PBS -l mem=4GB
+#PBS -N myjob
+
+cd ${PBS_O_WORKDIR}
+./myjob &lt; filename.in &gt; filename.out
+
+exit
+</code></pre>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="rcr" id="slide-29" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Minimal submit script for MPI Jobs on Corona</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="bash">#!/bin/bash
+#PBS -q p-ib
+#PBS -l walltime=1:00:00
+#PBS -l nodes=2:ppn=16
+#PBS -N myjob
+
+module load openmpi/1.8/intel/14.0.1
+NPROCS=$(wc -l ${PBS_NODEFILE} | awk &#39;{print $1}&#39;)
+cd ${PBS_O_WORKDIR}
+mpirun -np ${NPROCS} -machinefile ${PBS_NODEFILE} ./myjob &lt; filename.in &gt; filename.out
+
+exit
+</code></pre>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="rcr" id="slide-30" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Minimal submit script for OpenMP Jobs on Corona</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="bash">#!/bin/tcsh
+#PBS -q normal
+# Directive with same flags can be combined on one line
+#PBS -l walltime=1:00:00,nodes=1:ppn=16
+#PBS -N myjob
+
+cd ${PBS_O_WORKDIR}
+# Use either
+setenv OMP_NUM_THREADS 16
+./myjob &lt; filename.in &gt; filename.out
+
+# OR
+OMP_NUM_THREADS=16 ./myjob &lt; filename.in &gt; filename.out
+
+exit
+</code></pre>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="rcr small" id="slide-31" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Useful PBS Directives</h2>
+  </hgroup>
+  <article data-timings="">
+    <table class="pbs">
+<tr>
+<td><code>#PBS -q queuename</code></td><td> Submit job to the <em>queuename</em> queue.</td>
+</tr>
+<tr>
+<td><code>#PBS -l walltime=hh:mm:ss</code></td><td> Request resources to run job for <em>hh</em> hours, <em>mm</em> minutes and <em>ss</em> seconds.</td>
+</tr>
+<tr>
+<td><code>#PBS -l nodes=m:ppn=n</code></td><td> Request resources to run job on <em>n</em> processors each on <em>m</em> nodes.</td>
+</tr>
+<tr>
+<td><code>#PBS -l mem=xGB</code></td><td> Request <em>xGB</em> per node requested, applicable on Maia only</td>
+</tr>
+<tr>
+<td><code>#PBS -N jobname</code></td><td> Provide a name, <em>jobname</em> to your job.</td>
+</tr>
+<tr>
+<td><code>#PBS -o filename.out</code></td><td> Write PBS standard output to file filename.out.</td>
+</tr>
+<tr>
+<td><code>#PBS -e filename.err</code></td><td> Write PBS standard error to file filename.err.</td>
+</tr>
+<tr>
+<td><code>#PBS -j oe</code></td><td> Combine PBS standard output and error to the same file.</td>
+</tr>
+<tr>
+<td><code>#PBS -m status</code></td><td> Send an email after job status status is reached. <br />
+ status can be a (abort), b (begin) or e (end) <br />
+ The arguments can be combined, for e.g. abe will send email when job begins and either aborts or ends</td>
+</tr>
+<td><code>#PBS -M your email address</code></td><td> Address to send email.</td>
+</tr>
+</table>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="rcr" id="slide-32" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Useful PBS environmental variables</h2>
+  </hgroup>
+  <article data-timings="">
+    <table class="pbs">
+<tr>
+ <td><code> PBS_O_WORKDIR</code></td><td> Directory where the <code>qsub</code> command was executed</td>
+</tr>
+<tr>
+ <td><code> PBS_NODEFILE</code></td><td> Name of the file that contains a list of the HOSTS provided for the job</td>
+</tr>
+<tr>
+ <td><code> PBS_JOBID</code></td><td> Job ID number given to this job</td>
+</tr>
+<tr>
+ <td><code> PBS_QUEUE</code></td><td> Queue job is running in</td>
+</tr>
+<tr>
+ <td><code> PBS_WALLTIME</code></td><td> Walltime in secs requested</td>
+</tr>
+<tr>
+ <td><code> PBS_JOBNAME</code></td><td> Name of the job. This can be set using the -N option in the PBS script</td>
+</tr>
+<tr>
+ <td><code> PBS_ENVIRONMENT</code></td><td> Indicates job type, PBS_BATCH or PBS_INTERACTIVE</td>
+</tr>
+<tr>
+ <td><code> PBS_O_SHELL</code></td><td> value of the SHELL variable in the environment in which qsub was executed</td>
+</tr>
+<tr>
+ <td><code> PBS_O_HOME</code></td><td> Home directory of the user running qsub</td>
+</tr>
+</table>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="rcr" id="slide-33" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Submitting &amp; Monitoring Jobs</h2>
+  </hgroup>
+  <article data-timings="">
+    <table>
+<tr><th>Command</th><th>Description</th></tr>
+<tr>
+  <td><code>qsub filename</code></td><td>Submit <em>filename</em> to job scheduler</td>
+</tr>
+<tr>
+  <td><code>qstat</code> </td><td>check job status (all jobs)</td>
+</tr>
+<tr>
+  <td><code>qstat -u username</code></td><td>check job status of user <em>username</em></td>
+</tr>
+<tr>
+  <td><code>qstat -a</code></td><td>More information than that given by <em>qstat</em></td>
+</tr>
+<tr>
+  <td><code>qdel jobid</code></td><td>Cancel your job identified by <em>jobid</em></td>
+</tr>
+<tr>
+  <td><code>showstart jobid</code></td><td>Show <strong>estimated</strong> start time of job identified by <em>jobid</em></td>
+</tr>
+<tr>
+  <td><code>checkjob jobid</code></td><td>Check status of your job identified by <em>jobid</em></td>
+</tr>
+<tr>
+  <td><code>qhold jobid</code></td><td>Put your job identified by <em>jobid</em> on hold</td>
+</tr>
+<tr>
+  <td><code>qrls jobid</code></td><td>Release the hold that <strong>you put</strong> on <em>jobid</em></td>
+</tr>
+</table>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="rcr" id="slide-34" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Exercise (contd)</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Write a submit script</li>
+</ul>
+
+<pre><code class="bash">#!/bin/bash
+
+#PBS -q normal
+#PBS -l nodes=1:ppn=16
+#PBS -l walltime=1:00:00
+#PBS -N myfirstjob
+#PBS -m abe
+#PBS -M alp514@lehigh.edu
+
+# Load gaussian module to get g09 in your path
+module load gaussian09
+# cd to directory where you saved the input file
+cd ${PBS_O_WORKDIR}
+# Run gaussian
+g09 &lt; butane.com &gt; butane.log
+
+</code></pre>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="rcr" id="slide-35" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Exercise (contd)</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Submit the job <code>qsub myjob.pbs</code></li>
+<li>Monitor your job using <code>qstat</code>, <code>showstart</code> and <code>checkjob</code> commands</li>
+<li>Check your email for notification 
+
+<ul>
+<li>When job start</li>
+<li>When job aborts or complete</li>
+</ul></li>
+<li>Analyze output using Avogadro</li>
+</ul>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="rcr" id="slide-36" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Job Monitoring</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img width = '600px' src = 'assets/img/pbsmonitor.png'></p>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="rcr" id="slide-37" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Job Monitoring</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img width = '480' src = 'assets/img/torquemonitor.png'></p>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='About Us?'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='What do we do?'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Research Computing Resources'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Research Computing Resources'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Research Computing Resources'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Faculty Owned Resources'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Apply for an account'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Accessing Research Computing Resources'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='What about Storage resources'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='How do I get started using HPC resources for this course'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Directory Structure'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Relative &amp; Absolute Path'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Some Linux Terms (also called variables)'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='Linux Commands'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='Linux Command (contd)'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='File Editing'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='vi commands'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='vi commands'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='Software available on HPC systems'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='Software on Corona'>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='How does module work?'>
+         21
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='Installed Software'>
+         22
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title='More Software'>
+         23
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='Module File Example'>
+         24
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title='Software for this course'>
+         25
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=26 title='Available Queues'>
+         26
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=27 title='How to run jobs on Maia/Corona'>
+         27
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=28 title='Minimal submit script for Serial Jobs on Maia'>
+         28
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=29 title='Minimal submit script for MPI Jobs on Corona'>
+         29
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=30 title='Minimal submit script for OpenMP Jobs on Corona'>
+         30
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=31 title='Useful PBS Directives'>
+         31
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=32 title='Useful PBS environmental variables'>
+         32
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=33 title='Submitting &amp; Monitoring Jobs'>
+         33
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=34 title='Exercise (contd)'>
+         34
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=35 title='Exercise (contd)'>
+         35
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=36 title='Job Monitoring'>
+         36
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=37 title='Job Monitoring'>
+         37
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
