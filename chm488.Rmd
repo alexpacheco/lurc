@@ -188,11 +188,11 @@ mode        : selfcontained # {standalone, draft}
 * In relative path expression
   -  . (one dot or period) is the current working directory
   -  .. (two dots or periods) is one directory up
-  -  You can combine . and .. to navigate the le system hierarchy.
-  -  the path is not dened uniquely and does depend on the current path.
+  -  You can combine . and .. to navigate the filee system hierarchy.
+  -  the path is not defined uniquely and does depend on the current path.
   -  ../../tmp is unique only if your current working directory is your home directory.
 * In absolute path expression
-  -  the path is dened uniquely and does not depend on the current path
+  -  the path is defined uniquely and does not depend on the current path
   -  /tmp is unique since /tmp is the abolute path
 
 
