@@ -23,7 +23,6 @@ mode        : selfcontained # {standalone, draft}
   - Alex Pacheco, Manager & XSEDE Campus Champion
   - Steve Anthony, HPC User Support & System Administrator
   - Dan Brashler, Computing Consultant
-  - Steve Lidie, System Administrator
   - Mary Jo Schulze, Software Specialist
 
 ---.rcr
@@ -32,6 +31,8 @@ mode        : selfcontained # {standalone, draft}
 
 * High Performance Computing (<em>free</em> and <strong>fee</strong> based)
   - <em>Maia</em>: 32-core linux cluster 
+  - <strong>Sol</strong>: 780-core linux cluster
+* To be Decommissioned on Dec. 31, 2016
   - <strong>Corona</strong>: 1024-core linux cluster
   - <strong>Capella</strong>: 16-core linux server
   - <strong>Trits</strong>: Three 8-core linux servers
@@ -82,16 +83,16 @@ time faculty with 1TB of storage space.
 ## Training Events
 
 * Upcoming events
-  * HPC resources at Lehigh
+  * Research Computing Resources at Lehigh
   * Storage Options at Lehigh
   * Introduction to Linux
-  * Shell Scripting
-  * Programming in Matlab & GNU Octave 
-  * Programming in R
-  * XSEDE HPC Monthly Workshop: Big Data
+  * Programming in Python, MATLAB, BASH Shell
+  * Research Data Management
+  * Enhancing Research Impact
 * Past events
   * Fortran & C Programming Workshop
   * XSEDE HPC Monthly Workshop: OpenACC
+  * XSEDE HPC Monthly Workshop: Big Data
   * XSEDE HPC Summer BootCamp
 
 --- .rcr
@@ -105,7 +106,7 @@ We can assist in
 
 Plan on using Research Computing resources for your courses?
 * HPC account for rostered class for one semester.
-* Computing time on Corona (Maia is free but there is no guarantee if time will be available).
+* Computing time on Sol (Maia is free but there is no guarantee if time will be available).
 * Ceph storage project (valid for a year to enable reuse of course material).
 
 
