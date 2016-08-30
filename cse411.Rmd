@@ -23,7 +23,6 @@ mode        : selfcontained # {standalone, draft}
   - __Alex Pacheco, Manager & XSEDE Campus Champion__
   - Steve Anthony, HPC User Support & System Administrator
   - Dan Brashler, Computing Consultant
-  - Steve Lidie, System Administrator
   - Mary Jo Schulze, Software Specialist
 
 ---.rcr
@@ -32,7 +31,8 @@ mode        : selfcontained # {standalone, draft}
 
 * Hardware Support
   - Provide system administration and support for Lehigh's HPC clusters.
-     - 5 University owned and 3 Faculty owned 
+     - 6 University owned and 4 Faculty owned 
+     - 4 University owned clusters to be decommissioned on Dec. 31, 2016.
   - Assist with purchase, installation and administration of servers and clusters.
 * Data Storage
   - Provide data management services including storing and sharing data. 
@@ -50,12 +50,31 @@ mode        : selfcontained # {standalone, draft}
   - Free 32-core Symmetric Multiprocessor (SMP) system available to all Lehigh Faculty, Staff and Students
   - dual 16-core AMD Opteron 6380 2.5GHz CPU
   - 128GB RAM and 4TB HDD
-  - Theoretical Performance: 640 GFlops (640 billion floating point operations per second)
+  - Theoretical Performance: 640 GFLOPs (640 billion floating point operations per second)
+     * Each AMD Opteron 6380 (Piledriver) CPU is capable of 8 FLOPs 
   - Access: Batch Scheduled, no interactive access to Maia
 
   $$latex
   GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
   $$
+
+  [FLOPs for various AMD & Intel CPU generation](http://stackoverflow.com/questions/15655835/flops-per-cycle-for-sandy-bridge-and-haswell-sse2-avx-avx2)
+
+--- .rcr
+
+## Research Computing Resources
+
+* <strong> Sol </strong>
+  - Formerly, Lehigh's Flagship High Performance Computing Cluster
+     * Expected to be production ready by October 1, 2016
+  - 9 nodes, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 25MB Cache
+  - 25 nodes, dual 12-core Intel Xeon E5-2670 v3 2.5Ghz CPU, 30 MB Cache
+     - Each Intel Xeon E5-26xx v3 (Haswell) CPU is capable of 16 FLOPs
+  - 128 GB RAM and 1TB HDD per node
+  - 2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric
+  - Theoretical Performance: 28.7 TFLOPs
+  - Access: Batch Scheduled, interactive on login node for compiling, editing only
+  
 
 --- .rcr
 
@@ -69,6 +88,7 @@ mode        : selfcontained # {standalone, draft}
       - 64GB RAM and 2TB HDD, 
       - Infiniband QDR (40Gb/s) interconnect fabric.
   - Theoretical Performance: 8.2TFlops (8.2 trillion Flops)
+     - Each AMD Opteron 6128 (AMD K10) CPU is capable of 4 FLOPs
   - Access: Batch scheduled, interactive on login node for compiling, editing only 
        - computer intensive tasks on the login node is strictly forbidden
 
@@ -77,8 +97,7 @@ mode        : selfcontained # {standalone, draft}
 ## Research Computing Resources
 
 * <strong> Trit </strong>
-  - Three SunFire x2270 Servers each with
-    -  dual 4-core Intel Xeon X5570, 2.95GHz, 48GB RAM, 500GB HDD
+  - Three SunFire x2270 Servers with  dual 4-core Intel Xeon X5570, 2.95GHz, 48GB RAM, 500GB HDD
   - Theoretical Performance: 283.2GFlops
 
 * <strong> Capella </strong>
@@ -90,7 +109,7 @@ mode        : selfcontained # {standalone, draft}
   - 4 nVIDIA Fermi Devices (C2050, C2070, 2x M2070)
   - Theoretical Performance: 63.840 GFlops (CPU) + 2.06 TFlops (GPU)
 
-* Access: Interactive (make sure that resources are available for your compute intensive tasks)
+* Access: Interactive
 
 --- .rcr
 
@@ -99,6 +118,9 @@ mode        : selfcontained # {standalone, draft}
 * Ben Felzer, Earth & Environmental Sciences
   - Eight nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
      * Theoretical Performance: 2.662TFlops
+* Heather Jaeger, Chemistry
+  - Twenty nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
+     * Theoretical Performance: 6.656TFlops
 * Jonas Baltrusaitis, Chemical Engineering
   - Three nodes, dual 16-core AMD Opteron 6376, 2.3Ghz, 128GB RAM
      * Theoretical Performance: 1.766TFlops
@@ -115,29 +137,38 @@ mode        : selfcontained # {standalone, draft}
    - Click on the big blue button "Start Special Account Request" > Research Computing Account 
    - For Maia: click on "FREE Linux command-line computing"
    - For other resources: click on "Fee-based research computing"
-  
-* Annual charge of $50/account paid by Lehigh Faculty or Research Staff.  
-* Annual charge of $450 for one node-year of computing access, also know as allocation block 
-   - continous computing on one node of Corona for one year
-   - 140,160 hours on one cpu
+* Fee-based resources carry an
+   * Annual charge of \$50/account paid by Lehigh Faculty or Research Staff, and
+   * Annual charge for computing time
+
+--- .rcr
+
+## Allocation Charges
+
+* New Policy: 1&cent; per core-hour or SU 
+* Annual minimum purchase of 50,000 SUs and increments of 10,000 SUs.
    - paid for by your account sponsor
-   - Free access to Corona at low priority after allocation is expended
+   - Total available computing time for purchase annually: 1,401,600 SUs or 1 year of continous computing on 8 nodes
+* Condo Investors (Faculty who have increased Sol's capacity by purchasing 26 nodes).
+   - Provided with annual computing time equivalent to investment at no charge.
+   - Condo Investor 1 purchased 1 20-core node is provided with 175,200 SUs annually.
+   - Condo Investor 2 purchase 25 24-core nodes is provided with 5,256,000 SUs annually.
+   - Can purchase additional SUs in increments of 10,000 SUs if required.
+* No 'free' computing time provided once allocation has been expended
 
 --- .rcr
 
 ## Accessing Research Computing Resources
 
 * All Research Computing resources are accessible using ssh while on Lehigh's network
-* Corona: `ssh username@corona.cc.lehigh.edu`
-* Capella: `ssh username@capella.cc.lehigh.edu`
-* Cuda0: `ssh username@cuda0.cc.lehigh.edu`
-* Trit{1,2,3}: `ssh username@trit{1,2,3}.cc.lehigh.edu`
+* `ssh username@cluster.cc.lehigh.edu`
+   * where `cluster` is sol, corona, capella, cuda0 or trit{1,2,3}
 * Maia: No direct access to Maia, instead login to the polaris
 * Polaris: `ssh username@polaris.cc.lehigh.edu`
   - Polaris is a gateway that also hosts the batch scheduler for Maia.
   - No computing software including compilers is available on Polaris.
   - Login to Maia to request computing time on Maia including interactive access to Maia.
-* If you are not on Lehigh's network, login to the ssh gateway to get Research Computing resources.
+* If you are not on Lehigh's network, login to the ssh gateway to get to Research Computing resources.
   - `ssh username@ssh.cc.lehigh.edu`
 
 --- .rcr
@@ -156,15 +187,16 @@ mode        : selfcontained # {standalone, draft}
   - [See Ceph FAQ] (http://lts.lehigh.edu/services/faq/ceph-faq) for more details
 * HPC User home directory quota
   - Maia: 5GB
-  - Other Clusters: 150GB shared between Corona, Capella, Cuda and Trits
+  - Other Clusters: 150GB shared between Sol, Corona, Capella, Cuda and Trits
 
 --- .rcr
 
 ## Software available on HPC systems
 
-* Most software is installed in /zhome/Apps
+* Most software is installed in /zhome/Apps.
   - may also be accessible from some workstations on campus
   - some software are installed locally. For e.g. CUDA compilers are local to Cuda0
+* Software on Sol is compiled for modern cpus and is available at /share/Apps
 * Software is managed using module environment
   - Why? We may have different versions of same software or software built with different compilers
   - Module environment allows you to dynamically change your *nix environment based on software being used
@@ -172,9 +204,9 @@ mode        : selfcontained # {standalone, draft}
 
 --- .rcr
 
-## Software on Corona
+## Software on Sol
 
-<img width = '900px' src = 'assets/img/module.png'>
+<img width = '960px' src = 'assets/img/sol-module.png'>
 
 --- .rcr
 
@@ -195,52 +227,80 @@ mode        : selfcontained # {standalone, draft}
 *** =left width:45%
 
 * Chemistry/Materials Science
+  - CPMD
+  - GAMESS
   - Gaussian
-  - VASP
+  - NWCHEM
+  - Quantum Espresso
+  - *VASP*
+* Molecular Dynamics
+  - GROMACS
+  - LAMMPS
+  - NAMD
+
+*** =right width:45%
+
 * Computational Fluid Dynamics
-  - Abaqus
+  - *Abaqus*
   - Ansys
   - Comsol
   - OpenFOAM
+  - OpenSees
 * Math
+  - GNU Octave
+  - *Magma*
   - Maple
   - Mathematica
   - Matlab
 
-*** =right width:45%
+--- .rcr  &twocol_width
 
-* Molecular Dynamics
-  - GROMACS
-  - LAMMPS
+## More Software
+
+*** =left width:35%
+
 * Scripting Languages
   - R
+  - Perl
   - Python
 * Compilers
   - GNU
   - Intel
   - PGI
 * Parallel Programming
-  - OpenMPI
+  - MVAPICH2
 
---- .rcr  &twocol_width
+*** =right width:65%
 
+* Libraries
+  - BLAS/LAPACK/GSL/SCALAPACK
+  - Boost
+  - FFTW
+  - Intel MKL
+  - HDF5
+  - NetCDF
+  - METIS/PARMETIS
+  - PetSc
+  - QHull/QRupdate
+  - SuiteSparse
+  - SuperLU
+
+--- .rcr &twocol_width
+ 
 ## More Software
 
 *** =left width:30%
 
-* Libraries
-  - FFTW
-  - Intel MKL
-  - Magma
-  - Scalapack
-  - HDF5
-  - NetCDF
-
+* Visualization Tools
+  - Avogadro 
+  - GaussView
+  - GNUPlot
+  - VMD
 * Other Tools
   - CMake
   - Gams
-  - GaussView
   - Gurobi 
+  - Scons
 
 *** =right width:70%
 
@@ -249,13 +309,13 @@ mode        : selfcontained # {standalone, draft}
 * Modify your .bashrc/.tcshrc to add software to your path, OR
 * create a module and dynamically load it so that it doesn't interfere 
  with other software installed on the system
-  - e.g. You might want a different version of openmpi installed 
+  - e.g. You might want to use openmpi instead of mvapich2 
   - the system admin may not want install it system wide for just one user
 * Add the directory where you will install the module files to the variable 
   MODULEPATH in .bashrc/.tcshrc
 ```{sh eval=FALSE}
 # My .bashrc file
-export MODULEPATH=${MODULEPATH}:/zhome/alp514/modulefiles
+export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 ```
 
 --- .rcr
@@ -276,6 +336,7 @@ export MODULEPATH=${MODULEPATH}:/zhome/alp514/modulefiles
 <tr><td>smp</td><td>96 hours</td><td>384 core hours</td></tr>
 </table>
 
+<!--
 * Corona
 
 <table>
@@ -285,12 +346,26 @@ export MODULEPATH=${MODULEPATH}:/zhome/alp514/modulefiles
 <tr><td>short</td><td>24/12</td><td>384/192</td><td></td></tr>
 <tr><td>bf</td><td>96</td><td></td><td>Max 65 nodes/user</td></tr>
 </table>
+-->
+
+* Sol  (tentative)
+
+<table>
+<tr><th>Queue Name</th><th>Max Walltime</th><th>Max Simultaneous Core-hours</th><th>Notes</th></tr>
+<tr><td>lts</td><td>72 hours</td><td></td><td>For use on 20-core nodes. Max 8 nodes/job</td></tr>
+<tr><td>bio</td><td>48 hours</td><td></td><td>For use on 24-core nodes.</td></tr>
+</table>
+
+* Corona
+  - Available queue are p, p-ib, normal and short.
+  - No new accounts are being created on Corona.
 
 --- .rcr
 
-## How to run jobs on Maia/Corona
+## How to run jobs
 
-* Write a PBS submit script 
+* Write a submit script
+* PBS for Maia/Corona and SLURM for Sol
   - need to have some background in shell scripting (bash/tcsh)
 * Need to specify
    - Resources required (which depends on configuration)
@@ -301,9 +376,11 @@ export MODULEPATH=${MODULEPATH}:/zhome/alp514/modulefiles
        - have an estimate for how long your job will run
    - Which queue to submit jobs
 
---- .rcr
+--- .rcr &twocol_width
 
-## Minimal submit script for Serial Jobs on Maia
+## Minimal submit script for Serial Jobs
+
+*** =left width:48%
 
 ```{bash eval=FALSE}
 #!/bin/bash
@@ -316,24 +393,39 @@ export MODULEPATH=${MODULEPATH}:/zhome/alp514/modulefiles
 cd ${PBS_O_WORKDIR}
 ./myjob < filename.in > filename.out
 
-exit
+```
+
+*** =right width:48%
+```{bash eval=FALSE}
+#!/bin/bash
+#SBATCH --partition=lts
+#SBATCH --time=1:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --job-name myjob
+
+cd ${SLURM_SUBMIT_DIR}
+./myjob < filename.in > filename.out
+
 ```
 
 --- .rcr
 
-## Minimal submit script for MPI Jobs on Corona
+## Minimal submit script for MPI Jobs on Sol
 
 ```{bash eval=FALSE}
 #!/bin/bash
-#PBS -q p-ib
-#PBS -l walltime=1:00:00
-#PBS -l nodes=2:ppn=16
-#PBS -N myjob
+#SBATCH --partition=lts
+#SBATCH --time=1:00:00
+#SBATCH --nodes=2
+#SBATCH --ntasks-per-node=20
+## For --partition=bio, use --ntasks-per-node=24
+#SBATCH --job-name myjob
 
-module load openmpi/1.8/intel/14.0.1
-NPROCS=$(wc -l ${PBS_NODEFILE} | awk '{print $1}')
-cd ${PBS_O_WORKDIR}
-mpirun -np ${NPROCS} -machinefile ${PBS_NODEFILE} ./myjob < filename.in > filename.out
+module load mvapich2
+
+cd ${SLURM_SUBMIT_DIR}
+srun ./myjob < filename.in > filename.out
 
 exit
 ```
@@ -344,14 +436,14 @@ exit
 
 ```{bash eval=FALSE}
 #!/bin/tcsh
-#PBS -q normal
-# Directive with same flags can be combined on one line
-#PBS -l walltime=1:00:00,nodes=1:ppn=16
-#PBS -N myjob
+#SBATCH --partition=bio
+# Directives can be combined on one line
+#SBATCH --time=1:00:00 SBATCH --nodes=1 --ntasks-per-node=24
+#SBATCH --job-name myjob
 
-cd ${PBS_O_WORKDIR}
+cd ${SLURM_SUBMIT_DIR}
 # Use either
-setenv OMP_NUM_THREADS 16
+setenv OMP_NUM_THREADS 24
 ./myjob < filename.in > filename.out
 
 # OR
@@ -401,35 +493,38 @@ exit
 
 --- .rcr
 
-## Useful PBS environmental variables
+## Useful PBS/SLURM environmental variables
 
 <table class="pbs">
 <tr>
- <td><code> PBS_O_WORKDIR</code></td><td> Directory where the <code>qsub</code> command was executed</td>
+ <td><code> PBS_O_WORKDIR</code></td><td> Directory where the <code>qsub</code> command was executed</td><td><code>SLURM_SUBMIT_DIR</code></td>
 </tr>
 <tr>
- <td><code> PBS_NODEFILE</code></td><td> Name of the file that contains a list of the HOSTS provided for the job</td>
+ <td><code> PBS_NODEFILE</code></td><td> Name of the file that contains a list of the HOSTS provided for the job</td><td><code>SLURM_JOB_NODELIST</code></td>
 </tr>
 <tr>
- <td><code> PBS_JOBID</code></td><td> Job ID number given to this job</td>
+ <td><code> PBS_NP</code></td><td> Total number of cores for job</td><td><code>SLURM_NTASKS</code></td>
 </tr>
 <tr>
- <td><code> PBS_QUEUE</code></td><td> Queue job is running in</td>
+ <td><code> PBS_JOBID</code></td><td> Job ID number given to this job</td><td><code>SLURM_JOBID</code></td>
 </tr>
 <tr>
- <td><code> PBS_WALLTIME</code></td><td> Walltime in secs requested</td>
+ <td><code> PBS_QUEUE</code></td><td> Queue job is running in</td><td><code></code></td>
 </tr>
 <tr>
- <td><code> PBS_JOBNAME</code></td><td> Name of the job. This can be set using the -N option in the PBS script</td>
+ <td><code> PBS_WALLTIME</code></td><td> Walltime in secs requested</td><td><code></code></td>
 </tr>
 <tr>
- <td><code> PBS_ENVIRONMENT</code></td><td> Indicates job type, PBS_BATCH or PBS_INTERACTIVE</td>
+ <td><code> PBS_JOBNAME</code></td><td> Name of the job. This can be set using the -N option in the PBS script</td><td><code></code></td>
 </tr>
 <tr>
- <td><code> PBS_O_SHELL</code></td><td>	value of the SHELL variable in the environment in which qsub was executed</td>
+ <td><code> PBS_ENVIRONMENT</code></td><td> Indicates job type, PBS_BATCH or PBS_INTERACTIVE</td><td><code></code></td>
 </tr>
 <tr>
- <td><code> PBS_O_HOME</code></td><td> Home directory of the user running qsub</td>
+ <td><code> PBS_O_SHELL</code></td><td>	value of the SHELL variable in the environment in which qsub was executed</td><td><code></code></td>
+</tr>
+<tr>
+ <td><code> PBS_O_HOME</code></td><td> Home directory of the user running qsub</td><td><code></code></td>
 </tr>
 </table>
 
@@ -440,31 +535,31 @@ exit
 <table>
 <tr><th>Command</th><th>Description</th></tr>
 <tr>
-  <td><code>qsub filename</code></td><td>Submit <em>filename</em> to job scheduler</td>
+  <td><code>qsub filename</code></td><td>Submit <em>filename</em> to job scheduler</td><td><code>sbatch filename</code></td>
 </tr>
 <tr>
-  <td><code>qstat</code> </td><td>check job status (all jobs)</td>
+  <td><code>qstat</code> </td><td>check job status (all jobs)</td><td><code>squeue</code></td>
 </tr>
 <tr>
-  <td><code>qstat -u username</code></td><td>check job status of user <em>username</em></td>
+  <td><code>qstat -u username</code></td><td>check job status of user <em>username</em></td><td><code>squeue -u username</code></td>
 </tr>
 <tr>
-  <td><code>qstat -a</code></td><td>More information than that given by <em>qstat</em></td>
+  <td><code>qstat -a</code></td><td>More information than that given by <em>qstat</em></td><td><code>squeue -l</code></td>
 </tr>
 <tr>
-  <td><code>qdel jobid</code></td><td>Cancel your job identified by <em>jobid</em></td>
+  <td><code>qdel jobid</code></td><td>Cancel your job identified by <em>jobid</em></td><td><code>scancel jobid</code></td>
 </tr>
 <tr>
-  <td><code>showstart jobid</code></td><td>Show <strong>estimated</strong> start time of job identified by <em>jobid</em></td>
+  <td><code>showstart jobid</code></td><td>Show <strong>estimated</strong> start time of job identified by <em>jobid</em></td><td><code>squeue --start</code></td>
 </tr>
 <tr>
-  <td><code>checkjob jobid</code></td><td>Check status of your job identified by <em>jobid</em></td>
+  <td><code>checkjob jobid</code></td><td>Check status of your job identified by <em>jobid</em></td><td><code></code></td>
 </tr>
 <tr>
-  <td><code>qhold jobid</code></td><td>Put your job identified by <em>jobid</em> on hold</td>
+  <td><code>qhold jobid</code></td><td>Put your job identified by <em>jobid</em> on hold</td><td><code>scontrol hold jobid</code></td>
 </tr>
 <tr>
-  <td><code>qrls jobid</code></td><td>Release the hold that <strong>you put</strong> on <em>jobid</em></td>
+  <td><code>qrls jobid</code></td><td>Release the hold that <strong>you put</strong> on <em>jobid</em></td><td><code>scontrol release jobid</code></td>
 </tr>
 </table>
 
@@ -473,17 +568,18 @@ exit
 
 ## Training
 
-* Provide weekly training on topics that are of interest to HPC users.
-* Fall 2015 Training is held in CITL Classroom (EWFM 379) on Tuesdays from 2PM - 4PM.
-* Trainings are webcast using Google Hangouts and recorded. See [Research Computing Training](https://researchcomputing.lehigh.edu/training) for slides and recordings
-* Fall 2015 Schedule
-  - Storage Options at Lehigh (Sep. 1)
-  - A Brief Introduction to Linux (Sep. 8)
-  - Linux: Basic Commands & Environment (Sep. 15)
-  - Research Computing at Lehigh (Sep. 22)
-  - Shell Scripting ( Sep. 29 and Oct. 6, two part session)
-  - Programming in MATLAB and GNU Octave (Oct. 13)
-  - Programming in R (Oct. 20)
+* CITL Classroom (EWFM 379) on Tuesdays from 2PM - 4PM and Zoom Webcast.
+  - A Brief Introduction to Linux (Sep. 6)
+  - Linux: Basic Commands & Environment (Sep. 13)
+  - Storage Options at Lehigh (Sep. 20)
+  - Research Computing at Lehigh (Sep. 27)
+  - Using SLURM scheduler on Sol (Oct. 4)
+  - Shell Scripting ( Oct. 11)
+  - Research Data Management (Oct. 25)
+  - Version Control with GIT (Nov. 1)
+  - MATLAB (Nov. 8)
+  - Enhancing Research Impact (Nov. 15)
+  - Python Programming(Nov. 22)
  
 
 --- .rcr
