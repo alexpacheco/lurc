@@ -65,7 +65,7 @@ mode        : selfcontained # {standalone, draft}
 ## Research Computing Resources
 
 * <strong> Sol </strong>
-  - Formerly, Lehigh's Flagship High Performance Computing Cluster
+  - Lehigh's Flagship High Performance Computing Cluster
      * Expected to be production ready by October 1, 2016
   - 9 nodes, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 25MB Cache
   - 25 nodes, dual 12-core Intel Xeon E5-2670 v3 2.5Ghz CPU, 30 MB Cache
@@ -81,7 +81,7 @@ mode        : selfcontained # {standalone, draft}
 ## Research Computing Resources
 
 * <strong> Corona </strong>
-  - Lehigh's Flagship High Performance Computing Cluster
+  - Formerly, Lehigh's Flagship High Performance Computing Cluster
   - 40 nodes, dual 8-core AMD Opteron 6128 2GHz CPU
       - 32GB RAM and 1TB HDD
   - 24 nodes, dual 8-core AMD Opteron 6128 2GHz CPU 
