@@ -165,6 +165,10 @@ ul li ul li ul li:before {
   content: '\2746';
 }
 
+ul li ul li ul li ul li:before {
+  content: '\272a';
+}
+
 em {
   font-style: oblique;
 }
