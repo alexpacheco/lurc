@@ -87,7 +87,7 @@ aside.gdbar img {
   margin: -50px 40px;
 }
 
-.rcr hgroup {
+.lehigh hgroup {
   background: #663700;
   height: 80px;
   margin-left: -60px;
@@ -95,28 +95,28 @@ aside.gdbar img {
   margin-right: -60px;
 }
 
-.rcr hgroup >  h2 {
+.lehigh hgroup >  h2 {
   color: white;
   padding-left: 10px;
   padding-top: 10px;
 }
  
-.rcr article {
+.lehigh article {
   height: 582px;
   color: black;
 }
 
-.rcr footer {
+.lehigh footer {
   background: #502D0F;
   margin-left: -60px;
   margin-right: -60px;
 }
 
-.rcr footer img {
+.lehigh footer img {
   height: 20px;  
 }
 
-.rcr footer p {
+.lehigh footer p {
   padding-left: 30px;
   background: #fff;
   color: #000;
