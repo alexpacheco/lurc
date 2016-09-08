@@ -170,7 +170,7 @@ mode        : selfcontained # {standalone, draft}
 * Polaris: `ssh username@polaris.cc.lehigh.edu`
   - Polaris is a gateway that also hosts the batch scheduler for Maia.
   - No computing software including compilers is available on Polaris.
-  - Login to Polaris to request computing time on Maia including interactive access to Maia.
+  - Login to Polaris and request computing time on Maia including interactive access.
 * If you are not on Lehigh's network, login to the ssh gateway to get to Research Computing resources.
   - `ssh username@ssh.cc.lehigh.edu`
 
@@ -331,6 +331,22 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 
 --- .lehigh
 
+## How to run jobs
+
+* Write a submit script
+* PBS for Maia/Corona and SLURM for Sol
+  - need to have some background in shell scripting (bash/tcsh)
+* Need to specify
+   - Resources required (which depends on configuration)
+       - number of nodes
+       - number of processes per node
+       - memory per node
+   - How long do you want the resources
+       - have an estimate for how long your job will run
+   - Which queue to submit jobs
+
+--- .lehigh
+
 ## Available Queues
 
 * Maia
@@ -364,22 +380,6 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 * Corona
   - Available queue are p, p-ib, normal and short.
   - No new accounts are being created on Corona.
-
---- .lehigh
-
-## How to run jobs
-
-* Write a submit script
-* PBS for Maia/Corona and SLURM for Sol
-  - need to have some background in shell scripting (bash/tcsh)
-* Need to specify
-   - Resources required (which depends on configuration)
-       - number of nodes
-       - number of processes per node
-       - memory per node
-   - How long do you want the resources
-       - have an estimate for how long your job will run
-   - Which queue to submit jobs
 
 --- .lehigh &twocol_width
 
@@ -452,7 +452,7 @@ setenv OMP_NUM_THREADS 24
 ./myjob < filename.in > filename.out
 
 # OR
-OMP_NUM_THREADS=16 ./myjob < filename.in > filename.out
+OMP_NUM_THREADS=24 ./myjob < filename.in > filename.out
 
 exit
 ```
@@ -463,6 +463,7 @@ exit
 ## Useful PBS Directives
 
 <table class="pbs">
+<tr><th>PBS Directive</th><th>Description</th></tr>
 <tr>
 <td><code>#PBS -q queuename</code></td><td> Submit job to the <em>queuename</em> queue.</td>
 </tr>
@@ -496,6 +497,49 @@ exit
 </tr>
 </table>
 
+--- .lehigh .small
+
+## Useful SLURM Directives
+
+<table class="pbs">
+<tr><th>SLURM Directive</th><th>Description</th></tr>
+<tr>
+<td><code>#SBATCH --partition=queuename</code></td><td> Submit job to the <em>queuename</em> queue.</td></td>
+</tr>
+<tr>
+<td><code>#SBATCH --time=hh:mm:ss</code></td><td> Request resources to run job for <em>hh</em> hours, <em>mm</em> minutes and <em>ss</em> seconds.</td>
+</tr>
+<tr>
+<td><code>#SBATCH --nodes=m</code></td><td> Request resources to run job on <em>m</em> nodes.</td>
+</tr>
+<tr>
+<td><code>#SBATCH --ntasks-per-node=n</code></td><td> Request resources to run job on <em>n</em> processors on each node requested.</td>
+</tr>
+<tr>
+<td><code>#SBATCH --ntasks=n</code></td><td> Request resources to run job on a total of <em>n</em> processors.</td>
+</tr>
+<tr>
+<td><code>#SBATCH --mem=x[M|G|T]</code></td><td> Request <em>x[M,G or T]B</em> per node requested</td>
+</tr>
+<tr>
+<td><code>#SBATCH --job-name=jobname</code></td><td> Provide a name, <em>jobname</em> to your job.</td>
+</tr>
+<tr>
+<td><code>#SBATCH --output=filename.out</code></td><td> Write SLURM standard output to file filename.out.</td>
+</tr>
+<tr>
+<td><code>#SBATCH --error=filename.err</code></td><td> Write SLURM standard error to file filename.err.</td>
+</tr>
+<tr>
+<td><code>#SBATCH --mail-type=events</code></td><td> Send an email after job status events is reached. <br />
+ status can be NONE, BEGIN, END, FAIL, REQUEUE, ALL, TIME_LIMIT(_90,80)
+</td>
+</tr>
+<td><code>#SBATCH --mail-user=address</code></td><td> Address to send email.</td>
+</tr>
+</table>
+
+
 --- .lehigh
 
 ## Useful PBS/SLURM environmental variables
@@ -514,7 +558,7 @@ exit
  <td><code> PBS_JOBID</code></td><td> Job ID number given to this job</td><td><code>SLURM_JOBID</code></td>
 </tr>
 <tr>
- <td><code> PBS_QUEUE</code></td><td> Queue job is running in</td><td><code></code></td>
+ <td><code> PBS_QUEUE</code></td><td> Queue job is running in</td><td><code>SLURM_JOB_PARTITION</code></td>
 </tr>
 <tr>
  <td><code> PBS_WALLTIME</code></td><td> Walltime in secs requested</td><td><code></code></td>
@@ -567,6 +611,10 @@ exit
   <td><code>qrls jobid</code></td><td>Release the hold that <strong>you put</strong> on <em>jobid</em></td><td><code>scontrol release jobid</code></td>
 </tr>
 </table>
+
+* `qsub` and `sbatch` can take the options for  `#PBS` and `#SBATCH` as command line arguments
+   * `qsub -l walltime=1:00:00,nodes=1:ppn=16 -q normal filename`
+   * `sbatch --time=1:00:00 --nodes=1 --ntasks-per-node=20 -p lts filename` 
 
 
 --- .lehigh
@@ -633,11 +681,11 @@ exit
 
 
 * Texas Advanced Computing Center (TACC) 
-   - Stampede: 9.6 PFlops (8<sup>th</sup> fastest supercomputer in the world)
+   - Stampede: 9.6 PFlops 
    - Wrangler for Data Analytics
    - Maverick for Interactive Visualization and Data Analytics
 * Louisiana State University
-   -  SuperMIC: 925 TFlops (116<sup>th</sup> fastest)
+   -  SuperMIC: 925 TFlops 
 * National Institute for Computational Sciences (NICS) 
    - Darter: 248.9 TFlops
 
@@ -650,13 +698,13 @@ exit
    - Gordon: 341 TFlops
 
 * Indiana University 
-   - Jetstream
+   - Jetstream: a cloud-based, on-demand system for 24/7 access
 
 * Pittsburgh Supercomputing Center
-   - Bridges 
+   - Bridges: 1.3 PFlops (deployment in progress) 
 
 * Stanford University
-   - XStream 
+   - XStream: 1PFlops of 8 x NVIDIA Tesla K80 compute nodes
 
 * Open Science Grid
 
