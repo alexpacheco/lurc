@@ -11,8 +11,9 @@
 \tikzset{set state val/.style args={#1/#2}{#1={fill=blue!#2}}}
 % XSEDE Partners
 % https://www.xsede.org/leaders
-\tikzset{set state val/.list={NY/30,IN/30,MI/30,CO/30,IL/30,TN/30}}
-\tikzset{set state val/.list={OH/30,PA/30,TX/30,CA/30,VA/30,NC/30}}
+\tikzset{set state val/.list={NY/30,IN/30,IL/30,TN/30}}
+\tikzset{set state val/.list={PA/30,TX/30,CA/30}}
+\tikzset{set state val/.list={GA/30,OK/30,AR/30}}
 % XSEDE Service Providers
 \tikzset{set state val/.list={CA/100,TX/100,LA/100,TN/100,PA/100,IN/100}}
 
@@ -22,18 +23,18 @@
 \tikzstyle{block} = [rectangle, draw, fill=blue!30,
     text width=8em, text centered, rounded corners, minimum height=4em]
 
-\node [block] at (3,-8) (SDSC) {SDSC\\Comet\\Gordon\\Gordon Ion\\Data Oasis};
-\node [block] at (13,-11) (TACC) {TACC\\Stampede\\Wrangler\\Maverick\\Ranch};
-\node [block] at (LA) {LSU CCT\\SuperMIC};
-\node [block] at (PA) {PSC\\Greenfield\\\textit{Bridges}};
-\node [block] at (TN) {NICS\\Darter};
+%\node [block] at (3,-8) (SDSC) {SDSC\\Comet\\Gordon\\Gordon Ion\\Data Oasis};
+%\node [block] at (13,-11) (TACC) {TACC\\Stampede\\Wrangler\\Maverick\\Ranch};
+%\node [block] at (LA) {LSU CCT\\SuperMIC};
+%\node [block] at (PA) {PSC\\Greenfield\\\textit{Bridges}};
+%\node [block] at (TN) {NICS\\Darter};
 %\node [block] at (IN) {IU\\\textit{Jetstream}};
-\node [draw,rectangle,fill=blue!30, text centered, rounded corners]  at (IN) {IU\\\textit{Jetsrtream}} ;
+i%\node [draw,rectangle,fill=blue!30, text centered, rounded corners]  at (IN) {IU\\\textit{Jetsrtream}} ;
 
 
 %\draw[dashed] (TX.center) -- (CA.center) -- (AL.center);
-\draw[dashed] (SDSC) -- (3,-10);
-\draw[dashed] (TACC) -- (13,-13.5);
+%\draw[dashed] (SDSC) -- (3,-10);
+%\draw[dashed] (TACC) -- (13,-13.5);
 %\node at (CO) {CO};
 %\node at (CA) {SDSC};
 %\node at (TX) {TACC};

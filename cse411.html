@@ -370,8 +370,8 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
 
 <ul>
 <li>Provided with annual computing time equivalent to investment at no charge.</li>
-<li>Condo Investor 1 purchased 1 20-core node is provided with 175,200 SUs annually.</li>
-<li>Condo Investor 2 purchase 25 24-core nodes is provided with 5,256,000 SUs annually.</li>
+<li>DV purchased 1 20-core node is provided with 175,200 SUs annually.</li>
+<li>WI purchase 25 24-core nodes is provided with 5,256,000 SUs annually.</li>
 <li>Can purchase additional SUs in increments of 10,000 SUs if required.</li>
 </ul></li>
 <li>No &#39;free&#39; computing time provided once allocation has been expended</li>
@@ -402,7 +402,7 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
 <ul>
 <li>Polaris is a gateway that also hosts the batch scheduler for Maia.</li>
 <li>No computing software including compilers is available on Polaris.</li>
-<li>Login to Maia to request computing time on Maia including interactive access to Maia.</li>
+<li>Login to Polaris to request computing time on Maia including interactive access to Maia.</li>
 </ul></li>
 <li>If you are not on Lehigh&#39;s network, login to the ssh gateway to get to Research Computing resources.
 
@@ -511,6 +511,7 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
 <li><code>module swap abc1 abc2</code>: swap <code>abc1</code> with <code>abc2</code> in your environment</li>
 <li><code>module purge</code>: remove all modules from your environment</li>
 <li><code>module show abc</code>: display what variables are added or modified in your environment</li>
+<li><code>module help abc</code>: display help message for the module <code>abc</code></li>
 </ul>
 
   </article>
@@ -541,6 +542,7 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
 <li>Molecular Dynamics
 
 <ul>
+<li><em>Desmond</em></li>
 <li>GROMACS</li>
 <li>LAMMPS</li>
 <li>NAMD</li>
@@ -872,7 +874,7 @@ exit
     <pre><code class="bash">#!/bin/tcsh
 #SBATCH --partition=bio
 # Directives can be combined on one line
-#SBATCH --time=1:00:00 SBATCH --nodes=1 --ntasks-per-node=24
+#SBATCH --time=1:00:00 --nodes=1 --ntasks-per-node=24
 #SBATCH --job-name myjob
 
 cd ${SLURM_SUBMIT_DIR}
@@ -990,7 +992,7 @@ exit
   </hgroup>
   <article data-timings="">
     <table>
-<tr><th>Command</th><th>Description</th></tr>
+<tr><th>PBS Command</th><th>Description</th><th>SLURM Command</th></tr>
 <tr>
   <td><code>qsub filename</code></td><td>Submit <em>filename</em> to job scheduler</td><td><code>sbatch filename</code></td>
 </tr>
@@ -1010,7 +1012,7 @@ exit
   <td><code>showstart jobid</code></td><td>Show <strong>estimated</strong> start time of job identified by <em>jobid</em></td><td><code>squeue --start</code></td>
 </tr>
 <tr>
-  <td><code>checkjob jobid</code></td><td>Check status of your job identified by <em>jobid</em></td><td><code></code></td>
+  <td><code>checkjob jobid</code></td><td>Check status of your job identified by <em>jobid</em></td><td><code>scontrol show job jobid</code></td>
 </tr>
 <tr>
   <td><code>qhold jobid</code></td><td>Put your job identified by <em>jobid</em> on hold</td><td><code>scontrol hold jobid</code></td>
@@ -1074,7 +1076,7 @@ exit
 
 <ul>
 <li>XSEDE HPC Monthly Workshop: OpenACC (Dec. 2014)</li>
-<li>XSEDE HPC Summer BootCamp: OpenMP, OpenACC, MPI and Hybrid Programming (Jun. 2015)</li>
+<li>XSEDE HPC Summer BootCamp: OpenMP, OpenACC, MPI and Hybrid Programming (Jun. 2015 &amp; 2016)</li>
 <li>XSEDE HPC Monthly Workshop: Big Data (Nov. 2015)</li>
 </ul></li>
 </ul>
@@ -1124,49 +1126,25 @@ exit
     <ul>
 <li><p>XSEDE is composed of multiple partner institutions known as Service Providers or SPs, each of which contributes one or more allocatable services. </p></li>
 <li><p>Resources include High Performance Computing (HPC) machines, High Throughput Computing (HTC) machines, visualization, data storage, testbeds, and services. </p></li>
-</ul>
-
-<div style='float:left;width:50%;'>
-  <ul>
-<li>Texas Advanced Computing Center (TACC) 
+<li><p>Texas Advanced Computing Center (TACC) </p>
 
 <ul>
 <li>Stampede: 9.6 PFlops (8<sup>th</sup> fastest supercomputer in the world)</li>
-<li> Wrangler for Data Analytics</li>
+<li>Wrangler for Data Analytics</li>
+<li>Maverick for Interactive Visualization and Data Analytics</li>
 </ul></li>
-<li>Louisiana State University
+<li><p>Louisiana State University</p>
 
 <ul>
 <li> SuperMIC: 925 TFlops (116<sup>th</sup> fastest)</li>
 </ul></li>
-<li>National Institute for Computational Sciences (NICS) 
+<li><p>National Institute for Computational Sciences (NICS) </p>
 
 <ul>
 <li>Darter: 248.9 TFlops</li>
 </ul></li>
 </ul>
 
-</div>
-<div style='float:right;width:45%;'>
-  <ul>
-<li><p>San Diego Supercomputing Center (SDSC) </p>
-
-<ul>
-<li>Comet: 2 PFlops</li>
-<li>Gordon: 341 TFlops</li>
-<li>Gordon Ion</li>
-</ul></li>
-<li><p>In Development</p>
-
-<ul>
-<li>Indiana University: Jetstream</li>
-<li>Pittsburgh Supercomputing Center: Bridges </li>
-</ul></li>
-</ul>
-
-<p><img width = '400px' src = 'assets/img/xsede.png'></p>
-
-</div>
   </article>
   <footer class=rcr>
     <img src='assets/img/lulogo.jpg'></img>
@@ -1175,6 +1153,47 @@ exit
 </slide>
 
 <slide class="rcr" id="slide-31" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>XSEDE Resources</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>San Diego Supercomputing Center (SDSC) </p>
+
+<ul>
+<li>Comet: 2 PFlops</li>
+<li>Gordon: 341 TFlops</li>
+</ul></li>
+<li><p>Indiana University </p>
+
+<ul>
+<li>Jetstream</li>
+</ul></li>
+<li><p>Pittsburgh Supercomputing Center</p>
+
+<ul>
+<li>Bridges </li>
+</ul></li>
+<li><p>Stanford University</p>
+
+<ul>
+<li>XStream </li>
+</ul></li>
+<li><p>Open Science Grid</p></li>
+</ul>
+
+<!--
+<img width = '400px' src = 'assets/img/xsede.png'>
+-->
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="rcr" id="slide-32" style="background:#F1E7C8;">
   <hgroup class=rcr>
     <h2>XSEDE Service Providers and Partners</h2>
   </hgroup>
@@ -1188,7 +1207,7 @@ exit
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="rcr" id="slide-32" style="background:#F1E7C8;">
+<slide class="rcr" id="slide-33" style="background:#F1E7C8;">
   <hgroup class=rcr>
     <h2>How do I get started on XSEDE?</h2>
   </hgroup>
@@ -1216,7 +1235,7 @@ local users with getting started on XSEDE resources.</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="rcr" id="slide-33" style="background:#F1E7C8;">
+<slide class="rcr" id="slide-34" style="background:#F1E7C8;">
   <hgroup class=rcr>
     <h2>Contact Us</h2>
   </hgroup>
@@ -1442,20 +1461,26 @@ local users with getting started on XSEDE resources.</li>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=31 title='XSEDE Service Providers and Partners'>
+        data-slide=31 title='XSEDE Resources'>
          31
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=32 title='How do I get started on XSEDE?'>
+        data-slide=32 title='XSEDE Service Providers and Partners'>
          32
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=33 title='Contact Us'>
+        data-slide=33 title='How do I get started on XSEDE?'>
          33
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=34 title='Contact Us'>
+         34
       </a>
     </li>
   </ul>
