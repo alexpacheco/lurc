@@ -367,6 +367,13 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 
 <img width = '900px' src = 'assets/img/mcr.png'>
 
+
+--- .lehigh
+
+## Bracket Computing
+
+
+
 --- .lehigh &twocol_width
 
 ## XSEDE
