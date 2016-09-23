@@ -169,6 +169,11 @@ ul li ul li ul li ul li:before {
   content: '\272a';
 }
 
+.unilist li:before { list-style: none; line-height: 1.5em; }
+.unibull { position: absolute; margin-left: -1.5em; width: 2em; color: #663700; font-weight: 600;}
+
+.txtbull { color: #663700}
+
 em {
   font-style: oblique;
 }
