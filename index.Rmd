@@ -9,6 +9,7 @@ highlighter : highlight.js      # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
 widgets     : [mathjax]            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
+license     : by-sa
 --- .lehigh
 
 ## About Us?
