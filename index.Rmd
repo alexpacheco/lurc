@@ -21,7 +21,7 @@ license     : by-sa
   - We enable Lehigh Faculty, Researchers and Scholars achieve their goals by providing various computational resources; hardware, software, and storage; consulting and training.
   
 * Research Computing Staff
-  - __Alex Pacheco, Manager & XSEDE Campus Champion__
+  - __Alex Pacheco, Manager &#38; XSEDE Campus Champion__
   - Steve Anthony, HPC User Support & System Administrator
   - Dan Brashler, Computing Consultant
   - Mary Jo Schulze, Software Specialist
@@ -252,7 +252,7 @@ license     : by-sa
 ## Module Command
 
 <table>
-<tr><th>Command</th><th>Description</th></tr>
+<tr><th width="300px">Command</th><th>Description</th></tr>
 <tr><td><code>module avail</code></td><td> show list of software available on resource</td></tr>
 <tr><td><code>module load abc</code></td><td> add software <code>abc</code> to your environment (modify your <code>PATH</code>, <code>LD_LIBRARY_PATH</code> etc as needed)</td></tr>
 <tr><td><code>module unload abc</code></td><td> remove <code>abc</code> from your envionment</td></tr>
@@ -366,12 +366,6 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 ## Module File Example
 
 <img width = '900px' src = 'assets/img/mcr.png'>
-
-
---- .lehigh
-
-## Bracket Computing
-
 
 
 --- .lehigh &twocol_width
