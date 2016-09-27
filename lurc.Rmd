@@ -127,7 +127,7 @@ license     : by-sa
 
 --- .lehigh
 
-## Allocation Charges, Effective Oct. 1, 2016
+## Allocation Charges - Effective Oct. 1, 2016
 
 * Cost per core-hour or service unit (SU) is 1&cent;
 * SU is defined as 1 hour of computing on 1 core of the Sol base compute node.
