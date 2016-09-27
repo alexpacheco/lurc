@@ -243,7 +243,7 @@ license     : by-sa
    * Account Charge: &#36;10 per account paid for by department
    * Accounts valid for current semester plus an additional two weeks
 * __Ceph__: 
-   * &#36;200 per TB per course per semester.
+   * &#36;200 per TB per course.
    * Paid for by department.
 
 --- .lehigh
