@@ -58,7 +58,8 @@ license     : by-sa
   GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
   $$
 
-  [FLOPs for various AMD & Intel CPU generation](http://stackoverflow.com/questions/15655835/flops-per-cycle-for-sandy-bridge-and-haswell-sse2-avx-avx2)
+  [FLOPs for various AMD & Intel CPU generation](https://en.wikipedia.org/wiki/FLOPS#FLOPs_per_cycle)
+
 
 --- .lehigh
 
@@ -231,6 +232,22 @@ license     : by-sa
 
 --- .lehigh
 
+## Sol, Maia  &amp; Ceph for Courses
+
+* Research Computing Resources; Sol, Maia & Ceph are available for use in registrar scheduled classes.
+* __Maia__: No charge, no special considerations
+* __Sol__: Charging scheme for Sol has not been set. The following is a tentative scheme based on Corona&#39;s charging scheme:
+   * 1TB Ceph space per course.
+   * 15,000 SUs per course.
+   * Usage Charge: &#36;350 paid for by department.
+   * Account Charge: $10 per account paid for by department
+   * Accounts valid for current semester plus an additional two weeks
+* __Ceph__: 
+   * &#36;200 per TB per course per semester. Ceph space can also be used to store course materials for a year and reuse after paying renewal fee of &#36;200 perTB.
+   * Paid for by department.
+
+--- .lehigh
+
 ## Available Software
 
 * Commercial and Free, Open source software is installed on
@@ -240,6 +257,7 @@ license     : by-sa
   - Why? We may have different versions of same software or software built with different compilers
   - Module environment allows you to dynamically change your *nix environment based on software being used
   - Standard on many University and national High Performance Computing resource since circa 2011
+
 
 --- .lehigh
 
