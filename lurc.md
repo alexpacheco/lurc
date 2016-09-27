@@ -240,7 +240,7 @@ license     : by-sa
    * 1TB Ceph space per course.
    * 15,000 SUs per course.
    * Usage Charge: &#36;350 paid for by department.
-   * Account Charge: $10 per account paid for by department
+   * Account Charge: &#36;10 per account paid for by department
    * Accounts valid for current semester plus an additional two weeks
 * __Ceph__: 
    * &#36;200 per TB per course per semester. Ceph space can also be used to store course materials for a year and reuse after paying renewal fee of &#36;200 perTB.
