@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Using SLURM scheduler on Sol</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Using SLURM scheduler on Sol">
+  <meta name="author" content="https://researchcomputing.lehigh.edu">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/custom.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <aside class="gdbar">
+    <img src="assets/img/lu.png">
+  </aside>
+  <hgroup class="auto-fadein">
+    <h1>Using SLURM scheduler on Sol</h1>
+    <h2>Lehigh Research Computing</h2>
+    <p>https://researchcomputing.lehigh.edu<br/></p>
+  </hgroup>
+  <article></article>  
+  <footer class = 'license'>
+    <a href='http://creativecommons.org/licenses/by-sa/3.0/'>
+    <img width = '80px' src = 'http://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png'>
+    </a>
+  </footer>
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="lehigh" id="slide-1" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Research Computing Resources</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><strong> Sol </strong> 
+
+<ul>
+<li>Lehigh&#39;s Flagship High Performance Computing Cluster</li>
+<li>8 nodes, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 25MB Cache
+
+<ul>
+<li>Each Intel Xeon E5-26xx v3 (Haswell) CPU is capable of 16 FLOPs</li>
+</ul></li>
+<li>Condo Investors
+
+<ul>
+<li>Dimitrios Vavylonis, Physics
+
+<ul>
+<li>1 node, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 25MB Cache</li>
+</ul></li>
+<li>Wonpil Im, Biological Sciences
+
+<ul>
+<li>25 nodes, dual 12-core Intel Xeon E5-2670 v3 2.5Ghz CPU, 30 MB Cache</li>
+</ul></li>
+</ul></li>
+<li>128 GB RAM and 1TB HDD per node</li>
+<li>2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric</li>
+<li>Theoretical Performance: 28.7 TFLOPs</li>
+<li>Access: Batch Scheduled, interactive on login node for compiling, editing only</li>
+</ul></li>
+</ul>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="lehigh" id="slide-2" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Allocation Charges</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>New Policy: 1&cent; per core-hour or SU </li>
+<li>Annual minimum purchase of 50,000 SUs and increments of 10,000 SUs.
+
+<ul>
+<li>paid for by your account sponsor</li>
+<li>Total available computing time for purchase annually: 1,401,600 SUs or 1 year of continous computing on 8 nodes</li>
+</ul></li>
+<li>Condo Investors (Faculty who have increased Sol&#39;s capacity by purchasing 26 nodes).
+
+<ul>
+<li>Provided with annual computing time equivalent to investment at no charge.</li>
+<li>DV purchased 1 20-core node is provided with 175,200 SUs annually.</li>
+<li>WI purchase 25 24-core nodes is provided with 5,256,000 SUs annually.</li>
+<li>Can purchase additional SUs in increments of 10,000 SUs if required.</li>
+</ul></li>
+<li>No &#39;free&#39; computing time provided once allocation has been expended</li>
+</ul>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="lehigh" id="slide-3" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Accessing Research Computing Resources</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>All Research Computing resources are accessible using ssh while on Lehigh&#39;s network</li>
+<li><code>ssh username@cluster.cc.lehigh.edu</code>
+
+<ul>
+<li>where <code>cluster</code> is sol, corona, capella, cuda0 or trit{1,2,3}</li>
+</ul></li>
+<li>Maia: No direct access to Maia, instead login to the polaris</li>
+<li>Polaris: <code>ssh username@polaris.cc.lehigh.edu</code>
+
+<ul>
+<li>Polaris is a gateway that also hosts the batch scheduler for Maia.</li>
+<li>No computing software including compilers is available on Polaris.</li>
+<li>Login to Polaris and request computing time on Maia including interactive access.</li>
+</ul></li>
+<li>If you are not on Lehigh&#39;s network, login to the ssh gateway to get to Research Computing resources.
+
+<ul>
+<li><code>ssh username@ssh.cc.lehigh.edu</code></li>
+</ul></li>
+</ul>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="lehigh" id="slide-4" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Software available on HPC systems</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Software on Sol is compiled for modern cpus and is available at /share/Apps</li>
+<li>Software is managed using module environment
+
+<ul>
+<li>Why? We may have different versions of same software or software built with different compilers</li>
+<li>Module environment allows you to dynamically change your *nix environment based on software being used</li>
+<li>Standard on many University and national High Performance Computing resource since circa 2011</li>
+</ul></li>
+</ul>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="lehigh" id="slide-5" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Software on Sol</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img width = '960px' src = 'assets/img/sol-module.png'></p>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="lehigh" id="slide-6" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>How does module work?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>If you have access to HPC resources, try some of these commands</li>
+<li><code>module avail</code>: show list of software available on resource</li>
+<li><code>module load abc</code>: add software <code>abc</code> to your environment (modify your <code>PATH</code>, <code>LD_LIBRARY_PATH</code> etc as needed)</li>
+<li><code>module unload abc</code>: remove <code>abc</code> from your envionment</li>
+<li><code>module swap abc1 abc2</code>: swap <code>abc1</code> with <code>abc2</code> in your environment</li>
+<li><code>module purge</code>: remove all modules from your environment</li>
+<li><code>module show abc</code>: display what variables are added or modified in your environment</li>
+<li><code>module help abc</code>: display help message for the module <code>abc</code></li>
+</ul>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="lehigh" id="slide-7" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Installed Software</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:45%;'>
+  <ul>
+<li>Chemistry/Materials Science
+
+<ul>
+<li>CPMD</li>
+<li>GAMESS</li>
+<li>Gaussian</li>
+<li>NWCHEM</li>
+<li>Quantum Espresso</li>
+<li><em>VASP</em></li>
+</ul></li>
+<li>Molecular Dynamics
+
+<ul>
+<li><em>Desmond</em></li>
+<li>GROMACS</li>
+<li>LAMMPS</li>
+<li>NAMD</li>
+</ul></li>
+</ul>
+
+</div>
+<div style='float:right;width:45%;'>
+  <ul>
+<li>Computational Fluid Dynamics
+
+<ul>
+<li><em>Abaqus</em></li>
+<li>Ansys</li>
+<li>Comsol</li>
+<li>OpenFOAM</li>
+<li>OpenSees</li>
+</ul></li>
+<li>Math
+
+<ul>
+<li>GNU Octave</li>
+<li><em>Magma</em></li>
+<li>Maple</li>
+<li>Mathematica</li>
+<li>Matlab</li>
+</ul></li>
+</ul>
+
+</div>
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="lehigh" id="slide-8" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>More Software</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:35%;'>
+  <ul>
+<li>Scripting Languages
+
+<ul>
+<li>R</li>
+<li>Perl</li>
+<li>Python</li>
+</ul></li>
+<li>Compilers
+
+<ul>
+<li>GNU</li>
+<li>Intel</li>
+<li>PGI</li>
+</ul></li>
+<li>Parallel Programming
+
+<ul>
+<li>MVAPICH2</li>
+</ul></li>
+</ul>
+
+</div>
+<div style='float:right;width:65%;'>
+  <ul>
+<li>Libraries
+
+<ul>
+<li>BLAS/LAPACK/GSL/SCALAPACK</li>
+<li>Boost</li>
+<li>FFTW</li>
+<li>Intel MKL</li>
+<li>HDF5</li>
+<li>NetCDF</li>
+<li>METIS/PARMETIS</li>
+<li>PetSc</li>
+<li>QHull/QRupdate</li>
+<li>SuiteSparse</li>
+<li>SuperLU</li>
+</ul></li>
+</ul>
+
+</div>
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="lehigh" id="slide-9" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>More Software</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:30%;'>
+  <ul>
+<li>Visualization Tools
+
+<ul>
+<li>Avogadro </li>
+<li>GaussView</li>
+<li>GNUPlot</li>
+<li>VMD</li>
+</ul></li>
+<li>Other Tools
+
+<ul>
+<li>CMake</li>
+<li>Gams</li>
+<li>Gurobi </li>
+<li>Scons</li>
+</ul></li>
+</ul>
+
+</div>
+<div style='float:right;width:70%;'>
+  <ul>
+<li>You can always install a software in your home directory</li>
+<li>Stay compliant with software licensing</li>
+<li>Modify your .bashrc/.tcshrc to add software to your path, OR</li>
+<li>create a module and dynamically load it so that it doesn&#39;t interfere 
+with other software installed on the system
+
+<ul>
+<li>e.g. You might want to use openmpi instead of mvapich2 </li>
+<li>the system admin may not want install it system wide for just one user</li>
+</ul></li>
+<li>Add the directory where you will install the module files to the variable 
+MODULEPATH in .bashrc/.tcshrc</li>
+</ul>
+
+<pre><code class="sh"># My .bashrc file
+export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
+</code></pre>
+
+</div>
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="lehigh" id="slide-10" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Module File Example</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img width = '900px' src = 'assets/img/mcr.png'></p>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="lehigh" id="slide-11" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>How to run jobs</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>All compute intensive job on Sol are batch scheduled by submitting jobs to the SLURM scheduler.</li>
+<li>Write a submit script
+
+<ul>
+<li>need to have some background in shell scripting (bash/tcsh)</li>
+</ul></li>
+<li>Need to specify
+
+<ul>
+<li>Resources required (which depends on configuration)
+
+<ul>
+<li>number of nodes</li>
+<li>number of processes per node</li>
+<li>memory per node</li>
+</ul></li>
+<li>How long do you want the resources
+
+<ul>
+<li>have an estimate for how long your job will run</li>
+</ul></li>
+<li>Which queue to submit jobs</li>
+</ul></li>
+</ul>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="lehigh" id="slide-12" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Available Queues</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Sol</li>
+</ul>
+
+<table>
+<tr><th>Queue Name</th><th>Max Walltime</th><th>Max Simultaneous Core-hours</th><th>Notes</th></tr>
+<tr><td>lts</td><td>72 hours</td><td></td><td>For use on 20-core nodes. Max 8 nodes/job</td></tr>
+<tr><td>bio</td><td>48 hours</td><td></td><td>For use on 24-core nodes.</td></tr>
+</table>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="lehigh" id="slide-13" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Minimal submit script for Serial Jobs</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <pre><code class="bash">#!/bin/bash
+#PBS -q smp
+#PBS -l walltime=1:00:00
+#PBS -l nodes=1:ppn=1
+#PBS -l mem=4GB
+#PBS -N myjob
+
+cd ${PBS_O_WORKDIR}
+./myjob &lt; filename.in &gt; filename.out
+
+</code></pre>
+
+</div>
+<div style='float:right;width:48%;'>
+  <pre><code class="bash">#!/bin/bash
+#SBATCH --partition=lts
+#SBATCH --time=1:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --job-name myjob
+
+cd ${SLURM_SUBMIT_DIR}
+./myjob &lt; filename.in &gt; filename.out
+
+</code></pre>
+
+</div>
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="lehigh" id="slide-14" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Minimal submit script for MPI Jobs on Sol</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="bash">#!/bin/bash
+#SBATCH --partition=lts
+#SBATCH --time=1:00:00
+#SBATCH --nodes=2
+#SBATCH --ntasks-per-node=20
+## For --partition=bio, use --ntasks-per-node=24
+#SBATCH --job-name myjob
+
+module load mvapich2
+
+cd ${SLURM_SUBMIT_DIR}
+srun ./myjob &lt; filename.in &gt; filename.out
+
+exit
+</code></pre>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="lehigh" id="slide-15" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Minimal submit script for OpenMP Jobs on Corona</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="bash">#!/bin/tcsh
+#SBATCH --partition=bio
+# Directives can be combined on one line
+#SBATCH --time=1:00:00 --nodes=1 --ntasks-per-node=24
+#SBATCH --job-name myjob
+
+cd ${SLURM_SUBMIT_DIR}
+# Use either
+setenv OMP_NUM_THREADS 24
+./myjob &lt; filename.in &gt; filename.out
+
+# OR
+OMP_NUM_THREADS=24 ./myjob &lt; filename.in &gt; filename.out
+
+exit
+</code></pre>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="lehigh small" id="slide-16" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Useful PBS Directives</h2>
+  </hgroup>
+  <article data-timings="">
+    <table class="pbs">
+<tr><th>PBS Directive</th><th>Description</th></tr>
+<tr>
+<td><code>#PBS -q queuename</code></td><td> Submit job to the <em>queuename</em> queue.</td>
+</tr>
+<tr>
+<td><code>#PBS -l walltime=hh:mm:ss</code></td><td> Request resources to run job for <em>hh</em> hours, <em>mm</em> minutes and <em>ss</em> seconds.</td>
+</tr>
+<tr>
+<td><code>#PBS -l nodes=m:ppn=n</code></td><td> Request resources to run job on <em>n</em> processors each on <em>m</em> nodes.</td>
+</tr>
+<tr>
+<td><code>#PBS -l mem=xGB</code></td><td> Request <em>xGB</em> per node requested, applicable on Maia only</td>
+</tr>
+<tr>
+<td><code>#PBS -N jobname</code></td><td> Provide a name, <em>jobname</em> to your job.</td>
+</tr>
+<tr>
+<td><code>#PBS -o filename.out</code></td><td> Write PBS standard output to file filename.out.</td>
+</tr>
+<tr>
+<td><code>#PBS -e filename.err</code></td><td> Write PBS standard error to file filename.err.</td>
+</tr>
+<tr>
+<td><code>#PBS -j oe</code></td><td> Combine PBS standard output and error to the same file.</td>
+</tr>
+<tr>
+<td><code>#PBS -m status</code></td><td> Send an email after job status status is reached. <br />
+ status can be a (abort), b (begin) or e (end) <br />
+ The arguments can be combined, for e.g. abe will send email when job begins and either aborts or ends</td>
+</tr>
+<td><code>#PBS -M your email address</code></td><td> Address to send email.</td>
+</tr>
+</table>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="lehigh small" id="slide-17" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Useful SLURM Directives</h2>
+  </hgroup>
+  <article data-timings="">
+    <table class="pbs">
+<tr><th>SLURM Directive</th><th>Description</th></tr>
+<tr>
+<td><code>#SBATCH --partition=queuename</code></td><td> Submit job to the <em>queuename</em> queue.</td></td>
+</tr>
+<tr>
+<td><code>#SBATCH --time=hh:mm:ss</code></td><td> Request resources to run job for <em>hh</em> hours, <em>mm</em> minutes and <em>ss</em> seconds.</td>
+</tr>
+<tr>
+<td><code>#SBATCH --nodes=m</code></td><td> Request resources to run job on <em>m</em> nodes.</td>
+</tr>
+<tr>
+<td><code>#SBATCH --ntasks-per-node=n</code></td><td> Request resources to run job on <em>n</em> processors on each node requested.</td>
+</tr>
+<tr>
+<td><code>#SBATCH --ntasks=n</code></td><td> Request resources to run job on a total of <em>n</em> processors.</td>
+</tr>
+<tr>
+<td><code>#SBATCH --mem=x[M|G|T]</code></td><td> Request <em>x[M,G or T]B</em> per node requested</td>
+</tr>
+<tr>
+<td><code>#SBATCH --job-name=jobname</code></td><td> Provide a name, <em>jobname</em> to your job.</td>
+</tr>
+<tr>
+<td><code>#SBATCH --output=filename.out</code></td><td> Write SLURM standard output to file filename.out.</td>
+</tr>
+<tr>
+<td><code>#SBATCH --error=filename.err</code></td><td> Write SLURM standard error to file filename.err.</td>
+</tr>
+<tr>
+<td><code>#SBATCH --mail-type=events</code></td><td> Send an email after job status events is reached. <br />
+ status can be NONE, BEGIN, END, FAIL, REQUEUE, ALL, TIME_LIMIT(_90,80)
+</td>
+</tr>
+<td><code>#SBATCH --mail-user=address</code></td><td> Address to send email.</td>
+</tr>
+</table>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="lehigh" id="slide-18" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Useful PBS/SLURM environmental variables</h2>
+  </hgroup>
+  <article data-timings="">
+    <table class="pbs">
+<tr>
+ <td><code> PBS_O_WORKDIR</code></td><td> Directory where the <code>qsub</code> command was executed</td><td><code>SLURM_SUBMIT_DIR</code></td>
+</tr>
+<tr>
+ <td><code> PBS_NODEFILE</code></td><td> Name of the file that contains a list of the HOSTS provided for the job</td><td><code>SLURM_JOB_NODELIST</code></td>
+</tr>
+<tr>
+ <td><code> PBS_NP</code></td><td> Total number of cores for job</td><td><code>SLURM_NTASKS</code></td>
+</tr>
+<tr>
+ <td><code> PBS_JOBID</code></td><td> Job ID number given to this job</td><td><code>SLURM_JOBID</code></td>
+</tr>
+<tr>
+ <td><code> PBS_QUEUE</code></td><td> Queue job is running in</td><td><code>SLURM_JOB_PARTITION</code></td>
+</tr>
+<tr>
+ <td><code> PBS_WALLTIME</code></td><td> Walltime in secs requested</td><td><code></code></td>
+</tr>
+<tr>
+ <td><code> PBS_JOBNAME</code></td><td> Name of the job. This can be set using the -N option in the PBS script</td><td><code></code></td>
+</tr>
+<tr>
+ <td><code> PBS_ENVIRONMENT</code></td><td> Indicates job type, PBS_BATCH or PBS_INTERACTIVE</td><td><code></code></td>
+</tr>
+<tr>
+ <td><code> PBS_O_SHELL</code></td><td> value of the SHELL variable in the environment in which qsub was executed</td><td><code></code></td>
+</tr>
+<tr>
+ <td><code> PBS_O_HOME</code></td><td> Home directory of the user running qsub</td><td><code></code></td>
+</tr>
+</table>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="lehigh" id="slide-19" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Submitting &amp; Monitoring Jobs</h2>
+  </hgroup>
+  <article data-timings="">
+    <table>
+<tr><th>PBS Command</th><th>Description</th><th>SLURM Command</th></tr>
+<tr>
+  <td><code>qsub filename</code></td><td>Submit <em>filename</em> to job scheduler</td><td><code>sbatch filename</code></td>
+</tr>
+<tr>
+  <td><code>qstat</code> </td><td>check job status (all jobs)</td><td><code>squeue</code></td>
+</tr>
+<tr>
+  <td><code>qstat -u username</code></td><td>check job status of user <em>username</em></td><td><code>squeue -u username</code></td>
+</tr>
+<tr>
+  <td><code>qstat -a</code></td><td>More information than that given by <em>qstat</em></td><td><code>squeue -l</code></td>
+</tr>
+<tr>
+  <td><code>qdel jobid</code></td><td>Cancel your job identified by <em>jobid</em></td><td><code>scancel jobid</code></td>
+</tr>
+<tr>
+  <td><code>showstart jobid</code></td><td>Show <strong>estimated</strong> start time of job identified by <em>jobid</em></td><td><code>squeue --start</code></td>
+</tr>
+<tr>
+  <td><code>checkjob jobid</code></td><td>Check status of your job identified by <em>jobid</em></td><td><code>scontrol show job jobid</code></td>
+</tr>
+<tr>
+  <td><code>qhold jobid</code></td><td>Put your job identified by <em>jobid</em> on hold</td><td><code>scontrol hold jobid</code></td>
+</tr>
+<tr>
+  <td><code>qrls jobid</code></td><td>Release the hold that <strong>you put</strong> on <em>jobid</em></td><td><code>scontrol release jobid</code></td>
+</tr>
+</table>
+
+<ul>
+<li><code>qsub</code> and <code>sbatch</code> can take the options for  <code>#PBS</code> and <code>#SBATCH</code> as command line arguments
+
+<ul>
+<li><code>qsub -l walltime=1:00:00,nodes=1:ppn=16 -q normal filename</code></li>
+<li><code>sbatch --time=1:00:00 --nodes=1 --ntasks-per-node=20 -p lts filename</code> </li>
+</ul></li>
+</ul>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="lehigh" id="slide-20" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Contact Us</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Issue with running jobs or need help to get started: 
+
+<ul>
+<li>Open a help ticket: <a href="http://go.lehigh.edu/rchelp">http://go.lehigh.edu/rchelp</a></li>
+</ul></li>
+<li>My contact info
+
+<ul>
+<li>eMail:  <a href="mailto:alp514@lehigh.edu">alp514@lehigh.edu</a></li>
+<li>Tel: (610) 758-6735 </li>
+<li>Location: Room 296, EWFM Computing Center</li>
+<li><a href="https://www.google.com/calendar/embed?src=alp514%40lehigh.edu&amp;ctz=America/New_York">My Schedule</a></li>
+</ul></li>
+<li>More Information
+
+<ul>
+<li><a href="https://researchcomputing.lehigh.edu">Research Computing</a></li>
+<li><a href="https://researchcomputing.lehigh.edu/training">Research Computing Training</a></li>
+</ul></li>
+<li>Subscribe
+
+<ul>
+<li>Research Computing Mailing List: <a href="https://lists.lehigh.edu/mailman/listinfo/hpc-l">https://lists.lehigh.edu/mailman/listinfo/hpc-l</a></li>
+<li>HPC Training Google Groups: <a href="mailto:hpctraining-list+subscribe@lehigh.edu">hpctraining-list+subscribe@lehigh.edu</a></li>
+</ul></li>
+</ul>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Research Computing Resources'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Allocation Charges'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Accessing Research Computing Resources'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Software available on HPC systems'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Software on Sol'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='How does module work?'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Installed Software'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='More Software'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='More Software'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Module File Example'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='How to run jobs'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Available Queues'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Minimal submit script for Serial Jobs'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='Minimal submit script for MPI Jobs on Sol'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='Minimal submit script for OpenMP Jobs on Corona'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='Useful PBS Directives'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='Useful SLURM Directives'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='Useful PBS/SLURM environmental variables'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='Submitting &amp; Monitoring Jobs'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='Contact Us'>
+         20
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
