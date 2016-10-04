@@ -14,6 +14,24 @@ license     : by-sa
 
 ## Research Computing Resources
 
+* <strong> Maia </strong>
+  - Free 32-core Symmetric Multiprocessor (SMP) system available to all Lehigh Faculty, Staff and Students
+  - dual 16-core AMD Opteron 6380 2.5GHz CPU
+  - 128GB RAM and 4TB HDD
+  - Theoretical Performance: 640 GFLOPs (640 billion floating point operations per second)
+  - Access: Batch Scheduled, no interactive access to Maia
+
+  $$latex
+  GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
+  $$
+
+  [FLOPs for various AMD & Intel CPU generation](https://en.wikipedia.org/wiki/FLOPS#FLOPs_per_cycle)
+
+
+--- .lehigh
+
+## Research Computing Resources
+
 * <strong> Sol </strong> 
   - Lehigh's Flagship High Performance Computing Cluster
   - 8 nodes, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 25MB Cache
@@ -28,6 +46,38 @@ license     : by-sa
   - Theoretical Performance: 28.7 TFLOPs
   - Access: Batch Scheduled, interactive on login node for compiling, editing only
   
+--- .lehigh
+
+## LTS Managed Faculty Resources 
+
+* <strong>Monocacy</strong>: Ben Felzer, Earth & Environmental Sciences
+  - Eight nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
+     * Theoretical Performance: 2.662TFlops
+* <strong>Eigen</strong>: Heather Jaeger, Chemistry
+  - Twenty nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
+     * Theoretical Performance: 6.656TFlops
+* <strong>Baltrusaitis</strong>: Jonas Baltrusaitis, Chemical Engineering
+  - Three nodes, dual 16-core AMD Opteron 6376, 2.3Ghz, 128GB RAM
+     * Theoretical Performance: 1.766TFlops
+* <strong>Pisces</strong>: Keith Moored, Mechanical Engineering and Mechanics
+  - Six nodes, dual 10-core Intel Xeon E5-2650v3, 2.3GHz, 64GB RAM, nVIDIA Tesla K80
+     * Theoretical Performance: 4.416 TFlops (CPU) + 17.46TFlops (GPU)
+
+--- .lehigh
+
+## Account Management
+
+* [Apply for an account at the LTS website] (https://idmweb.cc.lehigh.edu/accounts/?page=hpc)
+   - Click on Services > Account & Password > Lehigh Computing Account > Request an account
+   - Click on the big blue button "Start Special Account Request" > Research Computing Account 
+   - Maia
+       - Click on "FREE Linux command-line computing"
+   - Sol
+       - Click on "Fee-based research computing"
+       - Annual charge of \$50/account paid by Lehigh Faculty or Research Staff, and
+       - Annual charge for computing time
+* Sharing of accounts is explicitly forbidden
+* Users need to be associated with an allocation to run jobs on Sol 
 
 --- .lehigh
 
@@ -48,9 +98,8 @@ license     : by-sa
 
 ## Accessing Research Computing Resources
 
-* All Research Computing resources are accessible using ssh while on Lehigh's network
-* `ssh username@cluster.cc.lehigh.edu`
-   * where `cluster` is sol, corona, capella, cuda0 or trit{1,2,3}
+* Sol: accessible using ssh while on Lehigh's network
+* `ssh username@sol.cc.lehigh.edu`
 * Maia: No direct access to Maia, instead login to the polaris
 * Polaris: `ssh username@polaris.cc.lehigh.edu`
   - Polaris is a gateway that also hosts the batch scheduler for Maia.
@@ -77,16 +126,19 @@ license     : by-sa
 
 --- .lehigh
 
-## How does module work?
+## Module Command
 
-* If you have access to HPC resources, try some of these commands
-* `module avail`: show list of software available on resource
-* `module load abc`: add software `abc` to your environment (modify your `PATH`, `LD_LIBRARY_PATH` etc as needed)
-* `module unload abc`: remove `abc` from your envionment
-* `module swap abc1 abc2`: swap `abc1` with `abc2` in your environment
-* `module purge`: remove all modules from your environment
-* `module show abc`: display what variables are added or modified in your environment
-* `module help abc`: display help message for the module `abc`
+<table>
+<tr><th width="300px">Command</th><th>Description</th></tr>
+<tr><td><code>module avail</code></td><td> show list of software available on resource</td></tr>
+<tr><td><code>module load abc</code></td><td> add software <code>abc</code> to your environment (modify your <code>PATH</code>, <code>LD_LIBRARY_PATH</code> etc as needed)</td></tr>
+<tr><td><code>module unload abc</code></td><td> remove <code>abc</code> from your envionment</td></tr>
+<tr><td><code>module swap abc1 abc2</code></td><td> swap <code>abc1</code> with <code>abc2</code> in your environment</td></tr>
+<tr><td><code>module purge</code></td><td> remove all modules from your environment</td></tr>
+<tr><td><code>module show abc</code></td><td> display what variables are added or modified in your environment</td></tr>
+<tr><td><code>module help abc</code></td><td> display help message for the module <code>abc</code></td></tr>
+</table>
+
 
 --- .lehigh &twocol_width
 
@@ -194,6 +246,27 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 
 <img width = '900px' src = 'assets/img/mcr.png'>
 
+--- .lehigh &twocol_width
+
+## Cluster Environment
+
+* A cluster is a group of computers (nodes) that works together closely
+
+*** =left width:30%
+
+* Two types of nodes
+   - Head/Login Node
+   - Compute Node
+
+* Multi-user environment
+
+* Each user may have multiple jobs running simultaneously.
+
+*** =right width:65%
+
+<img width = '640px' src = 'assets/img/cluster.png'>
+
+
 --- .lehigh
 
 ## How to run jobs
@@ -210,6 +283,57 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
        - have an estimate for how long your job will run
    - Which queue to submit jobs
 
+
+--- .lehigh
+
+## Batch Queuing System
+
+* A software that manages resources (CPU time, memory, etc) and schedules job execution
+   - Sol: Simple Linux Utility for Resource Management (SLURM)
+   - Maia:  Portable Batch System (PBS)
+
+* A job can be considered as a user’s request to use a certain amount of resources for a certain amount of time
+
+* The batch queuing system determines
+    - The order jobs are executed
+    - On which node(s) jobs are executed
+
+
+--- .lehigh &twocol_width
+ 
+## Job Scheduling
+
+*** =left width:50%
+
+* Map jobs onto the node-time space
+    - Assuming CPU time is the only resource
+
+* Need to find a balance between
+    - Honoring the order in which jobs are received
+    - Maximizing resource utilization
+
+
+*** =right width:45%
+
+<img width = '440px' src = 'assets/img/JobSchedule-1.png'>
+
+
+
+--- .lehigh &twocol_width
+ 
+## Backfilling
+
+*** =left width:50%
+* A strategy to improve utilization
+   - Allow a job to jump ahead of others when there are enough idle nodes
+   - Must not affect the estimated start time of the job with the highest priority
+
+*** =right width:45%
+
+<img width = '440px' src = 'assets/img/JobSchedule-2.png'>
+
+
+
 --- .lehigh
 
 ## Available Queues
@@ -217,10 +341,41 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 * Sol
 
 <table>
-<tr><th>Queue Name</th><th>Max Walltime</th><th>Max Simultaneous Core-hours</th><th>Notes</th></tr>
-<tr><td>lts</td><td>72 hours</td><td></td><td>For use on 20-core nodes. Max 8 nodes/job</td></tr>
-<tr><td>bio</td><td>48 hours</td><td></td><td>For use on 24-core nodes.</td></tr>
+<tr><th>Queue Name</th><th>Max Runtime</th><th>Total Nodes</th><th>Max nodes per job</th><th>SU consumed per hour</th></tr>
+<tr><td>lts</td><td>72 hours</td><td>9</td><td>4</td><td>20</td></tr>
+<tr><td>bio</td><td>48 hours</td><td>25</td><td>4</td><td>24</td></tr>
 </table>
+
+--- .lehigh
+
+## How much memory can I use?
+
+* The amount of installed memory less the amount that is used by the operating system and other utilities
+
+* Sol has 128GB RAM per node, so max memory used should be 126GB.
+   - 20-core nodes have ~6.4GB/core
+       * max memory 6.3GB/core
+   - 24-core nodes have ~5.3GB/core
+       * max memory 5.25GB/core
+* A general rule of thumb on most HPC resources: leave 1-2GB for the OS to run. 
+
+
+--- .lehigh &twocol_width
+ 
+## How much time must I request
+
+* Ask for an amount of time that is
+    - Long enough for your job to complete
+    - As short as possible to increase the chance of backfilling
+
+*** =left width:45%
+
+<img width = '360px' src = 'assets/img/JobSchedule-3.png'>
+
+*** =right width:45%
+
+<img width = '360px' src = 'assets/img/JobSchedule-4.png'>
+
 
 --- .lehigh &twocol_width
 
