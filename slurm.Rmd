@@ -15,7 +15,7 @@ license     : by-sa
 ## Research Computing Resources
 
 * <strong> Maia </strong>
-  - Free 32-core Symmetric Multiprocessor (SMP) system available to all Lehigh Faculty, Staff and Students
+  - 32-core Symmetric Multiprocessor (SMP) system available to all Lehigh Faculty, Staff and Students
   - dual 16-core AMD Opteron 6380 2.5GHz CPU
   - 128GB RAM and 4TB HDD
   - Theoretical Performance: 640 GFLOPs (640 billion floating point operations per second)
@@ -45,7 +45,7 @@ license     : by-sa
   - 2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric
   - Theoretical Performance: 28.7 TFLOPs
   - Access: Batch Scheduled, interactive on login node for compiling, editing only
-  
+
 --- .lehigh
 
 ## LTS Managed Faculty Resources 
@@ -56,12 +56,13 @@ license     : by-sa
 * <strong>Eigen</strong>: Heather Jaeger, Chemistry
   - Twenty nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
      * Theoretical Performance: 6.656TFlops
-* <strong>Baltrusaitis</strong>: Jonas Baltrusaitis, Chemical Engineering
+* <strong>Baltrusaitislab</strong>: Jonas Baltrusaitis, Chemical Engineering
   - Three nodes, dual 16-core AMD Opteron 6376, 2.3Ghz, 128GB RAM
      * Theoretical Performance: 1.766TFlops
 * <strong>Pisces</strong>: Keith Moored, Mechanical Engineering and Mechanics
   - Six nodes, dual 10-core Intel Xeon E5-2650v3, 2.3GHz, 64GB RAM, nVIDIA Tesla K80
      * Theoretical Performance: 4.416 TFlops (CPU) + 17.46TFlops (GPU)
+
 
 --- .lehigh
 
@@ -83,29 +84,32 @@ license     : by-sa
 
 ## Allocation Charges
 
-* New Policy: 1&cent; per core-hour or SU 
+* Allocation: Amount of computing time that your research group is allowed to
+  use in one year.
+* Service Unit (SU): 1 hour of computing on 1 core of Sol 
+* SU Charge: 1&cent; 
 * Annual minimum purchase of 50,000 SUs and increments of 10,000 SUs.
    - paid for by your account sponsor
    - Total available computing time for purchase annually: 1,401,600 SUs or 1 year of continous computing on 8 nodes
-* Condo Investors (Faculty who have increased Sol's capacity by purchasing 26 nodes).
-   - Provided with annual computing time equivalent to investment at no charge.
-   - DV purchased 1 20-core node is provided with 175,200 SUs annually.
-   - WI purchase 25 24-core nodes is provided with 5,256,000 SUs annually.
-   - Can purchase additional SUs in increments of 10,000 SUs if required.
-* No 'free' computing time provided once allocation has been expended
+* Condo Investors (Faculty who have increased Sol's capacity by purchasing 26 nodes)
+   - Provided with annual computing time equivalent to investment at no charge
+   - DV purchased 1 20-core node is provided with 175,000 SUs annually
+   - WI purchased 25 24-core nodes is provided with 5,256,000 SUs annually
+   - Can purchase additional SUs in increments of 10,000 SUs if required
+* __No 'free' computing time provided once allocation has been expended__
 
 --- .lehigh
 
 ## Accessing Research Computing Resources
 
-* Sol: accessible using ssh while on Lehigh's network
-* `ssh username@sol.cc.lehigh.edu`
-* Maia: No direct access to Maia, instead login to the polaris
-* Polaris: `ssh username@polaris.cc.lehigh.edu`
-  - Polaris is a gateway that also hosts the batch scheduler for Maia.
-  - No computing software including compilers is available on Polaris.
-  - Login to Polaris and request computing time on Maia including interactive access.
-* If you are not on Lehigh's network, login to the ssh gateway to get to Research Computing resources.
+* Sol &amp; Faculty Clusters: accessible using ssh while on Lehigh's network
+   * `ssh username@clustername.cc.lehigh.edu`
+* Maia: No direct access to Maia, instead login to Polaris
+  - `ssh username@polaris.cc.lehigh.edu`
+  - Polaris is a gateway that also hosts the batch scheduler for Maia
+  - No computing software including compilers is available on Polaris
+  - Login to Polaris and request computing time on Maia including interactive access
+* If you are not on Lehigh's network, login to the ssh gateway to get to Research Computing resources
   - `ssh username@ssh.cc.lehigh.edu`
 
 --- .lehigh
@@ -117,6 +121,7 @@ license     : by-sa
   - Why? We may have different versions of same software or software built with different compilers
   - Module environment allows you to dynamically change your *nix environment based on software being used
   - Standard on many University and national High Performance Computing resource since circa 2011
+
 
 --- .lehigh
 
@@ -139,6 +144,9 @@ license     : by-sa
 <tr><td><code>module help abc</code></td><td> display help message for the module <code>abc</code></td></tr>
 </table>
 
+* Users who prefer not to use the module environment will need to modify their
+  .bashrc or .tcshrc files. Run `module show` for list variables that need
+  modified, appended or prepended
 
 --- .lehigh &twocol_width
 
@@ -259,7 +267,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 
 * Multi-user environment
 
-* Each user may have multiple jobs running simultaneously.
+* Each user may have multiple jobs running simultaneously
 
 *** =right width:65%
 
@@ -270,8 +278,8 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 
 ## How to run jobs
 
-* All compute intensive job on Sol are batch scheduled by submitting jobs to the SLURM scheduler.
-* Write a submit script
+* All compute intensive jobs are batch scheduled
+* Write a script to submit jobs to a scheduler
   - need to have some background in shell scripting (bash/tcsh)
 * Need to specify
    - Resources required (which depends on configuration)
@@ -289,13 +297,17 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 
 * A software that manages resources (CPU time, memory, etc) and schedules job execution
    - Sol: Simple Linux Utility for Resource Management (SLURM)
-   - Maia:  Portable Batch System (PBS)
+   - Others:  Portable Batch System (PBS)
+          - Scheduler: Maui
+          - Resource Manager: Torque
+          - Allocation Manager: Gold
 
 * A job can be considered as a user’s request to use a certain amount of resources for a certain amount of time
 
 * The batch queuing system determines
     - The order jobs are executed
     - On which node(s) jobs are executed
+
 
 
 --- .lehigh &twocol_width
@@ -317,7 +329,6 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 <img width = '440px' src = 'assets/img/JobSchedule-1.png'>
 
 
-
 --- .lehigh &twocol_width
  
 ## Backfilling
@@ -331,32 +342,6 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 
 <img width = '440px' src = 'assets/img/JobSchedule-2.png'>
 
-
-
---- .lehigh
-
-## Available Queues
-
-* Sol
-
-<table>
-<tr><th>Queue Name</th><th>Max Runtime</th><th>Total Nodes</th><th>Max nodes per job</th><th>SU consumed per hour</th></tr>
-<tr><td>lts</td><td>72 hours</td><td>9</td><td>4</td><td>20</td></tr>
-<tr><td>bio</td><td>48 hours</td><td>25</td><td>4</td><td>24</td></tr>
-</table>
-
---- .lehigh
-
-## How much memory can I use?
-
-* The amount of installed memory less the amount that is used by the operating system and other utilities
-
-* Sol has 128GB RAM per node, so max memory used should be 126GB.
-   - 20-core nodes have ~6.4GB/core
-       * max memory 6.3GB/core
-   - 24-core nodes have ~5.3GB/core
-       * max memory 5.25GB/core
-* A general rule of thumb on most HPC resources: leave 1-2GB for the OS to run. 
 
 
 --- .lehigh &twocol_width
@@ -374,6 +359,59 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 *** =right width:45%
 
 <img width = '360px' src = 'assets/img/JobSchedule-4.png'>
+
+
+--- .lehigh
+
+## Available Queues
+
+* Sol
+
+<table>
+<tr><th>Queue Name</th><th>Max Runtime</th><th>Total Nodes</th><th>Max nodes per job</th><th>SU consumed per hour</th></tr>
+<tr><td>lts</td><td>72 hours</td><td>9</td><td>4</td><td>20</td></tr>
+<tr><td>bio</td><td>48 hours</td><td>25</td><td>4</td><td>24</td></tr>
+</table>
+
+
+* Maia
+
+<table>
+<tr><th>Queue Name</th><th>Max Runtime</th><th>Max Simultaneous Core-hours</th></tr>
+<tr><td>smp-test</td><td>1 hour</td><td>4 core hours</td></tr>
+<tr><td>smp</td><td>96 hours</td><td>384 core hours</td></tr>
+</table>
+
+
+--- .lehigh
+
+## Queues on Faculty Clusters
+
+| Cluster | Queue  | Max Runtime |
+|:-------:|:------:|:-----------:|
+|Pisces   | normal |4 days|
+|Monocacy | normal |4 days|
+|Eigen    | adf    |14 days|
+|         | normal |14 days|
+|         | long   |28 days|
+
+--- .lehigh
+
+## How much memory can I use?
+
+* The amount of installed memory less the amount that is used by the operating system and other utilities
+
+* A general rule of thumb on most HPC resources: leave 1-2GB for the OS to run. 
+
+* Sol: Max memory used per node should not exceed 126GB.
+   - 20-core nodes have ~6.4GB/core
+       * max memory 6.3GB/core
+   - 24-core nodes have ~5.3GB/core
+       * max memory 5.25GB/core
+
+* Maia: Users need to specify memory required in their submit script. Max
+memory that should be requested is 126GB.
+
 
 
 --- .lehigh &twocol_width
@@ -572,15 +610,67 @@ exit
 </tr>
 </table>
 
+
 --- .lehigh
 
-## Submitting & Monitoring Jobs
+## Basic Job Manager Commands
+
+* Submission
+* Monitoring
+* Manipulating
+* Reporting
+
+--- .lehigh
+
+## Job Types
+
+* Interactive Jobs
+   - Set up an interactive environment on compute nodes for users
+   - Purpose: testing and debugging code. __Do not run jobs on head node!!!__
+
+   - PBS: `qsub -I -V walltime=<hh:mm:ss>,nodes=<# of nodes>:ppn=<# of core/node> -q <queue
+   name>`
+
+   - SLURM: `srun --time=<hh:mm:ss> --nodes=<# of nodes> --ntasks-per-node=<#
+   of core/node> -p <queue name> --pty /bin/bash --login`
+
+
+* Batch Jobs
+   - Executed using a batch script without user intervention
+       - Advantage: system takes care of running the job
+       - Disadvantage: cannot change sequence of commands after submission
+   - Useful for Production runs
+
+
+--- .lehigh
+
+## Submitting Batch Jobs
+
+* PBS: `qsub filename`
+* SLURM: `sbatch filename`
+
+* `qsub` and `sbatch` can take the options for `#PBS` and `#SBATCH` as command line arguments
+   * `qsub -l walltime=1:00:00,nodes=1:ppn=16 -q normal filename`
+   * `sbatch --time=1:00:00 --nodes=1 --ntasks-per-node=20 -p lts filename` 
+* SLURM can also take short hand notation for the directives
+
+| Long Form | Short Form |
+|:---------:|:----------:|
+|--partition=queuename|-p queuename|
+|--time=hh:mm:ss|-t hh:mm:ss|
+|--nodes=m|-N m|
+|--ntasks-per-node=n|-n n|
+|--ntasks=n|-n n|
+
+
+
+--- .lehigh
+
+## Monitoring &amp; Manipulating Jobs
+
 
 <table>
 <tr><th>PBS Command</th><th>Description</th><th>SLURM Command</th></tr>
-<tr>
-  <td><code>qsub filename</code></td><td>Submit <em>filename</em> to job scheduler</td><td><code>sbatch filename</code></td>
-</tr>
 <tr>
   <td><code>qstat</code> </td><td>check job status (all jobs)</td><td><code>squeue</code></td>
 </tr>
@@ -591,13 +681,13 @@ exit
   <td><code>qstat -a</code></td><td>More information than that given by <em>qstat</em></td><td><code>squeue -l</code></td>
 </tr>
 <tr>
-  <td><code>qdel jobid</code></td><td>Cancel your job identified by <em>jobid</em></td><td><code>scancel jobid</code></td>
-</tr>
-<tr>
   <td><code>showstart jobid</code></td><td>Show <strong>estimated</strong> start time of job identified by <em>jobid</em></td><td><code>squeue --start</code></td>
 </tr>
 <tr>
   <td><code>checkjob jobid</code></td><td>Check status of your job identified by <em>jobid</em></td><td><code>scontrol show job jobid</code></td>
+</tr>
+<tr>
+  <td><code>qdel jobid</code></td><td>Cancel your job identified by <em>jobid</em></td><td><code>scancel jobid</code></td>
 </tr>
 <tr>
   <td><code>qhold jobid</code></td><td>Put your job identified by <em>jobid</em> on hold</td><td><code>scontrol hold jobid</code></td>
@@ -607,25 +697,61 @@ exit
 </tr>
 </table>
 
-* `qsub` and `sbatch` can take the options for  `#PBS` and `#SBATCH` as command line arguments
-   * `qsub -l walltime=1:00:00,nodes=1:ppn=16 -q normal filename`
-   * `sbatch --time=1:00:00 --nodes=1 --ntasks-per-node=20 -p lts filename` 
+
+--- .lehigh
+
+## Usage Reporting
+
+* [sacct](http://slurm.schedmd.com/sacct.html): displays accounting data for all jobs and job steps in the SLURM job accounting log or Slurm database
+* [sshare](http://slurm.schedmd.com/sshare.html): Tool for listing the shares of associations to a cluster. 
+
+* We have created scripts based on these to provide usage reporting
+    -  `alloc_summary.sh`
+        - included in your .bash_profile
+        - prints allocation usage on your login shell
+    -  `balance`
+        - prints allocation usage summary
+    -  `solreport`
+        - obtain your monthly usage report
+        - PIs can obtain usage report for all or specific users on their
+	allocation
+        - use `--help` for usage information
+
+--- .lehigh
+
+## Usage Reporting
+
+<img width = '960px' src = 'assets/img/slurmreport.png'> 
+
+--- .lehigh
+
+## Not for the faint hearted
+
+* You have multiple jobs that need to be run in sequence
+* Option 1: Submit jobs as soon as previous jobs complete
+* Option 2: Submit jobs with a dependency
+    * [SLURM](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=slurm#submitting_dependency_jobs):
+  `sbatch --dependency=afterok:<JobID> <Submit Script>`
+    * [PBS](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=corona#submitting_dependency_jobs):
+  `qsub -W depend=afterok:<JobID> <Submit Script>`
+
+* You want to run several serial processor jobs on
+    * one node: your submit script should be able to run several serial
+    jobs in background and then use the `wait` command for all jobs to finish
+    * more than one node: this requires some background in scripting but the
+    idea is the same as above
 
 
 --- .lehigh
 
-## Contact Us
+## Additional Help &amp; Information
 
 * Issue with running jobs or need help to get started: 
   * Open a help ticket: <http://go.lehigh.edu/rchelp>
-* My contact info
-  * eMail:  <alp514@lehigh.edu>
-  * Tel: (610) 758-6735 
-  * Location: Room 296, EWFM Computing Center
-  * [My Schedule] (https://www.google.com/calendar/embed?src=alp514%40lehigh.edu&ctz=America/New_York )
 * More Information
   * [Research Computing] (https://researchcomputing.lehigh.edu)
-  * [Research Computing Training] (https://researchcomputing.lehigh.edu/training)
+  * [Research Computing Training](https://researchcomputing.lehigh.edu/training)
+  * [Research Computing Wiki](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php)
 * Subscribe
      * Research Computing Mailing List: <https://lists.lehigh.edu/mailman/listinfo/hpc-l>
      * HPC Training Google Groups: <mailto:hpctraining-list+subscribe@lehigh.edu>

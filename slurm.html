@@ -59,7 +59,7 @@
 <li><p><strong> Maia </strong></p>
 
 <ul>
-<li>Free 32-core Symmetric Multiprocessor (SMP) system available to all Lehigh Faculty, Staff and Students</li>
+<li>32-core Symmetric Multiprocessor (SMP) system available to all Lehigh Faculty, Staff and Students</li>
 <li>dual 16-core AMD Opteron 6380 2.5GHz CPU</li>
 <li>128GB RAM and 4TB HDD</li>
 <li>Theoretical Performance: 640 GFLOPs (640 billion floating point operations per second)</li>
@@ -116,11 +116,19 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
 </ul></li>
 </ul>
 
-<p>--- .lehigh</p>
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
 
-<h2>LTS Managed Faculty Resources</h2>
-
-<ul>
+<slide class="lehigh" id="slide-3" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>LTS Managed Faculty Resources</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
 <li><strong>Monocacy</strong>: Ben Felzer, Earth &amp; Environmental Sciences
 
 <ul>
@@ -139,7 +147,7 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
 <li>Theoretical Performance: 6.656TFlops</li>
 </ul></li>
 </ul></li>
-<li><strong>Baltrusaitis</strong>: Jonas Baltrusaitis, Chemical Engineering
+<li><strong>Baltrusaitislab</strong>: Jonas Baltrusaitis, Chemical Engineering
 
 <ul>
 <li>Three nodes, dual 16-core AMD Opteron 6376, 2.3Ghz, 128GB RAM
@@ -166,7 +174,7 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="lehigh" id="slide-3" style="background:#F1E7C8;">
+<slide class="lehigh" id="slide-4" style="background:#F1E7C8;">
   <hgroup class=rcr>
     <h2>Account Management</h2>
   </hgroup>
@@ -201,28 +209,31 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="lehigh" id="slide-4" style="background:#F1E7C8;">
+<slide class="lehigh" id="slide-5" style="background:#F1E7C8;">
   <hgroup class=rcr>
     <h2>Allocation Charges</h2>
   </hgroup>
   <article data-timings="">
     <ul>
-<li>New Policy: 1&cent; per core-hour or SU </li>
+<li>Allocation: Amount of computing time that your research group is allowed to
+use in one year.</li>
+<li>Service Unit (SU): 1 hour of computing on 1 core of Sol </li>
+<li>SU Charge: 1&cent; </li>
 <li>Annual minimum purchase of 50,000 SUs and increments of 10,000 SUs.
 
 <ul>
 <li>paid for by your account sponsor</li>
 <li>Total available computing time for purchase annually: 1,401,600 SUs or 1 year of continous computing on 8 nodes</li>
 </ul></li>
-<li>Condo Investors (Faculty who have increased Sol&#39;s capacity by purchasing 26 nodes).
+<li>Condo Investors (Faculty who have increased Sol&#39;s capacity by purchasing 26 nodes)
 
 <ul>
-<li>Provided with annual computing time equivalent to investment at no charge.</li>
-<li>DV purchased 1 20-core node is provided with 175,200 SUs annually.</li>
-<li>WI purchase 25 24-core nodes is provided with 5,256,000 SUs annually.</li>
-<li>Can purchase additional SUs in increments of 10,000 SUs if required.</li>
+<li>Provided with annual computing time equivalent to investment at no charge</li>
+<li>DV purchased 1 20-core node is provided with 175,000 SUs annually</li>
+<li>WI purchased 25 24-core nodes is provided with 5,256,000 SUs annually</li>
+<li>Can purchase additional SUs in increments of 10,000 SUs if required</li>
 </ul></li>
-<li>No &#39;free&#39; computing time provided once allocation has been expended</li>
+<li><strong>No &#39;free&#39; computing time provided once allocation has been expended</strong></li>
 </ul>
 
   </article>
@@ -232,23 +243,26 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="lehigh" id="slide-5" style="background:#F1E7C8;">
+<slide class="lehigh" id="slide-6" style="background:#F1E7C8;">
   <hgroup class=rcr>
     <h2>Accessing Research Computing Resources</h2>
   </hgroup>
   <article data-timings="">
     <ul>
-<li>Sol: accessible using ssh while on Lehigh&#39;s network</li>
-<li><code>ssh username@sol.cc.lehigh.edu</code></li>
-<li>Maia: No direct access to Maia, instead login to the polaris</li>
-<li>Polaris: <code>ssh username@polaris.cc.lehigh.edu</code>
+<li>Sol &amp; Faculty Clusters: accessible using ssh while on Lehigh&#39;s network
 
 <ul>
-<li>Polaris is a gateway that also hosts the batch scheduler for Maia.</li>
-<li>No computing software including compilers is available on Polaris.</li>
-<li>Login to Polaris and request computing time on Maia including interactive access.</li>
+<li><code>ssh username@clustername.cc.lehigh.edu</code></li>
 </ul></li>
-<li>If you are not on Lehigh&#39;s network, login to the ssh gateway to get to Research Computing resources.
+<li>Maia: No direct access to Maia, instead login to Polaris
+
+<ul>
+<li><code>ssh username@polaris.cc.lehigh.edu</code></li>
+<li>Polaris is a gateway that also hosts the batch scheduler for Maia</li>
+<li>No computing software including compilers is available on Polaris</li>
+<li>Login to Polaris and request computing time on Maia including interactive access</li>
+</ul></li>
+<li>If you are not on Lehigh&#39;s network, login to the ssh gateway to get to Research Computing resources
 
 <ul>
 <li><code>ssh username@ssh.cc.lehigh.edu</code></li>
@@ -262,7 +276,7 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="lehigh" id="slide-6" style="background:#F1E7C8;">
+<slide class="lehigh" id="slide-7" style="background:#F1E7C8;">
   <hgroup class=rcr>
     <h2>Software available on HPC systems</h2>
   </hgroup>
@@ -285,7 +299,7 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="lehigh" id="slide-7" style="background:#F1E7C8;">
+<slide class="lehigh" id="slide-8" style="background:#F1E7C8;">
   <hgroup class=rcr>
     <h2>Software on Sol</h2>
   </hgroup>
@@ -299,7 +313,7 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="lehigh" id="slide-8" style="background:#F1E7C8;">
+<slide class="lehigh" id="slide-9" style="background:#F1E7C8;">
   <hgroup class=rcr>
     <h2>Module Command</h2>
   </hgroup>
@@ -315,6 +329,12 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
 <tr><td><code>module help abc</code></td><td> display help message for the module <code>abc</code></td></tr>
 </table>
 
+<ul>
+<li>Users who prefer not to use the module environment will need to modify their
+.bashrc or .tcshrc files. Run <code>module show</code> for list variables that need
+modified, appended or prepended</li>
+</ul>
+
   </article>
   <footer class=rcr>
     <img src='assets/img/lulogo.jpg'></img>
@@ -322,7 +342,7 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="lehigh" id="slide-9" style="background:#F1E7C8;">
+<slide class="lehigh" id="slide-10" style="background:#F1E7C8;">
   <hgroup class=rcr>
     <h2>Installed Software</h2>
   </hgroup>
@@ -381,7 +401,7 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="lehigh" id="slide-10" style="background:#F1E7C8;">
+<slide class="lehigh" id="slide-11" style="background:#F1E7C8;">
   <hgroup class=rcr>
     <h2>More Software</h2>
   </hgroup>
@@ -438,7 +458,7 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="lehigh" id="slide-11" style="background:#F1E7C8;">
+<slide class="lehigh" id="slide-12" style="background:#F1E7C8;">
   <hgroup class=rcr>
     <h2>More Software</h2>
   </hgroup>
@@ -493,7 +513,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="lehigh" id="slide-12" style="background:#F1E7C8;">
+<slide class="lehigh" id="slide-13" style="background:#F1E7C8;">
   <hgroup class=rcr>
     <h2>Module File Example</h2>
   </hgroup>
@@ -507,7 +527,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="lehigh" id="slide-13" style="background:#F1E7C8;">
+<slide class="lehigh" id="slide-14" style="background:#F1E7C8;">
   <hgroup class=rcr>
     <h2>Cluster Environment</h2>
   </hgroup>
@@ -525,7 +545,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 <li>Compute Node</li>
 </ul></li>
 <li><p>Multi-user environment</p></li>
-<li><p>Each user may have multiple jobs running simultaneously.</p></li>
+<li><p>Each user may have multiple jobs running simultaneously</p></li>
 </ul>
 
 </div>
@@ -540,14 +560,14 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="lehigh" id="slide-14" style="background:#F1E7C8;">
+<slide class="lehigh" id="slide-15" style="background:#F1E7C8;">
   <hgroup class=rcr>
     <h2>How to run jobs</h2>
   </hgroup>
   <article data-timings="">
     <ul>
-<li>All compute intensive job on Sol are batch scheduled by submitting jobs to the SLURM scheduler.</li>
-<li>Write a submit script
+<li>All compute intensive jobs are batch scheduled</li>
+<li>Write a script to submit jobs to a scheduler
 
 <ul>
 <li>need to have some background in shell scripting (bash/tcsh)</li>
@@ -578,7 +598,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="lehigh" id="slide-15" style="background:#F1E7C8;">
+<slide class="lehigh" id="slide-16" style="background:#F1E7C8;">
   <hgroup class=rcr>
     <h2>Batch Queuing System</h2>
   </hgroup>
@@ -588,7 +608,13 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 
 <ul>
 <li>Sol: Simple Linux Utility for Resource Management (SLURM)</li>
-<li>Maia:  Portable Batch System (PBS)</li>
+<li>Others:  Portable Batch System (PBS)
+
+<ul>
+<li>Scheduler: Maui</li>
+<li>Resource Manager: Torque</li>
+<li>Allocation Manager: Gold</li>
+</ul></li>
 </ul></li>
 <li><p>A job can be considered as a user’s request to use a certain amount of resources for a certain amount of time</p></li>
 <li><p>The batch queuing system determines</p>
@@ -606,7 +632,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="lehigh" id="slide-16" style="background:#F1E7C8;">
+<slide class="lehigh" id="slide-17" style="background:#F1E7C8;">
   <hgroup class=rcr>
     <h2>Job Scheduling</h2>
   </hgroup>
@@ -639,7 +665,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="lehigh" id="slide-17" style="background:#F1E7C8;">
+<slide class="lehigh" id="slide-18" style="background:#F1E7C8;">
   <hgroup class=rcr>
     <h2>Backfilling</h2>
   </hgroup>
@@ -667,60 +693,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="lehigh" id="slide-18" style="background:#F1E7C8;">
-  <hgroup class=rcr>
-    <h2>Available Queues</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li>Sol</li>
-</ul>
-
-<table>
-<tr><th>Queue Name</th><th>Max Runtime</th><th>Total Nodes</th><th>Max nodes per job</th><th>SU consumed per hour</th></tr>
-<tr><td>lts</td><td>72 hours</td><td>9</td><td>4</td><td>20</td></tr>
-<tr><td>bio</td><td>48 hours</td><td>25</td><td>4</td><td>24</td></tr>
-</table>
-
-  </article>
-  <footer class=rcr>
-    <img src='assets/img/lulogo.jpg'></img>
-  </footer>
-  <!-- Presenter Notes -->
-</slide>
-
 <slide class="lehigh" id="slide-19" style="background:#F1E7C8;">
-  <hgroup class=rcr>
-    <h2>How much memory can I use?</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li><p>The amount of installed memory less the amount that is used by the operating system and other utilities</p></li>
-<li><p>Sol has 128GB RAM per node, so max memory used should be 126GB.</p>
-
-<ul>
-<li>20-core nodes have ~6.4GB/core
-
-<ul>
-<li>max memory 6.3GB/core</li>
-</ul></li>
-<li>24-core nodes have ~5.3GB/core
-
-<ul>
-<li>max memory 5.25GB/core</li>
-</ul></li>
-</ul></li>
-<li><p>A general rule of thumb on most HPC resources: leave 1-2GB for the OS to run. </p></li>
-</ul>
-
-  </article>
-  <footer class=rcr>
-    <img src='assets/img/lulogo.jpg'></img>
-  </footer>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="lehigh" id="slide-20" style="background:#F1E7C8;">
   <hgroup class=rcr>
     <h2>How much time must I request</h2>
   </hgroup>
@@ -749,7 +722,118 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
   <!-- Presenter Notes -->
 </slide>
 
+<slide class="lehigh" id="slide-20" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Available Queues</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Sol</li>
+</ul>
+
+<table>
+<tr><th>Queue Name</th><th>Max Runtime</th><th>Total Nodes</th><th>Max nodes per job</th><th>SU consumed per hour</th></tr>
+<tr><td>lts</td><td>72 hours</td><td>9</td><td>4</td><td>20</td></tr>
+<tr><td>bio</td><td>48 hours</td><td>25</td><td>4</td><td>24</td></tr>
+</table>
+
+<ul>
+<li>Maia</li>
+</ul>
+
+<table>
+<tr><th>Queue Name</th><th>Max Runtime</th><th>Max Simultaneous Core-hours</th></tr>
+<tr><td>smp-test</td><td>1 hour</td><td>4 core hours</td></tr>
+<tr><td>smp</td><td>96 hours</td><td>384 core hours</td></tr>
+</table>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
 <slide class="lehigh" id="slide-21" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Queues on Faculty Clusters</h2>
+  </hgroup>
+  <article data-timings="">
+    <table><thead>
+<tr>
+<th align="center">Cluster</th>
+<th align="center">Queue</th>
+<th align="center">Max Runtime</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="center">Pisces</td>
+<td align="center">normal</td>
+<td align="center">4 days</td>
+</tr>
+<tr>
+<td align="center">Monocacy</td>
+<td align="center">normal</td>
+<td align="center">4 days</td>
+</tr>
+<tr>
+<td align="center">Eigen</td>
+<td align="center">adf</td>
+<td align="center">14 days</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">normal</td>
+<td align="center">14 days</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">long</td>
+<td align="center">28 days</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="lehigh" id="slide-22" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>How much memory can I use?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>The amount of installed memory less the amount that is used by the operating system and other utilities</p></li>
+<li><p>A general rule of thumb on most HPC resources: leave 1-2GB for the OS to run. </p></li>
+<li><p>Sol: Max memory used per node should not exceed 126GB.</p>
+
+<ul>
+<li>20-core nodes have ~6.4GB/core
+
+<ul>
+<li>max memory 6.3GB/core</li>
+</ul></li>
+<li>24-core nodes have ~5.3GB/core
+
+<ul>
+<li>max memory 5.25GB/core</li>
+</ul></li>
+</ul></li>
+<li><p>Maia: Users need to specify memory required in their submit script. Max
+memory that should be requested is 126GB.</p></li>
+</ul>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="lehigh" id="slide-23" style="background:#F1E7C8;">
   <hgroup class=rcr>
     <h2>Minimal submit script for Serial Jobs</h2>
   </hgroup>
@@ -790,7 +874,7 @@ cd ${SLURM_SUBMIT_DIR}
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="lehigh" id="slide-22" style="background:#F1E7C8;">
+<slide class="lehigh" id="slide-24" style="background:#F1E7C8;">
   <hgroup class=rcr>
     <h2>Minimal submit script for MPI Jobs on Sol</h2>
   </hgroup>
@@ -818,7 +902,7 @@ exit
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="lehigh" id="slide-23" style="background:#F1E7C8;">
+<slide class="lehigh" id="slide-25" style="background:#F1E7C8;">
   <hgroup class=rcr>
     <h2>Minimal submit script for OpenMP Jobs on Corona</h2>
   </hgroup>
@@ -847,7 +931,7 @@ exit
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="lehigh small" id="slide-24" style="background:#F1E7C8;">
+<slide class="lehigh small" id="slide-26" style="background:#F1E7C8;">
   <hgroup class=rcr>
     <h2>Useful PBS Directives</h2>
   </hgroup>
@@ -894,7 +978,7 @@ exit
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="lehigh small" id="slide-25" style="background:#F1E7C8;">
+<slide class="lehigh small" id="slide-27" style="background:#F1E7C8;">
   <hgroup class=rcr>
     <h2>Useful SLURM Directives</h2>
   </hgroup>
@@ -944,7 +1028,7 @@ exit
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="lehigh" id="slide-26" style="background:#F1E7C8;">
+<slide class="lehigh" id="slide-28" style="background:#F1E7C8;">
   <hgroup class=rcr>
     <h2>Useful PBS/SLURM environmental variables</h2>
   </hgroup>
@@ -989,48 +1073,51 @@ exit
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="lehigh" id="slide-27" style="background:#F1E7C8;">
+<slide class="lehigh" id="slide-29" style="background:#F1E7C8;">
   <hgroup class=rcr>
-    <h2>Submitting &amp; Monitoring Jobs</h2>
+    <h2>Basic Job Manager Commands</h2>
   </hgroup>
   <article data-timings="">
-    <table>
-<tr><th>PBS Command</th><th>Description</th><th>SLURM Command</th></tr>
-<tr>
-  <td><code>qsub filename</code></td><td>Submit <em>filename</em> to job scheduler</td><td><code>sbatch filename</code></td>
-</tr>
-<tr>
-  <td><code>qstat</code> </td><td>check job status (all jobs)</td><td><code>squeue</code></td>
-</tr>
-<tr>
-  <td><code>qstat -u username</code></td><td>check job status of user <em>username</em></td><td><code>squeue -u username</code></td>
-</tr>
-<tr>
-  <td><code>qstat -a</code></td><td>More information than that given by <em>qstat</em></td><td><code>squeue -l</code></td>
-</tr>
-<tr>
-  <td><code>qdel jobid</code></td><td>Cancel your job identified by <em>jobid</em></td><td><code>scancel jobid</code></td>
-</tr>
-<tr>
-  <td><code>showstart jobid</code></td><td>Show <strong>estimated</strong> start time of job identified by <em>jobid</em></td><td><code>squeue --start</code></td>
-</tr>
-<tr>
-  <td><code>checkjob jobid</code></td><td>Check status of your job identified by <em>jobid</em></td><td><code>scontrol show job jobid</code></td>
-</tr>
-<tr>
-  <td><code>qhold jobid</code></td><td>Put your job identified by <em>jobid</em> on hold</td><td><code>scontrol hold jobid</code></td>
-</tr>
-<tr>
-  <td><code>qrls jobid</code></td><td>Release the hold that <strong>you put</strong> on <em>jobid</em></td><td><code>scontrol release jobid</code></td>
-</tr>
-</table>
+    <ul>
+<li>Submission</li>
+<li>Monitoring</li>
+<li>Manipulating</li>
+<li>Reporting</li>
+</ul>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="lehigh" id="slide-30" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Job Types</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Interactive Jobs</p>
 
 <ul>
-<li><code>qsub</code> and <code>sbatch</code> can take the options for  <code>#PBS</code> and <code>#SBATCH</code> as command line arguments
+<li>Set up an interactive environment on compute nodes for users</li>
+<li>Purpose: testing and debugging code. <strong>Do not run jobs on head node!!!</strong></li>
+<li>PBS: <code>qsub -I -V walltime=&lt;hh:mm:ss&gt;,nodes=&lt;# of nodes&gt;:ppn=&lt;# of core/node&gt; -q &lt;queue
+name&gt;</code></li>
+<li>SLURM: <code>srun --time=&lt;hh:mm:ss&gt; --nodes=&lt;# of nodes&gt; --ntasks-per-node=&lt;#
+of core/node&gt; -p &lt;queue name&gt; --pty /bin/bash --login</code></li>
+</ul></li>
+<li><p>Batch Jobs</p>
 
 <ul>
-<li><code>qsub -l walltime=1:00:00,nodes=1:ppn=16 -q normal filename</code></li>
-<li><code>sbatch --time=1:00:00 --nodes=1 --ntasks-per-node=20 -p lts filename</code> </li>
+<li>Executed using a batch script without user intervention
+
+<ul>
+<li>Advantage: system takes care of running the job</li>
+<li>Disadvantage: cannot change sequence of commands after submission</li>
+</ul></li>
+<li>Useful for Production runs</li>
 </ul></li>
 </ul>
 
@@ -1041,9 +1128,188 @@ exit
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="lehigh" id="slide-28" style="background:#F1E7C8;">
+<slide class="lehigh" id="slide-31" style="background:#F1E7C8;">
   <hgroup class=rcr>
-    <h2>Contact Us</h2>
+    <h2>Submitting Batch Jobs</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>PBS: <code>qsub filename</code></li>
+<li><p>SLURM: <code>sbatch filename</code></p></li>
+<li><p><code>qsub</code> and <code>sbatch</code> can take the options for <code>#PBS</code> and <code>#SBATCH</code> as command line arguments</p>
+
+<ul>
+<li><code>qsub -l walltime=1:00:00,nodes=1:ppn=16 -q normal filename</code></li>
+<li><code>sbatch --time=1:00:00 --nodes=1 --ntasks-per-node=20 -p lts filename</code> </li>
+</ul></li>
+<li><p>SLURM can also take short hand notation for the directives</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th align="center">Long Form</th>
+<th align="center">Short Form</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="center">--partition=queuename</td>
+<td align="center">-p queuename</td>
+</tr>
+<tr>
+<td align="center">--time=hh:mm:ss</td>
+<td align="center">-t hh:mm:ss</td>
+</tr>
+<tr>
+<td align="center">--nodes=m</td>
+<td align="center">-N m</td>
+</tr>
+<tr>
+<td align="center">--ntasks-per-node=n</td>
+<td align="center">-n n</td>
+</tr>
+<tr>
+<td align="center">--ntasks=n</td>
+<td align="center">-n n</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="lehigh" id="slide-32" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Monitoring &amp; Manipulating Jobs</h2>
+  </hgroup>
+  <article data-timings="">
+    <table>
+<tr><th>PBS Command</th><th>Description</th><th>SLURM Command</th></tr>
+<tr>
+  <td><code>qstat</code> </td><td>check job status (all jobs)</td><td><code>squeue</code></td>
+</tr>
+<tr>
+  <td><code>qstat -u username</code></td><td>check job status of user <em>username</em></td><td><code>squeue -u username</code></td>
+</tr>
+<tr>
+  <td><code>qstat -a</code></td><td>More information than that given by <em>qstat</em></td><td><code>squeue -l</code></td>
+</tr>
+<tr>
+  <td><code>showstart jobid</code></td><td>Show <strong>estimated</strong> start time of job identified by <em>jobid</em></td><td><code>squeue --start</code></td>
+</tr>
+<tr>
+  <td><code>checkjob jobid</code></td><td>Check status of your job identified by <em>jobid</em></td><td><code>scontrol show job jobid</code></td>
+</tr>
+<tr>
+  <td><code>qdel jobid</code></td><td>Cancel your job identified by <em>jobid</em></td><td><code>scancel jobid</code></td>
+</tr>
+<tr>
+  <td><code>qhold jobid</code></td><td>Put your job identified by <em>jobid</em> on hold</td><td><code>scontrol hold jobid</code></td>
+</tr>
+<tr>
+  <td><code>qrls jobid</code></td><td>Release the hold that <strong>you put</strong> on <em>jobid</em></td><td><code>scontrol release jobid</code></td>
+</tr>
+</table>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="lehigh" id="slide-33" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Usage Reporting</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><a href="http://slurm.schedmd.com/sacct.html">sacct</a>: displays accounting data for all jobs and job steps in the SLURM job accounting log or Slurm database</li>
+<li><p><a href="http://slurm.schedmd.com/sshare.html">sshare</a>: Tool for listing the shares of associations to a cluster. </p></li>
+<li><p>We have created scripts based on these to provide usage reporting</p>
+
+<ul>
+<li> <code>alloc_summary.sh</code>
+
+<ul>
+<li>included in your .bash_profile</li>
+<li>prints allocation usage on your login shell</li>
+</ul></li>
+<li> <code>balance</code>
+
+<ul>
+<li>prints allocation usage summary</li>
+</ul></li>
+<li> <code>solreport</code>
+
+<ul>
+<li>obtain your monthly usage report</li>
+<li>PIs can obtain usage report for all or specific users on their
+allocation</li>
+<li>use <code>--help</code> for usage information</li>
+</ul></li>
+</ul></li>
+</ul>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="lehigh" id="slide-34" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Usage Reporting</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img width = '960px' src = 'assets/img/slurmreport.png'> </p>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="lehigh" id="slide-35" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Not for the faint hearted</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>You have multiple jobs that need to be run in sequence</li>
+<li>Option 1: Submit jobs as soon as previous jobs complete</li>
+<li><p>Option 2: Submit jobs with a dependency</p>
+
+<ul>
+<li><a href="https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=slurm#submitting_dependency_jobs">SLURM</a>:
+<code>sbatch --dependency=afterok:&lt;JobID&gt; &lt;Submit Script&gt;</code></li>
+<li><a href="https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=corona#submitting_dependency_jobs">PBS</a>:
+<code>qsub -W depend=afterok:&lt;JobID&gt; &lt;Submit Script&gt;</code></li>
+</ul></li>
+<li><p>You want to run several serial processor jobs on</p>
+
+<ul>
+<li>one node: your submit script should be able to run several serial
+jobs in background and then use the <code>wait</code> command for all jobs to finish</li>
+<li>more than one node: this requires some background in scripting but the
+idea is the same as above</li>
+</ul></li>
+</ul>
+
+  </article>
+  <footer class=rcr>
+    <img src='assets/img/lulogo.jpg'></img>
+  </footer>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="lehigh" id="slide-36" style="background:#F1E7C8;">
+  <hgroup class=rcr>
+    <h2>Additional Help &amp; Information</h2>
   </hgroup>
   <article data-timings="">
     <ul>
@@ -1052,19 +1318,12 @@ exit
 <ul>
 <li>Open a help ticket: <a href="http://go.lehigh.edu/rchelp">http://go.lehigh.edu/rchelp</a></li>
 </ul></li>
-<li>My contact info
-
-<ul>
-<li>eMail:  <a href="mailto:alp514@lehigh.edu">alp514@lehigh.edu</a></li>
-<li>Tel: (610) 758-6735 </li>
-<li>Location: Room 296, EWFM Computing Center</li>
-<li><a href="https://www.google.com/calendar/embed?src=alp514%40lehigh.edu&amp;ctz=America/New_York">My Schedule</a></li>
-</ul></li>
 <li>More Information
 
 <ul>
 <li><a href="https://researchcomputing.lehigh.edu">Research Computing</a></li>
 <li><a href="https://researchcomputing.lehigh.edu/training">Research Computing Training</a></li>
+<li><a href="https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php">Research Computing Wiki</a></li>
 </ul></li>
 <li>Subscribe
 
@@ -1099,49 +1358,49 @@ exit
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='Account Management'>
+        data-slide=3 title='LTS Managed Faculty Resources'>
          3
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='Allocation Charges'>
+        data-slide=4 title='Account Management'>
          4
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='Accessing Research Computing Resources'>
+        data-slide=5 title='Allocation Charges'>
          5
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=6 title='Software available on HPC systems'>
+        data-slide=6 title='Accessing Research Computing Resources'>
          6
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=7 title='Software on Sol'>
+        data-slide=7 title='Software available on HPC systems'>
          7
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='Module Command'>
+        data-slide=8 title='Software on Sol'>
          8
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='Installed Software'>
+        data-slide=9 title='Module Command'>
          9
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='More Software'>
+        data-slide=10 title='Installed Software'>
          10
       </a>
     </li>
@@ -1153,104 +1412,152 @@ exit
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='Module File Example'>
+        data-slide=12 title='More Software'>
          12
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=13 title='Cluster Environment'>
+        data-slide=13 title='Module File Example'>
          13
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=14 title='How to run jobs'>
+        data-slide=14 title='Cluster Environment'>
          14
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=15 title='Batch Queuing System'>
+        data-slide=15 title='How to run jobs'>
          15
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=16 title='Job Scheduling'>
+        data-slide=16 title='Batch Queuing System'>
          16
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=17 title='Backfilling'>
+        data-slide=17 title='Job Scheduling'>
          17
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=18 title='Available Queues'>
+        data-slide=18 title='Backfilling'>
          18
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=19 title='How much memory can I use?'>
+        data-slide=19 title='How much time must I request'>
          19
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=20 title='How much time must I request'>
+        data-slide=20 title='Available Queues'>
          20
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=21 title='Minimal submit script for Serial Jobs'>
+        data-slide=21 title='Queues on Faculty Clusters'>
          21
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=22 title='Minimal submit script for MPI Jobs on Sol'>
+        data-slide=22 title='How much memory can I use?'>
          22
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=23 title='Minimal submit script for OpenMP Jobs on Corona'>
+        data-slide=23 title='Minimal submit script for Serial Jobs'>
          23
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=24 title='Useful PBS Directives'>
+        data-slide=24 title='Minimal submit script for MPI Jobs on Sol'>
          24
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=25 title='Useful SLURM Directives'>
+        data-slide=25 title='Minimal submit script for OpenMP Jobs on Corona'>
          25
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=26 title='Useful PBS/SLURM environmental variables'>
+        data-slide=26 title='Useful PBS Directives'>
          26
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=27 title='Submitting &amp; Monitoring Jobs'>
+        data-slide=27 title='Useful SLURM Directives'>
          27
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=28 title='Contact Us'>
+        data-slide=28 title='Useful PBS/SLURM environmental variables'>
          28
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=29 title='Basic Job Manager Commands'>
+         29
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=30 title='Job Types'>
+         30
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=31 title='Submitting Batch Jobs'>
+         31
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=32 title='Monitoring &amp; Manipulating Jobs'>
+         32
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=33 title='Usage Reporting'>
+         33
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=34 title='Usage Reporting'>
+         34
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=35 title='Not for the faint hearted'>
+         35
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=36 title='Additional Help &amp; Information'>
+         36
       </a>
     </li>
   </ul>
