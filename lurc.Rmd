@@ -32,8 +32,7 @@ license     : by-sa
 
 * Hardware Support
   - Provide system administration and support for Lehigh's HPC clusters.
-     - 6 University owned and 4 Faculty owned 
-     - 4 University owned clusters to be decommissioned on Dec. 31, 2016.
+     - 2 University owned and 4 Faculty owned 
   - Assist with purchase, installation and administration of servers and clusters.
 * Data Storage
   - Provide data management services including storing and sharing data. 
@@ -48,7 +47,7 @@ license     : by-sa
 ## Research Computing Resources
 
 * <strong> Maia </strong>
-  - Free 32-core Symmetric Multiprocessor (SMP) system available to all Lehigh Faculty, Staff and Students
+  - 32-core Symmetric Multiprocessor (SMP) system available to all Lehigh Faculty, Staff and Students
   - dual 16-core AMD Opteron 6380 2.5GHz CPU
   - 128GB RAM and 4TB HDD
   - Theoretical Performance: 640 GFLOPs (640 billion floating point operations per second)
@@ -67,48 +66,32 @@ license     : by-sa
 
 * <strong> Sol </strong>
   - Lehigh's Flagship High Performance Computing Cluster
-  - 8 nodes, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 25MB Cache
-  - Condo Investors
-     - Dimitrios Vavylonis, Physics
-          - 1 node, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 25MB Cache
-     - Wonpil Im, Biological Sciences
-          - 25 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache
+  - 9 nodes, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 25MB Cache
+  - 25 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache
+     - Two nVIDIA GTX 1080 GPU cards per node
+  - 6 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache
   - 128 GB RAM and 1TB HDD per node
   - 2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric
-  - Theoretical Performance: 28.7 TFLOPs
+  - Theoretical Performance: 34.003 TFLOPs (CPU) + 12.850 TFLOPs (GPU)
+      - The GTX GPUs provide 443.65 TFLOPs of single precision processing.
+      - Double precision performance from each GTX card is 257 GFLOPs compared to 736(883.2) GFLOPs from each 20(24)-core node.
   - Access: Batch Scheduled, interactive on login node for compiling, editing only
   
 
 --- .lehigh
 
-## Research Computing Resources
-
-* Resources due for retirement on December 31, 2016.
-* Available only to FY 2015-16 users
-* <strong> Corona </strong>
-  - 40 nodes, dual 8-core AMD Opteron 6128 2GHz CPU, 32GB RAM and 1TB HDD
-  - 24 nodes, dual 8-core AMD Opteron 6128 2GHz CPU, 64GB RAM and 2TB HDD, 
-      - Infiniband QDR (40Gb/s) interconnect fabric.
-  - Theoretical Performance: 8.2TFlops (8.2 trillion Flops)
-
-* <strong> Trit </strong>: Three SunFire x2270 Servers with  dual 4-core Intel Xeon X5570, 2.95GHz, 48GB RAM, 500GB HDD
-* <strong> Capella </strong>: One node, quad 4-core AMD Opteron 8384, 2GHz, 64GB RAM, 2x 146GB HDD
-* <strong> Cuda0 </strong>: One node, 6-core Intel Xeon X5650, 2.66GHz, 24GB RAM, 200GB HDD, 4 nVIDIA Fermi Devices (C2050, C2070, 2x M2070)
-
---- .lehigh
-
 ## LTS Managed Faculty Resources 
 
-* Ben Felzer, Earth & Environmental Sciences
+* Monocacy - Ben Felzer, Earth & Environmental Sciences
   - Eight nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
      * Theoretical Performance: 2.662TFlops
-* Heather Jaeger, Chemistry
+* Eigen - Heather Jaeger, Chemistry
   - Twenty nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
      * Theoretical Performance: 6.656TFlops
-* Jonas Baltrusaitis, Chemical Engineering
+* Baltrusaitislab - Jonas Baltrusaitis, Chemical Engineering
   - Three nodes, dual 16-core AMD Opteron 6376, 2.3Ghz, 128GB RAM
      * Theoretical Performance: 1.766TFlops
-* Keith Moored, Mechanical Engineering and Mechanics
+* Pisces - Keith Moored, Mechanical Engineering and Mechanics
   - Six nodes, dual 10-core Intel Xeon E5-2650v3, 2.3GHz, 64GB RAM, nVIDIA Tesla K80
      * Theoretical Performance: 4.416 TFlops (CPU) + 17.46TFlops (GPU)
 
@@ -121,8 +104,8 @@ license     : by-sa
    - Click on the big blue button "Start Special Account Request" > Research Computing Account 
    - Maia
        - Click on "FREE Linux command-line computing"
-   - Sol
-       - Click on "Fee-based research computing"
+   - Sol: PIs should contact Alex Pacheco or Steve Anthony, web request is not functional
+       - ~~Click on "Fee-based research computing"~~ 
        - Annual charge of \$50/account paid by Lehigh Faculty or Research Staff, and
        - Annual charge for computing time
 
@@ -133,8 +116,6 @@ license     : by-sa
 * Cost per core-hour or service unit (SU) is 1&cent;
 * SU is defined as 1 hour of computing on 1 core of the Sol base compute node.
    - One base compute node of Sol consumes 20 SU/hour, 480 SU/day and 175,200 SU/year
-* No free usage if allocation balance is zero
-
 
 * PIs can share allocations with their collaborators
    - Minimum Annual Purchase of 50,000 SU - &#36;500/year
@@ -162,7 +143,6 @@ license     : by-sa
      * If rolling allocation cycle is implemented, then all 100K SUs (<span class="txtbull">&#x2776;</span> and <span class="txtbull">&#x2777;</span>) must be used up within 1 year of initial 50K purchase.
 
 * Need more than 175K SU/year or
-* Do not think 1.4M SUs are enough for all HPC users, then
 * BECOME A CONDO INVESTOR
  
 
@@ -189,14 +169,13 @@ license     : by-sa
 
 * Two at initial launch 
    - Dimitrios Vavylonis, Physics
-       - One dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 25MB Cache
-       - Annual Allocation: 175,200 SUs
    - Wonpil Im, Biological Sciences
-       - 25 dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache
-       - Annual Allocation: 5,256,000 SUs
+* Acquisition in progress
+   - Anand Jagota, Chemical Engineering
+   - Ed Webb & Alp Oztekin, Mechanical Engineering
 
-* Total SU on Sol after Condo Investments: 6,832,800
-* Available capacity for additional investments: 38
+* Total SU on Sol after Condo Investments: 8,094,240
+* Available capacity for additional investments: 21
 
 --- .lehigh
 
@@ -236,11 +215,11 @@ license     : by-sa
 
 * Research Computing Resources; Sol, Maia & Ceph are available for use in registrar scheduled classes.
 * __Maia__: No charge, no special considerations
-* __Sol__: Charging scheme for Sol has not been set. The following is a tentative scheme based on Corona&#39;s charging scheme:
-   * 1TB Ceph space per course.
-   * 15,000 SUs per course.
-   * Usage Charge: &#36;350 paid for by department.
-   * Account Charge: &#36;10 per account paid for by department
+* __Sol__: Provides  
+   * 1TB Ceph space per course ($200 paid by department)
+   * An account per student ($15/student) paid by department that provides 500SUs per student
+      - Allocations are given for the whole class based on number of students
+      - Additional allocations can be purchased in blocks of 1000 SUs @ $10/block upto 10K SU
    * Accounts valid for current semester plus an additional two weeks
 * __Ceph__: 
    * &#36;200 per TB per course.
@@ -250,9 +229,9 @@ license     : by-sa
 
 ## Available Software
 
-* Commercial and Free, Open source software is installed on
-  - Maia: /zhome/Apps
-  - Sol: /share/Apps
+* Commercial, Free and Open source software is installed on
+  - [Maia](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=maia#installed_software): /zhome/Apps
+  - [Sol](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=sol#installed_software): /share/Apps
 * Software is managed using module environment
   - Why? We may have different versions of same software or software built with different compilers
   - Module environment allows you to dynamically change your *nix environment based on software being used
@@ -302,14 +281,14 @@ license     : by-sa
 *** =right width:45%
 
 * Computational Fluid Dynamics
-  - *Abaqus*
+  - Abaqus
   - Ansys
   - Comsol
   - OpenFOAM
   - OpenSees
 * Math
   - GNU Octave
-  - *Magma*
+  - Magma
   - Maple
   - Mathematica
   - Matlab
@@ -328,6 +307,7 @@ license     : by-sa
   - GNU
   - Intel
   - PGI
+  - CUDA
 * Parallel Programming
   - MVAPICH2
 
@@ -359,8 +339,6 @@ license     : by-sa
   - VMD
 * Other Tools
   - CMake
-  - *Gams*
-  - *Gurobi* 
   - Scons
 
 *** =right width:70%
