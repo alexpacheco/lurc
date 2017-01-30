@@ -22,7 +22,7 @@ license     : by-sa
   
 * Research Computing Staff
   - __Alex Pacheco, Manager &#38; XSEDE Campus Champion__
-  - Steve Anthony, HPC User Support & System Administrator
+  - Steve Anthony, System Administrator
   - Dan Brashler, Computing Consultant
   - Mary Jo Schulze, Software Specialist
 
@@ -68,8 +68,8 @@ license     : by-sa
   - Lehigh's Flagship High Performance Computing Cluster
   - 9 nodes, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 25MB Cache
   - 25 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache
-     - Two nVIDIA GTX 1080 GPU cards per node
-  - 6 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache
+     - *Two* nVIDIA GTX 1080 GPU cards per node
+  - *6 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache*
   - 128 GB RAM and 1TB HDD per node
   - 2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric
   - Theoretical Performance: 34.003 TFLOPs (CPU) + 12.850 TFLOPs (GPU)
@@ -82,18 +82,34 @@ license     : by-sa
 
 ## LTS Managed Faculty Resources 
 
-* Monocacy - Ben Felzer, Earth & Environmental Sciences
+* __Monocacy__ - Ben Felzer, Earth & Environmental Sciences
   - Eight nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
      * Theoretical Performance: 2.662TFlops
-* Eigen - Heather Jaeger, Chemistry
+* __Eigen__ - Heather Jaeger, Chemistry
   - Twenty nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
      * Theoretical Performance: 6.656TFlops
-* Baltrusaitislab - Jonas Baltrusaitis, Chemical Engineering
+* __Baltrusaitislab__ - Jonas Baltrusaitis, Chemical Engineering
   - Three nodes, dual 16-core AMD Opteron 6376, 2.3Ghz, 128GB RAM
      * Theoretical Performance: 1.766TFlops
-* Pisces - Keith Moored, Mechanical Engineering and Mechanics
+* __Pisces__ - Keith Moored, Mechanical Engineering and Mechanics
   - Six nodes, dual 10-core Intel Xeon E5-2650v3, 2.3GHz, 64GB RAM, nVIDIA Tesla K80
      * Theoretical Performance: 4.416 TFlops (CPU) + 17.46TFlops (GPU)
+
+
+
+--- .lehigh
+
+## Total Computational Resources Supported
+
+* CPU
+  * Cores: 1620
+  * Memory: 7.808 TB
+  * Performance: 50.143 TFLOPs
+* GPU
+  * CUDA Cores: 157952
+  * Memory: 544 GB
+  * Performance: 30.310 TFLOPs
+
 
 --- .lehigh
 
@@ -172,24 +188,14 @@ license     : by-sa
    - Wonpil Im, Biological Sciences
 * Acquisition in progress
    - Anand Jagota, Chemical Engineering
+   - Brian Chen, Computer Science & Engineering
    - Ed Webb & Alp Oztekin, Mechanical Engineering
 
-* Total SU on Sol after Condo Investments: 8,094,240
+* Total SU on Sol after Condo Investments: 8,164,320
 * Available capacity for additional investments: 21
-
---- .lehigh
-
-## Accessing Research Computing Resources
-
-* All Research Computing resources are accessible using ssh while on Lehigh's network
-* Sol: `ssh username@sol.cc.lehigh.edu`
-* Maia: No direct access to Maia, instead login to the polaris
-* Polaris: `ssh username@polaris.cc.lehigh.edu`
-  - Polaris is a gateway that also hosts the batch scheduler for Maia.
-  - No computing software including compilers is available on Polaris.
-  - Login to Polaris and request computing time on Maia including interactive access.
-* If you are not on Lehigh's network, login to the ssh gateway to get to Research Computing resources.
-  - `ssh username@ssh.cc.lehigh.edu`
+   * Acquisition being planned
+      - Jeetain Mittal & Srinivas Rangarajan, Chemical Engineering
+      - Seth Richards-Shubik, Economics
 
 --- .lehigh
 
@@ -224,6 +230,20 @@ license     : by-sa
 * __Ceph__: 
    * &#36;200 per TB per course.
    * Paid for by department.
+
+--- .lehigh
+
+## Accessing Research Computing Resources
+
+* All Research Computing resources are accessible using ssh while on Lehigh's network
+* Sol: `ssh username@sol.cc.lehigh.edu`
+* Maia: No direct access to Maia, instead login to the polaris
+* Polaris: `ssh username@polaris.cc.lehigh.edu`
+  - Polaris is a gateway that also hosts the batch scheduler for Maia.
+  - No computing software including compilers is available on Polaris.
+  - Login to Polaris and request computing time on Maia including interactive access.
+* If you are not on Lehigh's network, login to the ssh gateway to get to Research Computing resources.
+  - `ssh username@ssh.cc.lehigh.edu`
 
 --- .lehigh
 
@@ -365,6 +385,37 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 <img width = '900px' src = 'assets/img/mcr.png'>
 
 
+--- .lehigh
+
+## How to run jobs
+
+* All compute intensive jobs are batch scheduled
+* Write a script to submit jobs to a scheduler
+  - need to have some background in shell scripting (bash/tcsh)
+* Need to specify
+   - Resources required (which depends on configuration)
+       - number of nodes
+       - number of processes per node
+       - memory per node
+   - How long do you want the resources
+       - have an estimate for how long your job will run
+   - Which queue to submit jobs
+
+
+--- .lehigh
+
+## Batch Queuing System
+
+* A software that manages resources (CPU time, memory, etc) and schedules job execution
+   - Sol: Simple Linux Utility for Resource Management (SLURM)
+   - Others:  Portable Batch System (PBS)
+          - Scheduler: Maui
+          - Resource Manager: Torque
+          - Allocation Manager: Gold
+
+* More details in HPC Training scheduled for Feb. 27
+
+
 --- .lehigh &twocol_width
 
 ## XSEDE
@@ -403,7 +454,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 * Louisiana State University
    -  SuperMIC: 925 TFlops 
 * National Institute for Computational Sciences (NICS) 
-   - Darter: 248.9 TFlops
+   - Beacon: 210 TFlops
 
 --- .lehigh 
 
@@ -411,7 +462,6 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 
 * San Diego Supercomputing Center (SDSC) 
    - Comet: 2 PFlops
-   - Gordon: 341 TFlops
 
 * Indiana University 
    - Jetstream: a cloud-based, on-demand system for 24/7 access
@@ -459,6 +509,7 @@ and high-throughput computing and other digital services, opportunities and reso
   * [Proposal Assistance] (http://researchcomputing.lehigh.edu/services/proposalassist)
   * [Data Management Plans] (http://libraryguides.lehigh.edu/researchdatamanagement)
   * [Research Computing] (https://researchcomputing.lehigh.edu)
+  * [Research Computing Wiki] (https://go.lehigh.edu/rcwiki)
   * [Research Computing Training] (https://researchcomputing.lehigh.edu/training)
 
 
@@ -466,14 +517,15 @@ and high-throughput computing and other digital services, opportunities and reso
 
 ## Upcoming Training
 
-* CITL Classroom (EWFM 379) on Tuesdays from 2PM - 4PM and Zoom Webcast.
-  - Using SLURM scheduler on Sol (Oct. 4)
-  - Shell Scripting ( Oct. 11)
-  - Research Data Management (Oct. 25)
-  - Version Control with GIT (Nov. 1)
-  - MATLAB (Nov. 8)
-  - Enhancing Research Impact (Nov. 15)
-  - Python Programming(Nov. 22)
+* CITL Classroom (EWFM 379) on Mondays from 2:10PM - 4:00PM and Zoom Webcast.
+  - Storage Options at Lehigh (Feb 6)
+  - Linux: Basic Commands & Environment (Feb 13)
+  - Shell Scripting (Feb 20)
+  - Using SLURM scheduler on Sol (Feb 27)
+  - Research Data Management (Mar 6)
+  - Version Control with GIT (Mar 20)
+  - MATLAB (Mar 27)
+  - LaTeX (Apr 3)
 
 
 * Subscribe
