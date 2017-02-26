@@ -3,22 +3,25 @@ body{
   font-size: 1em;
   color: black;
 }
+
 .title-slide {
-  background-color: #663700; /* LU Brown */
+   /* background-color: #663700; /* LU Brown */
   /* background-color: #CBE7A5; #EDE0CF; ; #CA9F9D*/
   /* background-image:url(http://goo.gl/EpXln); */
+  background-image:url(https://webapps.lehigh.edu/~alp514/lutitle.png); */
 }
-
 
 .title-slide hgroup > h1, 
 .title-slide hgroup > h2,
 .title-slide hgroup > p {
  font-family: 'Georgia', 'Helvetica', sanserif; 
+ margin-left: -60px;
 }
 
 .title-slide hgroup > h1, 
 .title-slide hgroup > h2 {
   color: #FFFFFF; /*#535E43 ;  /* ; #EF5150*/
+/*  color: #F1E7C8;
 /*
   text-align: right;
   margin-right: 0px;
@@ -26,21 +29,21 @@ body{
 }
 
 .title-slide hgroup h1 {
-  font-size: 50px;
-  letter-spacing: -2px;
+  font-size: 3rem;
+  letter-spacing: -0px;
 /*
   text-align: right;
 */
 }
 .title-slide hgroup h2 {
-  font-size: 30px;
+  font-size: 2rem;
 /* 
   text-align: right;
 */
 }
 .title-slide hgroup > p {
   color: #F1E7C8;
-  font-size: 2rem;
+  font-size: 1rem;
 /*
   text-align: right;
   margin-right: 15px;
@@ -49,8 +52,8 @@ body{
 }
 
 aside.gdbar {
-  height:125px;
-  width: 215px;
+  height:5px;
+  width: 5px;
   position: absolute;
   left: -1px;
   top: 125px;
@@ -84,48 +87,41 @@ aside.gdbar img {
   height: 50px;
   position: absolute;
   right: 0;
-  margin: -50px 40px;
+  margin: -90px 40px;
+/*  margin: 8px 15px; */
 }
 
-.lehigh hgroup {
+.class hgroup {
   background: #663700;
   height: 80px;
   margin-left: -60px;
   margin-top: -40px;
   margin-right: -60px;
+  color: white;
 }
 
-.lehigh hgroup >  h2 {
+.class hgroup > h2 {
   color: white;
   padding-left: 10px;
   padding-top: 10px;
 }
- 
-.lehigh article {
-  height: 582px;
-  color: black;
-}
 
-.lehigh footer {
+.class footer {
   background: #502D0F;
-  margin-left: -60px;
-  margin-right: -60px;
+  padding-bottom: 10px;
+/*  margin-left: -60px;
+  margin-right: -60px; */
 }
 
-.lehigh footer img {
+.class footer img {
   height: 20px;  
 }
 
-.lehigh footer p {
+.class footer p {
   padding-left: 30px;
   background: #fff;
   color: #000;
-}
-
-#slide-14 pre {
-  font-size: 12px;
-  line-height: 15px;
-}
+}g
 
 .pagination {
    position: relative;
@@ -143,7 +139,7 @@ slides > slide:not(.nobackground):after {
   color: white;
   content: attr(data-slide-num) "/" attr(data-total-slides);
   position: absolute;
-  bottom: -4px;
+  bottom: -2px;
   right: 20px;
   line-height: 1.9;
 }
@@ -182,20 +178,22 @@ strong {
   font-weight: bold;
 }
 
+.tiny {font-size: 12px;}
+
 .small article { font-size: 12px;}
 
 .smaller pre {
   font-size: 8px;
   background-color: #e7e2d8;
 }
-`
+
 pre > code {
   font-size: 12px;
   background-color: #e7e2d8;
 }
 
 table th, table td {
-	text-align: center;
+  text-align: center;
 }
 
 table.pbs td:first-child {
@@ -205,3 +203,24 @@ table.pbs td:first-child {
 table.pbs td {
  text-align: left;
 }
+
+
+.lufoot {
+  font-size: 14px;
+  width: 100%;
+  /*color: #a9a9a9;*/
+  position: absolute;
+  bottom: -10px;
+  left: 0px;
+  right: 5px;
+}
+
+.lufoot img { padding-left: 5px; padding-top: 4px;}
+
+img.fullwidth {
+ float: center;
+ max-width: 100%;
+ height: auto;
+ margin: auto;
+}
+ 

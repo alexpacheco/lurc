@@ -10,7 +10,7 @@ hitheme     : tomorrow      #
 widgets     : [mathjax]            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 license     : by-sa
---- .lehigh
+--- .class #id
 
 ## Research Computing Resources
 
@@ -28,77 +28,123 @@ license     : by-sa
   [FLOPs for various AMD & Intel CPU generation](https://en.wikipedia.org/wiki/FLOPS#FLOPs_per_cycle)
 
 
---- .lehigh
+--- .class #id
 
 ## Research Computing Resources
 
 * <strong> Sol </strong> 
   - Lehigh's Flagship High Performance Computing Cluster
-  - 8 nodes, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 25MB Cache
-     - Each Intel Xeon E5-26xx v3 (Haswell) CPU is capable of 16 FLOPs
-  - Condo Investors
-     - Dimitrios Vavylonis, Physics
-          - 1 node, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 25MB Cache
-     - Wonpil Im, Biological Sciences
-          - 25 nodes, dual 12-core Intel Xeon E5-2670 v3 2.5Ghz CPU, 30 MB Cache
-  - 128 GB RAM and 1TB HDD per node
+  - 9 nodes, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 25MB Cache, 128GB
+    RAM
+  - 25 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache, 128GB
+    RAM
+     - Two nVIDIA GTX 1080 GPU cards per node
+  - Expansion by end of March
+     - 8 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache,
+       128GB RAM
+     - 13 nodes, dual 12-core Intel Xeon E5-2650 v4 2.2GHz CPU, 30 MB Cache,
+       64GB RAM
   - 2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric
-  - Theoretical Performance: 28.7 TFLOPs
+  - Theoretical Performance: 47.25 TFLOPs (CPU) + 12.850 TFLOPs (GPU)
+      - The GTX GPUs provide 443.65 TFLOPs of single precision processing but
+        only 257 GFLOPs of double precision processing
   - Access: Batch Scheduled, interactive on login node for compiling, editing only
 
---- .lehigh
+--- .class #id &twocol
+
+## Sol 
+
+*** =left
+
+<img class="fullwidth" src='assets/img/sol/20160509_140506.jpg'>
+
+*** =right
+
+<img class="fullwidth" src='assets/img/sol/20160509_141134.jpg'>
+
+--- .class #id &twocol
+
+## Sol 
+
+*** =left
+
+<img class="fullwidth" src='assets/img/sol/20160627_153416.jpg'>
+
+*** =right
+
+<img class="fullwidth" src='assets/img/sol/20160509_133642.jpg'>
+
+--- .class #id
+
+## Network Layout Sol &amp; Ceph Storage Cluster
+
+<img class="fullwidth" src='assets/img/hpcnetwork.png'>
+
+--- .class #id
 
 ## LTS Managed Faculty Resources 
 
-* <strong>Monocacy</strong>: Ben Felzer, Earth & Environmental Sciences
+* __Monocacy__: Ben Felzer, Earth & Environmental Sciences
   - Eight nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
      * Theoretical Performance: 2.662TFlops
-* <strong>Eigen</strong>: Heather Jaeger, Chemistry
+* __Eigen__: Heather Jaeger, Chemistry
   - Twenty nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
      * Theoretical Performance: 6.656TFlops
-* <strong>Baltrusaitislab</strong>: Jonas Baltrusaitis, Chemical Engineering
+* __Baltrusaitislab__: Jonas Baltrusaitis, Chemical Engineering
   - Three nodes, dual 16-core AMD Opteron 6376, 2.3Ghz, 128GB RAM
      * Theoretical Performance: 1.766TFlops
-* <strong>Pisces</strong>: Keith Moored, Mechanical Engineering and Mechanics
+* __Pisces__: Keith Moored, Mechanical Engineering and Mechanics
   - Six nodes, dual 10-core Intel Xeon E5-2650v3, 2.3GHz, 64GB RAM, nVIDIA Tesla K80
      * Theoretical Performance: 4.416 TFlops (CPU) + 17.46TFlops (GPU)
 
+--- .class #id
 
---- .lehigh
+## Total Computational Resources Supported
 
-## Account Management
+* CPU
+  * Cores: 1980
+  * Memory: 8.69 TB
+  * Performance: 63.39 TFLOPs
+* GPU
+  * CUDA Cores: 157952
+  * Memory: 544 GB
+  * Performance: 30.322 TFLOPs (463.816 SP TFLOPs)
+
+--- .class #id
+
+## Apply for an account
 
 * [Apply for an account at the LTS website] (https://idmweb.cc.lehigh.edu/accounts/?page=hpc)
    - Click on Services > Account & Password > Lehigh Computing Account > Request an account
    - Click on the big blue button "Start Special Account Request" > Research Computing Account 
    - Maia
        - Click on "FREE Linux command-line computing"
-   - Sol
-       - Click on "Fee-based research computing"
+   - Sol: PIs should contact Alex Pacheco or Steve Anthony, web request is not functional
+       - ~~Click on "Fee-based research computing"~~ 
        - Annual charge of \$50/account paid by Lehigh Faculty or Research Staff, and
        - Annual charge for computing time
+
 * Sharing of accounts is explicitly forbidden
 * Users need to be associated with an allocation to run jobs on Sol 
 
---- .lehigh
+--- .class #id
 
-## Allocation Charges
+## Allocation Charges - Effective Oct. 1, 2016
 
-* Allocation: Amount of computing time that your research group is allowed to
-  use in one year.
-* Service Unit (SU): 1 hour of computing on 1 core of Sol 
-* SU Charge: 1&cent; 
-* Annual minimum purchase of 50,000 SUs and increments of 10,000 SUs.
-   - paid for by your account sponsor
-   - Total available computing time for purchase annually: 1,401,600 SUs or 1 year of continous computing on 8 nodes
-* Condo Investors (Faculty who have increased Sol's capacity by purchasing 26 nodes)
-   - Provided with annual computing time equivalent to investment at no charge
-   - DV purchased 1 20-core node is provided with 175,000 SUs annually
-   - WI purchased 25 24-core nodes is provided with 5,256,000 SUs annually
-   - Can purchase additional SUs in increments of 10,000 SUs if required
+* Cost per core-hour or service unit (SU) is 1&cent;
+* SU is defined as 1 hour of computing on 1 core of the Sol base compute node.
+   - One base compute node of Sol consumes 20 SU/hour, 480 SU/day and 175,200 SU/year
+
+* PIs can share allocations with their collaborators
+   - Minimum Annual Purchase of 50,000 SU - &#36;500/year
+   - Additional Increments of 10,000 SU - &#36;100 per 10K increments
+   - Fixed Allocation cycle: Oct 1 - Sep 30
+   - Unused allocations do not rollover to next allocation cycle
+   - <em>Working on implementing a rolling allocation cycle, only for minimum purchase.</em>
+   - Total available computing time for purchase annually: 1.4M SUs or 1 year of continous computing on 8 nodes
 * __No 'free' computing time provided once allocation has been expended__
 
---- .lehigh
+--- .class #id
 
 ## Accessing Research Computing Resources
 
@@ -112,43 +158,43 @@ license     : by-sa
 * If you are not on Lehigh's network, login to the ssh gateway to get to Research Computing resources
   - `ssh username@ssh.cc.lehigh.edu`
 
---- .lehigh
+--- .class #id
 
-## Software available on HPC systems
+## Available Software
 
-* Software on Sol is compiled for modern cpus and is available at /share/Apps
+* Commercial, Free and Open source software is installed on
+  - [Maia](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=maia#installed_software): /zhome/Apps
+  - [Sol](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=sol#installed_software): /share/Apps
 * Software is managed using module environment
   - Why? We may have different versions of same software or software built with different compilers
   - Module environment allows you to dynamically change your *nix environment based on software being used
   - Standard on many University and national High Performance Computing resource since circa 2011
 
-
---- .lehigh
+--- .class #id
 
 ## Software on Sol
 
 <img width = '960px' src = 'assets/img/sol-module.png'>
 
---- .lehigh
+--- .class #id
 
 ## Module Command
 
-<table>
-<tr><th width="300px">Command</th><th>Description</th></tr>
-<tr><td><code>module avail</code></td><td> show list of software available on resource</td></tr>
-<tr><td><code>module load abc</code></td><td> add software <code>abc</code> to your environment (modify your <code>PATH</code>, <code>LD_LIBRARY_PATH</code> etc as needed)</td></tr>
-<tr><td><code>module unload abc</code></td><td> remove <code>abc</code> from your envionment</td></tr>
-<tr><td><code>module swap abc1 abc2</code></td><td> swap <code>abc1</code> with <code>abc2</code> in your environment</td></tr>
-<tr><td><code>module purge</code></td><td> remove all modules from your environment</td></tr>
-<tr><td><code>module show abc</code></td><td> display what variables are added or modified in your environment</td></tr>
-<tr><td><code>module help abc</code></td><td> display help message for the module <code>abc</code></td></tr>
-</table>
+| Command | Description |
+|:-------:|:-----------:|
+| <code>module avail</code> | show list of software available on resource |
+| <code>module load abc</code> | add software <code>abc</code> to your environment (modify your <code>PATH</code>, <code>LD_LIBRARY_PATH</code> etc as needed) |
+| <code>module unload abc</code> | remove <code>abc</code> from your envionment |
+| <code>module swap abc1 abc2</code> | swap <code>abc1</code> with <code>abc2</code> in your environment |
+| <code>module purge</code> | remove all modules from your environment |
+| <code>module show abc</code> | display what variables are added or modified in your environment |
+| <code>module help abc</code> | display help message for the module <code>abc</code> |
 
 * Users who prefer not to use the module environment will need to modify their
   .bashrc or .tcshrc files. Run `module show` for list variables that need
   modified, appended or prepended
 
---- .lehigh &twocol_width
+--- .class #id &twocol_width
 
 ## Installed Software
 
@@ -170,19 +216,19 @@ license     : by-sa
 *** =right width:45%
 
 * Computational Fluid Dynamics
-  - *Abaqus*
+  - Abaqus
   - Ansys
   - Comsol
   - OpenFOAM
   - OpenSees
 * Math
   - GNU Octave
-  - *Magma*
+  - Magma
   - Maple
   - Mathematica
   - Matlab
 
---- .lehigh  &twocol_width
+--- .class #id  &twocol_width
 
 ## More Software
 
@@ -196,6 +242,7 @@ license     : by-sa
   - GNU
   - Intel
   - PGI
+  - CUDA
 * Parallel Programming
   - MVAPICH2
 
@@ -214,7 +261,7 @@ license     : by-sa
   - SuiteSparse
   - SuperLU
 
---- .lehigh &twocol_width
+--- .class #id &twocol_width
  
 ## More Software
 
@@ -227,7 +274,6 @@ license     : by-sa
   - VMD
 * Other Tools
   - CMake
-  - Gams
   - Gurobi 
   - Scons
 
@@ -248,13 +294,13 @@ license     : by-sa
 export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 ```
 
---- .lehigh
+--- .class #id
 
 ## Module File Example
 
 <img width = '900px' src = 'assets/img/mcr.png'>
 
---- .lehigh &twocol_width
+--- .class #id &twocol_width
 
 ## Cluster Environment
 
@@ -272,10 +318,10 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 
 *** =right width:65%
 
-<img width = '640px' src = 'assets/img/cluster.png'>
+<img width = '640px' src = 'assets/img/solnetwork.png'>
 
 
---- .lehigh
+--- .class #id
 
 ## How to run jobs
 
@@ -292,7 +338,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
    - Which queue to submit jobs
 
 
---- .lehigh
+--- .class #id
 
 ## Batch Queuing System
 
@@ -311,7 +357,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 
 
 
---- .lehigh &twocol_width
+--- .class #id &twocol_width
  
 ## Job Scheduling
 
@@ -330,7 +376,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 <img width = '440px' src = 'assets/img/JobSchedule-1.png'>
 
 
---- .lehigh &twocol_width
+--- .class #id &twocol_width
  
 ## Backfilling
 
@@ -345,7 +391,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 
 
 
---- .lehigh &twocol_width
+--- .class #id &twocol_width
  
 ## How much time must I request
 
@@ -362,29 +408,28 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 <img width = '360px' src = 'assets/img/JobSchedule-4.png'>
 
 
---- .lehigh
+--- .class #id .small
 
 ## Available Queues
 
 * Sol
 
-<table>
-<tr><th>Queue Name</th><th>Max Runtime</th><th>Total Nodes</th><th>Max nodes per job</th><th>SU consumed per hour</th></tr>
-<tr><td>lts</td><td>72 hours</td><td>9</td><td>4</td><td>20</td></tr>
-<tr><td>bio</td><td>48 hours</td><td>25</td><td>4</td><td>24</td></tr>
-</table>
+| Queue Name | Max Runtime in hours | Max SU consumed node per hour |
+|:----------:|:--------------------:|:--------------------:|
+| lts | 72 | 20 |
+| imlab | 48 | 22 | 
+| imlab-gpu | 48 | 24 |
 
 
 * Maia
 
-<table>
-<tr><th>Queue Name</th><th>Max Runtime</th><th>Max Simultaneous Core-hours</th></tr>
-<tr><td>smp-test</td><td>1 hour</td><td>4 core hours</td></tr>
-<tr><td>smp</td><td>96 hours</td><td>384 core hours</td></tr>
-</table>
+| Queue Name | Max Runtime in hours | Max Simultaneous Core-hours |
+|:----------:|:-----------:|:---------------------------:|
+| smp-test | 1 | 4 |
+| smp | 96 | 384 |
 
 
---- .lehigh
+--- .class #id .small
 
 ## Queues on Faculty Clusters
 
@@ -396,7 +441,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 |         | normal |14 days|
 |         | long   |28 days|
 
---- .lehigh
+--- .class #id
 
 ## How much memory can I use?
 
@@ -415,7 +460,7 @@ memory that should be requested is 126GB.
 
 
 
---- .lehigh &twocol_width
+--- .class #id &twocol_width
 
 ## Minimal submit script for Serial Jobs
 
@@ -450,9 +495,9 @@ cd ${SLURM_SUBMIT_DIR}
 
 ```
 
---- .lehigh
+--- .class #id
 
-## Minimal submit script for MPI Jobs on Sol
+## Minimal submit script for MPI Job
 
 
 ```bash
@@ -461,7 +506,9 @@ cd ${SLURM_SUBMIT_DIR}
 #SBATCH --time=1:00:00
 #SBATCH --nodes=2
 #SBATCH --ntasks-per-node=20
-## For --partition=bio, use --ntasks-per-node=24
+## For --partition=imlab, 
+###  use --ntasks-per-node=22
+### and --qos=nogpu
 #SBATCH --job-name myjob
 
 module load mvapich2
@@ -472,151 +519,119 @@ srun ./myjob < filename.in > filename.out
 exit
 ```
 
---- .lehigh
+--- .class #id
 
-## Minimal submit script for OpenMP Jobs on Corona
+## Minimal submit script for OpenMP Job
 
 
 ```bash
 #!/bin/tcsh
-#SBATCH --partition=bio
+#SBATCH --partition=imlab
 # Directives can be combined on one line
-#SBATCH --time=1:00:00 --nodes=1 --ntasks-per-node=24
+#SBATCH --time=1:00:00 --nodes=1 --ntasks-per-node=22
+#SBATCH --qos=nogpu
 #SBATCH --job-name myjob
 
 cd ${SLURM_SUBMIT_DIR}
 # Use either
-setenv OMP_NUM_THREADS 24
+setenv OMP_NUM_THREADS 22
 ./myjob < filename.in > filename.out
 
 # OR
-OMP_NUM_THREADS=24 ./myjob < filename.in > filename.out
+OMP_NUM_THREADS=22 ./myjob < filename.in > filename.out
 
 exit
 ```
 
+--- .class #id
 
---- .lehigh .small
+## Minimal submit script for LAMMPS GPU job
 
-## Useful PBS Directives
 
-<table class="pbs">
-<tr><th>PBS Directive</th><th>Description</th></tr>
-<tr>
-<td><code>#PBS -q queuename</code></td><td> Submit job to the <em>queuename</em> queue.</td>
-</tr>
-<tr>
-<td><code>#PBS -l walltime=hh:mm:ss</code></td><td> Request resources to run job for <em>hh</em> hours, <em>mm</em> minutes and <em>ss</em> seconds.</td>
-</tr>
-<tr>
-<td><code>#PBS -l nodes=m:ppn=n</code></td><td> Request resources to run job on <em>n</em> processors each on <em>m</em> nodes.</td>
-</tr>
-<tr>
-<td><code>#PBS -l mem=xGB</code></td><td> Request <em>xGB</em> per node requested, applicable on Maia only</td>
-</tr>
-<tr>
-<td><code>#PBS -N jobname</code></td><td> Provide a name, <em>jobname</em> to your job.</td>
-</tr>
-<tr>
-<td><code>#PBS -o filename.out</code></td><td> Write PBS standard output to file filename.out.</td>
-</tr>
-<tr>
-<td><code>#PBS -e filename.err</code></td><td> Write PBS standard error to file filename.err.</td>
-</tr>
-<tr>
-<td><code>#PBS -j oe</code></td><td> Combine PBS standard output and error to the same file.</td>
-</tr>
-<tr>
-<td><code>#PBS -m status</code></td><td> Send an email after job status status is reached. <br />
- status can be a (abort), b (begin) or e (end) <br />
- The arguments can be combined, for e.g. abe will send email when job begins and either aborts or ends</td>
-</tr>
-<td><code>#PBS -M your email address</code></td><td> Address to send email.</td>
-</tr>
-</table>
+```bash
+#!/bin/tcsh
+#SBATCH --partition=imlab
+# Directives can be combined on one line
+#SBATCH --time=1:00:00
+#SBATCH --nodes=1
+# 1 CPU can be be paired with only 1 GPU
+# 1 GPU can be paired with all 24 CPUs
+#SBATCH --ntasks-per-node=1
+#SBATCH --gres=gpu:1
+# Need both GPUs, use --gres=gpu:2
+#SBATCH --job-name myjob
 
---- .lehigh .small
+cd ${SLURM_SUBMIT_DIR}
+# Load LAMMPS Module
+module load lammps/17nov16-gpu
+# Run LAMMPS for input file in.lj
+srun $(which lammps) -in in.lj -sf gpu -pk gpu 1 gpuID ${CUDA_VISIBLE_DEVICE}
+
+exit
+```
+
+--- .class #id .small
 
 ## Useful SLURM Directives
 
-<table class="pbs">
-<tr><th>SLURM Directive</th><th>Description</th></tr>
-<tr>
-<td><code>#SBATCH --partition=queuename</code></td><td> Submit job to the <em>queuename</em> queue.</td></td>
-</tr>
-<tr>
-<td><code>#SBATCH --time=hh:mm:ss</code></td><td> Request resources to run job for <em>hh</em> hours, <em>mm</em> minutes and <em>ss</em> seconds.</td>
-</tr>
-<tr>
-<td><code>#SBATCH --nodes=m</code></td><td> Request resources to run job on <em>m</em> nodes.</td>
-</tr>
-<tr>
-<td><code>#SBATCH --ntasks-per-node=n</code></td><td> Request resources to run job on <em>n</em> processors on each node requested.</td>
-</tr>
-<tr>
-<td><code>#SBATCH --ntasks=n</code></td><td> Request resources to run job on a total of <em>n</em> processors.</td>
-</tr>
-<tr>
-<td><code>#SBATCH --mem=x[M|G|T]</code></td><td> Request <em>x[M,G or T]B</em> per node requested</td>
-</tr>
-<tr>
-<td><code>#SBATCH --job-name=jobname</code></td><td> Provide a name, <em>jobname</em> to your job.</td>
-</tr>
-<tr>
-<td><code>#SBATCH --output=filename.out</code></td><td> Write SLURM standard output to file filename.out.</td>
-</tr>
-<tr>
-<td><code>#SBATCH --error=filename.err</code></td><td> Write SLURM standard error to file filename.err.</td>
-</tr>
-<tr>
-<td><code>#SBATCH --mail-type=events</code></td><td> Send an email after job status events is reached. <br />
- status can be NONE, BEGIN, END, FAIL, REQUEUE, ALL, TIME_LIMIT(_90,80)
-</td>
-</tr>
-<td><code>#SBATCH --mail-user=address</code></td><td> Address to send email.</td>
-</tr>
-</table>
+| SLURM Directive | Description |
+|:---------------:|:-----------:|
+| #SBATCH --partition=queuename | Submit job to the <em>queuename</em> queue. |
+| #SBATCH --time=hh:mm:ss | Request resources to run job for <em>hh</em> hours, <em>mm</em> minutes and <em>ss</em> seconds. |
+| #SBATCH --nodes=m | Request resources to run job on <em>m</em> nodes. |
+| #SBATCH --ntasks-per-node=n | Request resources to run job on <em>n</em> processors on each node requested. |
+| #SBATCH --ntasks=n | Request resources to run job on a total of <em>n</em> processors. |
+| #SBATCH --mem=x[M,G,T] | Request <em>x[M,G or T]B</em> per node requested |
+| #SBATCH --job-name=jobname | Provide a name, <em>jobname</em> to your job. |
+| #SBATCH --output=filename.out | Write SLURM standard output to file filename.out. |
+| #SBATCH --error=filename.err | Write SLURM standard error to file filename.err. |
+| #SBATCH --mail-type=events | Send an email after job status events is reached. |
+| | events can be NONE, BEGIN, END, FAIL, REQUEUE, ALL, TIME_LIMIT(_90,80) |
+| #SBATCH --mail-user=address | Address to send email. |
+| #SBATCH --account=mypi | charge job to the __mypi__ account |
 
 
---- .lehigh
+--- .class #id .small
+
+## Useful PBS Directives
+
+| PBS Directive | Description |
+|:-------------:|:------------|
+| #PBS -q queuename | Submit job to the <em>queuename</em> queue.|
+| #PBS -l walltime=hh:mm:ss| Request resources to run job for <em>hh</em> hours, <em>mm</em> minutes and <em>ss</em> seconds.|
+| #PBS -l nodes=m:ppn=n| Request resources to run job on <em>n</em> processors each on <em>m</em> nodes.|
+| #PBS -l mem=xGB| Request <em>xGB</em> per node requested, applicable on Maia only|
+| #PBS -N jobname| Provide a name, <em>jobname</em> to your job.|
+| #PBS -o filename.out| Write PBS standard output to file filename.out.|
+| #PBS -e filename.err| Write PBS standard error to file filename.err.|
+| #PBS -j oe| Combine PBS standard output and error to the same file.|
+| #PBS -M your email address| Address to send email.|
+| #PBS -m status| Send an email after job status status is reached.| 
+| | status can be a (abort), b (begin) or e (end). The arguments can be combined |
+| |  for e.g. abe will send email when job begins and either aborts or ends|
+
+
+
+--- .class #id .pbs
 
 ## Useful PBS/SLURM environmental variables
 
-<table class="pbs">
-<tr>
- <td><code> PBS_O_WORKDIR</code></td><td> Directory where the <code>qsub</code> command was executed</td><td><code>SLURM_SUBMIT_DIR</code></td>
-</tr>
-<tr>
- <td><code> PBS_NODEFILE</code></td><td> Name of the file that contains a list of the HOSTS provided for the job</td><td><code>SLURM_JOB_NODELIST</code></td>
-</tr>
-<tr>
- <td><code> PBS_NP</code></td><td> Total number of cores for job</td><td><code>SLURM_NTASKS</code></td>
-</tr>
-<tr>
- <td><code> PBS_JOBID</code></td><td> Job ID number given to this job</td><td><code>SLURM_JOBID</code></td>
-</tr>
-<tr>
- <td><code> PBS_QUEUE</code></td><td> Queue job is running in</td><td><code>SLURM_JOB_PARTITION</code></td>
-</tr>
-<tr>
- <td><code> PBS_WALLTIME</code></td><td> Walltime in secs requested</td><td><code></code></td>
-</tr>
-<tr>
- <td><code> PBS_JOBNAME</code></td><td> Name of the job. This can be set using the -N option in the PBS script</td><td><code></code></td>
-</tr>
-<tr>
- <td><code> PBS_ENVIRONMENT</code></td><td> Indicates job type, PBS_BATCH or PBS_INTERACTIVE</td><td><code></code></td>
-</tr>
-<tr>
- <td><code> PBS_O_SHELL</code></td><td>	value of the SHELL variable in the environment in which qsub was executed</td><td><code></code></td>
-</tr>
-<tr>
- <td><code> PBS_O_HOME</code></td><td> Home directory of the user running qsub</td><td><code></code></td>
-</tr>
-</table>
+
+| SLURM Command | Description | PBS Command |
+|:-------------:|:-----------:|:-----------:|
+| SLURM_SUBMIT_DIR | Directory where the <code>qsub</code> command was executed | PBS_O_WORKDIR |
+| SLURM_JOB_NODELIST | Name of the file that contains a list of the HOSTS provided for the job | PBS_NODEFILE |
+| SLURM_NTASKS | Total number of cores for job | PBS_NP |
+| SLURM_JOBID | Job ID number given to this job | PBS_JOBID | 
+| SLURM_JOB_PARTITION | Queue job is running in | PBS_QUEUE |
+| | Walltime in secs requested | PBS_WALLTIME
+| | Name of the job. This can be set using the -N option in the PBS script | PBS_JOBNAME |
+| | Indicates job type, PBS_BATCH or PBS_INTERACTIVE | PBS_ENVIRONMENT |
+| | value of the SHELL variable in the environment in which qsub was executed | PBS_O_SHELL |
+| | Home directory of the user running qsub | PBS_O_HOME |
 
 
---- .lehigh
+--- .class #id
 
 ## Basic Job Manager Commands
 
@@ -625,7 +640,7 @@ exit
 * Manipulating
 * Reporting
 
---- .lehigh
+--- .class #id
 
 ## Job Types
 
@@ -647,7 +662,7 @@ exit
    - Useful for Production runs
 
 
---- .lehigh
+--- .class #id
 
 ## Submitting Batch Jobs
 
@@ -661,49 +676,35 @@ exit
 
 | Long Form | Short Form |
 |:---------:|:----------:|
-|--partition=queuename|-p queuename|
-|--time=hh:mm:ss|-t hh:mm:ss|
-|--nodes=m|-N m|
-|--ntasks-per-node=n|-n n|
-|--ntasks=n|-n n|
+| --partition=queuename | -p queuename |
+| --time=hh:mm:ss | -t hh:mm:ss |
+| --nodes=m | -N m |
+| --ntasks-per-node=n | -n n |
+| --ntasks=n | -n n |
+| --account=mypi | -A mypi |bo
 
 
 
---- .lehigh
+--- .class #id
 
 ## Monitoring &amp; Manipulating Jobs
 
 
-<table>
-<tr><th>PBS Command</th><th>Description</th><th>SLURM Command</th></tr>
-<tr>
-  <td><code>qstat</code> </td><td>check job status (all jobs)</td><td><code>squeue</code></td>
-</tr>
-<tr>
-  <td><code>qstat -u username</code></td><td>check job status of user <em>username</em></td><td><code>squeue -u username</code></td>
-</tr>
-<tr>
-  <td><code>qstat -a</code></td><td>More information than that given by <em>qstat</em></td><td><code>squeue -l</code></td>
-</tr>
-<tr>
-  <td><code>showstart jobid</code></td><td>Show <strong>estimated</strong> start time of job identified by <em>jobid</em></td><td><code>squeue --start</code></td>
-</tr>
-<tr>
-  <td><code>checkjob jobid</code></td><td>Check status of your job identified by <em>jobid</em></td><td><code>scontrol show job jobid</code></td>
-</tr>
-<tr>
-  <td><code>qdel jobid</code></td><td>Cancel your job identified by <em>jobid</em></td><td><code>scancel jobid</code></td>
-</tr>
-<tr>
-  <td><code>qhold jobid</code></td><td>Put your job identified by <em>jobid</em> on hold</td><td><code>scontrol hold jobid</code></td>
-</tr>
-<tr>
-  <td><code>qrls jobid</code></td><td>Release the hold that <strong>you put</strong> on <em>jobid</em></td><td><code>scontrol release jobid</code></td>
-</tr>
-</table>
+| SLURM Command | Description | PBS Command |
+|:-----------:|:-----------:|:-------------:|
+| squeue | check job status (all jobs) | qstat |
+| squeue -u username | check job status of user <em>username</em> | qstat -u username |
+| squeue --start | Show <strong>estimated</strong> start time of jobs in queue | showstart jobid |
+| scontrol show job jobid | Check status of your job identified by <em>jobid</em> | checkjob jobid |
+| scancel jobid | Cancel your job identified by <em>jobid</em> | qdel jobid |
+| scontrol hold jobid | Put your job identified by <em>jobid</em> on hold | qhold jobid |
+| scontrol release jobid | Release the hold that <strong>you put</strong> on <em>jobid | qrls jobid |
 
+* The following scripts written by RC staff can also be used for monitoring jobs.
+   * __checkq__: squeue with additional useful option. g
+   * __checkload__: sinfo with additional options to show load on compute nodes.  
 
---- .lehigh
+--- .class #id
 
 ## Usage Reporting
 
@@ -722,17 +723,38 @@ exit
 	allocation
         - use `--help` for usage information
 
---- .lehigh
+--- .class #id
 
 ## Usage Reporting
 
 <img width = '960px' src = 'assets/img/slurmreport.png'> 
 
---- .lehigh
 
-## Not for the faint hearted
+--- .class #id
 
-* You have multiple jobs that need to be run in sequence
+## Online Usage Reporting
+
+<object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2016.svg" type="image/svg+xml">
+</object>
+
+--- .class #id
+
+## Online Usage Reporting
+
+<object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2016-lts.svg" type="image/svg+xml">
+</object>
+
+--- .class #id
+
+## Online Usage Reporting
+
+<object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2016-imlab.svg" type="image/svg+xml">
+</object>
+
+--- .class #id
+
+## Need to run multiple jobs in sequence?
+
 * Option 1: Submit jobs as soon as previous jobs complete
 * Option 2: Submit jobs with a dependency
     * [SLURM](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=slurm#submitting_dependency_jobs):
@@ -747,12 +769,12 @@ exit
     idea is the same as above
 
 
---- .lehigh
+--- .class #id
 
 ## Additional Help &amp; Information
 
 * Issue with running jobs or need help to get started: 
-  * Open a help ticket: <http://go.lehigh.edu/rchelp>
+  * Open a help ticket: <http://lehigh.edu/go/rchelp>
 * More Information
   * [Research Computing] (https://researchcomputing.lehigh.edu)
   * [Research Computing Training](https://researchcomputing.lehigh.edu/training)

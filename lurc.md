@@ -10,7 +10,7 @@ hitheme     : tomorrow      #
 widgets     : [mathjax]            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 license     : by-sa
---- .lehigh
+--- .class
 
 ## About Us?
 
@@ -26,7 +26,7 @@ license     : by-sa
   - Dan Brashler, Computing Consultant
   - Mary Jo Schulze, Software Specialist
 
----.lehigh
+--- .class
 
 ## What do we do?
 
@@ -42,7 +42,7 @@ license     : by-sa
   - Provide education and training programs to facilitate use of HPC resources and general scientific computing needs.
   - Provide consultation and support for code development and visualization.
 
---- .lehigh
+--- .class
 
 ## Research Computing Resources
 
@@ -60,7 +60,7 @@ license     : by-sa
   [FLOPs for various AMD & Intel CPU generation](https://en.wikipedia.org/wiki/FLOPS#FLOPs_per_cycle)
 
 
---- .lehigh
+--- .class
 
 ## Research Computing Resources
 
@@ -78,7 +78,7 @@ license     : by-sa
   - Access: Batch Scheduled, interactive on login node for compiling, editing only
   
 
---- .lehigh
+--- .class
 
 ## LTS Managed Faculty Resources 
 
@@ -97,7 +97,7 @@ license     : by-sa
 
 
 
---- .lehigh
+--- .class
 
 ## Total Computational Resources Supported
 
@@ -111,7 +111,7 @@ license     : by-sa
   * Performance: 30.310 TFLOPs
 
 
---- .lehigh
+--- .class
 
 ## Apply for an account
 
@@ -125,7 +125,7 @@ license     : by-sa
        - Annual charge of \$50/account paid by Lehigh Faculty or Research Staff, and
        - Annual charge for computing time
 
---- .lehigh
+--- .class
 
 ## Allocation Charges - Effective Oct. 1, 2016
 
@@ -141,7 +141,7 @@ license     : by-sa
    - <em>Working on implementing a rolling allocation cycle, only for minimum purchase.</em>
    - Total available computing time for purchase annually: 1.4M SUs or 1 year of continous computing on 8 nodes
 
---- .lehigh
+--- .class
 
 ## Example Allocation Request
 
@@ -162,7 +162,7 @@ license     : by-sa
 * BECOME A CONDO INVESTOR
  
 
---- .lehigh
+--- .class
 
 ## Condo Investments
 
@@ -179,7 +179,7 @@ license     : by-sa
        -  and must be consumed in current allocation cycle
 * Annual Allocation cycle is Oct. 1 - Sep. 30.
 
---- .lehigh
+--- .class
 
 ## Condo Investors
 
@@ -197,7 +197,7 @@ license     : by-sa
       - Jeetain Mittal & Srinivas Rangarajan, Chemical Engineering
       - Seth Richards-Shubik, Economics
 
---- .lehigh
+--- .class
 
 ## Storage resources
 
@@ -215,7 +215,7 @@ license     : by-sa
   - Maia: 5GB
   - Sol: 150GB
 
---- .lehigh
+--- .class
 
 ## Sol, Maia  &amp; Ceph for Courses
 
@@ -231,7 +231,7 @@ license     : by-sa
    * &#36;200 per TB per course.
    * Paid for by department.
 
---- .lehigh
+--- .class
 
 ## Accessing Research Computing Resources
 
@@ -245,7 +245,7 @@ license     : by-sa
 * If you are not on Lehigh's network, login to the ssh gateway to get to Research Computing resources.
   - `ssh username@ssh.cc.lehigh.edu`
 
---- .lehigh
+--- .class
 
 ## Available Software
 
@@ -258,13 +258,13 @@ license     : by-sa
   - Standard on many University and national High Performance Computing resource since circa 2011
 
 
---- .lehigh
+--- .class
 
 ## Software on Sol
 
 <img width = '960px' src = 'assets/img/sol-module.png'>
 
---- .lehigh
+--- .class
 
 ## Module Command
 
@@ -279,7 +279,7 @@ license     : by-sa
 <tr><td><code>module help abc</code></td><td> display help message for the module <code>abc</code></td></tr>
 </table>
 
---- .lehigh &twocol_width
+--- .class &twocol_width
 
 ## Installed Software
 
@@ -313,7 +313,7 @@ license     : by-sa
   - Mathematica
   - Matlab
 
---- .lehigh  &twocol_width
+--- .class  &twocol_width
 
 ## More Software
 
@@ -346,7 +346,7 @@ license     : by-sa
   - SuiteSparse
   - SuperLU
 
---- .lehigh &twocol_width
+--- .class &twocol_width
  
 ## More Software
 
@@ -378,14 +378,14 @@ license     : by-sa
 export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 ```
 
---- .lehigh
+--- .class
 
 ## Module File Example
 
 <img width = '900px' src = 'assets/img/mcr.png'>
 
 
---- .lehigh
+--- .class
 
 ## How to run jobs
 
@@ -402,7 +402,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
    - Which queue to submit jobs
 
 
---- .lehigh
+--- .class
 
 ## Batch Queuing System
 
@@ -416,7 +416,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 * More details in HPC Training scheduled for Feb. 27
 
 
---- .lehigh &twocol_width
+--- .class &twocol_width
 
 ## XSEDE
 
@@ -438,7 +438,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 
 <img width = '400px' src = 'assets/img/xsede.png'>
 
---- .lehigh 
+--- .class 
 
 ## XSEDE Resources
 
@@ -456,7 +456,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 * National Institute for Computational Sciences (NICS) 
    - Beacon: 210 TFlops
 
---- .lehigh 
+--- .class 
 
 ## XSEDE Resources
 
@@ -478,7 +478,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 <img width = '400px' src = 'assets/img/xsede.png'>
 -->
 
---- .lehigh 
+--- .class 
 
 ## How do I get started on XSEDE?
 
@@ -496,7 +496,7 @@ and high-throughput computing and other digital services, opportunities and reso
 * A Campus Champion can request start up allocations on all XSEDE resources to help 
  local users with getting started on XSEDE resources.
 
---- .lehigh
+--- .class
 
 ## Getting Help
 
@@ -513,7 +513,7 @@ and high-throughput computing and other digital services, opportunities and reso
   * [Research Computing Training] (https://researchcomputing.lehigh.edu/training)
 
 
---- .lehigh
+--- .class
 
 ## Upcoming Training
 
