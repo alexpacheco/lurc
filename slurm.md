@@ -149,8 +149,7 @@ license     : by-sa
 ## Condo Investments
 
 * New sustainable model for High Performance Computing at Lehigh
-* Faculty (Condo Investor) purchase compute nodes from grants to increase
-* overall capacity of Sol
+* Faculty (Condo Investor) purchase compute nodes from grants to increase overall capacity of Sol
 * LTS will provide for four years
    - System Administration, Power and Cooling, User Support for Condo
      Investments
