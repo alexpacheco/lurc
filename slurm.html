@@ -112,8 +112,8 @@ RAM
 <li>Theoretical Performance: 47.25 TFLOPs (CPU) + 12.850 TFLOPs (GPU)
 
 <ul>
-<li>The GTX GPUs provide 443.65 TFLOPs of single precision processing but
-only 257 GFLOPs of double precision processing</li>
+<li>The GTX GPUs provide 443.65 TFLOPs of single precision performance but
+only 257 GFLOPs of double precision performance</li>
 </ul></li>
 <li>Access: Batch Scheduled, interactive on login node for compiling, editing only</li>
 </ul></li>
@@ -261,7 +261,7 @@ only 257 GFLOPs of double precision processing</li>
 <ul>
 <li>CUDA Cores: 157952</li>
 <li>Memory: 544 GB</li>
-<li>Performance: 30.322 TFLOPs (463.816 SP TFLOPs)</li>
+<li>Performance: 30.32 TFLOPs (463.816 SP TFLOPs)</li>
 </ul></li>
 </ul>
 
@@ -331,9 +331,92 @@ only 257 GFLOPs of double precision processing</li>
 <li>Fixed Allocation cycle: Oct 1 - Sep 30</li>
 <li>Unused allocations do not rollover to next allocation cycle</li>
 <li><em>Working on implementing a rolling allocation cycle, only for minimum purchase.</em></li>
-<li>Total available computing time for purchase annually: 1.4M SUs or 1 year of continous computing on 8 nodes</li>
+<li>Total available computing time for purchase annually: 1.4M SUs or 1 year of continuous computing on 8 nodes</li>
 </ul></li>
 <li><p><strong>No &#39;free&#39; computing time provided once allocation has been expended</strong></p></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Condo Investments</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>New sustainable model for High Performance Computing at Lehigh</li>
+<li>Faculty (Condo Investor) purchase compute nodes from grants to increase</li>
+<li>overall capacity of Sol</li>
+<li>LTS will provide for four years
+
+<ul>
+<li>System Administration, Power and Cooling, User Support for Condo
+Investments</li>
+</ul></li>
+<li>Condo Investor
+
+<ul>
+<li>receives annual allocation equivalent to their investment for four years</li>
+<li>can utilize allocations on all available nodes, including nodes from other
+Condo Investors</li>
+<li>allows idle cycles on investment to be used by other Sol users</li>
+<li>unused allocation will not rollover to the next allocation cycle.</li>
+<li>can purchase additional SUs in 10K increments (minimum 50K not required)
+
+<ul>
+<li> and must be consumed in current allocation cycle</li>
+</ul></li>
+</ul></li>
+<li>Annual Allocation cycle is Oct. 1 - Sep. 30.</li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-11" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Condo Investors</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Two at initial launch 
+
+<ul>
+<li>Dimitrios Vavylonis, Physics (1 node)</li>
+<li>Wonpil Im, Biological Sciences (25 nodes)</li>
+</ul></li>
+<li><p>Acquisition in progress</p>
+
+<ul>
+<li>Anand Jagota, Chemical Engineering (1 node)</li>
+<li>Brian Chen, Computer Science &amp; Engineering (1 node)</li>
+<li>Ed Webb &amp; Alp Oztekin, Mechanical Engineering (6 nodes)</li>
+<li>Jeetain Mittal &amp; Srinivas Rangarajan, Chemical Engineering (13 nodes)</li>
+</ul></li>
+<li><p>Total SU on Sol after Condo Investments: 11,247,840</p></li>
+<li><p>Available capacity for additional investments: 1 (16 after Power Upgrade to
+Data Center)</p>
+
+<ul>
+<li>Acquisition being planned
+
+<ul>
+<li>Seth Richards-Shubik, Economics</li>
+</ul></li>
+</ul></li>
 </ul>
 
   </article>
@@ -362,7 +445,12 @@ only 257 GFLOPs of double precision processing</li>
 <li><code>ssh username@polaris.cc.lehigh.edu</code></li>
 <li>Polaris is a gateway that also hosts the batch scheduler for Maia</li>
 <li>No computing software including compilers is available on Polaris</li>
-<li>Login to Polaris and request computing time on Maia including interactive access</li>
+<li>Login to Polaris and request computing time on Maia including interactive access
+
+<ul>
+<li>On Polaris, run the <code>maiashell</code> command to get interactive access to
+Maia for 15 minutes.</li>
+</ul></li>
 </ul></li>
 <li>If you are not on Lehigh&#39;s network, login to the ssh gateway to get to Research Computing resources
 
@@ -412,22 +500,6 @@ only 257 GFLOPs of double precision processing</li>
 
 <slide class="class" id="id" style="background:#F1E7C8;">
   <hgroup>
-    <h2>Software on Sol</h2>
-  </hgroup>
-  <article data-timings="">
-    <p><img width = '960px' src = 'assets/img/sol-module.png'></p>
-
-  </article>
-  <!-- Footer  -->
-  <footer class = 'lufoot'>
-     <img height = '20px' src='assets/img/lulogo.jpg'>
-  </footer>
-  <!-- End Footer-->
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:#F1E7C8;">
-  <hgroup>
     <h2>Module Command</h2>
   </hgroup>
   <article data-timings="">
@@ -447,7 +519,7 @@ only 257 GFLOPs of double precision processing</li>
 </tr>
 <tr>
 <td align="center"><code>module unload abc</code></td>
-<td align="center">remove <code>abc</code> from your envionment</td>
+<td align="center">remove <code>abc</code> from your environment</td>
 </tr>
 <tr>
 <td align="center"><code>module swap abc1 abc2</code></td>
@@ -472,6 +544,22 @@ only 257 GFLOPs of double precision processing</li>
 .bashrc or .tcshrc files. Run <code>module show</code> for list variables that need
 modified, appended or prepended</li>
 </ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Software on Sol</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img width = '960px' src = 'assets/img/sol-module.png'></p>
 
   </article>
   <!-- Footer  -->
@@ -1006,162 +1094,22 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 <li><p>Sol: Max memory used per node should not exceed 126GB.</p>
 
 <ul>
-<li>20-core nodes have ~6.4GB/core
+<li>nodes in lts partition have ~6.4GB/core
 
 <ul>
 <li>max memory 6.3GB/core</li>
 </ul></li>
-<li>24-core nodes have ~5.3GB/core
+<li>nodes in imlab &amp; imlab-gpu partition have ~5.3GB/core
 
 <ul>
 <li>max memory 5.25GB/core</li>
+<li><span class="alert">if you need to run a single core job that requires 10GB memory in the imlab partition, you need to request 2 cores even though you are only using
+1 core.</span><br></li>
 </ul></li>
 </ul></li>
 <li><p>Maia: Users need to specify memory required in their submit script. Max
 memory that should be requested is 126GB.</p></li>
 </ul>
-
-  </article>
-  <!-- Footer  -->
-  <footer class = 'lufoot'>
-     <img height = '20px' src='assets/img/lulogo.jpg'>
-  </footer>
-  <!-- End Footer-->
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:#F1E7C8;">
-  <hgroup>
-    <h2>Minimal submit script for Serial Jobs</h2>
-  </hgroup>
-  <article data-timings="">
-    
-<div style='float:left;width:48%;'>
-  <pre><code class="bash">#!/bin/bash
-#PBS -q smp
-#PBS -l walltime=1:00:00
-#PBS -l nodes=1:ppn=1
-#PBS -l mem=4GB
-#PBS -N myjob
-
-cd ${PBS_O_WORKDIR}
-./myjob &lt; filename.in &gt; filename.out
-
-</code></pre>
-
-</div>
-<div style='float:right;width:48%;'>
-  <pre><code class="bash">#!/bin/bash
-#SBATCH --partition=lts
-#SBATCH --time=1:00:00
-#SBATCH --nodes=1
-#SBATCH --ntasks-per-node=1
-#SBATCH --job-name myjob
-
-cd ${SLURM_SUBMIT_DIR}
-./myjob &lt; filename.in &gt; filename.out
-
-</code></pre>
-
-</div>
-  </article>
-  <!-- Footer  -->
-  <footer class = 'lufoot'>
-     <img height = '20px' src='assets/img/lulogo.jpg'>
-  </footer>
-  <!-- End Footer-->
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:#F1E7C8;">
-  <hgroup>
-    <h2>Minimal submit script for MPI Job</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="bash">#!/bin/bash
-#SBATCH --partition=lts
-#SBATCH --time=1:00:00
-#SBATCH --nodes=2
-#SBATCH --ntasks-per-node=20
-## For --partition=imlab, 
-###  use --ntasks-per-node=22
-### and --qos=nogpu
-#SBATCH --job-name myjob
-
-module load mvapich2
-
-cd ${SLURM_SUBMIT_DIR}
-srun ./myjob &lt; filename.in &gt; filename.out
-
-exit
-</code></pre>
-
-  </article>
-  <!-- Footer  -->
-  <footer class = 'lufoot'>
-     <img height = '20px' src='assets/img/lulogo.jpg'>
-  </footer>
-  <!-- End Footer-->
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:#F1E7C8;">
-  <hgroup>
-    <h2>Minimal submit script for OpenMP Job</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="bash">#!/bin/tcsh
-#SBATCH --partition=imlab
-# Directives can be combined on one line
-#SBATCH --time=1:00:00 --nodes=1 --ntasks-per-node=22
-#SBATCH --qos=nogpu
-#SBATCH --job-name myjob
-
-cd ${SLURM_SUBMIT_DIR}
-# Use either
-setenv OMP_NUM_THREADS 22
-./myjob &lt; filename.in &gt; filename.out
-
-# OR
-OMP_NUM_THREADS=22 ./myjob &lt; filename.in &gt; filename.out
-
-exit
-</code></pre>
-
-  </article>
-  <!-- Footer  -->
-  <footer class = 'lufoot'>
-     <img height = '20px' src='assets/img/lulogo.jpg'>
-  </footer>
-  <!-- End Footer-->
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:#F1E7C8;">
-  <hgroup>
-    <h2>Minimal submit script for LAMMPS GPU job</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="bash">#!/bin/tcsh
-#SBATCH --partition=imlab
-# Directives can be combined on one line
-#SBATCH --time=1:00:00
-#SBATCH --nodes=1
-# 1 CPU can be be paired with only 1 GPU
-# 1 GPU can be paired with all 24 CPUs
-#SBATCH --ntasks-per-node=1
-#SBATCH --gres=gpu:1
-# Need both GPUs, use --gres=gpu:2
-#SBATCH --job-name myjob
-
-cd ${SLURM_SUBMIT_DIR}
-# Load LAMMPS Module
-module load lammps/17nov16-gpu
-# Run LAMMPS for input file in.lj
-srun $(which lammps) -in in.lj -sf gpu -pk gpu 1 gpuID ${CUDA_VISIBLE_DEVICE}
-
-exit
-</code></pre>
 
   </article>
   <!-- Footer  -->
@@ -1234,6 +1182,92 @@ exit
 <tr>
 <td align="center">#SBATCH --account=mypi</td>
 <td align="center">charge job to the <strong>mypi</strong> account</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class small" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Useful SLURM Directives (contd)</h2>
+  </hgroup>
+  <article data-timings="">
+    <table><thead>
+<tr>
+<th align="center">SLURM Directive</th>
+<th align="center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="center"></td>
+<td align="center">Request a quality of service (qos)  for the job.</td>
+</tr>
+<tr>
+<td align="center">#SBATCH --qos=nogpu</td>
+<td align="center"><code>imlab</code> partition has a qos of nogpu.</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">Job will remain in queue indefinitely if you do not specify qos</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">Specifies a comma delimited list of generic consumable resources</td>
+</tr>
+<tr>
+<td align="center">#SBATCH --gres=gpu:#</td>
+<td align="center">To use gpus on <code>imlab-gpu</code> partition, you need to request gpus</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">You can request 1 or 2 gpus with a minimum of 1 core or cpu per gpu</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>SLURM can also take short hand notation for the directives</li>
+</ul>
+
+<table><thead>
+<tr>
+<th align="center">Long Form</th>
+<th align="center">Short Form</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="center">--partition=queuename</td>
+<td align="center">-p queuename</td>
+</tr>
+<tr>
+<td align="center">--time=hh:mm:ss</td>
+<td align="center">-t hh:mm:ss</td>
+</tr>
+<tr>
+<td align="center">--nodes=m</td>
+<td align="center">-N m</td>
+</tr>
+<tr>
+<td align="center">--ntasks-per-node=n</td>
+<td align="center">-n n</td>
+</tr>
+<tr>
+<td align="center">--ntasks=n</td>
+<td align="center">-n n</td>
+</tr>
+<tr>
+<td align="center">--account=mypi</td>
+<td align="center">-A mypi</td>
 </tr>
 </tbody></table>
 
@@ -1412,23 +1446,41 @@ exit
 
 <slide class="class" id="id" style="background:#F1E7C8;">
   <hgroup>
-    <h2>Job Types</h2>
+    <h2>Job Types: Interactive</h2>
   </hgroup>
   <article data-timings="">
     <ul>
-<li><p>Interactive Jobs</p>
-
-<ul>
 <li>Set up an interactive environment on compute nodes for users</li>
-<li>Purpose: testing and debugging code. <strong>Do not run jobs on head node!!!</strong></li>
-<li>PBS: <code>qsub -I -V walltime=&lt;hh:mm:ss&gt;,nodes=&lt;# of nodes&gt;:ppn=&lt;# of core/node&gt; -q &lt;queue
-name&gt;</code></li>
-<li>SLURM: <code>srun --time=&lt;hh:mm:ss&gt; --nodes=&lt;# of nodes&gt; --ntasks-per-node=&lt;#
-of core/node&gt; -p &lt;queue name&gt; --pty /bin/bash --login</code></li>
-</ul></li>
-<li><p>Batch Jobs</p>
+<li><p>Purpose: testing and debugging code. <strong>Do not run jobs on head node!!!</strong></p></li>
+<li><p>PBS: <code>qsub -I -V -l walltime=&lt;hh:mm:ss&gt;,nodes=&lt;# of nodes&gt;:ppn=&lt;# of core/node&gt; -q &lt;queue
+name&gt;</code></p></li>
+<li><p>SLURM: <code>srun --time=&lt;hh:mm:ss&gt; --nodes=&lt;# of nodes&gt; --ntasks-per-node=&lt;#
+of core/node&gt; -p &lt;queue name&gt; --pty /bin/bash --login</code></p></li>
+<li><p>Run a job interactively replace <code>--pty /bin/bash --login</code> with the
+ appropriate command. </p>
 
 <ul>
+<li>For e.g. <code>srun -t 20 -n 1 -p imlab --qos=nogpu $(which lammps) -in in.lj
+-var x 1 -var n 1</code></li>
+<li>Default values are 3 days, 1 node, 20 tasks per node and lts partition</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Job Types: Batch</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
 <li>Executed using a batch script without user intervention
 
 <ul>
@@ -1436,8 +1488,144 @@ of core/node&gt; -p &lt;queue name&gt; --pty /bin/bash --login</code></li>
 <li>Disadvantage: cannot change sequence of commands after submission</li>
 </ul></li>
 <li>Useful for Production runs</li>
-</ul></li>
 </ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class big" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Minimal submit script for Serial Jobs</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="bash">#!/bin/bash
+#PBS -q smp
+#PBS -l walltime=1:00:00
+#PBS -l nodes=1:ppn=1
+#PBS -l mem=4GB
+#PBS -N myjob
+
+cd ${PBS_O_WORKDIR}
+./myjob &lt; filename.in &gt; filename.out
+
+</code></pre>
+
+<pre><code class="bash">#!/bin/bash
+#SBATCH --partition=lts
+#SBATCH --time=1:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --job-name myjob
+
+cd ${SLURM_SUBMIT_DIR}
+./myjob &lt; filename.in &gt; filename.out
+
+</code></pre>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class big" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Minimal submit script for MPI Job</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="bash">#!/bin/bash
+#SBATCH --partition=lts
+#SBATCH --time=1:00:00
+#SBATCH --nodes=2
+#SBATCH --ntasks-per-node=20
+## For --partition=imlab, 
+###  use --ntasks-per-node=22
+### and --qos=nogpu
+#SBATCH --job-name myjob
+
+module load mvapich2
+
+cd ${SLURM_SUBMIT_DIR}
+srun ./myjob &lt; filename.in &gt; filename.out
+
+exit
+</code></pre>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class big" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Minimal submit script for OpenMP Job</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="bash">#!/bin/tcsh
+#SBATCH --partition=imlab
+# Directives can be combined on one line
+#SBATCH --time=1:00:00 --nodes=1 --ntasks-per-node=22
+#SBATCH --qos=nogpu
+#SBATCH --job-name myjob
+
+cd ${SLURM_SUBMIT_DIR}
+# Use either
+setenv OMP_NUM_THREADS 22
+./myjob &lt; filename.in &gt; filename.out
+
+# OR
+OMP_NUM_THREADS=22 ./myjob &lt; filename.in &gt; filename.out
+
+exit
+</code></pre>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class big" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Minimal submit script for LAMMPS GPU job</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="bash">#!/bin/tcsh
+#SBATCH --partition=imlab
+# Directives can be combined on one line
+#SBATCH --time=1:00:00
+#SBATCH --nodes=1
+# 1 CPU can be be paired with only 1 GPU
+# 1 GPU can be paired with all 24 CPUs
+#SBATCH --ntasks-per-node=1
+#SBATCH --gres=gpu:1
+# Need both GPUs, use --gres=gpu:2
+#SBATCH --job-name myjob
+
+cd ${SLURM_SUBMIT_DIR}
+# Load LAMMPS Module
+module load lammps/17nov16-gpu
+# Run LAMMPS for input file in.lj
+srun $(which lammps) -in in.lj -sf gpu -pk gpu 1 gpuID ${CUDA_VISIBLE_DEVICE}
+
+exit
+</code></pre>
 
   </article>
   <!-- Footer  -->
@@ -1462,40 +1650,7 @@ of core/node&gt; -p &lt;queue name&gt; --pty /bin/bash --login</code></li>
 <li><code>qsub -l walltime=1:00:00,nodes=1:ppn=16 -q normal filename</code></li>
 <li><code>sbatch --time=1:00:00 --nodes=1 --ntasks-per-node=20 -p lts filename</code> </li>
 </ul></li>
-<li><p>SLURM can also take short hand notation for the directives</p></li>
 </ul>
-
-<table><thead>
-<tr>
-<th align="center">Long Form</th>
-<th align="center">Short Form</th>
-</tr>
-</thead><tbody>
-<tr>
-<td align="center">--partition=queuename</td>
-<td align="center">-p queuename</td>
-</tr>
-<tr>
-<td align="center">--time=hh:mm:ss</td>
-<td align="center">-t hh:mm:ss</td>
-</tr>
-<tr>
-<td align="center">--nodes=m</td>
-<td align="center">-N m</td>
-</tr>
-<tr>
-<td align="center">--ntasks-per-node=n</td>
-<td align="center">-n n</td>
-</tr>
-<tr>
-<td align="center">--ntasks=n</td>
-<td align="center">-n n</td>
-</tr>
-<tr>
-<td align="center">--account=mypi</td>
-<td align="center">-A mypi</td>
-</tr>
-</tbody></table>
 
   </article>
   <!-- Footer  -->
@@ -1559,8 +1714,8 @@ of core/node&gt; -p &lt;queue name&gt; --pty /bin/bash --login</code></li>
 <li>The following scripts written by RC staff can also be used for monitoring jobs.
 
 <ul>
-<li><strong>checkq</strong>: squeue with additional useful option. g</li>
-<li><strong>checkload</strong>: sinfo with additional options to show load on compute nodes.<br></li>
+<li><strong>checkq</strong>: <code>squeue</code> with additional useful option. </li>
+<li><strong>checkload</strong>: <code>sinfo</code> with additional options to show load on compute nodes.<br></li>
 </ul></li>
 </ul>
 
@@ -1633,7 +1788,7 @@ allocation</li>
 
 <slide class="class" id="id" style="background:#F1E7C8;">
   <hgroup>
-    <h2>Online Usage Reporting</h2>
+    <h2>Online Usage Reporting: Sol Cluster</h2>
   </hgroup>
   <article data-timings="">
     <p><object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2016.svg" type="image/svg+xml">
@@ -1650,7 +1805,7 @@ allocation</li>
 
 <slide class="class" id="id" style="background:#F1E7C8;">
   <hgroup>
-    <h2>Online Usage Reporting</h2>
+    <h2>Online Usage Reporting: lts partition</h2>
   </hgroup>
   <article data-timings="">
     <p><object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2016-lts.svg" type="image/svg+xml">
@@ -1667,11 +1822,43 @@ allocation</li>
 
 <slide class="class" id="id" style="background:#F1E7C8;">
   <hgroup>
-    <h2>Online Usage Reporting</h2>
+    <h2>Online Usage Reporting: imlab &amp; imlab-gpu partitions</h2>
   </hgroup>
   <article data-timings="">
     <p><object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2016-imlab.svg" type="image/svg+xml">
 </object></p>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Online Usage Reporting</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Scrollable Usage for entire cluster
+
+<ul>
+<li><a href="https://webapps.lehigh.edu/hpc/usage/canvas.html">https://webapps.lehigh.edu/hpc/usage/canvas.html</a></li>
+</ul></li>
+<li>For a specific PI:
+
+<ul>
+<li>Replace lts with a PI&#39;s name in the following link
+
+<ul>
+<li><a href="https://webapps.lehigh.edu/hpc/usage/lts.html">https://webapps.lehigh.edu/hpc/usage/lts.html</a></li>
+</ul></li>
+</ul></li>
+<li><span class="alert">Usage plots are restricted to Lehigh IPs</span></li>
+</ul>
 
   </article>
   <!-- Footer  -->
@@ -1811,212 +1998,242 @@ idea is the same as above</li>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='Accessing Research Computing Resources'>
+        data-slide=10 title='Condo Investments'>
          10
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=11 title='Available Software'>
+        data-slide=11 title='Condo Investors'>
          11
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='Software on Sol'>
+        data-slide=12 title='Accessing Research Computing Resources'>
          12
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=13 title='Module Command'>
+        data-slide=13 title='Available Software'>
          13
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=14 title='Installed Software'>
+        data-slide=14 title='Module Command'>
          14
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=15 title='More Software'>
+        data-slide=15 title='Software on Sol'>
          15
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=16 title='More Software'>
+        data-slide=16 title='Installed Software'>
          16
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=17 title='Module File Example'>
+        data-slide=17 title='More Software'>
          17
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=18 title='Cluster Environment'>
+        data-slide=18 title='More Software'>
          18
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=19 title='How to run jobs'>
+        data-slide=19 title='Module File Example'>
          19
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=20 title='Batch Queuing System'>
+        data-slide=20 title='Cluster Environment'>
          20
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=21 title='Job Scheduling'>
+        data-slide=21 title='How to run jobs'>
          21
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=22 title='Backfilling'>
+        data-slide=22 title='Batch Queuing System'>
          22
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=23 title='How much time must I request'>
+        data-slide=23 title='Job Scheduling'>
          23
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=24 title='Available Queues'>
+        data-slide=24 title='Backfilling'>
          24
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=25 title='Queues on Faculty Clusters'>
+        data-slide=25 title='How much time must I request'>
          25
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=26 title='How much memory can I use?'>
+        data-slide=26 title='Available Queues'>
          26
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=27 title='Minimal submit script for Serial Jobs'>
+        data-slide=27 title='Queues on Faculty Clusters'>
          27
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=28 title='Minimal submit script for MPI Job'>
+        data-slide=28 title='How much memory can I use?'>
          28
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=29 title='Minimal submit script for OpenMP Job'>
+        data-slide=29 title='Useful SLURM Directives'>
          29
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=30 title='Minimal submit script for LAMMPS GPU job'>
+        data-slide=30 title='Useful SLURM Directives (contd)'>
          30
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=31 title='Useful SLURM Directives'>
+        data-slide=31 title='Useful PBS Directives'>
          31
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=32 title='Useful PBS Directives'>
+        data-slide=32 title='Useful PBS/SLURM environmental variables'>
          32
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=33 title='Useful PBS/SLURM environmental variables'>
+        data-slide=33 title='Basic Job Manager Commands'>
          33
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=34 title='Basic Job Manager Commands'>
+        data-slide=34 title='Job Types: Interactive'>
          34
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=35 title='Job Types'>
+        data-slide=35 title='Job Types: Batch'>
          35
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=36 title='Submitting Batch Jobs'>
+        data-slide=36 title='Minimal submit script for Serial Jobs'>
          36
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=37 title='Monitoring &amp; Manipulating Jobs'>
+        data-slide=37 title='Minimal submit script for MPI Job'>
          37
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=38 title='Usage Reporting'>
+        data-slide=38 title='Minimal submit script for OpenMP Job'>
          38
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=39 title='Usage Reporting'>
+        data-slide=39 title='Minimal submit script for LAMMPS GPU job'>
          39
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=40 title='Online Usage Reporting'>
+        data-slide=40 title='Submitting Batch Jobs'>
          40
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=41 title='Online Usage Reporting'>
+        data-slide=41 title='Monitoring &amp; Manipulating Jobs'>
          41
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=42 title='Online Usage Reporting'>
+        data-slide=42 title='Usage Reporting'>
          42
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=43 title='Need to run multiple jobs in sequence?'>
+        data-slide=43 title='Usage Reporting'>
          43
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=44 title='Additional Help &amp; Information'>
+        data-slide=44 title='Online Usage Reporting: Sol Cluster'>
          44
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=45 title='Online Usage Reporting: lts partition'>
+         45
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=46 title='Online Usage Reporting: imlab &amp; imlab-gpu partitions'>
+         46
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=47 title='Online Usage Reporting'>
+         47
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=48 title='Need to run multiple jobs in sequence?'>
+         48
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=49 title='Additional Help &amp; Information'>
+         49
       </a>
     </li>
   </ul>

@@ -8,7 +8,7 @@ body{
    /* background-color: #663700; /* LU Brown */
   /* background-color: #CBE7A5; #EDE0CF; ; #CA9F9D*/
   /* background-image:url(http://goo.gl/EpXln); */
-  background-image:url(https://webapps.lehigh.edu/~alp514/lutitle.png); */
+  background-image:url(https://webapps.lehigh.edu/hpc/training/lutitle.png); */
 }
 
 .title-slide hgroup > h1, 
@@ -121,7 +121,7 @@ aside.gdbar img {
   padding-left: 30px;
   background: #fff;
   color: #000;
-}g
+}
 
 .pagination {
    position: relative;
@@ -192,6 +192,10 @@ pre > code {
   background-color: #e7e2d8;
 }
 
+.big pre > code {
+  font-size: 16px;
+}
+
 table th, table td {
   text-align: center;
 }
@@ -203,7 +207,6 @@ table.pbs td:first-child {
 table.pbs td {
  text-align: left;
 }
-
 
 .lufoot {
   font-size: 14px;
@@ -224,3 +227,7 @@ img.fullwidth {
  margin: auto;
 }
  
+.alert {
+  color: darkred;
+}
+

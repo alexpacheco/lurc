@@ -46,8 +46,8 @@ license     : by-sa
        64GB RAM
   - 2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric
   - Theoretical Performance: 47.25 TFLOPs (CPU) + 12.850 TFLOPs (GPU)
-      - The GTX GPUs provide 443.65 TFLOPs of single precision processing but
-        only 257 GFLOPs of double precision processing
+      - The GTX GPUs provide 443.65 TFLOPs of single precision performance but
+        only 257 GFLOPs of double precision performance
   - Access: Batch Scheduled, interactive on login node for compiling, editing only
 
 --- .class #id &twocol
@@ -108,7 +108,7 @@ license     : by-sa
 * GPU
   * CUDA Cores: 157952
   * Memory: 544 GB
-  * Performance: 30.322 TFLOPs (463.816 SP TFLOPs)
+  * Performance: 30.32 TFLOPs (463.816 SP TFLOPs)
 
 --- .class #id
 
@@ -141,8 +141,47 @@ license     : by-sa
    - Fixed Allocation cycle: Oct 1 - Sep 30
    - Unused allocations do not rollover to next allocation cycle
    - <em>Working on implementing a rolling allocation cycle, only for minimum purchase.</em>
-   - Total available computing time for purchase annually: 1.4M SUs or 1 year of continous computing on 8 nodes
+   - Total available computing time for purchase annually: 1.4M SUs or 1 year of continuous computing on 8 nodes
 * __No 'free' computing time provided once allocation has been expended__
+
+--- .class #id
+
+## Condo Investments
+
+* New sustainable model for High Performance Computing at Lehigh
+* Faculty (Condo Investor) purchase compute nodes from grants to increase
+* overall capacity of Sol
+* LTS will provide for four years
+   - System Administration, Power and Cooling, User Support for Condo
+     Investments
+* Condo Investor
+   - receives annual allocation equivalent to their investment for four years
+   - can utilize allocations on all available nodes, including nodes from other
+     Condo Investors
+   - allows idle cycles on investment to be used by other Sol users
+   - unused allocation will not rollover to the next allocation cycle.
+   - can purchase additional SUs in 10K increments (minimum 50K not required)
+       -  and must be consumed in current allocation cycle
+* Annual Allocation cycle is Oct. 1 - Sep. 30.
+
+--- .class
+
+## Condo Investors
+
+* Two at initial launch 
+   - Dimitrios Vavylonis, Physics (1 node)
+   - Wonpil Im, Biological Sciences (25 nodes)
+* Acquisition in progress
+   - Anand Jagota, Chemical Engineering (1 node)
+   - Brian Chen, Computer Science & Engineering (1 node)
+   - Ed Webb & Alp Oztekin, Mechanical Engineering (6 nodes)
+   - Jeetain Mittal & Srinivas Rangarajan, Chemical Engineering (13 nodes)
+
+* Total SU on Sol after Condo Investments: 11,247,840
+* Available capacity for additional investments: 1 (16 after Power Upgrade to
+ Data Center)
+   * Acquisition being planned
+      - Seth Richards-Shubik, Economics
 
 --- .class #id
 
@@ -155,6 +194,8 @@ license     : by-sa
   - Polaris is a gateway that also hosts the batch scheduler for Maia
   - No computing software including compilers is available on Polaris
   - Login to Polaris and request computing time on Maia including interactive access
+      - On Polaris, run the `maiashell` command to get interactive access to
+        Maia for 15 minutes.
 * If you are not on Lehigh's network, login to the ssh gateway to get to Research Computing resources
   - `ssh username@ssh.cc.lehigh.edu`
 
@@ -172,19 +213,13 @@ license     : by-sa
 
 --- .class #id
 
-## Software on Sol
-
-<img width = '960px' src = 'assets/img/sol-module.png'>
-
---- .class #id
-
 ## Module Command
 
 | Command | Description |
 |:-------:|:-----------:|
 | <code>module avail</code> | show list of software available on resource |
 | <code>module load abc</code> | add software <code>abc</code> to your environment (modify your <code>PATH</code>, <code>LD_LIBRARY_PATH</code> etc as needed) |
-| <code>module unload abc</code> | remove <code>abc</code> from your envionment |
+| <code>module unload abc</code> | remove <code>abc</code> from your environment |
 | <code>module swap abc1 abc2</code> | swap <code>abc1</code> with <code>abc2</code> in your environment |
 | <code>module purge</code> | remove all modules from your environment |
 | <code>module show abc</code> | display what variables are added or modified in your environment |
@@ -193,6 +228,12 @@ license     : by-sa
 * Users who prefer not to use the module environment will need to modify their
   .bashrc or .tcshrc files. Run `module show` for list variables that need
   modified, appended or prepended
+
+--- .class #id
+
+## Software on Sol
+
+<img width = '960px' src = 'assets/img/sol-module.png'>
 
 --- .class #id &twocol_width
 
@@ -450,125 +491,15 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 * A general rule of thumb on most HPC resources: leave 1-2GB for the OS to run. 
 
 * Sol: Max memory used per node should not exceed 126GB.
-   - 20-core nodes have ~6.4GB/core
+   - nodes in lts partition have ~6.4GB/core
        * max memory 6.3GB/core
-   - 24-core nodes have ~5.3GB/core
+   - nodes in imlab \& imlab-gpu partition have ~5.3GB/core
        * max memory 5.25GB/core
+       * <span class="alert">if you need to run a single core job that requires 10GB memory in the imlab partition, you need to request 2 cores even though you are only using
+         1 core.</span>  
 
 * Maia: Users need to specify memory required in their submit script. Max
 memory that should be requested is 126GB.
-
-
-
---- .class #id &twocol_width
-
-## Minimal submit script for Serial Jobs
-
-*** =left width:48%
-
-
-```bash
-#!/bin/bash
-#PBS -q smp
-#PBS -l walltime=1:00:00
-#PBS -l nodes=1:ppn=1
-#PBS -l mem=4GB
-#PBS -N myjob
-
-cd ${PBS_O_WORKDIR}
-./myjob < filename.in > filename.out
-
-```
-
-*** =right width:48%
-
-```bash
-#!/bin/bash
-#SBATCH --partition=lts
-#SBATCH --time=1:00:00
-#SBATCH --nodes=1
-#SBATCH --ntasks-per-node=1
-#SBATCH --job-name myjob
-
-cd ${SLURM_SUBMIT_DIR}
-./myjob < filename.in > filename.out
-
-```
-
---- .class #id
-
-## Minimal submit script for MPI Job
-
-
-```bash
-#!/bin/bash
-#SBATCH --partition=lts
-#SBATCH --time=1:00:00
-#SBATCH --nodes=2
-#SBATCH --ntasks-per-node=20
-## For --partition=imlab, 
-###  use --ntasks-per-node=22
-### and --qos=nogpu
-#SBATCH --job-name myjob
-
-module load mvapich2
-
-cd ${SLURM_SUBMIT_DIR}
-srun ./myjob < filename.in > filename.out
-
-exit
-```
-
---- .class #id
-
-## Minimal submit script for OpenMP Job
-
-
-```bash
-#!/bin/tcsh
-#SBATCH --partition=imlab
-# Directives can be combined on one line
-#SBATCH --time=1:00:00 --nodes=1 --ntasks-per-node=22
-#SBATCH --qos=nogpu
-#SBATCH --job-name myjob
-
-cd ${SLURM_SUBMIT_DIR}
-# Use either
-setenv OMP_NUM_THREADS 22
-./myjob < filename.in > filename.out
-
-# OR
-OMP_NUM_THREADS=22 ./myjob < filename.in > filename.out
-
-exit
-```
-
---- .class #id
-
-## Minimal submit script for LAMMPS GPU job
-
-
-```bash
-#!/bin/tcsh
-#SBATCH --partition=imlab
-# Directives can be combined on one line
-#SBATCH --time=1:00:00
-#SBATCH --nodes=1
-# 1 CPU can be be paired with only 1 GPU
-# 1 GPU can be paired with all 24 CPUs
-#SBATCH --ntasks-per-node=1
-#SBATCH --gres=gpu:1
-# Need both GPUs, use --gres=gpu:2
-#SBATCH --job-name myjob
-
-cd ${SLURM_SUBMIT_DIR}
-# Load LAMMPS Module
-module load lammps/17nov16-gpu
-# Run LAMMPS for input file in.lj
-srun $(which lammps) -in in.lj -sf gpu -pk gpu 1 gpuID ${CUDA_VISIBLE_DEVICE}
-
-exit
-```
 
 --- .class #id .small
 
@@ -589,6 +520,35 @@ exit
 | | events can be NONE, BEGIN, END, FAIL, REQUEUE, ALL, TIME_LIMIT(_90,80) |
 | #SBATCH --mail-user=address | Address to send email. |
 | #SBATCH --account=mypi | charge job to the __mypi__ account |
+
+
+--- .class #id .small
+
+## Useful SLURM Directives (contd)
+
+| SLURM Directive | Description |
+|:---------------:|:-----------:|
+| | Request a quality of service (qos)  for the job. |
+| #SBATCH --qos=nogpu | `imlab` partition has a qos of nogpu. |
+| | Job will remain in queue indefinitely if you do not specify qos |
+| | 
+| | Specifies a comma delimited list of generic consumable resources
+| #SBATCH --gres=gpu:#| To use gpus on `imlab-gpu` partition, you need to request gpus |
+| | You can request 1 or 2 gpus with a minimum of 1 core or cpu per gpu | 
+
+* SLURM can also take short hand notation for the directives
+
+| Long Form | Short Form |
+|:---------:|:----------:|
+| --partition=queuename | -p queuename |
+| --time=hh:mm:ss | -t hh:mm:ss |
+| --nodes=m | -N m |
+| --ntasks-per-node=n | -n n |
+| --ntasks=n | -n n |
+| --account=mypi | -A mypi |
+
+
+
 
 
 --- .class #id .small
@@ -642,25 +602,139 @@ exit
 
 --- .class #id
 
-## Job Types
+## Job Types: Interactive
 
-* Interactive Jobs
    - Set up an interactive environment on compute nodes for users
    - Purpose: testing and debugging code. __Do not run jobs on head node!!!__
 
-   - PBS: `qsub -I -V walltime=<hh:mm:ss>,nodes=<# of nodes>:ppn=<# of core/node> -q <queue
+   - PBS: `qsub -I -V -l walltime=<hh:mm:ss>,nodes=<# of nodes>:ppn=<# of core/node> -q <queue
    name>`
 
    - SLURM: `srun --time=<hh:mm:ss> --nodes=<# of nodes> --ntasks-per-node=<#
    of core/node> -p <queue name> --pty /bin/bash --login`
+   - Run a job interactively replace `--pty /bin/bash --login` with the
+     appropriate command. 
+       - For e.g. `srun -t 20 -n 1 -p imlab --qos=nogpu $(which lammps) -in in.lj
+     -var x 1 -var n 1`
+       - Default values are 3 days, 1 node, 20 tasks per node and lts partition
 
+--- .class #id
 
-* Batch Jobs
+## Job Types: Batch 
+
    - Executed using a batch script without user intervention
        - Advantage: system takes care of running the job
        - Disadvantage: cannot change sequence of commands after submission
    - Useful for Production runs
 
+
+--- .class #id .big
+
+## Minimal submit script for Serial Jobs
+
+
+
+```bash
+#!/bin/bash
+#PBS -q smp
+#PBS -l walltime=1:00:00
+#PBS -l nodes=1:ppn=1
+#PBS -l mem=4GB
+#PBS -N myjob
+
+cd ${PBS_O_WORKDIR}
+./myjob < filename.in > filename.out
+
+```
+
+
+```bash
+#!/bin/bash
+#SBATCH --partition=lts
+#SBATCH --time=1:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --job-name myjob
+
+cd ${SLURM_SUBMIT_DIR}
+./myjob < filename.in > filename.out
+
+```
+
+--- .class #id .big
+
+## Minimal submit script for MPI Job
+
+
+```bash
+#!/bin/bash
+#SBATCH --partition=lts
+#SBATCH --time=1:00:00
+#SBATCH --nodes=2
+#SBATCH --ntasks-per-node=20
+## For --partition=imlab, 
+###  use --ntasks-per-node=22
+### and --qos=nogpu
+#SBATCH --job-name myjob
+
+module load mvapich2
+
+cd ${SLURM_SUBMIT_DIR}
+srun ./myjob < filename.in > filename.out
+
+exit
+```
+
+--- .class #id .big
+
+## Minimal submit script for OpenMP Job
+
+
+```bash
+#!/bin/tcsh
+#SBATCH --partition=imlab
+# Directives can be combined on one line
+#SBATCH --time=1:00:00 --nodes=1 --ntasks-per-node=22
+#SBATCH --qos=nogpu
+#SBATCH --job-name myjob
+
+cd ${SLURM_SUBMIT_DIR}
+# Use either
+setenv OMP_NUM_THREADS 22
+./myjob < filename.in > filename.out
+
+# OR
+OMP_NUM_THREADS=22 ./myjob < filename.in > filename.out
+
+exit
+```
+
+--- .class #id .big
+
+## Minimal submit script for LAMMPS GPU job
+
+
+```bash
+#!/bin/tcsh
+#SBATCH --partition=imlab
+# Directives can be combined on one line
+#SBATCH --time=1:00:00
+#SBATCH --nodes=1
+# 1 CPU can be be paired with only 1 GPU
+# 1 GPU can be paired with all 24 CPUs
+#SBATCH --ntasks-per-node=1
+#SBATCH --gres=gpu:1
+# Need both GPUs, use --gres=gpu:2
+#SBATCH --job-name myjob
+
+cd ${SLURM_SUBMIT_DIR}
+# Load LAMMPS Module
+module load lammps/17nov16-gpu
+# Run LAMMPS for input file in.lj
+srun $(which lammps) -in in.lj -sf gpu -pk gpu 1 gpuID ${CUDA_VISIBLE_DEVICE}
+
+exit
+```
 
 --- .class #id
 
@@ -672,18 +746,6 @@ exit
 * `qsub` and `sbatch` can take the options for `#PBS` and `#SBATCH` as command line arguments
    * `qsub -l walltime=1:00:00,nodes=1:ppn=16 -q normal filename`
    * `sbatch --time=1:00:00 --nodes=1 --ntasks-per-node=20 -p lts filename` 
-* SLURM can also take short hand notation for the directives
-
-| Long Form | Short Form |
-|:---------:|:----------:|
-| --partition=queuename | -p queuename |
-| --time=hh:mm:ss | -t hh:mm:ss |
-| --nodes=m | -N m |
-| --ntasks-per-node=n | -n n |
-| --ntasks=n | -n n |
-| --account=mypi | -A mypi |bo
-
-
 
 --- .class #id
 
@@ -701,8 +763,8 @@ exit
 | scontrol release jobid | Release the hold that <strong>you put</strong> on <em>jobid | qrls jobid |
 
 * The following scripts written by RC staff can also be used for monitoring jobs.
-   * __checkq__: squeue with additional useful option. g
-   * __checkload__: sinfo with additional options to show load on compute nodes.  
+   * __checkq__: `squeue` with additional useful option. 
+   * __checkload__: `sinfo` with additional options to show load on compute nodes.  
 
 --- .class #id
 
@@ -732,24 +794,36 @@ exit
 
 --- .class #id
 
-## Online Usage Reporting
+## Online Usage Reporting: Sol Cluster
 
 <object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2016.svg" type="image/svg+xml">
 </object>
 
 --- .class #id
 
-## Online Usage Reporting
+## Online Usage Reporting: lts partition
 
 <object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2016-lts.svg" type="image/svg+xml">
 </object>
 
 --- .class #id
 
-## Online Usage Reporting
+## Online Usage Reporting: imlab &amp; imlab-gpu partitions
 
 <object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2016-imlab.svg" type="image/svg+xml">
 </object>
+
+--- .class #id
+
+## Online Usage Reporting  
+
+* Scrollable Usage for entire cluster
+   - https://webapps.lehigh.edu/hpc/usage/canvas.html
+* For a specific PI:
+   - Replace lts with a PI's name in the following link
+       * https://webapps.lehigh.edu/hpc/usage/lts.html
+* <span class="alert">Usage plots are restricted to Lehigh IPs</span>
+
 
 --- .class #id
 
