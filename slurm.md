@@ -46,7 +46,7 @@ license     : by-sa
        64GB RAM
   - 2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric
   - Theoretical Performance: 47.25 TFLOPs (CPU) + 12.850 TFLOPs (GPU)
-      - The GTX GPUs provide 443.65 TFLOPs of single precision performance but
+      - Each GTX card provides 8.873 TFLOPs of single precision performance but
         only 257 GFLOPs of double precision performance
   - Access: Batch Scheduled, interactive on login node for compiling, editing only
 
