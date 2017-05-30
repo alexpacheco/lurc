@@ -1,0 +1,2444 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Introduction to Linux &amp; HPC</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Introduction to Linux &amp; HPC">
+  <meta name="author" content="https://researchcomputing.lehigh.edu">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/custom.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <aside class="gdbar">
+    <img src="assets/img/lu.png">
+  </aside>
+  <hgroup class="auto-fadein">
+    <h1>Introduction to Linux &amp; HPC</h1>
+    <h2>2017 HPC Workshop - Parallel Programming</h2>
+    <p>https://researchcomputing.lehigh.edu<br/></p>
+  </hgroup>
+  <article></article>  
+  <footer class = 'license'>
+    <a href='http://creativecommons.org/licenses/by-sa/3.0/'>
+    <img width = '80px' src = 'http://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png'>
+    </a>
+  </footer>
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Research Computing Resources</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p><strong> Maia </strong></p>
+
+<ul>
+<li>32-core Symmetric Multiprocessor (SMP) system available to all Lehigh Faculty, Staff and Students</li>
+<li>dual 16-core AMD Opteron 6380 2.5GHz CPU</li>
+<li>128GB RAM and 4TB HDD</li>
+<li>Theoretical Performance: 640 GFLOPs (640 billion floating point operations per second)</li>
+<li>Access: Batch Scheduled, no interactive access to Maia</li>
+</ul>
+
+<p>\[
+GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
+\]</p>
+
+<p><a href="https://en.wikipedia.org/wiki/FLOPS#FLOPs_per_cycle">FLOPs for various AMD &amp; Intel CPU generation</a></p></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Research Computing Resources</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><strong> Sol </strong> 
+
+<ul>
+<li>Lehigh&#39;s Flagship High Performance Computing Cluster</li>
+<li>9 nodes, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 25MB Cache, 128GB
+RAM</li>
+<li>25 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache, 128GB
+RAM
+
+<ul>
+<li>Two nVIDIA GTX 1080 GPU cards per node</li>
+</ul></li>
+<li>Expansion by end of March
+
+<ul>
+<li>8 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache,
+128GB RAM</li>
+<li>13 nodes, dual 12-core Intel Xeon E5-2650 v4 2.2GHz CPU, 30 MB Cache,
+64GB RAM</li>
+</ul></li>
+<li>2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric</li>
+<li>Theoretical Performance: 47.25 TFLOPs (CPU) + 12.850 TFLOPs (GPU)
+
+<ul>
+<li>Each GTX card provides 8.873 TFLOPs of single precision performance but
+only 257 GFLOPs of double precision performance</li>
+</ul></li>
+<li>Access: Batch Scheduled, interactive on login node for compiling, editing only</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>LTS Managed Faculty Resources</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><strong>Monocacy</strong>: Ben Felzer, Earth &amp; Environmental Sciences
+
+<ul>
+<li>Eight nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
+
+<ul>
+<li>Theoretical Performance: 2.662TFlops</li>
+</ul></li>
+</ul></li>
+<li><strong>Eigen</strong>: Heather Jaeger, Chemistry
+
+<ul>
+<li>Twenty nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
+
+<ul>
+<li>Theoretical Performance: 6.656TFlops</li>
+</ul></li>
+</ul></li>
+<li><strong>Baltrusaitislab</strong>: Jonas Baltrusaitis, Chemical Engineering
+
+<ul>
+<li>Three nodes, dual 16-core AMD Opteron 6376, 2.3Ghz, 128GB RAM
+
+<ul>
+<li>Theoretical Performance: 1.766TFlops</li>
+</ul></li>
+</ul></li>
+<li><strong>Pisces</strong>: Keith Moored, Mechanical Engineering and Mechanics
+
+<ul>
+<li>Six nodes, dual 10-core Intel Xeon E5-2650v3, 2.3GHz, 64GB RAM, nVIDIA Tesla K80
+
+<ul>
+<li>Theoretical Performance: 4.416 TFlops (CPU) + 17.46TFlops (GPU)</li>
+</ul></li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Total Computational Resources Supported</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>CPU
+
+<ul>
+<li>Cores: 1980</li>
+<li>Memory: 8.69 TB</li>
+<li>Performance: 63.39 TFLOPs</li>
+</ul></li>
+<li>GPU
+
+<ul>
+<li>CUDA Cores: 157952</li>
+<li>Memory: 544 GB</li>
+<li>Performance: 30.32 TFLOPs (463.816 SP TFLOPs)</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Accessing Research Computing Resources</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Sol &amp; Faculty Clusters: accessible using ssh while on Lehigh&#39;s network
+
+<ul>
+<li><code>ssh username@clustername.cc.lehigh.edu</code></li>
+</ul></li>
+<li>Maia: No direct access to Maia, instead login to Polaris
+
+<ul>
+<li><code>ssh username@polaris.cc.lehigh.edu</code></li>
+<li>Polaris is a gateway that also hosts the batch scheduler for Maia</li>
+<li>No computing software including compilers is available on Polaris</li>
+<li>Login to Polaris and request computing time on Maia including interactive access
+
+<ul>
+<li>On Polaris, run the <code>maiashell</code> command to get interactive access to
+Maia for 15 minutes.</li>
+</ul></li>
+</ul></li>
+<li>If you are not on Lehigh&#39;s network, login to the ssh gateway to get to Research Computing resources
+
+<ul>
+<li><code>ssh username@ssh.cc.lehigh.edu</code></li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Directory Structure</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>All files are arranged in a hierarchial structure, like an inverted tree.</li>
+<li> The top of the hierarchy is traditionally called <strong>root</strong> (written as a slash
+/ )</li>
+</ul>
+
+<p><img width = '900px' src = 'assets/img/linux.svg'></p>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Relative &amp; Absolute Path</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Path means a position in the directory tree.</li>
+<li>You can use either the relative path or absolute path</li>
+<li>In relative path expression
+
+<ul>
+<li class=''>(one dot or period) is the current working directory</li>
+<li class='.'>(two dots or periods) is one directory up</li>
+<li> You can combine . and .. to navigate the filee system hierarchy.</li>
+<li> the path is not defined uniquely and does depend on the current path.</li>
+<li class='./../tmp'>is unique only if your current working directory is your home
+directory.</li>
+</ul></li>
+<li>In absolute path expression
+
+<ul>
+<li> the path is defined uniquely and does not depend on the current path</li>
+<li> /tmp is unique since /tmp is the abolute path</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Some Linux Terms (also called variables)</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><strong>HOME</strong> : Your Home Directory on the system, /home/username
+
+<ul>
+<li>This is where you should be when you login the first time</li>
+<li>Don&#39;t believe me, type <code>pwd</code> and hit enter</li>
+</ul></li>
+<li><strong>PATH</strong> : List of directories to search when executing a command
+
+<ul>
+<li>Enter <code>avogadro</code> at the command prompt</li>
+<li>You should see an error saying <code>command not found</code></li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Linux Commands</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><code>pwd</code>: print working directory, gives the absolute path of your current</li>
+<li>location in the directory hierarchy</li>
+<li><code>cd dirname</code>: change to folder called <code>dirname</code>
+
+<ul>
+<li>If you omit directory name, you will end up in your home directory</li>
+<li>Enter <code>cd /share/ceph/hej213chm488/</code></li>
+</ul></li>
+<li><code>mkdir dirname</code>: create a directory called <code>dirname</code>
+
+<ul>
+<li>Create a directory replacing dirname with your username and cd to that
+directory (This is the location where you will save all your work for this
+course.)</li>
+<li>I would enter the command <code>mkdir alp514</code> followed by <code>cd alp514</code></li>
+<li>Use the <code>pwd</code> command to check your current location </li>
+</ul></li>
+<li><code>cp file1 file2</code>: command to copy file1 to file2
+
+<ul>
+<li>You can use absolute or relative path for the source and destination <code>cp
+../file .</code></li>
+<li>If you need to copy over a directory and its contents, add a <code>-r flag</code></li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Linux Command (contd)</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><code>rm file1</code>: delete a file called file1 
+
+<ul>
+<li>Unlike other OS&#39;s, once you delete a file it cannot be deleted.</li>
+</ul></li>
+<li><code>ls</code>: list contents of current directory
+
+<ul>
+<li>If you provide a directory path as an argument, then the contents of that
+directory will be listed</li>
+</ul></li>
+<li><code>echo</code>: prints whatever follows to the screen
+
+<ul>
+<li><code>echo $HOME</code>: prints the contents of the variable <strong>HOME</strong> i.e. your home
+directory to the screen</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Exercise</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Logon to Sol</li>
+<li>Change to your storage directory
+
+<ul>
+<li><code>cd /share/ceph/hpc2017/${USER}</code></li>
+</ul></li>
+<li>Copy workshop files to your current directory
+
+<ul>
+<li><code>cp -r /share/ceph/hpc2017/alp514/sum2017 .</code></li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>File Editing</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>The two most commonly used editors on Linux/Unix systems are:
+
+<ul>
+<li> vi or vim (vi improved)</li>
+<li> emacs</li>
+</ul></li>
+<li>vi/vim is installed by default on Linux/Unix systems and has only a command</li>
+<li>line interface (CLI).</li>
+<li>emacs has both a CLI and a graphical user interface (GUI).</li>
+<li>Other editors that you may come across on *nix systems
+
+<ul>
+<li>kate: default editor for KDE.</li>
+<li>gedit: default text editor for GNOME desktop environment.</li>
+<li>gvim: GUI version of vim</li>
+<li>pico: console based plain text editor</li>
+<li>nano: GNU.org clone of pico</li>
+<li>kwrite: editor by KDE.</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>vi commands</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:45%;'>
+  <table>
+<tr><th>Inserting/Appending Text</th><th>Command</th></tr>
+<tr>
+<td>insert at cursor</td><td>i</td>
+</tr><tr>
+<td>insert at beginning of line</td><td>I</td>
+</tr><tr>
+<td>append after cursor</td><td>a</td>
+</tr><tr>
+<td>append at end of line</td><td>A</td>
+</tr><tr>
+<td>newline after cursor in insert mode</td><td>o</td>
+</tr><tr>
+<td>newline before cursor in insert mode</td><td>O</td>
+</tr><tr>
+<td>append at end of line</td><td>ea</td>
+</tr><tr>
+<td>exit insert mode</td><td>ESC</td>
+</tr>
+</table>
+
+</div>
+<div style='float:right;width:45%;'>
+  <table>
+<tr><th>Cursor Movement</th><th>Command</th></tr>
+<tr><td>move left</td><td>h</td></tr>
+<tr><td>move down</td><td>j</td></tr>
+<tr><td>move up</td><td>k</td></tr>
+<tr><td>move right</td><td>l</td></tr>
+<tr><td>jump to beginning of line</td><td>^</td></tr>
+<tr><td>jump to end of line</td><td>$</td></tr>
+<tr><td>goto line n</td><td>nG</td></tr>
+<tr><td>goto top of file</td><td>1G</td></tr>
+<tr><td>goto end of file</td><td>G</td></tr>
+<tr><td>move one page up</td><td>CNTRL-u</td></tr>
+<tr><td>move one page down</td><td>CNTRL-d</td></tr>
+</table>
+
+</div>
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>vi commands</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:45%;'>
+  <table>
+<tr><th>File Manipulation</th><th>Command</th></tr>
+<tr><td>save file</td><td>:w</td></tr>
+<tr><td>save file and exit</td><td>:wq</td></tr>
+<tr><td>quit</td><td>:q</td></tr>
+<tr><td>quit without saving</td><td>:q!</td></tr>
+<tr><td>delete a line</td><td>dd</td></tr>
+<tr><td>delete n lines</td><td>ndd</td></tr>
+<tr><td>paste deleted line after cursor</td><td>p</td></tr>
+<tr><td>paste before cursor</td><td>P</td></tr>
+<tr><td>undo edit</td><td>u</td></tr>
+<tr><td>delete from cursor to end of line</td><td>D</td></tr>
+</table>
+
+</div>
+<div style='float:right;width:45%;'>
+  <table>
+<tr><th>File Manipulation</th><th>Command</th></tr>
+<tr><td>replace a character</td><td>r</td></tr>
+<tr><td>join next line to current</td><td>J</td></tr>
+<tr><td>change a line</td><td>cc</td></tr>
+<tr><td>change a word</td><td>cw</td></tr>
+<tr><td>change to end of line</td><td>c$</td></tr>
+<tr><td>delete a character</td><td>x</td></tr>
+<tr><td>delete a word</td><td>dw</td></tr>
+<tr><td>edit/open file </td><td>:e file</td></tr>
+<tr><td>insert file </td><td>:r file</td></tr>
+</table>
+
+</div>
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Available Software</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Commercial, Free and Open source software is installed on
+
+<ul>
+<li><a href="https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=maia#installed_software">Maia</a>: /zhome/Apps</li>
+<li><a href="https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=sol#installed_software">Sol</a>: /share/Apps</li>
+</ul></li>
+<li>Software is managed using module environment
+
+<ul>
+<li>Why? We may have different versions of same software or software built with different compilers</li>
+<li>Module environment allows you to dynamically change your *nix environment based on software being used</li>
+<li>Standard on many University and national High Performance Computing resource since circa 2011</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Module Command</h2>
+  </hgroup>
+  <article data-timings="">
+    <table><thead>
+<tr>
+<th align="center">Command</th>
+<th align="center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="center"><code>module avail</code></td>
+<td align="center">show list of software available on resource</td>
+</tr>
+<tr>
+<td align="center"><code>module load abc</code></td>
+<td align="center">add software <code>abc</code> to your environment (modify your <code>PATH</code>, <code>LD_LIBRARY_PATH</code> etc as needed)</td>
+</tr>
+<tr>
+<td align="center"><code>module unload abc</code></td>
+<td align="center">remove <code>abc</code> from your environment</td>
+</tr>
+<tr>
+<td align="center"><code>module swap abc1 abc2</code></td>
+<td align="center">swap <code>abc1</code> with <code>abc2</code> in your environment</td>
+</tr>
+<tr>
+<td align="center"><code>module purge</code></td>
+<td align="center">remove all modules from your environment</td>
+</tr>
+<tr>
+<td align="center"><code>module show abc</code></td>
+<td align="center">display what variables are added or modified in your environment</td>
+</tr>
+<tr>
+<td align="center"><code>module help abc</code></td>
+<td align="center">display help message for the module <code>abc</code></td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>Users who prefer not to use the module environment will need to modify their
+.bashrc or .tcshrc files. Run <code>module show</code> for list variables that need
+modified, appended or prepended</li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Software on Sol</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img width = '960px' src = 'assets/img/sol-module.png'></p>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Installed Software</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:45%;'>
+  <ul>
+<li>Chemistry/Materials Science
+
+<ul>
+<li>CPMD</li>
+<li>GAMESS</li>
+<li>Gaussian</li>
+<li>NWCHEM</li>
+<li>Quantum Espresso</li>
+<li><em>VASP</em></li>
+</ul></li>
+<li>Molecular Dynamics
+
+<ul>
+<li><em>Desmond</em></li>
+<li>GROMACS</li>
+<li>LAMMPS</li>
+<li>NAMD</li>
+</ul></li>
+</ul>
+
+</div>
+<div style='float:right;width:45%;'>
+  <ul>
+<li>Computational Fluid Dynamics
+
+<ul>
+<li>Abaqus</li>
+<li>Ansys</li>
+<li>Comsol</li>
+<li>OpenFOAM</li>
+<li>OpenSees</li>
+</ul></li>
+<li>Math
+
+<ul>
+<li>GNU Octave</li>
+<li>Magma</li>
+<li>Maple</li>
+<li>Mathematica</li>
+<li>Matlab</li>
+</ul></li>
+</ul>
+
+</div>
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>More Software</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:35%;'>
+  <ul>
+<li>Scripting Languages
+
+<ul>
+<li>R</li>
+<li>Perl</li>
+<li>Python</li>
+</ul></li>
+<li>Compilers
+
+<ul>
+<li>GNU</li>
+<li>Intel</li>
+<li>PGI</li>
+<li>CUDA</li>
+</ul></li>
+<li>Parallel Programming
+
+<ul>
+<li>MVAPICH2</li>
+</ul></li>
+</ul>
+
+</div>
+<div style='float:right;width:65%;'>
+  <ul>
+<li>Libraries
+
+<ul>
+<li>BLAS/LAPACK/GSL/SCALAPACK</li>
+<li>Boost</li>
+<li>FFTW</li>
+<li>Intel MKL</li>
+<li>HDF5</li>
+<li>NetCDF</li>
+<li>METIS/PARMETIS</li>
+<li>PetSc</li>
+<li>QHull/QRupdate</li>
+<li>SuiteSparse</li>
+<li>SuperLU</li>
+</ul></li>
+</ul>
+
+</div>
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>More Software</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:30%;'>
+  <ul>
+<li>Visualization Tools
+
+<ul>
+<li>Avogadro </li>
+<li>GaussView</li>
+<li>GNUPlot</li>
+<li>VMD</li>
+</ul></li>
+<li>Other Tools
+
+<ul>
+<li>CMake</li>
+<li>Gurobi </li>
+<li>Scons</li>
+</ul></li>
+</ul>
+
+</div>
+<div style='float:right;width:70%;'>
+  <ul>
+<li>You can always install a software in your home directory</li>
+<li>Stay compliant with software licensing</li>
+<li>Modify your .bashrc/.tcshrc to add software to your path, OR</li>
+<li>create a module and dynamically load it so that it doesn&#39;t interfere 
+with other software installed on the system
+
+<ul>
+<li>e.g. You might want to use openmpi instead of mvapich2 </li>
+<li>the system admin may not want install it system wide for just one user</li>
+</ul></li>
+<li>Add the directory where you will install the module files to the variable 
+MODULEPATH in .bashrc/.tcshrc</li>
+</ul>
+
+<pre><code class="sh"># My .bashrc file
+export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
+</code></pre>
+
+</div>
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Module File Example</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img width = '900px' src = 'assets/img/mcr.png'></p>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Cluster Environment</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>A cluster is a group of computers (nodes) that works together closely</li>
+</ul>
+
+<div style='float:left;width:30%;'>
+  <ul>
+<li><p>Two types of nodes</p>
+
+<ul>
+<li>Head/Login Node</li>
+<li>Compute Node</li>
+</ul></li>
+<li><p>Multi-user environment</p></li>
+<li><p>Each user may have multiple jobs running simultaneously</p></li>
+</ul>
+
+</div>
+<div style='float:right;width:65%;'>
+  <p><img width = '640px' src = 'assets/img/solnetwork.png'></p>
+
+</div>
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>How to run jobs</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>All compute intensive jobs are batch scheduled</li>
+<li>Write a script to submit jobs to a scheduler
+
+<ul>
+<li>need to have some background in shell scripting (bash/tcsh)</li>
+</ul></li>
+<li>Need to specify
+
+<ul>
+<li>Resources required (which depends on configuration)
+
+<ul>
+<li>number of nodes</li>
+<li>number of processes per node</li>
+<li>memory per node</li>
+</ul></li>
+<li>How long do you want the resources
+
+<ul>
+<li>have an estimate for how long your job will run</li>
+</ul></li>
+<li>Which queue to submit jobs</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Batch Queuing System</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>A software that manages resources (CPU time, memory, etc) and schedules job execution</p>
+
+<ul>
+<li>Sol: Simple Linux Utility for Resource Management (SLURM)</li>
+<li>Others:  Portable Batch System (PBS)
+
+<ul>
+<li>Scheduler: Maui</li>
+<li>Resource Manager: Torque</li>
+<li>Allocation Manager: Gold</li>
+</ul></li>
+</ul></li>
+<li><p>A job can be considered as a user’s request to use a certain amount of resources for a certain amount of time</p></li>
+<li><p>The batch queuing system determines</p>
+
+<ul>
+<li>The order jobs are executed</li>
+<li>On which node(s) jobs are executed</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Job Scheduling</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:50%;'>
+  <ul>
+<li><p>Map jobs onto the node-time space</p>
+
+<ul>
+<li>Assuming CPU time is the only resource</li>
+</ul></li>
+<li><p>Need to find a balance between</p>
+
+<ul>
+<li>Honoring the order in which jobs are received</li>
+<li>Maximizing resource utilization</li>
+</ul></li>
+</ul>
+
+</div>
+<div style='float:right;width:45%;'>
+  <p><img width = '440px' src = 'assets/img/JobSchedule-1.png'></p>
+
+</div>
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Backfilling</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:50%;'>
+  <ul>
+<li>A strategy to improve utilization
+
+<ul>
+<li>Allow a job to jump ahead of others when there are enough idle nodes</li>
+<li>Must not affect the estimated start time of the job with the highest priority</li>
+</ul></li>
+</ul>
+
+</div>
+<div style='float:right;width:45%;'>
+  <p><img width = '440px' src = 'assets/img/JobSchedule-2.png'></p>
+
+</div>
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>How much time must I request</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Ask for an amount of time that is
+
+<ul>
+<li>Long enough for your job to complete</li>
+<li>As short as possible to increase the chance of backfilling</li>
+</ul></li>
+</ul>
+
+<div style='float:left;width:45%;'>
+  <p><img width = '360px' src = 'assets/img/JobSchedule-3.png'></p>
+
+</div>
+<div style='float:right;width:45%;'>
+  <p><img width = '360px' src = 'assets/img/JobSchedule-4.png'></p>
+
+</div>
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class small" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Available Queues</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Sol</li>
+</ul>
+
+<table><thead>
+<tr>
+<th align="center">Queue Name</th>
+<th align="center">Max Runtime in hours</th>
+<th align="center">Max SU consumed node per hour</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="center">lts</td>
+<td align="center">72</td>
+<td align="center">20</td>
+</tr>
+<tr>
+<td align="center">imlab</td>
+<td align="center">48</td>
+<td align="center">22</td>
+</tr>
+<tr>
+<td align="center">imlab-gpu</td>
+<td align="center">48</td>
+<td align="center">24</td>
+</tr>
+<tr>
+<td align="center">eng</td>
+<td align="center">72</td>
+<td align="center">24</td>
+</tr>
+<tr>
+<td align="center">engc</td>
+<td align="center">72</td>
+<td align="center">24</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>Maia</li>
+</ul>
+
+<table><thead>
+<tr>
+<th align="center">Queue Name</th>
+<th align="center">Max Runtime in hours</th>
+<th align="center">Max Simultaneous Core-hours</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="center">smp-test</td>
+<td align="center">1</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center">smp</td>
+<td align="center">96</td>
+<td align="center">384</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class small" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Queues on Faculty Clusters</h2>
+  </hgroup>
+  <article data-timings="">
+    <table><thead>
+<tr>
+<th align="center">Cluster</th>
+<th align="center">Queue</th>
+<th align="center">Max Runtime</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="center">Pisces</td>
+<td align="center">normal</td>
+<td align="center">4 days</td>
+</tr>
+<tr>
+<td align="center">Monocacy</td>
+<td align="center">normal</td>
+<td align="center">4 days</td>
+</tr>
+<tr>
+<td align="center">Eigen</td>
+<td align="center">adf</td>
+<td align="center">14 days</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">normal</td>
+<td align="center">14 days</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">long</td>
+<td align="center">28 days</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>How much memory can I use?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>The amount of installed memory less the amount that is used by the operating system and other utilities</p></li>
+<li><p>A general rule of thumb on most HPC resources: leave 1-2GB for the OS to run. </p></li>
+<li><p>Sol: Max memory used per node should not exceed 126GB.</p>
+
+<ul>
+<li>nodes in lts partition have ~6.4GB/core
+
+<ul>
+<li>max memory 6.3GB/core</li>
+</ul></li>
+<li>nodes in imlab &amp; imlab-gpu partition have ~5.3GB/core
+
+<ul>
+<li>max memory 5.25GB/core</li>
+<li><span class="alert">if you need to run a single core job that requires 10GB memory in the imlab partition, you need to request 2 cores even though you are only using
+1 core.</span><br></li>
+</ul></li>
+</ul></li>
+<li><p>Maia: Users need to specify memory required in their submit script. Max
+memory that should be requested is 126GB.</p></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class small" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Useful SLURM Directives</h2>
+  </hgroup>
+  <article data-timings="">
+    <table><thead>
+<tr>
+<th align="center">SLURM Directive</th>
+<th align="center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="center">#SBATCH --partition=queuename</td>
+<td align="center">Submit job to the <em>queuename</em> queue.</td>
+</tr>
+<tr>
+<td align="center">#SBATCH --time=hh:mm:ss</td>
+<td align="center">Request resources to run job for <em>hh</em> hours, <em>mm</em> minutes and <em>ss</em> seconds.</td>
+</tr>
+<tr>
+<td align="center">#SBATCH --nodes=m</td>
+<td align="center">Request resources to run job on <em>m</em> nodes.</td>
+</tr>
+<tr>
+<td align="center">#SBATCH --ntasks-per-node=n</td>
+<td align="center">Request resources to run job on <em>n</em> processors on each node requested.</td>
+</tr>
+<tr>
+<td align="center">#SBATCH --ntasks=n</td>
+<td align="center">Request resources to run job on a total of <em>n</em> processors.</td>
+</tr>
+<tr>
+<td align="center">#SBATCH --mem=x[M,G,T]</td>
+<td align="center">Request <em>x[M,G or T]B</em> per node requested</td>
+</tr>
+<tr>
+<td align="center">#SBATCH --job-name=jobname</td>
+<td align="center">Provide a name, <em>jobname</em> to your job.</td>
+</tr>
+<tr>
+<td align="center">#SBATCH --output=filename.out</td>
+<td align="center">Write SLURM standard output to file filename.out.</td>
+</tr>
+<tr>
+<td align="center">#SBATCH --error=filename.err</td>
+<td align="center">Write SLURM standard error to file filename.err.</td>
+</tr>
+<tr>
+<td align="center">#SBATCH --mail-type=events</td>
+<td align="center">Send an email after job status events is reached.</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">events can be NONE, BEGIN, END, FAIL, REQUEUE, ALL, TIME_LIMIT(_90,80)</td>
+</tr>
+<tr>
+<td align="center">#SBATCH --mail-user=address</td>
+<td align="center">Address to send email.</td>
+</tr>
+<tr>
+<td align="center">#SBATCH --account=mypi</td>
+<td align="center">charge job to the <strong>mypi</strong> account</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class small" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Useful SLURM Directives (contd)</h2>
+  </hgroup>
+  <article data-timings="">
+    <table><thead>
+<tr>
+<th align="center">SLURM Directive</th>
+<th align="center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="center"></td>
+<td align="center">Request a quality of service (qos)  for the job.</td>
+</tr>
+<tr>
+<td align="center">#SBATCH --qos=nogpu</td>
+<td align="center"><code>imlab</code> partition has a qos of nogpu.</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">Job will remain in queue indefinitely if you do not specify qos</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">Specifies a comma delimited list of generic consumable resources</td>
+</tr>
+<tr>
+<td align="center">#SBATCH --gres=gpu:#</td>
+<td align="center">To use gpus on <code>imlab-gpu</code> partition, you need to request gpus</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">You can request 1 or 2 gpus with a minimum of 1 core or cpu per gpu</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>SLURM can also take short hand notation for the directives</li>
+</ul>
+
+<table><thead>
+<tr>
+<th align="center">Long Form</th>
+<th align="center">Short Form</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="center">--partition=queuename</td>
+<td align="center">-p queuename</td>
+</tr>
+<tr>
+<td align="center">--time=hh:mm:ss</td>
+<td align="center">-t hh:mm:ss</td>
+</tr>
+<tr>
+<td align="center">--nodes=m</td>
+<td align="center">-N m</td>
+</tr>
+<tr>
+<td align="center">--ntasks-per-node=n</td>
+<td align="center">-n n</td>
+</tr>
+<tr>
+<td align="center">--ntasks=n</td>
+<td align="center">-n n</td>
+</tr>
+<tr>
+<td align="center">--account=mypi</td>
+<td align="center">-A mypi</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class small" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Useful PBS Directives</h2>
+  </hgroup>
+  <article data-timings="">
+    <table><thead>
+<tr>
+<th align="center">PBS Directive</th>
+<th align="left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="center">#PBS -q queuename</td>
+<td align="left">Submit job to the <em>queuename</em> queue.</td>
+</tr>
+<tr>
+<td align="center">#PBS -l walltime=hh:mm:ss</td>
+<td align="left">Request resources to run job for <em>hh</em> hours, <em>mm</em> minutes and <em>ss</em> seconds.</td>
+</tr>
+<tr>
+<td align="center">#PBS -l nodes=m:ppn=n</td>
+<td align="left">Request resources to run job on <em>n</em> processors each on <em>m</em> nodes.</td>
+</tr>
+<tr>
+<td align="center">#PBS -l mem=xGB</td>
+<td align="left">Request <em>xGB</em> per node requested, applicable on Maia only</td>
+</tr>
+<tr>
+<td align="center">#PBS -N jobname</td>
+<td align="left">Provide a name, <em>jobname</em> to your job.</td>
+</tr>
+<tr>
+<td align="center">#PBS -o filename.out</td>
+<td align="left">Write PBS standard output to file filename.out.</td>
+</tr>
+<tr>
+<td align="center">#PBS -e filename.err</td>
+<td align="left">Write PBS standard error to file filename.err.</td>
+</tr>
+<tr>
+<td align="center">#PBS -j oe</td>
+<td align="left">Combine PBS standard output and error to the same file.</td>
+</tr>
+<tr>
+<td align="center">#PBS -M your email address</td>
+<td align="left">Address to send email.</td>
+</tr>
+<tr>
+<td align="center">#PBS -m status</td>
+<td align="left">Send an email after job status status is reached.</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="left">status can be a (abort), b (begin) or e (end). The arguments can be combined</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="left">for e.g. abe will send email when job begins and either aborts or ends</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class pbs" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Useful PBS/SLURM environmental variables</h2>
+  </hgroup>
+  <article data-timings="">
+    <table><thead>
+<tr>
+<th align="center">SLURM Command</th>
+<th align="center">Description</th>
+<th align="center">PBS Command</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="center">SLURM_SUBMIT_DIR</td>
+<td align="center">Directory where the <code>qsub</code> command was executed</td>
+<td align="center">PBS_O_WORKDIR</td>
+</tr>
+<tr>
+<td align="center">SLURM_JOB_NODELIST</td>
+<td align="center">Name of the file that contains a list of the HOSTS provided for the job</td>
+<td align="center">PBS_NODEFILE</td>
+</tr>
+<tr>
+<td align="center">SLURM_NTASKS</td>
+<td align="center">Total number of cores for job</td>
+<td align="center">PBS_NP</td>
+</tr>
+<tr>
+<td align="center">SLURM_JOBID</td>
+<td align="center">Job ID number given to this job</td>
+<td align="center">PBS_JOBID</td>
+</tr>
+<tr>
+<td align="center">SLURM_JOB_PARTITION</td>
+<td align="center">Queue job is running in</td>
+<td align="center">PBS_QUEUE</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">Walltime in secs requested</td>
+<td align="center">PBS_WALLTIME</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">Name of the job. This can be set using the -N option in the PBS script</td>
+<td align="center">PBS_JOBNAME</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">Indicates job type, PBS_BATCH or PBS_INTERACTIVE</td>
+<td align="center">PBS_ENVIRONMENT</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">value of the SHELL variable in the environment in which qsub was executed</td>
+<td align="center">PBS_O_SHELL</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">Home directory of the user running qsub</td>
+<td align="center">PBS_O_HOME</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Basic Job Manager Commands</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Submission</li>
+<li>Monitoring</li>
+<li>Manipulating</li>
+<li>Reporting</li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Job Types: Interactive</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Set up an interactive environment on compute nodes for users</li>
+<li><p>Purpose: testing and debugging code. <strong>Do not run jobs on head node!!!</strong></p></li>
+<li><p>PBS: <code>qsub -I -V -l walltime=&lt;hh:mm:ss&gt;,nodes=&lt;# of nodes&gt;:ppn=&lt;# of core/node&gt; -q &lt;queue
+name&gt;</code></p></li>
+<li><p>SLURM: <code>srun --time=&lt;hh:mm:ss&gt; --nodes=&lt;# of nodes&gt; --ntasks-per-node=&lt;#
+of core/node&gt; -p &lt;queue name&gt; --pty /bin/bash --login</code></p></li>
+<li><p>Run a job interactively replace <code>--pty /bin/bash --login</code> with the
+ appropriate command. </p>
+
+<ul>
+<li>For e.g. <code>srun -t 20 -n 1 -p imlab --qos=nogpu $(which lammps) -in in.lj
+-var x 1 -var n 1</code></li>
+<li>Default values are 3 days, 1 node, 20 tasks per node and lts partition</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Job Types: Batch</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Executed using a batch script without user intervention
+
+<ul>
+<li>Advantage: system takes care of running the job</li>
+<li>Disadvantage: cannot change sequence of commands after submission</li>
+</ul></li>
+<li>Useful for Production runs</li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class big" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Minimal submit script for Serial Jobs</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="bash">#!/bin/bash
+#PBS -q smp
+#PBS -l walltime=1:00:00
+#PBS -l nodes=1:ppn=1
+#PBS -l mem=4GB
+#PBS -N myjob
+
+cd ${PBS_O_WORKDIR}
+./myjob &lt; filename.in &gt; filename.out
+
+</code></pre>
+
+<pre><code class="bash">#!/bin/bash
+#SBATCH --partition=lts
+#SBATCH --time=1:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --job-name myjob
+
+cd ${SLURM_SUBMIT_DIR}
+./myjob &lt; filename.in &gt; filename.out
+
+</code></pre>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class big" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Minimal submit script for MPI Job</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="bash">#!/bin/bash
+#SBATCH --partition=lts
+#SBATCH --time=1:00:00
+#SBATCH --nodes=2
+#SBATCH --ntasks-per-node=20
+## For --partition=imlab, 
+###  use --ntasks-per-node=22
+### and --qos=nogpu
+#SBATCH --job-name myjob
+
+module load mvapich2
+
+cd ${SLURM_SUBMIT_DIR}
+srun ./myjob &lt; filename.in &gt; filename.out
+
+exit
+</code></pre>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class big" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Minimal submit script for OpenMP Job</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="bash">#!/bin/tcsh
+#SBATCH --partition=imlab
+# Directives can be combined on one line
+#SBATCH --time=1:00:00 --nodes=1 --ntasks-per-node=22
+#SBATCH --qos=nogpu
+#SBATCH --job-name myjob
+
+cd ${SLURM_SUBMIT_DIR}
+# Use either
+setenv OMP_NUM_THREADS 22
+./myjob &lt; filename.in &gt; filename.out
+
+# OR
+OMP_NUM_THREADS=22 ./myjob &lt; filename.in &gt; filename.out
+
+exit
+</code></pre>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class big" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Minimal submit script for LAMMPS GPU job</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="bash">#!/bin/tcsh
+#SBATCH --partition=imlab
+# Directives can be combined on one line
+#SBATCH --time=1:00:00
+#SBATCH --nodes=1
+# 1 CPU can be be paired with only 1 GPU
+# 1 GPU can be paired with all 24 CPUs
+#SBATCH --ntasks-per-node=1
+#SBATCH --gres=gpu:1
+# Need both GPUs, use --gres=gpu:2
+#SBATCH --job-name myjob
+
+cd ${SLURM_SUBMIT_DIR}
+# Load LAMMPS Module
+module load lammps/17nov16-gpu
+# Run LAMMPS for input file in.lj
+srun $(which lammps) -in in.lj -sf gpu -pk gpu 1 gpuID ${CUDA_VISIBLE_DEVICE}
+
+exit
+</code></pre>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Submitting Batch Jobs</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>PBS: <code>qsub filename</code></li>
+<li><p>SLURM: <code>sbatch filename</code></p></li>
+<li><p><code>qsub</code> and <code>sbatch</code> can take the options for <code>#PBS</code> and <code>#SBATCH</code> as command line arguments</p>
+
+<ul>
+<li><code>qsub -l walltime=1:00:00,nodes=1:ppn=16 -q normal filename</code></li>
+<li><code>sbatch --time=1:00:00 --nodes=1 --ntasks-per-node=20 -p lts filename</code> </li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Workshop Instructions</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Use <code>lts</code> partition for OpenMP and MPI exercises</li>
+<li>Use <code>imlab-gpu</code> partition for OpenACC exercise</li>
+<li>Running exercises interactively
+
+<ul>
+<li>OpenMP: To run <code>myexec</code> using 4 OpenMP Threads
+
+<ul>
+<li><code>export OMP_NUM_THREADS=4; srun -p lts -n 1 -c 4 ./myexec</code> </li>
+</ul></li>
+<li>OpenACC: To run <code>myexec</code> on 1 GPU 
+
+<ul>
+<li><code>srun -p imlab-gpu -n 1 --gres=gpu:1 ./myexec</code></li>
+</ul></li>
+<li>MPI: To run <code>myexec</code> on y nodes with z total tasks (z/y tasks per node)
+
+<ul>
+<li><code>srun -p lts -n z -N y ./myexec</code></li>
+</ul></li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Monitoring &amp; Manipulating Jobs</h2>
+  </hgroup>
+  <article data-timings="">
+    <table><thead>
+<tr>
+<th align="center">SLURM Command</th>
+<th align="center">Description</th>
+<th align="center">PBS Command</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="center">squeue</td>
+<td align="center">check job status (all jobs)</td>
+<td align="center">qstat</td>
+</tr>
+<tr>
+<td align="center">squeue -u username</td>
+<td align="center">check job status of user <em>username</em></td>
+<td align="center">qstat -u username</td>
+</tr>
+<tr>
+<td align="center">squeue --start</td>
+<td align="center">Show <strong>estimated</strong> start time of jobs in queue</td>
+<td align="center">showstart jobid</td>
+</tr>
+<tr>
+<td align="center">scontrol show job jobid</td>
+<td align="center">Check status of your job identified by <em>jobid</em></td>
+<td align="center">checkjob jobid</td>
+</tr>
+<tr>
+<td align="center">scancel jobid</td>
+<td align="center">Cancel your job identified by <em>jobid</em></td>
+<td align="center">qdel jobid</td>
+</tr>
+<tr>
+<td align="center">scontrol hold jobid</td>
+<td align="center">Put your job identified by <em>jobid</em> on hold</td>
+<td align="center">qhold jobid</td>
+</tr>
+<tr>
+<td align="center">scontrol release jobid</td>
+<td align="center">Release the hold that <strong>you put</strong> on <em>jobid</td>
+<td align="center">qrls jobid</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>The following scripts written by RC staff can also be used for monitoring jobs.
+
+<ul>
+<li><strong>checkq</strong>: <code>squeue</code> with additional useful option. </li>
+<li><strong>checkload</strong>: <code>sinfo</code> with additional options to show load on compute nodes.<br></li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Usage Reporting</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><a href="http://slurm.schedmd.com/sacct.html">sacct</a>: displays accounting data for all jobs and job steps in the SLURM job accounting log or Slurm database</li>
+<li><p><a href="http://slurm.schedmd.com/sshare.html">sshare</a>: Tool for listing the shares of associations to a cluster. </p></li>
+<li><p>We have created scripts based on these to provide usage reporting</p>
+
+<ul>
+<li> <code>alloc_summary.sh</code>
+
+<ul>
+<li>included in your .bash_profile</li>
+<li>prints allocation usage on your login shell</li>
+</ul></li>
+<li> <code>balance</code>
+
+<ul>
+<li>prints allocation usage summary</li>
+</ul></li>
+<li> <code>solreport</code>
+
+<ul>
+<li>obtain your monthly usage report</li>
+<li>PIs can obtain usage report for all or specific users on their
+allocation</li>
+<li>use <code>--help</code> for usage information</li>
+</ul></li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Usage Reporting</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img width = '960px' src = 'assets/img/slurmreport.png'> </p>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Online Usage Reporting: Sol Cluster</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2016.svg" type="image/svg+xml">
+</object></p>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Online Usage Reporting: lts partition</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2016-lts.svg" type="image/svg+xml">
+</object></p>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Online Usage Reporting: imlab &amp; imlab-gpu partitions</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2016-imlab.svg" type="image/svg+xml">
+</object></p>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Online Usage Reporting</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Scrollable Usage for entire cluster
+
+<ul>
+<li><a href="https://webapps.lehigh.edu/hpc/usage/canvas.html">https://webapps.lehigh.edu/hpc/usage/canvas.html</a></li>
+</ul></li>
+<li>For a specific PI:
+
+<ul>
+<li>Replace lts with a PI&#39;s name in the following link
+
+<ul>
+<li><a href="https://webapps.lehigh.edu/hpc/usage/lts.html">https://webapps.lehigh.edu/hpc/usage/lts.html</a></li>
+</ul></li>
+</ul></li>
+<li><span class="alert">Usage plots are restricted to Lehigh IPs</span></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Need to run multiple jobs in sequence?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Option 1: Submit jobs as soon as previous jobs complete</li>
+<li><p>Option 2: Submit jobs with a dependency</p>
+
+<ul>
+<li><a href="https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=slurm#submitting_dependency_jobs">SLURM</a>:
+<code>sbatch --dependency=afterok:&lt;JobID&gt; &lt;Submit Script&gt;</code></li>
+<li><a href="https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=corona#submitting_dependency_jobs">PBS</a>:
+<code>qsub -W depend=afterok:&lt;JobID&gt; &lt;Submit Script&gt;</code></li>
+</ul></li>
+<li><p>You want to run several serial processor jobs on</p>
+
+<ul>
+<li>one node: your submit script should be able to run several serial
+jobs in background and then use the <code>wait</code> command for all jobs to finish</li>
+<li>more than one node: this requires some background in scripting but the
+idea is the same as above</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Additional Help &amp; Information</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Issue with running jobs or need help to get started: 
+
+<ul>
+<li>Open a help ticket: <a href="http://lehigh.edu/go/rchelp">http://lehigh.edu/go/rchelp</a></li>
+</ul></li>
+<li>More Information
+
+<ul>
+<li><a href="https://researchcomputing.lehigh.edu">Research Computing</a></li>
+<li><a href="https://researchcomputing.lehigh.edu/training">Research Computing Training</a></li>
+<li><a href="https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php">Research Computing Wiki</a></li>
+</ul></li>
+<li>Subscribe
+
+<ul>
+<li>Research Computing Mailing List: <a href="https://lists.lehigh.edu/mailman/listinfo/hpc-l">https://lists.lehigh.edu/mailman/listinfo/hpc-l</a></li>
+<li>HPC Training Google Groups: <a href="mailto:hpctraining-list+subscribe@lehigh.edu">hpctraining-list+subscribe@lehigh.edu</a></li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Research Computing Resources'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Research Computing Resources'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='LTS Managed Faculty Resources'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Total Computational Resources Supported'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Accessing Research Computing Resources'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Directory Structure'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Relative &amp; Absolute Path'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Some Linux Terms (also called variables)'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Linux Commands'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Linux Command (contd)'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Exercise'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='File Editing'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='vi commands'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='vi commands'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='Available Software'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='Module Command'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='Software on Sol'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='Installed Software'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='More Software'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='More Software'>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='Module File Example'>
+         21
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='Cluster Environment'>
+         22
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title='How to run jobs'>
+         23
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='Batch Queuing System'>
+         24
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title='Job Scheduling'>
+         25
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=26 title='Backfilling'>
+         26
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=27 title='How much time must I request'>
+         27
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=28 title='Available Queues'>
+         28
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=29 title='Queues on Faculty Clusters'>
+         29
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=30 title='How much memory can I use?'>
+         30
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=31 title='Useful SLURM Directives'>
+         31
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=32 title='Useful SLURM Directives (contd)'>
+         32
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=33 title='Useful PBS Directives'>
+         33
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=34 title='Useful PBS/SLURM environmental variables'>
+         34
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=35 title='Basic Job Manager Commands'>
+         35
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=36 title='Job Types: Interactive'>
+         36
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=37 title='Job Types: Batch'>
+         37
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=38 title='Minimal submit script for Serial Jobs'>
+         38
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=39 title='Minimal submit script for MPI Job'>
+         39
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=40 title='Minimal submit script for OpenMP Job'>
+         40
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=41 title='Minimal submit script for LAMMPS GPU job'>
+         41
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=42 title='Submitting Batch Jobs'>
+         42
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=43 title='Workshop Instructions'>
+         43
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=44 title='Monitoring &amp; Manipulating Jobs'>
+         44
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=45 title='Usage Reporting'>
+         45
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=46 title='Usage Reporting'>
+         46
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=47 title='Online Usage Reporting: Sol Cluster'>
+         47
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=48 title='Online Usage Reporting: lts partition'>
+         48
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=49 title='Online Usage Reporting: imlab &amp; imlab-gpu partitions'>
+         49
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=50 title='Online Usage Reporting'>
+         50
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=51 title='Need to run multiple jobs in sequence?'>
+         51
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=52 title='Additional Help &amp; Information'>
+         52
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

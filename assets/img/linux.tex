@@ -1,0 +1,70 @@
+\documentclass{standalone}
+
+\usepackage{tikz}
+\usetikzlibrary{trees,matrix,shapes,arrows}
+\usetikzlibrary{calc}
+
+
+
+\begin{document}
+
+\tikzstyle{every node}=[draw=black,thick,anchor=west]
+\tikzstyle{selected}=[draw=red,fill=red!30]
+\tikzstyle{optional}=[dashed,fill=gray!50]
+\begin{tikzpicture}[%
+  linux/.style={rectangle,draw,fill=blue!20},
+  hpc/.style={rectangle,draw,fill=red!80,rounded corners=.8ex},
+  grandchild/.style={grow=down,xshift=1em,anchor=west,
+    edge from parent path={(\tikzparentnode.south) |- (\tikzchildnode.west)}},
+  first/.style={level distance=12ex,sibling distance=10em,xshift=-6em},
+  second/.style={level distance=8ex,sibling distance=6em,xshift=-1.5em},
+  third/.style={level distance=26ex,sibling distance=7.5em,xshift=-2em},
+  fourth/.style={level distance=8ex},
+  fifth/.style={level distance=14ex},
+  sixth/.style={level distance=20ex},
+  seventh/.style={level distance=26ex},
+  eighth/.style={level distance=32ex},
+  level 1/.style={sibling distance=5.1em},
+  scale=0.58]
+    % Parents
+    \coordinate
+    child[grow=down,level distance=0ex]{node[linux]{ / }}
+    [edge from parent fork down]
+    % Children and grandchildren
+    child {node[linux] {bin}}
+    child {node[linux] {boot}}
+    child {node[linux] {dev}}
+    child {node[linux] {etc}}
+    child {node[linux] {home}
+      child [first] {node[linux] {user1}
+          child[grandchild,fourth] {node[linux] {Desktop}}
+          child[grandchild,fifth] {node[linux] {Documents}}
+          child[grandchild,sixth] {node[linux] {Downloads}}
+          child[grandchild,seventh] {node[linux] {Public}}
+          child[grandchild,eighth] {node[linux] {$\cdots$}}
+       }
+      child [first] {node[linux] {user2}
+       }
+      child [first] {node[linux] {$\cdots$}}
+    }
+    child [missing] {}
+    child {node[linux] {lib}}
+    child {node[linux] {mnt}}
+    child {node[linux] {tmp}}
+    child {node[linux] {usr}
+      child [third] {node[linux] {bin}}
+      child [third] {node[linux] {lib}}
+      child [third] {node[linux] {local}}
+      child [third] {node[linux] {include}}
+      child [third] {node[linux] {share}}
+    }
+    child {node[linux] {var}}
+    child {node[hpc] {share}
+      child [second] {node[hpc] {Apps}}
+    }
+%      child [second] {node[hpc] {user1}}
+%      child [second] {node[hpc] {user2}}
+%      child [second] {node[hpc] {$\cdots$}}
+    ;
+\end{tikzpicture}
+\end{document}
