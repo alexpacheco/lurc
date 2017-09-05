@@ -10,7 +10,7 @@ hitheme     : tomorrow      #
 widgets     : [mathjax]            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 license     : by-sa
---- .lehigh
+--- .class
 
 ## About Us?
 
@@ -22,18 +22,17 @@ license     : by-sa
   
 * Research Computing Staff
   - __Alex Pacheco, Manager &#38; XSEDE Campus Champion__
-  - Steve Anthony, HPC User Support & System Administrator
+  - Steve Anthony, System Administrator
   - Dan Brashler, Computing Consultant
   - Mary Jo Schulze, Software Specialist
 
----.lehigh
+--- .class
 
 ## What do we do?
 
 * Hardware Support
   - Provide system administration and support for Lehigh's HPC clusters.
-     - 6 University owned and 4 Faculty owned 
-     - 4 University owned clusters to be decommissioned on Dec. 31, 2016.
+     - 2 University owned and 4 Faculty owned 
   - Assist with purchase, installation and administration of servers and clusters.
 * Data Storage
   - Provide data management services including storing and sharing data. 
@@ -43,12 +42,12 @@ license     : by-sa
   - Provide education and training programs to facilitate use of HPC resources and general scientific computing needs.
   - Provide consultation and support for code development and visualization.
 
---- .lehigh
+--- .class
 
 ## Research Computing Resources
 
 * <strong> Maia </strong>
-  - Free 32-core Symmetric Multiprocessor (SMP) system available to all Lehigh Faculty, Staff and Students
+  - 32-core Symmetric Multiprocessor (SMP) system available to all Lehigh Faculty, Staff and Students
   - dual 16-core AMD Opteron 6380 2.5GHz CPU
   - 128GB RAM and 4TB HDD
   - Theoretical Performance: 640 GFLOPs (640 billion floating point operations per second)
@@ -61,58 +60,58 @@ license     : by-sa
   [FLOPs for various AMD & Intel CPU generation](https://en.wikipedia.org/wiki/FLOPS#FLOPs_per_cycle)
 
 
---- .lehigh
+--- .class
 
 ## Research Computing Resources
 
 * <strong> Sol </strong>
   - Lehigh's Flagship High Performance Computing Cluster
-  - 8 nodes, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 25MB Cache
-  - Condo Investors
-     - Dimitrios Vavylonis, Physics
-          - 1 node, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 25MB Cache
-     - Wonpil Im, Biological Sciences
-          - 25 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache
+  - 9 nodes, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 25MB Cache
+  - 25 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache
+     - *Two* nVIDIA GTX 1080 GPU cards per node
+  - *6 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache*
   - 128 GB RAM and 1TB HDD per node
   - 2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric
-  - Theoretical Performance: 28.7 TFLOPs
+  - Theoretical Performance: 34.003 TFLOPs (CPU) + 12.850 TFLOPs (GPU)
+      - The GTX GPUs provide 443.65 TFLOPs of single precision processing.
+      - Double precision performance from each GTX card is 257 GFLOPs compared to 736(883.2) GFLOPs from each 20(24)-core node.
   - Access: Batch Scheduled, interactive on login node for compiling, editing only
   
 
---- .lehigh
-
-## Research Computing Resources
-
-* Resources due for retirement on December 31, 2016.
-* Available only to FY 2015-16 users
-* <strong> Corona </strong>
-  - 40 nodes, dual 8-core AMD Opteron 6128 2GHz CPU, 32GB RAM and 1TB HDD
-  - 24 nodes, dual 8-core AMD Opteron 6128 2GHz CPU, 64GB RAM and 2TB HDD, 
-      - Infiniband QDR (40Gb/s) interconnect fabric.
-  - Theoretical Performance: 8.2TFlops (8.2 trillion Flops)
-
-* <strong> Trit </strong>: Three SunFire x2270 Servers with  dual 4-core Intel Xeon X5570, 2.95GHz, 48GB RAM, 500GB HDD
-* <strong> Capella </strong>: One node, quad 4-core AMD Opteron 8384, 2GHz, 64GB RAM, 2x 146GB HDD
-* <strong> Cuda0 </strong>: One node, 6-core Intel Xeon X5650, 2.66GHz, 24GB RAM, 200GB HDD, 4 nVIDIA Fermi Devices (C2050, C2070, 2x M2070)
-
---- .lehigh
+--- .class
 
 ## LTS Managed Faculty Resources 
 
-* Ben Felzer, Earth & Environmental Sciences
+* __Monocacy__ - Ben Felzer, Earth & Environmental Sciences
   - Eight nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
      * Theoretical Performance: 2.662TFlops
-* Heather Jaeger, Chemistry
+* __Eigen__ - Heather Jaeger, Chemistry
   - Twenty nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
      * Theoretical Performance: 6.656TFlops
-* Jonas Baltrusaitis, Chemical Engineering
+* __Baltrusaitislab__ - Jonas Baltrusaitis, Chemical Engineering
   - Three nodes, dual 16-core AMD Opteron 6376, 2.3Ghz, 128GB RAM
      * Theoretical Performance: 1.766TFlops
-* Keith Moored, Mechanical Engineering and Mechanics
+* __Pisces__ - Keith Moored, Mechanical Engineering and Mechanics
   - Six nodes, dual 10-core Intel Xeon E5-2650v3, 2.3GHz, 64GB RAM, nVIDIA Tesla K80
      * Theoretical Performance: 4.416 TFlops (CPU) + 17.46TFlops (GPU)
 
---- .lehigh
+
+
+--- .class
+
+## Total Computational Resources Supported
+
+* CPU
+  * Cores: 1620
+  * Memory: 7.808 TB
+  * Performance: 50.143 TFLOPs
+* GPU
+  * CUDA Cores: 157952
+  * Memory: 544 GB
+  * Performance: 30.310 TFLOPs
+
+
+--- .class
 
 ## Apply for an account
 
@@ -121,20 +120,18 @@ license     : by-sa
    - Click on the big blue button "Start Special Account Request" > Research Computing Account 
    - Maia
        - Click on "FREE Linux command-line computing"
-   - Sol
-       - Click on "Fee-based research computing"
+   - Sol: PIs should contact Alex Pacheco or Steve Anthony, web request is not functional
+       - ~~Click on "Fee-based research computing"~~ 
        - Annual charge of \$50/account paid by Lehigh Faculty or Research Staff, and
        - Annual charge for computing time
 
---- .lehigh
+--- .class
 
 ## Allocation Charges - Effective Oct. 1, 2016
 
 * Cost per core-hour or service unit (SU) is 1&cent;
 * SU is defined as 1 hour of computing on 1 core of the Sol base compute node.
    - One base compute node of Sol consumes 20 SU/hour, 480 SU/day and 175,200 SU/year
-* No free usage if allocation balance is zero
-
 
 * PIs can share allocations with their collaborators
    - Minimum Annual Purchase of 50,000 SU - &#36;500/year
@@ -144,7 +141,7 @@ license     : by-sa
    - <em>Working on implementing a rolling allocation cycle, only for minimum purchase.</em>
    - Total available computing time for purchase annually: 1.4M SUs or 1 year of continous computing on 8 nodes
 
---- .lehigh
+--- .class
 
 ## Example Allocation Request
 
@@ -162,11 +159,10 @@ license     : by-sa
      * If rolling allocation cycle is implemented, then all 100K SUs (<span class="txtbull">&#x2776;</span> and <span class="txtbull">&#x2777;</span>) must be used up within 1 year of initial 50K purchase.
 
 * Need more than 175K SU/year or
-* Do not think 1.4M SUs are enough for all HPC users, then
 * BECOME A CONDO INVESTOR
  
 
---- .lehigh
+--- .class
 
 ## Condo Investments
 
@@ -183,36 +179,25 @@ license     : by-sa
        -  and must be consumed in current allocation cycle
 * Annual Allocation cycle is Oct. 1 - Sep. 30.
 
---- .lehigh
+--- .class
 
 ## Condo Investors
 
 * Two at initial launch 
    - Dimitrios Vavylonis, Physics
-       - One dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 25MB Cache
-       - Annual Allocation: 175,200 SUs
    - Wonpil Im, Biological Sciences
-       - 25 dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache
-       - Annual Allocation: 5,256,000 SUs
+* Acquisition in progress
+   - Anand Jagota, Chemical Engineering
+   - Brian Chen, Computer Science & Engineering
+   - Ed Webb & Alp Oztekin, Mechanical Engineering
 
-* Total SU on Sol after Condo Investments: 6,832,800
-* Available capacity for additional investments: 38
+* Total SU on Sol after Condo Investments: 8,164,320
+* Available capacity for additional investments: 21
+   * Acquisition being planned
+      - Jeetain Mittal & Srinivas Rangarajan, Chemical Engineering
+      - Seth Richards-Shubik, Economics
 
---- .lehigh
-
-## Accessing Research Computing Resources
-
-* All Research Computing resources are accessible using ssh while on Lehigh's network
-* Sol: `ssh username@sol.cc.lehigh.edu`
-* Maia: No direct access to Maia, instead login to the polaris
-* Polaris: `ssh username@polaris.cc.lehigh.edu`
-  - Polaris is a gateway that also hosts the batch scheduler for Maia.
-  - No computing software including compilers is available on Polaris.
-  - Login to Polaris and request computing time on Maia including interactive access.
-* If you are not on Lehigh's network, login to the ssh gateway to get to Research Computing resources.
-  - `ssh username@ssh.cc.lehigh.edu`
-
---- .lehigh
+--- .class
 
 ## Storage resources
 
@@ -230,42 +215,56 @@ license     : by-sa
   - Maia: 5GB
   - Sol: 150GB
 
---- .lehigh
+--- .class
 
 ## Sol, Maia  &amp; Ceph for Courses
 
 * Research Computing Resources; Sol, Maia & Ceph are available for use in registrar scheduled classes.
 * __Maia__: No charge, no special considerations
-* __Sol__: Charging scheme for Sol has not been set. The following is a tentative scheme based on Corona&#39;s charging scheme:
-   * 1TB Ceph space per course.
-   * 15,000 SUs per course.
-   * Usage Charge: &#36;350 paid for by department.
-   * Account Charge: &#36;10 per account paid for by department
+* __Sol__: Provides  
+   * 1TB Ceph space per course ($200 paid by department)
+   * An account per student ($15/student) paid by department that provides 500SUs per student
+      - Allocations are given for the whole class based on number of students
+      - Additional allocations can be purchased in blocks of 1000 SUs @ $10/block upto 10K SU
    * Accounts valid for current semester plus an additional two weeks
 * __Ceph__: 
    * &#36;200 per TB per course.
    * Paid for by department.
 
---- .lehigh
+--- .class
+
+## Accessing Research Computing Resources
+
+* All Research Computing resources are accessible using ssh while on Lehigh's network
+* Sol: `ssh username@sol.cc.lehigh.edu`
+* Maia: No direct access to Maia, instead login to the polaris
+* Polaris: `ssh username@polaris.cc.lehigh.edu`
+  - Polaris is a gateway that also hosts the batch scheduler for Maia.
+  - No computing software including compilers is available on Polaris.
+  - Login to Polaris and request computing time on Maia including interactive access.
+* If you are not on Lehigh's network, login to the ssh gateway to get to Research Computing resources.
+  - `ssh username@ssh.cc.lehigh.edu`
+
+--- .class
 
 ## Available Software
 
-* Commercial and Free, Open source software is installed on
-  - Maia: /zhome/Apps
-  - Sol: /share/Apps
+* Commercial, Free and Open source software is installed on
+  - [Maia](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=maia#installed_software): /zhome/Apps
+  - [Sol](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=sol#installed_software): /share/Apps
 * Software is managed using module environment
   - Why? We may have different versions of same software or software built with different compilers
   - Module environment allows you to dynamically change your *nix environment based on software being used
   - Standard on many University and national High Performance Computing resource since circa 2011
 
 
---- .lehigh
+--- .class
 
 ## Software on Sol
 
 <img width = '960px' src = 'assets/img/sol-module.png'>
 
---- .lehigh
+--- .class
 
 ## Module Command
 
@@ -280,7 +279,7 @@ license     : by-sa
 <tr><td><code>module help abc</code></td><td> display help message for the module <code>abc</code></td></tr>
 </table>
 
---- .lehigh &twocol_width
+--- .class &twocol_width
 
 ## Installed Software
 
@@ -302,19 +301,19 @@ license     : by-sa
 *** =right width:45%
 
 * Computational Fluid Dynamics
-  - *Abaqus*
+  - Abaqus
   - Ansys
   - Comsol
   - OpenFOAM
   - OpenSees
 * Math
   - GNU Octave
-  - *Magma*
+  - Magma
   - Maple
   - Mathematica
   - Matlab
 
---- .lehigh  &twocol_width
+--- .class  &twocol_width
 
 ## More Software
 
@@ -328,6 +327,7 @@ license     : by-sa
   - GNU
   - Intel
   - PGI
+  - CUDA
 * Parallel Programming
   - MVAPICH2
 
@@ -346,7 +346,7 @@ license     : by-sa
   - SuiteSparse
   - SuperLU
 
---- .lehigh &twocol_width
+--- .class &twocol_width
  
 ## More Software
 
@@ -359,8 +359,6 @@ license     : by-sa
   - VMD
 * Other Tools
   - CMake
-  - *Gams*
-  - *Gurobi* 
   - Scons
 
 *** =right width:70%
@@ -379,14 +377,45 @@ license     : by-sa
 export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 ```
 
---- .lehigh
+--- .class
 
 ## Module File Example
 
 <img width = '900px' src = 'assets/img/mcr.png'>
 
 
---- .lehigh &twocol_width
+--- .class
+
+## How to run jobs
+
+* All compute intensive jobs are batch scheduled
+* Write a script to submit jobs to a scheduler
+  - need to have some background in shell scripting (bash/tcsh)
+* Need to specify
+   - Resources required (which depends on configuration)
+       - number of nodes
+       - number of processes per node
+       - memory per node
+   - How long do you want the resources
+       - have an estimate for how long your job will run
+   - Which queue to submit jobs
+
+
+--- .class
+
+## Batch Queuing System
+
+* A software that manages resources (CPU time, memory, etc) and schedules job execution
+   - Sol: Simple Linux Utility for Resource Management (SLURM)
+   - Others:  Portable Batch System (PBS)
+          - Scheduler: Maui
+          - Resource Manager: Torque
+          - Allocation Manager: Gold
+
+* More details in HPC Training scheduled for Feb. 27
+
+
+--- .class &twocol_width
 
 ## XSEDE
 
@@ -408,7 +437,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 
 <img width = '400px' src = 'assets/img/xsede.png'>
 
---- .lehigh 
+--- .class 
 
 ## XSEDE Resources
 
@@ -424,15 +453,14 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 * Louisiana State University
    -  SuperMIC: 925 TFlops 
 * National Institute for Computational Sciences (NICS) 
-   - Darter: 248.9 TFlops
+   - Beacon: 210 TFlops
 
---- .lehigh 
+--- .class 
 
 ## XSEDE Resources
 
 * San Diego Supercomputing Center (SDSC) 
    - Comet: 2 PFlops
-   - Gordon: 341 TFlops
 
 * Indiana University 
    - Jetstream: a cloud-based, on-demand system for 24/7 access
@@ -449,7 +477,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 <img width = '400px' src = 'assets/img/xsede.png'>
 -->
 
---- .lehigh 
+--- .class 
 
 ## How do I get started on XSEDE?
 
@@ -467,7 +495,7 @@ and high-throughput computing and other digital services, opportunities and reso
 * A Campus Champion can request start up allocations on all XSEDE resources to help 
  local users with getting started on XSEDE resources.
 
---- .lehigh
+--- .class
 
 ## Getting Help
 
@@ -480,21 +508,23 @@ and high-throughput computing and other digital services, opportunities and reso
   * [Proposal Assistance] (http://researchcomputing.lehigh.edu/services/proposalassist)
   * [Data Management Plans] (http://libraryguides.lehigh.edu/researchdatamanagement)
   * [Research Computing] (https://researchcomputing.lehigh.edu)
+  * [Research Computing Wiki] (https://go.lehigh.edu/rcwiki)
   * [Research Computing Training] (https://researchcomputing.lehigh.edu/training)
 
 
---- .lehigh
+--- .class
 
 ## Upcoming Training
 
-* CITL Classroom (EWFM 379) on Tuesdays from 2PM - 4PM and Zoom Webcast.
-  - Using SLURM scheduler on Sol (Oct. 4)
-  - Shell Scripting ( Oct. 11)
-  - Research Data Management (Oct. 25)
-  - Version Control with GIT (Nov. 1)
-  - MATLAB (Nov. 8)
-  - Enhancing Research Impact (Nov. 15)
-  - Python Programming(Nov. 22)
+* CITL Classroom (EWFM 379) on Mondays from 2:10PM - 4:00PM and Zoom Webcast.
+  - Storage Options at Lehigh (Feb 6)
+  - Linux: Basic Commands & Environment (Feb 13)
+  - Shell Scripting (Feb 20)
+  - Using SLURM scheduler on Sol (Feb 27)
+  - Research Data Management (Mar 6)
+  - Version Control with GIT (Mar 20)
+  - MATLAB (Mar 27)
+  - LaTeX (Apr 3)
 
 
 * Subscribe
