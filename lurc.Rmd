@@ -24,7 +24,6 @@ license     : by-sa
   - __Alex Pacheco, Manager &#38; XSEDE Campus Champion__
   - Steve Anthony, System Administrator
   - Dan Brashler, Computing Consultant
-  - Mary Jo Schulze, Software Specialist
 
 --- .class
 
@@ -66,18 +65,17 @@ license     : by-sa
 
 * <strong> Sol </strong>
   - Lehigh's Flagship High Performance Computing Cluster
-  - 9 nodes, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 25MB Cache
-  - 25 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache
-     - *Two* nVIDIA GTX 1080 GPU cards per node
-  - *6 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache*
-  - 128 GB RAM and 1TB HDD per node
+  - 9 nodes, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 25MB Cache, 128GB RAM
+  - 33 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache, 128GB RAM
+  - 13 nodes, dual 12-core Intel Xeon E5-2650 v4 2.3Ghz CPU, 30 MB Cache, 64GB RAM
+  - Two nVIDIA GTX 1080 GPU cards per node (50 GPUs operational)
+  - 1TB HDD per node
   - 2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric
   - Theoretical Performance: 34.003 TFLOPs (CPU) + 12.850 TFLOPs (GPU)
       - The GTX GPUs provide 443.65 TFLOPs of single precision processing.
       - Double precision performance from each GTX card is 257 GFLOPs compared to 736(883.2) GFLOPs from each 20(24)-core node.
   - Access: Batch Scheduled, interactive on login node for compiling, editing only
   
-
 --- .class
 
 ## LTS Managed Faculty Resources 
@@ -85,7 +83,7 @@ license     : by-sa
 * __Monocacy__ - Ben Felzer, Earth & Environmental Sciences
   - Eight nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
      * Theoretical Performance: 2.662TFlops
-* __Eigen__ - Heather Jaeger, Chemistry
+* __Eigen__: Heather Jaeger, Chemistry
   - Twenty nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
      * Theoretical Performance: 6.656TFlops
 * __Baltrusaitislab__ - Jonas Baltrusaitis, Chemical Engineering
@@ -94,21 +92,22 @@ license     : by-sa
 * __Pisces__ - Keith Moored, Mechanical Engineering and Mechanics
   - Six nodes, dual 10-core Intel Xeon E5-2650v3, 2.3GHz, 64GB RAM, nVIDIA Tesla K80
      * Theoretical Performance: 4.416 TFlops (CPU) + 17.46TFlops (GPU)
-
+  - To be merged with Sol in Fall 2017.
 
 
 --- .class
 
-## Total Computational Resources Supported
+## Total LTS Managed Computational Resources
 
-* CPU
-  * Cores: 1620
-  * Memory: 7.808 TB
-  * Performance: 50.143 TFLOPs
-* GPU
-  * CUDA Cores: 157952
-  * Memory: 544 GB
-  * Performance: 30.310 TFLOPs
+| Cluster | Cores | CPU Memory | CPU TFLOPs | GPUs | CUDA Cores | GPU Memory | GPU TFLOPS |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| Maia | 32 | 128 | 0.640 |
+| Monocacy | 128 | 512 | 2.662 |
+| Eigen | 320 | 1280 | 6.656 | 
+| Baltrusaitislab | 96 | 384 | 1.766 |
+| Pisces | 120 | 384 | 4.416 | 6 | 29952 | 144 | 17.472 |
+| Sol | 1284 | 6208 | 46.752 | 110 | 281600 | 880 | 28.27 |
+| Total | 1980 | 8896 | 62.893 | 116 | 311552 | 1024 | 45.742 | 
 
 
 --- .class
@@ -186,16 +185,11 @@ license     : by-sa
 * Two at initial launch 
    - Dimitrios Vavylonis, Physics
    - Wonpil Im, Biological Sciences
-* Acquisition in progress
-   - Anand Jagota, Chemical Engineering
    - Brian Chen, Computer Science & Engineering
    - Ed Webb & Alp Oztekin, Mechanical Engineering
+   - Anand Jagota, Jeetain Mittal & Srinivas Rangarajan, Chemical Engineering
 
-* Total SU on Sol after Condo Investments: 8,164,320
-* Available capacity for additional investments: 21
-   * Acquisition being planned
-      - Jeetain Mittal & Srinivas Rangarajan, Chemical Engineering
-      - Seth Richards-Shubik, Economics
+* Total SU on Sol after Condo Investments: 11,247,840
 
 --- .class
 
@@ -330,6 +324,7 @@ license     : by-sa
   - CUDA
 * Parallel Programming
   - MVAPICH2
+  - OpenMPI
 
 *** =right width:65%
 
@@ -356,9 +351,13 @@ license     : by-sa
   - Avogadro 
   - GaussView
   - GNUPlot
+  - PWGui
+  - PyMol
   - VMD
+  - XCrySDen
 * Other Tools
   - CMake
+  - Lmod
   - Scons
 
 *** =right width:70%
@@ -412,7 +411,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
           - Resource Manager: Torque
           - Allocation Manager: Gold
 
-* More details in HPC Training scheduled for Feb. 27
+* More details in [HPC Training](https://webapps.lehigh.edu/hpc/training/lurc/slurm.html) scheduled for Sep. 21
 
 
 --- .class &twocol_width
@@ -516,15 +515,14 @@ and high-throughput computing and other digital services, opportunities and reso
 
 ## Upcoming Training
 
-* CITL Classroom (EWFM 379) on Mondays from 2:10PM - 4:00PM and Zoom Webcast.
-  - Storage Options at Lehigh (Feb 6)
-  - Linux: Basic Commands & Environment (Feb 13)
-  - Shell Scripting (Feb 20)
-  - Using SLURM scheduler on Sol (Feb 27)
-  - Research Data Management (Mar 6)
-  - Version Control with GIT (Mar 20)
-  - MATLAB (Mar 27)
-  - LaTeX (Apr 3)
+* EWFM 292 on Thursday from 2:10PM - 4:00PM.
+  - Linux: Basic Commands & Environment (Sep 14)
+  - Using SLURM scheduler on Sol (Sep 21)
+  - Shell Scripting (Sep 28)
+  - Using Virtialized Software at Lehigh (Oct 5)
+  - Python Programming (Oct 12)
+  - RefWorks (Oct 26)
+  - Document Creation with LaTeX (Nov 2)
 
 
 * Subscribe
