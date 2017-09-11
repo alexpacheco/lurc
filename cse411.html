@@ -789,6 +789,7 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
 <li>Module environment allows you to dynamically change your *nix environment based on software being used</li>
 <li>Standard on many University and national High Performance Computing resource since circa 2011</li>
 </ul></li>
+<li><a href="https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=linux">How to use Sol/Maia Software on your linux workstation</a></li>
 </ul>
 
   </article>
@@ -821,15 +822,46 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
     <h2>How does module work?</h2>
   </hgroup>
   <article data-timings="">
-    <ul>
-<li>If you have access to HPC resources, try some of these commands</li>
-<li><code>module avail</code>: show list of software available on resource</li>
-<li><code>module load abc</code>: add software <code>abc</code> to your environment (modify your <code>PATH</code>, <code>LD_LIBRARY_PATH</code> etc as needed)</li>
-<li><code>module unload abc</code>: remove <code>abc</code> from your envionment</li>
-<li><code>module swap abc1 abc2</code>: swap <code>abc1</code> with <code>abc2</code> in your environment</li>
-<li><code>module purge</code>: remove all modules from your environment</li>
-<li><code>module show abc</code>: display what variables are added or modified in your environment</li>
-<li><code>module help abc</code>: display help message for the module <code>abc</code></li>
+    <table><thead>
+<tr>
+<th align="center">Command</th>
+<th align="center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="center"><code>module avail</code></td>
+<td align="center">show list of software available on resource</td>
+</tr>
+<tr>
+<td align="center"><code>module load abc</code></td>
+<td align="center">add software <code>abc</code> to your environment (modify your <code>PATH</code>, <code>LD_LIBRARY_PATH</code> etc as needed)</td>
+</tr>
+<tr>
+<td align="center"><code>module unload abc</code></td>
+<td align="center">remove <code>abc</code> from your environment</td>
+</tr>
+<tr>
+<td align="center"><code>module swap abc1 abc2</code></td>
+<td align="center">swap <code>abc1</code> with <code>abc2</code> in your environment</td>
+</tr>
+<tr>
+<td align="center"><code>module purge</code></td>
+<td align="center">remove all modules from your environment</td>
+</tr>
+<tr>
+<td align="center"><code>module show abc</code></td>
+<td align="center">display what variables are added or modified in your environment</td>
+</tr>
+<tr>
+<td align="center"><code>module help abc</code></td>
+<td align="center">display help message for the module <code>abc</code></td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>Users who prefer not to use the module environment will need to modify their
+.bashrc or .tcshrc files. Run <code>module show</code> for list variables that need
+modified, appended or prepended</li>
 </ul>
 
   </article>
@@ -1095,7 +1127,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 <li>Allocation Manager: Gold</li>
 </ul></li>
 </ul></li>
-<li><p>A job can be considered as a userâ€™s request to use a certain amount of resources for a certain amount of time</p></li>
+<li><p>A job can be considered as a user&#39;s request to use a certain amount of resources for a certain amount of time</p></li>
 <li><p>The batch queuing system determines</p>
 
 <ul>
@@ -1928,7 +1960,7 @@ exit
 </tr>
 <tr>
 <td align="center">scontrol release jobid</td>
-<td align="center">Release the hold that <strong>you put</strong> on <em>jobid</td>
+<td align="center">Release the hold that <strong>you put</strong> on <em>jobidi</em></td>
 <td align="center">qrls jobid</td>
 </tr>
 </tbody></table>

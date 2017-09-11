@@ -328,6 +328,7 @@ mode        : selfcontained # {standalone, draft}
   - Why? We may have different versions of same software or software built with different compilers
   - Module environment allows you to dynamically change your *nix environment based on software being used
   - Standard on many University and national High Performance Computing resource since circa 2011
+* [How to use Sol/Maia Software on your linux workstation](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=linux)
 
 
 --- .class
@@ -340,14 +341,20 @@ mode        : selfcontained # {standalone, draft}
 
 ## How does module work?
 
-* If you have access to HPC resources, try some of these commands
-* `module avail`: show list of software available on resource
-* `module load abc`: add software `abc` to your environment (modify your `PATH`, `LD_LIBRARY_PATH` etc as needed)
-* `module unload abc`: remove `abc` from your envionment
-* `module swap abc1 abc2`: swap `abc1` with `abc2` in your environment
-* `module purge`: remove all modules from your environment
-* `module show abc`: display what variables are added or modified in your environment
-* `module help abc`: display help message for the module `abc`
+| Command | Description |
+|:-------:|:-----------:|
+| <code>module avail</code> | show list of software available on resource |
+| <code>module load abc</code> | add software <code>abc</code> to your environment (modify your <code>PATH</code>, <code>LD_LIBRARY_PATH</code> etc as needed) |
+| <code>module unload abc</code> | remove <code>abc</code> from your environment |
+| <code>module swap abc1 abc2</code> | swap <code>abc1</code> with <code>abc2</code> in your environment |
+| <code>module purge</code> | remove all modules from your environment |
+| <code>module show abc</code> | display what variables are added or modified in your environment |
+| <code>module help abc</code> | display help message for the module <code>abc</code> |
+
+* Users who prefer not to use the module environment will need to modify their
+  .bashrc or .tcshrc files. Run `module show` for list variables that need
+  modified, appended or prepended
+
 
 --- .class &twocol_width
 
@@ -485,7 +492,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
           - Resource Manager: Torque
           - Allocation Manager: Gold
 
-* A job can be considered as a userâ€™s request to use a certain amount of resources for a certain amount of time
+* A job can be considered as a user's request to use a certain amount of resources for a certain amount of time
 
 * The batch queuing system determines
     - The order jobs are executed
@@ -843,7 +850,7 @@ exit
 | scontrol show job jobid | Check status of your job identified by <em>jobid</em> | checkjob jobid |
 | scancel jobid | Cancel your job identified by <em>jobid</em> | qdel jobid |
 | scontrol hold jobid | Put your job identified by <em>jobid</em> on hold | qhold jobid |
-| scontrol release jobid | Release the hold that <strong>you put</strong> on <em>jobid | qrls jobid |
+| scontrol release jobid | Release the hold that <strong>you put</strong> on <em>jobidi</em> | qrls jobid |
 
 * The following scripts written by RC staff can also be used for monitoring jobs.
    * __checkq__: `squeue` with additional useful option. 
