@@ -56,7 +56,7 @@ mode        : selfcontained # {standalone, draft}
     -  A supercomputer is a computer at the frontline of current processing capacity, particularly speed of calculation.
 
 
---- .class &twocol
+--- .class
 
 ## Why use HPC?
 
@@ -64,13 +64,14 @@ mode        : selfcontained # {standalone, draft}
      - Size: Many problems that are interesting to scientists and engineers cannot fit on a PC usually because they need more than a few GB of RAM, or more than a few hundred GB of disk.
      - Speed: Many problems that are interesting to scientists and engineers would take a very long time to run on a PC: months or even years; but a problem that would take a month on a PC might only take a few hours on a supercomputer
 
-*** =left
-<img src="assets/img/irma-at201711_ensmodel_10-5PM.gif" alt="IRMA Ensemble Model" width="300px">
-
-*** =right
-<img src="assets/img/irma-at201711_model-10-5PM.gif" alt="IRMA High Probability" width="300px">
-
-
+<img src="assets/img/irma-at201711_ensmodel_10-5PM.gif" alt="Irma Ensemble
+Model" width="225px">
+<img src="assets/img/irma-at201711_model-10-5PM.gif" alt="Irma High Probability"
+width="225px">
+<img src="assets/img/jose-at201712_ensmodel.gif" alt="Jose Ensemble Model"
+width="225px">
+<img src="assets/img/jose-euro-sep11.png" alt="Jose Euro Model Track Forecast"
+width="275px">
 
 
 --- .class
@@ -282,6 +283,7 @@ mode        : selfcontained # {standalone, draft}
    - Anand Jagota, Jeetain Mittal & Srinivas Rangarajan, Chemical Engineering
 
 * Total SU on Sol after Condo Investments: 11,247,840
+* Sol SUs available for purchase on an annual basis: 1,401,600
 
 --- .class
 
@@ -404,6 +406,7 @@ mode        : selfcontained # {standalone, draft}
   - GNU
   - Intel
   - PGI
+  - CUDA
 * Parallel Programming
   - MVAPICH2
   - OpenMPI
@@ -806,7 +809,7 @@ exit
 
 ```{bash eval=FALSE}
 #!/bin/tcsh
-#SBATCH --partition=imlab
+#SBATCH --partition=imlab-gpu
 # Directives can be combined on one line
 #SBATCH --time=1:00:00
 #SBATCH --nodes=1
@@ -860,12 +863,13 @@ exit
 
 ## Training 
 
-* Research Computing group in collaboration with other LTS groups provides various training smeinars in the Fall and Spring semesters
+* RC staff also guest lecture for various courses and provide various training
+ seminars in collaboration with other LTS groups
 
 *** =left
 
-  - Research Computing at Lehigh (Sep. 7)
-  - Linux: Basic Commands & Environment (Sep. 14)
+  - Research Computing at Lehigh (Sep. 7, CSE 411)
+  - Linux: Basic Commands & Environment (Sep. 14, CHM 488, EES 403)
   - Using SLURM scheduler on Sol (Sep. 21)
   - Shell Scripting (Sep. 28)
   - Using Virtualized Software at Lehigh (Oct. 5)
@@ -882,6 +886,7 @@ exit
   - Programming in MATLAB and GNU Octave
   - Enhancing Research Impact
   - Programming in R
+  - Parallel Programming Concepts (ME 413, ACCT 398)
 
 --- .class
 
