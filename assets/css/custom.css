@@ -231,3 +231,9 @@ img.fullwidth {
   color: darkred;
 }
 
+img.thumb {
+ float: center;
+ max-width: 200px;
+ height: auto;
+ margin: auto;
+}

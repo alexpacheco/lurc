@@ -350,17 +350,10 @@ directory.</li>
 
 <ul>
 <li>If you omit directory name, you will end up in your home directory</li>
-<li>Enter <code>cd /share/ceph/hej213chm488/</code></li>
+<li>Enter <code>cd /share/ceph/hpc2017/${USER}</code></li>
+<li>You can replace <code>${USER}</code> with your username</li>
 </ul></li>
-<li><code>mkdir dirname</code>: create a directory called <code>dirname</code>
-
-<ul>
-<li>Create a directory replacing dirname with your username and cd to that
-directory (This is the location where you will save all your work for this
-course.)</li>
-<li>I would enter the command <code>mkdir alp514</code> followed by <code>cd alp514</code></li>
-<li>Use the <code>pwd</code> command to check your current location </li>
-</ul></li>
+<li><code>mkdir dirname</code>: create a directory called <code>dirname</code></li>
 <li><code>cp file1 file2</code>: command to copy file1 to file2
 
 <ul>
@@ -401,6 +394,13 @@ directory will be listed</li>
 <ul>
 <li><code>echo $HOME</code>: prints the contents of the variable <strong>HOME</strong> i.e. your home
 directory to the screen</li>
+</ul></li>
+<li><code>scp user@host1:${HOME}/file1 user@host2:${HOME}/file2</code>: commnad to transfer
+<code>${HOME}file1</code> on host1 to host2 as <code>${HOME}file2</code>
+
+<ul>
+<li> If you need to copy over a directory and its contents, add a <code>-r flag</code></li>
+<li> <code>scp -r user@host1:${HOME}/dir1 user@host2:${HOME}/</code></li>
 </ul></li>
 </ul>
 
@@ -696,7 +696,7 @@ modified, appended or prepended</li>
 <li>Gaussian</li>
 <li>NWCHEM</li>
 <li>Quantum Espresso</li>
-<li><em>VASP</em></li>
+<li>VASP</li>
 </ul></li>
 <li>Molecular Dynamics
 
@@ -1155,54 +1155,6 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class small" id="id" style="background:#F1E7C8;">
-  <hgroup>
-    <h2>Queues on Faculty Clusters</h2>
-  </hgroup>
-  <article data-timings="">
-    <table><thead>
-<tr>
-<th align="center">Cluster</th>
-<th align="center">Queue</th>
-<th align="center">Max Runtime</th>
-</tr>
-</thead><tbody>
-<tr>
-<td align="center">Pisces</td>
-<td align="center">normal</td>
-<td align="center">4 days</td>
-</tr>
-<tr>
-<td align="center">Monocacy</td>
-<td align="center">normal</td>
-<td align="center">4 days</td>
-</tr>
-<tr>
-<td align="center">Eigen</td>
-<td align="center">adf</td>
-<td align="center">14 days</td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center">normal</td>
-<td align="center">14 days</td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center">long</td>
-<td align="center">28 days</td>
-</tr>
-</tbody></table>
-
-  </article>
-  <!-- Footer  -->
-  <footer class = 'lufoot'>
-     <img height = '20px' src='assets/img/lulogo.jpg'>
-  </footer>
-  <!-- End Footer-->
-  <!-- Presenter Notes -->
-</slide>
-
 <slide class="class" id="id" style="background:#F1E7C8;">
   <hgroup>
     <h2>How much memory can I use?</h2>
@@ -1219,13 +1171,14 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 <ul>
 <li>max memory 6.3GB/core</li>
 </ul></li>
-<li>nodes in imlab &amp; imlab-gpu partition have ~5.3GB/core
+<li>nodes in eng, imlab &amp; imlab-gpu partition have ~5.3GB/core
 
 <ul>
 <li>max memory 5.25GB/core</li>
 <li><span class="alert">if you need to run a single core job that requires 10GB memory in the imlab partition, you need to request 2 cores even though you are only using
-1 core.</span><br></li>
+1 core.</span></li>
 </ul></li>
+<li>nodes in engc partition have ~2.67GB/core<br></li>
 </ul></li>
 <li><p>Maia: Users need to specify memory required in their submit script. Max
 memory that should be requested is 126GB.</p></li>
@@ -1575,7 +1528,7 @@ memory that should be requested is 126GB.</p></li>
 <li><p>PBS: <code>qsub -I -V -l walltime=&lt;hh:mm:ss&gt;,nodes=&lt;# of nodes&gt;:ppn=&lt;# of core/node&gt; -q &lt;queue
 name&gt;</code></p></li>
 <li><p>SLURM: <code>srun --time=&lt;hh:mm:ss&gt; --nodes=&lt;# of nodes&gt; --ntasks-per-node=&lt;#
-of core/node&gt; -p &lt;queue name&gt; --pty /bin/bash --login</code></p></li>
+of core/node&gt; -p &lt;queue name&gt; -A &lt;alloc name&gt;--pty /bin/bash --login</code></p></li>
 <li><p>Run a job interactively replace <code>--pty /bin/bash --login</code> with the
  appropriate command. </p>
 
@@ -1795,17 +1748,17 @@ exit
 <li>OpenMP: To run <code>myexec</code> using 4 OpenMP Threads
 
 <ul>
-<li><code>export OMP_NUM_THREADS=4; srun -p lts -n 1 -c 4 ./myexec</code> </li>
+<li><code>export OMP_NUM_THREADS=4; srun -p lts -n 1 -c 4 -A hpc2017 ./myexec</code> </li>
 </ul></li>
 <li>OpenACC: To run <code>myexec</code> on 1 GPU 
 
 <ul>
-<li><code>srun -p imlab-gpu -n 1 --gres=gpu:1 ./myexec</code></li>
+<li><code>srun -p imlab-gpu -n 1 --gres=gpu:1 -A hpc2017 ./myexec</code></li>
 </ul></li>
 <li>MPI: To run <code>myexec</code> on y nodes with z total tasks (z/y tasks per node)
 
 <ul>
-<li><code>srun -p lts -n z -N y ./myexec</code></li>
+<li><code>srun -p lts -n z -N y -A hpc2017 ./myexec</code></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -1917,105 +1870,6 @@ allocation</li>
 <li>use <code>--help</code> for usage information</li>
 </ul></li>
 </ul></li>
-</ul>
-
-  </article>
-  <!-- Footer  -->
-  <footer class = 'lufoot'>
-     <img height = '20px' src='assets/img/lulogo.jpg'>
-  </footer>
-  <!-- End Footer-->
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:#F1E7C8;">
-  <hgroup>
-    <h2>Usage Reporting</h2>
-  </hgroup>
-  <article data-timings="">
-    <p><img width = '960px' src = 'assets/img/slurmreport.png'> </p>
-
-  </article>
-  <!-- Footer  -->
-  <footer class = 'lufoot'>
-     <img height = '20px' src='assets/img/lulogo.jpg'>
-  </footer>
-  <!-- End Footer-->
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:#F1E7C8;">
-  <hgroup>
-    <h2>Online Usage Reporting: Sol Cluster</h2>
-  </hgroup>
-  <article data-timings="">
-    <p><object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2016.svg" type="image/svg+xml">
-</object></p>
-
-  </article>
-  <!-- Footer  -->
-  <footer class = 'lufoot'>
-     <img height = '20px' src='assets/img/lulogo.jpg'>
-  </footer>
-  <!-- End Footer-->
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:#F1E7C8;">
-  <hgroup>
-    <h2>Online Usage Reporting: lts partition</h2>
-  </hgroup>
-  <article data-timings="">
-    <p><object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2016-lts.svg" type="image/svg+xml">
-</object></p>
-
-  </article>
-  <!-- Footer  -->
-  <footer class = 'lufoot'>
-     <img height = '20px' src='assets/img/lulogo.jpg'>
-  </footer>
-  <!-- End Footer-->
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:#F1E7C8;">
-  <hgroup>
-    <h2>Online Usage Reporting: imlab &amp; imlab-gpu partitions</h2>
-  </hgroup>
-  <article data-timings="">
-    <p><object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2016-imlab.svg" type="image/svg+xml">
-</object></p>
-
-  </article>
-  <!-- Footer  -->
-  <footer class = 'lufoot'>
-     <img height = '20px' src='assets/img/lulogo.jpg'>
-  </footer>
-  <!-- End Footer-->
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:#F1E7C8;">
-  <hgroup>
-    <h2>Online Usage Reporting</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li>Scrollable Usage for entire cluster
-
-<ul>
-<li><a href="https://webapps.lehigh.edu/hpc/usage/canvas.html">https://webapps.lehigh.edu/hpc/usage/canvas.html</a></li>
-</ul></li>
-<li>For a specific PI:
-
-<ul>
-<li>Replace lts with a PI&#39;s name in the following link
-
-<ul>
-<li><a href="https://webapps.lehigh.edu/hpc/usage/lts.html">https://webapps.lehigh.edu/hpc/usage/lts.html</a></li>
-</ul></li>
-</ul></li>
-<li><span class="alert">Usage plots are restricted to Lehigh IPs</span></li>
 </ul>
 
   </article>
@@ -2270,146 +2124,110 @@ idea is the same as above</li>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=29 title='Queues on Faculty Clusters'>
+        data-slide=29 title='How much memory can I use?'>
          29
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=30 title='How much memory can I use?'>
+        data-slide=30 title='Useful SLURM Directives'>
          30
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=31 title='Useful SLURM Directives'>
+        data-slide=31 title='Useful SLURM Directives (contd)'>
          31
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=32 title='Useful SLURM Directives (contd)'>
+        data-slide=32 title='Useful PBS Directives'>
          32
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=33 title='Useful PBS Directives'>
+        data-slide=33 title='Useful PBS/SLURM environmental variables'>
          33
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=34 title='Useful PBS/SLURM environmental variables'>
+        data-slide=34 title='Basic Job Manager Commands'>
          34
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=35 title='Basic Job Manager Commands'>
+        data-slide=35 title='Job Types: Interactive'>
          35
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=36 title='Job Types: Interactive'>
+        data-slide=36 title='Job Types: Batch'>
          36
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=37 title='Job Types: Batch'>
+        data-slide=37 title='Minimal submit script for Serial Jobs'>
          37
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=38 title='Minimal submit script for Serial Jobs'>
+        data-slide=38 title='Minimal submit script for MPI Job'>
          38
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=39 title='Minimal submit script for MPI Job'>
+        data-slide=39 title='Minimal submit script for OpenMP Job'>
          39
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=40 title='Minimal submit script for OpenMP Job'>
+        data-slide=40 title='Minimal submit script for LAMMPS GPU job'>
          40
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=41 title='Minimal submit script for LAMMPS GPU job'>
+        data-slide=41 title='Submitting Batch Jobs'>
          41
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=42 title='Submitting Batch Jobs'>
+        data-slide=42 title='Workshop Instructions'>
          42
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=43 title='Workshop Instructions'>
+        data-slide=43 title='Monitoring &amp; Manipulating Jobs'>
          43
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=44 title='Monitoring &amp; Manipulating Jobs'>
+        data-slide=44 title='Usage Reporting'>
          44
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=45 title='Usage Reporting'>
+        data-slide=45 title='Need to run multiple jobs in sequence?'>
          45
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=46 title='Usage Reporting'>
+        data-slide=46 title='Additional Help &amp; Information'>
          46
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=47 title='Online Usage Reporting: Sol Cluster'>
-         47
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=48 title='Online Usage Reporting: lts partition'>
-         48
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=49 title='Online Usage Reporting: imlab &amp; imlab-gpu partitions'>
-         49
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=50 title='Online Usage Reporting'>
-         50
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=51 title='Need to run multiple jobs in sequence?'>
-         51
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=52 title='Additional Help &amp; Information'>
-         52
       </a>
     </li>
   </ul>

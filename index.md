@@ -10,7 +10,7 @@ hitheme     : tomorrow      #
 widgets     : [mathjax]            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 license     : by-sa
---- .lehigh
+--- .class
 
 ## Training Presentation
 
