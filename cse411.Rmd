@@ -303,6 +303,16 @@ width="275px">
   - Maia: 5GB
   - Sol: 150GB
 
+--- .class
+
+## Cloud Resources
+
+* LTS does not provide access to cloud resource as a service
+* Bracket Computing: Donation to CSE/DataX 
+   - Computing cycles (up to $5000/quarter) on Amazon Web Services (AWS)
+   - Create encrypted images for use in AWS computing infrastructure. 
+   - Contact Research Computing group if you have a use case that could benefit
+     from AWS
 
 --- .class
 
@@ -331,6 +341,9 @@ width="275px">
   - Module environment allows you to dynamically change your *nix environment based on software being used
   - Standard on many University and national High Performance Computing resource since circa 2011
 * [How to use Sol/Maia Software on your linux workstation](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=linux)
+* [LTS provides licensed and open source virtualized software for Windows, Mac
+  and Linux](https://software.lehigh.edu) and [Gogs](https://gogs.cc.lehigh.eu), a self hosted Git Service
+or Github clone 
 
 
 --- .class
