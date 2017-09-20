@@ -32,23 +32,23 @@ license     : by-sa
 
 ## Research Computing Resources
 
-* <strong> Sol </strong> 
+* <strong> Sol </strong>
   - Lehigh's Flagship High Performance Computing Cluster
   - 9 nodes, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 25MB Cache, 128GB
-    RAM
-  - 25 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache, 128GB
-    RAM
-     - Two nVIDIA GTX 1080 GPU cards per node
-  - Expansion by end of March
-     - 8 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache,
-       128GB RAM
-     - 13 nodes, dual 12-core Intel Xeon E5-2650 v4 2.2GHz CPU, 30 MB Cache,
-       64GB RAM
+  RAM
+  - 33 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache,
+  128GB RAM
+  - 13 nodes, dual 12-core Intel Xeon E5-2650 v4 2.3Ghz CPU, 30 MB Cache, 64GB
+  RAM
+  - Two nVIDIA GTX 1080 GPU cards per node (50 GPUs operational)
+  - 1TB HDD per node
   - 2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric
-  - Theoretical Performance: 47.25 TFLOPs (CPU) + 12.850 TFLOPs (GPU)
-      - Each GTX card provides 8.873 TFLOPs of single precision performance but
-        only 257 GFLOPs of double precision performance
-  - Access: Batch Scheduled, interactive on login node for compiling, editing only
+  - Theoretical Performance: 47.25 TFLOPs (CPU) + 28.270 TFLOPs (GPU)
+  - Access: Batch Scheduled, interactive on login node for compiling, editing
+  only
+  - In progress: 1 node, dual 8-core Intel Xeon 2630 v3 2.4GHz CPU, 20 MB
+  Cache, 512GB RAM
+
 
 --- .class #id &twocol
 
@@ -96,19 +96,23 @@ license     : by-sa
 * __Pisces__: Keith Moored, Mechanical Engineering and Mechanics
   - Six nodes, dual 10-core Intel Xeon E5-2650v3, 2.3GHz, 64GB RAM, nVIDIA Tesla K80
      * Theoretical Performance: 4.416 TFlops (CPU) + 17.46TFlops (GPU)
+  - To be merged with Sol in Fall 2017
 
---- .class #id
+--- .class
 
 ## Total Computational Resources Supported
 
-* CPU
-  * Cores: 1980
-  * Memory: 8.69 TB
-  * Performance: 63.39 TFLOPs
-* GPU
-  * CUDA Cores: 157952
-  * Memory: 544 GB
-  * Performance: 30.32 TFLOPs (463.816 SP TFLOPs)
+
+| Cluster | Cores | CPU Memory | CPU TFLOPs | GPUs | CUDA Cores | GPU Memory |  GPU TFLOPS |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| Maia | 32 | 128 | 0.640 |
+| Monocacy | 128 | 512 | 2.662 |
+| Eigen | 320 | 1280 | 6.656 | 
+| Baltrusaitislab | 96 | 384 | 1.766 |
+| Pisces | 120 | 384 | 4.416 | 6 | 29952 | 144 | 17.472 |
+| Sol | 1284 | 6208 | 46.752 | 110 | 281600 | 880 | 28.27 |
+| Total | 1980 | 8896 | 62.893 | 116 | 311552 | 1024 | 45.742 | 
+
 
 --- .class #id
 
@@ -140,7 +144,6 @@ license     : by-sa
    - Additional Increments of 10,000 SU - &#36;100 per 10K increments
    - Fixed Allocation cycle: Oct 1 - Sep 30
    - Unused allocations do not rollover to next allocation cycle
-   - <em>Working on implementing a rolling allocation cycle, only for minimum purchase.</em>
    - Total available computing time for purchase annually: 1.4M SUs or 1 year of continuous computing on 8 nodes
 * __No 'free' computing time provided once allocation has been expended__
 
@@ -149,12 +152,12 @@ license     : by-sa
 ## Condo Investments
 
 * New sustainable model for High Performance Computing at Lehigh
-* Faculty (Condo Investor) purchase compute nodes from grants to increase overall capacity of Sol
-* LTS will provide for four years
+* Faculty (Condo Investor) purchase compute nodes to increase overall capacity of Sol
+* LTS will provide for the length of hardware warranty, typically 4 years
    - System Administration, Power and Cooling, User Support for Condo
      Investments
 * Condo Investor
-   - receives annual allocation equivalent to their investment for four years
+   - receives annual allocation equivalent to their investment
    - can utilize allocations on all available nodes, including nodes from other
      Condo Investors
    - allows idle cycles on investment to be used by other Sol users
@@ -169,18 +172,15 @@ license     : by-sa
 
 * Two at initial launch 
    - Dimitrios Vavylonis, Physics (1 node)
-   - Wonpil Im, Biological Sciences (25 nodes)
-* Acquisition in progress
+   - Wonpil Im, Biological Sciences (25 nodes, 50 GPUs)
    - Anand Jagota, Chemical Engineering (1 node)
    - Brian Chen, Computer Science & Engineering (1 node)
    - Ed Webb & Alp Oztekin, Mechanical Engineering (6 nodes)
-   - Jeetain Mittal & Srinivas Rangarajan, Chemical Engineering (13 nodes)
+   - Jeetain Mittal & Srinivas Rangarajan, Chemical Engineering (13 nodes, 60 GPUs)
 
 * Total SU on Sol after Condo Investments: 11,247,840
-* Available capacity for additional investments: 1 (16 after Power Upgrade to
- Data Center)
-   * Acquisition being planned
-      - Seth Richards-Shubik, Economics
+* Acquisition in progress
+   - Seth Richards-Shubik, Economics (1 node)
 
 --- .class #id
 
@@ -209,6 +209,9 @@ license     : by-sa
   - Why? We may have different versions of same software or software built with different compilers
   - Module environment allows you to dynamically change your *nix environment based on software being used
   - Standard on many University and national High Performance Computing resource since circa 2011
+* How to use Sol/Maia Software on your [linux](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=linux) workstation
+* LTS provides [licensed and open source software](https://software.lehigh.edu) for Windows, Mac and Linux] and [Gogs](https://gogs.cc.lehigh.eu), a self hosted Git Service or Github clone 
+
 
 --- .class #id
 
@@ -285,6 +288,7 @@ license     : by-sa
   - CUDA
 * Parallel Programming
   - MVAPICH2
+  - OpenMPI
 
 *** =right width:65%
 
@@ -311,11 +315,16 @@ license     : by-sa
   - Avogadro 
   - GaussView
   - GNUPlot
+  - PWGui
+  - PyMol
   - VMD
+  - XCrySDen
 * Other Tools
   - CMake
-  - Gurobi 
+  - Lmod
   - Scons
+  - SPACK
+
 
 *** =right width:70%
 
@@ -333,6 +342,7 @@ license     : by-sa
 # My .bashrc file
 export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 ```
+* Use [SPACK](https://spack.readthedocs.io) to build your own software stack
 
 --- .class #id
 
@@ -456,9 +466,13 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 
 | Queue Name | Max Runtime in hours | Max SU consumed node per hour |
 |:----------:|:--------------------:|:--------------------:|
-| lts | 72 | 20 |
+| _lts_ | 72 | 20 (will change to 18+2)|
 | imlab | 48 | 22 | 
 | imlab-gpu | 48 | 24 |
+| _eng_ | 72 | 24 (will change to 22+2)|
+| _engc_ | 72 | 24 (will change to 22+2)|
+| all-cpu | 48 |
+| all-gpu | 48 |
 
 
 * Maia
@@ -469,18 +483,6 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 | smp | 96 | 384 |
 
 
---- .class #id .small
-
-## Queues on Faculty Clusters
-
-| Cluster | Queue  | Max Runtime |
-|:-------:|:------:|:-----------:|
-|Pisces   | normal |4 days|
-|Monocacy | normal |4 days|
-|Eigen    | adf    |14 days|
-|         | normal |14 days|
-|         | long   |28 days|
-
 --- .class #id
 
 ## How much memory can I use?
@@ -489,12 +491,16 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 
 * A general rule of thumb on most HPC resources: leave 1-2GB for the OS to run. 
 
-* Sol: Max memory used per node should not exceed 126GB.
-   - nodes in lts partition have ~6.4GB/core
-       * max memory 6.3GB/core
-   - nodes in imlab \& imlab-gpu partition have ~5.3GB/core
-       * max memory 5.25GB/core
-       * <span class="alert">if you need to run a single core job that requires 10GB memory in the imlab partition, you need to request 2 cores even though you are only using
+* Sol
+
+| Partition | Max Memory/core (GB) | Recommended Memory/Core (GB) |
+|:---------:|:--------------------:|:----------------------------:|
+| lts | 6.4 | 6.2 |
+| eng/imlab/imlab-gpu | 5.3 | 5.1 |
+| engc | 2.66 | 2.4 |
+
+
+*  <span class="alert">if you need to run a single core job that requires 10GB memory in the imlab partition, you need to request 2 cores even though you are only using
          1 core.</span>  
 
 * Maia: Users need to specify memory required in their submit script. Max
@@ -511,7 +517,6 @@ memory that should be requested is 126GB.
 | #SBATCH --nodes=m | Request resources to run job on <em>m</em> nodes. |
 | #SBATCH --ntasks-per-node=n | Request resources to run job on <em>n</em> processors on each node requested. |
 | #SBATCH --ntasks=n | Request resources to run job on a total of <em>n</em> processors. |
-| #SBATCH --mem=x[M,G,T] | Request <em>x[M,G or T]B</em> per node requested |
 | #SBATCH --job-name=jobname | Provide a name, <em>jobname</em> to your job. |
 | #SBATCH --output=filename.out | Write SLURM standard output to file filename.out. |
 | #SBATCH --error=filename.err | Write SLURM standard error to file filename.err. |
@@ -615,7 +620,8 @@ memory that should be requested is 126GB.
      appropriate command. 
        - For e.g. `srun -t 20 -n 1 -p imlab --qos=nogpu $(which lammps) -in in.lj
      -var x 1 -var n 1`
-       - Default values are 3 days, 1 node, 20 tasks per node and lts partition
+       - Default values are 3 days, 1 node, 20 tasks per node and lts
+   partition
 
 --- .class #id
 
@@ -761,9 +767,12 @@ exit
 | scontrol hold jobid | Put your job identified by <em>jobid</em> on hold | qhold jobid |
 | scontrol release jobid | Release the hold that <strong>you put</strong> on <em>jobid | qrls jobid |
 
-* The following scripts written by RC staff can also be used for monitoring jobs.
+* The following scripts written by RC staff can also be used for monitoring
+  jobs. 
    * __checkq__: `squeue` with additional useful option. 
    * __checkload__: `sinfo` with additional options to show load on compute nodes.  
+* load the `soltools` module to get access to RC staff created scripts
+
 
 --- .class #id
 
@@ -791,6 +800,20 @@ exit
 <img width = '960px' src = 'assets/img/slurmreport.png'> 
 
 
+
+--- .class #id
+
+## Online Usage Reporting  
+
+* Monthly usage is summarized at https://researchcomputing.lehigh.edu/usage
+* Scrollable Usage for entire cluster
+   - https://webapps.lehigh.edu/hpc/usage/canvas.html
+* For a specific PI:
+   - Replace lts with a PI's name in the following link
+       * https://webapps.lehigh.edu/hpc/usage/lts.html
+* <span class="alert">Usage plots are restricted to Lehigh IPs</span>
+
+
 --- .class #id
 
 ## Online Usage Reporting: Sol Cluster
@@ -811,17 +834,6 @@ exit
 
 <object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2016-imlab.svg" type="image/svg+xml">
 </object>
-
---- .class #id
-
-## Online Usage Reporting  
-
-* Scrollable Usage for entire cluster
-   - https://webapps.lehigh.edu/hpc/usage/canvas.html
-* For a specific PI:
-   - Replace lts with a PI's name in the following link
-       * https://webapps.lehigh.edu/hpc/usage/lts.html
-* <span class="alert">Usage plots are restricted to Lehigh IPs</span>
 
 
 --- .class #id
@@ -847,14 +859,19 @@ exit
 ## Additional Help &amp; Information
 
 * Issue with running jobs or need help to get started: 
-  * Open a help ticket: <http://lehigh.edu/go/rchelp>
+  * Open a help ticket: <http://go.lehigh.edu/rchelp>
 * More Information
   * [Research Computing] (https://researchcomputing.lehigh.edu)
+  * [Research Computing Wiki](https://go.lehigh.edu/rcwiki)
   * [Research Computing Training](https://researchcomputing.lehigh.edu/training)
-  * [Research Computing Wiki](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php)
 * Subscribe
-     * Research Computing Mailing List: <https://lists.lehigh.edu/mailman/listinfo/hpc-l>
      * HPC Training Google Groups: <mailto:hpctraining-list+subscribe@lehigh.edu>
+     * Research Computing Mailing List: <https://lists.lehigh.edu/mailman/listinfo/hpc-l>
+* My contact info
+  * eMail:  <alp514@lehigh.edu>
+  * Tel: (610) 758-6735 
+  * Location: Room 296, EWFM Computing Center
+  * [My Schedule] (https://www.google.com/calendar/embed?src=alp514%40lehigh.edu&ctz=America/New_York )
 
 
  

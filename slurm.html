@@ -88,34 +88,24 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
   </hgroup>
   <article data-timings="">
     <ul>
-<li><strong> Sol </strong> 
+<li><strong> Sol </strong>
 
 <ul>
 <li>Lehigh&#39;s Flagship High Performance Computing Cluster</li>
 <li>9 nodes, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 25MB Cache, 128GB
 RAM</li>
-<li>25 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache, 128GB
-RAM
-
-<ul>
-<li>Two nVIDIA GTX 1080 GPU cards per node</li>
-</ul></li>
-<li>Expansion by end of March
-
-<ul>
-<li>8 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache,
+<li>33 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache,
 128GB RAM</li>
-<li>13 nodes, dual 12-core Intel Xeon E5-2650 v4 2.2GHz CPU, 30 MB Cache,
-64GB RAM</li>
-</ul></li>
+<li>13 nodes, dual 12-core Intel Xeon E5-2650 v4 2.3Ghz CPU, 30 MB Cache, 64GB
+RAM</li>
+<li>Two nVIDIA GTX 1080 GPU cards per node (50 GPUs operational)</li>
+<li>1TB HDD per node</li>
 <li>2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric</li>
-<li>Theoretical Performance: 47.25 TFLOPs (CPU) + 12.850 TFLOPs (GPU)
-
-<ul>
-<li>Each GTX card provides 8.873 TFLOPs of single precision performance but
-only 257 GFLOPs of double precision performance</li>
-</ul></li>
-<li>Access: Batch Scheduled, interactive on login node for compiling, editing only</li>
+<li>Theoretical Performance: 47.25 TFLOPs (CPU) + 28.270 TFLOPs (GPU)</li>
+<li>Access: Batch Scheduled, interactive on login node for compiling, editing
+only</li>
+<li>In progress: 1 node, dual 8-core Intel Xeon 2630 v3 2.4GHz CPU, 20 MB
+Cache, 512GB RAM</li>
 </ul></li>
 </ul>
 
@@ -231,6 +221,7 @@ only 257 GFLOPs of double precision performance</li>
 <ul>
 <li>Theoretical Performance: 4.416 TFlops (CPU) + 17.46TFlops (GPU)</li>
 </ul></li>
+<li>To be merged with Sol in Fall 2017</li>
 </ul></li>
 </ul>
 
@@ -243,27 +234,94 @@ only 257 GFLOPs of double precision performance</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="id" style="background:#F1E7C8;">
+<slide class="class" id="slide-7" style="background:#F1E7C8;">
   <hgroup>
     <h2>Total Computational Resources Supported</h2>
   </hgroup>
   <article data-timings="">
-    <ul>
-<li>CPU
-
-<ul>
-<li>Cores: 1980</li>
-<li>Memory: 8.69 TB</li>
-<li>Performance: 63.39 TFLOPs</li>
-</ul></li>
-<li>GPU
-
-<ul>
-<li>CUDA Cores: 157952</li>
-<li>Memory: 544 GB</li>
-<li>Performance: 30.32 TFLOPs (463.816 SP TFLOPs)</li>
-</ul></li>
-</ul>
+    <table><thead>
+<tr>
+<th align="center">Cluster</th>
+<th align="center">Cores</th>
+<th align="center">CPU Memory</th>
+<th align="center">CPU TFLOPs</th>
+<th align="center">GPUs</th>
+<th align="center">CUDA Cores</th>
+<th align="center">GPU Memory</th>
+<th align="center">GPU TFLOPS</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="center">Maia</td>
+<td align="center">32</td>
+<td align="center">128</td>
+<td align="center">0.640</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">Monocacy</td>
+<td align="center">128</td>
+<td align="center">512</td>
+<td align="center">2.662</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">Eigen</td>
+<td align="center">320</td>
+<td align="center">1280</td>
+<td align="center">6.656</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">Baltrusaitislab</td>
+<td align="center">96</td>
+<td align="center">384</td>
+<td align="center">1.766</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">Pisces</td>
+<td align="center">120</td>
+<td align="center">384</td>
+<td align="center">4.416</td>
+<td align="center">6</td>
+<td align="center">29952</td>
+<td align="center">144</td>
+<td align="center">17.472</td>
+</tr>
+<tr>
+<td align="center">Sol</td>
+<td align="center">1284</td>
+<td align="center">6208</td>
+<td align="center">46.752</td>
+<td align="center">110</td>
+<td align="center">281600</td>
+<td align="center">880</td>
+<td align="center">28.27</td>
+</tr>
+<tr>
+<td align="center">Total</td>
+<td align="center">1980</td>
+<td align="center">8896</td>
+<td align="center">62.893</td>
+<td align="center">116</td>
+<td align="center">311552</td>
+<td align="center">1024</td>
+<td align="center">45.742</td>
+</tr>
+</tbody></table>
 
   </article>
   <!-- Footer  -->
@@ -330,7 +388,6 @@ only 257 GFLOPs of double precision performance</li>
 <li>Additional Increments of 10,000 SU - &#36;100 per 10K increments</li>
 <li>Fixed Allocation cycle: Oct 1 - Sep 30</li>
 <li>Unused allocations do not rollover to next allocation cycle</li>
-<li><em>Working on implementing a rolling allocation cycle, only for minimum purchase.</em></li>
 <li>Total available computing time for purchase annually: 1.4M SUs or 1 year of continuous computing on 8 nodes</li>
 </ul></li>
 <li><p><strong>No &#39;free&#39; computing time provided once allocation has been expended</strong></p></li>
@@ -352,8 +409,8 @@ only 257 GFLOPs of double precision performance</li>
   <article data-timings="">
     <ul>
 <li>New sustainable model for High Performance Computing at Lehigh</li>
-<li>Faculty (Condo Investor) purchase compute nodes from grants to increase overall capacity of Sol</li>
-<li>LTS will provide for four years
+<li>Faculty (Condo Investor) purchase compute nodes to increase overall capacity of Sol</li>
+<li>LTS will provide for the length of hardware warranty, typically 4 years
 
 <ul>
 <li>System Administration, Power and Cooling, User Support for Condo
@@ -362,7 +419,7 @@ Investments</li>
 <li>Condo Investor
 
 <ul>
-<li>receives annual allocation equivalent to their investment for four years</li>
+<li>receives annual allocation equivalent to their investment</li>
 <li>can utilize allocations on all available nodes, including nodes from other
 Condo Investors</li>
 <li>allows idle cycles on investment to be used by other Sol users</li>
@@ -391,30 +448,21 @@ Condo Investors</li>
   </hgroup>
   <article data-timings="">
     <ul>
-<li>Two at initial launch 
+<li><p>Two at initial launch </p>
 
 <ul>
 <li>Dimitrios Vavylonis, Physics (1 node)</li>
-<li>Wonpil Im, Biological Sciences (25 nodes)</li>
-</ul></li>
-<li><p>Acquisition in progress</p>
-
-<ul>
+<li>Wonpil Im, Biological Sciences (25 nodes, 50 GPUs)</li>
 <li>Anand Jagota, Chemical Engineering (1 node)</li>
 <li>Brian Chen, Computer Science &amp; Engineering (1 node)</li>
 <li>Ed Webb &amp; Alp Oztekin, Mechanical Engineering (6 nodes)</li>
-<li>Jeetain Mittal &amp; Srinivas Rangarajan, Chemical Engineering (13 nodes)</li>
+<li>Jeetain Mittal &amp; Srinivas Rangarajan, Chemical Engineering (13 nodes, 60 GPUs)</li>
 </ul></li>
 <li><p>Total SU on Sol after Condo Investments: 11,247,840</p></li>
-<li><p>Available capacity for additional investments: 1 (16 after Power Upgrade to
-Data Center)</p>
+<li><p>Acquisition in progress</p>
 
 <ul>
-<li>Acquisition being planned
-
-<ul>
-<li>Seth Richards-Shubik, Economics</li>
-</ul></li>
+<li>Seth Richards-Shubik, Economics (1 node)</li>
 </ul></li>
 </ul>
 
@@ -486,6 +534,8 @@ Maia for 15 minutes.</li>
 <li>Module environment allows you to dynamically change your *nix environment based on software being used</li>
 <li>Standard on many University and national High Performance Computing resource since circa 2011</li>
 </ul></li>
+<li>How to use Sol/Maia Software on your <a href="https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=linux">linux</a> workstation</li>
+<li>LTS provides <a href="https://software.lehigh.edu">licensed and open source software</a> for Windows, Mac and Linux] and <a href="https://gogs.cc.lehigh.eu">Gogs</a>, a self hosted Git Service or Github clone </li>
 </ul>
 
   </article>
@@ -657,6 +707,7 @@ modified, appended or prepended</li>
 
 <ul>
 <li>MVAPICH2</li>
+<li>OpenMPI</li>
 </ul></li>
 </ul>
 
@@ -704,14 +755,18 @@ modified, appended or prepended</li>
 <li>Avogadro </li>
 <li>GaussView</li>
 <li>GNUPlot</li>
+<li>PWGui</li>
+<li>PyMol</li>
 <li>VMD</li>
+<li>XCrySDen</li>
 </ul></li>
 <li>Other Tools
 
 <ul>
 <li>CMake</li>
-<li>Gurobi </li>
+<li>Lmod</li>
 <li>Scons</li>
+<li>SPACK</li>
 </ul></li>
 </ul>
 
@@ -735,6 +790,10 @@ MODULEPATH in .bashrc/.tcshrc</li>
 <pre><code class="sh"># My .bashrc file
 export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 </code></pre>
+
+<ul>
+<li>Use <a href="https://spack.readthedocs.io">SPACK</a> to build your own software stack</li>
+</ul>
 
 </div>
   </article>
@@ -986,9 +1045,9 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 </tr>
 </thead><tbody>
 <tr>
-<td align="center">lts</td>
+<td align="center"><em>lts</em></td>
 <td align="center">72</td>
-<td align="center">20</td>
+<td align="center">20 (will change to 18+2)</td>
 </tr>
 <tr>
 <td align="center">imlab</td>
@@ -999,6 +1058,26 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 <td align="center">imlab-gpu</td>
 <td align="center">48</td>
 <td align="center">24</td>
+</tr>
+<tr>
+<td align="center"><em>eng</em></td>
+<td align="center">72</td>
+<td align="center">24 (will change to 22+2)</td>
+</tr>
+<tr>
+<td align="center"><em>engc</em></td>
+<td align="center">72</td>
+<td align="center">24 (will change to 22+2)</td>
+</tr>
+<tr>
+<td align="center">all-cpu</td>
+<td align="center">48</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">all-gpu</td>
+<td align="center">48</td>
+<td align="center"></td>
 </tr>
 </tbody></table>
 
@@ -1034,54 +1113,6 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class small" id="id" style="background:#F1E7C8;">
-  <hgroup>
-    <h2>Queues on Faculty Clusters</h2>
-  </hgroup>
-  <article data-timings="">
-    <table><thead>
-<tr>
-<th align="center">Cluster</th>
-<th align="center">Queue</th>
-<th align="center">Max Runtime</th>
-</tr>
-</thead><tbody>
-<tr>
-<td align="center">Pisces</td>
-<td align="center">normal</td>
-<td align="center">4 days</td>
-</tr>
-<tr>
-<td align="center">Monocacy</td>
-<td align="center">normal</td>
-<td align="center">4 days</td>
-</tr>
-<tr>
-<td align="center">Eigen</td>
-<td align="center">adf</td>
-<td align="center">14 days</td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center">normal</td>
-<td align="center">14 days</td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center">long</td>
-<td align="center">28 days</td>
-</tr>
-</tbody></table>
-
-  </article>
-  <!-- Footer  -->
-  <footer class = 'lufoot'>
-     <img height = '20px' src='assets/img/lulogo.jpg'>
-  </footer>
-  <!-- End Footer-->
-  <!-- Presenter Notes -->
-</slide>
-
 <slide class="class" id="id" style="background:#F1E7C8;">
   <hgroup>
     <h2>How much memory can I use?</h2>
@@ -1090,22 +1121,36 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
     <ul>
 <li><p>The amount of installed memory less the amount that is used by the operating system and other utilities</p></li>
 <li><p>A general rule of thumb on most HPC resources: leave 1-2GB for the OS to run. </p></li>
-<li><p>Sol: Max memory used per node should not exceed 126GB.</p>
+<li><p>Sol</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th align="center">Partition</th>
+<th align="center">Max Memory/core (GB)</th>
+<th align="center">Recommended Memory/Core (GB)</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="center">lts</td>
+<td align="center">6.4</td>
+<td align="center">6.2</td>
+</tr>
+<tr>
+<td align="center">eng/imlab/imlab-gpu</td>
+<td align="center">5.3</td>
+<td align="center">5.1</td>
+</tr>
+<tr>
+<td align="center">engc</td>
+<td align="center">2.66</td>
+<td align="center">2.4</td>
+</tr>
+</tbody></table>
 
 <ul>
-<li>nodes in lts partition have ~6.4GB/core
-
-<ul>
-<li>max memory 6.3GB/core</li>
-</ul></li>
-<li>nodes in imlab &amp; imlab-gpu partition have ~5.3GB/core
-
-<ul>
-<li>max memory 5.25GB/core</li>
-<li><span class="alert">if you need to run a single core job that requires 10GB memory in the imlab partition, you need to request 2 cores even though you are only using
-1 core.</span><br></li>
-</ul></li>
-</ul></li>
+<li><p><span class="alert">if you need to run a single core job that requires 10GB memory in the imlab partition, you need to request 2 cores even though you are only using
+     1 core.</span>  </p></li>
 <li><p>Maia: Users need to specify memory required in their submit script. Max
 memory that should be requested is 126GB.</p></li>
 </ul>
@@ -1149,10 +1194,6 @@ memory that should be requested is 126GB.</p></li>
 <tr>
 <td align="center">#SBATCH --ntasks=n</td>
 <td align="center">Request resources to run job on a total of <em>n</em> processors.</td>
-</tr>
-<tr>
-<td align="center">#SBATCH --mem=x[M,G,T]</td>
-<td align="center">Request <em>x[M,G or T]B</em> per node requested</td>
 </tr>
 <tr>
 <td align="center">#SBATCH --job-name=jobname</td>
@@ -1461,7 +1502,8 @@ of core/node&gt; -p &lt;queue name&gt; --pty /bin/bash --login</code></p></li>
 <ul>
 <li>For e.g. <code>srun -t 20 -n 1 -p imlab --qos=nogpu $(which lammps) -in in.lj
 -var x 1 -var n 1</code></li>
-<li>Default values are 3 days, 1 node, 20 tasks per node and lts partition</li>
+<li>Default values are 3 days, 1 node, 20 tasks per node and lts
+partition</li>
 </ul></li>
 </ul>
 
@@ -1710,12 +1752,14 @@ exit
 </tbody></table>
 
 <ul>
-<li>The following scripts written by RC staff can also be used for monitoring jobs.
+<li>The following scripts written by RC staff can also be used for monitoring
+jobs. 
 
 <ul>
 <li><strong>checkq</strong>: <code>squeue</code> with additional useful option. </li>
 <li><strong>checkload</strong>: <code>sinfo</code> with additional options to show load on compute nodes.<br></li>
 </ul></li>
+<li>load the <code>soltools</code> module to get access to RC staff created scripts</li>
 </ul>
 
   </article>
@@ -1787,6 +1831,39 @@ allocation</li>
 
 <slide class="class" id="id" style="background:#F1E7C8;">
   <hgroup>
+    <h2>Online Usage Reporting</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Monthly usage is summarized at <a href="https://researchcomputing.lehigh.edu/usage">https://researchcomputing.lehigh.edu/usage</a></li>
+<li>Scrollable Usage for entire cluster
+
+<ul>
+<li><a href="https://webapps.lehigh.edu/hpc/usage/canvas.html">https://webapps.lehigh.edu/hpc/usage/canvas.html</a></li>
+</ul></li>
+<li>For a specific PI:
+
+<ul>
+<li>Replace lts with a PI&#39;s name in the following link
+
+<ul>
+<li><a href="https://webapps.lehigh.edu/hpc/usage/lts.html">https://webapps.lehigh.edu/hpc/usage/lts.html</a></li>
+</ul></li>
+</ul></li>
+<li><span class="alert">Usage plots are restricted to Lehigh IPs</span></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
     <h2>Online Usage Reporting: Sol Cluster</h2>
   </hgroup>
   <article data-timings="">
@@ -1826,38 +1903,6 @@ allocation</li>
   <article data-timings="">
     <p><object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2016-imlab.svg" type="image/svg+xml">
 </object></p>
-
-  </article>
-  <!-- Footer  -->
-  <footer class = 'lufoot'>
-     <img height = '20px' src='assets/img/lulogo.jpg'>
-  </footer>
-  <!-- End Footer-->
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:#F1E7C8;">
-  <hgroup>
-    <h2>Online Usage Reporting</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li>Scrollable Usage for entire cluster
-
-<ul>
-<li><a href="https://webapps.lehigh.edu/hpc/usage/canvas.html">https://webapps.lehigh.edu/hpc/usage/canvas.html</a></li>
-</ul></li>
-<li>For a specific PI:
-
-<ul>
-<li>Replace lts with a PI&#39;s name in the following link
-
-<ul>
-<li><a href="https://webapps.lehigh.edu/hpc/usage/lts.html">https://webapps.lehigh.edu/hpc/usage/lts.html</a></li>
-</ul></li>
-</ul></li>
-<li><span class="alert">Usage plots are restricted to Lehigh IPs</span></li>
-</ul>
 
   </article>
   <!-- Footer  -->
@@ -1911,20 +1956,28 @@ idea is the same as above</li>
 <li>Issue with running jobs or need help to get started: 
 
 <ul>
-<li>Open a help ticket: <a href="http://lehigh.edu/go/rchelp">http://lehigh.edu/go/rchelp</a></li>
+<li>Open a help ticket: <a href="http://go.lehigh.edu/rchelp">http://go.lehigh.edu/rchelp</a></li>
 </ul></li>
 <li>More Information
 
 <ul>
 <li><a href="https://researchcomputing.lehigh.edu">Research Computing</a></li>
+<li><a href="https://go.lehigh.edu/rcwiki">Research Computing Wiki</a></li>
 <li><a href="https://researchcomputing.lehigh.edu/training">Research Computing Training</a></li>
-<li><a href="https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php">Research Computing Wiki</a></li>
 </ul></li>
 <li>Subscribe
 
 <ul>
-<li>Research Computing Mailing List: <a href="https://lists.lehigh.edu/mailman/listinfo/hpc-l">https://lists.lehigh.edu/mailman/listinfo/hpc-l</a></li>
 <li>HPC Training Google Groups: <a href="mailto:hpctraining-list+subscribe@lehigh.edu">hpctraining-list+subscribe@lehigh.edu</a></li>
+<li>Research Computing Mailing List: <a href="https://lists.lehigh.edu/mailman/listinfo/hpc-l">https://lists.lehigh.edu/mailman/listinfo/hpc-l</a></li>
+</ul></li>
+<li>My contact info
+
+<ul>
+<li>eMail:  <a href="mailto:alp514@lehigh.edu">alp514@lehigh.edu</a></li>
+<li>Tel: (610) 758-6735 </li>
+<li>Location: Room 296, EWFM Computing Center</li>
+<li><a href="https://www.google.com/calendar/embed?src=alp514%40lehigh.edu&amp;ctz=America/New_York">My Schedule</a></li>
 </ul></li>
 </ul>
 
@@ -2099,91 +2152,91 @@ idea is the same as above</li>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=27 title='Queues on Faculty Clusters'>
+        data-slide=27 title='How much memory can I use?'>
          27
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=28 title='How much memory can I use?'>
+        data-slide=28 title='Useful SLURM Directives'>
          28
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=29 title='Useful SLURM Directives'>
+        data-slide=29 title='Useful SLURM Directives (contd)'>
          29
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=30 title='Useful SLURM Directives (contd)'>
+        data-slide=30 title='Useful PBS Directives'>
          30
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=31 title='Useful PBS Directives'>
+        data-slide=31 title='Useful PBS/SLURM environmental variables'>
          31
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=32 title='Useful PBS/SLURM environmental variables'>
+        data-slide=32 title='Basic Job Manager Commands'>
          32
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=33 title='Basic Job Manager Commands'>
+        data-slide=33 title='Job Types: Interactive'>
          33
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=34 title='Job Types: Interactive'>
+        data-slide=34 title='Job Types: Batch'>
          34
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=35 title='Job Types: Batch'>
+        data-slide=35 title='Minimal submit script for Serial Jobs'>
          35
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=36 title='Minimal submit script for Serial Jobs'>
+        data-slide=36 title='Minimal submit script for MPI Job'>
          36
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=37 title='Minimal submit script for MPI Job'>
+        data-slide=37 title='Minimal submit script for OpenMP Job'>
          37
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=38 title='Minimal submit script for OpenMP Job'>
+        data-slide=38 title='Minimal submit script for LAMMPS GPU job'>
          38
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=39 title='Minimal submit script for LAMMPS GPU job'>
+        data-slide=39 title='Submitting Batch Jobs'>
          39
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=40 title='Submitting Batch Jobs'>
+        data-slide=40 title='Monitoring &amp; Manipulating Jobs'>
          40
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=41 title='Monitoring &amp; Manipulating Jobs'>
+        data-slide=41 title='Usage Reporting'>
          41
       </a>
     </li>
@@ -2195,7 +2248,7 @@ idea is the same as above</li>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=43 title='Usage Reporting'>
+        data-slide=43 title='Online Usage Reporting'>
          43
       </a>
     </li>
@@ -2219,20 +2272,14 @@ idea is the same as above</li>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=47 title='Online Usage Reporting'>
+        data-slide=47 title='Need to run multiple jobs in sequence?'>
          47
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=48 title='Need to run multiple jobs in sequence?'>
+        data-slide=48 title='Additional Help &amp; Information'>
          48
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=49 title='Additional Help &amp; Information'>
-         49
       </a>
     </li>
   </ul>
