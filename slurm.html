@@ -101,11 +101,11 @@ RAM</li>
 <li>Two nVIDIA GTX 1080 GPU cards per node (50 GPUs operational)</li>
 <li>1TB HDD per node</li>
 <li>2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric</li>
-<li>Theoretical Performance: 47.25 TFLOPs (CPU) + 28.270 TFLOPs (GPU)</li>
-<li>Access: Batch Scheduled, interactive on login node for compiling, editing
-only</li>
 <li>In progress: 1 node, dual 8-core Intel Xeon 2630 v3 2.4GHz CPU, 20 MB
 Cache, 512GB RAM</li>
+<li>Theoretical Performance: 47.37 TFLOPs (CPU) + 28.270 TFLOPs (GPU)</li>
+<li>Access: Batch Scheduled, interactive on login node for compiling, editing
+only</li>
 </ul></li>
 </ul>
 
@@ -195,15 +195,6 @@ Cache, 512GB RAM</li>
 <li>Theoretical Performance: 2.662TFlops</li>
 </ul></li>
 </ul></li>
-<li><strong>Eigen</strong>: Heather Jaeger, Chemistry
-
-<ul>
-<li>Twenty nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
-
-<ul>
-<li>Theoretical Performance: 6.656TFlops</li>
-</ul></li>
-</ul></li>
 <li><strong>Baltrusaitislab</strong>: Jonas Baltrusaitis, Chemical Engineering
 
 <ul>
@@ -222,6 +213,15 @@ Cache, 512GB RAM</li>
 <li>Theoretical Performance: 4.416 TFlops (CPU) + 17.46TFlops (GPU)</li>
 </ul></li>
 <li>To be merged with Sol in Fall 2017</li>
+</ul></li>
+<li>Unnamed : decommissioned faculty cluster for prototyping new resources
+
+<ul>
+<li>Twenty nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
+
+<ul>
+<li>Theoretical Performance: 6.656TFlops</li>
+</ul></li>
 </ul></li>
 </ul>
 
@@ -272,7 +272,7 @@ Cache, 512GB RAM</li>
 <td align="center"></td>
 </tr>
 <tr>
-<td align="center">Eigen</td>
+<td align="center">Unnamed</td>
 <td align="center">320</td>
 <td align="center">1280</td>
 <td align="center">6.656</td>
@@ -303,9 +303,9 @@ Cache, 512GB RAM</li>
 </tr>
 <tr>
 <td align="center">Sol</td>
-<td align="center">1284</td>
-<td align="center">6208</td>
-<td align="center">46.752</td>
+<td align="center">1300</td>
+<td align="center">6720</td>
+<td align="center">47.366</td>
 <td align="center">110</td>
 <td align="center">281600</td>
 <td align="center">880</td>
@@ -313,9 +313,9 @@ Cache, 512GB RAM</li>
 </tr>
 <tr>
 <td align="center">Total</td>
-<td align="center">1980</td>
-<td align="center">8896</td>
-<td align="center">62.893</td>
+<td align="center">1996</td>
+<td align="center">9408</td>
+<td align="center">63.507</td>
 <td align="center">116</td>
 <td align="center">311552</td>
 <td align="center">1024</td>
@@ -535,7 +535,7 @@ Maia for 15 minutes.</li>
 <li>Standard on many University and national High Performance Computing resource since circa 2011</li>
 </ul></li>
 <li>How to use Sol/Maia Software on your <a href="https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=linux">linux</a> workstation</li>
-<li>LTS provides <a href="https://software.lehigh.edu">licensed and open source software</a> for Windows, Mac and Linux] and <a href="https://gogs.cc.lehigh.eu">Gogs</a>, a self hosted Git Service or Github clone </li>
+<li>LTS provides <a href="https://software.lehigh.edu">licensed and open source software</a> for Windows, Mac and Linux and <a href="https://gogs.cc.lehigh.eu">Gogs</a>, a self hosted Git Service or Github clone </li>
 </ul>
 
   </article>
@@ -635,12 +635,12 @@ modified, appended or prepended</li>
 <li>Gaussian</li>
 <li>NWCHEM</li>
 <li>Quantum Espresso</li>
-<li><em>VASP</em></li>
+<li>VASP</li>
 </ul></li>
 <li>Molecular Dynamics
 
 <ul>
-<li><em>Desmond</em></li>
+<li>Desmond</li>
 <li>GROMACS</li>
 <li>LAMMPS</li>
 <li>NAMD</li>
@@ -862,7 +862,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
   </hgroup>
   <article data-timings="">
     <ul>
-<li>All compute intensive jobs are batch scheduled</li>
+<li>All compute intensive jobs are scheduled</li>
 <li>Write a script to submit jobs to a scheduler
 
 <ul>
@@ -883,7 +883,11 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 <ul>
 <li>have an estimate for how long your job will run</li>
 </ul></li>
-<li>Which queue to submit jobs</li>
+<li>Which queue to submit jobs
+
+<ul>
+<li>SLURM uses the term <em>partition</em> instead of <em>queue</em></li>
+</ul></li>
 </ul></li>
 </ul>
 
@@ -898,7 +902,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 
 <slide class="class" id="id" style="background:#F1E7C8;">
   <hgroup>
-    <h2>Batch Queuing System</h2>
+    <h2>Scheduler &amp; Resource Management</h2>
   </hgroup>
   <article data-timings="">
     <ul>
@@ -915,7 +919,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 </ul></li>
 </ul></li>
 <li><p>A job can be considered as a user’s request to use a certain amount of resources for a certain amount of time</p></li>
-<li><p>The batch queuing system determines</p>
+<li><p>The Scheduler or queuing system determines</p>
 
 <ul>
 <li>The order jobs are executed</li>
@@ -1039,7 +1043,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 
 <table><thead>
 <tr>
-<th align="center">Queue Name</th>
+<th align="center">Partition Name</th>
 <th align="center">Max Runtime in hours</th>
 <th align="center">Max SU consumed node per hour</th>
 </tr>
@@ -1115,7 +1119,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 
 <slide class="class" id="id" style="background:#F1E7C8;">
   <hgroup>
-    <h2>How much memory can I use?</h2>
+    <h2>How much memory can or should I use per core?</h2>
   </hgroup>
   <article data-timings="">
     <ul>
@@ -1166,7 +1170,7 @@ memory that should be requested is 126GB.</p></li>
 
 <slide class="class small" id="id" style="background:#F1E7C8;">
   <hgroup>
-    <h2>Useful SLURM Directives</h2>
+    <h2>Useful SBATCH Directives</h2>
   </hgroup>
   <article data-timings="">
     <table><thead>
@@ -1177,7 +1181,7 @@ memory that should be requested is 126GB.</p></li>
 </thead><tbody>
 <tr>
 <td align="center">#SBATCH --partition=queuename</td>
-<td align="center">Submit job to the <em>queuename</em> queue.</td>
+<td align="center">Submit job to the <em>queuename</em> partition.</td>
 </tr>
 <tr>
 <td align="center">#SBATCH --time=hh:mm:ss</td>
@@ -1236,7 +1240,7 @@ memory that should be requested is 126GB.</p></li>
 
 <slide class="class small" id="id" style="background:#F1E7C8;">
   <hgroup>
-    <h2>Useful SLURM Directives (contd)</h2>
+    <h2>Useful SBATCH Directives (contd)</h2>
   </hgroup>
   <article data-timings="">
     <table><thead>
@@ -1246,28 +1250,16 @@ memory that should be requested is 126GB.</p></li>
 </tr>
 </thead><tbody>
 <tr>
-<td align="center"></td>
-<td align="center">Request a quality of service (qos)  for the job.</td>
-</tr>
-<tr>
 <td align="center">#SBATCH --qos=nogpu</td>
-<td align="center"><code>imlab</code> partition has a qos of nogpu.</td>
+<td align="center">Request a quality of service (qos)  for the job in <code>imlab</code>, <code>engc</code> partitions.</td>
 </tr>
 <tr>
 <td align="center"></td>
 <td align="center">Job will remain in queue indefinitely if you do not specify qos</td>
 </tr>
 <tr>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center">Specifies a comma delimited list of generic consumable resources</td>
-</tr>
-<tr>
 <td align="center">#SBATCH --gres=gpu:#</td>
-<td align="center">To use gpus on <code>imlab-gpu</code> partition, you need to request gpus</td>
+<td align="center">Specifies number of gpus requested in the gpu partitions</td>
 </tr>
 <tr>
 <td align="center"></td>
@@ -1298,16 +1290,87 @@ memory that should be requested is 126GB.</p></li>
 <td align="center">-N m</td>
 </tr>
 <tr>
-<td align="center">--ntasks-per-node=n</td>
-<td align="center">-n n</td>
-</tr>
-<tr>
 <td align="center">--ntasks=n</td>
 <td align="center">-n n</td>
 </tr>
 <tr>
 <td align="center">--account=mypi</td>
 <td align="center">-A mypi</td>
+</tr>
+<tr>
+<td align="center">--job-name=jobname</td>
+<td align="center">-J jobname</td>
+</tr>
+<tr>
+<td align="center">--output=filename.out</td>
+<td align="center">-o filename.out</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>SBATCH Filename Patterns</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>sbatch allows for a filename pattern to contain one or more replacement
+symbols, which are a percent sign &quot;%&quot; followed by a letter (e.g. %j). </li>
+</ul>
+
+<table><thead>
+<tr>
+<th align="center">Pattern</th>
+<th align="center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="center">%A</td>
+<td align="center">Job array&#39;s master job allocation number.</td>
+</tr>
+<tr>
+<td align="center">%a</td>
+<td align="center">Job array ID (index) number.</td>
+</tr>
+<tr>
+<td align="center">%J</td>
+<td align="center">jobid.stepid of the running job. (e.g. &quot;128.0&quot;)</td>
+</tr>
+<tr>
+<td align="center">%j</td>
+<td align="center">jobid of the running job.</td>
+</tr>
+<tr>
+<td align="center">%N</td>
+<td align="center">short hostname. This will create a separate IO file per node.</td>
+</tr>
+<tr>
+<td align="center">%n</td>
+<td align="center">Node identifier relative to current job (e.g. &quot;0&quot; is the first node of the running job) This will create a separate IO file per node.</td>
+</tr>
+<tr>
+<td align="center">%s</td>
+<td align="center">stepid of the running job.</td>
+</tr>
+<tr>
+<td align="center">%t</td>
+<td align="center">task identifier (rank) relative to current job. This will create a separate IO file per task.</td>
+</tr>
+<tr>
+<td align="center">%u</td>
+<td align="center">User name.</td>
+</tr>
+<tr>
+<td align="center">%x</td>
+<td align="center">Job name.</td>
 </tr>
 </tbody></table>
 
@@ -1484,18 +1547,72 @@ memory that should be requested is 126GB.</p></li>
   <!-- Presenter Notes -->
 </slide>
 
+<slide class="class" id="slide-34" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Job Types</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Interactive Jobs
+
+<ul>
+<li>Set up an interactive environment on compute nodes for users</li>
+<li>Will log you into a compute node and wait for your prompt</li>
+<li>Purpose: testing and debugging code. <strong>Do not run jobs on head node!!!</strong>
+
+<ul>
+<li>All compute node have a naming convention <strong>sol-[a,b,c]###</strong></li>
+<li>head node is <strong>sol</strong></li>
+</ul></li>
+</ul></li>
+<li>Batch Jobs
+
+<ul>
+<li>Executed using a batch script without user intervention
+
+<ul>
+<li>Advantage: system takes care of running the job</li>
+<li>Disadvantage: cannot change sequence of commands after submission</li>
+</ul></li>
+<li>Useful for Production runs</li>
+<li>Workflow: write a script -&gt; submit script -&gt; take mini vacation -&gt;
+analyze results</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
 <slide class="class" id="id" style="background:#F1E7C8;">
   <hgroup>
     <h2>Job Types: Interactive</h2>
   </hgroup>
   <article data-timings="">
     <ul>
-<li>Set up an interactive environment on compute nodes for users</li>
-<li><p>Purpose: testing and debugging code. <strong>Do not run jobs on head node!!!</strong></p></li>
-<li><p>PBS: <code>qsub -I -V -l walltime=&lt;hh:mm:ss&gt;,nodes=&lt;# of nodes&gt;:ppn=&lt;# of core/node&gt; -q &lt;queue
-name&gt;</code></p></li>
-<li><p>SLURM: <code>srun --time=&lt;hh:mm:ss&gt; --nodes=&lt;# of nodes&gt; --ntasks-per-node=&lt;#
-of core/node&gt; -p &lt;queue name&gt; --pty /bin/bash --login</code></p></li>
+<li><p>PBS: Use <code>qsub -I</code> command with PBS Directives</p>
+
+<ul>
+<li>   <code>qsub -I -V -l walltime=&lt;hh:mm:ss&gt;,nodes=&lt;# of nodes&gt;:ppn=&lt;# of core/node&gt; -q &lt;queue
+name&gt;</code></li>
+</ul></li>
+<li><p>SLURM:  Use <code>srun</code> command with SBATCH Directives followed by <code>--pty /bin/bash</code></p>
+
+<ul>
+<li><code>srun --time=&lt;hh:mm:ss&gt; --nodes=&lt;# of nodes&gt; --ntasks-per-node=&lt;#
+of core/node&gt; -p &lt;queue name&gt; --pty /bin/bash</code></li>
+<li>If you have <code>soltools</code> module loaded, then use <code>interact</code> with at
+least one SBATCH Directive
+
+<ul>
+<li><code>interact -t 20</code> [Assumes <code>-p lts -n 1 -N 20</code>]</li>
+</ul></li>
+</ul></li>
 <li><p>Run a job interactively replace <code>--pty /bin/bash --login</code> with the
  appropriate command. </p>
 
@@ -1522,13 +1639,20 @@ partition</li>
   </hgroup>
   <article data-timings="">
     <ul>
-<li>Executed using a batch script without user intervention
+<li>Workflow: write a script -&gt; submit script -&gt; take mini vacation -&gt; analyze
+results</li>
+<li><p>Submitting Batch Jobs</p>
 
 <ul>
-<li>Advantage: system takes care of running the job</li>
-<li>Disadvantage: cannot change sequence of commands after submission</li>
+<li>PBS: <code>qsub filename</code></li>
+<li>SLURM: <code>sbatch filename</code></li>
 </ul></li>
-<li>Useful for Production runs</li>
+<li><p><code>qsub</code> and <code>sbatch</code> can take the options for <code>#PBS</code> and <code>#SBATCH</code> as command line arguments</p>
+
+<ul>
+<li><code>qsub -l walltime=1:00:00,nodes=1:ppn=16 -q normal filename</code></li>
+<li><code>sbatch --time=1:00:00 --nodes=1 --ntasks-per-node=20 -p lts filename</code> </li>
+</ul></li>
 </ul>
 
   </article>
@@ -1667,31 +1791,6 @@ srun $(which lammps) -in in.lj -sf gpu -pk gpu 1 gpuID ${CUDA_VISIBLE_DEVICE}
 
 exit
 </code></pre>
-
-  </article>
-  <!-- Footer  -->
-  <footer class = 'lufoot'>
-     <img height = '20px' src='assets/img/lulogo.jpg'>
-  </footer>
-  <!-- End Footer-->
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:#F1E7C8;">
-  <hgroup>
-    <h2>Submitting Batch Jobs</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li>PBS: <code>qsub filename</code></li>
-<li><p>SLURM: <code>sbatch filename</code></p></li>
-<li><p><code>qsub</code> and <code>sbatch</code> can take the options for <code>#PBS</code> and <code>#SBATCH</code> as command line arguments</p>
-
-<ul>
-<li><code>qsub -l walltime=1:00:00,nodes=1:ppn=16 -q normal filename</code></li>
-<li><code>sbatch --time=1:00:00 --nodes=1 --ntasks-per-node=20 -p lts filename</code> </li>
-</ul></li>
-</ul>
 
   </article>
   <!-- Footer  -->
@@ -1915,6 +2014,40 @@ allocation</li>
 
 <slide class="class" id="id" style="background:#F1E7C8;">
   <hgroup>
+    <h2>Online Usage Reporting: eng partitions</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2016-eng.svg" type="image/svg+xml">
+</object></p>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Online Usage Reporting: engc partitions</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2016-engc.svg" type="image/svg+xml">
+</object></p>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
     <h2>Need to run multiple jobs in sequence?</h2>
   </hgroup>
   <article data-timings="">
@@ -2122,7 +2255,7 @@ idea is the same as above</li>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=22 title='Batch Queuing System'>
+        data-slide=22 title='Scheduler &amp; Resource Management'>
          22
       </a>
     </li>
@@ -2152,91 +2285,91 @@ idea is the same as above</li>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=27 title='How much memory can I use?'>
+        data-slide=27 title='How much memory can or should I use per core?'>
          27
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=28 title='Useful SLURM Directives'>
+        data-slide=28 title='Useful SBATCH Directives'>
          28
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=29 title='Useful SLURM Directives (contd)'>
+        data-slide=29 title='Useful SBATCH Directives (contd)'>
          29
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=30 title='Useful PBS Directives'>
+        data-slide=30 title='SBATCH Filename Patterns'>
          30
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=31 title='Useful PBS/SLURM environmental variables'>
+        data-slide=31 title='Useful PBS Directives'>
          31
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=32 title='Basic Job Manager Commands'>
+        data-slide=32 title='Useful PBS/SLURM environmental variables'>
          32
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=33 title='Job Types: Interactive'>
+        data-slide=33 title='Basic Job Manager Commands'>
          33
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=34 title='Job Types: Batch'>
+        data-slide=34 title='Job Types'>
          34
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=35 title='Minimal submit script for Serial Jobs'>
+        data-slide=35 title='Job Types: Interactive'>
          35
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=36 title='Minimal submit script for MPI Job'>
+        data-slide=36 title='Job Types: Batch'>
          36
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=37 title='Minimal submit script for OpenMP Job'>
+        data-slide=37 title='Minimal submit script for Serial Jobs'>
          37
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=38 title='Minimal submit script for LAMMPS GPU job'>
+        data-slide=38 title='Minimal submit script for MPI Job'>
          38
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=39 title='Submitting Batch Jobs'>
+        data-slide=39 title='Minimal submit script for OpenMP Job'>
          39
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=40 title='Monitoring &amp; Manipulating Jobs'>
+        data-slide=40 title='Minimal submit script for LAMMPS GPU job'>
          40
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=41 title='Usage Reporting'>
+        data-slide=41 title='Monitoring &amp; Manipulating Jobs'>
          41
       </a>
     </li>
@@ -2248,38 +2381,56 @@ idea is the same as above</li>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=43 title='Online Usage Reporting'>
+        data-slide=43 title='Usage Reporting'>
          43
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=44 title='Online Usage Reporting: Sol Cluster'>
+        data-slide=44 title='Online Usage Reporting'>
          44
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=45 title='Online Usage Reporting: lts partition'>
+        data-slide=45 title='Online Usage Reporting: Sol Cluster'>
          45
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=46 title='Online Usage Reporting: imlab &amp; imlab-gpu partitions'>
+        data-slide=46 title='Online Usage Reporting: lts partition'>
          46
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=47 title='Need to run multiple jobs in sequence?'>
+        data-slide=47 title='Online Usage Reporting: imlab &amp; imlab-gpu partitions'>
          47
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=48 title='Additional Help &amp; Information'>
+        data-slide=48 title='Online Usage Reporting: eng partitions'>
          48
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=49 title='Online Usage Reporting: engc partitions'>
+         49
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=50 title='Need to run multiple jobs in sequence?'>
+         50
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=51 title='Additional Help &amp; Information'>
+         51
       </a>
     </li>
   </ul>

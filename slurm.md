@@ -43,11 +43,11 @@ license     : by-sa
   - Two nVIDIA GTX 1080 GPU cards per node (50 GPUs operational)
   - 1TB HDD per node
   - 2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric
-  - Theoretical Performance: 47.25 TFLOPs (CPU) + 28.270 TFLOPs (GPU)
-  - Access: Batch Scheduled, interactive on login node for compiling, editing
-  only
   - In progress: 1 node, dual 8-core Intel Xeon 2630 v3 2.4GHz CPU, 20 MB
   Cache, 512GB RAM
+  - Theoretical Performance: 47.37 TFLOPs (CPU) + 28.270 TFLOPs (GPU)
+  - Access: Batch Scheduled, interactive on login node for compiling, editing
+  only
 
 
 --- .class #id &twocol
@@ -87,9 +87,6 @@ license     : by-sa
 * __Monocacy__: Ben Felzer, Earth & Environmental Sciences
   - Eight nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
      * Theoretical Performance: 2.662TFlops
-* __Eigen__: Heather Jaeger, Chemistry
-  - Twenty nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
-     * Theoretical Performance: 6.656TFlops
 * __Baltrusaitislab__: Jonas Baltrusaitis, Chemical Engineering
   - Three nodes, dual 16-core AMD Opteron 6376, 2.3Ghz, 128GB RAM
      * Theoretical Performance: 1.766TFlops
@@ -97,6 +94,9 @@ license     : by-sa
   - Six nodes, dual 10-core Intel Xeon E5-2650v3, 2.3GHz, 64GB RAM, nVIDIA Tesla K80
      * Theoretical Performance: 4.416 TFlops (CPU) + 17.46TFlops (GPU)
   - To be merged with Sol in Fall 2017
+* Unnamed : decommissioned faculty cluster for prototyping new resources
+  - Twenty nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
+     * Theoretical Performance: 6.656TFlops
 
 --- .class
 
@@ -107,11 +107,11 @@ license     : by-sa
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | Maia | 32 | 128 | 0.640 |
 | Monocacy | 128 | 512 | 2.662 |
-| Eigen | 320 | 1280 | 6.656 | 
+| Unnamed | 320 | 1280 | 6.656 | 
 | Baltrusaitislab | 96 | 384 | 1.766 |
 | Pisces | 120 | 384 | 4.416 | 6 | 29952 | 144 | 17.472 |
-| Sol | 1284 | 6208 | 46.752 | 110 | 281600 | 880 | 28.27 |
-| Total | 1980 | 8896 | 62.893 | 116 | 311552 | 1024 | 45.742 | 
+| Sol | 1300 | 6720 | 47.366 | 110 | 281600 | 880 | 28.27 |
+| Total | 1996 | 9408 | 63.507 | 116 | 311552 | 1024 | 45.742 | 
 
 
 --- .class #id
@@ -210,7 +210,7 @@ license     : by-sa
   - Module environment allows you to dynamically change your *nix environment based on software being used
   - Standard on many University and national High Performance Computing resource since circa 2011
 * How to use Sol/Maia Software on your [linux](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=linux) workstation
-* LTS provides [licensed and open source software](https://software.lehigh.edu) for Windows, Mac and Linux] and [Gogs](https://gogs.cc.lehigh.eu), a self hosted Git Service or Github clone 
+* LTS provides [licensed and open source software](https://software.lehigh.edu) for Windows, Mac and Linux and [Gogs](https://gogs.cc.lehigh.eu), a self hosted Git Service or Github clone 
 
 
 --- .class #id
@@ -249,9 +249,9 @@ license     : by-sa
   - Gaussian
   - NWCHEM
   - Quantum Espresso
-  - *VASP*
+  - VASP
 * Molecular Dynamics
-  - *Desmond*
+  - Desmond
   - GROMACS
   - LAMMPS
   - NAMD
@@ -375,7 +375,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 
 ## How to run jobs
 
-* All compute intensive jobs are batch scheduled
+* All compute intensive jobs are scheduled
 * Write a script to submit jobs to a scheduler
   - need to have some background in shell scripting (bash/tcsh)
 * Need to specify
@@ -386,11 +386,12 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
    - How long do you want the resources
        - have an estimate for how long your job will run
    - Which queue to submit jobs
+       - SLURM uses the term _partition_ instead of _queue_
 
 
 --- .class #id
 
-## Batch Queuing System
+## Scheduler &amp; Resource Management
 
 * A software that manages resources (CPU time, memory, etc) and schedules job execution
    - Sol: Simple Linux Utility for Resource Management (SLURM)
@@ -401,7 +402,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 
 * A job can be considered as a user’s request to use a certain amount of resources for a certain amount of time
 
-* The batch queuing system determines
+* The Scheduler or queuing system determines
     - The order jobs are executed
     - On which node(s) jobs are executed
 
@@ -464,7 +465,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 
 * Sol
 
-| Queue Name | Max Runtime in hours | Max SU consumed node per hour |
+| Partition Name | Max Runtime in hours | Max SU consumed node per hour |
 |:----------:|:--------------------:|:--------------------:|
 | _lts_ | 72 | 20 (will change to 18+2)|
 | imlab | 48 | 22 | 
@@ -473,6 +474,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 | _engc_ | 72 | 24 (will change to 22+2)|
 | all-cpu | 48 |
 | all-gpu | 48 |
+
 
 
 * Maia
@@ -485,7 +487,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 
 --- .class #id
 
-## How much memory can I use?
+## How much memory can or should I use per core?
 
 * The amount of installed memory less the amount that is used by the operating system and other utilities
 
@@ -508,11 +510,11 @@ memory that should be requested is 126GB.
 
 --- .class #id .small
 
-## Useful SLURM Directives
+## Useful SBATCH Directives
 
 | SLURM Directive | Description |
 |:---------------:|:-----------:|
-| #SBATCH --partition=queuename | Submit job to the <em>queuename</em> queue. |
+| #SBATCH --partition=queuename | Submit job to the <em>queuename</em> partition. |
 | #SBATCH --time=hh:mm:ss | Request resources to run job for <em>hh</em> hours, <em>mm</em> minutes and <em>ss</em> seconds. |
 | #SBATCH --nodes=m | Request resources to run job on <em>m</em> nodes. |
 | #SBATCH --ntasks-per-node=n | Request resources to run job on <em>n</em> processors on each node requested. |
@@ -528,16 +530,13 @@ memory that should be requested is 126GB.
 
 --- .class #id .small
 
-## Useful SLURM Directives (contd)
+## Useful SBATCH Directives (contd)
 
 | SLURM Directive | Description |
 |:---------------:|:-----------:|
-| | Request a quality of service (qos)  for the job. |
-| #SBATCH --qos=nogpu | `imlab` partition has a qos of nogpu. |
+| #SBATCH --qos=nogpu | Request a quality of service (qos)  for the job in `imlab`, `engc` partitions. |
 | | Job will remain in queue indefinitely if you do not specify qos |
-| | 
-| | Specifies a comma delimited list of generic consumable resources
-| #SBATCH --gres=gpu:#| To use gpus on `imlab-gpu` partition, you need to request gpus |
+| #SBATCH --gres=gpu:# | Specifies number of gpus requested in the gpu partitions |
 | | You can request 1 or 2 gpus with a minimum of 1 core or cpu per gpu | 
 
 * SLURM can also take short hand notation for the directives
@@ -547,10 +546,31 @@ memory that should be requested is 126GB.
 | --partition=queuename | -p queuename |
 | --time=hh:mm:ss | -t hh:mm:ss |
 | --nodes=m | -N m |
-| --ntasks-per-node=n | -n n |
 | --ntasks=n | -n n |
 | --account=mypi | -A mypi |
+| --job-name=jobname | -J jobname |
+| --output=filename.out | -o filename.out |
 
+
+--- .class #id
+
+## SBATCH Filename Patterns
+
+* sbatch allows for a filename pattern to contain one or more replacement
+  symbols, which are a percent sign "%" followed by a letter (e.g. %j). 
+
+| Pattern | Description |
+|:-------:|:-----------:|
+| %A |    Job array's master job allocation number. |
+| %a |    Job array ID (index) number. |
+| %J |    jobid.stepid of the running job. (e.g. "128.0") |
+| %j |    jobid of the running job. |
+| %N |    short hostname. This will create a separate IO file per node. |
+| %n |    Node identifier relative to current job (e.g. "0" is the first node of the running job) This will create a separate IO file per node. |
+| %s |    stepid of the running job. |
+| %t |    task identifier (rank) relative to current job. This will create a separate IO file per task. |
+| %u |    User name. |
+| %x |    Job name. |
 
 
 
@@ -604,18 +624,38 @@ memory that should be requested is 126GB.
 * Manipulating
 * Reporting
 
+--- .class 
+
+## Job Types
+
+* Interactive Jobs
+  - Set up an interactive environment on compute nodes for users
+  - Will log you into a compute node and wait for your prompt
+  - Purpose: testing and debugging code. __Do not run jobs on head node!!!__
+      * All compute node have a naming convention __sol-[a,b,c]###__
+      * head node is __sol__
+* Batch Jobs
+   - Executed using a batch script without user intervention
+       - Advantage: system takes care of running the job
+       - Disadvantage: cannot change sequence of commands after submission
+   - Useful for Production runs
+   - Workflow: write a script -> submit script -> take mini vacation ->
+   analyze results
+
 --- .class #id
 
 ## Job Types: Interactive
 
-   - Set up an interactive environment on compute nodes for users
-   - Purpose: testing and debugging code. __Do not run jobs on head node!!!__
-
-   - PBS: `qsub -I -V -l walltime=<hh:mm:ss>,nodes=<# of nodes>:ppn=<# of core/node> -q <queue
+   - PBS: Use `qsub -I` command with PBS Directives
+       *    `qsub -I -V -l walltime=<hh:mm:ss>,nodes=<# of nodes>:ppn=<# of core/node> -q <queue
    name>`
 
-   - SLURM: `srun --time=<hh:mm:ss> --nodes=<# of nodes> --ntasks-per-node=<#
-   of core/node> -p <queue name> --pty /bin/bash --login`
+   - SLURM:  Use `srun` command with SBATCH Directives followed by `--pty /bin/bash`
+       * `srun --time=<hh:mm:ss> --nodes=<# of nodes> --ntasks-per-node=<#
+   of core/node> -p <queue name> --pty /bin/bash`
+       * If you have `soltools` module loaded, then use `interact` with at
+   least one SBATCH Directive
+           - `interact -t 20` [Assumes `-p lts -n 1 -N 20`]
    - Run a job interactively replace `--pty /bin/bash --login` with the
      appropriate command. 
        - For e.g. `srun -t 20 -n 1 -p imlab --qos=nogpu $(which lammps) -in in.lj
@@ -627,10 +667,15 @@ memory that should be requested is 126GB.
 
 ## Job Types: Batch 
 
-   - Executed using a batch script without user intervention
-       - Advantage: system takes care of running the job
-       - Disadvantage: cannot change sequence of commands after submission
-   - Useful for Production runs
+* Workflow: write a script -> submit script -> take mini vacation -> analyze
+  results
+* Submitting Batch Jobs
+   * PBS: `qsub filename`
+   * SLURM: `sbatch filename`
+
+* `qsub` and `sbatch` can take the options for `#PBS` and `#SBATCH` as command line arguments
+   * `qsub -l walltime=1:00:00,nodes=1:ppn=16 -q normal filename`
+   * `sbatch --time=1:00:00 --nodes=1 --ntasks-per-node=20 -p lts filename` 
 
 
 --- .class #id .big
@@ -743,17 +788,6 @@ exit
 
 --- .class #id
 
-## Submitting Batch Jobs
-
-* PBS: `qsub filename`
-* SLURM: `sbatch filename`
-
-* `qsub` and `sbatch` can take the options for `#PBS` and `#SBATCH` as command line arguments
-   * `qsub -l walltime=1:00:00,nodes=1:ppn=16 -q normal filename`
-   * `sbatch --time=1:00:00 --nodes=1 --ntasks-per-node=20 -p lts filename` 
-
---- .class #id
-
 ## Monitoring &amp; Manipulating Jobs
 
 
@@ -833,6 +867,22 @@ exit
 ## Online Usage Reporting: imlab &amp; imlab-gpu partitions
 
 <object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2016-imlab.svg" type="image/svg+xml">
+</object>
+
+
+--- .class #id
+
+## Online Usage Reporting: eng partitions
+
+<object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2016-eng.svg" type="image/svg+xml">
+</object>
+
+
+--- .class #id
+
+## Online Usage Reporting: engc partitions
+
+<object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2016-engc.svg" type="image/svg+xml">
 </object>
 
 
