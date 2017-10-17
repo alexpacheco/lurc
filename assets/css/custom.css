@@ -178,9 +178,11 @@ strong {
   font-weight: bold;
 }
 
-.tiny {font-size: 10px;}
+.tiny ul li {font-size: 17px;}
 
 .small article { font-size: 12px;}
+
+.small ul li { font-size: 20px}
 
 .smaller pre {
   font-size: 8px;
