@@ -1295,7 +1295,9 @@ ifort -fPIC -I/share/Apps/mvapich2/2.1/intel-16.0.3/include -I/share/Apps/mvapic
     <h2>Makefile Examples</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code class="bash">ifeq ($(COMP),gnu)
+    
+<div style='float:left;width:;'>
+  <pre><code class="bash">ifeq ($(COMP),gnu)
         CC = gcc
         FC = gfortran
         CFLAGS = -cpp
@@ -1325,7 +1327,11 @@ else
         PREC = -DDP -Mpreprocess
 endif
 
-all: $(BINC) $(BINF)
+</code></pre>
+
+</div>
+<div style='float:right;width:;'>
+  <pre><code class="bash">all: $(BINC) $(BINF)
 pic:
         $(CC) $(CFLAGS) $(PREC) -o pic pi_serial.c
 pif:
@@ -1344,8 +1350,10 @@ pif_acc:
         $(FC) $(CFLAGS) $(PREC) $(AFLAGS) -o pif_acc pi_acc.f90
 clean:
         rm -rf $(BINC) $(BINF) *~
+
 </code></pre>
 
+</div>
   </article>
   <!-- Footer  -->
   <footer class = 'lufoot'>

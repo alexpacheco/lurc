@@ -553,10 +553,11 @@ ifort -fPIC -I/share/Apps/mvapich2/2.1/intel-16.0.3/include -I/share/Apps/mvapic
 * If none of the files that are prerequisites have been changed since the last time the program was compiled, no actions take place. 
 * For large software projects, using Makefiles can substantially reduce build times if only a few source files have changed.
 
---- .class
+--- .class &twocol_width
 
 ## Makefile Examples
 
+*** =left
 
 ```{bash eval=FALSE}
 ifeq ($(COMP),gnu)
@@ -589,6 +590,11 @@ else
         PREC = -DDP -Mpreprocess
 endif
 
+```
+
+*** =right
+
+```{bash eval=FALSE}
 all: $(BINC) $(BINF)
 pic:
         $(CC) $(CFLAGS) $(PREC) -o pic pi_serial.c
@@ -608,6 +614,7 @@ pif_acc:
         $(FC) $(CFLAGS) $(PREC) $(AFLAGS) -o pif_acc pi_acc.f90
 clean:
         rm -rf $(BINC) $(BINF) *~
+
 ```
 
 
