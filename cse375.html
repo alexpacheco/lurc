@@ -1001,7 +1001,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 <td align="center">Fortran</td>
 <td align="center">gfortran</td>
 <td align="center">ifort</td>
-<td align="center">pgf77/pgf90</td>
+<td align="center">pgfortran</td>
 </tr>
 <tr>
 <td align="center">C</td>
@@ -1013,7 +1013,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 <td align="center">C++</td>
 <td align="center">g++</td>
 <td align="center">icpc</td>
-<td align="center">pgCC</td>
+<td align="center">pgc++</td>
 </tr>
 </tbody></table>
 
@@ -1071,35 +1071,53 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 <tr>
 <th align="center">Compiler</th>
 <th align="center">OpenMP Flag</th>
+<th align="center">TBB Flag</th>
 </tr>
 </thead><tbody>
 <tr>
 <td align="center">GNU</td>
 <td align="center">-fopenmp</td>
+<td align="center">-L$TBBROOT/lib/intel64_lin/gcc4.4 -ltbb</td>
 </tr>
 <tr>
 <td align="center">Intel</td>
 <td align="center">-qopenmp</td>
+<td align="center">-L$TBBROOT/lib/intel64_lin/gcc4.4 -ltbb</td>
 </tr>
 <tr>
 <td align="center">PGI</td>
 <td align="center">-openmp</td>
+<td align="center"></td>
 </tr>
 </tbody></table>
 
-<ul>
-<li>TBB is available as part of Intel Compiler suite
-
-<ul>
-<li><code>-L$TBBROOT/lib/intel64_lin/gcc4.4 -ltbb</code> where <code>$TBBROOT</code> depends on the Intel Compiler Suite you want to use.
-
-<ul>
-<li>use <code>module show intel/&lt;version&gt;</code> to get value of <code>$TBBROOT</code></li>
+<div style='float:left;width:35%;'>
+  <ul>
+<li>TBB is available as part of Intel Compiler suite</li>
+<li><code>$TBBROOT</code> depends on the Intel Compiler Suite you want to use.</li>
 <li>Not sure if this will work for PGI Compilers</li>
-</ul></li>
-</ul></li>
 </ul>
 
+</div>
+<div style='float:right;width:60%;'>
+  <pre><code class="sh">[alp514.sol](1083): module show intel
+-------------------------------------------------------------------
+/share/Apps/share/Modules/modulefiles/toolchain/intel/16.0.3:
+
+module-whatis    Set up Intel 16.0.3 compilers. 
+conflict         pgi 
+conflict         gcc 
+setenv           INTEL_LICENSE_FILE /share/Apps/intel/licenses/server.lic 
+setenv           IPPROOT /share/Apps/intel/compilers_and_libraries_2016.3.210/linux/ipp 
+setenv           MKLROOT /share/Apps/intel/compilers_and_libraries_2016.3.210/linux/mkl 
+setenv           TBBROOT /share/Apps/intel/compilers_and_libraries_2016.3.210/linux/tbb 
+...
+snip
+...
+
+</code></pre>
+
+</div>
   </article>
   <!-- Footer  -->
   <footer class = 'lufoot'>
@@ -1139,25 +1157,32 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 </tbody></table>
 
 <ul>
+<li>Usage: <code>&lt;compiler&gt; &lt;options&gt; &lt;source code&gt;</code></li>
+</ul>
+
+<div style='float:left;width:50%;'>
+  <pre><code class="sh">[2017-10-30 08:40.30] ~/Workshop/2017XSEDEBootCamp/MPI/Solutions
+[alp514.sol](1096): mpif90 -o laplace_f90 laplace_mpi.f90 
+[2017-10-30 08:40.45] ~/Workshop/2017XSEDEBootCamp/MPI/Solutions
+[alp514.sol](1097): mpicc -o laplace_c laplace_mpi.c
+[2017-10-30 08:40.57] ~/Workshop/2017XSEDEBootCamp/MPI/Solutions
+</code></pre>
+
+</div>
+<div style='float:right;width:48%;'>
+  <ul>
 <li>The MPI compiler command is just a wrapper around the underlying compiler</li>
 </ul>
 
 <pre><code class="bash">[alp514.sol](1080): mpif90 -show
-ifort -fPIC -I/share/Apps/mvapich2/2.1/intel-16.0.3/include -I/share/Apps/mvapich2/2.1/intel-16.0.3/include 
-  -L/share/Apps/mvapich2/2.1/intel-16.0.3/lib -lmpifort -Wl,-rpath -Wl,/share/Apps/mvapich2/2.1/intel-16.0.3/lib 
+ifort -fPIC -I/share/Apps/mvapich2/2.1/intel-16.0.3/include 
+  -I/share/Apps/mvapich2/2.1/intel-16.0.3/include 
+  -L/share/Apps/mvapich2/2.1/intel-16.0.3/lib 
+  -lmpifort -Wl,-rpath -Wl,/share/Apps/mvapich2/2.1/intel-16.0.3/lib 
   -Wl,--enable-new-dtags -lmpi
 </code></pre>
 
-<ul>
-<li>Usage: <code>&lt;compiler&gt; &lt;options&gt; &lt;source code&gt;</code></li>
-<li>Example:
-
-<ul>
-<li><code>mpif90 -o laplace_f90 laplace_mpi.f90</code></li>
-<li><code>mpicc -o laplace_c laplace_mpi.c</code></li>
-</ul></li>
-</ul>
-
+</div>
   </article>
   <!-- Footer  -->
   <footer class = 'lufoot'>
@@ -1195,17 +1220,23 @@ ifort -fPIC -I/share/Apps/mvapich2/2.1/intel-16.0.3/include -I/share/Apps/mvapic
 </ul></li>
 </ul>
 
-<p>--- ,class</p>
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
 
-<h2>Running MPI Programs</h2>
-
-<ul>
-<li>Every MPI implementation come with their own job launcher: <code>mpiexec</code>, <code>mpirun</code> (OpenMPI)  or <code>mpirun_rsh</code> (MVAPICH2)</li>
-<li>Example:
-
-<ul>
-<li><code>mpiexec [options] &lt;program name&gt; [program options]</code></li>
-</ul></li>
+<slide class="class" id="slide-28" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Running MPI Programs</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Every MPI implementation come with their own job launcher: <code>mpiexec</code> (MPICH,OpenMPI &amp; MVAPICH2), <code>mpirun</code> (OpenMPI)  or <code>mpirun_rsh</code> (MVAPICH2)</li>
+<li>Example: <code>mpiexec [options] &lt;program name&gt; [program options]</code></li>
 <li>Required options: number of processes and list of hosts on which to run program </li>
 </ul>
 
@@ -1220,26 +1251,14 @@ ifort -fPIC -I/share/Apps/mvapich2/2.1/intel-16.0.3/include -I/share/Apps/mvapic
 <tr>
 <td align="center">run on <code>x</code> cores</td>
 <td align="center">-n x</td>
-<td align="center">-n x</td>
-<td align="center">-n x</td>
-</tr>
-<tr>
-<td align="center"></td>
 <td align="center">-np x</td>
-<td align="center">-np x</td>
-<td align="center"></td>
+<td align="center">-n x</td>
 </tr>
 <tr>
 <td align="center">location of the hostfile</td>
 <td align="center">-f filename</td>
 <td align="center">-machinefile filename</td>
 <td align="center">-hostfile filename</td>
-</tr>
-<tr>
-<td align="center">list of hosts</td>
-<td align="center">--host <host1,host2,...,hostN></td>
-<td align="center">--host <host1,host2,...,hostN></td>
-<td align="center"></td>
 </tr>
 </tbody></table>
 
@@ -1250,6 +1269,7 @@ ifort -fPIC -I/share/Apps/mvapich2/2.1/intel-16.0.3/include -I/share/Apps/mvapic
 <ul>
 <li>Since MVAPICH2 is based on MPICH, you can launch MVAPICH2 compiled code using MPICH&#39;s launcher.</li>
 </ul></li>
+<li>SLURM scheduler provides <code>srun</code> as a wrapper around all mpi launchers</li>
 </ul>
 
   </article>
@@ -1261,7 +1281,53 @@ ifort -fPIC -I/share/Apps/mvapich2/2.1/intel-16.0.3/include -I/share/Apps/mvapic
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-28" style="background:#F1E7C8;">
+<slide class="class" id="slide-29" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Running MPI Codes</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="sh">[2017-10-30 08:47.46] ~/Workshop/2017XSEDEBootCamp/MPI/Solutions
+[alp514.sol-b112](993): mpiexec -n 4 ./laplace_f90 
+ Maximum iterations [100-4000]?
+200
+ ---------- Iteration number:          100  ---------------
+( 995, 995): 63.33  ( 996, 996): 72.67  ( 997, 997): 81.40  ( 998, 998): 88.97  ( 999, 999): 94.86  (1000,1000): 98.67  
+ Max error at iteration          200  was   0.177397842364442     
+ Total time was   0.1172750      seconds.
+ ---------- Iteration number:          200  ---------------
+( 995, 995): 79.11  ( 996, 996): 84.86  ( 997, 997): 89.91  ( 998, 998): 94.10  ( 999, 999): 97.26  (1000,1000): 99.28  
+[2017-10-30 08:47.57] ~/Workshop/2017XSEDEBootCamp/MPI/Solutions
+[alp514.sol-b112](994): mpiexec -n 4 ./laplace_c
+Maximum iterations [100-4000]?
+200
+---------- Iteration number: 100 ------------
+[995,995]: 63.33  [996,996]: 72.67  [997,997]: 81.40  [998,998]: 88.97  [999,999]: 94.86  [1000,1000]: 98.67  
+---------- Iteration number: 200 ------------
+[995,995]: 79.11  [996,996]: 84.86  [997,997]: 89.91  [998,998]: 94.10  [999,999]: 97.26  [1000,1000]: 99.28  
+
+Max error at iteration 200 was 0.177398
+Total time was 0.259370 seconds.
+
+[2017-10-30 08:49.05] ~
+[alp514.sol-b112](1000): srun $(which lammps) -in in.lj -var n 1 -var x 1 
+LAMMPS (14 May 2016)
+Lattice spacing in x,y,z = 1.6796 1.6796 1.6796
+Created orthogonal box = (0 0 0) to (33.5919 1.6796 1.6796)
+  24 by 1 by 1 MPI processor grid
+... snipped ...
+
+</code></pre>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-30" style="background:#F1E7C8;">
   <hgroup>
     <h2>Compiling Using Makefiles</h2>
   </hgroup>
@@ -1290,13 +1356,13 @@ ifort -fPIC -I/share/Apps/mvapich2/2.1/intel-16.0.3/include -I/share/Apps/mvapic
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-29" style="background:#F1E7C8;">
+<slide class="class" id="slide-31" style="background:#F1E7C8;">
   <hgroup>
     <h2>Makefile Examples</h2>
   </hgroup>
   <article data-timings="">
     
-<div style='float:left;width:;'>
+<div style='float:left;width:50%;'>
   <pre><code class="bash">ifeq ($(COMP),gnu)
         CC = gcc
         FC = gfortran
@@ -1330,7 +1396,7 @@ endif
 </code></pre>
 
 </div>
-<div style='float:right;width:;'>
+<div style='float:right;width:48%;'>
   <pre><code class="bash">all: $(BINC) $(BINF)
 pic:
         $(CC) $(CFLAGS) $(PREC) -o pic pi_serial.c
@@ -1363,7 +1429,7 @@ clean:
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-30" style="background:#F1E7C8;">
+<slide class="class" id="slide-32" style="background:#F1E7C8;">
   <hgroup>
     <h2>Cluster Environment</h2>
   </hgroup>
@@ -2096,7 +2162,7 @@ symbols, which are a percent sign &quot;%&quot; followed by a letter (e.g. %j). 
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-44" style="background:#F1E7C8;">
+<slide class="class" id="slide-46" style="background:#F1E7C8;">
   <hgroup>
     <h2>Job Types</h2>
   </hgroup>
@@ -2745,164 +2811,176 @@ idea is the same as above</li>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=28 title='Compiling Using Makefiles'>
+        data-slide=28 title='Running MPI Programs'>
          28
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=29 title='Makefile Examples'>
+        data-slide=29 title='Running MPI Codes'>
          29
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=30 title='Cluster Environment'>
+        data-slide=30 title='Compiling Using Makefiles'>
          30
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=31 title='How to run jobs'>
+        data-slide=31 title='Makefile Examples'>
          31
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=32 title='Scheduler &amp; Resource Management'>
+        data-slide=32 title='Cluster Environment'>
          32
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=33 title='Job Scheduling'>
+        data-slide=33 title='How to run jobs'>
          33
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=34 title='Backfilling'>
+        data-slide=34 title='Scheduler &amp; Resource Management'>
          34
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=35 title='How much time must I request'>
+        data-slide=35 title='Job Scheduling'>
          35
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=36 title='Available Queues'>
+        data-slide=36 title='Backfilling'>
          36
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=37 title='How much memory can or should I use per core?'>
+        data-slide=37 title='How much time must I request'>
          37
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=38 title='Useful SBATCH Directives'>
+        data-slide=38 title='Available Queues'>
          38
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=39 title='Useful SBATCH Directives (contd)'>
+        data-slide=39 title='How much memory can or should I use per core?'>
          39
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=40 title='SBATCH Filename Patterns'>
+        data-slide=40 title='Useful SBATCH Directives'>
          40
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=41 title='Useful PBS Directives'>
+        data-slide=41 title='Useful SBATCH Directives (contd)'>
          41
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=42 title='Useful PBS/SLURM environmental variables'>
+        data-slide=42 title='SBATCH Filename Patterns'>
          42
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=43 title='Basic Job Manager Commands'>
+        data-slide=43 title='Useful PBS Directives'>
          43
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=44 title='Job Types'>
+        data-slide=44 title='Useful PBS/SLURM environmental variables'>
          44
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=45 title='Job Types: Interactive'>
+        data-slide=45 title='Basic Job Manager Commands'>
          45
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=46 title='Job Types: Batch'>
+        data-slide=46 title='Job Types'>
          46
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=47 title='Minimal submit script for Serial Jobs'>
+        data-slide=47 title='Job Types: Interactive'>
          47
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=48 title='Minimal submit script for MPI Job'>
+        data-slide=48 title='Job Types: Batch'>
          48
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=49 title='Minimal submit script for OpenMP Job'>
+        data-slide=49 title='Minimal submit script for Serial Jobs'>
          49
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=50 title='Minimal submit script for LAMMPS GPU job'>
+        data-slide=50 title='Minimal submit script for MPI Job'>
          50
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=51 title='Monitoring &amp; Manipulating Jobs'>
+        data-slide=51 title='Minimal submit script for OpenMP Job'>
          51
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=52 title='Usage Reporting'>
+        data-slide=52 title='Minimal submit script for LAMMPS GPU job'>
          52
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=53 title='Need to run multiple jobs in sequence?'>
+        data-slide=53 title='Monitoring &amp; Manipulating Jobs'>
          53
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=54 title='Additional Help &amp; Information'>
+        data-slide=54 title='Usage Reporting'>
          54
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=55 title='Need to run multiple jobs in sequence?'>
+         55
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=56 title='Additional Help &amp; Information'>
+         56
       </a>
     </li>
   </ul>
