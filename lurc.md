@@ -65,50 +65,85 @@ license     : by-sa
 
 * <strong> Sol </strong>
   - Lehigh's Flagship High Performance Computing Cluster
-  - 9 nodes, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 25MB Cache, 128GB RAM
-  - 33 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache, 128GB RAM
-  - 13 nodes, dual 12-core Intel Xeon E5-2650 v4 2.3Ghz CPU, 30 MB Cache, 64GB RAM
-  - Two nVIDIA GTX 1080 GPU cards per node (50 GPUs operational)
+  - 9 nodes, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 25MB Cache, 128GB
+  RAM
+  - 33 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache,
+  128GB RAM
+  - 13 nodes, dual 12-core Intel Xeon E5-2650 v4 2.3Ghz CPU, 30 MB Cache, 64GB
+  RAM
+  - 1 node, dual 8-core Intel Xeon 2630 v3 2.4GHz CPU, 20 MB Cache, 512GB RAM
+  - 68 nVIDIA GTX 1080 GPU cards
   - 1TB HDD per node
   - 2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric
-  - Theoretical Performance: 34.003 TFLOPs (CPU) + 12.850 TFLOPs (GPU)
-      - The GTX GPUs provide 443.65 TFLOPs of single precision processing.
-      - Double precision performance from each GTX card is 257 GFLOPs compared to 736(883.2) GFLOPs from each 20(24)-core node.
-  - Access: Batch Scheduled, interactive on login node for compiling, editing only
-  
+  - In progress: 7 nodes, dual 18-core Intel Xeon Gold 6140 2.3GHz CPU, 24.7 MB
+  Cache, 192GB RAM
+  - Theoretical Performance: 65.965 TFLOPs (CPU) + 17.476 TFLOPs (GPU)
+  - Access: Batch Scheduled, interactive on login node for compiling, editing
+  only
 
---- .class
+--- .class #id &twocol
+
+## Sol 
+
+*** =left
+
+<img class="fullwidth" src='assets/img/sol/20160509_140506.jpg'>
+
+*** =right
+
+<img class="fullwidth" src='assets/img/sol/20160509_141134.jpg'>
+
+--- .class #id &twocol
+
+## Sol 
+
+*** =left
+
+<img class="fullwidth" src='assets/img/sol/20160627_153416.jpg'>
+
+*** =right
+
+<img class="fullwidth" src='assets/img/sol/20160509_133642.jpg'>
+
+--- .class #id
+
+## Network Layout Sol &amp; Ceph Storage Cluster
+
+<img class="fullwidth" src='assets/img/hpcnetwork.png'>
+
+
+--- .class #id
 
 ## LTS Managed Faculty Resources 
 
-* __Monocacy__ - Ben Felzer, Earth & Environmental Sciences
+* __Monocacy__: Ben Felzer, Earth & Environmental Sciences
   - Eight nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
      * Theoretical Performance: 2.662TFlops
-* __Eigen__: Heather Jaeger, Chemistry
-  - Twenty nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
-     * Theoretical Performance: 6.656TFlops
-* __Baltrusaitislab__ - Jonas Baltrusaitis, Chemical Engineering
+* __Baltrusaitislab__: Jonas Baltrusaitis, Chemical Engineering
   - Three nodes, dual 16-core AMD Opteron 6376, 2.3Ghz, 128GB RAM
      * Theoretical Performance: 1.766TFlops
-* __Pisces__ - Keith Moored, Mechanical Engineering and Mechanics
+* __Pisces__: Keith Moored, Mechanical Engineering and Mechanics
   - Six nodes, dual 10-core Intel Xeon E5-2650v3, 2.3GHz, 64GB RAM, nVIDIA Tesla K80
      * Theoretical Performance: 4.416 TFlops (CPU) + 17.46TFlops (GPU)
-  - To be merged with Sol in Fall 2017.
-
+  - To be merged with Sol
+* Unnamed : decommissioned faculty cluster for prototyping new resources
+  - Twenty nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
+     * Theoretical Performance: 6.656TFlops
 
 --- .class
 
-## Total LTS Managed Computational Resources
+## Total Computational Resources Supported
 
-| Cluster | Cores | CPU Memory | CPU TFLOPs | GPUs | CUDA Cores | GPU Memory | GPU TFLOPS |
+
+| Cluster | Cores | CPU Memory | CPU TFLOPs | GPUs | CUDA Cores | GPU Memory |  GPU TFLOPS |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | Maia | 32 | 128 | 0.640 |
 | Monocacy | 128 | 512 | 2.662 |
-| Eigen | 320 | 1280 | 6.656 | 
+| Unnamed | 320 | 1280 | 6.656 | 
 | Baltrusaitislab | 96 | 384 | 1.766 |
-| Pisces | 120 | 384 | 4.416 | 6 | 29952 | 144 | 17.472 |
-| Sol | 1284 | 6208 | 46.752 | 110 | 281600 | 880 | 28.27 |
-| Total | 1980 | 8896 | 62.893 | 116 | 311552 | 1024 | 45.742 | 
+| Pisces | 120 | 384 | 4.416 | 12 | 29952 | 144 | 17.472 |
+| Sol | 1552 | 8064 | 65.965 | 68 | 174080 | 544 | 17.476 |
+| Total | 2248 | 10752 | 82.106 | 80 | 204032 | 688 | 34.948 | 
 
 
 --- .class
@@ -121,7 +156,6 @@ license     : by-sa
    - Maia
        - Click on "FREE Linux command-line computing"
    - Sol: PIs should contact Alex Pacheco or Steve Anthony, web request is not functional
-       - ~~Click on "Fee-based research computing"~~ 
        - Annual charge of \$50/account paid by Lehigh Faculty or Research Staff, and
        - Annual charge for computing time
 
@@ -138,7 +172,6 @@ license     : by-sa
    - Additional Increments of 10,000 SU - &#36;100 per 10K increments
    - Fixed Allocation cycle: Oct 1 - Sep 30
    - Unused allocations do not rollover to next allocation cycle
-   - <em>Working on implementing a rolling allocation cycle, only for minimum purchase.</em>
    - Total available computing time for purchase annually: 1.4M SUs or 1 year of continous computing on 8 nodes
 
 --- .class
@@ -160,7 +193,6 @@ license     : by-sa
 
 * Need more than 175K SU/year or
 * BECOME A CONDO INVESTOR
- 
 
 --- .class
 
@@ -184,13 +216,18 @@ license     : by-sa
 ## Condo Investors
 
 * Two at initial launch 
-   - Dimitrios Vavylonis, Physics
-   - Wonpil Im, Biological Sciences
-   - Brian Chen, Computer Science & Engineering
-   - Ed Webb & Alp Oztekin, Mechanical Engineering
-   - Anand Jagota, Jeetain Mittal & Srinivas Rangarajan, Chemical Engineering
+   - Dimitrios Vavylonis, Physics (1 node)
+   - Wonpil Im, Biological Sciences (25 nodes, 50 GPUs)
+   - Anand Jagota, Chemical Engineering (1 node)
+   - Brian Chen, Computer Science & Engineering (1 node)
+   - Ed Webb & Alp Oztekin, Mechanical Engineering (6 nodes)
+   - Jeetain Mittal & Srinivas Rangarajan, Chemical Engineering (13 nodes, 18 GPUs)
+   - Seth Richards-Shubik, Economics (1 node)
+   - Ganesh Balasubramanian, Mechanical Engineering (7 nodes)
+        - March 1 targeted production date
 
-* Total SU on Sol after Condo Investments: 11,247,840
+* Total SU on Sol after Condo Investments: 13,595,520
+
 
 --- .class
 
@@ -251,6 +288,26 @@ license     : by-sa
   - Why? We may have different versions of same software or software built with different compilers
   - Module environment allows you to dynamically change your *nix environment based on software being used
   - Standard on many University and national High Performance Computing resource since circa 2011
+* How to use Sol/Maia Software on your [linux](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=linux) workstation
+* LTS provides [licensed and open source software](https://software.lehigh.edu) for Windows, Mac and Linux and [Gogs](https://gogs.cc.lehigh.eu), a self hosted Git Service or Github clone
+
+--- .class #id
+
+## Module Command
+
+| Command | Description |
+|:-------:|:-----------:|
+| <code>module avail</code> | show list of software available on resource |
+| <code>module load abc</code> | add software <code>abc</code> to your environment (modify your <code>PATH</code>, <code>LD_LIBRARY_PATH</code> etc as needed) |
+| <code>module unload abc</code> | remove <code>abc</code> from your environment |
+| <code>module swap abc1 abc2</code> | swap <code>abc1</code> with <code>abc2</code> in your environment |
+| <code>module purge</code> | remove all modules from your environment |
+| <code>module show abc</code> | display what variables are added or modified in your environment |
+| <code>module help abc</code> | display help message for the module <code>abc</code> |
+
+* Users who prefer not to use the module environment will need to modify their
+  .bashrc or .tcshrc files. Run `module show` for list variables that need
+  modified, appended or prepended
 
 
 --- .class
@@ -259,20 +316,6 @@ license     : by-sa
 
 <img width = '960px' src = 'assets/img/sol-module.png'>
 
---- .class
-
-## Module Command
-
-<table>
-<tr><th width="300px">Command</th><th>Description</th></tr>
-<tr><td><code>module avail</code></td><td> show list of software available on resource</td></tr>
-<tr><td><code>module load abc</code></td><td> add software <code>abc</code> to your environment (modify your <code>PATH</code>, <code>LD_LIBRARY_PATH</code> etc as needed)</td></tr>
-<tr><td><code>module unload abc</code></td><td> remove <code>abc</code> from your envionment</td></tr>
-<tr><td><code>module swap abc1 abc2</code></td><td> swap <code>abc1</code> with <code>abc2</code> in your environment</td></tr>
-<tr><td><code>module purge</code></td><td> remove all modules from your environment</td></tr>
-<tr><td><code>module show abc</code></td><td> display what variables are added or modified in your environment</td></tr>
-<tr><td><code>module help abc</code></td><td> display help message for the module <code>abc</code></td></tr>
-</table>
 
 --- .class &twocol_width
 
@@ -281,17 +324,19 @@ license     : by-sa
 *** =left width:45%
 
 * Chemistry/Materials Science
-  - CPMD
-  - GAMESS
+  - **CPMD**
+  - **GAMESS**
   - Gaussian
-  - NWCHEM
-  - Quantum Espresso
-  - *VASP*
+  - **NWCHEM**
+  - **Quantum Espresso**
+  - **VASP** (Restricted Access)
 * Molecular Dynamics
-  - *Desmond*
-  - GROMACS
-  - LAMMPS
-  - NAMD
+  - **Desmond**
+  - **GROMACS**
+  - **LAMMPS**
+  - **NAMD**
+
+<span class="small strong">MPI enabled</span>
 
 *** =right width:45%
 
@@ -299,7 +344,7 @@ license     : by-sa
   - Abaqus
   - Ansys
   - Comsol
-  - OpenFOAM
+  - **OpenFOAM**
   - OpenSees
 * Math
   - GNU Octave
@@ -307,6 +352,8 @@ license     : by-sa
   - Maple
   - Mathematica
   - Matlab
+
+
 
 --- .class  &twocol_width
 
@@ -360,6 +407,7 @@ license     : by-sa
   - CMake
   - Lmod
   - Scons
+  - SPACK
 
 *** =right width:70%
 
@@ -413,7 +461,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
           - Resource Manager: Torque
           - Allocation Manager: Gold
 
-* More details in [HPC Training](https://webapps.lehigh.edu/hpc/training/lurc/slurm.html) scheduled for Sep. 21
+* More details in upcoming HPC Training on [SLURM](https://webapps.lehigh.edu/hpc/training/lurc/slurm.html)
 
 
 --- .class &twocol_width
@@ -438,6 +486,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 
 <img width = '400px' src = 'assets/img/xsede.png'>
 
+
 --- .class 
 
 ## XSEDE Resources
@@ -448,13 +497,13 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 
 
 * Texas Advanced Computing Center (TACC) 
-   - Stampede: 9.6 PFlops 
+   - Stampede2: 18 PFlops 
    - Wrangler for Data Analytics
-   - Maverick for Interactive Visualization and Data Analytics
+       - 0.5PB high speed flash storage
+       - 10PB file system at TACC and IU
+   - Maverick for Interactive Visualization and Data Analytics (Decommissioning in April 2018)
 * Louisiana State University
    -  SuperMIC: 925 TFlops 
-* National Institute for Computational Sciences (NICS) 
-   - Beacon: 210 TFlops
 
 --- .class 
 
@@ -464,13 +513,14 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
    - Comet: 2 PFlops
 
 * Indiana University 
-   - Jetstream: a cloud-based, on-demand system for 24/7 access
+   - Jetstream: Cloud Computing Environment for IaaS, Paas and SaaS
+         - 0.5 PFlops and 2 PB block and object storage
 
 * Pittsburgh Supercomputing Center
-   - Bridges: 1.3 PFlops (deployment in progress) 
+   - Bridges: 894 Flops and 144 TiB RAM 
 
 * Stanford University
-   - XStream: 1PFlops of 8 x NVIDIA Tesla K80 compute nodes
+   - XStream: 1PFlops, 65 nodes with 8 NVIDIA Tesla K80 each
 
 * Open Science Grid
 
@@ -496,6 +546,68 @@ and high-throughput computing and other digital services, opportunities and reso
 * A Campus Champion can request start up allocations on all XSEDE resources to help 
  local users with getting started on XSEDE resources.
 
+--- .class &twocol
+
+## Training 
+
+* RC staff also guest lecture for various courses and provide various training
+ seminars in collaboration with other LTS groups
+
+*** =left
+
+  - Research Computing at Lehigh 
+  - Linux: Basic Commands & Environment 
+  - Using SLURM scheduler on Sol
+  - Shell Scripting 
+  - Using Virtualized Software at Lehigh 
+  - Python Programming
+  - RefWorks
+  - Document Creation with LaTeX 
+
+*** =right
+
+  - A Brief Introduction to Linux 
+  - Storage Options at Lehigh 
+  - Research Data Management
+  - Version Control with GIT
+  - Programming in MATLAB and GNU Octave
+  - Enhancing Research Impact
+  - Programming in R
+  - Parallel Programming Concepts 
+  - Saltstack Config Management
+
+--- .class
+
+## Full Day Workshops
+
+* During the summer we provide full day workshops on programming topics
+* Summer 2015 Workshops
+  - Modern Fortran Programming
+  - C Programming
+* Summer 2017: HPC Parallel Programming Workshop
+  - Programming in MPI, OpenMP and OpenACC
+* We also host full day workshops broadcast from other Supercomputing Centers
+  - XSEDE HPC Monthly Workshop: OpenACC (Dec. 2014)
+  - XSEDE HPC Summer BootCamp: OpenMP, OpenACC, MPI and Hybrid Programming (Jun. 2015, 2016  &amp; 2017)
+  - XSEDE HPC Monthly Workshop: Big Data (Nov. 2015, May 2017)
+
+
+--- .class
+
+## Upcoming Training
+
+* EWFM 292 on Thursday from 2:10PM - 4:00PM.
+  - Using SLURM scheduler on Sol (Feb 22)
+  - Programming in R (Mar 22)
+  - Document Creation with LaTeX (Mar 29)
+  - Data Visualization in R and Python (Apr 5)
+
+
+* Subscribe
+     * Research Computing Mailing List: <https://lists.lehigh.edu/mailman/listinfo/hpc-l>
+     * HPC Training Google Groups: <mailto:hpctraining-list+subscribe@lehigh.edu>
+
+
 --- .class
 
 ## Getting Help
@@ -512,24 +624,6 @@ and high-throughput computing and other digital services, opportunities and reso
   * [Research Computing Wiki] (https://go.lehigh.edu/rcwiki)
   * [Research Computing Training] (https://researchcomputing.lehigh.edu/training)
 
-
---- .class
-
-## Upcoming Training
-
-* EWFM 292 on Thursday from 2:10PM - 4:00PM.
-  - Linux: Basic Commands & Environment (Sep 14)
-  - Using SLURM scheduler on Sol (Sep 21)
-  - Shell Scripting (Sep 28)
-  - Using Virtialized Software at Lehigh (Oct 5)
-  - Python Programming (Oct 12)
-  - RefWorks (Oct 26)
-  - Document Creation with LaTeX (Nov 2)
-
-
-* Subscribe
-     * Research Computing Mailing List: <https://lists.lehigh.edu/mailman/listinfo/hpc-l>
-     * HPC Training Google Groups: <mailto:hpctraining-list+subscribe@lehigh.edu>
 
 
  

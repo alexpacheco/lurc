@@ -169,19 +169,21 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
 
 <ul>
 <li>Lehigh&#39;s Flagship High Performance Computing Cluster</li>
-<li>9 nodes, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 25MB Cache, 128GB RAM</li>
-<li>33 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache, 128GB RAM</li>
-<li>13 nodes, dual 12-core Intel Xeon E5-2650 v4 2.3Ghz CPU, 30 MB Cache, 64GB RAM</li>
-<li>Two nVIDIA GTX 1080 GPU cards per node (50 GPUs operational)</li>
+<li>9 nodes, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 25MB Cache, 128GB
+RAM</li>
+<li>33 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache,
+128GB RAM</li>
+<li>13 nodes, dual 12-core Intel Xeon E5-2650 v4 2.3Ghz CPU, 30 MB Cache, 64GB
+RAM</li>
+<li>1 node, dual 8-core Intel Xeon 2630 v3 2.4GHz CPU, 20 MB Cache, 512GB RAM</li>
+<li>68 nVIDIA GTX 1080 GPU cards</li>
 <li>1TB HDD per node</li>
 <li>2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric</li>
-<li>Theoretical Performance: 34.003 TFLOPs (CPU) + 12.850 TFLOPs (GPU)
-
-<ul>
-<li>The GTX GPUs provide 443.65 TFLOPs of single precision processing.</li>
-<li>Double precision performance from each GTX card is 257 GFLOPs compared to 736(883.2) GFLOPs from each 20(24)-core node.</li>
-</ul></li>
-<li>Access: Batch Scheduled, interactive on login node for compiling, editing only</li>
+<li>In progress: 7 nodes, dual 18-core Intel Xeon Gold 6140 2.3GHz CPU, 24.7 MB
+Cache, 192GB RAM</li>
+<li>Theoretical Performance: 65.965 TFLOPs (CPU) + 17.476 TFLOPs (GPU)</li>
+<li>Access: Batch Scheduled, interactive on login node for compiling, editing
+only</li>
 </ul></li>
 </ul>
 
@@ -194,13 +196,75 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-5" style="background:#F1E7C8;">
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Sol</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:50%;'>
+  <p><img class="fullwidth" src='assets/img/sol/20160509_140506.jpg'></p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><img class="fullwidth" src='assets/img/sol/20160509_141134.jpg'></p>
+
+</div>
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Sol</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:50%;'>
+  <p><img class="fullwidth" src='assets/img/sol/20160627_153416.jpg'></p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><img class="fullwidth" src='assets/img/sol/20160509_133642.jpg'></p>
+
+</div>
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Network Layout Sol &amp; Ceph Storage Cluster</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="fullwidth" src='assets/img/hpcnetwork.png'></p>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
   <hgroup>
     <h2>LTS Managed Faculty Resources</h2>
   </hgroup>
   <article data-timings="">
     <ul>
-<li><strong>Monocacy</strong> - Ben Felzer, Earth &amp; Environmental Sciences
+<li><strong>Monocacy</strong>: Ben Felzer, Earth &amp; Environmental Sciences
 
 <ul>
 <li>Eight nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
@@ -209,16 +273,7 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
 <li>Theoretical Performance: 2.662TFlops</li>
 </ul></li>
 </ul></li>
-<li><strong>Eigen</strong>: Heather Jaeger, Chemistry
-
-<ul>
-<li>Twenty nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
-
-<ul>
-<li>Theoretical Performance: 6.656TFlops</li>
-</ul></li>
-</ul></li>
-<li><strong>Baltrusaitislab</strong> - Jonas Baltrusaitis, Chemical Engineering
+<li><strong>Baltrusaitislab</strong>: Jonas Baltrusaitis, Chemical Engineering
 
 <ul>
 <li>Three nodes, dual 16-core AMD Opteron 6376, 2.3Ghz, 128GB RAM
@@ -227,7 +282,7 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
 <li>Theoretical Performance: 1.766TFlops</li>
 </ul></li>
 </ul></li>
-<li><strong>Pisces</strong> - Keith Moored, Mechanical Engineering and Mechanics
+<li><strong>Pisces</strong>: Keith Moored, Mechanical Engineering and Mechanics
 
 <ul>
 <li>Six nodes, dual 10-core Intel Xeon E5-2650v3, 2.3GHz, 64GB RAM, nVIDIA Tesla K80
@@ -235,7 +290,16 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
 <ul>
 <li>Theoretical Performance: 4.416 TFlops (CPU) + 17.46TFlops (GPU)</li>
 </ul></li>
-<li>To be merged with Sol in Fall 2017.</li>
+<li>To be merged with Sol</li>
+</ul></li>
+<li>Unnamed : decommissioned faculty cluster for prototyping new resources
+
+<ul>
+<li>Twenty nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
+
+<ul>
+<li>Theoretical Performance: 6.656TFlops</li>
+</ul></li>
 </ul></li>
 </ul>
 
@@ -248,9 +312,9 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-6" style="background:#F1E7C8;">
+<slide class="class" id="slide-9" style="background:#F1E7C8;">
   <hgroup>
-    <h2>Total LTS Managed Computational Resources</h2>
+    <h2>Total Computational Resources Supported</h2>
   </hgroup>
   <article data-timings="">
     <table><thead>
@@ -286,7 +350,7 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
 <td align="center"></td>
 </tr>
 <tr>
-<td align="center">Eigen</td>
+<td align="center">Unnamed</td>
 <td align="center">320</td>
 <td align="center">1280</td>
 <td align="center">6.656</td>
@@ -310,30 +374,30 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
 <td align="center">120</td>
 <td align="center">384</td>
 <td align="center">4.416</td>
-<td align="center">6</td>
+<td align="center">12</td>
 <td align="center">29952</td>
 <td align="center">144</td>
 <td align="center">17.472</td>
 </tr>
 <tr>
 <td align="center">Sol</td>
-<td align="center">1284</td>
-<td align="center">6208</td>
-<td align="center">46.752</td>
-<td align="center">110</td>
-<td align="center">281600</td>
-<td align="center">880</td>
-<td align="center">28.27</td>
+<td align="center">1552</td>
+<td align="center">8064</td>
+<td align="center">65.965</td>
+<td align="center">68</td>
+<td align="center">174080</td>
+<td align="center">544</td>
+<td align="center">17.476</td>
 </tr>
 <tr>
 <td align="center">Total</td>
-<td align="center">1980</td>
-<td align="center">8896</td>
-<td align="center">62.893</td>
-<td align="center">116</td>
-<td align="center">311552</td>
-<td align="center">1024</td>
-<td align="center">45.742</td>
+<td align="center">2248</td>
+<td align="center">10752</td>
+<td align="center">82.106</td>
+<td align="center">80</td>
+<td align="center">204032</td>
+<td align="center">688</td>
+<td align="center">34.948</td>
 </tr>
 </tbody></table>
 
@@ -346,7 +410,7 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-7" style="background:#F1E7C8;">
+<slide class="class" id="slide-10" style="background:#F1E7C8;">
   <hgroup>
     <h2>Apply for an account</h2>
   </hgroup>
@@ -365,7 +429,6 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
 <li>Sol: PIs should contact Alex Pacheco or Steve Anthony, web request is not functional
 
 <ul>
-<li><del>Click on &quot;Fee-based research computing&quot;</del> </li>
 <li>Annual charge of $50/account paid by Lehigh Faculty or Research Staff, and</li>
 <li>Annual charge for computing time</li>
 </ul></li>
@@ -381,7 +444,7 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-8" style="background:#F1E7C8;">
+<slide class="class" id="slide-11" style="background:#F1E7C8;">
   <hgroup>
     <h2>Allocation Charges - Effective Oct. 1, 2016</h2>
   </hgroup>
@@ -400,7 +463,6 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
 <li>Additional Increments of 10,000 SU - &#36;100 per 10K increments</li>
 <li>Fixed Allocation cycle: Oct 1 - Sep 30</li>
 <li>Unused allocations do not rollover to next allocation cycle</li>
-<li><em>Working on implementing a rolling allocation cycle, only for minimum purchase.</em></li>
 <li>Total available computing time for purchase annually: 1.4M SUs or 1 year of continous computing on 8 nodes</li>
 </ul></li>
 </ul>
@@ -414,7 +476,7 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-9" style="background:#F1E7C8;">
+<slide class="class" id="slide-12" style="background:#F1E7C8;">
   <hgroup>
     <h2>Example Allocation Request</h2>
   </hgroup>
@@ -448,7 +510,7 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-10" style="background:#F1E7C8;">
+<slide class="class" id="slide-13" style="background:#F1E7C8;">
   <hgroup>
     <h2>Condo Investments</h2>
   </hgroup>
@@ -486,7 +548,7 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-11" style="background:#F1E7C8;">
+<slide class="class" id="slide-14" style="background:#F1E7C8;">
   <hgroup>
     <h2>Condo Investors</h2>
   </hgroup>
@@ -495,13 +557,20 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
 <li><p>Two at initial launch </p>
 
 <ul>
-<li>Dimitrios Vavylonis, Physics</li>
-<li>Wonpil Im, Biological Sciences</li>
-<li>Brian Chen, Computer Science &amp; Engineering</li>
-<li>Ed Webb &amp; Alp Oztekin, Mechanical Engineering</li>
-<li>Anand Jagota, Jeetain Mittal &amp; Srinivas Rangarajan, Chemical Engineering</li>
+<li>Dimitrios Vavylonis, Physics (1 node)</li>
+<li>Wonpil Im, Biological Sciences (25 nodes, 50 GPUs)</li>
+<li>Anand Jagota, Chemical Engineering (1 node)</li>
+<li>Brian Chen, Computer Science &amp; Engineering (1 node)</li>
+<li>Ed Webb &amp; Alp Oztekin, Mechanical Engineering (6 nodes)</li>
+<li>Jeetain Mittal &amp; Srinivas Rangarajan, Chemical Engineering (13 nodes, 18 GPUs)</li>
+<li>Seth Richards-Shubik, Economics (1 node)</li>
+<li>Ganesh Balasubramanian, Mechanical Engineering (7 nodes)
+
+<ul>
+<li>March 1 targeted production date</li>
 </ul></li>
-<li><p>Total SU on Sol after Condo Investments: 11,247,840</p></li>
+</ul></li>
+<li><p>Total SU on Sol after Condo Investments: 13,595,520</p></li>
 </ul>
 
   </article>
@@ -513,7 +582,7 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-12" style="background:#F1E7C8;">
+<slide class="class" id="slide-15" style="background:#F1E7C8;">
   <hgroup>
     <h2>Storage resources</h2>
   </hgroup>
@@ -552,7 +621,7 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-13" style="background:#F1E7C8;">
+<slide class="class" id="slide-16" style="background:#F1E7C8;">
   <hgroup>
     <h2>Sol, Maia  &amp; Ceph for Courses</h2>
   </hgroup>
@@ -589,7 +658,7 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-14" style="background:#F1E7C8;">
+<slide class="class" id="slide-17" style="background:#F1E7C8;">
   <hgroup>
     <h2>Accessing Research Computing Resources</h2>
   </hgroup>
@@ -621,7 +690,7 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-15" style="background:#F1E7C8;">
+<slide class="class" id="slide-18" style="background:#F1E7C8;">
   <hgroup>
     <h2>Available Software</h2>
   </hgroup>
@@ -640,6 +709,8 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
 <li>Module environment allows you to dynamically change your *nix environment based on software being used</li>
 <li>Standard on many University and national High Performance Computing resource since circa 2011</li>
 </ul></li>
+<li>How to use Sol/Maia Software on your <a href="https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=linux">linux</a> workstation</li>
+<li>LTS provides <a href="https://software.lehigh.edu">licensed and open source software</a> for Windows, Mac and Linux and <a href="https://gogs.cc.lehigh.eu">Gogs</a>, a self hosted Git Service or Github clone</li>
 </ul>
 
   </article>
@@ -651,7 +722,63 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-16" style="background:#F1E7C8;">
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Module Command</h2>
+  </hgroup>
+  <article data-timings="">
+    <table><thead>
+<tr>
+<th align="center">Command</th>
+<th align="center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="center"><code>module avail</code></td>
+<td align="center">show list of software available on resource</td>
+</tr>
+<tr>
+<td align="center"><code>module load abc</code></td>
+<td align="center">add software <code>abc</code> to your environment (modify your <code>PATH</code>, <code>LD_LIBRARY_PATH</code> etc as needed)</td>
+</tr>
+<tr>
+<td align="center"><code>module unload abc</code></td>
+<td align="center">remove <code>abc</code> from your environment</td>
+</tr>
+<tr>
+<td align="center"><code>module swap abc1 abc2</code></td>
+<td align="center">swap <code>abc1</code> with <code>abc2</code> in your environment</td>
+</tr>
+<tr>
+<td align="center"><code>module purge</code></td>
+<td align="center">remove all modules from your environment</td>
+</tr>
+<tr>
+<td align="center"><code>module show abc</code></td>
+<td align="center">display what variables are added or modified in your environment</td>
+</tr>
+<tr>
+<td align="center"><code>module help abc</code></td>
+<td align="center">display help message for the module <code>abc</code></td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>Users who prefer not to use the module environment will need to modify their
+.bashrc or .tcshrc files. Run <code>module show</code> for list variables that need
+modified, appended or prepended</li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-20" style="background:#F1E7C8;">
   <hgroup>
     <h2>Software on Sol</h2>
   </hgroup>
@@ -667,32 +794,7 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-17" style="background:#F1E7C8;">
-  <hgroup>
-    <h2>Module Command</h2>
-  </hgroup>
-  <article data-timings="">
-    <table>
-<tr><th width="300px">Command</th><th>Description</th></tr>
-<tr><td><code>module avail</code></td><td> show list of software available on resource</td></tr>
-<tr><td><code>module load abc</code></td><td> add software <code>abc</code> to your environment (modify your <code>PATH</code>, <code>LD_LIBRARY_PATH</code> etc as needed)</td></tr>
-<tr><td><code>module unload abc</code></td><td> remove <code>abc</code> from your envionment</td></tr>
-<tr><td><code>module swap abc1 abc2</code></td><td> swap <code>abc1</code> with <code>abc2</code> in your environment</td></tr>
-<tr><td><code>module purge</code></td><td> remove all modules from your environment</td></tr>
-<tr><td><code>module show abc</code></td><td> display what variables are added or modified in your environment</td></tr>
-<tr><td><code>module help abc</code></td><td> display help message for the module <code>abc</code></td></tr>
-</table>
-
-  </article>
-  <!-- Footer  -->
-  <footer class = 'lufoot'>
-     <img height = '20px' src='assets/img/lulogo.jpg'>
-  </footer>
-  <!-- End Footer-->
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="slide-18" style="background:#F1E7C8;">
+<slide class="class" id="slide-21" style="background:#F1E7C8;">
   <hgroup>
     <h2>Installed Software</h2>
   </hgroup>
@@ -703,22 +805,24 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
 <li>Chemistry/Materials Science
 
 <ul>
-<li>CPMD</li>
-<li>GAMESS</li>
+<li><strong>CPMD</strong></li>
+<li><strong>GAMESS</strong></li>
 <li>Gaussian</li>
-<li>NWCHEM</li>
-<li>Quantum Espresso</li>
-<li><em>VASP</em></li>
+<li><strong>NWCHEM</strong></li>
+<li><strong>Quantum Espresso</strong></li>
+<li><strong>VASP</strong> (Restricted Access)</li>
 </ul></li>
 <li>Molecular Dynamics
 
 <ul>
-<li><em>Desmond</em></li>
-<li>GROMACS</li>
-<li>LAMMPS</li>
-<li>NAMD</li>
+<li><strong>Desmond</strong></li>
+<li><strong>GROMACS</strong></li>
+<li><strong>LAMMPS</strong></li>
+<li><strong>NAMD</strong></li>
 </ul></li>
 </ul>
+
+<p><span class="small strong">MPI enabled</span></p>
 
 </div>
 <div style='float:right;width:45%;'>
@@ -729,7 +833,7 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
 <li>Abaqus</li>
 <li>Ansys</li>
 <li>Comsol</li>
-<li>OpenFOAM</li>
+<li><strong>OpenFOAM</strong></li>
 <li>OpenSees</li>
 </ul></li>
 <li>Math
@@ -753,7 +857,7 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-19" style="background:#F1E7C8;">
+<slide class="class" id="slide-22" style="background:#F1E7C8;">
   <hgroup>
     <h2>More Software</h2>
   </hgroup>
@@ -814,7 +918,7 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-20" style="background:#F1E7C8;">
+<slide class="class" id="slide-23" style="background:#F1E7C8;">
   <hgroup>
     <h2>More Software</h2>
   </hgroup>
@@ -839,6 +943,7 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
 <li>CMake</li>
 <li>Lmod</li>
 <li>Scons</li>
+<li>SPACK</li>
 </ul></li>
 </ul>
 
@@ -873,7 +978,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-21" style="background:#F1E7C8;">
+<slide class="class" id="slide-24" style="background:#F1E7C8;">
   <hgroup>
     <h2>Module File Example</h2>
   </hgroup>
@@ -889,7 +994,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-22" style="background:#F1E7C8;">
+<slide class="class" id="slide-25" style="background:#F1E7C8;">
   <hgroup>
     <h2>How to run jobs</h2>
   </hgroup>
@@ -929,7 +1034,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-23" style="background:#F1E7C8;">
+<slide class="class" id="slide-26" style="background:#F1E7C8;">
   <hgroup>
     <h2>Batch Queuing System</h2>
   </hgroup>
@@ -947,7 +1052,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 <li>Allocation Manager: Gold</li>
 </ul></li>
 </ul></li>
-<li><p>More details in <a href="https://webapps.lehigh.edu/hpc/training/lurc/slurm.html">HPC Training</a> scheduled for Sep. 21</p></li>
+<li><p>More details in upcoming HPC Training on <a href="https://webapps.lehigh.edu/hpc/training/lurc/slurm.html">SLURM</a></p></li>
 </ul>
 
   </article>
@@ -959,7 +1064,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-24" style="background:#F1E7C8;">
+<slide class="class" id="slide-27" style="background:#F1E7C8;">
   <hgroup>
     <h2>XSEDE</h2>
   </hgroup>
@@ -991,7 +1096,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-25" style="background:#F1E7C8;">
+<slide class="class" id="slide-28" style="background:#F1E7C8;">
   <hgroup>
     <h2>XSEDE Resources</h2>
   </hgroup>
@@ -1002,19 +1107,19 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 <li><p>Texas Advanced Computing Center (TACC) </p>
 
 <ul>
-<li>Stampede: 9.6 PFlops </li>
-<li>Wrangler for Data Analytics</li>
-<li>Maverick for Interactive Visualization and Data Analytics</li>
+<li>Stampede2: 18 PFlops </li>
+<li>Wrangler for Data Analytics
+
+<ul>
+<li>0.5PB high speed flash storage</li>
+<li>10PB file system at TACC and IU</li>
+</ul></li>
+<li>Maverick for Interactive Visualization and Data Analytics (Decommissioning in April 2018)</li>
 </ul></li>
 <li><p>Louisiana State University</p>
 
 <ul>
 <li> SuperMIC: 925 TFlops </li>
-</ul></li>
-<li><p>National Institute for Computational Sciences (NICS) </p>
-
-<ul>
-<li>Beacon: 210 TFlops</li>
 </ul></li>
 </ul>
 
@@ -1027,7 +1132,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-26" style="background:#F1E7C8;">
+<slide class="class" id="slide-29" style="background:#F1E7C8;">
   <hgroup>
     <h2>XSEDE Resources</h2>
   </hgroup>
@@ -1041,17 +1146,21 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 <li><p>Indiana University </p>
 
 <ul>
-<li>Jetstream: a cloud-based, on-demand system for 24/7 access</li>
+<li>Jetstream: Cloud Computing Environment for IaaS, Paas and SaaS
+
+<ul>
+<li>0.5 PFlops and 2 PB block and object storage</li>
+</ul></li>
 </ul></li>
 <li><p>Pittsburgh Supercomputing Center</p>
 
 <ul>
-<li>Bridges: 1.3 PFlops (deployment in progress) </li>
+<li>Bridges: 894 Flops and 144 TiB RAM </li>
 </ul></li>
 <li><p>Stanford University</p>
 
 <ul>
-<li>XStream: 1PFlops of 8 x NVIDIA Tesla K80 compute nodes</li>
+<li>XStream: 1PFlops, 65 nodes with 8 NVIDIA Tesla K80 each</li>
 </ul></li>
 <li><p>Open Science Grid</p></li>
 </ul>
@@ -1069,7 +1178,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-27" style="background:#F1E7C8;">
+<slide class="class" id="slide-30" style="background:#F1E7C8;">
   <hgroup>
     <h2>How do I get started on XSEDE?</h2>
   </hgroup>
@@ -1099,7 +1208,120 @@ local users with getting started on XSEDE resources.</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-28" style="background:#F1E7C8;">
+<slide class="class" id="slide-31" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Training</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>RC staff also guest lecture for various courses and provide various training
+seminars in collaboration with other LTS groups</li>
+</ul>
+
+<div style='float:left;width:50%;'>
+  <ul>
+<li>Research Computing at Lehigh </li>
+<li>Linux: Basic Commands &amp; Environment </li>
+<li>Using SLURM scheduler on Sol</li>
+<li>Shell Scripting </li>
+<li>Using Virtualized Software at Lehigh </li>
+<li>Python Programming</li>
+<li>RefWorks</li>
+<li>Document Creation with LaTeX </li>
+</ul>
+
+</div>
+<div style='float:right;width:48%;'>
+  <ul>
+<li>A Brief Introduction to Linux </li>
+<li>Storage Options at Lehigh </li>
+<li>Research Data Management</li>
+<li>Version Control with GIT</li>
+<li>Programming in MATLAB and GNU Octave</li>
+<li>Enhancing Research Impact</li>
+<li>Programming in R</li>
+<li>Parallel Programming Concepts </li>
+<li>Saltstack Config Management</li>
+</ul>
+
+</div>
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-32" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Full Day Workshops</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>During the summer we provide full day workshops on programming topics</li>
+<li>Summer 2015 Workshops
+
+<ul>
+<li>Modern Fortran Programming</li>
+<li>C Programming</li>
+</ul></li>
+<li>Summer 2017: HPC Parallel Programming Workshop
+
+<ul>
+<li>Programming in MPI, OpenMP and OpenACC</li>
+</ul></li>
+<li>We also host full day workshops broadcast from other Supercomputing Centers
+
+<ul>
+<li>XSEDE HPC Monthly Workshop: OpenACC (Dec. 2014)</li>
+<li>XSEDE HPC Summer BootCamp: OpenMP, OpenACC, MPI and Hybrid Programming (Jun. 2015, 2016  &amp; 2017)</li>
+<li>XSEDE HPC Monthly Workshop: Big Data (Nov. 2015, May 2017)</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-33" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Upcoming Training</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>EWFM 292 on Thursday from 2:10PM - 4:00PM.</p>
+
+<ul>
+<li>Using SLURM scheduler on Sol (Feb 22)</li>
+<li>Programming in R (Mar 22)</li>
+<li>Document Creation with LaTeX (Mar 29)</li>
+<li>Data Visualization in R and Python (Apr 5)</li>
+</ul></li>
+<li><p>Subscribe</p>
+
+<ul>
+<li>Research Computing Mailing List: <a href="https://lists.lehigh.edu/mailman/listinfo/hpc-l">https://lists.lehigh.edu/mailman/listinfo/hpc-l</a></li>
+<li>HPC Training Google Groups: <a href="mailto:hpctraining-list+subscribe@lehigh.edu">hpctraining-list+subscribe@lehigh.edu</a></li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-34" style="background:#F1E7C8;">
   <hgroup>
     <h2>Getting Help</h2>
   </hgroup>
@@ -1124,40 +1346,6 @@ local users with getting started on XSEDE resources.</li>
 <li><a href="https://researchcomputing.lehigh.edu">Research Computing</a></li>
 <li><a href="https://go.lehigh.edu/rcwiki">Research Computing Wiki</a></li>
 <li><a href="https://researchcomputing.lehigh.edu/training">Research Computing Training</a></li>
-</ul></li>
-</ul>
-
-  </article>
-  <!-- Footer  -->
-  <footer class = 'lufoot'>
-     <img height = '20px' src='assets/img/lulogo.jpg'>
-  </footer>
-  <!-- End Footer-->
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="slide-29" style="background:#F1E7C8;">
-  <hgroup>
-    <h2>Upcoming Training</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li><p>EWFM 292 on Thursday from 2:10PM - 4:00PM.</p>
-
-<ul>
-<li>Linux: Basic Commands &amp; Environment (Sep 14)</li>
-<li>Using SLURM scheduler on Sol (Sep 21)</li>
-<li>Shell Scripting (Sep 28)</li>
-<li>Using Virtialized Software at Lehigh (Oct 5)</li>
-<li>Python Programming (Oct 12)</li>
-<li>RefWorks (Oct 26)</li>
-<li>Document Creation with LaTeX (Nov 2)</li>
-</ul></li>
-<li><p>Subscribe</p>
-
-<ul>
-<li>Research Computing Mailing List: <a href="https://lists.lehigh.edu/mailman/listinfo/hpc-l">https://lists.lehigh.edu/mailman/listinfo/hpc-l</a></li>
-<li>HPC Training Google Groups: <a href="mailto:hpctraining-list+subscribe@lehigh.edu">hpctraining-list+subscribe@lehigh.edu</a></li>
 </ul></li>
 </ul>
 
@@ -1200,152 +1388,182 @@ local users with getting started on XSEDE resources.</li>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='LTS Managed Faculty Resources'>
+        data-slide=5 title='Sol'>
          5
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=6 title='Total LTS Managed Computational Resources'>
+        data-slide=6 title='Sol'>
          6
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=7 title='Apply for an account'>
+        data-slide=7 title='Network Layout Sol &amp; Ceph Storage Cluster'>
          7
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='Allocation Charges - Effective Oct. 1, 2016'>
+        data-slide=8 title='LTS Managed Faculty Resources'>
          8
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='Example Allocation Request'>
+        data-slide=9 title='Total Computational Resources Supported'>
          9
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='Condo Investments'>
+        data-slide=10 title='Apply for an account'>
          10
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=11 title='Condo Investors'>
+        data-slide=11 title='Allocation Charges - Effective Oct. 1, 2016'>
          11
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='Storage resources'>
+        data-slide=12 title='Example Allocation Request'>
          12
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=13 title='Sol, Maia  &amp; Ceph for Courses'>
+        data-slide=13 title='Condo Investments'>
          13
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=14 title='Accessing Research Computing Resources'>
+        data-slide=14 title='Condo Investors'>
          14
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=15 title='Available Software'>
+        data-slide=15 title='Storage resources'>
          15
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=16 title='Software on Sol'>
+        data-slide=16 title='Sol, Maia  &amp; Ceph for Courses'>
          16
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=17 title='Module Command'>
+        data-slide=17 title='Accessing Research Computing Resources'>
          17
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=18 title='Installed Software'>
+        data-slide=18 title='Available Software'>
          18
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=19 title='More Software'>
+        data-slide=19 title='Module Command'>
          19
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=20 title='More Software'>
+        data-slide=20 title='Software on Sol'>
          20
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=21 title='Module File Example'>
+        data-slide=21 title='Installed Software'>
          21
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=22 title='How to run jobs'>
+        data-slide=22 title='More Software'>
          22
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=23 title='Batch Queuing System'>
+        data-slide=23 title='More Software'>
          23
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=24 title='XSEDE'>
+        data-slide=24 title='Module File Example'>
          24
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=25 title='XSEDE Resources'>
+        data-slide=25 title='How to run jobs'>
          25
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=26 title='XSEDE Resources'>
+        data-slide=26 title='Batch Queuing System'>
          26
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=27 title='How do I get started on XSEDE?'>
+        data-slide=27 title='XSEDE'>
          27
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=28 title='Getting Help'>
+        data-slide=28 title='XSEDE Resources'>
          28
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=29 title='Upcoming Training'>
+        data-slide=29 title='XSEDE Resources'>
          29
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=30 title='How do I get started on XSEDE?'>
+         30
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=31 title='Training'>
+         31
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=32 title='Full Day Workshops'>
+         32
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=33 title='Upcoming Training'>
+         33
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=34 title='Getting Help'>
+         34
       </a>
     </li>
   </ul>
