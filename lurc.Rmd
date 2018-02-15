@@ -105,6 +105,18 @@ license     : by-sa
 
 <img class="fullwidth" src='assets/img/sol/20160509_133642.jpg'>
 
+--- .class #id &twocol
+
+## Sol 
+
+*** =left
+
+<img class="fullwidth" src='assets/img/sol/20171011_104200.jpg'>
+
+*** =right
+
+<img class="fullwidth" src='assets/img/sol/20170301_112522.jpg'>
+
 --- .class #id
 
 ## Network Layout Sol &amp; Ceph Storage Cluster
@@ -249,6 +261,19 @@ license     : by-sa
 
 --- .class
 
+## Data Transfer, ScienceDMZ and Globus
+
+* NSF funded Science DMZ to improve campus connectivity to the national research cyberinfrastructure.
+* Upto 50TB storage is available on the Data Transfer Node (DTN) on ScienceDMZ.
+  * Storage space is only for data transfer. Once transfer is complete, storage needs to be deleted from DTN
+* Access to DTN with shell access provided on request
+* [Globus](https://www.globus.org) is the preferred method to transfer data to and from NSF and DOE supercomputing centers.
+  * hosted service that manages the entire operation, monitoring performance and errors, retrying failed transfers, correcting problems automatically whenever possible, and reporting status to keep you informed while you focus on your research.
+  * [How to Use Globus at Lehigh?](https://researchcomputing.lehigh.edu/help/globus)
+  * No special access required on DTN to transfer data via Globus
+
+--- .class
+
 ## Sol, Maia  &amp; Ceph for Courses
 
 * Research Computing Resources; Sol, Maia & Ceph are available for use in registrar scheduled classes.
@@ -336,7 +361,7 @@ license     : by-sa
   - **LAMMPS**
   - **NAMD**
 
-<span class="small strong">MPI enabled</span>
+<span class="tiny strong">__MPI enabled__</span>
 
 *** =right width:45%
 
@@ -354,6 +379,42 @@ license     : by-sa
   - Matlab
 
 
+--- .class &twocol_width
+
+## More Software
+
+*** =left width:45%
+
+* *Machine &amp; Deep Learning* 
+   - TensorFlow
+   - Caffe
+   - SciKit-Learn
+   - SciKit-Image
+   - Theano
+   - Keras
+
+* *Natural Language Processing (NLP)*
+   - Natural Language Toolkit (NLTK)
+   - Stanford NLP    
+
+
+<span class="tiny">_Python modules_</span>
+
+
+*** =right width:45%
+
+* Bioinformatics
+  - BamTools
+  - BayeScan
+  - bgc
+  - BWA
+  - FreeBayes
+  - SAMTools
+  - tabix
+  - trimmomatic
+  - *barcode_splitter*
+  - *phyluce* 
+  - *VelvetOptimiser*
 
 --- .class  &twocol_width
 
@@ -368,11 +429,13 @@ license     : by-sa
 * Compilers
   - GNU
   - Intel
+  - JAVA
   - PGI
   - CUDA
 * Parallel Programming
   - MVAPICH2
   - OpenMPI
+
 
 *** =right width:65%
 
@@ -393,25 +456,43 @@ license     : by-sa
  
 ## More Software
 
-*** =left width:30%
+*** =left width:45%
 
 * Visualization Tools
-  - Avogadro 
+  - Atomic Simulation Environment 
+  - Avogadro
   - GaussView
   - GNUPlot
   - PWGui
   - PyMol
+  - RDKit
+  - VESTA
   - VMD
   - XCrySDen
+
+*** =right width:45%
+
 * Other Tools
+  - Artleys Knitro
   - CMake
+  - GNU Parallel
   - Lmod
+  - *Numba*
   - Scons
   - SPACK
+  - *MD Tools*
+     * BioPython
+     * CCLib
+     * MDAnalysis
 
-*** =right width:70%
+
+--- .class
+
+## Using your own Software?
+
 
 * You can always install a software in your home directory
+   - [SPACK](https://spack.readthedocs.io) is an excellent package manager that can even create module files
 * Stay compliant with software licensing
 * Modify your .bashrc/.tcshrc to add software to your path, OR
 * create a module and dynamically load it so that it doesn't interfere 
@@ -544,6 +625,48 @@ serve as Principle Investigators on XSEDE allocation.
 and high-throughput computing and other digital services, opportunities and resources. 
 * A Campus Champion can request start up allocations on all XSEDE resources to help 
  local users with getting started on XSEDE resources.
+
+
+--- .class
+
+## Department of Energy (DOE)
+
+* provides a portfolio of national high-performance computing facilities housing some of the world’s most advanced supercomputers.
+* Innovative and Novel Computational Impact on Theory and Experiment ([INCITE](https://proposals.doeleadershipcomputing.org)) program open to researchers from academia, government labs, and industry
+   - proposals are accepted between mid-April and the end of June 
+   - Argonne Leadership Computing Facility - 27-petaflop Cray XK7, "Titan" 
+   - Oak Ridge Leadership Computing Facility - 10-petaflop IBM Blue Gene/Q, "Mira".
+   - Over 6B SUs allocated for CY 2018
+   - Average requests were 75M for Titan and 100M SUs for Mira
+* National Energy Research Scientific Computing (NERSC) Center at Lawrence Berkeley National Lab.
+   - Mostly for DOE sponsored research
+   - [Get Started](http://www.nersc.gov/users/accounts/allocations/first-allocation/)
+   - Allocations will be reduced if not used within an allocation cycle. 
+
+
+--- .class
+
+## National Center for Atmospheric Research (NCAR)
+
+* The Computational and Information Systems Laboratory (CISL) provides large computing resources for university researchers and NCAR scientists in atmospheric and related sciences.
+* Cheyenne, a 5.34 PFlops HPC system, provides more than 1.2 billion core-hours for allocation each year
+* Access granted through a variety of programs
+  - University Allocations
+     - Large requests >400K SUs: Requests accepted every six months, in March and September. 160M SUs awared in total each allocation cycle
+     - Small requests <400K SUs: U.S. university researchers who are supported by NSF awards can request a small allocation for each NSF award. Requests accepted throughout the year and reviewed/awarded within a few business days.
+     - Unsponsored Graduate Students and Postdocs: Small allocations are also available to graduate students and post-docs at U.S. universities; no NSF award or panel review is required.
+        * The graduate student, postdoc, or faculty member must work in the atmospheric or related sciences;
+        * Their work does not lie within the scope of an associated NSF grant; and
+        * They do not have funding to pay for computer time.
+
+--- .class
+
+## NCAR
+
+  - Climate Simulation Laboratory 
+      - Researchers must have funding from NSF awards to address the climate-related questions
+      - submission deadline is March 26, 2018
+      - minimum request is 20M SUs
 
 --- .class &twocol
 

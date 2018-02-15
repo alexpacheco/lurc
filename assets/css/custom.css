@@ -180,6 +180,8 @@ strong {
 
 .tiny ul li {font-size: 17px;}
 
+.tiny p {font-size: 0.5em; padding-bottom: 2px;}
+
 .small article { font-size: 12px;}
 
 .small ul li { font-size: 20px}
@@ -224,7 +226,7 @@ table.pbs td {
 
 img.fullwidth {
  float: center;
- max-width: 100%;
+ max-width: 90%;
  height: auto;
  margin: auto;
 }
