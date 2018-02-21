@@ -40,45 +40,16 @@ license     : by-sa
   128GB RAM
   - 13 nodes, dual 12-core Intel Xeon E5-2650 v4 2.3Ghz CPU, 30 MB Cache, 64GB
   RAM
-  - Two nVIDIA GTX 1080 GPU cards per node (50 GPUs operational)
+  - 1 node, dual 8-core Intel Xeon 2630 v3 2.4GHz CPU, 20 MB Cache, 512GB RAM
+  - 68 nVIDIA GTX 1080 GPU cards
   - 1TB HDD per node
   - 2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric
-  - In progress: 1 node, dual 8-core Intel Xeon 2630 v3 2.4GHz CPU, 20 MB
-  Cache, 512GB RAM
-  - Theoretical Performance: 47.37 TFLOPs (CPU) + 28.270 TFLOPs (GPU)
+  - In progress: 7 nodes, dual 18-core Intel Xeon Gold 6140 2.3GHz CPU, 24.7 MB
+  Cache, 192GB RAM
+  - Theoretical Performance: 65.965 TFLOPs (CPU) + 17.476 TFLOPs (GPU)
   - Access: Batch Scheduled, interactive on login node for compiling, editing
   only
 
-
---- .class #id &twocol
-
-## Sol 
-
-*** =left
-
-<img class="fullwidth" src='assets/img/sol/20160509_140506.jpg'>
-
-*** =right
-
-<img class="fullwidth" src='assets/img/sol/20160509_141134.jpg'>
-
---- .class #id &twocol
-
-## Sol 
-
-*** =left
-
-<img class="fullwidth" src='assets/img/sol/20160627_153416.jpg'>
-
-*** =right
-
-<img class="fullwidth" src='assets/img/sol/20160509_133642.jpg'>
-
---- .class #id
-
-## Network Layout Sol &amp; Ceph Storage Cluster
-
-<img class="fullwidth" src='assets/img/hpcnetwork.png'>
 
 --- .class #id
 
@@ -98,6 +69,7 @@ license     : by-sa
   - Twenty nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
      * Theoretical Performance: 6.656TFlops
 
+
 --- .class
 
 ## Total Computational Resources Supported
@@ -109,78 +81,9 @@ license     : by-sa
 | Monocacy | 128 | 512 | 2.662 |
 | Unnamed | 320 | 1280 | 6.656 | 
 | Baltrusaitislab | 96 | 384 | 1.766 |
-| Pisces | 120 | 384 | 4.416 | 6 | 29952 | 144 | 17.472 |
-| Sol | 1300 | 6720 | 47.366 | 110 | 281600 | 880 | 28.27 |
-| Total | 1996 | 9408 | 63.507 | 116 | 311552 | 1024 | 45.742 | 
-
-
---- .class #id
-
-## Apply for an account
-
-* [Apply for an account at the LTS website] (https://idmweb.cc.lehigh.edu/accounts/?page=hpc)
-   - Click on Services > Account & Password > Lehigh Computing Account > Request an account
-   - Click on the big blue button "Start Special Account Request" > Research Computing Account 
-   - Maia
-       - Click on "FREE Linux command-line computing"
-   - Sol: PIs should contact Alex Pacheco or Steve Anthony, web request is not functional
-       - ~~Click on "Fee-based research computing"~~ 
-       - Annual charge of \$50/account paid by Lehigh Faculty or Research Staff, and
-       - Annual charge for computing time
-
-* Sharing of accounts is explicitly forbidden
-* Users need to be associated with an allocation to run jobs on Sol 
-
---- .class #id
-
-## Allocation Charges - Effective Oct. 1, 2016
-
-* Cost per core-hour or service unit (SU) is 1&cent;
-* SU is defined as 1 hour of computing on 1 core of the Sol base compute node.
-   - One base compute node of Sol consumes 20 SU/hour, 480 SU/day and 175,200 SU/year
-
-* PIs can share allocations with their collaborators
-   - Minimum Annual Purchase of 50,000 SU - &#36;500/year
-   - Additional Increments of 10,000 SU - &#36;100 per 10K increments
-   - Fixed Allocation cycle: Oct 1 - Sep 30
-   - Unused allocations do not rollover to next allocation cycle
-   - Total available computing time for purchase annually: 1.4M SUs or 1 year of continuous computing on 8 nodes
-* __No 'free' computing time provided once allocation has been expended__
-
---- .class #id
-
-## Condo Investments
-
-* New sustainable model for High Performance Computing at Lehigh
-* Faculty (Condo Investor) purchase compute nodes to increase overall capacity of Sol
-* LTS will provide for the length of hardware warranty, typically 4 years
-   - System Administration, Power and Cooling, User Support for Condo
-     Investments
-* Condo Investor
-   - receives annual allocation equivalent to their investment
-   - can utilize allocations on all available nodes, including nodes from other
-     Condo Investors
-   - allows idle cycles on investment to be used by other Sol users
-   - unused allocation will not rollover to the next allocation cycle.
-   - can purchase additional SUs in 10K increments (minimum 50K not required)
-       -  and must be consumed in current allocation cycle
-* Annual Allocation cycle is Oct. 1 - Sep. 30.
-
---- .class
-
-## Condo Investors
-
-* Two at initial launch 
-   - Dimitrios Vavylonis, Physics (1 node)
-   - Wonpil Im, Biological Sciences (25 nodes, 50 GPUs)
-   - Anand Jagota, Chemical Engineering (1 node)
-   - Brian Chen, Computer Science & Engineering (1 node)
-   - Ed Webb & Alp Oztekin, Mechanical Engineering (6 nodes)
-   - Jeetain Mittal & Srinivas Rangarajan, Chemical Engineering (13 nodes, 60 GPUs)
-
-* Total SU on Sol after Condo Investments: 11,247,840
-* Acquisition in progress
-   - Seth Richards-Shubik, Economics (1 node)
+| Pisces | 120 | 384 | 4.416 | 12 | 29952 | 144 | 17.472 |
+| Sol | 1552 | 8064 | 65.965 | 68 | 174080 | 544 | 17.476 |
+| Total | 2248 | 10752 | 82.106 | 80 | 204032 | 688 | 34.948 | 
 
 --- .class #id
 
@@ -231,124 +134,186 @@ license     : by-sa
   .bashrc or .tcshrc files. Run `module show` for list variables that need
   modified, appended or prepended
 
---- .class #id
+--- .class
 
-## Software on Sol
+## Compilers
 
-<img width = '960px' src = 'assets/img/sol-module.png'>
+* Various versions of compilers installed on Sol 
+* Open Source: GNU Compiler (also called gcc even though gcc is the c compiler)
+   - 4.8.5 (system default), 5.3.0, 6.1.0 and 7.1.0
+* Commercial: Only two seats of each
+   - Intel Compiler: 16.0.3, 17.0.0 and 17.0.3
+   - Portland Group or PGI: 16.5, 16.10, 17.4 and 17.7
+* _We are licensed to install any available version_
+* On Sol, all except gcc 4.8.5 are available via the module environment
 
---- .class #id &twocol_width
+| Language | GNU | Intel | PGI |
+|:--------:|:---:|:-----:|:---:|
+| Fortran  | gfortran | ifort | pgfortran |
+| C | gcc | icc | pgcc |
+| C++ | g++ | icpc | pgc++ |
 
-## Installed Software
 
-*** =left width:45%
+--- .class
 
-* Chemistry/Materials Science
-  - CPMD
-  - GAMESS
-  - Gaussian
-  - NWCHEM
-  - Quantum Espresso
-  - VASP
-* Molecular Dynamics
-  - Desmond
-  - GROMACS
-  - LAMMPS
-  - NAMD
+## Compiling Code
 
-*** =right width:45%
+* Usage: `<compiler> <options> <source code>`
+* Example:
+  - `ifort -o saxpyf saxpy.f90`
+  - `gcc -o saxpyc saxpy.c`
+* Common Compiler options or flags
+  - `-o myexec`: compile code and create an executable myexec. If this option is not given, then a default `a.out` is created.
+  - `-l{libname}`: link compiled code to a library called libname. e.g. to use lapack libraries, add `-llapack` as a compiler flag.
+  - `-L{directory path}`: directory to search for libraries. e.g. `-L/usr/lib64 -llapack` will search for lapack libraries in /usr/lib64.
+  - `-I{directory path}`: directory to search for include files and fortran modules.
 
-* Computational Fluid Dynamics
-  - Abaqus
-  - Ansys
-  - Comsol
-  - OpenFOAM
-  - OpenSees
-* Math
-  - GNU Octave
-  - Magma
-  - Maple
-  - Mathematica
-  - Matlab
 
---- .class #id  &twocol_width
+--- .class &twocol_width
 
-## More Software
+## Compilers for Parallel Programming: OpenMP & TBB
+
+* OpenMP support is built-in
+
+| Compiler | OpenMP Flag | TBB Flag |
+|:---:|:---:|:---:|
+| GNU | -fopenmp | -L$TBBROOT/lib/intel64_lin/gcc4.4 -ltbb |
+| Intel | -qopenmp | -L$TBBROOT/lib/intel64_lin/gcc4.4 -ltbb |
+| PGI | -mp |
 
 *** =left width:35%
 
-* Scripting Languages
-  - R
-  - Perl
-  - Python
-* Compilers
-  - GNU
-  - Intel
-  - PGI
-  - CUDA
-* Parallel Programming
-  - MVAPICH2
-  - OpenMPI
+* TBB is available as part of Intel Compiler suite
+- `$TBBROOT` depends on the Intel Compiler Suite you want to use.
+- Not sure if this will work for PGI Compilers
 
-*** =right width:65%
+*** =right width:60%
 
-* Libraries
-  - BLAS/LAPACK/GSL/SCALAPACK
-  - Boost
-  - FFTW
-  - Intel MKL
-  - HDF5
-  - NetCDF
-  - METIS/PARMETIS
-  - PetSc
-  - QHull/QRupdate
-  - SuiteSparse
-  - SuperLU
-
---- .class #id &twocol_width
- 
-## More Software
-
-*** =left width:30%
-
-* Visualization Tools
-  - Avogadro 
-  - GaussView
-  - GNUPlot
-  - PWGui
-  - PyMol
-  - VMD
-  - XCrySDen
-* Other Tools
-  - CMake
-  - Lmod
-  - Scons
-  - SPACK
-
-
-*** =right width:70%
-
-* You can always install a software in your home directory
-* Stay compliant with software licensing
-* Modify your .bashrc/.tcshrc to add software to your path, OR
-* create a module and dynamically load it so that it doesn't interfere 
- with other software installed on the system
-  - e.g. You might want to use openmpi instead of mvapich2 
-  - the system admin may not want install it system wide for just one user
-* Add the directory where you will install the module files to the variable 
-  MODULEPATH in .bashrc/.tcshrc
 
 ```sh
-# My .bashrc file
-export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
+[alp514.sol](1083): module show intel
+-------------------------------------------------------------------
+/share/Apps/share/Modules/modulefiles/toolchain/intel/16.0.3:
+
+module-whatis    Set up Intel 16.0.3 compilers. 
+conflict         pgi 
+conflict         gcc 
+setenv           INTEL_LICENSE_FILE /share/Apps/intel/licenses/server.lic 
+setenv           IPPROOT /share/Apps/intel/compilers_and_libraries_2016.3.210/linux/ipp 
+setenv           MKLROOT /share/Apps/intel/compilers_and_libraries_2016.3.210/linux/mkl 
+setenv           TBBROOT /share/Apps/intel/compilers_and_libraries_2016.3.210/linux/tbb 
+...
+snip
+...
+
 ```
-* Use [SPACK](https://spack.readthedocs.io) to build your own software stack
 
---- .class #id
 
-## Module File Example
+--- .class &twocol
 
-<img width = '900px' src = 'assets/img/mcr.png'>
+## Compilers for Parallel Programming: MPI
+
+* MPI is a library and not a compiler, built or compiled for different compilers.
+
+| Language | Compile Command |
+|:--------:|:---:|
+| Fortran  | mpif90 |
+| C | mpicc |
+| C++ | mpicxx |
+
+* Usage: `<compiler> <options> <source code>`
+*** =left
+
+
+```sh
+[2017-10-30 08:40.30] ~/Workshop/2017XSEDEBootCamp/MPI/Solutions
+[alp514.sol](1096): mpif90 -o laplace_f90 laplace_mpi.f90 
+[2017-10-30 08:40.45] ~/Workshop/2017XSEDEBootCamp/MPI/Solutions
+[alp514.sol](1097): mpicc -o laplace_c laplace_mpi.c
+[2017-10-30 08:40.57] ~/Workshop/2017XSEDEBootCamp/MPI/Solutions
+```
+
+*** =right
+
+* The MPI compiler command is just a wrapper around the underlying compiler
+
+```bash
+[alp514.sol](1080): mpif90 -show
+ifort -fPIC -I/share/Apps/mvapich2/2.1/intel-16.0.3/include 
+  -I/share/Apps/mvapich2/2.1/intel-16.0.3/include 
+  -L/share/Apps/mvapich2/2.1/intel-16.0.3/lib 
+  -lmpifort -Wl,-rpath -Wl,/share/Apps/mvapich2/2.1/intel-16.0.3/lib 
+  -Wl,--enable-new-dtags -lmpi
+```
+
+
+--- .class
+
+## MPI Libraries
+
+* There are two different MPI implementations commonly used
+* `MPICH`: Developed by Argonned National Laboratory
+   - used as a starting point for various commercial and open source MPI libraries
+   - `MVAPICH2`: Developed by D. K. Panda with support for  InfiniBand, iWARP, RoCE, and Intel Omni-Path. (default MPI on Sol)
+   - `Intel MPI`: Intel's version of MPI. __You need this for Xeon Phi MICs__.
+      - available in cluster edition of Intel Compiler Suite. Not available at Lehigh
+   - `IBM MPI` for IBM BlueGene and `CRAY MPI` for Cray systems
+* `OpenMPI`: A Free, Open Source implementation from merger of three well know MPI implementations. Can be used for commodity network as well as high speed network
+   - `FT-MPI` from the University of Tennessee
+   - `LA-MPI` from Los Alamos National Laboratory
+   - `LAM/MPI` from Indiana University
+
+
+--- .class
+
+## Running MPI Programs
+
+
+* Every MPI implementation come with their own job launcher: `mpiexec` (MPICH,OpenMPI &amp; MVAPICH2), `mpirun` (OpenMPI)  or `mpirun_rsh` (MVAPICH2)
+* Example: `mpiexec [options] <program name> [program options]`
+* Required options: number of processes and list of hosts on which to run program 
+
+| Option Description | mpiexec | mpirun | mpirun_rsh |
+|:-----------:|:-------:|:------:|:----------:|
+| run on `x` cores | -n x | -np x | -n x |
+| location of the hostfile | -f filename | -machinefile filename | -hostfile filename |
+
+* To run a MPI code, you need to use the launcher from the same implementation that was used to compile the code.
+* For e.g.: You cannot compile code with OpenMPI and run using the MPICH and MVAPICH2's launcher
+   - Since MVAPICH2 is based on MPICH, you can launch MVAPICH2 compiled code using MPICH's launcher.
+* SLURM scheduler provides `srun` as a wrapper around all mpi launchers
+
+
+--- .class
+
+## Running MPI Codes
+
+
+```sh
+[2017-10-30 08:47.46] ~/Workshop/2017XSEDEBootCamp/MPI/Solutions
+[alp514.sol-b112](993): mpiexec -n 4 ./laplace_f90 
+ Maximum iterations [100-4000]?
+200
+ ---------- Iteration number:          100  ---------------
+( 995, 995): 63.33  ( 996, 996): 72.67  ( 997, 997): 81.40  ( 998, 998): 88.97  ( 999, 999): 94.86  (1000,1000): 98.67  
+ Max error at iteration          200  was   0.177397842364442     
+ Total time was   0.1172750      seconds.
+ ---------- Iteration number:          200  ---------------
+( 995, 995): 79.11  ( 996, 996): 84.86  ( 997, 997): 89.91  ( 998, 998): 94.10  ( 999, 999): 97.26  (1000,1000): 99.28  
+[2017-10-30 08:47.57] ~/Workshop/2017XSEDEBootCamp/MPI/Solutions
+[alp514.sol-b112](994): mpiexec -n 4 ./laplace_c
+Maximum iterations [100-4000]?
+200
+---------- Iteration number: 100 ------------
+[995,995]: 63.33  [996,996]: 72.67  [997,997]: 81.40  [998,998]: 88.97  [999,999]: 94.86  [1000,1000]: 98.67  
+---------- Iteration number: 200 ------------
+[995,995]: 79.11  [996,996]: 84.86  [997,997]: 89.91  [998,998]: 94.10  [999,999]: 97.26  [1000,1000]: 99.28  
+
+Max error at iteration 200 was 0.177398
+Total time was 0.259370 seconds.
+
+```
+
 
 --- .class #id &twocol_width
 
@@ -474,7 +439,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 | _engc_ | 72 | 24 (will change to 22+2)|
 | all-cpu | 48 |
 | all-gpu | 48 |
-
+| himem | 72 | 48 |
 
 
 * Maia
@@ -500,6 +465,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 | lts | 6.4 | 6.2 |
 | eng/imlab/imlab-gpu | 5.3 | 5.1 |
 | engc | 2.66 | 2.4 |
+| himem | 32 | 31.5 |
 
 
 *  <span class="alert">if you need to run a single core job that requires 10GB memory in the imlab partition, you need to request 2 cores even though you are only using
@@ -508,24 +474,52 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 * Maia: Users need to specify memory required in their submit script. Max
 memory that should be requested is 126GB.
 
+
+--- .class #id
+
+## Basic Job Manager Commands
+
+* Submission
+* Monitoring
+* Manipulating
+* Reporting
+
+--- .class 
+
+## Job Types
+
+* Interactive Jobs
+  - Set up an interactive environment on compute nodes for users
+  - Will log you into a compute node and wait for your prompt
+  - Purpose: testing and debugging code. __Do not run jobs on head node!!!__
+      * All compute node have a naming convention __sol-[a,b,c]###__
+      * head node is __sol__
+* Batch Jobs
+   - Executed using a batch script without user intervention
+       - Advantage: system takes care of running the job
+       - Disadvantage: cannot change sequence of commands after submission
+   - Useful for Production runs
+   - Workflow: write a script -> submit script -> take mini vacation ->
+   analyze results
+
 --- .class #id .small
 
 ## Useful SBATCH Directives
 
 | SLURM Directive | Description |
 |:---------------:|:-----------:|
-| #SBATCH --partition=queuename | Submit job to the <em>queuename</em> partition. |
-| #SBATCH --time=hh:mm:ss | Request resources to run job for <em>hh</em> hours, <em>mm</em> minutes and <em>ss</em> seconds. |
-| #SBATCH --nodes=m | Request resources to run job on <em>m</em> nodes. |
-| #SBATCH --ntasks-per-node=n | Request resources to run job on <em>n</em> processors on each node requested. |
-| #SBATCH --ntasks=n | Request resources to run job on a total of <em>n</em> processors. |
-| #SBATCH --job-name=jobname | Provide a name, <em>jobname</em> to your job. |
-| #SBATCH --output=filename.out | Write SLURM standard output to file filename.out. |
-| #SBATCH --error=filename.err | Write SLURM standard error to file filename.err. |
-| #SBATCH --mail-type=events | Send an email after job status events is reached. |
+|  --partition=queuename | Submit job to the <em>queuename</em> partition. |
+|  --time=hh:mm:ss | Request resources to run job for <em>hh</em> hours, <em>mm</em> minutes and <em>ss</em> seconds. |
+|  --nodes=m | Request resources to run job on <em>m</em> nodes. |
+|  --ntasks-per-node=n | Request resources to run job on <em>n</em> processors on each node requested. |
+|  --ntasks=n | Request resources to run job on a total of <em>n</em> processors. |
+|  --job-name=jobname | Provide a name, <em>jobname</em> to your job. |
+|  --output=filename.out | Write SLURM standard output to file filename.out. |
+|  --error=filename.err | Write SLURM standard error to file filename.err. |
+|  --mail-type=events | Send an email after job status events is reached. |
 | | events can be NONE, BEGIN, END, FAIL, REQUEUE, ALL, TIME_LIMIT(_90,80) |
-| #SBATCH --mail-user=address | Address to send email. |
-| #SBATCH --account=mypi | charge job to the __mypi__ account |
+|  --mail-user=address | Address to send email. |
+|  --account=mypi | charge job to the __mypi__ account |
 
 
 --- .class #id .small
@@ -534,9 +528,9 @@ memory that should be requested is 126GB.
 
 | SLURM Directive | Description |
 |:---------------:|:-----------:|
-| #SBATCH --qos=nogpu | Request a quality of service (qos)  for the job in `imlab`, `engc` partitions. |
+|  --qos=nogpu | Request a quality of service (qos)  for the job in `imlab`, `engc` partitions. |
 | | Job will remain in queue indefinitely if you do not specify qos |
-| #SBATCH --gres=gpu:# | Specifies number of gpus requested in the gpu partitions |
+|  --gres=gpu:# | Specifies number of gpus requested in the gpu partitions |
 | | You can request 1 or 2 gpus with a minimum of 1 core or cpu per gpu | 
 
 * SLURM can also take short hand notation for the directives
@@ -581,16 +575,16 @@ memory that should be requested is 126GB.
 
 | PBS Directive | Description |
 |:-------------:|:------------|
-| #PBS -q queuename | Submit job to the <em>queuename</em> queue.|
-| #PBS -l walltime=hh:mm:ss| Request resources to run job for <em>hh</em> hours, <em>mm</em> minutes and <em>ss</em> seconds.|
-| #PBS -l nodes=m:ppn=n| Request resources to run job on <em>n</em> processors each on <em>m</em> nodes.|
-| #PBS -l mem=xGB| Request <em>xGB</em> per node requested, applicable on Maia only|
-| #PBS -N jobname| Provide a name, <em>jobname</em> to your job.|
-| #PBS -o filename.out| Write PBS standard output to file filename.out.|
-| #PBS -e filename.err| Write PBS standard error to file filename.err.|
-| #PBS -j oe| Combine PBS standard output and error to the same file.|
-| #PBS -M your email address| Address to send email.|
-| #PBS -m status| Send an email after job status status is reached.| 
+|  -q queuename | Submit job to the <em>queuename</em> queue.|
+|  -l walltime=hh:mm:ss| Request resources to run job for <em>hh</em> hours, <em>mm</em> minutes and <em>ss</em> seconds.|
+|  -l nodes=m:ppn=n| Request resources to run job on <em>n</em> processors each on <em>m</em> nodes.|
+|  -l mem=xGB| Request <em>xGB</em> per node requested, applicable on Maia only|
+|  -N jobname| Provide a name, <em>jobname</em> to your job.|
+|  -o filename.out| Write PBS standard output to file filename.out.|
+|  -e filename.err| Write PBS standard error to file filename.err.|
+|  -j oe| Combine PBS standard output and error to the same file.|
+|  -M your email address| Address to send email.|
+|  -m status| Send an email after job status status is reached.| 
 | | status can be a (abort), b (begin) or e (end). The arguments can be combined |
 | |  for e.g. abe will send email when job begins and either aborts or ends|
 
@@ -613,34 +607,6 @@ memory that should be requested is 126GB.
 | | Indicates job type, PBS_BATCH or PBS_INTERACTIVE | PBS_ENVIRONMENT |
 | | value of the SHELL variable in the environment in which qsub was executed | PBS_O_SHELL |
 | | Home directory of the user running qsub | PBS_O_HOME |
-
-
---- .class #id
-
-## Basic Job Manager Commands
-
-* Submission
-* Monitoring
-* Manipulating
-* Reporting
-
---- .class 
-
-## Job Types
-
-* Interactive Jobs
-  - Set up an interactive environment on compute nodes for users
-  - Will log you into a compute node and wait for your prompt
-  - Purpose: testing and debugging code. __Do not run jobs on head node!!!__
-      * All compute node have a naming convention __sol-[a,b,c]###__
-      * head node is __sol__
-* Batch Jobs
-   - Executed using a batch script without user intervention
-       - Advantage: system takes care of running the job
-       - Disadvantage: cannot change sequence of commands after submission
-   - Useful for Production runs
-   - Workflow: write a script -> submit script -> take mini vacation ->
-   analyze results
 
 --- .class #id
 
@@ -852,21 +818,21 @@ exit
 
 ## Online Usage Reporting: Sol Cluster
 
-<object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2016.svg" type="image/svg+xml">
+<object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2017.svg" type="image/svg+xml">
 </object>
 
 --- .class #id
 
 ## Online Usage Reporting: lts partition
 
-<object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2016-lts.svg" type="image/svg+xml">
+<object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2017-lts.svg" type="image/svg+xml">
 </object>
 
 --- .class #id
 
 ## Online Usage Reporting: imlab &amp; imlab-gpu partitions
 
-<object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2016-imlab.svg" type="image/svg+xml">
+<object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2017-imlab.svg" type="image/svg+xml">
 </object>
 
 
@@ -874,7 +840,7 @@ exit
 
 ## Online Usage Reporting: eng partitions
 
-<object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2016-eng.svg" type="image/svg+xml">
+<object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2017-eng.svg" type="image/svg+xml">
 </object>
 
 
@@ -882,7 +848,14 @@ exit
 
 ## Online Usage Reporting: engc partitions
 
-<object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2016-engc.svg" type="image/svg+xml">
+<object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2017-engc.svg" type="image/svg+xml">
+</object>
+
+--- .class #id
+
+## Online Usage Reporting: himem partitions
+
+<object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2017-himem.svg" type="image/svg+xml">
 </object>
 
 
