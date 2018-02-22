@@ -64,7 +64,7 @@ license     : by-sa
 * __Pisces__: Keith Moored, Mechanical Engineering and Mechanics
   - Six nodes, dual 10-core Intel Xeon E5-2650v3, 2.3GHz, 64GB RAM, nVIDIA Tesla K80
      * Theoretical Performance: 4.416 TFlops (CPU) + 17.46TFlops (GPU)
-  - To be merged with Sol in Fall 2017
+  - To be merged with Sol
 * Unnamed : decommissioned faculty cluster for prototyping new resources
   - Twenty nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
      * Theoretical Performance: 6.656TFlops
@@ -149,9 +149,9 @@ license     : by-sa
 
 | Language | GNU | Intel | PGI |
 |:--------:|:---:|:-----:|:---:|
-| Fortran  | gfortran | ifort | pgfortran |
-| C | gcc | icc | pgcc |
-| C++ | g++ | icpc | pgc++ |
+| Fortran  | `gfortran` | `ifort` | `pgfortran` |
+| C | `gcc` | `icc` | `pgcc` |
+| C++ | `g++` | `icpc` | `pgc++` |
 
 
 --- .class
@@ -169,6 +169,42 @@ license     : by-sa
   - `-I{directory path}`: directory to search for include files and fortran modules.
 
 
+--- .class
+
+## Compiling and Running Serial Codes
+
+```{sh eval=FALSE}
+[2018-02-22 08:47.27] ~/Workshop/2017XSEDEBootCamp/OpenMP
+[alp514.sol-d118](842): icc -o laplacec laplace_serial.c
+[2018-02-22 08:47.46] ~/Workshop/2017XSEDEBootCamp/OpenMP
+[alp514.sol-d118](843): ./laplacec
+Maximum iterations [100-4000]?
+1000
+---------- Iteration number: 100 ------------
+[995,995]: 63.33  [996,996]: 72.67  [997,997]: 81.40  [998,998]: 88.97  [999,999]: 94.86  [1000,1000]: 98.67
+---------- Iteration number: 200 ------------
+[995,995]: 79.11  [996,996]: 84.86  [997,997]: 89.91  [998,998]: 94.10  [999,999]: 97.26  [1000,1000]: 99.28
+---------- Iteration number: 300 ------------
+[995,995]: 85.25  [996,996]: 89.39  [997,997]: 92.96  [998,998]: 95.88  [999,999]: 98.07  [1000,1000]: 99.49
+---------- Iteration number: 400 ------------
+[995,995]: 88.50  [996,996]: 91.75  [997,997]: 94.52  [998,998]: 96.78  [999,999]: 98.48  [1000,1000]: 99.59
+---------- Iteration number: 500 ------------
+[995,995]: 90.52  [996,996]: 93.19  [997,997]: 95.47  [998,998]: 97.33  [999,999]: 98.73  [1000,1000]: 99.66
+---------- Iteration number: 600 ------------
+[995,995]: 91.88  [996,996]: 94.17  [997,997]: 96.11  [998,998]: 97.69  [999,999]: 98.89  [1000,1000]: 99.70
+---------- Iteration number: 700 ------------
+[995,995]: 92.87  [996,996]: 94.87  [997,997]: 96.57  [998,998]: 97.95  [999,999]: 99.01  [1000,1000]: 99.73
+---------- Iteration number: 800 ------------
+[995,995]: 93.62  [996,996]: 95.40  [997,997]: 96.91  [998,998]: 98.15  [999,999]: 99.10  [1000,1000]: 99.75
+---------- Iteration number: 900 ------------
+[995,995]: 94.21  [996,996]: 95.81  [997,997]: 97.18  [998,998]: 98.30  [999,999]: 99.17  [1000,1000]: 99.77
+---------- Iteration number: 1000 ------------
+[995,995]: 94.68  [996,996]: 96.15  [997,997]: 97.40  [998,998]: 98.42  [999,999]: 99.22  [1000,1000]: 99.78
+
+Max error at iteration 1000 was 0.034767
+Total time was 4.099030 seconds.
+```
+
 --- .class &twocol_width
 
 ## Compilers for Parallel Programming: OpenMP & TBB
@@ -177,9 +213,9 @@ license     : by-sa
 
 | Compiler | OpenMP Flag | TBB Flag |
 |:---:|:---:|:---:|
-| GNU | -fopenmp | -L$TBBROOT/lib/intel64_lin/gcc4.4 -ltbb |
-| Intel | -qopenmp | -L$TBBROOT/lib/intel64_lin/gcc4.4 -ltbb |
-| PGI | -mp |
+| GNU | `-fopenmp` | `-L$TBBROOT/lib/intel64_lin/gcc4.4 -ltbb` |
+| Intel | `-qopenmp` | `-L$TBBROOT/lib/intel64_lin/gcc4.4 -ltbb` |
+| PGI | `-mp` |
 
 *** =left width:35%
 
@@ -209,6 +245,43 @@ snip
 ```
 
 
+--- .class
+
+## Compiling and Running OpenMP Codes
+
+
+```{sh eval=FALSE}
+[2018-02-22 08:47.56] ~/Workshop/2017XSEDEBootCamp/OpenMP/Solutions
+[alp514.sol-d118](845): icc -qopenmp -o laplacec laplace_omp.c
+[2018-02-22 08:48.09] ~/Workshop/2017XSEDEBootCamp/OpenMP/Solutions
+[alp514.sol-d118](846): OMP_NUM_THREADS=4 ./laplacec
+Maximum iterations [100-4000]?
+1000
+---------- Iteration number: 100 ------------
+[995,995]: 63.33  [996,996]: 72.67  [997,997]: 81.40  [998,998]: 88.97  [999,999]: 94.86  [1000,1000]: 98.67
+---------- Iteration number: 200 ------------
+[995,995]: 79.11  [996,996]: 84.86  [997,997]: 89.91  [998,998]: 94.10  [999,999]: 97.26  [1000,1000]: 99.28
+---------- Iteration number: 300 ------------
+[995,995]: 85.25  [996,996]: 89.39  [997,997]: 92.96  [998,998]: 95.88  [999,999]: 98.07  [1000,1000]: 99.49
+---------- Iteration number: 400 ------------
+[995,995]: 88.50  [996,996]: 91.75  [997,997]: 94.52  [998,998]: 96.78  [999,999]: 98.48  [1000,1000]: 99.59
+---------- Iteration number: 500 ------------
+[995,995]: 90.52  [996,996]: 93.19  [997,997]: 95.47  [998,998]: 97.33  [999,999]: 98.73  [1000,1000]: 99.66
+---------- Iteration number: 600 ------------
+[995,995]: 91.88  [996,996]: 94.17  [997,997]: 96.11  [998,998]: 97.69  [999,999]: 98.89  [1000,1000]: 99.70
+---------- Iteration number: 700 ------------
+[995,995]: 92.87  [996,996]: 94.87  [997,997]: 96.57  [998,998]: 97.95  [999,999]: 99.01  [1000,1000]: 99.73
+---------- Iteration number: 800 ------------
+[995,995]: 93.62  [996,996]: 95.40  [997,997]: 96.91  [998,998]: 98.15  [999,999]: 99.10  [1000,1000]: 99.75
+---------- Iteration number: 900 ------------
+[995,995]: 94.21  [996,996]: 95.81  [997,997]: 97.18  [998,998]: 98.30  [999,999]: 99.17  [1000,1000]: 99.77
+---------- Iteration number: 1000 ------------
+[995,995]: 94.68  [996,996]: 96.15  [997,997]: 97.40  [998,998]: 98.42  [999,999]: 99.22  [1000,1000]: 99.78
+
+Max error at iteration 1000 was 0.034767
+Total time was 2.459961 seconds.
+```
+
 --- .class &twocol
 
 ## Compilers for Parallel Programming: MPI
@@ -217,9 +290,9 @@ snip
 
 | Language | Compile Command |
 |:--------:|:---:|
-| Fortran  | mpif90 |
-| C | mpicc |
-| C++ | mpicxx |
+| Fortran  | `mpif90` |
+| C | `mpicc` |
+| C++ | `mpicxx` |
 
 * Usage: `<compiler> <options> <source code>`
 *** =left
@@ -255,7 +328,8 @@ ifort -fPIC -I/share/Apps/mvapich2/2.1/intel-16.0.3/include
    - `MVAPICH2`: Developed by D. K. Panda with support for  InfiniBand, iWARP, RoCE, and Intel Omni-Path. (default MPI on Sol)
    - `Intel MPI`: Intel's version of MPI. __You need this for Xeon Phi MICs__.
       - available in cluster edition of Intel Compiler Suite. Not available at Lehigh
-   - `IBM MPI` for IBM BlueGene and `CRAY MPI` for Cray systems
+   - `IBM MPI` for IBM BlueGene and 
+   - `CRAY MPI` for Cray systems
 * `OpenMPI`: A Free, Open Source implementation from merger of three well know MPI implementations. Can be used for commodity network as well as high speed network
    - `FT-MPI` from the University of Tennessee
    - `LA-MPI` from Los Alamos National Laboratory
@@ -284,31 +358,38 @@ ifort -fPIC -I/share/Apps/mvapich2/2.1/intel-16.0.3/include
 
 --- .class
 
-## Running MPI Codes
+## Compiling and Running MPI Codes
 
 ```{sh eval=FALSE}
-[2017-10-30 08:47.46] ~/Workshop/2017XSEDEBootCamp/MPI/Solutions
-[alp514.sol-b112](993): mpiexec -n 4 ./laplace_f90 
- Maximum iterations [100-4000]?
-200
- ---------- Iteration number:          100  ---------------
-( 995, 995): 63.33  ( 996, 996): 72.67  ( 997, 997): 81.40  ( 998, 998): 88.97  ( 999, 999): 94.86  (1000,1000): 98.67  
- Max error at iteration          200  was   0.177397842364442     
- Total time was   0.1172750      seconds.
- ---------- Iteration number:          200  ---------------
-( 995, 995): 79.11  ( 996, 996): 84.86  ( 997, 997): 89.91  ( 998, 998): 94.10  ( 999, 999): 97.26  (1000,1000): 99.28  
-[2017-10-30 08:47.57] ~/Workshop/2017XSEDEBootCamp/MPI/Solutions
-[alp514.sol-b112](994): mpiexec -n 4 ./laplace_c
+[2018-02-22 08:48.27] ~/Workshop/2017XSEDEBootCamp/MPI/Solutions
+[alp514.sol-d118](848): mpicc -o laplacec laplace_mpi.c
+[2018-02-22 08:48.41] ~/Workshop/2017XSEDEBootCamp/MPI/Solutions
+[alp514.sol-d118](849): mpiexec -n 4 ./laplacec
 Maximum iterations [100-4000]?
-200
+1000
 ---------- Iteration number: 100 ------------
-[995,995]: 63.33  [996,996]: 72.67  [997,997]: 81.40  [998,998]: 88.97  [999,999]: 94.86  [1000,1000]: 98.67  
+[995,995]: 63.33  [996,996]: 72.67  [997,997]: 81.40  [998,998]: 88.97  [999,999]: 94.86  [1000,1000]: 98.67
 ---------- Iteration number: 200 ------------
-[995,995]: 79.11  [996,996]: 84.86  [997,997]: 89.91  [998,998]: 94.10  [999,999]: 97.26  [1000,1000]: 99.28  
+[995,995]: 79.11  [996,996]: 84.86  [997,997]: 89.91  [998,998]: 94.10  [999,999]: 97.26  [1000,1000]: 99.28
+---------- Iteration number: 300 ------------
+[995,995]: 85.25  [996,996]: 89.39  [997,997]: 92.96  [998,998]: 95.88  [999,999]: 98.07  [1000,1000]: 99.49
+---------- Iteration number: 400 ------------
+[995,995]: 88.50  [996,996]: 91.75  [997,997]: 94.52  [998,998]: 96.78  [999,999]: 98.48  [1000,1000]: 99.59
+---------- Iteration number: 500 ------------
+[995,995]: 90.52  [996,996]: 93.19  [997,997]: 95.47  [998,998]: 97.33  [999,999]: 98.73  [1000,1000]: 99.66
+---------- Iteration number: 600 ------------
+[995,995]: 91.88  [996,996]: 94.17  [997,997]: 96.11  [998,998]: 97.69  [999,999]: 98.89  [1000,1000]: 99.70
+---------- Iteration number: 700 ------------
+[995,995]: 92.87  [996,996]: 94.87  [997,997]: 96.57  [998,998]: 97.95  [999,999]: 99.01  [1000,1000]: 99.73
+---------- Iteration number: 800 ------------
+[995,995]: 93.62  [996,996]: 95.40  [997,997]: 96.91  [998,998]: 98.15  [999,999]: 99.10  [1000,1000]: 99.75
+---------- Iteration number: 900 ------------
+[995,995]: 94.21  [996,996]: 95.81  [997,997]: 97.18  [998,998]: 98.30  [999,999]: 99.17  [1000,1000]: 99.77
+---------- Iteration number: 1000 ------------
+[995,995]: 94.68  [996,996]: 96.15  [997,997]: 97.40  [998,998]: 98.42  [999,999]: 99.22  [1000,1000]: 99.78
 
-Max error at iteration 200 was 0.177398
-Total time was 0.259370 seconds.
-
+Max error at iteration 1000 was 0.034767
+Total time was 1.030180 seconds.
 ```
 
 
@@ -432,7 +513,8 @@ Total time was 0.259370 seconds.
 | _lts_ | 72 | 20 (will change to 18+2)|
 | imlab | 48 | 22 | 
 | imlab-gpu | 48 | 24 |
-| _eng_ | 72 | 24 (will change to 22+2)|
+| eng | 72 | 22 |
+| eng-gpu | 72 | 24 |
 | _engc_ | 72 | 24 (will change to 22+2)|
 | all-cpu | 48 |
 | all-gpu | 48 |
@@ -501,7 +583,7 @@ memory that should be requested is 126GB.
 
 --- .class #id .small
 
-## Useful SBATCH Directives
+## Useful SLURM Directives
 
 | SLURM Directive | Description |
 |:---------------:|:-----------:|
@@ -521,7 +603,7 @@ memory that should be requested is 126GB.
 
 --- .class #id .small
 
-## Useful SBATCH Directives (contd)
+## Useful SLURM Directives (contd)
 
 | SLURM Directive | Description |
 |:---------------:|:-----------:|
@@ -545,7 +627,7 @@ memory that should be requested is 126GB.
 
 --- .class #id
 
-## SBATCH Filename Patterns
+## SLURM Filename Patterns
 
 * sbatch allows for a filename pattern to contain one or more replacement
   symbols, which are a percent sign "%" followed by a letter (e.g. %j). 
@@ -613,11 +695,11 @@ memory that should be requested is 126GB.
        *    `qsub -I -V -l walltime=<hh:mm:ss>,nodes=<# of nodes>:ppn=<# of core/node> -q <queue
    name>`
 
-   - SLURM:  Use `srun` command with SBATCH Directives followed by `--pty /bin/bash`
+   - SLURM:  Use `srun` command with SLURM Directives followed by `--pty /bin/bash`
        * `srun --time=<hh:mm:ss> --nodes=<# of nodes> --ntasks-per-node=<#
    of core/node> -p <queue name> --pty /bin/bash`
        * If you have `soltools` module loaded, then use `interact` with at
-   least one SBATCH Directive
+   least one SLURM Directive
            - `interact -t 20` [Assumes `-p lts -n 1 -N 20`]
    - Run a job interactively replace `--pty /bin/bash --login` with the
      appropriate command. 
@@ -632,6 +714,12 @@ memory that should be requested is 126GB.
 
 * Workflow: write a script -> submit script -> take mini vacation -> analyze
   results
+* Batch scripts are written in bash, tcsh, csh or sh
+   * ksh scripts will work if ksh is installed
+* Add PBS or SLURM directives after the shebang line but before any shell
+  commands
+   * SLURM: `#SBATCH DIRECTIVES`
+   * PBS: `#PBS DIRECTIVES` 
 * Submitting Batch Jobs
    * PBS: `qsub filename`
    * SLURM: `sbatch filename`
@@ -746,6 +834,24 @@ exit
 
 --- .class #id
 
+## Need to run multiple jobs in sequence?
+
+* Option 1: Submit jobs as soon as previous jobs complete
+* Option 2: Submit jobs with a dependency
+    * [SLURM](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=slurm#submitting_dependency_jobs):
+  `sbatch --dependency=afterok:<JobID> <Submit Script>`
+    * [PBS](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=corona#submitting_dependency_jobs):
+  `qsub -W depend=afterok:<JobID> <Submit Script>`
+
+* You want to run several serial processor jobs on
+    * one node: your submit script should be able to run several serial
+    jobs in background and then use the `wait` command for all jobs to finish
+    * more than one node: this requires some background in scripting but the
+    idea is the same as above
+
+
+--- .class #id
+
 ## Monitoring &amp; Manipulating Jobs
 
 
@@ -764,6 +870,24 @@ exit
    * __checkq__: `squeue` with additional useful option. 
    * __checkload__: `sinfo` with additional options to show load on compute nodes.  
 * load the `soltools` module to get access to RC staff created scripts
+
+
+--- .class 
+
+## Modifying Resources for Queued JObs
+
+* Modify a job after submission but before starting: 
+    * `scontrol update SPECIFICATION jobid=<jobid>`
+* Examples of `SPECIFICATION` are
+    * add dependency after a job has been submitted: `dependency=<attributes>`
+    * change job name: `jobname=<name>`
+    * change partition: `partition=<name>`
+    * modify requested runtime: `timelimit=<hh:mm:ss>`
+    * change quality of service (when changing to imlab/engc): `qos=nogpu` 
+    * request gpus (when changing to one of the gpu partitions): `gres=gpu:<1 or 2>`
+* SPECIFICATIONs can be combined for e.g. command to move a queued job to `imlab` partition and change timelimit to 48 hours for a job 123456 is
+   * `scontrol update partition=imlab qos=nogpu timelimit=48:00:00 jobid=123456`
+
 
 
 --- .class #id
@@ -849,24 +973,6 @@ exit
 
 <object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2017-himem.svg" type="image/svg+xml">
 </object>
-
-
---- .class #id
-
-## Need to run multiple jobs in sequence?
-
-* Option 1: Submit jobs as soon as previous jobs complete
-* Option 2: Submit jobs with a dependency
-    * [SLURM](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=slurm#submitting_dependency_jobs):
-  `sbatch --dependency=afterok:<JobID> <Submit Script>`
-    * [PBS](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=corona#submitting_dependency_jobs):
-  `qsub -W depend=afterok:<JobID> <Submit Script>`
-
-* You want to run several serial processor jobs on
-    * one node: your submit script should be able to run several serial
-    jobs in background and then use the `wait` command for all jobs to finish
-    * more than one node: this requires some background in scripting but the
-    idea is the same as above
 
 
 --- .class #id

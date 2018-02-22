@@ -151,7 +151,7 @@ only</li>
 <ul>
 <li>Theoretical Performance: 4.416 TFlops (CPU) + 17.46TFlops (GPU)</li>
 </ul></li>
-<li>To be merged with Sol in Fall 2017</li>
+<li>To be merged with Sol</li>
 </ul></li>
 <li>Unnamed : decommissioned faculty cluster for prototyping new resources
 
@@ -431,21 +431,21 @@ modified, appended or prepended</li>
 </thead><tbody>
 <tr>
 <td align="center">Fortran</td>
-<td align="center">gfortran</td>
-<td align="center">ifort</td>
-<td align="center">pgfortran</td>
+<td align="center"><code>gfortran</code></td>
+<td align="center"><code>ifort</code></td>
+<td align="center"><code>pgfortran</code></td>
 </tr>
 <tr>
 <td align="center">C</td>
-<td align="center">gcc</td>
-<td align="center">icc</td>
-<td align="center">pgcc</td>
+<td align="center"><code>gcc</code></td>
+<td align="center"><code>icc</code></td>
+<td align="center"><code>pgcc</code></td>
 </tr>
 <tr>
 <td align="center">C++</td>
-<td align="center">g++</td>
-<td align="center">icpc</td>
-<td align="center">pgc++</td>
+<td align="center"><code>g++</code></td>
+<td align="center"><code>icpc</code></td>
+<td align="center"><code>pgc++</code></td>
 </tr>
 </tbody></table>
 
@@ -492,6 +492,51 @@ modified, appended or prepended</li>
 
 <slide class="class" id="slide-10" style="background:#F1E7C8;">
   <hgroup>
+    <h2>Compiling and Running Serial Codes</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="sh">[2018-02-22 08:47.27] ~/Workshop/2017XSEDEBootCamp/OpenMP
+[alp514.sol-d118](842): icc -o laplacec laplace_serial.c
+[2018-02-22 08:47.46] ~/Workshop/2017XSEDEBootCamp/OpenMP
+[alp514.sol-d118](843): ./laplacec
+Maximum iterations [100-4000]?
+1000
+---------- Iteration number: 100 ------------
+[995,995]: 63.33  [996,996]: 72.67  [997,997]: 81.40  [998,998]: 88.97  [999,999]: 94.86  [1000,1000]: 98.67
+---------- Iteration number: 200 ------------
+[995,995]: 79.11  [996,996]: 84.86  [997,997]: 89.91  [998,998]: 94.10  [999,999]: 97.26  [1000,1000]: 99.28
+---------- Iteration number: 300 ------------
+[995,995]: 85.25  [996,996]: 89.39  [997,997]: 92.96  [998,998]: 95.88  [999,999]: 98.07  [1000,1000]: 99.49
+---------- Iteration number: 400 ------------
+[995,995]: 88.50  [996,996]: 91.75  [997,997]: 94.52  [998,998]: 96.78  [999,999]: 98.48  [1000,1000]: 99.59
+---------- Iteration number: 500 ------------
+[995,995]: 90.52  [996,996]: 93.19  [997,997]: 95.47  [998,998]: 97.33  [999,999]: 98.73  [1000,1000]: 99.66
+---------- Iteration number: 600 ------------
+[995,995]: 91.88  [996,996]: 94.17  [997,997]: 96.11  [998,998]: 97.69  [999,999]: 98.89  [1000,1000]: 99.70
+---------- Iteration number: 700 ------------
+[995,995]: 92.87  [996,996]: 94.87  [997,997]: 96.57  [998,998]: 97.95  [999,999]: 99.01  [1000,1000]: 99.73
+---------- Iteration number: 800 ------------
+[995,995]: 93.62  [996,996]: 95.40  [997,997]: 96.91  [998,998]: 98.15  [999,999]: 99.10  [1000,1000]: 99.75
+---------- Iteration number: 900 ------------
+[995,995]: 94.21  [996,996]: 95.81  [997,997]: 97.18  [998,998]: 98.30  [999,999]: 99.17  [1000,1000]: 99.77
+---------- Iteration number: 1000 ------------
+[995,995]: 94.68  [996,996]: 96.15  [997,997]: 97.40  [998,998]: 98.42  [999,999]: 99.22  [1000,1000]: 99.78
+
+Max error at iteration 1000 was 0.034767
+Total time was 4.099030 seconds.
+</code></pre>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-11" style="background:#F1E7C8;">
+  <hgroup>
     <h2>Compilers for Parallel Programming: OpenMP &amp; TBB</h2>
   </hgroup>
   <article data-timings="">
@@ -508,17 +553,17 @@ modified, appended or prepended</li>
 </thead><tbody>
 <tr>
 <td align="center">GNU</td>
-<td align="center">-fopenmp</td>
-<td align="center">-L$TBBROOT/lib/intel64_lin/gcc4.4 -ltbb</td>
+<td align="center"><code>-fopenmp</code></td>
+<td align="center"><code>-L$TBBROOT/lib/intel64_lin/gcc4.4 -ltbb</code></td>
 </tr>
 <tr>
 <td align="center">Intel</td>
-<td align="center">-qopenmp</td>
-<td align="center">-L$TBBROOT/lib/intel64_lin/gcc4.4 -ltbb</td>
+<td align="center"><code>-qopenmp</code></td>
+<td align="center"><code>-L$TBBROOT/lib/intel64_lin/gcc4.4 -ltbb</code></td>
 </tr>
 <tr>
 <td align="center">PGI</td>
-<td align="center">-mp</td>
+<td align="center"><code>-mp</code></td>
 <td align="center"></td>
 </tr>
 </tbody></table>
@@ -559,7 +604,52 @@ snip
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-11" style="background:#F1E7C8;">
+<slide class="class" id="slide-12" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Compiling and Running OpenMP Codes</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="sh">[2018-02-22 08:47.56] ~/Workshop/2017XSEDEBootCamp/OpenMP/Solutions
+[alp514.sol-d118](845): icc -qopenmp -o laplacec laplace_omp.c
+[2018-02-22 08:48.09] ~/Workshop/2017XSEDEBootCamp/OpenMP/Solutions
+[alp514.sol-d118](846): OMP_NUM_THREADS=4 ./laplacec
+Maximum iterations [100-4000]?
+1000
+---------- Iteration number: 100 ------------
+[995,995]: 63.33  [996,996]: 72.67  [997,997]: 81.40  [998,998]: 88.97  [999,999]: 94.86  [1000,1000]: 98.67
+---------- Iteration number: 200 ------------
+[995,995]: 79.11  [996,996]: 84.86  [997,997]: 89.91  [998,998]: 94.10  [999,999]: 97.26  [1000,1000]: 99.28
+---------- Iteration number: 300 ------------
+[995,995]: 85.25  [996,996]: 89.39  [997,997]: 92.96  [998,998]: 95.88  [999,999]: 98.07  [1000,1000]: 99.49
+---------- Iteration number: 400 ------------
+[995,995]: 88.50  [996,996]: 91.75  [997,997]: 94.52  [998,998]: 96.78  [999,999]: 98.48  [1000,1000]: 99.59
+---------- Iteration number: 500 ------------
+[995,995]: 90.52  [996,996]: 93.19  [997,997]: 95.47  [998,998]: 97.33  [999,999]: 98.73  [1000,1000]: 99.66
+---------- Iteration number: 600 ------------
+[995,995]: 91.88  [996,996]: 94.17  [997,997]: 96.11  [998,998]: 97.69  [999,999]: 98.89  [1000,1000]: 99.70
+---------- Iteration number: 700 ------------
+[995,995]: 92.87  [996,996]: 94.87  [997,997]: 96.57  [998,998]: 97.95  [999,999]: 99.01  [1000,1000]: 99.73
+---------- Iteration number: 800 ------------
+[995,995]: 93.62  [996,996]: 95.40  [997,997]: 96.91  [998,998]: 98.15  [999,999]: 99.10  [1000,1000]: 99.75
+---------- Iteration number: 900 ------------
+[995,995]: 94.21  [996,996]: 95.81  [997,997]: 97.18  [998,998]: 98.30  [999,999]: 99.17  [1000,1000]: 99.77
+---------- Iteration number: 1000 ------------
+[995,995]: 94.68  [996,996]: 96.15  [997,997]: 97.40  [998,998]: 98.42  [999,999]: 99.22  [1000,1000]: 99.78
+
+Max error at iteration 1000 was 0.034767
+Total time was 2.459961 seconds.
+</code></pre>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-13" style="background:#F1E7C8;">
   <hgroup>
     <h2>Compilers for Parallel Programming: MPI</h2>
   </hgroup>
@@ -576,15 +666,15 @@ snip
 </thead><tbody>
 <tr>
 <td align="center">Fortran</td>
-<td align="center">mpif90</td>
+<td align="center"><code>mpif90</code></td>
 </tr>
 <tr>
 <td align="center">C</td>
-<td align="center">mpicc</td>
+<td align="center"><code>mpicc</code></td>
 </tr>
 <tr>
 <td align="center">C++</td>
-<td align="center">mpicxx</td>
+<td align="center"><code>mpicxx</code></td>
 </tr>
 </tbody></table>
 
@@ -624,7 +714,7 @@ ifort -fPIC -I/share/Apps/mvapich2/2.1/intel-16.0.3/include
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-12" style="background:#F1E7C8;">
+<slide class="class" id="slide-14" style="background:#F1E7C8;">
   <hgroup>
     <h2>MPI Libraries</h2>
   </hgroup>
@@ -641,7 +731,8 @@ ifort -fPIC -I/share/Apps/mvapich2/2.1/intel-16.0.3/include
 <ul>
 <li>available in cluster edition of Intel Compiler Suite. Not available at Lehigh</li>
 </ul></li>
-<li><code>IBM MPI</code> for IBM BlueGene and <code>CRAY MPI</code> for Cray systems</li>
+<li><code>IBM MPI</code> for IBM BlueGene and </li>
+<li><code>CRAY MPI</code> for Cray systems</li>
 </ul></li>
 <li><code>OpenMPI</code>: A Free, Open Source implementation from merger of three well know MPI implementations. Can be used for commodity network as well as high speed network
 
@@ -661,7 +752,7 @@ ifort -fPIC -I/share/Apps/mvapich2/2.1/intel-16.0.3/include
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-13" style="background:#F1E7C8;">
+<slide class="class" id="slide-15" style="background:#F1E7C8;">
   <hgroup>
     <h2>Running MPI Programs</h2>
   </hgroup>
@@ -713,33 +804,40 @@ ifort -fPIC -I/share/Apps/mvapich2/2.1/intel-16.0.3/include
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-14" style="background:#F1E7C8;">
+<slide class="class" id="slide-16" style="background:#F1E7C8;">
   <hgroup>
-    <h2>Running MPI Codes</h2>
+    <h2>Compiling and Running MPI Codes</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code class="sh">[2017-10-30 08:47.46] ~/Workshop/2017XSEDEBootCamp/MPI/Solutions
-[alp514.sol-b112](993): mpiexec -n 4 ./laplace_f90 
- Maximum iterations [100-4000]?
-200
- ---------- Iteration number:          100  ---------------
-( 995, 995): 63.33  ( 996, 996): 72.67  ( 997, 997): 81.40  ( 998, 998): 88.97  ( 999, 999): 94.86  (1000,1000): 98.67  
- Max error at iteration          200  was   0.177397842364442     
- Total time was   0.1172750      seconds.
- ---------- Iteration number:          200  ---------------
-( 995, 995): 79.11  ( 996, 996): 84.86  ( 997, 997): 89.91  ( 998, 998): 94.10  ( 999, 999): 97.26  (1000,1000): 99.28  
-[2017-10-30 08:47.57] ~/Workshop/2017XSEDEBootCamp/MPI/Solutions
-[alp514.sol-b112](994): mpiexec -n 4 ./laplace_c
+    <pre><code class="sh">[2018-02-22 08:48.27] ~/Workshop/2017XSEDEBootCamp/MPI/Solutions
+[alp514.sol-d118](848): mpicc -o laplacec laplace_mpi.c
+[2018-02-22 08:48.41] ~/Workshop/2017XSEDEBootCamp/MPI/Solutions
+[alp514.sol-d118](849): mpiexec -n 4 ./laplacec
 Maximum iterations [100-4000]?
-200
+1000
 ---------- Iteration number: 100 ------------
-[995,995]: 63.33  [996,996]: 72.67  [997,997]: 81.40  [998,998]: 88.97  [999,999]: 94.86  [1000,1000]: 98.67  
+[995,995]: 63.33  [996,996]: 72.67  [997,997]: 81.40  [998,998]: 88.97  [999,999]: 94.86  [1000,1000]: 98.67
 ---------- Iteration number: 200 ------------
-[995,995]: 79.11  [996,996]: 84.86  [997,997]: 89.91  [998,998]: 94.10  [999,999]: 97.26  [1000,1000]: 99.28  
+[995,995]: 79.11  [996,996]: 84.86  [997,997]: 89.91  [998,998]: 94.10  [999,999]: 97.26  [1000,1000]: 99.28
+---------- Iteration number: 300 ------------
+[995,995]: 85.25  [996,996]: 89.39  [997,997]: 92.96  [998,998]: 95.88  [999,999]: 98.07  [1000,1000]: 99.49
+---------- Iteration number: 400 ------------
+[995,995]: 88.50  [996,996]: 91.75  [997,997]: 94.52  [998,998]: 96.78  [999,999]: 98.48  [1000,1000]: 99.59
+---------- Iteration number: 500 ------------
+[995,995]: 90.52  [996,996]: 93.19  [997,997]: 95.47  [998,998]: 97.33  [999,999]: 98.73  [1000,1000]: 99.66
+---------- Iteration number: 600 ------------
+[995,995]: 91.88  [996,996]: 94.17  [997,997]: 96.11  [998,998]: 97.69  [999,999]: 98.89  [1000,1000]: 99.70
+---------- Iteration number: 700 ------------
+[995,995]: 92.87  [996,996]: 94.87  [997,997]: 96.57  [998,998]: 97.95  [999,999]: 99.01  [1000,1000]: 99.73
+---------- Iteration number: 800 ------------
+[995,995]: 93.62  [996,996]: 95.40  [997,997]: 96.91  [998,998]: 98.15  [999,999]: 99.10  [1000,1000]: 99.75
+---------- Iteration number: 900 ------------
+[995,995]: 94.21  [996,996]: 95.81  [997,997]: 97.18  [998,998]: 98.30  [999,999]: 99.17  [1000,1000]: 99.77
+---------- Iteration number: 1000 ------------
+[995,995]: 94.68  [996,996]: 96.15  [997,997]: 97.40  [998,998]: 98.42  [999,999]: 99.22  [1000,1000]: 99.78
 
-Max error at iteration 200 was 0.177398
-Total time was 0.259370 seconds.
-
+Max error at iteration 1000 was 0.034767
+Total time was 1.030180 seconds.
 </code></pre>
 
   </article>
@@ -994,9 +1092,14 @@ Total time was 0.259370 seconds.
 <td align="center">24</td>
 </tr>
 <tr>
-<td align="center"><em>eng</em></td>
+<td align="center">eng</td>
 <td align="center">72</td>
-<td align="center">24 (will change to 22+2)</td>
+<td align="center">22</td>
+</tr>
+<tr>
+<td align="center">eng-gpu</td>
+<td align="center">72</td>
+<td align="center">24</td>
 </tr>
 <tr>
 <td align="center"><em>engc</em></td>
@@ -1129,7 +1232,7 @@ memory that should be requested is 126GB.</p></li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-24" style="background:#F1E7C8;">
+<slide class="class" id="slide-26" style="background:#F1E7C8;">
   <hgroup>
     <h2>Job Types</h2>
   </hgroup>
@@ -1173,7 +1276,7 @@ analyze results</li>
 
 <slide class="class small" id="id" style="background:#F1E7C8;">
   <hgroup>
-    <h2>Useful SBATCH Directives</h2>
+    <h2>Useful SLURM Directives</h2>
   </hgroup>
   <article data-timings="">
     <table><thead>
@@ -1243,7 +1346,7 @@ analyze results</li>
 
 <slide class="class small" id="id" style="background:#F1E7C8;">
   <hgroup>
-    <h2>Useful SBATCH Directives (contd)</h2>
+    <h2>Useful SLURM Directives (contd)</h2>
   </hgroup>
   <article data-timings="">
     <table><thead>
@@ -1321,7 +1424,7 @@ analyze results</li>
 
 <slide class="class" id="id" style="background:#F1E7C8;">
   <hgroup>
-    <h2>SBATCH Filename Patterns</h2>
+    <h2>SLURM Filename Patterns</h2>
   </hgroup>
   <article data-timings="">
     <ul>
@@ -1541,13 +1644,13 @@ symbols, which are a percent sign &quot;%&quot; followed by a letter (e.g. %j). 
 <li>   <code>qsub -I -V -l walltime=&lt;hh:mm:ss&gt;,nodes=&lt;# of nodes&gt;:ppn=&lt;# of core/node&gt; -q &lt;queue
 name&gt;</code></li>
 </ul></li>
-<li><p>SLURM:  Use <code>srun</code> command with SBATCH Directives followed by <code>--pty /bin/bash</code></p>
+<li><p>SLURM:  Use <code>srun</code> command with SLURM Directives followed by <code>--pty /bin/bash</code></p>
 
 <ul>
 <li><code>srun --time=&lt;hh:mm:ss&gt; --nodes=&lt;# of nodes&gt; --ntasks-per-node=&lt;#
 of core/node&gt; -p &lt;queue name&gt; --pty /bin/bash</code></li>
 <li>If you have <code>soltools</code> module loaded, then use <code>interact</code> with at
-least one SBATCH Directive
+least one SLURM Directive
 
 <ul>
 <li><code>interact -t 20</code> [Assumes <code>-p lts -n 1 -N 20</code>]</li>
@@ -1581,6 +1684,18 @@ partition</li>
     <ul>
 <li>Workflow: write a script -&gt; submit script -&gt; take mini vacation -&gt; analyze
 results</li>
+<li>Batch scripts are written in bash, tcsh, csh or sh
+
+<ul>
+<li>ksh scripts will work if ksh is installed</li>
+</ul></li>
+<li>Add PBS or SLURM directives after the shebang line but before any shell
+commands
+
+<ul>
+<li>SLURM: <code>#SBATCH DIRECTIVES</code></li>
+<li>PBS: <code>#PBS DIRECTIVES</code> </li>
+</ul></li>
 <li><p>Submitting Batch Jobs</p>
 
 <ul>
@@ -1743,6 +1858,40 @@ exit
 
 <slide class="class" id="id" style="background:#F1E7C8;">
   <hgroup>
+    <h2>Need to run multiple jobs in sequence?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Option 1: Submit jobs as soon as previous jobs complete</li>
+<li><p>Option 2: Submit jobs with a dependency</p>
+
+<ul>
+<li><a href="https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=slurm#submitting_dependency_jobs">SLURM</a>:
+<code>sbatch --dependency=afterok:&lt;JobID&gt; &lt;Submit Script&gt;</code></li>
+<li><a href="https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=corona#submitting_dependency_jobs">PBS</a>:
+<code>qsub -W depend=afterok:&lt;JobID&gt; &lt;Submit Script&gt;</code></li>
+</ul></li>
+<li><p>You want to run several serial processor jobs on</p>
+
+<ul>
+<li>one node: your submit script should be able to run several serial
+jobs in background and then use the <code>wait</code> command for all jobs to finish</li>
+<li>more than one node: this requires some background in scripting but the
+idea is the same as above</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
     <h2>Monitoring &amp; Manipulating Jobs</h2>
   </hgroup>
   <article data-timings="">
@@ -1799,6 +1948,43 @@ jobs.
 <li><strong>checkload</strong>: <code>sinfo</code> with additional options to show load on compute nodes.<br></li>
 </ul></li>
 <li>load the <code>soltools</code> module to get access to RC staff created scripts</li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-40" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Modifying Resources for Queued JObs</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Modify a job after submission but before starting: 
+
+<ul>
+<li><code>scontrol update SPECIFICATION jobid=&lt;jobid&gt;</code></li>
+</ul></li>
+<li>Examples of <code>SPECIFICATION</code> are
+
+<ul>
+<li>add dependency after a job has been submitted: <code>dependency=&lt;attributes&gt;</code></li>
+<li>change job name: <code>jobname=&lt;name&gt;</code></li>
+<li>change partition: <code>partition=&lt;name&gt;</code></li>
+<li>modify requested runtime: <code>timelimit=&lt;hh:mm:ss&gt;</code></li>
+<li>change quality of service (when changing to imlab/engc): <code>qos=nogpu</code> </li>
+<li>request gpus (when changing to one of the gpu partitions): <code>gres=gpu:&lt;1 or 2&gt;</code></li>
+</ul></li>
+<li>SPECIFICATIONs can be combined for e.g. command to move a queued job to <code>imlab</code> partition and change timelimit to 48 hours for a job 123456 is
+
+<ul>
+<li><code>scontrol update partition=imlab qos=nogpu timelimit=48:00:00 jobid=123456</code></li>
+</ul></li>
 </ul>
 
   </article>
@@ -2005,40 +2191,6 @@ allocation</li>
 
 <slide class="class" id="id" style="background:#F1E7C8;">
   <hgroup>
-    <h2>Need to run multiple jobs in sequence?</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li>Option 1: Submit jobs as soon as previous jobs complete</li>
-<li><p>Option 2: Submit jobs with a dependency</p>
-
-<ul>
-<li><a href="https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=slurm#submitting_dependency_jobs">SLURM</a>:
-<code>sbatch --dependency=afterok:&lt;JobID&gt; &lt;Submit Script&gt;</code></li>
-<li><a href="https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=corona#submitting_dependency_jobs">PBS</a>:
-<code>qsub -W depend=afterok:&lt;JobID&gt; &lt;Submit Script&gt;</code></li>
-</ul></li>
-<li><p>You want to run several serial processor jobs on</p>
-
-<ul>
-<li>one node: your submit script should be able to run several serial
-jobs in background and then use the <code>wait</code> command for all jobs to finish</li>
-<li>more than one node: this requires some background in scripting but the
-idea is the same as above</li>
-</ul></li>
-</ul>
-
-  </article>
-  <!-- Footer  -->
-  <footer class = 'lufoot'>
-     <img height = '20px' src='assets/img/lulogo.jpg'>
-  </footer>
-  <!-- End Footer-->
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:#F1E7C8;">
-  <hgroup>
     <h2>Additional Help &amp; Information</h2>
   </hgroup>
   <article data-timings="">
@@ -2140,230 +2292,248 @@ idea is the same as above</li>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='Compilers for Parallel Programming: OpenMP &amp; TBB'>
+        data-slide=10 title='Compiling and Running Serial Codes'>
          10
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=11 title='Compilers for Parallel Programming: MPI'>
+        data-slide=11 title='Compilers for Parallel Programming: OpenMP &amp; TBB'>
          11
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='MPI Libraries'>
+        data-slide=12 title='Compiling and Running OpenMP Codes'>
          12
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=13 title='Running MPI Programs'>
+        data-slide=13 title='Compilers for Parallel Programming: MPI'>
          13
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=14 title='Running MPI Codes'>
+        data-slide=14 title='MPI Libraries'>
          14
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=15 title='Cluster Environment'>
+        data-slide=15 title='Running MPI Programs'>
          15
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=16 title='How to run jobs'>
+        data-slide=16 title='Compiling and Running MPI Codes'>
          16
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=17 title='Scheduler &amp; Resource Management'>
+        data-slide=17 title='Cluster Environment'>
          17
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=18 title='Job Scheduling'>
+        data-slide=18 title='How to run jobs'>
          18
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=19 title='Backfilling'>
+        data-slide=19 title='Scheduler &amp; Resource Management'>
          19
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=20 title='How much time must I request'>
+        data-slide=20 title='Job Scheduling'>
          20
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=21 title='Available Queues'>
+        data-slide=21 title='Backfilling'>
          21
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=22 title='How much memory can or should I use per core?'>
+        data-slide=22 title='How much time must I request'>
          22
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=23 title='Basic Job Manager Commands'>
+        data-slide=23 title='Available Queues'>
          23
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=24 title='Job Types'>
+        data-slide=24 title='How much memory can or should I use per core?'>
          24
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=25 title='Useful SBATCH Directives'>
+        data-slide=25 title='Basic Job Manager Commands'>
          25
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=26 title='Useful SBATCH Directives (contd)'>
+        data-slide=26 title='Job Types'>
          26
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=27 title='SBATCH Filename Patterns'>
+        data-slide=27 title='Useful SLURM Directives'>
          27
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=28 title='Useful PBS Directives'>
+        data-slide=28 title='Useful SLURM Directives (contd)'>
          28
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=29 title='Useful PBS/SLURM environmental variables'>
+        data-slide=29 title='SLURM Filename Patterns'>
          29
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=30 title='Job Types: Interactive'>
+        data-slide=30 title='Useful PBS Directives'>
          30
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=31 title='Job Types: Batch'>
+        data-slide=31 title='Useful PBS/SLURM environmental variables'>
          31
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=32 title='Minimal submit script for Serial Jobs'>
+        data-slide=32 title='Job Types: Interactive'>
          32
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=33 title='Minimal submit script for MPI Job'>
+        data-slide=33 title='Job Types: Batch'>
          33
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=34 title='Minimal submit script for OpenMP Job'>
+        data-slide=34 title='Minimal submit script for Serial Jobs'>
          34
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=35 title='Minimal submit script for LAMMPS GPU job'>
+        data-slide=35 title='Minimal submit script for MPI Job'>
          35
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=36 title='Monitoring &amp; Manipulating Jobs'>
+        data-slide=36 title='Minimal submit script for OpenMP Job'>
          36
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=37 title='Usage Reporting'>
+        data-slide=37 title='Minimal submit script for LAMMPS GPU job'>
          37
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=38 title='Usage Reporting'>
+        data-slide=38 title='Need to run multiple jobs in sequence?'>
          38
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=39 title='Online Usage Reporting'>
+        data-slide=39 title='Monitoring &amp; Manipulating Jobs'>
          39
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=40 title='Online Usage Reporting: Sol Cluster'>
+        data-slide=40 title='Modifying Resources for Queued JObs'>
          40
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=41 title='Online Usage Reporting: lts partition'>
+        data-slide=41 title='Usage Reporting'>
          41
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=42 title='Online Usage Reporting: imlab &amp; imlab-gpu partitions'>
+        data-slide=42 title='Usage Reporting'>
          42
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=43 title='Online Usage Reporting: eng partitions'>
+        data-slide=43 title='Online Usage Reporting'>
          43
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=44 title='Online Usage Reporting: engc partitions'>
+        data-slide=44 title='Online Usage Reporting: Sol Cluster'>
          44
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=45 title='Online Usage Reporting: himem partitions'>
+        data-slide=45 title='Online Usage Reporting: lts partition'>
          45
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=46 title='Need to run multiple jobs in sequence?'>
+        data-slide=46 title='Online Usage Reporting: imlab &amp; imlab-gpu partitions'>
          46
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=47 title='Additional Help &amp; Information'>
+        data-slide=47 title='Online Usage Reporting: eng partitions'>
          47
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=48 title='Online Usage Reporting: engc partitions'>
+         48
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=49 title='Online Usage Reporting: himem partitions'>
+         49
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=50 title='Additional Help &amp; Information'>
+         50
       </a>
     </li>
   </ul>
