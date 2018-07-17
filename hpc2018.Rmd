@@ -350,6 +350,7 @@ license     : by-sa
   - `-l{libname}`: link compiled code to a library called libname. e.g. to use lapack libraries, add `-llapack` as a compiler flag.
   - `-L{directory path}`: directory to search for libraries. e.g. `-L/usr/lib64 -llapack` will search for lapack libraries in /usr/lib64.
   - `-I{directory path}`: directory to search for include files and fortran modules.
+  - `-axCORE-AVX512,CORE-AVX2,CORE-AVX-I,AVX` : target Sandybridge and later processors for optimization (Intel Compilers only)
 
 
 --- .class
