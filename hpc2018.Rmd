@@ -41,11 +41,10 @@ license     : by-sa
   - 13 nodes, dual 12-core Intel Xeon E5-2650 v4 2.3Ghz CPU, 30 MB Cache, 64GB
   RAM
   - 1 node, dual 8-core Intel Xeon 2630 v3 2.4GHz CPU, 20 MB Cache, 512GB RAM
+  - 7 nodes, dual 18-core Intel Xeon Gold 6140 2.3GHz CPU, 24.7 MB Cache, 192GB RAM
   - 68 nVIDIA GTX 1080 GPU cards
   - 1TB HDD per node
   - 2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric
-  - In progress: 7 nodes, dual 18-core Intel Xeon Gold 6140 2.3GHz CPU, 24.7 MB
-  Cache, 192GB RAM
   - Theoretical Performance: 65.965 TFLOPs (CPU) + 17.476 TFLOPs (GPU)
   - Access: Batch Scheduled, interactive on login node for compiling, editing
   only
@@ -507,7 +506,7 @@ ifort -fPIC -I/share/Apps/mvapich2/2.1/intel-16.0.3/include
 ## MPI Libraries
 
 * There are two different MPI implementations commonly used
-* `MPICH`: Developed by Argonned National Laboratory
+* `MPICH`: Developed by Argonne National Laboratory
    - used as a starting point for various commercial and open source MPI libraries
    - `MVAPICH2`: Developed by D. K. Panda with support for  InfiniBand, iWARP, RoCE, and Intel Omni-Path. (default MPI on Sol)
    - `Intel MPI`: Intel's version of MPI. __You need this for Xeon Phi MICs__.

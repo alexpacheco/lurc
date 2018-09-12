@@ -23,7 +23,8 @@ license     : by-sa
 * Research Computing Staff
   - __Alex Pacheco, Manager &#38; XSEDE Campus Champion__
   - Steve Anthony, System Administrator
-  - Dan Brashler, Computing Consultant
+  - Dan Brashler, CAS Computing Consultant
+  - Sachin Joshi, Data Analyst & Visualization Specialist
 
 --- .class
 
@@ -43,6 +44,100 @@ license     : by-sa
 
 --- .class
 
+## Background and Defintions
+
+* Computational Science and Engineering
+    - Gain understanding, mainly through the analysis of mathematical models implemented on computers.
+    - Construct mathematical models and quantitative analysis techniques, using computers to analyze and solve scientific problems.
+    - Typically, these models require large amount of floating-point calculations not possible on desktops and laptops.
+    -  The field's growth drove the need for HPC and benefited from it.
+* HPC
+    - High Performance Computing (HPC) is computation at the forefront of modern technology, often done on a supercomputer. 
+* Supercomputer
+    -  A supercomputer is a computer at the frontline of current processing capacity, particularly speed of calculation.
+
+--- .class
+
+## Why use HPC?
+
+*  HPC may be the only way to achieve computational goals in a given amount of time
+     - Size: Many problems that are interesting to scientists and engineers cannot fit on a PC usually because they need more than a few GB of RAM, or more than a few hundred GB of disk.
+     - Speed: Many problems that are interesting to scientists and engineers would take a very long time to run on a PC: months or even years; but a problem that would take a month on a PC might only take a few hours on a supercomputer
+
+<img src="assets/img/irma-at201711_ensmodel_10-5PM.gif" alt="Irma Ensemble
+Model" width="225px">
+<img src="assets/img/irma-at201711_model-10-5PM.gif" alt="Irma High Probability"
+width="225px">
+<img src="assets/img/jose-at201712_ensmodel.gif" alt="Jose Ensemble Model"
+width="225px">
+<img src="assets/img/jose-euro-sep11.png" alt="Jose Euro Model Track Forecast"
+width="275px">
+
+
+--- .class
+
+##  Parallel Computing
+
+* many calculations are carried out simultaneously
+*  based on principle that large problems can often be divided into smaller ones, which are then solved in parallel
+*  Parallel computers can be roughly classified according to the level at which the hardware supports parallelism.
+    - Multicore computing
+    -  Symmetric multiprocessing
+    -  Distributed computing
+    -  Grid computing
+    -  General-purpose computing on graphics processing units (GPGPU)
+
+
+--- .class &twocol_width
+
+## What does HPC do?
+
+*** =left width:45%
+
+* Simulation of Physical Phenomena
+     - Storm Surge Prediction
+     -  Black Holes Colliding
+     -  Molecular Dynamics
+* Data analysis and Mining
+     -  Bioinformatics
+     -  Signal Processing
+     -  Fraud detection
+* Visualization
+
+<img src="assets/img/Isaac-Storm-Surge.jpeg" alt="Isaac Storm Surge" width="200px">
+<img src="assets/img/Colliding-Black-Holes.jpeg" alt="Colliding Black Holes" width="170px">
+
+
+*** =right width:45%
+
+* Design
+     -  Supersonic ballute
+     -  Boeing 787 design
+     -  Drug Discovery
+     -  Oil Exploration and Production
+     -  Automotive Design
+     -  Art and Entertainment
+
+<img src="assets/img/Molecular-Dynamics.jpeg" alt="Molecular Dynamics" width="200px">
+<img src="assets/img/Plane-Design.jpg" alt="Plane Design" width="200px">
+
+
+--- .class
+
+## HPC by Disciplines
+
+* Traditional Disciplines
+    - Science: Physics, Chemistry, Biology, Material Science
+    - Engineering: Mechanical, Structural, Civil, Environmental, Chemical
+* Non Traditional Disciplines
+    - Finance
+        - Preditive Analytics
+        - Trading
+    - Humanities
+         - Culturomics or cultural analytics: study human behavior and cultural trends through quantitative analysis of digitized texts, images and videos.
+
+--- .class
+
 ## Research Computing Resources
 
 * <strong> Maia </strong>
@@ -58,6 +153,9 @@ license     : by-sa
 
   [FLOPs for various AMD & Intel CPU generation](https://en.wikipedia.org/wiki/FLOPS#FLOPs_per_cycle)
 
+  - `Currently out of warranty`. 
+  - `Will be permanently shut down in case of hardware failure`
+  - `No plans to replace Maia`
 
 --- .class
 
@@ -72,12 +170,11 @@ license     : by-sa
   - 13 nodes, dual 12-core Intel Xeon E5-2650 v4 2.3Ghz CPU, 30 MB Cache, 64GB
   RAM
   - 1 node, dual 8-core Intel Xeon 2630 v3 2.4GHz CPU, 20 MB Cache, 512GB RAM
-  - 68 nVIDIA GTX 1080 GPU cards
+  - 9 nodes, dual 18-core Intel Xeon Gold 6140 2.3GHz CPU, 24.7 MB Cache, 192GB RAM
+  - 66 nVIDIA GTX 1080 GPU cards
   - 1TB HDD per node
   - 2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric
-  - In progress: 7 nodes, dual 18-core Intel Xeon Gold 6140 2.3GHz CPU, 24.7 MB
-  Cache, 192GB RAM
-  - Theoretical Performance: 65.965 TFLOPs (CPU) + 17.476 TFLOPs (GPU)
+  - Theoretical Performance: 56.2048 TFLOPs (CPU) + 16.962 TFLOPs (GPU)
   - Access: Batch Scheduled, interactive on login node for compiling, editing
   only
 
@@ -136,8 +233,7 @@ license     : by-sa
      * Theoretical Performance: 1.766TFlops
 * __Pisces__: Keith Moored, Mechanical Engineering and Mechanics
   - Six nodes, dual 10-core Intel Xeon E5-2650v3, 2.3GHz, 64GB RAM, nVIDIA Tesla K80
-     * Theoretical Performance: 4.416 TFlops (CPU) + 17.46TFlops (GPU)
-  - To be merged with Sol
+     * Theoretical Performance: 3.840 TFlops (CPU) + 17.46TFlops (GPU)
 * Unnamed : decommissioned faculty cluster for prototyping new resources
   - Twenty nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
      * Theoretical Performance: 6.656TFlops
@@ -153,9 +249,9 @@ license     : by-sa
 | Monocacy | 128 | 512 | 2.662 |
 | Unnamed | 320 | 1280 | 6.656 | 
 | Baltrusaitislab | 96 | 384 | 1.766 |
-| Pisces | 120 | 384 | 4.416 | 12 | 29952 | 144 | 17.472 |
-| Sol | 1552 | 8064 | 65.965 | 68 | 174080 | 544 | 17.476 |
-| Total | 2248 | 10752 | 82.106 | 80 | 204032 | 688 | 34.948 | 
+| Pisces | 120 | 384 | 3.840 | 12 | 29952 | 144 | 17.472 |
+| Sol | 1624 | 8448 | 56.20 | 66 | 168960 | 528 | 16.96 |
+| Total | 2320 | 11136 | 71.77 | 78 | 198912 | 672 | 34.434 | 
 
 
 --- .class
@@ -212,10 +308,11 @@ license     : by-sa
 
 * New sustainable model for High Performance Computing at Lehigh
 * Faculty (Condo Investor) purchase compute nodes from grants to increase overall capacity of Sol
-* LTS will provide for four years
+* LTS will provide for four years or length of hardware warranty purchased.
    - System Administration, Power and Cooling, User Support for Condo Investments
 * Condo Investor
-   - receives annual allocation equivalent to their investment for four years
+   - receives annual allocation equivalent to their investment for the length of
+     investment
    - can utilize allocations on all available nodes, including nodes from other Condo Investors
    - allows idle cycles on investment to be used by other Sol users
    - unused allocation will not rollover to the next allocation cycle.
@@ -233,12 +330,12 @@ license     : by-sa
    - Anand Jagota, Chemical Engineering (1 node)
    - Brian Chen, Computer Science & Engineering (1 node)
    - Ed Webb & Alp Oztekin, Mechanical Engineering (6 nodes)
-   - Jeetain Mittal & Srinivas Rangarajan, Chemical Engineering (13 nodes, 18 GPUs)
+   - Jeetain Mittal & Srinivas Rangarajan, Chemical Engineering (13 nodes, 16 GPUs)
    - Seth Richards-Shubik, Economics (1 node)
    - Ganesh Balasubramanian, Mechanical Engineering (7 nodes)
-        - March 1 targeted production date
+   - Department of Industrial & Systems Engineering (2 nodes)
 
-* Total SU on Sol after Condo Investments: 13,595,520
+* Total SU on Sol after Condo Investments: 14,226,240
 
 
 --- .class
@@ -311,7 +408,7 @@ license     : by-sa
   - [Sol](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=sol#installed_software): /share/Apps
 * Software is managed using module environment
   - Why? We may have different versions of same software or software built with different compilers
-  - Module environment allows you to dynamically change your *nix environment based on software being used
+  - Module environment allows you to dynamically change your &#42;nix environment based on software being used
   - Standard on many University and national High Performance Computing resource since circa 2011
 * How to use Sol/Maia Software on your [linux](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=linux) workstation
 * LTS provides [licensed and open source software](https://software.lehigh.edu) for Windows, Mac and Linux and [Gogs](https://gogs.cc.lehigh.eu), a self hosted Git Service or Github clone
@@ -333,13 +430,6 @@ license     : by-sa
 * Users who prefer not to use the module environment will need to modify their
   .bashrc or .tcshrc files. Run `module show` for list variables that need
   modified, appended or prepended
-
-
---- .class
-
-## Software on Sol
-
-<img width = '960px' src = 'assets/img/sol-module.png'>
 
 
 --- .class &twocol_width
@@ -398,7 +488,7 @@ license     : by-sa
    - Stanford NLP    
 
 
-<span class="tiny">_Python modules_</span>
+<span class="tiny">_[Python packages](https://go.lehigh.edu/python)_</span>
 
 
 *** =right width:45%
@@ -493,7 +583,7 @@ license     : by-sa
 
 * You can always install a software in your home directory
    - [SPACK](https://spack.readthedocs.io) is an excellent package manager that can even create module files
-* Stay compliant with software licensing
+* `Stay compliant with software licensing`
 * Modify your .bashrc/.tcshrc to add software to your path, OR
 * create a module and dynamically load it so that it doesn't interfere 
  with other software installed on the system
@@ -558,7 +648,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 
 
 *** =left width:60%
-* The five-year, $121-million project is supported by the National Science Foundation. 
+* The five-year, &#36;121-million project is supported by the National Science Foundation. 
 
 * It replaces and expands on the NSF TeraGrid project.
 
@@ -578,12 +668,9 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 
 * Texas Advanced Computing Center (TACC) 
    - Stampede2: 18 PFlops 
-   - Wrangler for Data Analytics
+   - Wrangler for Data Analytics: 62 TFLops
        - 0.5PB high speed flash storage
        - 10PB file system at TACC and IU
-   - Maverick for Interactive Visualization and Data Analytics (Decommissioning in April 2018)
-* Louisiana State University
-   -  SuperMIC: 925 TFlops 
 
 --- .class 
 
@@ -594,15 +681,15 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 
 * Indiana University 
    - Jetstream: Cloud Computing Environment for IaaS, Paas and SaaS
-         - 0.5 PFlops and 2 PB block and object storage
+         - 516 TFlops and 2 PB block and object storage
 
 * Pittsburgh Supercomputing Center
    - Bridges: 894 Flops and 144 TiB RAM 
 
 * Stanford University
-   - XStream: 1PFlops, 65 nodes with 8 NVIDIA Tesla K80 each
+   - XStream: 1 PFlops, 65 nodes with 8 NVIDIA Tesla K80 each
 
-* Open Science Grid
+* Open Science Grid: 50 TFLOPs
 
 <!--
 <img width = '400px' src = 'assets/img/xsede.png'>
@@ -629,15 +716,28 @@ and high-throughput computing and other digital services, opportunities and reso
 
 --- .class
 
+## National Science Foundation (NSF)
+
+* In addition to XSEDE, NSF also provides BlueWaters, a petascale supercomputer at the National Center for Supercomputing Applications (NCSA) at the University of Illinois at Urbana-Champaign
+* heterogenous Cray XE6/XK7 
+    - 22,000 XE6 compute nodes (each containing two AMD Interlagos processors) 
+    - more than 4000 XK7 compute nodes (each containing one AMD Interlagos processor and one NVIDIA GK110 "Kepler" accelerator) 
+    - single high-speed Gemini interconnection fabric.
+* 150M node-hours allocated every year through the NSF's [Petascale Computing Resource Allocation program](https://www.nsf.gov/funding/pgm_summ.jsp?pims_id=503224&org=OCI&from=home)
+
+
+--- .class
+
 ## Department of Energy (DOE)
 
-* provides a portfolio of national high-performance computing facilities housing some of the world’s most advanced supercomputers.
 * Innovative and Novel Computational Impact on Theory and Experiment ([INCITE](https://proposals.doeleadershipcomputing.org)) program open to researchers from academia, government labs, and industry
    - proposals are accepted between mid-April and the end of June 
-   - Argonne Leadership Computing Facility - 27-petaflop Cray XK7, "Titan" 
-   - Oak Ridge Leadership Computing Facility - 10-petaflop IBM Blue Gene/Q, "Mira".
-   - Over 6B SUs allocated for CY 2018
-   - Average requests were 75M for Titan and 100M SUs for Mira
+   - Argonne Leadership Computing Facility 
+       - 184M node hours on Mira, 10 PFLOPs IBM Blue Gene/Q system 
+       - 13.5M node hours on Theta, 11PFLOPs Cray XC40 system
+   - Oak Ridge Leadership Computing Facility
+       - 16M node hours on Summit, 187 PFLOPs IBM Power9 system
+       - 56M node hours on Titan, 27 PFLOPs Cray XK7 system 
 * National Energy Research Scientific Computing (NERSC) Center at Lawrence Berkeley National Lab.
    - Mostly for DOE sponsored research
    - [Get Started](http://www.nersc.gov/users/accounts/allocations/first-allocation/)
@@ -651,17 +751,29 @@ and high-throughput computing and other digital services, opportunities and reso
 * The Computational and Information Systems Laboratory (CISL) provides large computing resources for university researchers and NCAR scientists in atmospheric and related sciences.
 * Cheyenne, a 5.34 PFlops HPC system, provides more than 1.2 billion core-hours for allocation each year
 * Access granted through a variety of programs
-  - University Allocations
-     - Large requests >400K SUs: Requests accepted every six months, in March and September. 160M SUs awared in total each allocation cycle
-     - Small requests <400K SUs: U.S. university researchers who are supported by NSF awards can request a small allocation for each NSF award. Requests accepted throughout the year and reviewed/awarded within a few business days.
-     - Unsponsored Graduate Students and Postdocs: Small allocations are also available to graduate students and post-docs at U.S. universities; no NSF award or panel review is required.
-        * The graduate student, postdoc, or faculty member must work in the atmospheric or related sciences;
-        * Their work does not lie within the scope of an associated NSF grant; and
-        * They do not have funding to pay for computer time.
+- University Allocations
+   - Large requests >400K SUs: Requests accepted every six months, in March
+     and September. 160M SUs awarded in total each allocation cycle
+   - Small requests <400K SUs: U.S. university researchers who are supported by NSF awards can request a small allocation for each NSF award. Requests accepted throughout the year and reviewed/awarded within a few business days.
+
 
 --- .class
 
-## NCAR
+## NCAR - CISL (contd)
+
+- Unsponsored Graduate Students and Postdocs: Small allocations are also available to graduate students and post-docs at U.S. universities; no NSF award or panel review is required.
+   * The graduate student, postdoc, or faculty member must work in the atmospheric or related sciences;
+   * Their work does not lie within the scope of an associated NSF grant; and
+   * They do not have funding to pay for computer time.
+- Classroom Allocation
+   * CISL offers opportunities to undergraduate and graduate faculty to use high-performance computers in their college courses. 
+   * Accounts are provided to individual students and the professor for assignments in numerical simulations, modeling, and studies of recently introduced computing architectures. 
+   * CISL can provide consulting assistance to the professor or teaching assistant.
+
+
+--- .class
+
+## NCAR - CSL
 
   - Climate Simulation Laboratory 
       - Researchers must have funding from NSF awards to address the climate-related questions
@@ -706,11 +818,12 @@ and high-throughput computing and other digital services, opportunities and reso
 * Summer 2015 Workshops
   - Modern Fortran Programming
   - C Programming
-* Summer 2017: HPC Parallel Programming Workshop
+* HPC Parallel Programming Workshop (Summer 2017, 2018)
   - Programming in MPI, OpenMP and OpenACC
 * We also host full day workshops broadcast from other Supercomputing Centers
   - XSEDE HPC Monthly Workshop: OpenACC (Dec. 2014)
-  - XSEDE HPC Summer BootCamp: OpenMP, OpenACC, MPI and Hybrid Programming (Jun. 2015, 2016  &amp; 2017)
+  - XSEDE HPC Summer BootCamp: OpenMP, OpenACC, MPI and Hybrid Programming (Jun.
+    2015, 2016, 2017 &amp; 2018)
   - XSEDE HPC Monthly Workshop: Big Data (Nov. 2015, May 2017)
 
 
@@ -719,10 +832,11 @@ and high-throughput computing and other digital services, opportunities and reso
 ## Upcoming Training
 
 * EWFM 292 on Thursday from 2:10PM - 4:00PM.
-  - Using SLURM scheduler on Sol (Feb 22)
-  - Programming in R (Mar 22)
-  - Document Creation with LaTeX (Mar 29)
-  - Data Visualization in R and Python (Apr 5)
+  - Using SLURM scheduler on Sol (Sep 20)
+  - Document Creation with LaTeX (Sep 27)
+  - Version Control with GIT (Oct 4)
+  - Python Programming (Oct 11)
+  - Data Visualization in Python (Oct 18)
 
 
 * Subscribe
