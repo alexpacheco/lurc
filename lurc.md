@@ -346,7 +346,7 @@ width="275px">
 * Some are cloud based and subject to Lehigh's Cloud Policy
 * For research, LTS provides a 1PB storage system called Ceph
 * Ceph is based on the Ceph software
-* Research groups can purchase a sharable project space on Ceph @ $200/TB/year
+* Research groups can purchase a sharable project space on Ceph @ &#36;200/TB/year
 * Ceph is in-house, built, operated and administered by LTS Research Computing Staff.
   - located in Data Center in EWFM with a backup cluster in Packard Lab
 * HPC users can write job output directly to their Ceph volume
@@ -376,8 +376,8 @@ width="275px">
 * Research Computing Resources; Sol, Maia & Ceph are available for use in registrar scheduled classes.
 * __Maia__: No charge, no special considerations
 * __Sol__: Provides  
-   * 1TB Ceph space per course ($200 paid by department)
-   * An account per student ($15/student) paid by department that provides 500SUs per student
+   * 1TB Ceph space per course (&#36;200 paid by department)
+   * An account per student (&#36;15/student) paid by department that provides 500SUs per student
       - Allocations are given for the whole class based on number of students
       - Additional allocations can be purchased in blocks of 1000 SUs @ $10/block upto 10K SU
    * Accounts valid for current semester plus an additional two weeks
@@ -412,24 +412,6 @@ width="275px">
   - Standard on many University and national High Performance Computing resource since circa 2011
 * How to use Sol/Maia Software on your [linux](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=linux) workstation
 * LTS provides [licensed and open source software](https://software.lehigh.edu) for Windows, Mac and Linux and [Gogs](https://gogs.cc.lehigh.eu), a self hosted Git Service or Github clone
-
---- .class #id
-
-## Module Command
-
-| Command | Description |
-|:-------:|:-----------:|
-| <code>module avail</code> | show list of software available on resource |
-| <code>module load abc</code> | add software <code>abc</code> to your environment (modify your <code>PATH</code>, <code>LD_LIBRARY_PATH</code> etc as needed) |
-| <code>module unload abc</code> | remove <code>abc</code> from your environment |
-| <code>module swap abc1 abc2</code> | swap <code>abc1</code> with <code>abc2</code> in your environment |
-| <code>module purge</code> | remove all modules from your environment |
-| <code>module show abc</code> | display what variables are added or modified in your environment |
-| <code>module help abc</code> | display help message for the module <code>abc</code> |
-
-* Users who prefer not to use the module environment will need to modify their
-  .bashrc or .tcshrc files. Run `module show` for list variables that need
-  modified, appended or prepended
 
 
 --- .class &twocol_width
