@@ -70,7 +70,13 @@
 GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
 \]</p>
 
-<p><a href="https://en.wikipedia.org/wiki/FLOPS#FLOPs_per_cycle">FLOPs for various AMD &amp; Intel CPU generation</a></p></li>
+<p><a href="https://en.wikipedia.org/wiki/FLOPS#FLOPs_per_cycle">FLOPs for various AMD &amp; Intel CPU generation</a></p>
+
+<ul>
+<li><code>Currently out of warranty</code>. </li>
+<li><code>Will be permanently shut down in case of hardware failure</code></li>
+<li><code>No plans to replace Maia</code></li>
+</ul></li>
 </ul>
 
   </article>
@@ -92,21 +98,16 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
 
 <ul>
 <li>Lehigh&#39;s Flagship High Performance Computing Cluster</li>
-<li>9 nodes, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 25MB Cache, 128GB
-RAM</li>
-<li>33 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache,
-128GB RAM</li>
-<li>13 nodes, dual 12-core Intel Xeon E5-2650 v4 2.3Ghz CPU, 30 MB Cache, 64GB
-RAM</li>
+<li>9 nodes, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 25MB Cache, 128GB RAM</li>
+<li>33 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache, 128GB RAM</li>
+<li>13 nodes, dual 12-core Intel Xeon E5-2650 v4 2.3Ghz CPU, 30 MB Cache, 64GB RAM</li>
 <li>1 node, dual 8-core Intel Xeon 2630 v3 2.4GHz CPU, 20 MB Cache, 512GB RAM</li>
-<li>68 nVIDIA GTX 1080 GPU cards</li>
+<li>9 nodes, dual 18-core Intel Xeon Gold 6140 2.3GHz CPU, 24.7 MB Cache, 192GB RAM</li>
+<li>66 nVIDIA GTX 1080 GPU cards</li>
 <li>1TB HDD per node</li>
 <li>2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric</li>
-<li>In progress: 7 nodes, dual 18-core Intel Xeon Gold 6140 2.3GHz CPU, 24.7 MB
-Cache, 192GB RAM</li>
-<li>Theoretical Performance: 65.965 TFLOPs (CPU) + 17.476 TFLOPs (GPU)</li>
-<li>Access: Batch Scheduled, interactive on login node for compiling, editing
-only</li>
+<li>Theoretical Performance: 56.2048 TFLOPs (CPU) + 16.962 TFLOPs (GPU)</li>
+<li>Access: Batch Scheduled, interactive on login node for compiling, editing only</li>
 </ul></li>
 </ul>
 
@@ -149,9 +150,8 @@ only</li>
 <li>Six nodes, dual 10-core Intel Xeon E5-2650v3, 2.3GHz, 64GB RAM, nVIDIA Tesla K80
 
 <ul>
-<li>Theoretical Performance: 4.416 TFlops (CPU) + 17.46TFlops (GPU)</li>
+<li>Theoretical Performance: 3.840TFlops (CPU) + 17.46TFlops (GPU)</li>
 </ul></li>
-<li>To be merged with Sol</li>
 </ul></li>
 <li>Unnamed : decommissioned faculty cluster for prototyping new resources
 
@@ -234,7 +234,7 @@ only</li>
 <td align="center">Pisces</td>
 <td align="center">120</td>
 <td align="center">384</td>
-<td align="center">4.416</td>
+<td align="center">3.840</td>
 <td align="center">12</td>
 <td align="center">29952</td>
 <td align="center">144</td>
@@ -242,23 +242,23 @@ only</li>
 </tr>
 <tr>
 <td align="center">Sol</td>
-<td align="center">1552</td>
-<td align="center">8064</td>
-<td align="center">65.965</td>
-<td align="center">68</td>
-<td align="center">174080</td>
-<td align="center">544</td>
-<td align="center">17.476</td>
+<td align="center">1624</td>
+<td align="center">8448</td>
+<td align="center">56.20</td>
+<td align="center">66</td>
+<td align="center">168960</td>
+<td align="center">528</td>
+<td align="center">16.96</td>
 </tr>
 <tr>
 <td align="center">Total</td>
-<td align="center">2248</td>
-<td align="center">10752</td>
-<td align="center">82.106</td>
-<td align="center">80</td>
-<td align="center">204032</td>
-<td align="center">688</td>
-<td align="center">34.948</td>
+<td align="center">2320</td>
+<td align="center">11136</td>
+<td align="center">71.77</td>
+<td align="center">78</td>
+<td align="center">198912</td>
+<td align="center">672</td>
+<td align="center">34.434</td>
 </tr>
 </tbody></table>
 
@@ -414,8 +414,8 @@ modified, appended or prepended</li>
 <li>Commercial: Only two seats of each
 
 <ul>
-<li>Intel Compiler: 16.0.3, 17.0.0 and 17.0.3</li>
-<li>Portland Group or PGI: 16.5, 16.10, 17.4 and 17.7</li>
+<li>Intel Compiler: 16.0.3, 17.0.0, 17.0.3 and 18.0.1</li>
+<li>Portland Group or PGI: 16.5, 16.10, 17.4, 17.7 and 18.3</li>
 </ul></li>
 <li><em>We are licensed to install any available version</em></li>
 <li>On Sol, all except gcc 4.8.5 are available via the module environment</li>
@@ -1077,9 +1077,9 @@ Total time was 1.030180 seconds.
 </tr>
 </thead><tbody>
 <tr>
-<td align="center"><em>lts</em></td>
+<td align="center">lts</td>
 <td align="center">72</td>
-<td align="center">20 (will change to 18+2)</td>
+<td align="center">20</td>
 </tr>
 <tr>
 <td align="center">imlab</td>
@@ -1102,24 +1102,24 @@ Total time was 1.030180 seconds.
 <td align="center">24</td>
 </tr>
 <tr>
-<td align="center"><em>engc</em></td>
+<td align="center">engc</td>
 <td align="center">72</td>
-<td align="center">24 (will change to 22+2)</td>
-</tr>
-<tr>
-<td align="center">all-cpu</td>
-<td align="center">48</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">all-gpu</td>
-<td align="center">48</td>
-<td align="center"></td>
+<td align="center">24</td>
 </tr>
 <tr>
 <td align="center">himem</td>
 <td align="center">72</td>
 <td align="center">48</td>
+</tr>
+<tr>
+<td align="center">enge</td>
+<td align="center">72</td>
+<td align="center">36</td>
+</tr>
+<tr>
+<td align="center">engi</td>
+<td align="center">72</td>
+<td align="center">36</td>
 </tr>
 </tbody></table>
 
@@ -1179,7 +1179,7 @@ Total time was 1.030180 seconds.
 <td align="center">6.2</td>
 </tr>
 <tr>
-<td align="center">eng/imlab/imlab-gpu</td>
+<td align="center">eng/imlab/imlab-gpu/enge/engi</td>
 <td align="center">5.3</td>
 <td align="center">5.1</td>
 </tr>
@@ -1246,7 +1246,7 @@ memory that should be requested is 126GB.</p></li>
 <li>Purpose: testing and debugging code. <strong>Do not run jobs on head node!!!</strong>
 
 <ul>
-<li>All compute node have a naming convention <strong>sol-[a,b,c]###</strong></li>
+<li>All compute node have a naming convention <strong>sol-[a,b,c,d,e]###</strong></li>
 <li>head node is <strong>sol</strong></li>
 </ul></li>
 </ul></li>
@@ -2060,125 +2060,12 @@ allocation</li>
   </hgroup>
   <article data-timings="">
     <ul>
-<li>Monthly usage is summarized at <a href="https://researchcomputing.lehigh.edu/usage">https://researchcomputing.lehigh.edu/usage</a></li>
-<li>Scrollable Usage for entire cluster
-
-<ul>
-<li><a href="https://webapps.lehigh.edu/hpc/usage/canvas.html">https://webapps.lehigh.edu/hpc/usage/canvas.html</a></li>
-</ul></li>
-<li>For a specific PI:
-
-<ul>
-<li>Replace lts with a PI&#39;s name in the following link
-
-<ul>
-<li><a href="https://webapps.lehigh.edu/hpc/usage/lts.html">https://webapps.lehigh.edu/hpc/usage/lts.html</a></li>
-</ul></li>
-</ul></li>
-<li><span class="alert">Usage plots are restricted to Lehigh IPs</span></li>
+<li><a href="https://webapps.lehigh.edu/hpc/usage/dashboard.html">Monthly usage summary</a> (updated daily)</li>
+<li><a href="https://webapps.lehigh.edu/hpc/monitor">Scheduler Status</a> (updated every 15 mins)</li>
+<li><a href="https://webapps.lehigh.edu/hpc/monitor/ay1718.html">Current AY Usage Reports</a> (updated daily)</li>
+<li><a href="https://webapps.lehigh.edu/hpc/monitor/ay1617.html">Prior AY Usage Reports</a></li>
+<li><span class="alert">Usage reports restricted to Lehigh IPs</span></li>
 </ul>
-
-  </article>
-  <!-- Footer  -->
-  <footer class = 'lufoot'>
-     <img height = '20px' src='assets/img/lulogo.jpg'>
-  </footer>
-  <!-- End Footer-->
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:#F1E7C8;">
-  <hgroup>
-    <h2>Online Usage Reporting: Sol Cluster</h2>
-  </hgroup>
-  <article data-timings="">
-    <p><object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2017.svg" type="image/svg+xml">
-</object></p>
-
-  </article>
-  <!-- Footer  -->
-  <footer class = 'lufoot'>
-     <img height = '20px' src='assets/img/lulogo.jpg'>
-  </footer>
-  <!-- End Footer-->
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:#F1E7C8;">
-  <hgroup>
-    <h2>Online Usage Reporting: lts partition</h2>
-  </hgroup>
-  <article data-timings="">
-    <p><object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2017-lts.svg" type="image/svg+xml">
-</object></p>
-
-  </article>
-  <!-- Footer  -->
-  <footer class = 'lufoot'>
-     <img height = '20px' src='assets/img/lulogo.jpg'>
-  </footer>
-  <!-- End Footer-->
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:#F1E7C8;">
-  <hgroup>
-    <h2>Online Usage Reporting: imlab &amp; imlab-gpu partitions</h2>
-  </hgroup>
-  <article data-timings="">
-    <p><object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2017-imlab.svg" type="image/svg+xml">
-</object></p>
-
-  </article>
-  <!-- Footer  -->
-  <footer class = 'lufoot'>
-     <img height = '20px' src='assets/img/lulogo.jpg'>
-  </footer>
-  <!-- End Footer-->
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:#F1E7C8;">
-  <hgroup>
-    <h2>Online Usage Reporting: eng partitions</h2>
-  </hgroup>
-  <article data-timings="">
-    <p><object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2017-eng.svg" type="image/svg+xml">
-</object></p>
-
-  </article>
-  <!-- Footer  -->
-  <footer class = 'lufoot'>
-     <img height = '20px' src='assets/img/lulogo.jpg'>
-  </footer>
-  <!-- End Footer-->
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:#F1E7C8;">
-  <hgroup>
-    <h2>Online Usage Reporting: engc partitions</h2>
-  </hgroup>
-  <article data-timings="">
-    <p><object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2017-engc.svg" type="image/svg+xml">
-</object></p>
-
-  </article>
-  <!-- Footer  -->
-  <footer class = 'lufoot'>
-     <img height = '20px' src='assets/img/lulogo.jpg'>
-  </footer>
-  <!-- End Footer-->
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:#F1E7C8;">
-  <hgroup>
-    <h2>Online Usage Reporting: himem partitions</h2>
-  </hgroup>
-  <article data-timings="">
-    <p><object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2017-himem.svg" type="image/svg+xml">
-</object></p>
 
   </article>
   <!-- Footer  -->
@@ -2496,44 +2383,8 @@ allocation</li>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=44 title='Online Usage Reporting: Sol Cluster'>
+        data-slide=44 title='Additional Help &amp; Information'>
          44
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=45 title='Online Usage Reporting: lts partition'>
-         45
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=46 title='Online Usage Reporting: imlab &amp; imlab-gpu partitions'>
-         46
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=47 title='Online Usage Reporting: eng partitions'>
-         47
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=48 title='Online Usage Reporting: engc partitions'>
-         48
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=49 title='Online Usage Reporting: himem partitions'>
-         49
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=50 title='Additional Help &amp; Information'>
-         50
       </a>
     </li>
   </ul>

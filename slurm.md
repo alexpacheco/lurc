@@ -27,6 +27,9 @@ license     : by-sa
 
   [FLOPs for various AMD & Intel CPU generation](https://en.wikipedia.org/wiki/FLOPS#FLOPs_per_cycle)
 
+  - `Currently out of warranty`. 
+  - `Will be permanently shut down in case of hardware failure`
+  - `No plans to replace Maia`
 
 --- .class #id
 
@@ -34,21 +37,16 @@ license     : by-sa
 
 * <strong> Sol </strong>
   - Lehigh's Flagship High Performance Computing Cluster
-  - 9 nodes, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 25MB Cache, 128GB
-  RAM
-  - 33 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache,
-  128GB RAM
-  - 13 nodes, dual 12-core Intel Xeon E5-2650 v4 2.3Ghz CPU, 30 MB Cache, 64GB
-  RAM
+  - 9 nodes, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 25MB Cache, 128GB RAM
+  - 33 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache, 128GB RAM
+  - 13 nodes, dual 12-core Intel Xeon E5-2650 v4 2.3Ghz CPU, 30 MB Cache, 64GB RAM
   - 1 node, dual 8-core Intel Xeon 2630 v3 2.4GHz CPU, 20 MB Cache, 512GB RAM
-  - 68 nVIDIA GTX 1080 GPU cards
+  - 9 nodes, dual 18-core Intel Xeon Gold 6140 2.3GHz CPU, 24.7 MB Cache, 192GB RAM
+  - 66 nVIDIA GTX 1080 GPU cards
   - 1TB HDD per node
   - 2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric
-  - In progress: 7 nodes, dual 18-core Intel Xeon Gold 6140 2.3GHz CPU, 24.7 MB
-  Cache, 192GB RAM
-  - Theoretical Performance: 65.965 TFLOPs (CPU) + 17.476 TFLOPs (GPU)
-  - Access: Batch Scheduled, interactive on login node for compiling, editing
-  only
+  - Theoretical Performance: 56.2048 TFLOPs (CPU) + 16.962 TFLOPs (GPU)
+  - Access: Batch Scheduled, interactive on login node for compiling, editing only
 
 
 --- .class #id
@@ -63,8 +61,7 @@ license     : by-sa
      * Theoretical Performance: 1.766TFlops
 * __Pisces__: Keith Moored, Mechanical Engineering and Mechanics
   - Six nodes, dual 10-core Intel Xeon E5-2650v3, 2.3GHz, 64GB RAM, nVIDIA Tesla K80
-     * Theoretical Performance: 4.416 TFlops (CPU) + 17.46TFlops (GPU)
-  - To be merged with Sol
+     * Theoretical Performance: 3.840TFlops (CPU) + 17.46TFlops (GPU)
 * Unnamed : decommissioned faculty cluster for prototyping new resources
   - Twenty nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
      * Theoretical Performance: 6.656TFlops
@@ -81,9 +78,10 @@ license     : by-sa
 | Monocacy | 128 | 512 | 2.662 |
 | Unnamed | 320 | 1280 | 6.656 | 
 | Baltrusaitislab | 96 | 384 | 1.766 |
-| Pisces | 120 | 384 | 4.416 | 12 | 29952 | 144 | 17.472 |
-| Sol | 1552 | 8064 | 65.965 | 68 | 174080 | 544 | 17.476 |
-| Total | 2248 | 10752 | 82.106 | 80 | 204032 | 688 | 34.948 | 
+| Pisces | 120 | 384 | 3.840 | 12 | 29952 | 144 | 17.472 |
+| Sol | 1624 | 8448 | 56.20 | 66 | 168960 | 528 | 16.96 |
+| Total | 2320 | 11136 | 71.77 | 78 | 198912 | 672 | 34.434 | 
+
 
 --- .class #id
 
@@ -142,8 +140,8 @@ license     : by-sa
 * Open Source: GNU Compiler (also called gcc even though gcc is the c compiler)
    - 4.8.5 (system default), 5.3.0, 6.1.0 and 7.1.0
 * Commercial: Only two seats of each
-   - Intel Compiler: 16.0.3, 17.0.0 and 17.0.3
-   - Portland Group or PGI: 16.5, 16.10, 17.4 and 17.7
+   - Intel Compiler: 16.0.3, 17.0.0, 17.0.3 and 18.0.1
+   - Portland Group or PGI: 16.5, 16.10, 17.4, 17.7 and 18.3
 * _We are licensed to install any available version_
 * On Sol, all except gcc 4.8.5 are available via the module environment
 
@@ -515,15 +513,15 @@ Total time was 1.030180 seconds.
 
 | Partition Name | Max Runtime in hours | Max SU consumed node per hour |
 |:----------:|:--------------------:|:--------------------:|
-| _lts_ | 72 | 20 (will change to 18+2)|
+| lts | 72 | 20 |
 | imlab | 48 | 22 | 
 | imlab-gpu | 48 | 24 |
 | eng | 72 | 22 |
 | eng-gpu | 72 | 24 |
-| _engc_ | 72 | 24 (will change to 22+2)|
-| all-cpu | 48 |
-| all-gpu | 48 |
+| engc | 72 | 24 |
 | himem | 72 | 48 |
+| enge | 72 | 36 |
+| engi | 72 | 36 |
 
 
 * Maia
@@ -547,7 +545,7 @@ Total time was 1.030180 seconds.
 | Partition | Max Memory/core (GB) | Recommended Memory/Core (GB) |
 |:---------:|:--------------------:|:----------------------------:|
 | lts | 6.4 | 6.2 |
-| eng/imlab/imlab-gpu | 5.3 | 5.1 |
+| eng/imlab/imlab-gpu/enge/engi | 5.3 | 5.1 |
 | engc | 2.66 | 2.4 |
 | himem | 32 | 31.5 |
 
@@ -576,7 +574,7 @@ memory that should be requested is 126GB.
   - Set up an interactive environment on compute nodes for users
   - Will log you into a compute node and wait for your prompt
   - Purpose: testing and debugging code. __Do not run jobs on head node!!!__
-      * All compute node have a naming convention __sol-[a,b,c]###__
+      * All compute node have a naming convention __sol-[a,b,c,d,e]###__
       * head node is __sol__
 * Batch Jobs
    - Executed using a batch script without user intervention
@@ -931,58 +929,11 @@ exit
 
 ## Online Usage Reporting  
 
-* Monthly usage is summarized at https://researchcomputing.lehigh.edu/usage
-* Scrollable Usage for entire cluster
-   - https://webapps.lehigh.edu/hpc/usage/canvas.html
-* For a specific PI:
-   - Replace lts with a PI's name in the following link
-       * https://webapps.lehigh.edu/hpc/usage/lts.html
-* <span class="alert">Usage plots are restricted to Lehigh IPs</span>
-
-
---- .class #id
-
-## Online Usage Reporting: Sol Cluster
-
-<object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2017.svg" type="image/svg+xml">
-</object>
-
---- .class #id
-
-## Online Usage Reporting: lts partition
-
-<object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2017-lts.svg" type="image/svg+xml">
-</object>
-
---- .class #id
-
-## Online Usage Reporting: imlab &amp; imlab-gpu partitions
-
-<object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2017-imlab.svg" type="image/svg+xml">
-</object>
-
-
---- .class #id
-
-## Online Usage Reporting: eng partitions
-
-<object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2017-eng.svg" type="image/svg+xml">
-</object>
-
-
---- .class #id
-
-## Online Usage Reporting: engc partitions
-
-<object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2017-engc.svg" type="image/svg+xml">
-</object>
-
---- .class #id
-
-## Online Usage Reporting: himem partitions
-
-<object style="width:85%" data="https://webapps.lehigh.edu/hpc/usage/2017-himem.svg" type="image/svg+xml">
-</object>
+* [Monthly usage summary](https://webapps.lehigh.edu/hpc/usage/dashboard.html) (updated daily)
+* [Scheduler Status](https://webapps.lehigh.edu/hpc/monitor) (updated every 15 mins)
+* [Current AY Usage Reports](https://webapps.lehigh.edu/hpc/monitor/ay1718.html) (updated daily)
+* [Prior AY Usage Reports](https://webapps.lehigh.edu/hpc/monitor/ay1617.html)
+* <span class="alert">Usage reports restricted to Lehigh IPs</span>
 
 
 --- .class #id
