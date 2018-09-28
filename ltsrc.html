@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Research Computing Resources at Lehigh University</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Research Computing Resources at Lehigh University">
+  <meta name="author" content="https://researchcomputing.lehigh.edu">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/custom.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <aside class="gdbar">
+    <img src="assets/img/lu.png">
+  </aside>
+  <hgroup class="auto-fadein">
+    <h1>Research Computing Resources at Lehigh University</h1>
+    <h2>Library &amp; Technology Services</h2>
+    <p>https://researchcomputing.lehigh.edu<br/></p>
+  </hgroup>
+  <article></article>  
+  <footer class = 'license'>
+    <a href='http://creativecommons.org/licenses/by-sa/3.0/'>
+    <img width = '80px' src = 'http://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png'>
+    </a>
+  </footer>
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="class" id="slide-1" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>About Us?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Who?</p>
+
+<ul>
+<li>Unit of Lehigh&#39;s Library &amp; Technology Services within the Center for Innovation in Teaching &amp; Learning</li>
+</ul></li>
+<li><p>Our Mission</p>
+
+<ul>
+<li>We enable Lehigh Faculty, Researchers and Scholars achieve their goals by providing various computational resources; hardware, software, and storage; consulting and training.</li>
+</ul></li>
+<li><p>Research Computing Staff</p>
+
+<ul>
+<li>Steve Anthony, System Administrator</li>
+<li>Dan Brashler, CAS Computing Consultant</li>
+<li>Sachin Joshi, Data Analyst &amp; Visualization Specialist</li>
+<li><strong>Alex Pacheco, Manager &#38; XSEDE Campus Champion</strong></li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-2" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>What do we do?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Hardware Support
+
+<ul>
+<li>Provide system administration and support for Lehigh&#39;s HPC clusters.
+
+<ul>
+<li>2 University owned and 4 Faculty owned </li>
+</ul></li>
+<li>Assist with purchase, installation and administration of servers and clusters.</li>
+</ul></li>
+<li>Data Storage
+
+<ul>
+<li>Provide data management services including storing and sharing data. </li>
+</ul></li>
+<li>Software Support
+
+<ul>
+<li>Provide technical support for software applications, install software as requested and assist with purchase of software.</li>
+</ul></li>
+<li>Training &amp; Consulting
+
+<ul>
+<li>Provide education and training programs to facilitate use of HPC resources and general scientific computing needs.</li>
+<li>Provide consultation and support for code development and visualization.</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-3" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Research Computing Resources</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p><strong> Maia </strong></p>
+
+<ul>
+<li>32-core Symmetric Multiprocessor (SMP) system available to all Lehigh Faculty, Staff and Students</li>
+<li>dual 16-core AMD Opteron 6380 2.5GHz CPU</li>
+<li>128GB RAM and 4TB HDD</li>
+<li>Theoretical Performance: 640 GFLOPs (640 billion floating point operations per second)</li>
+<li>Access: Batch Scheduled, no interactive access to Maia</li>
+</ul>
+
+<p>\[
+GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
+\]</p>
+
+<p><a href="https://en.wikipedia.org/wiki/FLOPS#FLOPs_per_cycle">FLOPs for various AMD &amp; Intel CPU generation</a></p>
+
+<ul>
+<li><code>Currently out of warranty</code>. </li>
+<li><code>Will be permanently shut down in case of hardware failure</code></li>
+<li><code>No plans to replace Maia</code></li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-4" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Research Computing Resources</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><strong> Sol </strong>
+
+<ul>
+<li>Lehigh&#39;s Flagship High Performance Computing Cluster</li>
+<li>9 nodes, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 25MB Cache, 128GB
+RAM</li>
+<li>33 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache,
+128GB RAM</li>
+<li>13 nodes, dual 12-core Intel Xeon E5-2650 v4 2.3Ghz CPU, 30 MB Cache, 64GB
+RAM</li>
+<li>1 node, dual 8-core Intel Xeon 2630 v3 2.4GHz CPU, 20 MB Cache, 512GB RAM</li>
+<li>11 nodes, dual 18-core Intel Xeon Gold 6140 2.3GHz CPU, 24.7 MB Cache, 192GB RAM
+
+<ul>
+<li>2 purchased earlier this week</li>
+</ul></li>
+<li>66 nVIDIA GTX 1080 GPU cards</li>
+<li>1TB HDD per node</li>
+<li>2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric</li>
+<li>Theoretical Performance: 59.6608 TFLOPs (CPU) + 16.962 TFLOPs (GPU)</li>
+<li>Access: Batch Scheduled, interactive on login node for compiling, editing
+only</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Network Layout Sol &amp; Ceph Storage Cluster</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="fullwidth" src='assets/img/hpcnetwork.png'></p>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>LTS Managed Faculty Resources</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><strong>Monocacy</strong>: Ben Felzer, Earth &amp; Environmental Sciences
+
+<ul>
+<li>Eight nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
+
+<ul>
+<li>Theoretical Performance: 2.662TFlops</li>
+</ul></li>
+</ul></li>
+<li><strong>Baltrusaitislab</strong>: Jonas Baltrusaitis, Chemical Engineering
+
+<ul>
+<li>Three nodes, dual 16-core AMD Opteron 6376, 2.3Ghz, 128GB RAM
+
+<ul>
+<li>Theoretical Performance: 1.766TFlops</li>
+</ul></li>
+</ul></li>
+<li><strong>Pisces</strong>: Keith Moored, Mechanical Engineering and Mechanics
+
+<ul>
+<li>Six nodes, dual 10-core Intel Xeon E5-2650v3, 2.3GHz, 64GB RAM, nVIDIA Tesla K80
+
+<ul>
+<li>Theoretical Performance: 3.840 TFlops (CPU) + 17.46TFlops (GPU)</li>
+</ul></li>
+</ul></li>
+<li>Unnamed : decommissioned faculty cluster for prototyping new resources
+
+<ul>
+<li>Twenty nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
+
+<ul>
+<li>Theoretical Performance: 6.656TFlops</li>
+</ul></li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-7" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Total Computational Resources Supported</h2>
+  </hgroup>
+  <article data-timings="">
+    <table><thead>
+<tr>
+<th align="center">Cluster</th>
+<th align="center">Cores</th>
+<th align="center">CPU Memory</th>
+<th align="center">CPU TFLOPs</th>
+<th align="center">GPUs</th>
+<th align="center">CUDA Cores</th>
+<th align="center">GPU Memory</th>
+<th align="center">GPU TFLOPS</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="center">Maia</td>
+<td align="center">32</td>
+<td align="center">128</td>
+<td align="center">0.640</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">Monocacy</td>
+<td align="center">128</td>
+<td align="center">512</td>
+<td align="center">2.662</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">Unnamed</td>
+<td align="center">320</td>
+<td align="center">1280</td>
+<td align="center">6.656</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">Baltrusaitislab</td>
+<td align="center">96</td>
+<td align="center">384</td>
+<td align="center">1.766</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">Pisces</td>
+<td align="center">120</td>
+<td align="center">384</td>
+<td align="center">3.840</td>
+<td align="center">12</td>
+<td align="center">29952</td>
+<td align="center">144</td>
+<td align="center">17.472</td>
+</tr>
+<tr>
+<td align="center">Sol</td>
+<td align="center">1696</td>
+<td align="center">8832</td>
+<td align="center">59.66</td>
+<td align="center">66</td>
+<td align="center">168960</td>
+<td align="center">528</td>
+<td align="center">16.96</td>
+</tr>
+<tr>
+<td align="center">Total</td>
+<td align="center">2392</td>
+<td align="center">11520</td>
+<td align="center">75.225</td>
+<td align="center">78</td>
+<td align="center">198912</td>
+<td align="center">672</td>
+<td align="center">34.434</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-8" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Allocation Charges</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Cost per core-hour or service unit (SU) is 1&cent;</li>
+<li><p>SU is defined as 1 hour of computing on 1 core of the Sol base compute node.</p>
+
+<ul>
+<li>One base compute node of Sol consumes 20 SU/hour, 480 SU/day and 175,200 SU/year</li>
+</ul></li>
+<li><p>PIs can share allocations with their collaborators</p>
+
+<ul>
+<li>Minimum Annual Purchase of 50,000 SU - &#36;500/year</li>
+<li>Additional Increments of 10,000 SU - &#36;100 per 10K increments</li>
+<li>Fixed Allocation cycle: Oct 1 - Sep 30</li>
+<li>Unused allocations do not rollover to next allocation cycle</li>
+<li>Total available computing time for purchase annually: 1.4M SUs or 1 year of continous computing on 8 nodes</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-9" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Condo Investments</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>New sustainable model for High Performance Computing at Lehigh</li>
+<li>Faculty (Condo Investor) purchase compute nodes from grants to increase overall capacity of Sol</li>
+<li>LTS will provide for four years or length of hardware warranty purchased.
+
+<ul>
+<li>System Administration, Power and Cooling, User Support for Condo Investments</li>
+</ul></li>
+<li>Condo Investor
+
+<ul>
+<li>receives annual allocation equivalent to their investment for the length of
+investment</li>
+<li>can utilize allocations on all available nodes, including nodes from other Condo Investors</li>
+<li>allows idle cycles on investment to be used by other Sol users</li>
+<li>unused allocation will not rollover to the next allocation cycle.</li>
+<li>can purchase additional SUs in 10K increments (minimum 50K not required)
+
+<ul>
+<li> and must be consumed in current allocation cycle</li>
+</ul></li>
+</ul></li>
+<li>Annual Allocation cycle is Oct. 1 - Sep. 30.</li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-10" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Condo Investors</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Two at initial launch </p>
+
+<ul>
+<li>Dimitrios Vavylonis, Physics (1 node)</li>
+<li>Wonpil Im, Biological Sciences (25 nodes, 50 GPUs)</li>
+<li>Anand Jagota, Chemical Engineering (1 node)</li>
+<li>Brian Chen, Computer Science &amp; Engineering (1 node)</li>
+<li>Ed Webb &amp; Alp Oztekin, Mechanical Engineering (6 nodes)</li>
+<li>Jeetain Mittal &amp; Srinivas Rangarajan, Chemical Engineering (13 nodes, 16 GPUs)</li>
+<li>Seth Richards-Shubik, Economics (1 node)</li>
+<li>Ganesh Balasubramanian, Mechanical Engineering (7 nodes)</li>
+<li>Department of Industrial &amp; Systems Engineering (2 nodes)</li>
+</ul></li>
+<li><p>Total SU on Sol after Condo Investments: 14,226,240</p></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-11" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Storage resources</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>LTS provides various storage options for research and teaching..</li>
+<li>Some are cloud based and subject to Lehigh&#39;s Cloud Policy</li>
+<li>For research, LTS provides a 1PB storage system called Ceph</li>
+<li>Ceph is based on the Ceph software</li>
+<li>Research groups can purchase a sharable project space on Ceph @ &#36;200/TB/year</li>
+<li>Ceph is in-house, built, operated and administered by LTS Research Computing Staff.
+
+<ul>
+<li>located in Data Center in EWFM with a backup cluster in Packard Lab</li>
+</ul></li>
+<li>HPC users can write job output directly to their Ceph volume</li>
+<li>Ceph volume can be mounted as a network drive on Windows or CIFS on Mac and Linux
+
+<ul>
+<li><a href="http://lts.lehigh.edu/services/faq/ceph-faq">See Ceph FAQ</a> for more details</li>
+</ul></li>
+<li>Storage quota on
+
+<ul>
+<li>Maia: 5GB</li>
+<li>Sol: 150GB</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-12" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Data Transfer, ScienceDMZ and Globus</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>NSF funded Science DMZ to improve campus connectivity to the national research cyberinfrastructure.</li>
+<li>Upto 50TB storage is available on the Data Transfer Node (DTN) on ScienceDMZ.
+
+<ul>
+<li>Storage space is only for data transfer. Once transfer is complete, storage needs to be deleted from DTN</li>
+</ul></li>
+<li>Access to DTN with shell access provided on request</li>
+<li><a href="https://www.globus.org">Globus</a> is the preferred method to transfer data to and from NSF and DOE supercomputing centers.
+
+<ul>
+<li>hosted service that manages the entire operation, monitoring performance and errors, retrying failed transfers, correcting problems automatically whenever possible, and reporting status to keep you informed while you focus on your research.</li>
+<li><a href="https://researchcomputing.lehigh.edu/help/globus">How to Use Globus at Lehigh?</a></li>
+<li>No special access required on DTN to transfer data via Globus</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-13" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Available Software</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Commercial, Free and Open source software is installed on
+
+<ul>
+<li><a href="https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=maia#installed_software">Maia</a>: /zhome/Apps</li>
+<li><a href="https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=sol#installed_software">Sol</a>: /share/Apps</li>
+</ul></li>
+<li>Software is managed using module environment
+
+<ul>
+<li>Why? We may have different versions of same software or software built with different compilers</li>
+<li>Module environment allows you to dynamically change your &#42;nix environment based on software being used</li>
+<li>Standard on many University and national High Performance Computing resource since circa 2011</li>
+</ul></li>
+<li>How to use Sol/Maia Software on your <a href="https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=linux">linux</a> workstation</li>
+<li>LTS provides <a href="https://software.lehigh.edu">licensed and open source software</a> for Windows, Mac and Linux and <a href="https://gogs.cc.lehigh.eu">Gogs</a>, a self hosted Git Service or Github clone</li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-14" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Installed Software</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:45%;'>
+  <ul>
+<li>Chemistry/Materials Science
+
+<ul>
+<li><strong>CPMD</strong></li>
+<li><strong>GAMESS</strong></li>
+<li>Gaussian</li>
+<li><strong>NWCHEM</strong></li>
+<li><strong>Quantum Espresso</strong></li>
+<li><strong>VASP</strong> (Restricted Access)</li>
+</ul></li>
+<li>Molecular Dynamics
+
+<ul>
+<li><strong>Desmond</strong></li>
+<li><strong>GROMACS</strong></li>
+<li><strong>LAMMPS</strong></li>
+<li><strong>NAMD</strong></li>
+</ul></li>
+</ul>
+
+<p><span class="tiny strong"><strong>MPI enabled</strong></span></p>
+
+</div>
+<div style='float:right;width:45%;'>
+  <ul>
+<li>Computational Fluid Dynamics
+
+<ul>
+<li>Abaqus</li>
+<li>Ansys</li>
+<li>Comsol</li>
+<li><strong>OpenFOAM</strong></li>
+<li>OpenSees</li>
+</ul></li>
+<li>Math
+
+<ul>
+<li>GNU Octave</li>
+<li>Magma</li>
+<li>Maple</li>
+<li>Mathematica</li>
+<li>Matlab</li>
+</ul></li>
+</ul>
+
+</div>
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-15" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>More Software</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:45%;'>
+  <ul>
+<li><p><em>Machine &amp; Deep Learning</em> </p>
+
+<ul>
+<li>TensorFlow</li>
+<li>Caffe</li>
+<li>SciKit-Learn</li>
+<li>SciKit-Image</li>
+<li>Theano</li>
+<li>Keras</li>
+</ul></li>
+<li><p><em>Natural Language Processing (NLP)</em></p>
+
+<ul>
+<li>Natural Language Toolkit (NLTK)</li>
+<li>Stanford NLP<br></li>
+</ul></li>
+</ul>
+
+<p><span class="tiny"><em><a href="https://go.lehigh.edu/python">Python packages</a></em></span></p>
+
+</div>
+<div style='float:right;width:45%;'>
+  <ul>
+<li>Bioinformatics
+
+<ul>
+<li>BamTools</li>
+<li>BayeScan</li>
+<li>bgc</li>
+<li>BWA</li>
+<li>FreeBayes</li>
+<li>SAMTools</li>
+<li>tabix</li>
+<li>trimmomatic</li>
+<li><em>barcode_splitter</em></li>
+<li><em>phyluce</em> </li>
+<li><em>VelvetOptimiser</em></li>
+</ul></li>
+</ul>
+
+</div>
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-16" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>More Software</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:35%;'>
+  <ul>
+<li>Scripting Languages
+
+<ul>
+<li>R</li>
+<li>Perl</li>
+<li>Python</li>
+</ul></li>
+<li>Compilers
+
+<ul>
+<li>GNU</li>
+<li>Intel</li>
+<li>JAVA</li>
+<li>PGI</li>
+<li>CUDA</li>
+</ul></li>
+<li>Parallel Programming
+
+<ul>
+<li>MVAPICH2</li>
+<li>OpenMPI</li>
+</ul></li>
+</ul>
+
+</div>
+<div style='float:right;width:65%;'>
+  <ul>
+<li>Libraries
+
+<ul>
+<li>BLAS/LAPACK/GSL/SCALAPACK</li>
+<li>Boost</li>
+<li>FFTW</li>
+<li>Intel MKL</li>
+<li>HDF5</li>
+<li>NetCDF</li>
+<li>METIS/PARMETIS</li>
+<li>PetSc</li>
+<li>QHull/QRupdate</li>
+<li>SuiteSparse</li>
+<li>SuperLU</li>
+</ul></li>
+</ul>
+
+</div>
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-17" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>More Software</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:45%;'>
+  <ul>
+<li>Visualization Tools
+
+<ul>
+<li>Atomic Simulation Environment </li>
+<li>Avogadro</li>
+<li>GaussView</li>
+<li>GNUPlot</li>
+<li>PWGui</li>
+<li>PyMol</li>
+<li>RDKit</li>
+<li>VESTA</li>
+<li>VMD</li>
+<li>XCrySDen</li>
+</ul></li>
+</ul>
+
+</div>
+<div style='float:right;width:45%;'>
+  <ul>
+<li>Other Tools
+
+<ul>
+<li>Artleys Knitro</li>
+<li>CMake</li>
+<li>GNU Parallel</li>
+<li>Lmod</li>
+<li><em>Numba</em></li>
+<li>Scons</li>
+<li>SPACK</li>
+<li><em>MD Tools</em>
+
+<ul>
+<li>BioPython</li>
+<li>CCLib</li>
+<li>MDAnalysis</li>
+</ul></li>
+</ul></li>
+</ul>
+
+</div>
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-18" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Sol Cluster Usage and Monitoring</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><a href="https://webapps.lehigh.edu/hpc/usage/dashboard.html">Usage</a></li>
+<li><a href="https://webapps.lehigh.edu/hpc/monitor">Current Status</a></li>
+<li>Historical Data
+
+<ul>
+<li><a href="https://webapps.lehigh.edu/hpc/monitor/ay1718.html">AY 2017-18</a></li>
+<li><a href="https://webapps.lehigh.edu/hpc/monitor/ay1617.html">AY 2016-17</a></li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='About Us?'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='What do we do?'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Research Computing Resources'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Research Computing Resources'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Network Layout Sol &amp; Ceph Storage Cluster'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='LTS Managed Faculty Resources'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Total Computational Resources Supported'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Allocation Charges'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Condo Investments'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Condo Investors'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Storage resources'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Data Transfer, ScienceDMZ and Globus'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Available Software'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='Installed Software'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='More Software'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='More Software'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='More Software'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='Sol Cluster Usage and Monitoring'>
+         18
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
