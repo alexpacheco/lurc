@@ -172,8 +172,9 @@ license     : by-sa
    - Seth Richards-Shubik, Economics (1 node)
    - Ganesh Balasubramanian, Mechanical Engineering (7 nodes)
    - Department of Industrial & Systems Engineering (2 nodes)
+   - Lisa Fredin, Chemistry (2 nodes)
 
-* Total SU on Sol after Condo Investments: 14,226,240
+* Total SU on Sol after Condo Investments: 14,856,960
 
 
 --- .class
@@ -368,13 +369,16 @@ license     : by-sa
 
 --- .class
 
-## Sol Cluster Usage and Monitoring
+## Useful Links 
 
-* [Usage](https://webapps.lehigh.edu/hpc/usage/dashboard.html)
-* [Current Status](https://webapps.lehigh.edu/hpc/monitor)
-* Historical Data
-    * [AY 2017-18](https://webapps.lehigh.edu/hpc/monitor/ay1718.html)
-    * [AY 2016-17](https://webapps.lehigh.edu/hpc/monitor/ay1617.html)
-
+* Sol Cluster Usage and Monitoring
+    * [Usage](https://webapps.lehigh.edu/hpc/usage/dashboard.html)
+    * [Current Status](https://webapps.lehigh.edu/hpc/monitor)
+    * Historical Data
+        * [AY 2017-18](https://webapps.lehigh.edu/hpc/monitor/ay1718.html)
+        * [AY 2016-17](https://webapps.lehigh.edu/hpc/monitor/ay1617.html)
+* Assistance with Proposals
+   * [Need Budgeting Templates and Facilities Document](https://researchcomputing.lehigh.edu/services)
+   * [Research Data Management Services](http://libraryguides.lehigh.edu/researchdatamanagement)
 
  
