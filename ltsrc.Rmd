@@ -378,7 +378,7 @@ license     : by-sa
         * [AY 2017-18](https://webapps.lehigh.edu/hpc/monitor/ay1718.html)
         * [AY 2016-17](https://webapps.lehigh.edu/hpc/monitor/ay1617.html)
 * Assistance with Proposals
-   * [Need Budgeting Templates and Facilities Document](https://researchcomputing.lehigh.edu/services)
+   * [Need Budgeting Templates and Facilities Document](https://researchcomputing.lehigh.edu/services/proposalassist)
    * [Research Data Management Services](http://libraryguides.lehigh.edu/researchdatamanagement)
 
  
