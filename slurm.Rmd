@@ -594,7 +594,7 @@ memory that should be requested is 126GB.
 |  --output=filename.out | Write SLURM standard output to file filename.out. |
 |  --error=filename.err | Write SLURM standard error to file filename.err. |
 |  --mail-type=events | Send an email after job status events is reached. |
-| | events can be NONE, BEGIN, END, FAIL, REQUEUE, ALL, TIME_LIMIT(_90,80) |
+| | events can be NONE, BEGIN, END, FAIL, REQUEUE, ALL, TIME&#95;LIMIT(&#95;90,80) |
 |  --mail-user=address | Address to send email. |
 |  --account=mypi | charge job to the __mypi__ account |
 
@@ -872,7 +872,7 @@ exit
 
 --- .class 
 
-## Modifying Resources for Queued JObs
+## Modifying Resources for Queued Jobs
 
 * Modify a job after submission but before starting: 
     * `scontrol update SPECIFICATION jobid=<jobid>`
