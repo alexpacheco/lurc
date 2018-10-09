@@ -77,7 +77,6 @@ license     : by-sa
   RAM
   - 1 node, dual 8-core Intel Xeon 2630 v3 2.4GHz CPU, 20 MB Cache, 512GB RAM
   - 11 nodes, dual 18-core Intel Xeon Gold 6140 2.3GHz CPU, 24.7 MB Cache, 192GB RAM
-      - 2 purchased earlier this week
   - 66 nVIDIA GTX 1080 GPU cards
   - 1TB HDD per node
   - 2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric
@@ -181,11 +180,11 @@ license     : by-sa
 
 ## Storage resources
 
-* LTS provides various storage options for research and teaching..
+* LTS provides various storage options for research and teaching
 * Some are cloud based and subject to Lehigh's Cloud Policy
-* For research, LTS provides a 1PB storage system called Ceph
+* For research, LTS is deploying a 600TB refreshed Ceph storage system
 * Ceph is based on the Ceph software
-* Research groups can purchase a sharable project space on Ceph @ &#36;200/TB/year
+* Research groups can purchase a sharable project space on Ceph @ &#36;375/TB for 5 year duration
 * Ceph is in-house, built, operated and administered by LTS Research Computing Staff.
   - located in Data Center in EWFM with a backup cluster in Packard Lab
 * HPC users can write job output directly to their Ceph volume
