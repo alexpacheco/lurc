@@ -1,8 +1,8 @@
 ---
 title       : Introduction to Linux & HPC
-subtitle    : Library & Technology Services
-author      : https://researchcomputing.lehigh.edu
-job         : 
+subtitle    : Research Computing
+author      : Library & Technology Services
+job         : https://researchcomputing.lehigh.edu
 logo        : lu.png
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js      # {highlight.js, prettify, highlight}
