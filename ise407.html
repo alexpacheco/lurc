@@ -499,18 +499,26 @@ in order to perform a specific task.</li>
 
 <slide class="class" id="slide-12" style="background:#F1E7C8;">
   <hgroup>
-    <h2>Some Linux Terms (also called variables)</h2>
+    <h2>Variables</h2>
   </hgroup>
   <article data-timings="">
     <ul>
-<li><strong>HOME</strong> : Your Home Directory on the system, /home/username
+<li>Linux permits the use of variables, similar to any programming language such as C,C++, Fortran etc</li>
+<li>A variable is a named object that contains data used by one or more applications.</li>
+<li>There are two types of variables, Environment and User Defined and can contain anumber, character or a string of characters.</li>
+<li>Environment Variables provides a simple way to share configuration settings between multiple applications and processes in Linux.</li>
+<li>By Convention, enviromental variables are often named using all uppercase letters.
 
 <ul>
-<li>This is where you should be when you login the first time</li>
+<li><code>PATH</code>, <code>LD_LIBRARY_PATH</code>, <code>LD_INCLUDE_PATH</code>, <code>TEXINPUTS</code>, etc</li>
 </ul></li>
-<li><strong>PATH</strong> : List of directories to search when executing a command</li>
-<li><strong>LD_LIBRARY_PATH</strong> : List of directories to look for libraries executing code</li>
-<li><strong>LD_INCLUDE_PATH</strong>: List of directories to look for include files while compiling code</li>
+<li>To reference a variable (environment or user defined) prepend <code>$</code> to the name of the variable</li>
+<li>Its a good practice to protect your variable name within <code>{...}</code> such as <code>${PATH}</code> when referencing it. (We’ll see an example in a few slides)
+
+<ul>
+<li><code>$PATH</code>, <code>${LD_LIBRARY_PATH}</code></li>
+</ul></li>
+<li>The command <code>printenv</code> will list the current environmental variables.</li>
 </ul>
 
   </article>
@@ -523,6 +531,48 @@ in order to perform a specific task.</li>
 </slide>
 
 <slide class="class" id="slide-13" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Variables (contd)</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Rules for Variable Names
+
+<ol>
+<li>Variable names must start with a letter or underscore</li>
+<li>Number can be used anywhere else</li>
+<li>DO NOT USE special characters such as @, #, %, $</li>
+<li>Case sensitive</li>
+</ol></li>
+<li> Examples
+
+<ul>
+<li>Allowed: <code>VARIABLE</code>, <code>VAR1234able</code>, <code>var name</code>, <code>VAR</code></li>
+<li>Not Allowed: <code>1VARIABLE</code>, <code>%NAME</code>, <code>$myvar</code>, <code>VAR@NAME</code></li>
+</ul></li>
+<li>Assigning value to a variable
+
+<ul>
+<li>Shell: <code>myvar=somevalue</code></li>
+<li>Environment: <code>export name=value</code></li>
+</ul></li>
+<li>You can convert any Shell variable to Environment variable using the <code>export</code> command
+
+<ul>
+<li>Convert to Environment: <code>export myvar</code></li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-14" style="background:#F1E7C8;">
   <hgroup>
     <h2>Linux Commands</h2>
   </hgroup>
@@ -544,7 +594,7 @@ in order to perform a specific task.</li>
 
 <ul>
 <li>Create a directory, any name you want and cd to that directory </li>
-<li>I would enter the command <code>mkdir ees403</code> followed by <code>cd ees403</code></li>
+<li>I would enter the command <code>mkdir ise407</code> followed by <code>cd ise407</code></li>
 <li>Use the <code>pwd</code> command to check your current location </li>
 </ul></li>
 </ul>
@@ -558,7 +608,7 @@ in order to perform a specific task.</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class small" id="slide-14" style="background:#F1E7C8;">
+<slide class="class small" id="slide-15" style="background:#F1E7C8;">
   <hgroup>
     <h2>Linux Command (contd)</h2>
   </hgroup>
@@ -604,7 +654,7 @@ in order to perform a specific task.</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-15" style="background:#F1E7C8;">
+<slide class="class" id="slide-16" style="background:#F1E7C8;">
   <hgroup>
     <h2>File Editing</h2>
   </hgroup>
@@ -639,7 +689,7 @@ in order to perform a specific task.</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-16" style="background:#F1E7C8;">
+<slide class="class" id="slide-17" style="background:#F1E7C8;">
   <hgroup>
     <h2>vi/emacs commands</h2>
   </hgroup>
@@ -700,7 +750,7 @@ in order to perform a specific task.</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-17" style="background:#F1E7C8;">
+<slide class="class" id="slide-18" style="background:#F1E7C8;">
   <hgroup>
     <h2>vi/emacs commands</h2>
   </hgroup>
@@ -802,12 +852,14 @@ in order to perform a specific task.</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class tiny" id="id" style="background:#F1E7C8;">
+<slide class="class" id="slide-20" style="background:#F1E7C8;">
   <hgroup>
     <h2>File Permission</h2>
   </hgroup>
   <article data-timings="">
-    <ul>
+    
+<div style='float:left;width:50%;'>
+  <ul>
 <li>Read carries a weight of 4</li>
 <li>Write carries a weight of 2</li>
 <li>Execute carries a weight of 1</li>
@@ -818,6 +870,16 @@ in order to perform a specific task.</li>
 <ul>
 <li> <code>chmod 751 filename</code></li>
 </ul></li>
+<li>To only give only user rwx, the command is
+
+<ul>
+<li><code>chmod 700 filename</code> </li>
+</ul></li>
+</ul>
+
+</div>
+<div style='float:right;width:48%;'>
+  <ul>
 <li>Instead of using numerical permissions you can also use symbolic mode
 
 <ul>
@@ -838,6 +900,7 @@ in order to perform a specific task.</li>
 </ul></li>
 </ul>
 
+</div>
   </article>
   <!-- Footer  -->
   <footer class = 'lufoot'>
@@ -896,9 +959,9 @@ the program written quickly.</li>
 </ul></li>
 </ul>
 
-<pre><code>## #!/ bin / bash
-## # My First Script
-## echo &quot; Hello World !&quot;
+<pre><code class="bash">#!/bin/bash
+# My First Script
+echo &quot;Hello World!&quot;
 </code></pre>
 
 <ul>
@@ -936,23 +999,22 @@ the program written quickly.</li>
 <li>My First Script</li>
 </ul>
 
-<pre><code>## #!/ bin / bash
+<pre><code>## #!/bin/bash
 ## # My First Script
-## echo &quot; Hello World !&quot;
+## echo &quot;Hello World!&quot;
 </code></pre>
 
 <ul>
-<li>The first line is called the ”ShaBang” line. It tells the OS which interpreter to use. In
-the current example, bash</li>
+<li>The first line is called the ”ShaBang” line. It tells the OS which interpreter to use. </li>
 <li>Other options are:
 
 <ul>
-<li>sh : #!/bin/sh</li>
-<li>ksh : #!/bin/ksh</li>
-<li>csh : #!/bin/csh</li>
-<li>tcsh: #!/bin/tcsh</li>
+<li>sh : <code>#!/bin/sh</code></li>
+<li>ksh : <code>#!/bin/ksh</code></li>
+<li>csh : <code>#!/bin/csh</code></li>
+<li>tcsh: <code>#!/bin/tcsh</code></li>
 </ul></li>
-<li>The second line is a comment. All comments begin with ”#”.</li>
+<li>The second line is a comment. All comments begin with <code>#</code>.</li>
 <li>The third line tells the OS to print ”Hello World!” to the screen.</li>
 <li>Slides written in R Markdown. ## in orange implies screen output</li>
 </ul>
@@ -1047,7 +1109,7 @@ echo $(pwd)
 <tr>
 <td align="center">Exponentiation</td>
 <td align="center">**</td>
-<td align="center"><code>2**3</code></td>
+<td align="center"><code>$[2**3]</code></td>
 </tr>
 <tr>
 <td align="center">Modulo</td>
@@ -1068,6 +1130,49 @@ echo $(pwd)
 <li><code>echo 3.8 4.2 | awk &#39;{print $1*$2}&#39;</code></li>
 </ul></li>
 </ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class small" id="slide-26" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Declare command</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Use the declare command to set variable and functions attributes.</li>
+<li>Create a constant variable i.e. read only variable
+
+<ul>
+<li><code>declare -r var</code></li>
+<li><code>declare -r varName=value</code></li>
+</ul></li>
+<li>Create an integer variable
+
+<ul>
+<li><code>declare -i var</code></li>
+<li><code>declare -i varName=value</code></li>
+</ul></li>
+<li>You can carry out arithmetic operations on variables declared as integers</li>
+</ul>
+
+<pre><code class="bash">j=10/5 ; echo $j
+</code></pre>
+
+<pre><code>## 10/5
+</code></pre>
+
+<pre><code class="bash">declare -i j ; j=10/5 ; echo $j
+</code></pre>
+
+<pre><code>## 2
+</code></pre>
 
   </article>
   <!-- Footer  -->
@@ -1102,7 +1207,7 @@ echo $(pwd)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class tiny" id="slide-26" style="background:#F1E7C8;">
+<slide class="class tiny" id="slide-28" style="background:#F1E7C8;">
   <hgroup>
     <h2>Conditionals: if</h2>
   </hgroup>
@@ -1111,7 +1216,8 @@ echo $(pwd)
 <li>An <code>if ... then</code> construct tests whether the exit status of a condition is 0, and if so, executes one or more commands.</li>
 </ul>
 
-<pre><code class="bash">if [ condition1 ]; then
+<pre><code class="bash">if [ condition1 ]
+then
   some commands
 fi
 </code></pre>
@@ -1149,7 +1255,7 @@ fi
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-27" style="background:#F1E7C8;">
+<slide class="class" id="slide-29" style="background:#F1E7C8;">
   <hgroup>
     <h2>Comparison operators</h2>
   </hgroup>
@@ -1192,7 +1298,7 @@ fi
 </tr>
 <tr>
 <td align="center">less than or equal to</td>
-<td align="center"><code>if [[ $a -le $b ]]</code></td>
+<td align="center"><code>if [ $a -le $b ]</code></td>
 <td align="center"></td>
 </tr>
 <tr>
@@ -1216,7 +1322,7 @@ fi
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class tiny" id="slide-28" style="background:#F1E7C8;">
+<slide class="class tiny" id="slide-30" style="background:#F1E7C8;">
   <hgroup>
     <h2>Other Operators</h2>
   </hgroup>
@@ -1281,7 +1387,7 @@ fi
 </tr>
 <tr>
 <td align="center">OR</td>
-<td align="center">markdown display error, see next slide for example</td>
+<td align="center"><code>if [[ $a -gt 0</code> \(\mid\mid\) <code>$x -lt 5 ]]</code></td>
 </tr>
 </tbody></table>
 
@@ -1334,7 +1440,6 @@ fi
   <article data-timings="">
     <ul>
 <li>A <em>loop</em> is a block of code that iterates a list of commands.</li>
-<li><strong>bash</strong> provides three <em>loop constructs</em></li>
 <li><code>for</code> is the basic loop construct</li>
 </ul>
 
@@ -1368,7 +1473,7 @@ done
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-31" style="background:#F1E7C8;">
+<slide class="class" id="slide-33" style="background:#F1E7C8;">
   <hgroup>
     <h2>Loop Example</h2>
   </hgroup>
@@ -1443,7 +1548,7 @@ EOF
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-32" style="background:#F1E7C8;">
+<slide class="class" id="slide-34" style="background:#F1E7C8;">
   <hgroup>
     <h2>Arrays</h2>
   </hgroup>
@@ -1484,7 +1589,7 @@ EOF
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-33" style="background:#F1E7C8;">
+<slide class="class" id="slide-35" style="background:#F1E7C8;">
   <hgroup>
     <h2>Command Line Arguments</h2>
   </hgroup>
@@ -1513,7 +1618,7 @@ EOF
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-34" style="background:#F1E7C8;">
+<slide class="class" id="slide-36" style="background:#F1E7C8;">
   <hgroup>
     <h2>Example - Command Line Arguments</h2>
   </hgroup>
@@ -1559,7 +1664,7 @@ done
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-35" style="background:#F1E7C8;">
+<slide class="class" id="slide-37" style="background:#F1E7C8;">
   <hgroup>
     <h2>Functions</h2>
   </hgroup>
@@ -1590,7 +1695,7 @@ function_name () {
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-36" style="background:#F1E7C8;">
+<slide class="class" id="slide-38" style="background:#F1E7C8;">
   <hgroup>
     <h2>Example Function</h2>
   </hgroup>
@@ -1600,7 +1705,7 @@ function_name () {
   <pre><code class="bash">#!/bin/bash
 
 usage () {
-    echo &quot;USAGE: $0 [atleast 11 arguments]&quot;
+  echo &quot;USAGE: $0 [atleast 11 arguments]&quot;
   exit
 }   
 
@@ -1653,7 +1758,7 @@ echo &quot;Number of Arguments: &quot; $#
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-37" style="background:#F1E7C8;">
+<slide class="class" id="slide-39" style="background:#F1E7C8;">
   <hgroup>
     <h2>Function Arguments</h2>
   </hgroup>
@@ -1683,7 +1788,7 @@ local varName
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-38" style="background:#F1E7C8;">
+<slide class="class" id="slide-40" style="background:#F1E7C8;">
   <hgroup>
     <h2>Recursive Function</h2>
   </hgroup>
@@ -1749,7 +1854,7 @@ fi
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-39" style="background:#F1E7C8;">
+<slide class="class" id="slide-41" style="background:#F1E7C8;">
   <hgroup>
     <h2>Research Computing Resources</h2>
   </hgroup>
@@ -1787,21 +1892,20 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-40" style="background:#F1E7C8;">
+<slide class="class" id="slide-42" style="background:#F1E7C8;">
   <hgroup>
     <h2>Research Computing Resources</h2>
   </hgroup>
   <article data-timings="">
     <ul>
-<li><strong> Sol </strong>
+<li><strong>Sol</strong>: 80 node Shared Condominium Cluster
 
 <ul>
-<li>Lehigh&#39;s Flagship High Performance Computing Cluster</li>
 <li>9 nodes, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 25MB Cache, 128GB
 RAM</li>
 <li>33 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache,
 128GB RAM</li>
-<li>13 nodes, dual 12-core Intel Xeon E5-2650 v4 2.3Ghz CPU, 30 MB Cache, 64GB
+<li>14 nodes, dual 12-core Intel Xeon E5-2650 v4 2.3Ghz CPU, 30 MB Cache, 64GB
 RAM</li>
 <li>1 node, dual 8-core Intel Xeon 2630 v3 2.4GHz CPU, 20 MB Cache, 512GB RAM</li>
 <li>23 nodes, dual 18-core Intel Xeon Gold 6140 2.3GHz CPU, 24.7 MB Cache, 192GB RAM</li>
@@ -1824,7 +1928,7 @@ only</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-41" style="background:#F1E7C8;">
+<slide class="class" id="slide-43" style="background:#F1E7C8;">
   <hgroup>
     <h2>Sol</h2>
   </hgroup>
@@ -1917,6 +2021,19 @@ only</li>
 </tr>
 </tbody></table>
 
+<ul>
+<li>Haswell (v3) and Broadwell (v4) provide 256-bit Advanced Vector Extensions SIMD instructions
+
+<ul>
+<li>double the base FLOPs at expense of CPU Speed</li>
+</ul></li>
+<li>Skylake (Gold) provide 512-bit Advanced Vector Extensions SIMD instructions
+
+<ul>
+<li>quadruple the base FLOPs at expense of CPU Speed</li>
+</ul></li>
+</ul>
+
 <!--
 --- .class #id
 
@@ -1945,7 +2062,7 @@ only</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-42" style="background:#F1E7C8;">
+<slide class="class" id="slide-44" style="background:#F1E7C8;">
   <hgroup>
     <h2>What about Storage resources</h2>
   </hgroup>
@@ -2000,7 +2117,7 @@ only</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-44" style="background:#F1E7C8;">
+<slide class="class" id="slide-46" style="background:#F1E7C8;">
   <hgroup>
     <h2>How do I get started using HPC resources?</h2>
   </hgroup>
@@ -2125,7 +2242,7 @@ modified, appended or prepended</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-47" style="background:#F1E7C8;">
+<slide class="class" id="slide-49" style="background:#F1E7C8;">
   <hgroup>
     <h2>Installed Software</h2>
   </hgroup>
@@ -2188,7 +2305,7 @@ modified, appended or prepended</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-48" style="background:#F1E7C8;">
+<slide class="class" id="slide-50" style="background:#F1E7C8;">
   <hgroup>
     <h2>More Software</h2>
   </hgroup>
@@ -2246,7 +2363,7 @@ modified, appended or prepended</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-49" style="background:#F1E7C8;">
+<slide class="class" id="slide-51" style="background:#F1E7C8;">
   <hgroup>
     <h2>More Software</h2>
   </hgroup>
@@ -2308,7 +2425,7 @@ modified, appended or prepended</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-50" style="background:#F1E7C8;">
+<slide class="class" id="slide-52" style="background:#F1E7C8;">
   <hgroup>
     <h2>More Software</h2>
   </hgroup>
@@ -2365,7 +2482,7 @@ modified, appended or prepended</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-51" style="background:#F1E7C8;">
+<slide class="class" id="slide-53" style="background:#F1E7C8;">
   <hgroup>
     <h2>Using your own Software?</h2>
   </hgroup>
@@ -2402,17 +2519,476 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-52" style="background:#F1E7C8;">
+<slide class="class" id="slide-54" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Compilers</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Various versions of compilers installed on Sol </li>
+<li>Open Source: GNU Compiler (also called gcc even though gcc is the c compiler)
+
+<ul>
+<li>4.8.5 (system default), 5.3.0, 6.1.0 and 7.1.0</li>
+</ul></li>
+<li>Commercial: Only two seats of each
+
+<ul>
+<li>Intel Compiler: 16.0.3, 17.0.0, 17.0.3 and 18.0.1</li>
+<li>Portland Group or PGI: 16.5, 16.10, 17.4, 17.7 and 18.3</li>
+</ul></li>
+<li><em>We are licensed to install any available version</em></li>
+<li>On Sol, all except gcc 4.8.5 are available via the module environment</li>
+</ul>
+
+<table><thead>
+<tr>
+<th align="center">Language</th>
+<th align="center">GNU</th>
+<th align="center">Intel</th>
+<th align="center">PGI</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="center">Fortran</td>
+<td align="center"><code>gfortran</code></td>
+<td align="center"><code>ifort</code></td>
+<td align="center"><code>pgfortran</code></td>
+</tr>
+<tr>
+<td align="center">C</td>
+<td align="center"><code>gcc</code></td>
+<td align="center"><code>icc</code></td>
+<td align="center"><code>pgcc</code></td>
+</tr>
+<tr>
+<td align="center">C++</td>
+<td align="center"><code>g++</code></td>
+<td align="center"><code>icpc</code></td>
+<td align="center"><code>pgc++</code></td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class small" id="slide-55" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Compiling Code</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Usage: <code>&lt;compiler&gt; &lt;options&gt; &lt;source code&gt;</code></li>
+<li>Example:
+
+<ul>
+<li><code>ifort -o saxpyf saxpy.f90</code></li>
+<li><code>gcc -o saxpyc saxpy.c</code></li>
+</ul></li>
+<li>Common Compiler options or flags
+
+<ul>
+<li><code>-o myexec</code>: compile code and create an executable myexec, default executable is <code>a.out</code>.</li>
+<li><code>-l{libname}</code>: link compiled code to a library called libname. </li>
+<li><code>-L{directory path}</code>: directory to search for libraries. </li>
+<li><code>-I{directory path}</code>: directory to search for include files and fortran modules.
+
+<ul>
+<li><code>-L/share/Apps/gsl/2.1/intel-16.0.3/lib -lgsl -I/share/Apps/gsl/2.1/intel-16.0.3/include</code></li>
+</ul></li>
+<li>target Sandybridge and later processors for optimization using unified binary
+
+<ul>
+<li>Intel: <code>-axCORE-AVX512,CORE-AVX2,CORE-AVX-I,AVX</code> </li>
+<li>PGI: <code>-tp sandybridge,haswell,skylake</code></li>
+<li>GNU: cannot create unified binary targeting multiple architectures</li>
+</ul></li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-56" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Compiling and Running Serial Codes</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="sh">[2018-02-22 08:47.27] ~/Workshop/2017XSEDEBootCamp/OpenMP
+[alp514.sol-d118](842): icc -o laplacec laplace_serial.c
+[2018-02-22 08:47.46] ~/Workshop/2017XSEDEBootCamp/OpenMP
+[alp514.sol-d118](843): ./laplacec
+Maximum iterations [100-4000]?
+1000
+---------- Iteration number: 100 ------------
+[995,995]: 63.33  [996,996]: 72.67  [997,997]: 81.40  [998,998]: 88.97  [999,999]: 94.86  [1000,1000]: 98.67
+---------- Iteration number: 200 ------------
+[995,995]: 79.11  [996,996]: 84.86  [997,997]: 89.91  [998,998]: 94.10  [999,999]: 97.26  [1000,1000]: 99.28
+---------- Iteration number: 300 ------------
+[995,995]: 85.25  [996,996]: 89.39  [997,997]: 92.96  [998,998]: 95.88  [999,999]: 98.07  [1000,1000]: 99.49
+---------- Iteration number: 400 ------------
+[995,995]: 88.50  [996,996]: 91.75  [997,997]: 94.52  [998,998]: 96.78  [999,999]: 98.48  [1000,1000]: 99.59
+---------- Iteration number: 500 ------------
+[995,995]: 90.52  [996,996]: 93.19  [997,997]: 95.47  [998,998]: 97.33  [999,999]: 98.73  [1000,1000]: 99.66
+---------- Iteration number: 600 ------------
+[995,995]: 91.88  [996,996]: 94.17  [997,997]: 96.11  [998,998]: 97.69  [999,999]: 98.89  [1000,1000]: 99.70
+---------- Iteration number: 700 ------------
+[995,995]: 92.87  [996,996]: 94.87  [997,997]: 96.57  [998,998]: 97.95  [999,999]: 99.01  [1000,1000]: 99.73
+---------- Iteration number: 800 ------------
+[995,995]: 93.62  [996,996]: 95.40  [997,997]: 96.91  [998,998]: 98.15  [999,999]: 99.10  [1000,1000]: 99.75
+---------- Iteration number: 900 ------------
+[995,995]: 94.21  [996,996]: 95.81  [997,997]: 97.18  [998,998]: 98.30  [999,999]: 99.17  [1000,1000]: 99.77
+---------- Iteration number: 1000 ------------
+[995,995]: 94.68  [996,996]: 96.15  [997,997]: 97.40  [998,998]: 98.42  [999,999]: 99.22  [1000,1000]: 99.78
+
+Max error at iteration 1000 was 0.034767
+Total time was 4.099030 seconds.
+</code></pre>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-57" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Compilers for Parallel Programming: OpenMP &amp; TBB</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>OpenMP support is built-in</li>
+</ul>
+
+<table><thead>
+<tr>
+<th align="center">Compiler</th>
+<th align="center">OpenMP Flag</th>
+<th align="center">TBB Flag</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="center">GNU</td>
+<td align="center"><code>-fopenmp</code></td>
+<td align="center"><code>-L$TBBROOT/lib/intel64_lin/gcc4.4 -ltbb</code></td>
+</tr>
+<tr>
+<td align="center">Intel</td>
+<td align="center"><code>-qopenmp</code></td>
+<td align="center"><code>-L$TBBROOT/lib/intel64_lin/gcc4.4 -ltbb</code></td>
+</tr>
+<tr>
+<td align="center">PGI</td>
+<td align="center"><code>-mp</code></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+
+<div style='float:left;width:35%;'>
+  <ul>
+<li>TBB is available as part of Intel Compiler suite</li>
+<li><code>$TBBROOT</code> depends on the Intel Compiler Suite you want to use.</li>
+<li>Not sure if this will work for PGI Compilers</li>
+</ul>
+
+</div>
+<div style='float:right;width:60%;'>
+  <pre><code class="sh">[alp514.sol](1083): module show intel
+-------------------------------------------------------------------
+/share/Apps/share/Modules/modulefiles/toolchain/intel/16.0.3:
+
+module-whatis    Set up Intel 16.0.3 compilers. 
+conflict         pgi 
+conflict         gcc 
+setenv           INTEL_LICENSE_FILE /share/Apps/intel/licenses/server.lic 
+setenv           IPPROOT /share/Apps/intel/compilers_and_libraries_2016.3.210/linux/ipp 
+setenv           MKLROOT /share/Apps/intel/compilers_and_libraries_2016.3.210/linux/mkl 
+setenv           TBBROOT /share/Apps/intel/compilers_and_libraries_2016.3.210/linux/tbb 
+...
+snip
+...
+
+</code></pre>
+
+</div>
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-58" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Compiling and Running OpenMP Codes</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="sh">[2018-02-22 08:47.56] ~/Workshop/2017XSEDEBootCamp/OpenMP/Solutions
+[alp514.sol-d118](845): icc -qopenmp -o laplacec laplace_omp.c
+[2018-02-22 08:48.09] ~/Workshop/2017XSEDEBootCamp/OpenMP/Solutions
+[alp514.sol-d118](846): OMP_NUM_THREADS=4 ./laplacec
+Maximum iterations [100-4000]?
+1000
+---------- Iteration number: 100 ------------
+[995,995]: 63.33  [996,996]: 72.67  [997,997]: 81.40  [998,998]: 88.97  [999,999]: 94.86  [1000,1000]: 98.67
+---------- Iteration number: 200 ------------
+[995,995]: 79.11  [996,996]: 84.86  [997,997]: 89.91  [998,998]: 94.10  [999,999]: 97.26  [1000,1000]: 99.28
+---------- Iteration number: 300 ------------
+[995,995]: 85.25  [996,996]: 89.39  [997,997]: 92.96  [998,998]: 95.88  [999,999]: 98.07  [1000,1000]: 99.49
+---------- Iteration number: 400 ------------
+[995,995]: 88.50  [996,996]: 91.75  [997,997]: 94.52  [998,998]: 96.78  [999,999]: 98.48  [1000,1000]: 99.59
+---------- Iteration number: 500 ------------
+[995,995]: 90.52  [996,996]: 93.19  [997,997]: 95.47  [998,998]: 97.33  [999,999]: 98.73  [1000,1000]: 99.66
+---------- Iteration number: 600 ------------
+[995,995]: 91.88  [996,996]: 94.17  [997,997]: 96.11  [998,998]: 97.69  [999,999]: 98.89  [1000,1000]: 99.70
+---------- Iteration number: 700 ------------
+[995,995]: 92.87  [996,996]: 94.87  [997,997]: 96.57  [998,998]: 97.95  [999,999]: 99.01  [1000,1000]: 99.73
+---------- Iteration number: 800 ------------
+[995,995]: 93.62  [996,996]: 95.40  [997,997]: 96.91  [998,998]: 98.15  [999,999]: 99.10  [1000,1000]: 99.75
+---------- Iteration number: 900 ------------
+[995,995]: 94.21  [996,996]: 95.81  [997,997]: 97.18  [998,998]: 98.30  [999,999]: 99.17  [1000,1000]: 99.77
+---------- Iteration number: 1000 ------------
+[995,995]: 94.68  [996,996]: 96.15  [997,997]: 97.40  [998,998]: 98.42  [999,999]: 99.22  [1000,1000]: 99.78
+
+Max error at iteration 1000 was 0.034767
+Total time was 2.459961 seconds.
+</code></pre>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-59" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Compilers for Parallel Programming: MPI</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>MPI is a library and not a compiler, built or compiled for different compilers.</li>
+</ul>
+
+<table><thead>
+<tr>
+<th align="center">Language</th>
+<th align="center">Compile Command</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="center">Fortran</td>
+<td align="center"><code>mpif90</code></td>
+</tr>
+<tr>
+<td align="center">C</td>
+<td align="center"><code>mpicc</code></td>
+</tr>
+<tr>
+<td align="center">C++</td>
+<td align="center"><code>mpicxx</code></td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>Usage: <code>&lt;compiler&gt; &lt;options&gt; &lt;source code&gt;</code></li>
+</ul>
+
+<div style='float:left;width:50%;'>
+  <pre><code class="sh">[2017-10-30 08:40.30] ~/Workshop/2017XSEDEBootCamp/MPI/Solutions
+[alp514.sol](1096): mpif90 -o laplace_f90 laplace_mpi.f90 
+[2017-10-30 08:40.45] ~/Workshop/2017XSEDEBootCamp/MPI/Solutions
+[alp514.sol](1097): mpicc -o laplace_c laplace_mpi.c
+[2017-10-30 08:40.57] ~/Workshop/2017XSEDEBootCamp/MPI/Solutions
+</code></pre>
+
+</div>
+<div style='float:right;width:48%;'>
+  <ul>
+<li>The MPI compiler command is just a wrapper around the underlying compiler</li>
+</ul>
+
+<pre><code class="bash">[alp514.sol](1080): mpif90 -show
+ifort -fPIC -I/share/Apps/mvapich2/2.1/intel-16.0.3/include 
+  -I/share/Apps/mvapich2/2.1/intel-16.0.3/include 
+  -L/share/Apps/mvapich2/2.1/intel-16.0.3/lib 
+  -lmpifort -Wl,-rpath -Wl,/share/Apps/mvapich2/2.1/intel-16.0.3/lib 
+  -Wl,--enable-new-dtags -lmpi
+</code></pre>
+
+</div>
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class small" id="slide-60" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>MPI Libraries</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>There are two different MPI implementations commonly used</li>
+<li><code>MPICH</code>: Developed by Argonned National Laboratory
+
+<ul>
+<li>used as a starting point for various commercial and open source MPI libraries</li>
+<li><code>MVAPICH2</code>: Developed by D. K. Panda with support for  InfiniBand, iWARP, RoCE, and Intel Omni-Path. (default MPI on Sol)</li>
+<li><code>Intel MPI</code>: Intel&#39;s version of MPI. <strong>You need this for Xeon Phi MICs</strong>.
+
+<ul>
+<li>available in cluster edition of Intel Compiler Suite. Not available at Lehigh</li>
+</ul></li>
+<li><code>IBM MPI</code> for IBM BlueGene and </li>
+<li><code>CRAY MPI</code> for Cray systems</li>
+</ul></li>
+<li><code>OpenMPI</code>: A Free, Open Source implementation from merger of three well know MPI implementations. Can be used for commodity network as well as high speed network
+
+<ul>
+<li><code>FT-MPI</code> from the University of Tennessee</li>
+<li><code>LA-MPI</code> from Los Alamos National Laboratory</li>
+<li><code>LAM/MPI</code> from Indiana University</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-61" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Running MPI Programs</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Every MPI implementation come with their own job launcher: <code>mpiexec</code> (MPICH,OpenMPI &amp; MVAPICH2), <code>mpirun</code> (OpenMPI)  or <code>mpirun_rsh</code> (MVAPICH2)</li>
+<li>Example: <code>mpiexec [options] &lt;program name&gt; [program options]</code></li>
+<li>Required options: number of processes and list of hosts on which to run program </li>
+</ul>
+
+<table><thead>
+<tr>
+<th align="center">Option Description</th>
+<th align="center">mpiexec</th>
+<th align="center">mpirun</th>
+<th align="center">mpirun_rsh</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="center">run on <code>x</code> cores</td>
+<td align="center">-n x</td>
+<td align="center">-np x</td>
+<td align="center">-n x</td>
+</tr>
+<tr>
+<td align="center">location of the hostfile</td>
+<td align="center">-f filename</td>
+<td align="center">-machinefile filename</td>
+<td align="center">-hostfile filename</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>To run a MPI code, you need to use the launcher from the same implementation that was used to compile the code.</li>
+<li>For e.g.: You cannot compile code with OpenMPI and run using the MPICH and MVAPICH2&#39;s launcher
+
+<ul>
+<li>Since MVAPICH2 is based on MPICH, you can launch MVAPICH2 compiled code using MPICH&#39;s launcher.</li>
+</ul></li>
+<li>SLURM scheduler provides <code>srun</code> as a wrapper around all mpi launchers</li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-62" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Compiling and Running MPI Codes</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="sh">[2018-02-22 08:48.27] ~/Workshop/2017XSEDEBootCamp/MPI/Solutions
+[alp514.sol-d118](848): mpicc -o laplacec laplace_mpi.c
+[2018-02-22 08:48.41] ~/Workshop/2017XSEDEBootCamp/MPI/Solutions
+[alp514.sol-d118](849): mpiexec -n 4 ./laplacec
+Maximum iterations [100-4000]?
+1000
+---------- Iteration number: 100 ------------
+[995,995]: 63.33  [996,996]: 72.67  [997,997]: 81.40  [998,998]: 88.97  [999,999]: 94.86  [1000,1000]: 98.67
+---------- Iteration number: 200 ------------
+[995,995]: 79.11  [996,996]: 84.86  [997,997]: 89.91  [998,998]: 94.10  [999,999]: 97.26  [1000,1000]: 99.28
+---------- Iteration number: 300 ------------
+[995,995]: 85.25  [996,996]: 89.39  [997,997]: 92.96  [998,998]: 95.88  [999,999]: 98.07  [1000,1000]: 99.49
+---------- Iteration number: 400 ------------
+[995,995]: 88.50  [996,996]: 91.75  [997,997]: 94.52  [998,998]: 96.78  [999,999]: 98.48  [1000,1000]: 99.59
+---------- Iteration number: 500 ------------
+[995,995]: 90.52  [996,996]: 93.19  [997,997]: 95.47  [998,998]: 97.33  [999,999]: 98.73  [1000,1000]: 99.66
+---------- Iteration number: 600 ------------
+[995,995]: 91.88  [996,996]: 94.17  [997,997]: 96.11  [998,998]: 97.69  [999,999]: 98.89  [1000,1000]: 99.70
+---------- Iteration number: 700 ------------
+[995,995]: 92.87  [996,996]: 94.87  [997,997]: 96.57  [998,998]: 97.95  [999,999]: 99.01  [1000,1000]: 99.73
+---------- Iteration number: 800 ------------
+[995,995]: 93.62  [996,996]: 95.40  [997,997]: 96.91  [998,998]: 98.15  [999,999]: 99.10  [1000,1000]: 99.75
+---------- Iteration number: 900 ------------
+[995,995]: 94.21  [996,996]: 95.81  [997,997]: 97.18  [998,998]: 98.30  [999,999]: 99.17  [1000,1000]: 99.77
+---------- Iteration number: 1000 ------------
+[995,995]: 94.68  [996,996]: 96.15  [997,997]: 97.40  [998,998]: 98.42  [999,999]: 99.22  [1000,1000]: 99.78
+
+Max error at iteration 1000 was 0.034767
+Total time was 1.030180 seconds.
+</code></pre>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-63" style="background:#F1E7C8;">
   <hgroup>
     <h2>Cluster Environment</h2>
   </hgroup>
   <article data-timings="">
-    <ul>
-<li>A cluster is a group of computers (nodes) that works together closely</li>
-</ul>
-
+    
 <div style='float:left;width:30%;'>
   <ul>
+<li><p>A cluster is a group of computers (nodes) that works together closely</p></li>
 <li><p>Two types of nodes</p>
 
 <ul>
@@ -2785,7 +3361,7 @@ memory that should be requested is 126GB.</p></li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-61" style="background:#F1E7C8;">
+<slide class="class" id="slide-72" style="background:#F1E7C8;">
   <hgroup>
     <h2>Job Types</h2>
   </hgroup>
@@ -3185,7 +3761,7 @@ symbols, which are a percent sign &quot;%&quot; followed by a letter (e.g. %j). 
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class small" id="slide-67" style="background:#F1E7C8;">
+<slide class="class small" id="slide-78" style="background:#F1E7C8;">
   <hgroup>
     <h2>Job Types: Interactive</h2>
   </hgroup>
@@ -3197,11 +3773,11 @@ symbols, which are a percent sign &quot;%&quot; followed by a letter (e.g. %j). 
 <li>   <code>qsub -I -V -l walltime=&lt;hh:mm:ss&gt;,nodes=&lt;# of nodes&gt;:ppn=&lt;# of core/node&gt; -q &lt;queue
 name&gt;</code></li>
 </ul></li>
-<li><p>SLURM:  Use <code>srun</code> command with SLURM Directives followed by <code>--pty /bin/bash</code></p>
+<li><p>SLURM:  Use <code>srun</code> command with SLURM Directives followed by <code>--pty /bin/bash --login</code></p>
 
 <ul>
 <li><code>srun --time=&lt;hh:mm:ss&gt; --nodes=&lt;# of nodes&gt; --ntasks-per-node=&lt;#
-of core/node&gt; -p &lt;queue name&gt; --pty /bin/bash</code></li>
+of core/node&gt; -p &lt;queue name&gt; --pty /bin/bash --login</code></li>
 <li>If you have <code>soltools</code> module loaded, then use <code>interact</code> with at
 least one SLURM Directive
 
@@ -3512,7 +4088,7 @@ jobs.
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-75" style="background:#F1E7C8;">
+<slide class="class" id="slide-86" style="background:#F1E7C8;">
   <hgroup>
     <h2>Modifying Resources for Queued Jobs</h2>
   </hgroup>
@@ -3634,7 +4210,7 @@ allocation</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class small" id="slide-79" style="background:#F1E7C8;">
+<slide class="class small" id="slide-90" style="background:#F1E7C8;">
   <hgroup>
     <h2>Additional Help &amp; Information</h2>
   </hgroup>
@@ -3749,31 +4325,31 @@ allocation</li>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='Some Linux Terms (also called variables)'>
+        data-slide=12 title='Variables'>
          12
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=13 title='Linux Commands'>
+        data-slide=13 title='Variables (contd)'>
          13
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=14 title='Linux Command (contd)'>
+        data-slide=14 title='Linux Commands'>
          14
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=15 title='File Editing'>
+        data-slide=15 title='Linux Command (contd)'>
          15
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=16 title='vi/emacs commands'>
+        data-slide=16 title='File Editing'>
          16
       </a>
     </li>
@@ -3785,7 +4361,7 @@ allocation</li>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=18 title='File Permission'>
+        data-slide=18 title='vi/emacs commands'>
          18
       </a>
     </li>
@@ -3797,181 +4373,181 @@ allocation</li>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=20 title='Scripting Language'>
+        data-slide=20 title='File Permission'>
          20
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=21 title='Writing your first script'>
+        data-slide=21 title='Scripting Language'>
          21
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=22 title='Breaking down the script'>
+        data-slide=22 title='Writing your first script'>
          22
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=23 title='Quotation'>
+        data-slide=23 title='Breaking down the script'>
          23
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=24 title='Arithmetic Operations'>
+        data-slide=24 title='Quotation'>
          24
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=25 title='Flow Control'>
+        data-slide=25 title='Arithmetic Operations'>
          25
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=26 title='Conditionals: if'>
+        data-slide=26 title='Declare command'>
          26
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=27 title='Comparison operators'>
+        data-slide=27 title='Flow Control'>
          27
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=28 title='Other Operators'>
+        data-slide=28 title='Conditionals: if'>
          28
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=29 title='Nested ifs'>
+        data-slide=29 title='Comparison operators'>
          29
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=30 title='Loops'>
+        data-slide=30 title='Other Operators'>
          30
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=31 title='Loop Example'>
+        data-slide=31 title='Nested ifs'>
          31
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=32 title='Arrays'>
+        data-slide=32 title='Loops'>
          32
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=33 title='Command Line Arguments'>
+        data-slide=33 title='Loop Example'>
          33
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=34 title='Example - Command Line Arguments'>
+        data-slide=34 title='Arrays'>
          34
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=35 title='Functions'>
+        data-slide=35 title='Command Line Arguments'>
          35
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=36 title='Example Function'>
+        data-slide=36 title='Example - Command Line Arguments'>
          36
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=37 title='Function Arguments'>
+        data-slide=37 title='Functions'>
          37
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=38 title='Recursive Function'>
+        data-slide=38 title='Example Function'>
          38
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=39 title='Research Computing Resources'>
+        data-slide=39 title='Function Arguments'>
          39
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=40 title='Research Computing Resources'>
+        data-slide=40 title='Recursive Function'>
          40
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=41 title='Sol'>
+        data-slide=41 title='Research Computing Resources'>
          41
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=42 title='What about Storage resources'>
+        data-slide=42 title='Research Computing Resources'>
          42
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=43 title='Network Layout Sol &amp; Ceph Storage Cluster'>
+        data-slide=43 title='Sol'>
          43
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=44 title='How do I get started using HPC resources?'>
+        data-slide=44 title='What about Storage resources'>
          44
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=45 title='Available Software'>
+        data-slide=45 title='Network Layout Sol &amp; Ceph Storage Cluster'>
          45
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=46 title='Module Command'>
+        data-slide=46 title='How do I get started using HPC resources?'>
          46
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=47 title='Installed Software'>
+        data-slide=47 title='Available Software'>
          47
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=48 title='More Software'>
+        data-slide=48 title='Module Command'>
          48
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=49 title='More Software'>
+        data-slide=49 title='Installed Software'>
          49
       </a>
     </li>
@@ -3983,176 +4559,242 @@ allocation</li>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=51 title='Using your own Software?'>
+        data-slide=51 title='More Software'>
          51
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=52 title='Cluster Environment'>
+        data-slide=52 title='More Software'>
          52
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=53 title='How to run jobs'>
+        data-slide=53 title='Using your own Software?'>
          53
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=54 title='Scheduler &amp; Resource Management'>
+        data-slide=54 title='Compilers'>
          54
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=55 title='Job Scheduling'>
+        data-slide=55 title='Compiling Code'>
          55
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=56 title='Backfilling'>
+        data-slide=56 title='Compiling and Running Serial Codes'>
          56
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=57 title='How much time must I request'>
+        data-slide=57 title='Compilers for Parallel Programming: OpenMP &amp; TBB'>
          57
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=58 title='Available Queues'>
+        data-slide=58 title='Compiling and Running OpenMP Codes'>
          58
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=59 title='How much memory can or should I use per core?'>
+        data-slide=59 title='Compilers for Parallel Programming: MPI'>
          59
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=60 title='Basic Job Manager Commands'>
+        data-slide=60 title='MPI Libraries'>
          60
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=61 title='Job Types'>
+        data-slide=61 title='Running MPI Programs'>
          61
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=62 title='Useful SLURM Directives'>
+        data-slide=62 title='Compiling and Running MPI Codes'>
          62
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=63 title='Useful SLURM Directives (contd)'>
+        data-slide=63 title='Cluster Environment'>
          63
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=64 title='SLURM Filename Patterns'>
+        data-slide=64 title='How to run jobs'>
          64
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=65 title='Useful PBS Directives'>
+        data-slide=65 title='Scheduler &amp; Resource Management'>
          65
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=66 title='Useful PBS/SLURM environmental variables'>
+        data-slide=66 title='Job Scheduling'>
          66
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=67 title='Job Types: Interactive'>
+        data-slide=67 title='Backfilling'>
          67
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=68 title='Job Types: Batch'>
+        data-slide=68 title='How much time must I request'>
          68
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=69 title='Minimal submit script for Serial Jobs'>
+        data-slide=69 title='Available Queues'>
          69
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=70 title='Minimal submit script for MPI Job'>
+        data-slide=70 title='How much memory can or should I use per core?'>
          70
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=71 title='Minimal submit script for OpenMP Job'>
+        data-slide=71 title='Basic Job Manager Commands'>
          71
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=72 title='Minimal submit script for LAMMPS GPU job'>
+        data-slide=72 title='Job Types'>
          72
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=73 title='Need to run multiple jobs in sequence?'>
+        data-slide=73 title='Useful SLURM Directives'>
          73
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=74 title='Monitoring &amp; Manipulating Jobs'>
+        data-slide=74 title='Useful SLURM Directives (contd)'>
          74
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=75 title='Modifying Resources for Queued Jobs'>
+        data-slide=75 title='SLURM Filename Patterns'>
          75
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=76 title='Usage Reporting'>
+        data-slide=76 title='Useful PBS Directives'>
          76
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=77 title='Usage Reporting'>
+        data-slide=77 title='Useful PBS/SLURM environmental variables'>
          77
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=78 title='Online Usage Reporting'>
+        data-slide=78 title='Job Types: Interactive'>
          78
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=79 title='Additional Help &amp; Information'>
+        data-slide=79 title='Job Types: Batch'>
          79
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=80 title='Minimal submit script for Serial Jobs'>
+         80
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=81 title='Minimal submit script for MPI Job'>
+         81
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=82 title='Minimal submit script for OpenMP Job'>
+         82
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=83 title='Minimal submit script for LAMMPS GPU job'>
+         83
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=84 title='Need to run multiple jobs in sequence?'>
+         84
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=85 title='Monitoring &amp; Manipulating Jobs'>
+         85
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=86 title='Modifying Resources for Queued Jobs'>
+         86
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=87 title='Usage Reporting'>
+         87
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=88 title='Usage Reporting'>
+         88
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=89 title='Online Usage Reporting'>
+         89
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=90 title='Additional Help &amp; Information'>
+         90
       </a>
     </li>
   </ul>

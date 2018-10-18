@@ -1,4 +1,4 @@
-#!/ bin / bash
+#!/bin/bash
 # My First Script
-echo " Hello World !"
+echo "Hello World!"
 

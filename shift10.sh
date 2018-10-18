@@ -1,7 +1,7 @@
 #!/bin/bash
 
 usage () {
-	echo "USAGE: $0 [atleast 11 arguments]"
+  echo "USAGE: $0 [atleast 11 arguments]"
   exit
 }	
 

@@ -1,5 +1,5 @@
 body{
-  font-family: 'Georgia', 'Helvetica', sanserif;
+  font-family: 'Georgia', 'Helvetica', sans-serif;
   font-size: 1em;
   color: black;
 }
@@ -14,7 +14,7 @@ body{
 .title-slide hgroup > h1, 
 .title-slide hgroup > h2,
 .title-slide hgroup > p {
- font-family: 'Georgia', 'Helvetica', sanserif; 
+ font-family: 'Georgia', 'Helvetica', sans-serif; 
  margin-left: -60px;
 }
 
