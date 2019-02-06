@@ -167,14 +167,15 @@ width="275px">
   RAM
   - 33 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache,
   128GB RAM
-  - 13 nodes, dual 12-core Intel Xeon E5-2650 v4 2.3Ghz CPU, 30 MB Cache, 64GB
+  - 14 nodes, dual 12-core Intel Xeon E5-2650 v4 2.3Ghz CPU, 30 MB Cache, 64GB
   RAM
   - 1 node, dual 8-core Intel Xeon 2630 v3 2.4GHz CPU, 20 MB Cache, 512GB RAM
-  - 9 nodes, dual 18-core Intel Xeon Gold 6140 2.3GHz CPU, 24.7 MB Cache, 192GB RAM
+  - 23 nodes, dual 18-core Intel Xeon Gold 6140 2.3GHz CPU, 24.7 MB Cache, 192GB RAM
   - 66 nVIDIA GTX 1080 GPU cards
+  - 48 nVIDIA RTX 2080TI GPU cards
   - 1TB HDD per node
   - 2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric
-  - Theoretical Performance: 56.2048 TFLOPs (CPU) + 16.962 TFLOPs (GPU)
+  - Theoretical Performance: 81.088 TFLOPs (CPU) + 34.588 TFLOPs (GPU)
   - Access: Batch Scheduled, interactive on login node for compiling, editing
   only
 
@@ -234,7 +235,7 @@ width="275px">
 * __Pisces__: Keith Moored, Mechanical Engineering and Mechanics
   - Six nodes, dual 10-core Intel Xeon E5-2650v3, 2.3GHz, 64GB RAM, nVIDIA Tesla K80
      * Theoretical Performance: 3.840 TFlops (CPU) + 17.46TFlops (GPU)
-* Unnamed : decommissioned faculty cluster for prototyping new resources
+* Devel/Testing : decommissioned faculty cluster for prototyping new resources
   - Twenty nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
      * Theoretical Performance: 6.656TFlops
 
@@ -247,11 +248,11 @@ width="275px">
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | Maia | 32 | 128 | 0.640 |
 | Monocacy | 128 | 512 | 2.662 |
-| Unnamed | 320 | 1280 | 6.656 | 
+| Devel | 320 | 1280 | 6.656 | 
 | Baltrusaitislab | 96 | 384 | 1.766 |
 | Pisces | 120 | 384 | 3.840 | 12 | 29952 | 144 | 17.472 |
-| Sol | 1624 | 8448 | 56.20 | 66 | 168960 | 528 | 16.96 |
-| Total | 2320 | 11136 | 71.77 | 78 | 198912 | 672 | 34.434 | 
+| Sol | 2152 | 11200 | 81.088 | 114 | 377856 | 1056 | 34.588 |
+| Total | 2848 | 13888 | 96.652 | 126 | 407808 | 1200 | 52.060 | 
 
 
 --- .class
@@ -326,7 +327,7 @@ width="275px">
 
 * Two at initial launch 
    - Dimitrios Vavylonis, Physics (1 node)
-   - Wonpil Im, Biological Sciences (25 nodes, 50 GPUs)
+   - Wonpil Im, Biological Sciences (37 nodes, 98 GPUs)
    - Anand Jagota, Chemical Engineering (1 node)
    - Brian Chen, Computer Science & Engineering (1 node)
    - Ed Webb & Alp Oztekin, Mechanical Engineering (6 nodes)
@@ -334,8 +335,10 @@ width="275px">
    - Seth Richards-Shubik, Economics (1 node)
    - Ganesh Balasubramanian, Mechanical Engineering (7 nodes)
    - Department of Industrial & Systems Engineering (2 nodes)
+   - Paolo Bocchini, Civil and Structural Engineering (1 node)
+   - Lisa Fredin, Chemistry (2 nodes)
 
-* Total SU on Sol after Condo Investments: 14,226,240
+* Total SU on Sol after Condo Investments: 18,851,520
 
 
 --- .class
@@ -344,17 +347,17 @@ width="275px">
 
 * LTS provides various storage options for research and teaching..
 * Some are cloud based and subject to Lehigh's Cloud Policy
-* For research, LTS provides a 1PB storage system called Ceph
+* For research, LTS provides a 618TB storage system called Ceph
 * Ceph is based on the Ceph software
-* Research groups can purchase a sharable project space on Ceph @ &#36;200/TB/year
+* Research groups can purchase a sharable project space on Ceph @ &#36;375/TB
+  with a 5 year duration
 * Ceph is in-house, built, operated and administered by LTS Research Computing Staff.
   - located in Data Center in EWFM with a backup cluster in Packard Lab
 * HPC users can write job output directly to their Ceph volume
 * Ceph volume can be mounted as a network drive on Windows or CIFS on Mac and Linux
   - [See Ceph FAQ] (http://lts.lehigh.edu/services/faq/ceph-faq) for more details
-* Storage quota on
-  - Maia: 5GB
-  - Sol: 150GB
+* Annual HPC User account fees waived for PIs who purchase a 1TB Ceph space for life
+  of Ceph i.e. 5 years 
 
 --- .class
 
@@ -376,13 +379,13 @@ width="275px">
 * Research Computing Resources; Sol, Maia & Ceph are available for use in registrar scheduled classes.
 * __Maia__: No charge, no special considerations
 * __Sol__: Provides  
-   * 1TB Ceph space per course (&#36;200 paid by department)
+   * 1TB Ceph space per course (&#36;100 paid by department)
    * An account per student (&#36;15/student) paid by department that provides 500SUs per student
       - Allocations are given for the whole class based on number of students
       - Additional allocations can be purchased in blocks of 1000 SUs @ $10/block upto 10K SU
    * Accounts valid for current semester plus an additional two weeks
 * __Ceph__: 
-   * &#36;200 per TB per course.
+   * &#36;100 per TB per course.
    * Paid for by department.
 
 --- .class
@@ -546,6 +549,7 @@ width="275px">
 
 * Other Tools
   - Artleys Knitro
+  - ROOT
   - CMake
   - GNU Parallel
   - Lmod
@@ -668,9 +672,6 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 * Pittsburgh Supercomputing Center
    - Bridges: 894 Flops and 144 TiB RAM 
 
-* Stanford University
-   - XStream: 1 PFlops, 65 nodes with 8 NVIDIA Tesla K80 each
-
 * Open Science Grid: 50 TFLOPs
 
 <!--
@@ -706,7 +707,12 @@ and high-throughput computing and other digital services, opportunities and reso
     - more than 4000 XK7 compute nodes (each containing one AMD Interlagos processor and one NVIDIA GK110 "Kepler" accelerator) 
     - single high-speed Gemini interconnection fabric.
 * 150M node-hours allocated every year through the NSF's [Petascale Computing Resource Allocation program](https://www.nsf.gov/funding/pgm_summ.jsp?pims_id=503224&org=OCI&from=home)
-
+* To be replaced with 38PFLOP [Frontera](https://www.tacc.utexas.edu/systems/frontera) cluster located at Texas Advanced
+ Computing Center.
+     - It's unknown how this cluster will be allocated since it's life exceeds
+       the life of XSEDE 2.0 
+     - NSF rules prohibit a project to exceed 10 years, so next iteration of
+       XSEDE needs to have a different project name.  
 
 --- .class
 
@@ -764,7 +770,7 @@ and high-throughput computing and other digital services, opportunities and reso
 
 --- .class &twocol
 
-## Training 
+## HPC Seminars
 
 * RC staff also guest lecture for various courses and provide various training
  seminars in collaboration with other LTS groups
@@ -775,10 +781,11 @@ and high-throughput computing and other digital services, opportunities and reso
   - Linux: Basic Commands & Environment 
   - Using SLURM scheduler on Sol
   - Shell Scripting 
-  - Using Virtualized Software at Lehigh 
   - Python Programming
+  - Data Visualization
   - RefWorks
   - Document Creation with LaTeX 
+  - Using Virtualized Software at Lehigh 
 
 *** =right
 
@@ -787,14 +794,14 @@ and high-throughput computing and other digital services, opportunities and reso
   - Research Data Management
   - Version Control with GIT
   - Programming in MATLAB and GNU Octave
-  - Enhancing Research Impact
   - Programming in R
+  - Enhancing Research Impact
   - Parallel Programming Concepts 
   - Saltstack Config Management
 
 --- .class
 
-## Full Day Workshops
+## Workshops
 
 * During the summer we provide full day workshops on programming topics
 * Summer 2015 Workshops
@@ -805,20 +812,21 @@ and high-throughput computing and other digital services, opportunities and reso
 * We also host full day workshops broadcast from other Supercomputing Centers
   - XSEDE HPC Monthly Workshop: OpenACC (Dec. 2014)
   - XSEDE HPC Summer BootCamp: OpenMP, OpenACC, MPI and Hybrid Programming (Jun.
-    2015, 2016, 2017 &amp; 2018)
+    2015 - 2018)
   - XSEDE HPC Monthly Workshop: Big Data (Nov. 2015, May 2017)
 
 
 --- .class
 
-## Upcoming Training
+## Upcoming HPC Seminars
 
 * EWFM 292 on Thursday from 2:10PM - 4:00PM.
-  - Using SLURM scheduler on Sol (Sep 20)
-  - Document Creation with LaTeX (Sep 27)
-  - Version Control with GIT (Oct 4)
-  - Python Programming (Oct 11)
-  - Data Visualization in Python (Oct 18)
+  - Using SLURM scheduler on Sol (Feb 14)
+  - Document Creation with LaTeX (Feb 21)
+  - Programming in R (Feb 28)
+  - Data Visualization in R (Mar 7)
+  - Python Programming (Mar 21)
+  - Data Visualization in Python (Mar 28)
 
 
 * Subscribe
@@ -831,7 +839,7 @@ and high-throughput computing and other digital services, opportunities and reso
 ## Getting Help
 
 * Issue with running jobs or need help to get started: 
-  * Open a help ticket: <http://go.lehigh.edu/rchelp>
+  * Open a help ticket: <http://lts.lehigh.edu/help>
 * Investing in Sol
   * Contact Alex Pacheco or Steve Anthony
 * More Information

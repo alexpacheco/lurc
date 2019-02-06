@@ -369,14 +369,15 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
 RAM</li>
 <li>33 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache,
 128GB RAM</li>
-<li>13 nodes, dual 12-core Intel Xeon E5-2650 v4 2.3Ghz CPU, 30 MB Cache, 64GB
+<li>14 nodes, dual 12-core Intel Xeon E5-2650 v4 2.3Ghz CPU, 30 MB Cache, 64GB
 RAM</li>
 <li>1 node, dual 8-core Intel Xeon 2630 v3 2.4GHz CPU, 20 MB Cache, 512GB RAM</li>
-<li>9 nodes, dual 18-core Intel Xeon Gold 6140 2.3GHz CPU, 24.7 MB Cache, 192GB RAM</li>
+<li>23 nodes, dual 18-core Intel Xeon Gold 6140 2.3GHz CPU, 24.7 MB Cache, 192GB RAM</li>
 <li>66 nVIDIA GTX 1080 GPU cards</li>
+<li>48 nVIDIA RTX 2080TI GPU cards</li>
 <li>1TB HDD per node</li>
 <li>2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric</li>
-<li>Theoretical Performance: 56.2048 TFLOPs (CPU) + 16.962 TFLOPs (GPU)</li>
+<li>Theoretical Performance: 81.088 TFLOPs (CPU) + 34.588 TFLOPs (GPU)</li>
 <li>Access: Batch Scheduled, interactive on login node for compiling, editing
 only</li>
 </ul></li>
@@ -509,7 +510,7 @@ only</li>
 <li>Theoretical Performance: 3.840 TFlops (CPU) + 17.46TFlops (GPU)</li>
 </ul></li>
 </ul></li>
-<li>Unnamed : decommissioned faculty cluster for prototyping new resources
+<li>Devel/Testing : decommissioned faculty cluster for prototyping new resources
 
 <ul>
 <li>Twenty nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
@@ -567,7 +568,7 @@ only</li>
 <td align="center"></td>
 </tr>
 <tr>
-<td align="center">Unnamed</td>
+<td align="center">Devel</td>
 <td align="center">320</td>
 <td align="center">1280</td>
 <td align="center">6.656</td>
@@ -598,23 +599,23 @@ only</li>
 </tr>
 <tr>
 <td align="center">Sol</td>
-<td align="center">1624</td>
-<td align="center">8448</td>
-<td align="center">56.20</td>
-<td align="center">66</td>
-<td align="center">168960</td>
-<td align="center">528</td>
-<td align="center">16.96</td>
+<td align="center">2152</td>
+<td align="center">11200</td>
+<td align="center">81.088</td>
+<td align="center">114</td>
+<td align="center">377856</td>
+<td align="center">1056</td>
+<td align="center">34.588</td>
 </tr>
 <tr>
 <td align="center">Total</td>
-<td align="center">2320</td>
-<td align="center">11136</td>
-<td align="center">71.77</td>
-<td align="center">78</td>
-<td align="center">198912</td>
-<td align="center">672</td>
-<td align="center">34.434</td>
+<td align="center">2848</td>
+<td align="center">13888</td>
+<td align="center">96.652</td>
+<td align="center">126</td>
+<td align="center">407808</td>
+<td align="center">1200</td>
+<td align="center">52.060</td>
 </tr>
 </tbody></table>
 
@@ -776,7 +777,7 @@ investment</li>
 
 <ul>
 <li>Dimitrios Vavylonis, Physics (1 node)</li>
-<li>Wonpil Im, Biological Sciences (25 nodes, 50 GPUs)</li>
+<li>Wonpil Im, Biological Sciences (37 nodes, 98 GPUs)</li>
 <li>Anand Jagota, Chemical Engineering (1 node)</li>
 <li>Brian Chen, Computer Science &amp; Engineering (1 node)</li>
 <li>Ed Webb &amp; Alp Oztekin, Mechanical Engineering (6 nodes)</li>
@@ -784,8 +785,10 @@ investment</li>
 <li>Seth Richards-Shubik, Economics (1 node)</li>
 <li>Ganesh Balasubramanian, Mechanical Engineering (7 nodes)</li>
 <li>Department of Industrial &amp; Systems Engineering (2 nodes)</li>
+<li>Paolo Bocchini, Civil and Structural Engineering (1 node)</li>
+<li>Lisa Fredin, Chemistry (2 nodes)</li>
 </ul></li>
-<li><p>Total SU on Sol after Condo Investments: 14,226,240</p></li>
+<li><p>Total SU on Sol after Condo Investments: 18,851,520</p></li>
 </ul>
 
   </article>
@@ -805,9 +808,10 @@ investment</li>
     <ul>
 <li>LTS provides various storage options for research and teaching..</li>
 <li>Some are cloud based and subject to Lehigh&#39;s Cloud Policy</li>
-<li>For research, LTS provides a 1PB storage system called Ceph</li>
+<li>For research, LTS provides a 618TB storage system called Ceph</li>
 <li>Ceph is based on the Ceph software</li>
-<li>Research groups can purchase a sharable project space on Ceph @ &#36;200/TB/year</li>
+<li>Research groups can purchase a sharable project space on Ceph @ &#36;375/TB
+with a 5 year duration</li>
 <li>Ceph is in-house, built, operated and administered by LTS Research Computing Staff.
 
 <ul>
@@ -819,12 +823,8 @@ investment</li>
 <ul>
 <li><a href="http://lts.lehigh.edu/services/faq/ceph-faq">See Ceph FAQ</a> for more details</li>
 </ul></li>
-<li>Storage quota on
-
-<ul>
-<li>Maia: 5GB</li>
-<li>Sol: 150GB</li>
-</ul></li>
+<li>Annual HPC User account fees waived for PIs who purchase a 1TB Ceph space for life
+of Ceph i.e. 5 years </li>
 </ul>
 
   </article>
@@ -878,7 +878,7 @@ investment</li>
 <li><strong>Sol</strong>: Provides<br>
 
 <ul>
-<li>1TB Ceph space per course (&#36;200 paid by department)</li>
+<li>1TB Ceph space per course (&#36;100 paid by department)</li>
 <li>An account per student (&#36;15/student) paid by department that provides 500SUs per student
 
 <ul>
@@ -890,7 +890,7 @@ investment</li>
 <li><strong>Ceph</strong>: 
 
 <ul>
-<li>&#36;200 per TB per course.</li>
+<li>&#36;100 per TB per course.</li>
 <li>Paid for by department.</li>
 </ul></li>
 </ul>
@@ -1182,6 +1182,7 @@ investment</li>
 
 <ul>
 <li>Artleys Knitro</li>
+<li>ROOT</li>
 <li>CMake</li>
 <li>GNU Parallel</li>
 <li>Lmod</li>
@@ -1418,11 +1419,6 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 <ul>
 <li>Bridges: 894 Flops and 144 TiB RAM </li>
 </ul></li>
-<li><p>Stanford University</p>
-
-<ul>
-<li>XStream: 1 PFlops, 65 nodes with 8 NVIDIA Tesla K80 each</li>
-</ul></li>
 <li><p>Open Science Grid: 50 TFLOPs</p></li>
 </ul>
 
@@ -1484,6 +1480,15 @@ local users with getting started on XSEDE resources.</li>
 <li>single high-speed Gemini interconnection fabric.</li>
 </ul></li>
 <li>150M node-hours allocated every year through the NSF&#39;s <a href="https://www.nsf.gov/funding/pgm_summ.jsp?pims_id=503224&amp;org=OCI&amp;from=home">Petascale Computing Resource Allocation program</a></li>
+<li>To be replaced with 38PFLOP <a href="https://www.tacc.utexas.edu/systems/frontera">Frontera</a> cluster located at Texas Advanced
+Computing Center.
+
+<ul>
+<li>It&#39;s unknown how this cluster will be allocated since it&#39;s life exceeds
+the life of XSEDE 2.0 </li>
+<li>NSF rules prohibit a project to exceed 10 years, so next iteration of
+XSEDE needs to have a different project name.<br></li>
+</ul></li>
 </ul>
 
   </article>
@@ -1620,7 +1625,7 @@ and September. 160M SUs awarded in total each allocation cycle</li>
 
 <slide class="class" id="slide-43" style="background:#F1E7C8;">
   <hgroup>
-    <h2>Training</h2>
+    <h2>HPC Seminars</h2>
   </hgroup>
   <article data-timings="">
     <ul>
@@ -1634,10 +1639,11 @@ seminars in collaboration with other LTS groups</li>
 <li>Linux: Basic Commands &amp; Environment </li>
 <li>Using SLURM scheduler on Sol</li>
 <li>Shell Scripting </li>
-<li>Using Virtualized Software at Lehigh </li>
 <li>Python Programming</li>
+<li>Data Visualization</li>
 <li>RefWorks</li>
 <li>Document Creation with LaTeX </li>
+<li>Using Virtualized Software at Lehigh </li>
 </ul>
 
 </div>
@@ -1648,8 +1654,8 @@ seminars in collaboration with other LTS groups</li>
 <li>Research Data Management</li>
 <li>Version Control with GIT</li>
 <li>Programming in MATLAB and GNU Octave</li>
-<li>Enhancing Research Impact</li>
 <li>Programming in R</li>
+<li>Enhancing Research Impact</li>
 <li>Parallel Programming Concepts </li>
 <li>Saltstack Config Management</li>
 </ul>
@@ -1666,7 +1672,7 @@ seminars in collaboration with other LTS groups</li>
 
 <slide class="class" id="slide-44" style="background:#F1E7C8;">
   <hgroup>
-    <h2>Full Day Workshops</h2>
+    <h2>Workshops</h2>
   </hgroup>
   <article data-timings="">
     <ul>
@@ -1687,7 +1693,7 @@ seminars in collaboration with other LTS groups</li>
 <ul>
 <li>XSEDE HPC Monthly Workshop: OpenACC (Dec. 2014)</li>
 <li>XSEDE HPC Summer BootCamp: OpenMP, OpenACC, MPI and Hybrid Programming (Jun.
-2015, 2016, 2017 &amp; 2018)</li>
+2015 - 2018)</li>
 <li>XSEDE HPC Monthly Workshop: Big Data (Nov. 2015, May 2017)</li>
 </ul></li>
 </ul>
@@ -1703,18 +1709,19 @@ seminars in collaboration with other LTS groups</li>
 
 <slide class="class" id="slide-45" style="background:#F1E7C8;">
   <hgroup>
-    <h2>Upcoming Training</h2>
+    <h2>Upcoming HPC Seminars</h2>
   </hgroup>
   <article data-timings="">
     <ul>
 <li><p>EWFM 292 on Thursday from 2:10PM - 4:00PM.</p>
 
 <ul>
-<li>Using SLURM scheduler on Sol (Sep 20)</li>
-<li>Document Creation with LaTeX (Sep 27)</li>
-<li>Version Control with GIT (Oct 4)</li>
-<li>Python Programming (Oct 11)</li>
-<li>Data Visualization in Python (Oct 18)</li>
+<li>Using SLURM scheduler on Sol (Feb 14)</li>
+<li>Document Creation with LaTeX (Feb 21)</li>
+<li>Programming in R (Feb 28)</li>
+<li>Data Visualization in R (Mar 7)</li>
+<li>Python Programming (Mar 21)</li>
+<li>Data Visualization in Python (Mar 28)</li>
 </ul></li>
 <li><p>Subscribe</p>
 
@@ -1742,7 +1749,7 @@ seminars in collaboration with other LTS groups</li>
 <li>Issue with running jobs or need help to get started: 
 
 <ul>
-<li>Open a help ticket: <a href="http://go.lehigh.edu/rchelp">http://go.lehigh.edu/rchelp</a></li>
+<li>Open a help ticket: <a href="http://lts.lehigh.edu/help">http://lts.lehigh.edu/help</a></li>
 </ul></li>
 <li>Investing in Sol
 
@@ -2028,19 +2035,19 @@ seminars in collaboration with other LTS groups</li>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=43 title='Training'>
+        data-slide=43 title='HPC Seminars'>
          43
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=44 title='Full Day Workshops'>
+        data-slide=44 title='Workshops'>
          44
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=45 title='Upcoming Training'>
+        data-slide=45 title='Upcoming HPC Seminars'>
          45
       </a>
     </li>
