@@ -1,6 +1,6 @@
 ---
 title       : Using SLURM scheduler on Sol
-subtitle    : Lehigh Research Computing
+subtitle    : Research Computing
 author      : https://researchcomputing.lehigh.edu
 job         : 
 logo        : lu.png
@@ -39,13 +39,14 @@ license     : by-sa
   - Lehigh's Flagship High Performance Computing Cluster
   - 9 nodes, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 25MB Cache, 128GB RAM
   - 33 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache, 128GB RAM
-  - 13 nodes, dual 12-core Intel Xeon E5-2650 v4 2.3Ghz CPU, 30 MB Cache, 64GB RAM
+  - 14 nodes, dual 12-core Intel Xeon E5-2650 v4 2.3Ghz CPU, 30 MB Cache, 64GB RAM
   - 1 node, dual 8-core Intel Xeon 2630 v3 2.4GHz CPU, 20 MB Cache, 512GB RAM
-  - 9 nodes, dual 18-core Intel Xeon Gold 6140 2.3GHz CPU, 24.7 MB Cache, 192GB RAM
+  - 23 nodes, dual 18-core Intel Xeon Gold 6140 2.3GHz CPU, 24.7 MB Cache, 192GB RAM
   - 66 nVIDIA GTX 1080 GPU cards
+  - 48 nVIDIA RTX 2080TI GPU cards
   - 1TB HDD per node
   - 2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric
-  - Theoretical Performance: 56.2048 TFLOPs (CPU) + 16.962 TFLOPs (GPU)
+  - Theoretical Performance: 81.088 TFLOPs (CPU) + 34.588 TFLOPs (GPU)
   - Access: Batch Scheduled, interactive on login node for compiling, editing only
 
 
@@ -62,7 +63,7 @@ license     : by-sa
 * __Pisces__: Keith Moored, Mechanical Engineering and Mechanics
   - Six nodes, dual 10-core Intel Xeon E5-2650v3, 2.3GHz, 64GB RAM, nVIDIA Tesla K80
      * Theoretical Performance: 3.840TFlops (CPU) + 17.46TFlops (GPU)
-* Unnamed : decommissioned faculty cluster for prototyping new resources
+* Devel/Testing : decommissioned faculty cluster for prototyping new resources
   - Twenty nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
      * Theoretical Performance: 6.656TFlops
 
@@ -76,11 +77,11 @@ license     : by-sa
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | Maia | 32 | 128 | 0.640 |
 | Monocacy | 128 | 512 | 2.662 |
-| Unnamed | 320 | 1280 | 6.656 | 
+| Devel | 320 | 1280 | 6.656 | 
 | Baltrusaitislab | 96 | 384 | 1.766 |
 | Pisces | 120 | 384 | 3.840 | 12 | 29952 | 144 | 17.472 |
-| Sol | 1624 | 8448 | 56.20 | 66 | 168960 | 528 | 16.96 |
-| Total | 2320 | 11136 | 71.77 | 78 | 198912 | 672 | 34.434 | 
+| Sol | 2152 | 11200 | 81.088 | 114 | 377856 | 1056 | 34.588 |
+| Total | 2848 | 13888 | 96.652 | 126 | 407808 | 1200 | 52.060 | 
 
 
 --- .class #id
@@ -419,24 +420,6 @@ Total time was 1.030180 seconds.
 
 --- .class #id
 
-## How to run jobs
-
-* All compute intensive jobs are scheduled
-* Write a script to submit jobs to a scheduler
-  - need to have some background in shell scripting (bash/tcsh)
-* Need to specify
-   - Resources required (which depends on configuration)
-       - number of nodes
-       - number of processes per node
-       - memory per node
-   - How long do you want the resources
-       - have an estimate for how long your job will run
-   - Which queue to submit jobs
-       - SLURM uses the term _partition_ instead of _queue_
-
-
---- .class #id
-
 ## Scheduler &amp; Resource Management
 
 * A software that manages resources (CPU time, memory, etc) and schedules job execution
@@ -451,6 +434,24 @@ Total time was 1.030180 seconds.
 * The Scheduler or queuing system determines
     - The order jobs are executed
     - On which node(s) jobs are executed
+
+
+--- .class #id
+
+## How to run jobs
+
+* All compute intensive jobs are scheduled
+* Write a script to submit jobs to a scheduler
+  - need to have some background in shell scripting (bash/tcsh)
+* Need to specify
+   - Resources required (which depends on configuration)
+       - number of nodes
+       - number of processes per node
+       - memory per node
+   - How long do you want the resources
+       - have an estimate for how long your job will run
+   - Which queue to submit jobs
+       - SLURM uses the term _partition_ instead of _queue_
 
 
 
@@ -514,22 +515,16 @@ Total time was 1.030180 seconds.
 | Partition Name | Max Runtime in hours | Max SU consumed node per hour |
 |:----------:|:--------------------:|:--------------------:|
 | lts | 72 | 20 |
-| imlab | 48 | 22 | 
-| imlab-gpu | 48 | 24 |
+| im1080 | 48 | 22 | 
+| im1080-gpu | 48 | 24 |
 | eng | 72 | 22 |
 | eng-gpu | 72 | 24 |
 | engc | 72 | 24 |
 | himem | 72 | 48 |
 | enge | 72 | 36 |
 | engi | 72 | 36 |
-
-
-* Maia
-
-| Queue Name | Max Runtime in hours | Max Simultaneous Core-hours |
-|:----------:|:-----------:|:---------------------------:|
-| smp-test | 1 | 4 |
-| smp | 96 | 384 |
+| im2080 | 48 | 32 |
+| im2080-gpu | 48 | 36
 
 
 --- .class #id
@@ -545,16 +540,13 @@ Total time was 1.030180 seconds.
 | Partition | Max Memory/core (GB) | Recommended Memory/Core (GB) |
 |:---------:|:--------------------:|:----------------------------:|
 | lts | 6.4 | 6.2 |
-| eng/imlab/imlab-gpu/enge/engi | 5.3 | 5.1 |
+| eng/im1080/im1080-gpu/enge/engi/im2080/im2080-gpu | 5.3 | 5.1 |
 | engc | 2.66 | 2.4 |
 | himem | 32 | 31.5 |
 
 
 *  <span class="alert">if you need to run a single core job that requires 10GB memory in the imlab partition, you need to request 2 cores even though you are only using
          1 core.</span>  
-
-* Maia: Users need to specify memory required in their submit script. Max
-memory that should be requested is 126GB.
 
 
 --- .class #id
@@ -612,8 +604,8 @@ memory that should be requested is 126GB.
 |:---------------:|:-----------:|
 |  --qos=nogpu | Request a quality of service (qos)  for the job in `imlab`, `engc` partitions. |
 | | Job will remain in queue indefinitely if you do not specify qos |
-|  --gres=gpu:# | Specifies number of gpus requested in the gpu partitions |
-| | You can request 1 or 2 gpus with a minimum of 1 core or cpu per gpu | 
+|  --gres=gpu:# | Specifies number of gpus requested in the gpu partitions, min 1 cpu per gpu |
+| | up to 2 gpus on im1080-gpu and eng-gpu, and up to 4 gpus on im2080-gpu | 
 
 * SLURM can also take short hand notation for the directives
 
@@ -650,7 +642,7 @@ memory that should be requested is 126GB.
 
 
 
-
+<!--
 --- .class #id .small
 
 ## Useful PBS Directives
@@ -670,35 +662,28 @@ memory that should be requested is 126GB.
 | | status can be a (abort), b (begin) or e (end). The arguments can be combined |
 | |  for e.g. abe will send email when job begins and either aborts or ends|
 
+-->
 
 
 --- .class #id .pbs
 
-## Useful PBS/SLURM environmental variables
+## Useful SLURM environmental variables
 
 
-| SLURM Command | Description | PBS Command |
-|:-------------:|:-----------:|:-----------:|
-| SLURM_SUBMIT_DIR | Directory where the <code>qsub</code> command was executed | PBS_O_WORKDIR |
-| SLURM_JOB_NODELIST | Name of the file that contains a list of the HOSTS provided for the job | PBS_NODEFILE |
-| SLURM_NTASKS | Total number of cores for job | PBS_NP |
-| SLURM_JOBID | Job ID number given to this job | PBS_JOBID | 
-| SLURM_JOB_PARTITION | Queue job is running in | PBS_QUEUE |
-| | Walltime in secs requested | PBS_WALLTIME
-| | Name of the job. This can be set using the -N option in the PBS script | PBS_JOBNAME |
-| | Indicates job type, PBS_BATCH or PBS_INTERACTIVE | PBS_ENVIRONMENT |
-| | value of the SHELL variable in the environment in which qsub was executed | PBS_O_SHELL |
-| | Home directory of the user running qsub | PBS_O_HOME |
+| SLURM Command | Description | 
+|:-------------:|:-----------:|
+| SLURM_SUBMIT_DIR | Directory where the <code>qsub</code> command was executed |
+| SLURM_JOB_NODELIST | Name of the file that contains a list of the HOSTS provided for the job |
+| SLURM_NTASKS | Total number of cores for job |
+| SLURM_JOBID | Job ID number given to this job |
+| SLURM_JOB_PARTITION | Queue job is running in |
+| SLURM_JOB_NAME | Name of the job. This can be set using the -N option in the PBS script |
 
 --- .class #id
 
 ## Job Types: Interactive
 
-   - PBS: Use `qsub -I` command with PBS Directives
-       *    `qsub -I -V -l walltime=<hh:mm:ss>,nodes=<# of nodes>:ppn=<# of core/node> -q <queue
-   name>`
-
-   - SLURM:  Use `srun` command with SLURM Directives followed by `--pty /bin/bash`
+   - Use `srun` command with SLURM Directives followed by `--pty /bin/bash`
        * `srun --time=<hh:mm:ss> --nodes=<# of nodes> --ntasks-per-node=<#
    of core/node> -p <queue name> --pty /bin/bash`
        * If you have `soltools` module loaded, then use `interact` with at
@@ -706,8 +691,7 @@ memory that should be requested is 126GB.
            - `interact -t 20` [Assumes `-p lts -n 1 -N 20`]
    - Run a job interactively replace `--pty /bin/bash --login` with the
      appropriate command. 
-       - For e.g. `srun -t 20 -n 1 -p imlab --qos=nogpu $(which lammps) -in in.lj
-     -var x 1 -var n 1`
+       - For e.g. `srun -t 20 -n 1 -p imlab --qos=nogpu $(which lammps) -in in.lj -var x 1 -var n 1`
        - Default values are 3 days, 1 node, 20 tasks per node and lts
    partition
 
@@ -719,16 +703,13 @@ memory that should be requested is 126GB.
   results
 * Batch scripts are written in bash, tcsh, csh or sh
    * ksh scripts will work if ksh is installed
-* Add PBS or SLURM directives after the shebang line but before any shell
+* Add SLURM directives after the shebang line but before any shell
   commands
-   * SLURM: `#SBATCH DIRECTIVES`
-   * PBS: `#PBS DIRECTIVES` 
+   * `#SBATCH DIRECTIVES`
 * Submitting Batch Jobs
-   * PBS: `qsub filename`
-   * SLURM: `sbatch filename`
+   * `sbatch filename`
 
-* `qsub` and `sbatch` can take the options for `#PBS` and `#SBATCH` as command line arguments
-   * `qsub -l walltime=1:00:00,nodes=1:ppn=16 -q normal filename`
+* `sbatch` can take the options for `#SBATCH` as command line arguments
    * `sbatch --time=1:00:00 --nodes=1 --ntasks-per-node=20 -p lts filename` 
 
 
@@ -736,20 +717,6 @@ memory that should be requested is 126GB.
 
 ## Minimal submit script for Serial Jobs
 
-
-
-```bash
-#!/bin/bash
-#PBS -q smp
-#PBS -l walltime=1:00:00
-#PBS -l nodes=1:ppn=1
-#PBS -l mem=4GB
-#PBS -N myjob
-
-cd ${PBS_O_WORKDIR}
-./myjob < filename.in > filename.out
-
-```
 
 
 ```bash
@@ -835,43 +802,37 @@ cd ${SLURM_SUBMIT_DIR}
 # Load LAMMPS Module
 module load lammps/17nov16-gpu
 # Run LAMMPS for input file in.lj
-srun $(which lammps) -in in.lj -sf gpu -pk gpu 1 gpuID ${CUDA_VISIBLE_DEVICE}
+srun $(which lammps) -in in.lj -sf gpu -pk gpu 1 
 
 exit
 ```
 
 --- .class #id
 
-## Need to run multiple jobs in sequence?
+## Need to run multiple jobs
 
-* Option 1: Submit jobs as soon as previous jobs complete
-* Option 2: Submit jobs with a dependency
-    * [SLURM](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=slurm#submitting_dependency_jobs):
+* In sequence or serially
+    * Option 1: Submit jobs as soon as previous jobs complete
+    * Option 2: Submit jobs with a dependency
+       * [SLURM](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=slurm#submitting_dependency_jobs):
   `sbatch --dependency=afterok:<JobID> <Submit Script>`
-    * [PBS](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=corona#submitting_dependency_jobs):
-  `qsub -W depend=afterok:<JobID> <Submit Script>`
 
-* You want to run several serial processor jobs on
-    * one node: your submit script should be able to run several serial
-    jobs in background and then use the `wait` command for all jobs to finish
-    * more than one node: this requires some background in scripting but the
-    idea is the same as above
-
+* In parallel, use [GNU Parallel](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=parallel)
 
 --- .class #id
 
 ## Monitoring &amp; Manipulating Jobs
 
 
-| SLURM Command | Description | PBS Command |
+| SLURM Command | Description |
 |:-----------:|:-----------:|:-------------:|
-| squeue | check job status (all jobs) | qstat |
-| squeue -u username | check job status of user <em>username</em> | qstat -u username |
-| squeue --start | Show <strong>estimated</strong> start time of jobs in queue | showstart jobid |
-| scontrol show job jobid | Check status of your job identified by <em>jobid</em> | checkjob jobid |
-| scancel jobid | Cancel your job identified by <em>jobid</em> | qdel jobid |
-| scontrol hold jobid | Put your job identified by <em>jobid</em> on hold | qhold jobid |
-| scontrol release jobid | Release the hold that <strong>you put</strong> on <em>jobid | qrls jobid |
+| squeue | check job status (all jobs) |
+| squeue -u username | check job status of user <em>username</em> |
+| squeue --start | Show <strong>estimated</strong> start time of jobs in queue |
+| scontrol show job jobid | Check status of your job identified by <em>jobid</em> |
+| scancel jobid | Cancel your job identified by <em>jobid</em> |
+| scontrol hold jobid | Put your job identified by <em>jobid</em> on hold |
+| scontrol release jobid | Release the hold that <strong>you put</strong> on <em>jobid</em> |
 
 * The following scripts written by RC staff can also be used for monitoring
   jobs. 
@@ -892,9 +853,9 @@ exit
     * change partition: `partition=<name>`
     * modify requested runtime: `timelimit=<hh:mm:ss>`
     * change quality of service (when changing to imlab/engc): `qos=nogpu` 
-    * request gpus (when changing to one of the gpu partitions): `gres=gpu:<1 or 2>`
+    * request gpus (when changing to one of the gpu partitions): `gres=gpu:<1-4>`
 * SPECIFICATIONs can be combined for e.g. command to move a queued job to `imlab` partition and change timelimit to 48 hours for a job 123456 is
-   * `scontrol update partition=imlab qos=nogpu timelimit=48:00:00 jobid=123456`
+   * `scontrol update partition=im1080 qos=nogpu timelimit=48:00:00 jobid=123456`
 
 
 
@@ -931,8 +892,10 @@ exit
 
 * [Monthly usage summary](https://webapps.lehigh.edu/hpc/usage/dashboard.html) (updated daily)
 * [Scheduler Status](https://webapps.lehigh.edu/hpc/monitor) (updated every 15 mins)
-* [Current AY Usage Reports](https://webapps.lehigh.edu/hpc/monitor/ay1718.html) (updated daily)
-* [Prior AY Usage Reports](https://webapps.lehigh.edu/hpc/monitor/ay1617.html)
+* [Current AY Usage Reports](https://webapps.lehigh.edu/hpc/monitor/ay1819.html) (updated daily)
+* Prior AY Usage Reports
+    * [AY1718](https://webapps.lehigh.edu/hpc/monitor/ay1718.html)
+    * [AY1617](https://webapps.lehigh.edu/hpc/monitor/ay1617.html)
 * <span class="alert">Usage reports restricted to Lehigh IPs</span>
 
 

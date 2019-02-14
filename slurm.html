@@ -37,7 +37,7 @@
   </aside>
   <hgroup class="auto-fadein">
     <h1>Using SLURM scheduler on Sol</h1>
-    <h2>Lehigh Research Computing</h2>
+    <h2>Research Computing</h2>
     <p>https://researchcomputing.lehigh.edu<br/></p>
   </hgroup>
   <article></article>  
@@ -100,13 +100,14 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
 <li>Lehigh&#39;s Flagship High Performance Computing Cluster</li>
 <li>9 nodes, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 25MB Cache, 128GB RAM</li>
 <li>33 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache, 128GB RAM</li>
-<li>13 nodes, dual 12-core Intel Xeon E5-2650 v4 2.3Ghz CPU, 30 MB Cache, 64GB RAM</li>
+<li>14 nodes, dual 12-core Intel Xeon E5-2650 v4 2.3Ghz CPU, 30 MB Cache, 64GB RAM</li>
 <li>1 node, dual 8-core Intel Xeon 2630 v3 2.4GHz CPU, 20 MB Cache, 512GB RAM</li>
-<li>9 nodes, dual 18-core Intel Xeon Gold 6140 2.3GHz CPU, 24.7 MB Cache, 192GB RAM</li>
+<li>23 nodes, dual 18-core Intel Xeon Gold 6140 2.3GHz CPU, 24.7 MB Cache, 192GB RAM</li>
 <li>66 nVIDIA GTX 1080 GPU cards</li>
+<li>48 nVIDIA RTX 2080TI GPU cards</li>
 <li>1TB HDD per node</li>
 <li>2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric</li>
-<li>Theoretical Performance: 56.2048 TFLOPs (CPU) + 16.962 TFLOPs (GPU)</li>
+<li>Theoretical Performance: 81.088 TFLOPs (CPU) + 34.588 TFLOPs (GPU)</li>
 <li>Access: Batch Scheduled, interactive on login node for compiling, editing only</li>
 </ul></li>
 </ul>
@@ -153,7 +154,7 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
 <li>Theoretical Performance: 3.840TFlops (CPU) + 17.46TFlops (GPU)</li>
 </ul></li>
 </ul></li>
-<li>Unnamed : decommissioned faculty cluster for prototyping new resources
+<li>Devel/Testing : decommissioned faculty cluster for prototyping new resources
 
 <ul>
 <li>Twenty nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
@@ -211,7 +212,7 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
 <td align="center"></td>
 </tr>
 <tr>
-<td align="center">Unnamed</td>
+<td align="center">Devel</td>
 <td align="center">320</td>
 <td align="center">1280</td>
 <td align="center">6.656</td>
@@ -242,23 +243,23 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
 </tr>
 <tr>
 <td align="center">Sol</td>
-<td align="center">1624</td>
-<td align="center">8448</td>
-<td align="center">56.20</td>
-<td align="center">66</td>
-<td align="center">168960</td>
-<td align="center">528</td>
-<td align="center">16.96</td>
+<td align="center">2152</td>
+<td align="center">11200</td>
+<td align="center">81.088</td>
+<td align="center">114</td>
+<td align="center">377856</td>
+<td align="center">1056</td>
+<td align="center">34.588</td>
 </tr>
 <tr>
 <td align="center">Total</td>
-<td align="center">2320</td>
-<td align="center">11136</td>
-<td align="center">71.77</td>
-<td align="center">78</td>
-<td align="center">198912</td>
-<td align="center">672</td>
-<td align="center">34.434</td>
+<td align="center">2848</td>
+<td align="center">13888</td>
+<td align="center">96.652</td>
+<td align="center">126</td>
+<td align="center">407808</td>
+<td align="center">1200</td>
+<td align="center">52.060</td>
 </tr>
 </tbody></table>
 
@@ -886,6 +887,42 @@ Total time was 1.030180 seconds.
 
 <slide class="class" id="id" style="background:#F1E7C8;">
   <hgroup>
+    <h2>Scheduler &amp; Resource Management</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>A software that manages resources (CPU time, memory, etc) and schedules job execution</p>
+
+<ul>
+<li>Sol: Simple Linux Utility for Resource Management (SLURM)</li>
+<li>Others:  Portable Batch System (PBS)
+
+<ul>
+<li>Scheduler: Maui</li>
+<li>Resource Manager: Torque</li>
+<li>Allocation Manager: Gold</li>
+</ul></li>
+</ul></li>
+<li><p>A job can be considered as a user’s request to use a certain amount of resources for a certain amount of time</p></li>
+<li><p>The Scheduler or queuing system determines</p>
+
+<ul>
+<li>The order jobs are executed</li>
+<li>On which node(s) jobs are executed</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
     <h2>How to run jobs</h2>
   </hgroup>
   <article data-timings="">
@@ -916,42 +953,6 @@ Total time was 1.030180 seconds.
 <ul>
 <li>SLURM uses the term <em>partition</em> instead of <em>queue</em></li>
 </ul></li>
-</ul></li>
-</ul>
-
-  </article>
-  <!-- Footer  -->
-  <footer class = 'lufoot'>
-     <img height = '20px' src='assets/img/lulogo.jpg'>
-  </footer>
-  <!-- End Footer-->
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:#F1E7C8;">
-  <hgroup>
-    <h2>Scheduler &amp; Resource Management</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li><p>A software that manages resources (CPU time, memory, etc) and schedules job execution</p>
-
-<ul>
-<li>Sol: Simple Linux Utility for Resource Management (SLURM)</li>
-<li>Others:  Portable Batch System (PBS)
-
-<ul>
-<li>Scheduler: Maui</li>
-<li>Resource Manager: Torque</li>
-<li>Allocation Manager: Gold</li>
-</ul></li>
-</ul></li>
-<li><p>A job can be considered as a user’s request to use a certain amount of resources for a certain amount of time</p></li>
-<li><p>The Scheduler or queuing system determines</p>
-
-<ul>
-<li>The order jobs are executed</li>
-<li>On which node(s) jobs are executed</li>
 </ul></li>
 </ul>
 
@@ -1082,12 +1083,12 @@ Total time was 1.030180 seconds.
 <td align="center">20</td>
 </tr>
 <tr>
-<td align="center">imlab</td>
+<td align="center">im1080</td>
 <td align="center">48</td>
 <td align="center">22</td>
 </tr>
 <tr>
-<td align="center">imlab-gpu</td>
+<td align="center">im1080-gpu</td>
 <td align="center">48</td>
 <td align="center">24</td>
 </tr>
@@ -1121,28 +1122,15 @@ Total time was 1.030180 seconds.
 <td align="center">72</td>
 <td align="center">36</td>
 </tr>
-</tbody></table>
-
-<ul>
-<li>Maia</li>
-</ul>
-
-<table><thead>
 <tr>
-<th align="center">Queue Name</th>
-<th align="center">Max Runtime in hours</th>
-<th align="center">Max Simultaneous Core-hours</th>
-</tr>
-</thead><tbody>
-<tr>
-<td align="center">smp-test</td>
-<td align="center">1</td>
-<td align="center">4</td>
+<td align="center">im2080</td>
+<td align="center">48</td>
+<td align="center">32</td>
 </tr>
 <tr>
-<td align="center">smp</td>
-<td align="center">96</td>
-<td align="center">384</td>
+<td align="center">im2080-gpu</td>
+<td align="center">48</td>
+<td align="center">36</td>
 </tr>
 </tbody></table>
 
@@ -1179,7 +1167,7 @@ Total time was 1.030180 seconds.
 <td align="center">6.2</td>
 </tr>
 <tr>
-<td align="center">eng/imlab/imlab-gpu/enge/engi</td>
+<td align="center">eng/im1080/im1080-gpu/enge/engi/im2080/im2080-gpu</td>
 <td align="center">5.3</td>
 <td align="center">5.1</td>
 </tr>
@@ -1196,10 +1184,8 @@ Total time was 1.030180 seconds.
 </tbody></table>
 
 <ul>
-<li><p><span class="alert">if you need to run a single core job that requires 10GB memory in the imlab partition, you need to request 2 cores even though you are only using
-     1 core.</span>  </p></li>
-<li><p>Maia: Users need to specify memory required in their submit script. Max
-memory that should be requested is 126GB.</p></li>
+<li> <span class="alert">if you need to run a single core job that requires 10GB memory in the imlab partition, you need to request 2 cores even though you are only using
+     1 core.</span><br></li>
 </ul>
 
   </article>
@@ -1365,11 +1351,11 @@ analyze results</li>
 </tr>
 <tr>
 <td align="center">--gres=gpu:#</td>
-<td align="center">Specifies number of gpus requested in the gpu partitions</td>
+<td align="center">Specifies number of gpus requested in the gpu partitions, min 1 cpu per gpu</td>
 </tr>
 <tr>
 <td align="center"></td>
-<td align="center">You can request 1 or 2 gpus with a minimum of 1 core or cpu per gpu</td>
+<td align="center">up to 2 gpus on im1080-gpu and eng-gpu, and up to 4 gpus on im2080-gpu</td>
 </tr>
 </tbody></table>
 
@@ -1480,75 +1466,27 @@ symbols, which are a percent sign &quot;%&quot; followed by a letter (e.g. %j). 
 </tr>
 </tbody></table>
 
-  </article>
-  <!-- Footer  -->
-  <footer class = 'lufoot'>
-     <img height = '20px' src='assets/img/lulogo.jpg'>
-  </footer>
-  <!-- End Footer-->
-  <!-- Presenter Notes -->
-</slide>
+<!--
+--- .class #id .small
 
-<slide class="class small" id="id" style="background:#F1E7C8;">
-  <hgroup>
-    <h2>Useful PBS Directives</h2>
-  </hgroup>
-  <article data-timings="">
-    <table><thead>
-<tr>
-<th align="center">PBS Directive</th>
-<th align="left">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td align="center">-q queuename</td>
-<td align="left">Submit job to the <em>queuename</em> queue.</td>
-</tr>
-<tr>
-<td align="center">-l walltime=hh:mm:ss</td>
-<td align="left">Request resources to run job for <em>hh</em> hours, <em>mm</em> minutes and <em>ss</em> seconds.</td>
-</tr>
-<tr>
-<td align="center">-l nodes=m:ppn=n</td>
-<td align="left">Request resources to run job on <em>n</em> processors each on <em>m</em> nodes.</td>
-</tr>
-<tr>
-<td align="center">-l mem=xGB</td>
-<td align="left">Request <em>xGB</em> per node requested, applicable on Maia only</td>
-</tr>
-<tr>
-<td align="center">-N jobname</td>
-<td align="left">Provide a name, <em>jobname</em> to your job.</td>
-</tr>
-<tr>
-<td align="center">-o filename.out</td>
-<td align="left">Write PBS standard output to file filename.out.</td>
-</tr>
-<tr>
-<td align="center">-e filename.err</td>
-<td align="left">Write PBS standard error to file filename.err.</td>
-</tr>
-<tr>
-<td align="center">-j oe</td>
-<td align="left">Combine PBS standard output and error to the same file.</td>
-</tr>
-<tr>
-<td align="center">-M your email address</td>
-<td align="left">Address to send email.</td>
-</tr>
-<tr>
-<td align="center">-m status</td>
-<td align="left">Send an email after job status status is reached.</td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="left">status can be a (abort), b (begin) or e (end). The arguments can be combined</td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="left">for e.g. abe will send email when job begins and either aborts or ends</td>
-</tr>
-</tbody></table>
+## Useful PBS Directives
+
+| PBS Directive | Description |
+|:-------------:|:------------|
+|  -q queuename | Submit job to the <em>queuename</em> queue.|
+|  -l walltime=hh:mm:ss| Request resources to run job for <em>hh</em> hours, <em>mm</em> minutes and <em>ss</em> seconds.|
+|  -l nodes=m:ppn=n| Request resources to run job on <em>n</em> processors each on <em>m</em> nodes.|
+|  -l mem=xGB| Request <em>xGB</em> per node requested, applicable on Maia only|
+|  -N jobname| Provide a name, <em>jobname</em> to your job.|
+|  -o filename.out| Write PBS standard output to file filename.out.|
+|  -e filename.err| Write PBS standard error to file filename.err.|
+|  -j oe| Combine PBS standard output and error to the same file.|
+|  -M your email address| Address to send email.|
+|  -m status| Send an email after job status status is reached.| 
+| | status can be a (abort), b (begin) or e (end). The arguments can be combined |
+| |  for e.g. abe will send email when job begins and either aborts or ends|
+
+-->
 
   </article>
   <!-- Footer  -->
@@ -1561,65 +1499,38 @@ symbols, which are a percent sign &quot;%&quot; followed by a letter (e.g. %j). 
 
 <slide class="class pbs" id="id" style="background:#F1E7C8;">
   <hgroup>
-    <h2>Useful PBS/SLURM environmental variables</h2>
+    <h2>Useful SLURM environmental variables</h2>
   </hgroup>
   <article data-timings="">
     <table><thead>
 <tr>
 <th align="center">SLURM Command</th>
 <th align="center">Description</th>
-<th align="center">PBS Command</th>
 </tr>
 </thead><tbody>
 <tr>
 <td align="center">SLURM_SUBMIT_DIR</td>
 <td align="center">Directory where the <code>qsub</code> command was executed</td>
-<td align="center">PBS_O_WORKDIR</td>
 </tr>
 <tr>
 <td align="center">SLURM_JOB_NODELIST</td>
 <td align="center">Name of the file that contains a list of the HOSTS provided for the job</td>
-<td align="center">PBS_NODEFILE</td>
 </tr>
 <tr>
 <td align="center">SLURM_NTASKS</td>
 <td align="center">Total number of cores for job</td>
-<td align="center">PBS_NP</td>
 </tr>
 <tr>
 <td align="center">SLURM_JOBID</td>
 <td align="center">Job ID number given to this job</td>
-<td align="center">PBS_JOBID</td>
 </tr>
 <tr>
 <td align="center">SLURM_JOB_PARTITION</td>
 <td align="center">Queue job is running in</td>
-<td align="center">PBS_QUEUE</td>
 </tr>
 <tr>
-<td align="center"></td>
-<td align="center">Walltime in secs requested</td>
-<td align="center">PBS_WALLTIME</td>
-</tr>
-<tr>
-<td align="center"></td>
+<td align="center">SLURM_JOB_NAME</td>
 <td align="center">Name of the job. This can be set using the -N option in the PBS script</td>
-<td align="center">PBS_JOBNAME</td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center">Indicates job type, PBS_BATCH or PBS_INTERACTIVE</td>
-<td align="center">PBS_ENVIRONMENT</td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center">value of the SHELL variable in the environment in which qsub was executed</td>
-<td align="center">PBS_O_SHELL</td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center">Home directory of the user running qsub</td>
-<td align="center">PBS_O_HOME</td>
 </tr>
 </tbody></table>
 
@@ -1638,13 +1549,7 @@ symbols, which are a percent sign &quot;%&quot; followed by a letter (e.g. %j). 
   </hgroup>
   <article data-timings="">
     <ul>
-<li><p>PBS: Use <code>qsub -I</code> command with PBS Directives</p>
-
-<ul>
-<li>   <code>qsub -I -V -l walltime=&lt;hh:mm:ss&gt;,nodes=&lt;# of nodes&gt;:ppn=&lt;# of core/node&gt; -q &lt;queue
-name&gt;</code></li>
-</ul></li>
-<li><p>SLURM:  Use <code>srun</code> command with SLURM Directives followed by <code>--pty /bin/bash</code></p>
+<li>Use <code>srun</code> command with SLURM Directives followed by <code>--pty /bin/bash</code>
 
 <ul>
 <li><code>srun --time=&lt;hh:mm:ss&gt; --nodes=&lt;# of nodes&gt; --ntasks-per-node=&lt;#
@@ -1656,12 +1561,11 @@ least one SLURM Directive
 <li><code>interact -t 20</code> [Assumes <code>-p lts -n 1 -N 20</code>]</li>
 </ul></li>
 </ul></li>
-<li><p>Run a job interactively replace <code>--pty /bin/bash --login</code> with the
- appropriate command. </p>
+<li>Run a job interactively replace <code>--pty /bin/bash --login</code> with the
+ appropriate command. 
 
 <ul>
-<li>For e.g. <code>srun -t 20 -n 1 -p imlab --qos=nogpu $(which lammps) -in in.lj
--var x 1 -var n 1</code></li>
+<li>For e.g. <code>srun -t 20 -n 1 -p imlab --qos=nogpu $(which lammps) -in in.lj -var x 1 -var n 1</code></li>
 <li>Default values are 3 days, 1 node, 20 tasks per node and lts
 partition</li>
 </ul></li>
@@ -1689,23 +1593,20 @@ results</li>
 <ul>
 <li>ksh scripts will work if ksh is installed</li>
 </ul></li>
-<li>Add PBS or SLURM directives after the shebang line but before any shell
+<li>Add SLURM directives after the shebang line but before any shell
 commands
 
 <ul>
-<li>SLURM: <code>#SBATCH DIRECTIVES</code></li>
-<li>PBS: <code>#PBS DIRECTIVES</code> </li>
+<li><code>#SBATCH DIRECTIVES</code></li>
 </ul></li>
 <li><p>Submitting Batch Jobs</p>
 
 <ul>
-<li>PBS: <code>qsub filename</code></li>
-<li>SLURM: <code>sbatch filename</code></li>
+<li><code>sbatch filename</code></li>
 </ul></li>
-<li><p><code>qsub</code> and <code>sbatch</code> can take the options for <code>#PBS</code> and <code>#SBATCH</code> as command line arguments</p>
+<li><p><code>sbatch</code> can take the options for <code>#SBATCH</code> as command line arguments</p>
 
 <ul>
-<li><code>qsub -l walltime=1:00:00,nodes=1:ppn=16 -q normal filename</code></li>
 <li><code>sbatch --time=1:00:00 --nodes=1 --ntasks-per-node=20 -p lts filename</code> </li>
 </ul></li>
 </ul>
@@ -1725,18 +1626,6 @@ commands
   </hgroup>
   <article data-timings="">
     <pre><code class="bash">#!/bin/bash
-#PBS -q smp
-#PBS -l walltime=1:00:00
-#PBS -l nodes=1:ppn=1
-#PBS -l mem=4GB
-#PBS -N myjob
-
-cd ${PBS_O_WORKDIR}
-./myjob &lt; filename.in &gt; filename.out
-
-</code></pre>
-
-<pre><code class="bash">#!/bin/bash
 #SBATCH --partition=lts
 #SBATCH --time=1:00:00
 #SBATCH --nodes=1
@@ -1842,7 +1731,7 @@ cd ${SLURM_SUBMIT_DIR}
 # Load LAMMPS Module
 module load lammps/17nov16-gpu
 # Run LAMMPS for input file in.lj
-srun $(which lammps) -in in.lj -sf gpu -pk gpu 1 gpuID ${CUDA_VISIBLE_DEVICE}
+srun $(which lammps) -in in.lj -sf gpu -pk gpu 1 
 
 exit
 </code></pre>
@@ -1858,27 +1747,22 @@ exit
 
 <slide class="class" id="id" style="background:#F1E7C8;">
   <hgroup>
-    <h2>Need to run multiple jobs in sequence?</h2>
+    <h2>Need to run multiple jobs</h2>
   </hgroup>
   <article data-timings="">
     <ul>
+<li><p>In sequence or serially</p>
+
+<ul>
 <li>Option 1: Submit jobs as soon as previous jobs complete</li>
-<li><p>Option 2: Submit jobs with a dependency</p>
+<li>Option 2: Submit jobs with a dependency
 
 <ul>
 <li><a href="https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=slurm#submitting_dependency_jobs">SLURM</a>:
 <code>sbatch --dependency=afterok:&lt;JobID&gt; &lt;Submit Script&gt;</code></li>
-<li><a href="https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=corona#submitting_dependency_jobs">PBS</a>:
-<code>qsub -W depend=afterok:&lt;JobID&gt; &lt;Submit Script&gt;</code></li>
 </ul></li>
-<li><p>You want to run several serial processor jobs on</p>
-
-<ul>
-<li>one node: your submit script should be able to run several serial
-jobs in background and then use the <code>wait</code> command for all jobs to finish</li>
-<li>more than one node: this requires some background in scripting but the
-idea is the same as above</li>
 </ul></li>
+<li><p>In parallel, use <a href="https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=parallel">GNU Parallel</a></p></li>
 </ul>
 
   </article>
@@ -1899,43 +1783,35 @@ idea is the same as above</li>
 <tr>
 <th align="center">SLURM Command</th>
 <th align="center">Description</th>
-<th align="center">PBS Command</th>
 </tr>
 </thead><tbody>
 <tr>
 <td align="center">squeue</td>
 <td align="center">check job status (all jobs)</td>
-<td align="center">qstat</td>
 </tr>
 <tr>
 <td align="center">squeue -u username</td>
 <td align="center">check job status of user <em>username</em></td>
-<td align="center">qstat -u username</td>
 </tr>
 <tr>
 <td align="center">squeue --start</td>
 <td align="center">Show <strong>estimated</strong> start time of jobs in queue</td>
-<td align="center">showstart jobid</td>
 </tr>
 <tr>
 <td align="center">scontrol show job jobid</td>
 <td align="center">Check status of your job identified by <em>jobid</em></td>
-<td align="center">checkjob jobid</td>
 </tr>
 <tr>
 <td align="center">scancel jobid</td>
 <td align="center">Cancel your job identified by <em>jobid</em></td>
-<td align="center">qdel jobid</td>
 </tr>
 <tr>
 <td align="center">scontrol hold jobid</td>
 <td align="center">Put your job identified by <em>jobid</em> on hold</td>
-<td align="center">qhold jobid</td>
 </tr>
 <tr>
 <td align="center">scontrol release jobid</td>
-<td align="center">Release the hold that <strong>you put</strong> on <em>jobid</td>
-<td align="center">qrls jobid</td>
+<td align="center">Release the hold that <strong>you put</strong> on <em>jobid</em></td>
 </tr>
 </tbody></table>
 
@@ -1959,7 +1835,7 @@ jobs.
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-40" style="background:#F1E7C8;">
+<slide class="class" id="slide-39" style="background:#F1E7C8;">
   <hgroup>
     <h2>Modifying Resources for Queued Jobs</h2>
   </hgroup>
@@ -1978,12 +1854,12 @@ jobs.
 <li>change partition: <code>partition=&lt;name&gt;</code></li>
 <li>modify requested runtime: <code>timelimit=&lt;hh:mm:ss&gt;</code></li>
 <li>change quality of service (when changing to imlab/engc): <code>qos=nogpu</code> </li>
-<li>request gpus (when changing to one of the gpu partitions): <code>gres=gpu:&lt;1 or 2&gt;</code></li>
+<li>request gpus (when changing to one of the gpu partitions): <code>gres=gpu:&lt;1-4&gt;</code></li>
 </ul></li>
 <li>SPECIFICATIONs can be combined for e.g. command to move a queued job to <code>imlab</code> partition and change timelimit to 48 hours for a job 123456 is
 
 <ul>
-<li><code>scontrol update partition=imlab qos=nogpu timelimit=48:00:00 jobid=123456</code></li>
+<li><code>scontrol update partition=im1080 qos=nogpu timelimit=48:00:00 jobid=123456</code></li>
 </ul></li>
 </ul>
 
@@ -2062,8 +1938,13 @@ allocation</li>
     <ul>
 <li><a href="https://webapps.lehigh.edu/hpc/usage/dashboard.html">Monthly usage summary</a> (updated daily)</li>
 <li><a href="https://webapps.lehigh.edu/hpc/monitor">Scheduler Status</a> (updated every 15 mins)</li>
-<li><a href="https://webapps.lehigh.edu/hpc/monitor/ay1718.html">Current AY Usage Reports</a> (updated daily)</li>
-<li><a href="https://webapps.lehigh.edu/hpc/monitor/ay1617.html">Prior AY Usage Reports</a></li>
+<li><a href="https://webapps.lehigh.edu/hpc/monitor/ay1819.html">Current AY Usage Reports</a> (updated daily)</li>
+<li>Prior AY Usage Reports
+
+<ul>
+<li><a href="https://webapps.lehigh.edu/hpc/monitor/ay1718.html">AY1718</a></li>
+<li><a href="https://webapps.lehigh.edu/hpc/monitor/ay1617.html">AY1617</a></li>
+</ul></li>
 <li><span class="alert">Usage reports restricted to Lehigh IPs</span></li>
 </ul>
 
@@ -2227,13 +2108,13 @@ allocation</li>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=18 title='How to run jobs'>
+        data-slide=18 title='Scheduler &amp; Resource Management'>
          18
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=19 title='Scheduler &amp; Resource Management'>
+        data-slide=19 title='How to run jobs'>
          19
       </a>
     </li>
@@ -2299,67 +2180,67 @@ allocation</li>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=30 title='Useful PBS Directives'>
+        data-slide=30 title='Useful SLURM environmental variables'>
          30
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=31 title='Useful PBS/SLURM environmental variables'>
+        data-slide=31 title='Job Types: Interactive'>
          31
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=32 title='Job Types: Interactive'>
+        data-slide=32 title='Job Types: Batch'>
          32
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=33 title='Job Types: Batch'>
+        data-slide=33 title='Minimal submit script for Serial Jobs'>
          33
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=34 title='Minimal submit script for Serial Jobs'>
+        data-slide=34 title='Minimal submit script for MPI Job'>
          34
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=35 title='Minimal submit script for MPI Job'>
+        data-slide=35 title='Minimal submit script for OpenMP Job'>
          35
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=36 title='Minimal submit script for OpenMP Job'>
+        data-slide=36 title='Minimal submit script for LAMMPS GPU job'>
          36
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=37 title='Minimal submit script for LAMMPS GPU job'>
+        data-slide=37 title='Need to run multiple jobs'>
          37
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=38 title='Need to run multiple jobs in sequence?'>
+        data-slide=38 title='Monitoring &amp; Manipulating Jobs'>
          38
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=39 title='Monitoring &amp; Manipulating Jobs'>
+        data-slide=39 title='Modifying Resources for Queued Jobs'>
          39
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=40 title='Modifying Resources for Queued Jobs'>
+        data-slide=40 title='Usage Reporting'>
          40
       </a>
     </li>
@@ -2371,20 +2252,14 @@ allocation</li>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=42 title='Usage Reporting'>
+        data-slide=42 title='Online Usage Reporting'>
          42
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=43 title='Online Usage Reporting'>
+        data-slide=43 title='Additional Help &amp; Information'>
          43
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=44 title='Additional Help &amp; Information'>
-         44
       </a>
     </li>
   </ul>
