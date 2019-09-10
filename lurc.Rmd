@@ -12,6 +12,12 @@ mode        : selfcontained # {standalone, draft}
 license     : by-sa
 --- .class
 
+
+```{r setup, include=F}
+library(knitr)
+knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE, fig.height = 3)
+```
+
 ## About Us?
 
 * Who?
@@ -170,12 +176,12 @@ width="275px">
   - 14 nodes, dual 12-core Intel Xeon E5-2650 v4 2.3Ghz CPU, 30 MB Cache, 64GB
   RAM
   - 1 node, dual 8-core Intel Xeon 2630 v3 2.4GHz CPU, 20 MB Cache, 512GB RAM
-  - 23 nodes, dual 18-core Intel Xeon Gold 6140 2.3GHz CPU, 24.7 MB Cache, 192GB RAM
-  - 66 nVIDIA GTX 1080 GPU cards
+  - 24 nodes, dual 18-core Intel Xeon Gold 6140 2.3GHz CPU, 24.7 MB Cache, 192GB RAM
+  - 72 nVIDIA GTX 1080 GPU cards
   - 48 nVIDIA RTX 2080TI GPU cards
   - 1TB HDD per node
   - 2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric
-  - Theoretical Performance: 81.088 TFLOPs (CPU) + 34.588 TFLOPs (GPU)
+  - Theoretical Performance: 82.816 TFLOPs (CPU) + 36.1296 TFLOPs (GPU)
   - Access: Batch Scheduled, interactive on login node for compiling, editing
   only
 
@@ -243,17 +249,20 @@ width="275px">
 
 ## Total Computational Resources Supported
 
-
-| Cluster | Cores | CPU Memory | CPU TFLOPs | GPUs | CUDA Cores | GPU Memory |  GPU TFLOPS |
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| Maia | 32 | 128 | 0.640 |
-| Monocacy | 128 | 512 | 2.662 |
-| Devel | 320 | 1280 | 6.656 | 
-| Baltrusaitislab | 96 | 384 | 1.766 |
-| Pisces | 120 | 384 | 3.840 | 12 | 29952 | 144 | 17.472 |
-| Sol | 2152 | 11200 | 81.088 | 114 | 377856 | 1056 | 34.588 |
-| Total | 2848 | 13888 | 96.652 | 126 | 407808 | 1200 | 52.060 | 
-
+```{r hpc_cluster,echo=F, warning=F}
+cluster <- tribble(
+    ~"Cluster",~"Cores",~"CPU Memory",~"CPU TFLOPs",~"GPUs",~"CUDA Cores",~"GPU Memory",~"GPU TFLOPS",
+    "Maia",32,128,0.640,0,0,0,0,
+    "Monocacy",128,512,2.662,0,0,0,0,
+    "Devel",320,1280,6.656,0,0,0,0,
+    "Baltrusaitis",96,384,1.766,0,0,0,0,
+    "Pisces",120,384,3.840,12,29952,144,17.422,
+    "Sol",2188,11392,82.816,120,393216,1104,36.1296)
+cluster %>% summarise_if(is.numeric, sum) %>% 
+    mutate(Cluster="Total") %>% 
+    select("Cluster","Cores":"GPU TFLOPS") -> total
+rbind(cluster,total) %>% kable()
+```
 
 --- .class
 
@@ -281,7 +290,8 @@ width="275px">
    - Additional Increments of 10,000 SU - &#36;100 per 10K increments
    - Fixed Allocation cycle: Oct 1 - Sep 30
    - Unused allocations do not rollover to next allocation cycle
-   - Total available computing time for purchase annually: 1.4M SUs or 1 year of continous computing on 8 nodes
+* Total available computing time for purchase annually: 1.4M SUs or 1 year of continous computing on 8 nodes
+
 
 --- .class
 
@@ -325,7 +335,6 @@ width="275px">
 
 ## Condo Investors
 
-* Two at initial launch 
    - Dimitrios Vavylonis, Physics (1 node)
    - Wonpil Im, Biological Sciences (37 nodes, 98 GPUs)
    - Anand Jagota, Chemical Engineering (1 node)
@@ -337,8 +346,9 @@ width="275px">
    - Department of Industrial & Systems Engineering (2 nodes)
    - Paolo Bocchini, Civil and Structural Engineering (1 node)
    - Lisa Fredin, Chemistry (2 nodes)
+   - Hannah Dailey, Mechanical Engineering (1 node)
 
-* Total SU on Sol after Condo Investments: 18,851,520
+* Total SU on Sol after Condo Investments: 19,166,880
 
 
 --- .class
@@ -577,7 +587,7 @@ width="275px">
   - the system admin may not want install it system wide for just one user
 * Add the directory where you will install the module files to the variable 
   MODULEPATH in .bashrc/.tcshrc
-```{sh eval=FALSE}
+```{sh mymodule,eval=FALSE}
 # My .bashrc file
 export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 ```
@@ -719,13 +729,11 @@ and high-throughput computing and other digital services, opportunities and reso
 ## Department of Energy (DOE)
 
 * Innovative and Novel Computational Impact on Theory and Experiment ([INCITE](https://proposals.doeleadershipcomputing.org)) program open to researchers from academia, government labs, and industry
-   - proposals are accepted between mid-April and the end of June 
+   - proposals are accepted between mid-April and the end of June for up to three years
    - Argonne Leadership Computing Facility 
-       - 184M node hours on Mira, 10 PFLOPs IBM Blue Gene/Q system 
        - 13.5M node hours on Theta, 11PFLOPs Cray XC40 system
    - Oak Ridge Leadership Computing Facility
        - 16M node hours on Summit, 187 PFLOPs IBM Power9 system
-       - 56M node hours on Titan, 27 PFLOPs Cray XK7 system 
 * National Energy Research Scientific Computing (NERSC) Center at Lawrence Berkeley National Lab.
    - Mostly for DOE sponsored research
    - [Get Started](http://www.nersc.gov/users/accounts/allocations/first-allocation/)
@@ -812,7 +820,7 @@ and high-throughput computing and other digital services, opportunities and reso
 * We also host full day workshops broadcast from other Supercomputing Centers
   - XSEDE HPC Monthly Workshop: OpenACC (Dec. 2014)
   - XSEDE HPC Summer BootCamp: OpenMP, OpenACC, MPI and Hybrid Programming (Jun.
-    2015 - 2018)
+    2015 - 2019)
   - XSEDE HPC Monthly Workshop: Big Data (Nov. 2015, May 2017)
 
 
@@ -820,13 +828,12 @@ and high-throughput computing and other digital services, opportunities and reso
 
 ## Upcoming HPC Seminars
 
-* EWFM 292 on Thursday from 2:10PM - 4:00PM.
-  - Using SLURM scheduler on Sol (Feb 14)
-  - Document Creation with LaTeX (Feb 21)
-  - Programming in R (Feb 28)
-  - Data Visualization in R (Mar 7)
-  - Python Programming (Mar 21)
-  - Data Visualization in Python (Mar 28)
+* EWFM 292 on Tuesday from 2:10PM - 4:00PM.
+  - Linux: Basic Commands & Environment (Sep. 17)
+  - Using SLURM scheduler on Sol (Sep. 24)
+  - Basic Shell Scipting (Oct. 1)
+  - Document Creation with LaTeX (Oct. 15)
+  - Version Control with GIT (Oct. 22)
 
 
 * Subscribe
