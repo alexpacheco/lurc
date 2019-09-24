@@ -41,12 +41,12 @@ license     : by-sa
   - 33 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache, 128GB RAM
   - 14 nodes, dual 12-core Intel Xeon E5-2650 v4 2.3Ghz CPU, 30 MB Cache, 64GB RAM
   - 1 node, dual 8-core Intel Xeon 2630 v3 2.4GHz CPU, 20 MB Cache, 512GB RAM
-  - 23 nodes, dual 18-core Intel Xeon Gold 6140 2.3GHz CPU, 24.7 MB Cache, 192GB RAM
-  - 66 nVIDIA GTX 1080 GPU cards
+  - 24 nodes, dual 18-core Intel Xeon Gold 6140 2.3GHz CPU, 24.7 MB Cache, 192GB RAM
+  - 72 nVIDIA GTX 1080 GPU cards
   - 48 nVIDIA RTX 2080TI GPU cards
   - 1TB HDD per node
   - 2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric
-  - Theoretical Performance: 81.088 TFLOPs (CPU) + 34.588 TFLOPs (GPU)
+  - Theoretical Performance: 82.816 TFLOPs (CPU) + 36.1296 TFLOPs (GPU)
   - Access: Batch Scheduled, interactive on login node for compiling, editing only
 
 
@@ -72,17 +72,20 @@ license     : by-sa
 
 ## Total Computational Resources Supported
 
-
-| Cluster | Cores | CPU Memory | CPU TFLOPs | GPUs | CUDA Cores | GPU Memory |  GPU TFLOPS |
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| Maia | 32 | 128 | 0.640 |
-| Monocacy | 128 | 512 | 2.662 |
-| Devel | 320 | 1280 | 6.656 | 
-| Baltrusaitislab | 96 | 384 | 1.766 |
-| Pisces | 120 | 384 | 3.840 | 12 | 29952 | 144 | 17.472 |
-| Sol | 2152 | 11200 | 81.088 | 114 | 377856 | 1056 | 34.588 |
-| Total | 2848 | 13888 | 96.652 | 126 | 407808 | 1200 | 52.060 | 
-
+```{r hpc_cluster,echo=F, warning=F}
+cluster <- tribble(
+    ~"Cluster",~"Cores",~"CPU Memory",~"CPU TFLOPs",~"GPUs",~"CUDA Cores",~"GPU Memory",~"GPU TFLOPS",
+    "Maia",32,128,0.640,0,0,0,0,
+    "Monocacy",128,512,2.662,0,0,0,0,
+    "Devel",320,1280,6.656,0,0,0,0,
+    "Baltrusaitis",96,384,1.766,0,0,0,0,
+    "Pisces",120,384,3.840,12,29952,144,17.422,
+    "Sol",2188,11392,82.816,120,393216,1104,36.1296)
+cluster %>% summarise_if(is.numeric, sum) %>% 
+    mutate(Cluster="Total") %>% 
+    select("Cluster","Cores":"GPU TFLOPS") -> total
+rbind(cluster,total) %>% kable()
+```
 
 --- .class #id
 
@@ -139,10 +142,10 @@ license     : by-sa
 
 * Various versions of compilers installed on Sol 
 * Open Source: GNU Compiler (also called gcc even though gcc is the c compiler)
-   - 4.8.5 (system default), 5.3.0, 6.1.0 and 7.1.0
+   - 4.8.5 (system default), 5.3.0, 6.1.0, 7.1.0 and 8.1.0
 * Commercial: Only two seats of each
    - Intel Compiler: 16.0.3, 17.0.0, 17.0.3 and 18.0.1
-   - Portland Group or PGI: 16.5, 16.10, 17.4, 17.7 and 18.3
+   - Portland Group or PGI: 16.5, 16.10, 17.4, 17.7, 18.3 and 19.1
 * _We are licensed to install any available version_
 * On Sol, all except gcc 4.8.5 are available via the module environment
 

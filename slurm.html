@@ -102,12 +102,12 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
 <li>33 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache, 128GB RAM</li>
 <li>14 nodes, dual 12-core Intel Xeon E5-2650 v4 2.3Ghz CPU, 30 MB Cache, 64GB RAM</li>
 <li>1 node, dual 8-core Intel Xeon 2630 v3 2.4GHz CPU, 20 MB Cache, 512GB RAM</li>
-<li>23 nodes, dual 18-core Intel Xeon Gold 6140 2.3GHz CPU, 24.7 MB Cache, 192GB RAM</li>
-<li>66 nVIDIA GTX 1080 GPU cards</li>
+<li>24 nodes, dual 18-core Intel Xeon Gold 6140 2.3GHz CPU, 24.7 MB Cache, 192GB RAM</li>
+<li>72 nVIDIA GTX 1080 GPU cards</li>
 <li>48 nVIDIA RTX 2080TI GPU cards</li>
 <li>1TB HDD per node</li>
 <li>2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric</li>
-<li>Theoretical Performance: 81.088 TFLOPs (CPU) + 34.588 TFLOPs (GPU)</li>
+<li>Theoretical Performance: 82.816 TFLOPs (CPU) + 36.1296 TFLOPs (GPU)</li>
 <li>Access: Batch Scheduled, interactive on login node for compiling, editing only</li>
 </ul></li>
 </ul>
@@ -181,85 +181,85 @@ GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
   <article data-timings="">
     <table><thead>
 <tr>
-<th align="center">Cluster</th>
-<th align="center">Cores</th>
-<th align="center">CPU Memory</th>
-<th align="center">CPU TFLOPs</th>
-<th align="center">GPUs</th>
-<th align="center">CUDA Cores</th>
-<th align="center">GPU Memory</th>
-<th align="center">GPU TFLOPS</th>
+<th align="left">Cluster</th>
+<th align="right">Cores</th>
+<th align="right">CPU Memory</th>
+<th align="right">CPU TFLOPs</th>
+<th align="right">GPUs</th>
+<th align="right">CUDA Cores</th>
+<th align="right">GPU Memory</th>
+<th align="right">GPU TFLOPS</th>
 </tr>
 </thead><tbody>
 <tr>
-<td align="center">Maia</td>
-<td align="center">32</td>
-<td align="center">128</td>
-<td align="center">0.640</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="left">Maia</td>
+<td align="right">32</td>
+<td align="right">128</td>
+<td align="right">0.640</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.0000</td>
 </tr>
 <tr>
-<td align="center">Monocacy</td>
-<td align="center">128</td>
-<td align="center">512</td>
-<td align="center">2.662</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="left">Monocacy</td>
+<td align="right">128</td>
+<td align="right">512</td>
+<td align="right">2.662</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.0000</td>
 </tr>
 <tr>
-<td align="center">Devel</td>
-<td align="center">320</td>
-<td align="center">1280</td>
-<td align="center">6.656</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="left">Devel</td>
+<td align="right">320</td>
+<td align="right">1280</td>
+<td align="right">6.656</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.0000</td>
 </tr>
 <tr>
-<td align="center">Baltrusaitislab</td>
-<td align="center">96</td>
-<td align="center">384</td>
-<td align="center">1.766</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="left">Baltrusaitis</td>
+<td align="right">96</td>
+<td align="right">384</td>
+<td align="right">1.766</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.0000</td>
 </tr>
 <tr>
-<td align="center">Pisces</td>
-<td align="center">120</td>
-<td align="center">384</td>
-<td align="center">3.840</td>
-<td align="center">12</td>
-<td align="center">29952</td>
-<td align="center">144</td>
-<td align="center">17.472</td>
+<td align="left">Pisces</td>
+<td align="right">120</td>
+<td align="right">384</td>
+<td align="right">3.840</td>
+<td align="right">12</td>
+<td align="right">29952</td>
+<td align="right">144</td>
+<td align="right">17.4220</td>
 </tr>
 <tr>
-<td align="center">Sol</td>
-<td align="center">2152</td>
-<td align="center">11200</td>
-<td align="center">81.088</td>
-<td align="center">114</td>
-<td align="center">377856</td>
-<td align="center">1056</td>
-<td align="center">34.588</td>
+<td align="left">Sol</td>
+<td align="right">2188</td>
+<td align="right">11392</td>
+<td align="right">82.816</td>
+<td align="right">120</td>
+<td align="right">393216</td>
+<td align="right">1104</td>
+<td align="right">36.1296</td>
 </tr>
 <tr>
-<td align="center">Total</td>
-<td align="center">2848</td>
-<td align="center">13888</td>
-<td align="center">96.652</td>
-<td align="center">126</td>
-<td align="center">407808</td>
-<td align="center">1200</td>
-<td align="center">52.060</td>
+<td align="left">Total</td>
+<td align="right">2884</td>
+<td align="right">14080</td>
+<td align="right">98.380</td>
+<td align="right">132</td>
+<td align="right">423168</td>
+<td align="right">1248</td>
+<td align="right">53.5516</td>
 </tr>
 </tbody></table>
 
@@ -410,13 +410,13 @@ modified, appended or prepended</li>
 <li>Open Source: GNU Compiler (also called gcc even though gcc is the c compiler)
 
 <ul>
-<li>4.8.5 (system default), 5.3.0, 6.1.0 and 7.1.0</li>
+<li>4.8.5 (system default), 5.3.0, 6.1.0, 7.1.0 and 8.1.0</li>
 </ul></li>
 <li>Commercial: Only two seats of each
 
 <ul>
 <li>Intel Compiler: 16.0.3, 17.0.0, 17.0.3 and 18.0.1</li>
-<li>Portland Group or PGI: 16.5, 16.10, 17.4, 17.7 and 18.3</li>
+<li>Portland Group or PGI: 16.5, 16.10, 17.4, 17.7, 18.3 and 19.1</li>
 </ul></li>
 <li><em>We are licensed to install any available version</em></li>
 <li>On Sol, all except gcc 4.8.5 are available via the module environment</li>
