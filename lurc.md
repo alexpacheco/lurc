@@ -705,18 +705,14 @@ and high-throughput computing and other digital services, opportunities and reso
 
 ## National Science Foundation (NSF)
 
-* In addition to XSEDE, NSF also provides BlueWaters, a petascale supercomputer at the National Center for Supercomputing Applications (NCSA) at the University of Illinois at Urbana-Champaign
-* heterogenous Cray XE6/XK7 
-    - 22,000 XE6 compute nodes (each containing two AMD Interlagos processors) 
-    - more than 4000 XK7 compute nodes (each containing one AMD Interlagos processor and one NVIDIA GK110 "Kepler" accelerator) 
-    - single high-speed Gemini interconnection fabric.
-* 150M node-hours allocated every year through the NSF's [Petascale Computing Resource Allocation program](https://www.nsf.gov/funding/pgm_summ.jsp?pims_id=503224&org=OCI&from=home)
-* To be replaced with 38PFLOP [Frontera](https://www.tacc.utexas.edu/systems/frontera) cluster located at Texas Advanced
- Computing Center.
-     - It's unknown how this cluster will be allocated since it's life exceeds
-       the life of XSEDE 2.0 
-     - NSF rules prohibit a project to exceed 10 years, so next iteration of
-       XSEDE needs to have a different project name.  
+* In addition to XSEDE, NSF also provides [Frontera](https://fronteraweb.tacc.utexas.edu/), a 38PFLOP supercomputer at the Texas Advanced Computing Center.
+* heterogenous Dell EMC system powered by Intel processors, interconnected by a Mellanox Infiniband HDR and HDR-100 interconnect.
+    - 8008 compute nodes availabe
+    - Intel Xeon Platinum 8280 ("Cascade Lake"), 28 cores per socket, 56 cores per node.
+    - 360 NVIDIA Quadro RTX 5000 GPUs, 128GB per node
+    - IBM POWER9-hosted system with 448 NVIDIA V100 GPUs, 256GB per node (4 nodes with 512GB per node)
+* 55M node-hours will be made available through the NSF Petascale Computing Resource Allocation program.
+
 
 --- .class
 
@@ -743,7 +739,7 @@ and high-throughput computing and other digital services, opportunities and reso
 * Access granted through a variety of programs
 - University Allocations
    - Large requests >400K SUs: Requests accepted every six months, in March
-     and September. 160M SUs awarded in total each allocation cycle
+     and September. 220M SUs available in spring and fall
    - Small requests <400K SUs: U.S. university researchers who are supported by NSF awards can request a small allocation for each NSF award. Requests accepted throughout the year and reviewed/awarded within a few business days.
 
 
@@ -767,7 +763,7 @@ and high-throughput computing and other digital services, opportunities and reso
 
   - Climate Simulation Laboratory 
       - Researchers must have funding from NSF awards to address the climate-related questions
-      - submission deadline is March 26, 2018
+      - submission deadline is Spring 2020
       - minimum request is 20M SUs
 
 --- .class &twocol
@@ -822,12 +818,15 @@ and high-throughput computing and other digital services, opportunities and reso
 
 ## Upcoming HPC Seminars
 
-* EWFM 292 on Tuesday from 2:10PM - 4:00PM.
-  - Linux: Basic Commands & Environment (Sep. 17)
-  - Using SLURM scheduler on Sol (Sep. 24)
-  - Basic Shell Scipting (Oct. 1)
-  - Document Creation with LaTeX (Oct. 15)
-  - Version Control with GIT (Oct. 22)
+* EWFM 292 on Friday from 1:10PM - 2:00PM.
+  - Linux: Basic Commands & Environment (Feb. 7)
+  - Using SLURM scheduler on Sol (Feb. 14)
+  - Python Programming (Feb. 21)
+  - R Programming (Feb. 28)
+  - Data Visualization with Python (Mar. 6)
+  - Data Visualization with R (Mar. 20)
+  - Object Oriented Programming with Python (Mar. 27)
+  - Machine Learning (Apr. 3 & 11) 
 
 
 * Subscribe
