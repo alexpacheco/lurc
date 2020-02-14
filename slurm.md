@@ -98,6 +98,8 @@ license     : by-sa
         Maia for 15 minutes.
 * If you are not on Lehigh's network, login to the ssh gateway to get to Research Computing resources
   - `ssh username@ssh.cc.lehigh.edu`
+  - or use ssh as a jump host
+      - `ssh -J username@ssh.cc.lehigh.edu username@sol.cc.lehigh.edu`
 
 --- .class #id
 
@@ -325,7 +327,7 @@ ifort -fPIC -I/share/Apps/mvapich2/2.1/intel-16.0.3/include
 ## MPI Libraries
 
 * There are two different MPI implementations commonly used
-* `MPICH`: Developed by Argonned National Laboratory
+* `MPICH`: Developed by Argonne National Laboratory
    - used as a starting point for various commercial and open source MPI libraries
    - `MVAPICH2`: Developed by D. K. Panda with support for  InfiniBand, iWARP, RoCE, and Intel Omni-Path. (default MPI on Sol)
    - `Intel MPI`: Intel's version of MPI. __You need this for Xeon Phi MICs__.
@@ -514,7 +516,7 @@ Total time was 1.030180 seconds.
 | Partition Name | Max Runtime in hours | Max SU consumed node per hour |
 |:----------:|:--------------------:|:--------------------:|
 | lts | 72 | 20 |
-| im1080 | 48 | 22 | 
+| im1080 | 48 | 20 | 
 | im1080-gpu | 48 | 24 |
 | eng | 72 | 22 |
 | eng-gpu | 72 | 24 |
@@ -522,8 +524,9 @@ Total time was 1.030180 seconds.
 | himem | 72 | 48 |
 | enge | 72 | 36 |
 | engi | 72 | 36 |
-| im2080 | 48 | 32 |
+| im2080 | 48 | 28 |
 | im2080-gpu | 48 | 36
+| debug | 1 | 16 |
 
 
 --- .class #id

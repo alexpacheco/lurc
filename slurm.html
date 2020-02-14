@@ -300,6 +300,11 @@ Maia for 15 minutes.</li>
 
 <ul>
 <li><code>ssh username@ssh.cc.lehigh.edu</code></li>
+<li>or use ssh as a jump host
+
+<ul>
+<li><code>ssh -J username@ssh.cc.lehigh.edu username@sol.cc.lehigh.edu</code></li>
+</ul></li>
 </ul></li>
 </ul>
 
@@ -722,7 +727,7 @@ ifort -fPIC -I/share/Apps/mvapich2/2.1/intel-16.0.3/include
   <article data-timings="">
     <ul>
 <li>There are two different MPI implementations commonly used</li>
-<li><code>MPICH</code>: Developed by Argonned National Laboratory
+<li><code>MPICH</code>: Developed by Argonne National Laboratory
 
 <ul>
 <li>used as a starting point for various commercial and open source MPI libraries</li>
@@ -1085,7 +1090,7 @@ Total time was 1.030180 seconds.
 <tr>
 <td align="center">im1080</td>
 <td align="center">48</td>
-<td align="center">22</td>
+<td align="center">20</td>
 </tr>
 <tr>
 <td align="center">im1080-gpu</td>
@@ -1125,12 +1130,17 @@ Total time was 1.030180 seconds.
 <tr>
 <td align="center">im2080</td>
 <td align="center">48</td>
-<td align="center">32</td>
+<td align="center">28</td>
 </tr>
 <tr>
 <td align="center">im2080-gpu</td>
 <td align="center">48</td>
 <td align="center">36</td>
+</tr>
+<tr>
+<td align="center">debug</td>
+<td align="center">1</td>
+<td align="center">16</td>
 </tr>
 </tbody></table>
 
