@@ -111,7 +111,7 @@ rbind(cluster,total) %>% kable()
 
 * Commercial, Free and Open source software is installed on
   - [Maia](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=maia#installed_software): /zhome/Apps
-  - [Sol](https:/go.lehigh.edu/solsoftware): /share/Apps
+  - [Sol](https://go.lehigh.edu/solsoftware): /share/Apps
 * Software is managed using module environment
   - Why? We may have different versions of same software or software built with different compilers
   - Module environment allows you to dynamically change your *nix environment based on software being used
