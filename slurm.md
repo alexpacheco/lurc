@@ -455,6 +455,23 @@ Total time was 1.030180 seconds.
        - SLURM uses the term _partition_ instead of _queue_
 
 
+--- .class #id
+
+## File Systems - Where to run jobs?
+
+* There are three distinct file spaces on Sol.
+   - HOME, your home directory on Sol, 150GB quota default. More if PI has purchased a CEPH space.
+   - SCRATCH, 500GB scratch storage on the local disk associated with your running job.
+   - CEPHFS, 11TB global parallel scratch for running jobs with a lifetime of 14 days.
+
+* Best Practices
+   - Store all input files, submit scripts, and output files following job completion in HOME
+   - Single node jobs, use SCRATCH to run your jobs and store temporary files
+      - SCRATCH is deleted by the SLURM scheduler when job is complete, so make sure that you copy all required data back to HOME.
+      - SLURM automatically creates `/scratch/${USER}/${SLURM_JOBID}`
+   - All jobs, use CEPHFS. CEPHFS contents are kept for 14 days after your job is complete.
+      - SLURM automatically creates `/share/ceph/scratch/${USER}/${SLURM_JOBID}`
+
 
 --- .class #id &twocol_width
  

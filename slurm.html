@@ -972,6 +972,46 @@ Total time was 1.030180 seconds.
 
 <slide class="class" id="id" style="background:#F1E7C8;">
   <hgroup>
+    <h2>File Systems - Where to run jobs?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>There are three distinct file spaces on Sol.</p>
+
+<ul>
+<li>HOME, your home directory on Sol, 150GB quota default. More if PI has purchased a CEPH space.</li>
+<li>SCRATCH, 500GB scratch storage on the local disk associated with your running job.</li>
+<li>CEPHFS, 11TB global parallel scratch for running jobs with a lifetime of 14 days.</li>
+</ul></li>
+<li><p>Best Practices</p>
+
+<ul>
+<li>Store all input files, submit scripts, and output files following job completion in HOME</li>
+<li>Single node jobs, use SCRATCH to run your jobs and store temporary files
+
+<ul>
+<li>SCRATCH is deleted by the SLURM scheduler when job is complete, so make sure that you copy all required data back to HOME.</li>
+<li>SLURM automatically creates <code>/scratch/${USER}/${SLURM_JOBID}</code></li>
+</ul></li>
+<li>All jobs, use CEPHFS. CEPHFS contents are kept for 14 days after your job is complete.
+
+<ul>
+<li>SLURM automatically creates <code>/share/ceph/scratch/${USER}/${SLURM_JOBID}</code></li>
+</ul></li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:#F1E7C8;">
+  <hgroup>
     <h2>Job Scheduling</h2>
   </hgroup>
   <article data-timings="">
@@ -1223,7 +1263,7 @@ Total time was 1.030180 seconds.
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-26" style="background:#F1E7C8;">
+<slide class="class" id="slide-27" style="background:#F1E7C8;">
   <hgroup>
     <h2>Job Types</h2>
   </hgroup>
@@ -1840,7 +1880,7 @@ jobs.
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-39" style="background:#F1E7C8;">
+<slide class="class" id="slide-40" style="background:#F1E7C8;">
   <hgroup>
     <h2>Modifying Resources for Queued Jobs</h2>
   </hgroup>
@@ -2126,127 +2166,127 @@ allocation</li>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=20 title='Job Scheduling'>
+        data-slide=20 title='File Systems - Where to run jobs?'>
          20
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=21 title='Backfilling'>
+        data-slide=21 title='Job Scheduling'>
          21
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=22 title='How much time must I request'>
+        data-slide=22 title='Backfilling'>
          22
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=23 title='Available Queues on Sol'>
+        data-slide=23 title='How much time must I request'>
          23
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=24 title='How much memory can or should I use per core?'>
+        data-slide=24 title='Available Queues on Sol'>
          24
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=25 title='Basic Job Manager Commands'>
+        data-slide=25 title='How much memory can or should I use per core?'>
          25
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=26 title='Job Types'>
+        data-slide=26 title='Basic Job Manager Commands'>
          26
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=27 title='Useful SLURM Directives'>
+        data-slide=27 title='Job Types'>
          27
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=28 title='Useful SLURM Directives (contd)'>
+        data-slide=28 title='Useful SLURM Directives'>
          28
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=29 title='SLURM Filename Patterns'>
+        data-slide=29 title='Useful SLURM Directives (contd)'>
          29
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=30 title='Useful SLURM environmental variables'>
+        data-slide=30 title='SLURM Filename Patterns'>
          30
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=31 title='Job Types: Interactive'>
+        data-slide=31 title='Useful SLURM environmental variables'>
          31
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=32 title='Job Types: Batch'>
+        data-slide=32 title='Job Types: Interactive'>
          32
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=33 title='Minimal submit script for Serial Jobs'>
+        data-slide=33 title='Job Types: Batch'>
          33
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=34 title='Minimal submit script for MPI Job'>
+        data-slide=34 title='Minimal submit script for Serial Jobs'>
          34
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=35 title='Minimal submit script for OpenMP Job'>
+        data-slide=35 title='Minimal submit script for MPI Job'>
          35
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=36 title='Minimal submit script for LAMMPS GPU job'>
+        data-slide=36 title='Minimal submit script for OpenMP Job'>
          36
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=37 title='Need to run multiple jobs'>
+        data-slide=37 title='Minimal submit script for LAMMPS GPU job'>
          37
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=38 title='Monitoring &amp; Manipulating Jobs'>
+        data-slide=38 title='Need to run multiple jobs'>
          38
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=39 title='Modifying Resources for Queued Jobs'>
+        data-slide=39 title='Monitoring &amp; Manipulating Jobs'>
          39
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=40 title='Usage Reporting'>
+        data-slide=40 title='Modifying Resources for Queued Jobs'>
          40
       </a>
     </li>
@@ -2258,14 +2298,20 @@ allocation</li>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=42 title='Online Usage Reporting'>
+        data-slide=42 title='Usage Reporting'>
          42
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=43 title='Additional Help &amp; Information'>
+        data-slide=43 title='Online Usage Reporting'>
          43
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=44 title='Additional Help &amp; Information'>
+         44
       </a>
     </li>
   </ul>
