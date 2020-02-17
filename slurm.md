@@ -107,12 +107,12 @@ license     : by-sa
 
 * Commercial, Free and Open source software is installed on
   - [Maia](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=maia#installed_software): /zhome/Apps
-  - [Sol](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=sol#installed_software): /share/Apps
+  - [Sol](https:/go.lehigh.edu/solsoftware): /share/Apps
 * Software is managed using module environment
   - Why? We may have different versions of same software or software built with different compilers
   - Module environment allows you to dynamically change your *nix environment based on software being used
   - Standard on many University and national High Performance Computing resource since circa 2011
-* How to use Sol/Maia Software on your [linux](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=linux) workstation
+* How to use Sol/Maia Software on your [linux](https://go.lehigh.edu/linux) workstation
 * LTS provides [licensed and open source software](https://software.lehigh.edu) for Windows, Mac and Linux and [Gogs](https://gogs.cc.lehigh.eu), a self hosted Git Service or Github clone 
 
 
@@ -509,9 +509,7 @@ Total time was 1.030180 seconds.
 
 --- .class #id .small
 
-## Available Queues
-
-* Sol
+## Available Queues on Sol
 
 | Partition Name | Max Runtime in hours | Max SU consumed node per hour |
 |:----------:|:--------------------:|:--------------------:|
@@ -536,8 +534,6 @@ Total time was 1.030180 seconds.
 * The amount of installed memory less the amount that is used by the operating system and other utilities
 
 * A general rule of thumb on most HPC resources: leave 1-2GB for the OS to run. 
-
-* Sol
 
 | Partition | Max Memory/core (GB) | Recommended Memory/Core (GB) |
 |:---------:|:--------------------:|:----------------------------:|
@@ -894,8 +890,9 @@ exit
 
 * [Monthly usage summary](https://webapps.lehigh.edu/hpc/usage/dashboard.html) (updated daily)
 * [Scheduler Status](https://webapps.lehigh.edu/hpc/monitor) (updated every 15 mins)
-* [Current AY Usage Reports](https://webapps.lehigh.edu/hpc/monitor/ay1819.html) (updated daily)
+* [Current AY Usage Reports](https://webapps.lehigh.edu/hpc/monitor/ay1920.html) (updated daily)
 * Prior AY Usage Reports
+    * [AY1819](https://webapps.lehigh.edu/hpc/monitor/ay1819.html)
     * [AY1718](https://webapps.lehigh.edu/hpc/monitor/ay1718.html)
     * [AY1617](https://webapps.lehigh.edu/hpc/monitor/ay1617.html)
 * <span class="alert">Usage reports restricted to Lehigh IPs</span>
