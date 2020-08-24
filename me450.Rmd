@@ -39,6 +39,7 @@ mode        : selfcontained # {standalone, draft}
   - Provide technical support for software applications, install software as requested and assist with purchase of software.
 * Training & Consulting
   - Provide education and training programs to facilitate use of HPC resources and general scientific computing needs.
+     * https://go.lehigh.edu/hpcseminars
   - Provide consultation and support for code development and visualization.
 
 
@@ -75,6 +76,7 @@ mode        : selfcontained # {standalone, draft}
 * Pavo : decommissioned faculty cluster for prototyping future resources
   - Twenty nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
      * Theoretical Performance: 6.656TFlops
+     * 3 nodes available for 1 hour debug runs. 
 
 --- .class
 
@@ -102,11 +104,20 @@ rbind(cluster,total) %>% kable()
 ## Accessing Research Computing Resources
 
 * Sol: accessible using ssh while on Lehigh&#39;s network
-   * `ssh username@sol.cc.lehigh.edu`
+    ```{bash eval=F}
+    ssh username@sol.cc.lehigh.edu
+    ```
    * Windows PC require a SSH client such as [MobaXterm](https://mobaxterm.mobatek.net/) or [Putty](https://putty.org/).
    * Mac and Linux PC&#39;s, ssh is built in to the terminal application. 
-* If you are not on Lehigh&#39;s network, login to the ssh gateway to get to Research Computing resources
-  - `ssh username@ssh.cc.lehigh.edu`
+* If you are not on Lehigh&#39;s network, login to the ssh gateway
+   ```{bash eval=F}
+    ssh username@ssh.cc.lehigh.edu
+   ``` 
+   and then login to sol as above
+  -  Alternatively,
+  ```{bash eval=F}
+  ssh -J username@ssh.cc.lehigh.edu username@sol.cc.lehigh.edu
+  ```
   - [Click here](https://confluence.cc.lehigh.edu/x/JhH5Bg) to learn how to configure MobaXterm to use the SSH Gateway.
 
 --- .class 
@@ -294,37 +305,45 @@ in order to perform a specific task.
 
 
 
---- .class
+--- .class .small
 
 ## Linux Commands
 
 * `man` shows the manual for a command or program.
   - `man pwd`
 * `pwd`: print working directory, gives the absolute path of your current location in the directory hierarchy
+* `echo`: prints whatever follows to the screen
+  - `echo $HOME`: prints the contents of the variable __HOME__ i.e. your home directory to the screen
 * `cd dirname`: change to folder called `dirname`
-  - If you omit directory name, you will end up in your home directory
-  - Enter `cd `
+  - default `dirname` is your home directory
+  - Useful option 
+       - `cd -` go to previous directory
 * `mkdir dirname`: create a directory called `dirname`
   - Create a directory, any name you want and cd to that directory 
        - `mkdir me450` followed by `cd me450`
-       - Use the `pwd` command to check your current location 
+  - Useful option
+       - `mkdir -p dir1/dir2/dir3` create intermediate directories if they do not exist
   
 
---- .class .small
+--- .class .tiny
 
 ## Linux Command (contd)
 
 * `cp file1 file2`: command to copy file1 to file2
-  - You can use absolute or relative path for the source and destination `cp ../file .`
-  - If you need to copy over a directory and its contents, add a `-r flag`
-  - `cp -r /home/alp514/sum2017 .`
+  - Useful options:
+      - `cp -r /home/alp514/Workshop/sum2017 .` copy directories recursively
+      - `cp -p ~alp514/in.lj ${HOME}/` preserve time stamps
 * `rm file1`: delete a file called file1 
-  - Unlike other OS&#39;s, once you delete a file it cannot be recoverd.
-      - Use `-i` to be prompted for confirmation
-      - Use `-r` to delete directories recursively 
+  - Useful options
+      - `rm -i` to be prompted for confirmation
+      - `rm -r` to delete directories recursively 
+      - `rm -f` delete without prompting - VERY DANGEROUS
 * `ls dirname`: list contents of _dirname_ (leave blank for current directory)
-* `echo`: prints whatever follows to the screen
-  - `echo $HOME`: prints the contents of the variable __HOME__ i.e. your home directory to the screen
+  - Useful options
+      - `ls -l` show long form listing
+      - `ls -a` show hidden files
+      - `ls -t` sort by timestamp newest first, best when combined with `-l`
+      - `ls -r` reverse sort (default alphabetical), best when combined with `-l -t` or `-lt`
 * `alias`: create a shortcut to another command or name to execute a long string.
   - `alias rm="/bin/rm -i"`
 
@@ -637,7 +656,6 @@ in order to perform a specific task.
   * PyMol
   * VESTA
   * XCrySDen
-  * 
 
 --- .class
 
@@ -924,15 +942,17 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 ## Job Types: Interactive
 
    - SLURM:  Use `srun` command with SBATCH Directives followed by `--pty /bin/bash`
-       * `srun --time=<hh:mm:ss> --nodes=<# of nodes> --ntasks-per-node=<#
-   of core/node> -p <queue name> --pty /bin/bash`
+      ```{bash eval=F}
+      srun --time=<hh:mm:ss> --nodes=<# of nodes> --ntasks-per-node=<# of core/node> -p <queue name> --pty /bin/bash
+      ```
        * If you have `soltools` module loaded, then use `interact` with at
    least one SBATCH Directive
            - `interact -t 20` [Assumes `-p lts -n 1 -N 18`]
    - Run a job interactively replace `--pty /bin/bash --login` with the
      appropriate command. 
-       - For e.g. `srun -t 20 -n 1 -p im1080 --qos=nogpu $(which lammps) -in in.lj
-     -var x 1 -var n 1`
+       ```{bash eval=F}
+       srun -t 20 -n 1 -p im1080 --qos=nogpu $(which lammps) -in in.lj -var x 1 -var n 1
+       ```
        - Default values are 3 days, 1 node, 18 tasks per node and lts
    partition
 
@@ -943,11 +963,14 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 * Workflow: write a script -> submit script -> take mini vacation -> analyze
   results
 * Submitting Batch Jobs
-   * SLURM: `sbatch filename`
+   ```{bash eval=F}
+   sbatch filename
+   ```
 
 * `sbatch` can take the options for `#SBATCH` as command line arguments
-   * `sbatch --time=1:00:00 --nodes=1 --ntasks-per-node=18 -p lts filename` 
-
+   ```{bash eval=F}
+   sbatch --time=1:00:00 --nodes=1 --ntasks-per-node=18 -p lts filename
+   ```
 
 --- .class #id .big
 
@@ -1053,7 +1076,7 @@ exit
 | scontrol show job jobid | Check status of your job identified by <em>jobid</em> |
 | scancel jobid | Cancel your job identified by <em>jobid</em> |
 | scontrol hold jobid | Put your job identified by <em>jobid</em> on hold |
-| scontrol release jobid | Release the hold that <strong>you put</strong> on <em>jobid |
+| scontrol release jobid | Release the hold that <strong>you put</strong> on <em>jobid</em> |
 
 
 --- .class #id
@@ -1062,9 +1085,10 @@ exit
 
 * In sequence or serially
     * Option 1: Submit jobs as soon as previous jobs complete
-    * Option 2: Submit jobs with a dependency
-       * [SLURM](https://confluence.cc.lehigh.edu/x/FqH0BQ#SLURM-SubmittingDependencyjobs):
-  `sbatch --dependency=afterok:<JobID> <Submit Script>`
+    * Option 2: [Submit jobs with a dependency](https://confluence.cc.lehigh.edu/x/FqH0BQ#SLURM-SubmittingDependencyjobs)
+    ```{bash eval=F}
+    sbatch --dependency=afterok:<JobID> <Submit Script>
+    ````
 
 * In parallel, use [GNU Parallel](https://confluence.cc.lehigh.edu/x/B6b0BQ)
 

@@ -824,10 +824,10 @@ exit
 * In sequence or serially
     * Option 1: Submit jobs as soon as previous jobs complete
     * Option 2: Submit jobs with a dependency
-       * [SLURM](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=slurm#submitting_dependency_jobs):
+       * [SLURM](https://confluence.cc.lehigh.edu/x/FqH0BQ#SLURM-SubmittingDependencyjobs):
   `sbatch --dependency=afterok:<JobID> <Submit Script>`
 
-* In parallel, use [GNU Parallel](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=parallel)
+* In parallel, use [GNU Parallel](https://confluence.cc.lehigh.edu/x/B6b0BQ)
 
 --- .class #id
 

@@ -97,7 +97,7 @@
 <li>Provide system administration and support for Lehigh&#39;s HPC clusters.
 
 <ul>
-<li>2 University owned and 4 Faculty owned </li>
+<li>2 University owned and 3 Faculty owned </li>
 </ul></li>
 <li>Assist with purchase, installation and administration of servers and clusters.</li>
 </ul></li>
@@ -308,6 +308,30 @@ width="275px"></p>
 </ul></li>
 </ul>
 
+<!--
+--- .class
+
+## Research Computing Resources
+
+* <strong> Maia </strong>
+  - 32-core Symmetric Multiprocessor (SMP) system available to all Lehigh Faculty, Staff and Students
+  - dual 16-core AMD Opteron 6380 2.5GHz CPU
+  - 128GB RAM and 4TB HDD
+  - Theoretical Performance: 640 GFLOPs (640 billion floating point operations per second)
+  - Access: Batch Scheduled, no interactive access to Maia
+
+  $$latex
+  GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
+  $$
+
+  [FLOPs for various AMD & Intel CPU generation](https://en.wikipedia.org/wiki/FLOPS#FLOPs_per_cycle)
+
+  - `Currently out of warranty`. 
+  - `Will be permanently shut down in case of hardware failure`
+  - `No plans to replace Maia`
+
+-->
+
   </article>
   <!-- Footer  -->
   <footer class = 'lufoot'>
@@ -318,44 +342,6 @@ width="275px"></p>
 </slide>
 
 <slide class="class" id="slide-8" style="background:#F1E7C8;">
-  <hgroup>
-    <h2>Research Computing Resources</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li><p><strong> Maia </strong></p>
-
-<ul>
-<li>32-core Symmetric Multiprocessor (SMP) system available to all Lehigh Faculty, Staff and Students</li>
-<li>dual 16-core AMD Opteron 6380 2.5GHz CPU</li>
-<li>128GB RAM and 4TB HDD</li>
-<li>Theoretical Performance: 640 GFLOPs (640 billion floating point operations per second)</li>
-<li>Access: Batch Scheduled, no interactive access to Maia</li>
-</ul>
-
-<p>\[
-GFLOPs = cores \times clock \times \frac{FLOPs}{cycle}
-\]</p>
-
-<p><a href="https://en.wikipedia.org/wiki/FLOPS#FLOPs_per_cycle">FLOPs for various AMD &amp; Intel CPU generation</a></p>
-
-<ul>
-<li><code>Currently out of warranty</code>. </li>
-<li><code>Will be permanently shut down in case of hardware failure</code></li>
-<li><code>No plans to replace Maia</code></li>
-</ul></li>
-</ul>
-
-  </article>
-  <!-- Footer  -->
-  <footer class = 'lufoot'>
-     <img height = '20px' src='assets/img/lulogo.jpg'>
-  </footer>
-  <!-- End Footer-->
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="slide-9" style="background:#F1E7C8;">
   <hgroup>
     <h2>Research Computing Resources</h2>
   </hgroup>
@@ -373,15 +359,19 @@ RAM</li>
 RAM</li>
 <li>1 node, dual 8-core Intel Xeon 2630 v3 2.4GHz CPU, 20 MB Cache, 512GB RAM</li>
 <li>24 nodes, dual 18-core Intel Xeon Gold 6140 2.3GHz CPU, 24.7 MB Cache, 192GB RAM</li>
-<li>72 nVIDIA GTX 1080 GPU cards</li>
-<li>48 nVIDIA RTX 2080TI GPU cards</li>
+<li>6 nodes, dual 18-core Intel Xeon Gold 6240 2.6GHz, 24.75 MB Cache, 192GB RAM</li>
+<li>72 nVIDIA GTX 1080 &amp; 48 nVIDIA RTX 2080TI GPU cards</li>
 <li>1TB HDD per node</li>
 <li>2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric</li>
-<li>Theoretical Performance: 82.816 TFLOPs (CPU) + 36.1296 TFLOPs (GPU)</li>
-<li>Access: Batch Scheduled, interactive on login node for compiling, editing
-only</li>
+<li>Theoretical Performance: 93.184 TFLOPs (CPU) + 36.130 TFLOPs (GPU)</li>
 </ul></li>
 </ul>
+
+<!--
+  - Access: Batch Scheduled, interactive on login node for compiling, editing
+  only
+  - Open OnDemand Portal
+-->
 
   </article>
   <!-- Footer  -->
@@ -510,7 +500,7 @@ only</li>
 <li>Theoretical Performance: 3.840 TFlops (CPU) + 17.46TFlops (GPU)</li>
 </ul></li>
 </ul></li>
-<li>Devel/Testing : decommissioned faculty cluster for prototyping new resources
+<li><strong>Pavo</strong>: decommissioned faculty cluster for development and education
 
 <ul>
 <li>Twenty nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
@@ -518,6 +508,43 @@ only</li>
 <ul>
 <li>Theoretical Performance: 6.656TFlops</li>
 </ul></li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-14" style="background:#F1E7C8;">
+  <hgroup>
+    <h2>Coming Soon: Hawk</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Funded by <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2019035&amp;HistoricalAwards=false">NSF Campus Cyberinfrastructure award 2019035</a></li>
+<li>Compute
+
+<ul>
+<li>24 nodes, dual 26-core Intel Xeon Gold 6230R, 2.1GHz, 384GB RAM</li>
+<li>4 nodes, dual 26-core Intel Xeon Gold 6230R, 1536GB RAM</li>
+<li>4 nodes, dual 24-core Intel Xeon Gold 5220R, 384GB RAM</li>
+</ul></li>
+<li>Storage
+
+<ul>
+<li>7 nodes, single 16-core AMD EPYC 7302P, 3.0GHz, 128GB RAM, two 240GB SSDs (for OS)</li>
+<li>Per node
+
+<ul>
+<li>3x 1.9TB SATA SSD (for CephFS)</li>
+<li>9x 12TB SAS HDD (for Ceph)</li>
+</ul></li>
+<li>Total Storage: 796TB (raw) or 225TB (usable)</li>
 </ul></li>
 </ul>
 
@@ -548,16 +575,6 @@ only</li>
 </tr>
 </thead><tbody>
 <tr>
-<td align="left">Maia</td>
-<td align="right">32</td>
-<td align="right">128</td>
-<td align="right">0.640</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0.0000</td>
-</tr>
-<tr>
 <td align="left">Monocacy</td>
 <td align="right">128</td>
 <td align="right">512</td>
@@ -565,7 +582,7 @@ only</li>
 <td align="right">0</td>
 <td align="right">0</td>
 <td align="right">0</td>
-<td align="right">0.0000</td>
+<td align="right">0.000</td>
 </tr>
 <tr>
 <td align="left">Devel</td>
@@ -575,7 +592,7 @@ only</li>
 <td align="right">0</td>
 <td align="right">0</td>
 <td align="right">0</td>
-<td align="right">0.0000</td>
+<td align="right">0.000</td>
 </tr>
 <tr>
 <td align="left">Baltrusaitis</td>
@@ -585,7 +602,7 @@ only</li>
 <td align="right">0</td>
 <td align="right">0</td>
 <td align="right">0</td>
-<td align="right">0.0000</td>
+<td align="right">0.000</td>
 </tr>
 <tr>
 <td align="left">Pisces</td>
@@ -595,29 +612,33 @@ only</li>
 <td align="right">12</td>
 <td align="right">29952</td>
 <td align="right">144</td>
-<td align="right">17.4220</td>
+<td align="right">17.422</td>
 </tr>
 <tr>
 <td align="left">Sol</td>
-<td align="right">2188</td>
-<td align="right">11392</td>
-<td align="right">82.816</td>
+<td align="right">2404</td>
+<td align="right">12544</td>
+<td align="right">93.184</td>
 <td align="right">120</td>
 <td align="right">393216</td>
 <td align="right">1104</td>
-<td align="right">36.1296</td>
+<td align="right">36.130</td>
 </tr>
 <tr>
 <td align="left">Total</td>
-<td align="right">2884</td>
-<td align="right">14080</td>
-<td align="right">98.380</td>
+<td align="right">3068</td>
+<td align="right">15104</td>
+<td align="right">108.108</td>
 <td align="right">132</td>
 <td align="right">423168</td>
 <td align="right">1248</td>
-<td align="right">53.5516</td>
+<td align="right">53.552</td>
 </tr>
 </tbody></table>
+
+<ul>
+<li>Monocacy, Baltrusaitis and Pisces: decommissioning scheduled for Sep 30, 2021.</li>
+</ul>
 
   </article>
   <!-- Footer  -->
@@ -634,22 +655,11 @@ only</li>
   </hgroup>
   <article data-timings="">
     <ul>
-<li><a href="https://idmweb.cc.lehigh.edu/accounts/?page=hpc">Apply for an account at the LTS website</a>
-
-<ul>
-<li>Click on Services &gt; Account &amp; Password &gt; Lehigh Computing Account &gt; Request an account</li>
-<li>Click on the big blue button &quot;Start Special Account Request&quot; &gt; Research Computing Account </li>
-<li>Maia
-
-<ul>
-<li>Click on &quot;FREE Linux command-line computing&quot;</li>
-</ul></li>
-<li>Sol: PIs should contact Alex Pacheco or Steve Anthony, web request is not functional
+<li>PIs should contact Alex Pacheco or Steve Anthony. 
 
 <ul>
 <li>Annual charge of $50/account paid by Lehigh Faculty or Research Staff, and</li>
 <li>Annual charge for computing time</li>
-</ul></li>
 </ul></li>
 </ul>
 
@@ -783,11 +793,12 @@ investment</li>
 <li>Ganesh Balasubramanian, Mechanical Engineering (7 nodes)</li>
 <li>Department of Industrial &amp; Systems Engineering (2 nodes)</li>
 <li>Paolo Bocchini, Civil and Structural Engineering (1 node)</li>
-<li>Lisa Fredin, Chemistry (2 nodes)</li>
-<li><p>Hannah Dailey, Mechanical Engineering (1 node)</p>
+<li>Lisa Fredin, Chemistry (6 nodes)</li>
+<li>Hannah Dailey, Mechanical Engineering (1 node)</li>
+<li><p>College of Health (2 nodes)</p>
 
 <ul>
-<li>Total SU on Sol after Condo Investments: 19,166,880</li>
+<li>Total SU on Sol after Condo Investments: 21,059,040</li>
 </ul></li>
 </ul>
 
@@ -869,12 +880,11 @@ of Ceph i.e. 5 years </li>
 
 <slide class="class" id="slide-23" style="background:#F1E7C8;">
   <hgroup>
-    <h2>Sol, Maia  &amp; Ceph for Courses</h2>
+    <h2>Sol &amp; Ceph for Courses</h2>
   </hgroup>
   <article data-timings="">
     <ul>
 <li>Research Computing Resources; Sol, Maia &amp; Ceph are available for use in registrar scheduled classes.</li>
-<li><strong>Maia</strong>: No charge, no special considerations</li>
 <li><strong>Sol</strong>: Provides<br>
 
 <ul>
@@ -912,13 +922,10 @@ of Ceph i.e. 5 years </li>
     <ul>
 <li>All Research Computing resources are accessible using ssh while on Lehigh&#39;s network</li>
 <li>Sol: <code>ssh username@sol.cc.lehigh.edu</code></li>
-<li>Maia: No direct access to Maia, instead login to the polaris</li>
-<li>Polaris: <code>ssh username@polaris.cc.lehigh.edu</code>
+<li>Hawk: Uses Sol login node
 
 <ul>
-<li>Polaris is a gateway that also hosts the batch scheduler for Maia.</li>
-<li>No computing software including compilers is available on Polaris.</li>
-<li>Login to Polaris and request computing time on Maia including interactive access.</li>
+<li>can also accessed as <code>ssh username@hawk.cc.lehigh.edu</code></li>
 </ul></li>
 <li>If you are not on Lehigh&#39;s network, login to the ssh gateway to get to Research Computing resources.
 
@@ -945,7 +952,6 @@ of Ceph i.e. 5 years </li>
 <li>Commercial, Free and Open source software is installed on
 
 <ul>
-<li><a href="https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=maia#installed_software">Maia</a>: /zhome/Apps</li>
 <li><a href="https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=sol#installed_software">Sol</a>: /share/Apps</li>
 </ul></li>
 <li>Software is managed using module environment
@@ -955,7 +961,7 @@ of Ceph i.e. 5 years </li>
 <li>Module environment allows you to dynamically change your &#42;nix environment based on software being used</li>
 <li>Standard on many University and national High Performance Computing resource since circa 2011</li>
 </ul></li>
-<li>How to use Sol/Maia Software on your <a href="https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=linux">linux</a> workstation</li>
+<li>How to use Sol Software on your <a href="https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=linux">linux</a> workstation</li>
 <li>LTS provides <a href="https://software.lehigh.edu">licensed and open source software</a> for Windows, Mac and Linux and <a href="https://gogs.cc.lehigh.eu">Gogs</a>, a self hosted Git Service or Github clone</li>
 </ul>
 
@@ -1017,7 +1023,7 @@ of Ceph i.e. 5 years </li>
 <li>Magma</li>
 <li>Maple</li>
 <li>Mathematica</li>
-<li>Matlab</li>
+<li>MATLAB</li>
 </ul></li>
 </ul>
 
@@ -1110,13 +1116,14 @@ of Ceph i.e. 5 years </li>
 <li>GNU</li>
 <li>Intel</li>
 <li>JAVA</li>
-<li>PGI</li>
+<li>PGI/NVIDIA HPC SDK</li>
 <li>CUDA</li>
 </ul></li>
 <li>Parallel Programming
 
 <ul>
 <li>MVAPICH2</li>
+<li>MPICH</li>
 <li>OpenMPI</li>
 </ul></li>
 </ul>
@@ -1494,6 +1501,28 @@ local users with getting started on XSEDE resources.</li>
 
 <slide class="class" id="slide-39" style="background:#F1E7C8;">
   <hgroup>
+    <h2>Upcoming Resources</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Expanse</li>
+<li>Bridges-2</li>
+<li>Neocortex</li>
+<li>Jetstream-2</li>
+<li>Delta</li>
+</ul>
+
+  </article>
+  <!-- Footer  -->
+  <footer class = 'lufoot'>
+     <img height = '20px' src='assets/img/lulogo.jpg'>
+  </footer>
+  <!-- End Footer-->
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-40" style="background:#F1E7C8;">
+  <hgroup>
     <h2>Department of Energy (DOE)</h2>
   </hgroup>
   <article data-timings="">
@@ -1531,7 +1560,7 @@ local users with getting started on XSEDE resources.</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-40" style="background:#F1E7C8;">
+<slide class="class" id="slide-41" style="background:#F1E7C8;">
   <hgroup>
     <h2>National Center for Atmospheric Research (NCAR)</h2>
   </hgroup>
@@ -1558,7 +1587,7 @@ and September. 220M SUs available in spring and fall</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-41" style="background:#F1E7C8;">
+<slide class="class" id="slide-42" style="background:#F1E7C8;">
   <hgroup>
     <h2>NCAR - CISL (contd)</h2>
   </hgroup>
@@ -1589,7 +1618,7 @@ and September. 220M SUs available in spring and fall</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-42" style="background:#F1E7C8;">
+<slide class="class" id="slide-43" style="background:#F1E7C8;">
   <hgroup>
     <h2>NCAR - CSL</h2>
   </hgroup>
@@ -1613,7 +1642,7 @@ and September. 220M SUs available in spring and fall</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-43" style="background:#F1E7C8;">
+<slide class="class" id="slide-44" style="background:#F1E7C8;">
   <hgroup>
     <h2>HPC Seminars</h2>
   </hgroup>
@@ -1660,7 +1689,7 @@ seminars in collaboration with other LTS groups</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-44" style="background:#F1E7C8;">
+<slide class="class" id="slide-45" style="background:#F1E7C8;">
   <hgroup>
     <h2>Workshops</h2>
   </hgroup>
@@ -1697,7 +1726,7 @@ seminars in collaboration with other LTS groups</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-45" style="background:#F1E7C8;">
+<slide class="class" id="slide-46" style="background:#F1E7C8;">
   <hgroup>
     <h2>Upcoming HPC Seminars</h2>
   </hgroup>
@@ -1706,14 +1735,15 @@ seminars in collaboration with other LTS groups</li>
 <li><p>EWFM 292 on Friday from 1:10PM - 2:00PM.</p>
 
 <ul>
-<li>Linux: Basic Commands &amp; Environment (Feb. 7)</li>
-<li>Using SLURM scheduler on Sol (Feb. 14)</li>
-<li>Python Programming (Feb. 21)</li>
-<li>R Programming (Feb. 28)</li>
-<li>Data Visualization with Python (Mar. 6)</li>
-<li>Data Visualization with R (Mar. 20)</li>
-<li>Object Oriented Programming with Python (Mar. 27)</li>
-<li>Machine Learning (Apr. 3 &amp; 11) </li>
+<li>Linux: Basic Commands &amp; Environment (Sep. 11)</li>
+<li>Using SLURM scheduler on Sol (Sep. 18)</li>
+<li>Introduction to Open OnDemand (Sep. 25)</li>
+<li>Python Programming (Oct. 2)</li>
+<li>Data Visualization with Python (Oct. 9)</li>
+<li>Machine Learning (Oct. 16 &amp; 23) </li>
+<li>R Programming (Oct. 30)</li>
+<li>Data Visualization with R (Nov. 6)</li>
+<li>Text Mining (Nov. 13)</li>
 </ul></li>
 <li><p>Subscribe</p>
 
@@ -1732,7 +1762,7 @@ seminars in collaboration with other LTS groups</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-46" style="background:#F1E7C8;">
+<slide class="class" id="slide-47" style="background:#F1E7C8;">
   <hgroup>
     <h2>Getting Help</h2>
   </hgroup>
@@ -1751,12 +1781,12 @@ seminars in collaboration with other LTS groups</li>
 <li>More Information
 
 <ul>
-<li><a href="http://researchcomputing.lehigh.edu/services/condo">Condo Program and Available Equipment</a></li>
-<li><a href="http://researchcomputing.lehigh.edu/services/proposalassist">Proposal Assistance</a></li>
+<li><a href="https://confluence.cc.lehigh.edu/x/EgL5Bg">Condo Program and Available Equipment</a></li>
+<li><a href="https://confluence.cc.lehigh.edu/x/FgL5Bg">Proposal Assistance</a></li>
 <li><a href="http://libraryguides.lehigh.edu/researchdatamanagement">Data Management Plans</a></li>
 <li><a href="https://researchcomputing.lehigh.edu">Research Computing</a></li>
 <li><a href="https://go.lehigh.edu/rcwiki">Research Computing Wiki</a></li>
-<li><a href="https://researchcomputing.lehigh.edu/training">Research Computing Training</a></li>
+<li><a href="https://go.lehigh.edu/hpcseminars">Research Computing Training</a></li>
 </ul></li>
 </ul>
 
@@ -1823,7 +1853,7 @@ seminars in collaboration with other LTS groups</li>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='Research Computing Resources'>
+        data-slide=9 title='Sol'>
          9
       </a>
     </li>
@@ -1841,19 +1871,19 @@ seminars in collaboration with other LTS groups</li>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='Sol'>
+        data-slide=12 title='Network Layout Sol &amp; Ceph Storage Cluster'>
          12
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=13 title='Network Layout Sol &amp; Ceph Storage Cluster'>
+        data-slide=13 title='LTS Managed Faculty Resources'>
          13
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=14 title='LTS Managed Faculty Resources'>
+        data-slide=14 title='Coming Soon: Hawk'>
          14
       </a>
     </li>
@@ -1907,7 +1937,7 @@ seminars in collaboration with other LTS groups</li>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=23 title='Sol, Maia  &amp; Ceph for Courses'>
+        data-slide=23 title='Sol &amp; Ceph for Courses'>
          23
       </a>
     </li>
@@ -2003,50 +2033,56 @@ seminars in collaboration with other LTS groups</li>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=39 title='Department of Energy (DOE)'>
+        data-slide=39 title='Upcoming Resources'>
          39
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=40 title='National Center for Atmospheric Research (NCAR)'>
+        data-slide=40 title='Department of Energy (DOE)'>
          40
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=41 title='NCAR - CISL (contd)'>
+        data-slide=41 title='National Center for Atmospheric Research (NCAR)'>
          41
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=42 title='NCAR - CSL'>
+        data-slide=42 title='NCAR - CISL (contd)'>
          42
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=43 title='HPC Seminars'>
+        data-slide=43 title='NCAR - CSL'>
          43
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=44 title='Workshops'>
+        data-slide=44 title='HPC Seminars'>
          44
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=45 title='Upcoming HPC Seminars'>
+        data-slide=45 title='Workshops'>
          45
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=46 title='Getting Help'>
+        data-slide=46 title='Upcoming HPC Seminars'>
          46
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=47 title='Getting Help'>
+         47
       </a>
     </li>
   </ul>

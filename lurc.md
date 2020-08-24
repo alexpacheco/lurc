@@ -35,7 +35,7 @@ license     : by-sa
 
 * Hardware Support
   - Provide system administration and support for Lehigh's HPC clusters.
-     - 2 University owned and 4 Faculty owned 
+     - 2 University owned and 3 Faculty owned 
   - Assist with purchase, installation and administration of servers and clusters.
 * Data Storage
   - Provide data management services including storing and sharing data. 
@@ -139,6 +139,7 @@ width="275px">
     - Humanities
          - Culturomics or cultural analytics: study human behavior and cultural trends through quantitative analysis of digitized texts, images and videos.
 
+<!--
 --- .class
 
 ## Research Computing Resources
@@ -160,6 +161,8 @@ width="275px">
   - `Will be permanently shut down in case of hardware failure`
   - `No plans to replace Maia`
 
+-->
+
 --- .class
 
 ## Research Computing Resources
@@ -174,13 +177,17 @@ width="275px">
   RAM
   - 1 node, dual 8-core Intel Xeon 2630 v3 2.4GHz CPU, 20 MB Cache, 512GB RAM
   - 24 nodes, dual 18-core Intel Xeon Gold 6140 2.3GHz CPU, 24.7 MB Cache, 192GB RAM
-  - 72 nVIDIA GTX 1080 GPU cards
-  - 48 nVIDIA RTX 2080TI GPU cards
+  - 6 nodes, dual 18-core Intel Xeon Gold 6240 2.6GHz, 24.75 MB Cache, 192GB RAM
+  - 72 nVIDIA GTX 1080 & 48 nVIDIA RTX 2080TI GPU cards
   - 1TB HDD per node
   - 2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric
-  - Theoretical Performance: 82.816 TFLOPs (CPU) + 36.1296 TFLOPs (GPU)
+  - Theoretical Performance: 93.184 TFLOPs (CPU) + 36.130 TFLOPs (GPU)
+
+<!--
   - Access: Batch Scheduled, interactive on login node for compiling, editing
   only
+  - Open OnDemand Portal
+-->
 
 --- .class #id &twocol
 
@@ -238,9 +245,26 @@ width="275px">
 * __Pisces__: Keith Moored, Mechanical Engineering and Mechanics
   - Six nodes, dual 10-core Intel Xeon E5-2650v3, 2.3GHz, 64GB RAM, nVIDIA Tesla K80
      * Theoretical Performance: 3.840 TFlops (CPU) + 17.46TFlops (GPU)
-* Devel/Testing : decommissioned faculty cluster for prototyping new resources
+* __Pavo__: decommissioned faculty cluster for development and education
   - Twenty nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM
      * Theoretical Performance: 6.656TFlops
+
+
+--- .class
+
+## Coming Soon: Hawk
+
+* Funded by [NSF Campus Cyberinfrastructure award 2019035](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2019035&HistoricalAwards=false)
+* Compute
+  - 24 nodes, dual 26-core Intel Xeon Gold 6230R, 2.1GHz, 384GB RAM
+  - 4 nodes, dual 26-core Intel Xeon Gold 6230R, 1536GB RAM
+  - 4 nodes, dual 24-core Intel Xeon Gold 5220R, 384GB RAM
+* Storage
+  - 7 nodes, single 16-core AMD EPYC 7302P, 3.0GHz, 128GB RAM, two 240GB SSDs (for OS)
+  - Per node
+      - 3x 1.9TB SATA SSD (for CephFS)
+      - 9x 12TB SAS HDD (for Ceph)
+  - Total Storage: 796TB (raw) or 225TB (usable)
 
 --- .class
 
@@ -249,26 +273,22 @@ width="275px">
 
 |Cluster      | Cores| CPU Memory| CPU TFLOPs| GPUs| CUDA Cores| GPU Memory| GPU TFLOPS|
 |:------------|-----:|----------:|----------:|----:|----------:|----------:|----------:|
-|Maia         |    32|        128|      0.640|    0|          0|          0|     0.0000|
-|Monocacy     |   128|        512|      2.662|    0|          0|          0|     0.0000|
-|Devel        |   320|       1280|      6.656|    0|          0|          0|     0.0000|
-|Baltrusaitis |    96|        384|      1.766|    0|          0|          0|     0.0000|
-|Pisces       |   120|        384|      3.840|   12|      29952|        144|    17.4220|
-|Sol          |  2188|      11392|     82.816|  120|     393216|       1104|    36.1296|
-|Total        |  2884|      14080|     98.380|  132|     423168|       1248|    53.5516|
+|Monocacy     |   128|        512|      2.662|    0|          0|          0|      0.000|
+|Devel        |   320|       1280|      6.656|    0|          0|          0|      0.000|
+|Baltrusaitis |    96|        384|      1.766|    0|          0|          0|      0.000|
+|Pisces       |   120|        384|      3.840|   12|      29952|        144|     17.422|
+|Sol          |  2404|      12544|     93.184|  120|     393216|       1104|     36.130|
+|Total        |  3068|      15104|    108.108|  132|     423168|       1248|     53.552|
+
+- Monocacy, Baltrusaitis and Pisces: decommissioning scheduled for Sep 30, 2021.
 
 --- .class
 
 ## Apply for an account
 
-* [Apply for an account at the LTS website] (https://idmweb.cc.lehigh.edu/accounts/?page=hpc)
-   - Click on Services > Account & Password > Lehigh Computing Account > Request an account
-   - Click on the big blue button "Start Special Account Request" > Research Computing Account 
-   - Maia
-       - Click on "FREE Linux command-line computing"
-   - Sol: PIs should contact Alex Pacheco or Steve Anthony, web request is not functional
-       - Annual charge of \$50/account paid by Lehigh Faculty or Research Staff, and
-       - Annual charge for computing time
+* PIs should contact Alex Pacheco or Steve Anthony. 
+    - Annual charge of \$50/account paid by Lehigh Faculty or Research Staff, and
+    - Annual charge for computing time
 
 --- .class
 
@@ -338,10 +358,11 @@ width="275px">
    - Ganesh Balasubramanian, Mechanical Engineering (7 nodes)
    - Department of Industrial & Systems Engineering (2 nodes)
    - Paolo Bocchini, Civil and Structural Engineering (1 node)
-   - Lisa Fredin, Chemistry (2 nodes)
+   - Lisa Fredin, Chemistry (6 nodes)
    - Hannah Dailey, Mechanical Engineering (1 node)
+   - College of Health (2 nodes)
 
-* Total SU on Sol after Condo Investments: 19,166,880
+* Total SU on Sol after Condo Investments: 21,059,040
 
 
 --- .class
@@ -377,10 +398,9 @@ width="275px">
 
 --- .class
 
-## Sol, Maia  &amp; Ceph for Courses
+## Sol &amp; Ceph for Courses
 
 * Research Computing Resources; Sol, Maia & Ceph are available for use in registrar scheduled classes.
-* __Maia__: No charge, no special considerations
 * __Sol__: Provides  
    * 1TB Ceph space per course (&#36;100 paid by department)
    * An account per student (&#36;15/student) paid by department that provides 500SUs per student
@@ -397,11 +417,8 @@ width="275px">
 
 * All Research Computing resources are accessible using ssh while on Lehigh's network
 * Sol: `ssh username@sol.cc.lehigh.edu`
-* Maia: No direct access to Maia, instead login to the polaris
-* Polaris: `ssh username@polaris.cc.lehigh.edu`
-  - Polaris is a gateway that also hosts the batch scheduler for Maia.
-  - No computing software including compilers is available on Polaris.
-  - Login to Polaris and request computing time on Maia including interactive access.
+* Hawk: Uses Sol login node
+  - can also accessed as `ssh username@hawk.cc.lehigh.edu`
 * If you are not on Lehigh's network, login to the ssh gateway to get to Research Computing resources.
   - `ssh username@ssh.cc.lehigh.edu`
 
@@ -410,13 +427,12 @@ width="275px">
 ## Available Software
 
 * Commercial, Free and Open source software is installed on
-  - [Maia](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=maia#installed_software): /zhome/Apps
   - [Sol](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=sol#installed_software): /share/Apps
 * Software is managed using module environment
   - Why? We may have different versions of same software or software built with different compilers
   - Module environment allows you to dynamically change your &#42;nix environment based on software being used
   - Standard on many University and national High Performance Computing resource since circa 2011
-* How to use Sol/Maia Software on your [linux](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=linux) workstation
+* How to use Sol Software on your [linux](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=linux) workstation
 * LTS provides [licensed and open source software](https://software.lehigh.edu) for Windows, Mac and Linux and [Gogs](https://gogs.cc.lehigh.eu), a self hosted Git Service or Github clone
 
 
@@ -454,7 +470,7 @@ width="275px">
   - Magma
   - Maple
   - Mathematica
-  - Matlab
+  - MATLAB
 
 
 --- .class &twocol_width
@@ -508,10 +524,11 @@ width="275px">
   - GNU
   - Intel
   - JAVA
-  - PGI
+  - PGI/NVIDIA HPC SDK
   - CUDA
 * Parallel Programming
   - MVAPICH2
+  - MPICH
   - OpenMPI
 
 
@@ -716,6 +733,16 @@ and high-throughput computing and other digital services, opportunities and reso
 
 --- .class
 
+## Upcoming Resources
+
+* Expanse
+* Bridges-2
+* Neocortex
+* Jetstream-2
+* Delta
+
+--- .class
+
 ## Department of Energy (DOE)
 
 * Innovative and Novel Computational Impact on Theory and Experiment ([INCITE](https://proposals.doeleadershipcomputing.org)) program open to researchers from academia, government labs, and industry
@@ -819,14 +846,15 @@ and high-throughput computing and other digital services, opportunities and reso
 ## Upcoming HPC Seminars
 
 * EWFM 292 on Friday from 1:10PM - 2:00PM.
-  - Linux: Basic Commands & Environment (Feb. 7)
-  - Using SLURM scheduler on Sol (Feb. 14)
-  - Python Programming (Feb. 21)
-  - R Programming (Feb. 28)
-  - Data Visualization with Python (Mar. 6)
-  - Data Visualization with R (Mar. 20)
-  - Object Oriented Programming with Python (Mar. 27)
-  - Machine Learning (Apr. 3 & 11) 
+  - Linux: Basic Commands & Environment (Sep. 11)
+  - Using SLURM scheduler on Sol (Sep. 18)
+  - Introduction to Open OnDemand (Sep. 25)
+  - Python Programming (Oct. 2)
+  - Data Visualization with Python (Oct. 9)
+  - Machine Learning (Oct. 16 & 23) 
+  - R Programming (Oct. 30)
+  - Data Visualization with R (Nov. 6)
+  - Text Mining (Nov. 13)
 
 
 * Subscribe
@@ -843,12 +871,12 @@ and high-throughput computing and other digital services, opportunities and reso
 * Investing in Sol
   * Contact Alex Pacheco or Steve Anthony
 * More Information
-  * [Condo Program and Available Equipment] (http://researchcomputing.lehigh.edu/services/condo)
-  * [Proposal Assistance] (http://researchcomputing.lehigh.edu/services/proposalassist)
+  * [Condo Program and Available Equipment] (https://confluence.cc.lehigh.edu/x/EgL5Bg)
+  * [Proposal Assistance] (https://confluence.cc.lehigh.edu/x/FgL5Bg)
   * [Data Management Plans] (http://libraryguides.lehigh.edu/researchdatamanagement)
   * [Research Computing] (https://researchcomputing.lehigh.edu)
   * [Research Computing Wiki] (https://go.lehigh.edu/rcwiki)
-  * [Research Computing Training] (https://researchcomputing.lehigh.edu/training)
+  * [Research Computing Training] (https://go.lehigh.edu/hpcseminars)
 
 
 

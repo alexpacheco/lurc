@@ -109,7 +109,11 @@
 <li>Training &amp; Consulting
 
 <ul>
-<li>Provide education and training programs to facilitate use of HPC resources and general scientific computing needs.</li>
+<li>Provide education and training programs to facilitate use of HPC resources and general scientific computing needs.
+
+<ul>
+<li><a href="https://go.lehigh.edu/hpcseminars">https://go.lehigh.edu/hpcseminars</a></li>
+</ul></li>
 <li>Provide consultation and support for code development and visualization.</li>
 </ul></li>
 </ul>
@@ -195,6 +199,7 @@
 
 <ul>
 <li>Theoretical Performance: 6.656TFlops</li>
+<li>3 nodes available for 1 hour debug runs. </li>
 </ul></li>
 </ul></li>
 </ul>
@@ -306,17 +311,30 @@
   </hgroup>
   <article data-timings="">
     <ul>
-<li>Sol: accessible using ssh while on Lehigh&#39;s network
+<li><p>Sol: accessible using ssh while on Lehigh&#39;s network</p>
+
+<pre><code class="bash">ssh username@sol.cc.lehigh.edu
+</code></pre>
 
 <ul>
-<li><code>ssh username@sol.cc.lehigh.edu</code></li>
 <li>Windows PC require a SSH client such as <a href="https://mobaxterm.mobatek.net/">MobaXterm</a> or <a href="https://putty.org/">Putty</a>.</li>
 <li>Mac and Linux PC&#39;s, ssh is built in to the terminal application. </li>
 </ul></li>
-<li>If you are not on Lehigh&#39;s network, login to the ssh gateway to get to Research Computing resources
+<li><p>If you are not on Lehigh&#39;s network, login to the ssh gateway</p>
+
+<pre><code class="bash">ssh username@ssh.cc.lehigh.edu
+</code></pre>
+
+<p>and then login to sol as above</p>
 
 <ul>
-<li><code>ssh username@ssh.cc.lehigh.edu</code></li>
+<li> Alternatively,</li>
+</ul>
+
+<pre><code class="bash">ssh -J username@ssh.cc.lehigh.edu username@sol.cc.lehigh.edu
+</code></pre>
+
+<ul>
 <li><a href="https://confluence.cc.lehigh.edu/x/JhH5Bg">Click here</a> to learn how to configure MobaXterm to use the SSH Gateway.</li>
 </ul></li>
 </ul>
@@ -733,7 +751,7 @@ in order to perform a specific task.</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="slide-19" style="background:#F1E7C8;">
+<slide class="class small" id="slide-19" style="background:#F1E7C8;">
   <hgroup>
     <h2>Linux Commands</h2>
   </hgroup>
@@ -745,11 +763,20 @@ in order to perform a specific task.</li>
 <li><code>man pwd</code></li>
 </ul></li>
 <li><code>pwd</code>: print working directory, gives the absolute path of your current location in the directory hierarchy</li>
+<li><code>echo</code>: prints whatever follows to the screen
+
+<ul>
+<li><code>echo $HOME</code>: prints the contents of the variable <strong>HOME</strong> i.e. your home directory to the screen</li>
+</ul></li>
 <li><code>cd dirname</code>: change to folder called <code>dirname</code>
 
 <ul>
-<li>If you omit directory name, you will end up in your home directory</li>
-<li>Enter <code>cd</code></li>
+<li>default <code>dirname</code> is your home directory</li>
+<li>Useful option 
+
+<ul>
+<li><code>cd -</code> go to previous directory</li>
+</ul></li>
 </ul></li>
 <li><code>mkdir dirname</code>: create a directory called <code>dirname</code>
 
@@ -758,7 +785,11 @@ in order to perform a specific task.</li>
 
 <ul>
 <li><code>mkdir me450</code> followed by <code>cd me450</code></li>
-<li>Use the <code>pwd</code> command to check your current location </li>
+</ul></li>
+<li>Useful option
+
+<ul>
+<li><code>mkdir -p dir1/dir2/dir3</code> create intermediate directories if they do not exist</li>
 </ul></li>
 </ul></li>
 </ul>
@@ -772,7 +803,7 @@ in order to perform a specific task.</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class small" id="slide-20" style="background:#F1E7C8;">
+<slide class="class tiny" id="slide-20" style="background:#F1E7C8;">
   <hgroup>
     <h2>Linux Command (contd)</h2>
   </hgroup>
@@ -781,25 +812,35 @@ in order to perform a specific task.</li>
 <li><code>cp file1 file2</code>: command to copy file1 to file2
 
 <ul>
-<li>You can use absolute or relative path for the source and destination <code>cp ../file .</code></li>
-<li>If you need to copy over a directory and its contents, add a <code>-r flag</code></li>
-<li><code>cp -r /home/alp514/sum2017 .</code></li>
+<li>Useful options:
+
+<ul>
+<li><code>cp -r /home/alp514/Workshop/sum2017 .</code> copy directories recursively</li>
+<li><code>cp -p ~alp514/in.lj ${HOME}/</code> preserve time stamps</li>
+</ul></li>
 </ul></li>
 <li><code>rm file1</code>: delete a file called file1 
 
 <ul>
-<li>Unlike other OS&#39;s, once you delete a file it cannot be recoverd.
+<li>Useful options
 
 <ul>
-<li>Use <code>-i</code> to be prompted for confirmation</li>
-<li>Use <code>-r</code> to delete directories recursively </li>
+<li><code>rm -i</code> to be prompted for confirmation</li>
+<li><code>rm -r</code> to delete directories recursively </li>
+<li><code>rm -f</code> delete without prompting - VERY DANGEROUS</li>
 </ul></li>
 </ul></li>
-<li><code>ls dirname</code>: list contents of <em>dirname</em> (leave blank for current directory)</li>
-<li><code>echo</code>: prints whatever follows to the screen
+<li><code>ls dirname</code>: list contents of <em>dirname</em> (leave blank for current directory)
 
 <ul>
-<li><code>echo $HOME</code>: prints the contents of the variable <strong>HOME</strong> i.e. your home directory to the screen</li>
+<li>Useful options
+
+<ul>
+<li><code>ls -l</code> show long form listing</li>
+<li><code>ls -a</code> show hidden files</li>
+<li><code>ls -t</code> sort by timestamp newest first, best when combined with <code>-l</code></li>
+<li><code>ls -r</code> reverse sort (default alphabetical), best when combined with <code>-l -t</code> or <code>-lt</code></li>
+</ul></li>
 </ul></li>
 <li><code>alias</code>: create a shortcut to another command or name to execute a long string.
 
@@ -1320,7 +1361,6 @@ modified, appended or prepended</li>
 <li>PyMol</li>
 <li>VESTA</li>
 <li>XCrySDen</li>
-<li></li>
 </ul></li>
 </ul>
 
@@ -2069,11 +2109,12 @@ analyze results</li>
   </hgroup>
   <article data-timings="">
     <ul>
-<li>SLURM:  Use <code>srun</code> command with SBATCH Directives followed by <code>--pty /bin/bash</code>
+<li><p>SLURM:  Use <code>srun</code> command with SBATCH Directives followed by <code>--pty /bin/bash</code></p>
+
+<pre><code class="bash">  srun --time=&lt;hh:mm:ss&gt; --nodes=&lt;# of nodes&gt; --ntasks-per-node=&lt;# of core/node&gt; -p &lt;queue name&gt; --pty /bin/bash
+</code></pre>
 
 <ul>
-<li><code>srun --time=&lt;hh:mm:ss&gt; --nodes=&lt;# of nodes&gt; --ntasks-per-node=&lt;#
-of core/node&gt; -p &lt;queue name&gt; --pty /bin/bash</code></li>
 <li>If you have <code>soltools</code> module loaded, then use <code>interact</code> with at
 least one SBATCH Directive
 
@@ -2081,12 +2122,13 @@ least one SBATCH Directive
 <li><code>interact -t 20</code> [Assumes <code>-p lts -n 1 -N 18</code>]</li>
 </ul></li>
 </ul></li>
-<li>Run a job interactively replace <code>--pty /bin/bash --login</code> with the
- appropriate command. 
+<li><p>Run a job interactively replace <code>--pty /bin/bash --login</code> with the
+ appropriate command. </p>
+
+<pre><code class="bash">   srun -t 20 -n 1 -p im1080 --qos=nogpu $(which lammps) -in in.lj -var x 1 -var n 1
+</code></pre>
 
 <ul>
-<li>For e.g. <code>srun -t 20 -n 1 -p im1080 --qos=nogpu $(which lammps) -in in.lj
--var x 1 -var n 1</code></li>
 <li>Default values are 3 days, 1 node, 18 tasks per node and lts
 partition</li>
 </ul></li>
@@ -2111,14 +2153,12 @@ partition</li>
 results</li>
 <li><p>Submitting Batch Jobs</p>
 
-<ul>
-<li>SLURM: <code>sbatch filename</code></li>
-</ul></li>
+<pre><code class="bash">sbatch filename
+</code></pre></li>
 <li><p><code>sbatch</code> can take the options for <code>#SBATCH</code> as command line arguments</p>
 
-<ul>
-<li><code>sbatch --time=1:00:00 --nodes=1 --ntasks-per-node=18 -p lts filename</code> </li>
-</ul></li>
+<pre><code class="bash">sbatch --time=1:00:00 --nodes=1 --ntasks-per-node=18 -p lts filename
+</code></pre></li>
 </ul>
 
   </article>
@@ -2291,7 +2331,7 @@ exit
 </tr>
 <tr>
 <td align="center">scontrol release jobid</td>
-<td align="center">Release the hold that <strong>you put</strong> on <em>jobid</td>
+<td align="center">Release the hold that <strong>you put</strong> on <em>jobid</em></td>
 </tr>
 </tbody></table>
 
@@ -2314,13 +2354,11 @@ exit
 
 <ul>
 <li>Option 1: Submit jobs as soon as previous jobs complete</li>
-<li>Option 2: Submit jobs with a dependency
+<li>Option 2: <a href="https://confluence.cc.lehigh.edu/x/FqH0BQ#SLURM-SubmittingDependencyjobs">Submit jobs with a dependency</a></li>
+</ul>
 
-<ul>
-<li><a href="https://confluence.cc.lehigh.edu/x/FqH0BQ#SLURM-SubmittingDependencyjobs">SLURM</a>:
-<code>sbatch --dependency=afterok:&lt;JobID&gt; &lt;Submit Script&gt;</code></li>
-</ul></li>
-</ul></li>
+<pre><code class="bash">sbatch --dependency=afterok:&lt;JobID&gt; &lt;Submit Script&gt;
+</code></pre></li>
 <li><p>In parallel, use <a href="https://confluence.cc.lehigh.edu/x/B6b0BQ">GNU Parallel</a></p></li>
 </ul>
 
