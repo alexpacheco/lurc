@@ -10,7 +10,7 @@ hitheme     : tomorrow      #
 widgets     : [mathjax]            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 license     : by-sa
---- .class
+--- .class .small
 
 
 ```{r setup, include=F}
@@ -32,7 +32,9 @@ knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE, fig.height = 3)
   - Dan Brashler, CAS Computing Consultant
   - Sachin Joshi, Data Analyst & Visualization Specialist
 
---- .class
+
+
+--- .class .small
 
 ## What do we do?
 
@@ -48,7 +50,11 @@ knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE, fig.height = 3)
   - Provide education and training programs to facilitate use of HPC resources and general scientific computing needs.
   - Provide consultation and support for code development and visualization.
 
---- .class
+--- &slidebg .segue bg:url(https://webapps.lehigh.edu/hpc/training/lutitle.png)
+
+## Who uses HPC and Why?
+
+--- .class .small
 
 ## Background and Defintions
 
@@ -57,12 +63,13 @@ knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE, fig.height = 3)
     - Construct mathematical models and quantitative analysis techniques, using computers to analyze and solve scientific problems.
     - Typically, these models require large amount of floating-point calculations not possible on desktops and laptops.
     -  The field&#39;s growth drove the need for HPC and benefited from it.
-* HPC
-    - High Performance Computing (HPC) is computation at the forefront of modern technology, often done on a supercomputer. 
-* Supercomputer
-    -  A supercomputer is a computer at the frontline of current processing capacity, particularly speed of calculation.
+* High Throughput Computing (HTC): use of many computing resources over long periods of time to accomplish a computational task.
+    - large number of loosely coupled tasks
+* High Performance Computing (HPC): needing large amounts of computing power for short periods of time.
+    - tightly coupled parallel jobs 
+* Supercomputer: a computer at the frontline of current processing capacity, particularly speed of calculation.
 
---- .class
+--- .class .small
 
 ## Why use HPC?
 
@@ -80,7 +87,7 @@ width="225px">
 width="275px">
 
 
---- .class
+--- .class .small
 
 ##  Parallel Computing
 
@@ -94,7 +101,7 @@ width="275px">
     -  General-purpose computing on graphics processing units (GPGPU)
 
 
---- .class &twocol_width
+--- .class .small &twocol_width
 
 ## What does HPC do?
 
@@ -128,7 +135,7 @@ width="275px">
 <img src="assets/img/Plane-Design.jpg" alt="Plane Design" width="200px">
 
 
---- .class
+--- .class .small
 
 ## HPC by Disciplines
 
@@ -141,6 +148,12 @@ width="275px">
         - Trading
     - Humanities
          - Culturomics or cultural analytics: study human behavior and cultural trends through quantitative analysis of digitized texts, images and videos.
+
+
+--- &slidebg .segue bg:url(https://webapps.lehigh.edu/hpc/training/lutitle.png)
+
+## Resources at Lehigh
+
 
 <!--
 --- .class
@@ -166,7 +179,7 @@ width="275px">
 
 -->
 
---- .class
+--- .class .small
 
 ## Research Computing Resources
 
@@ -183,23 +196,6 @@ width="275px">
   - 2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric
   - Theoretical Performance: 93.184 TFLOPs (CPU) + 36.130 TFLOPs (GPU)
 
-<!--
-  - Access: Batch Scheduled, interactive on login node for compiling, editing
-  only
-  - Open OnDemand Portal
--->
-
---- .class #id &twocol
-
-## Sol 
-
-*** =left
-
-<img class="fullwidth" src='assets/img/sol/20160509_140506.jpg'>
-
-*** =right
-
-<img class="fullwidth" src='assets/img/sol/20160509_141134.jpg'>
 
 --- .class #id &twocol
 
@@ -225,11 +221,99 @@ width="275px">
 
 <img class="fullwidth" src='assets/img/sol/20170301_112522.jpg'>
 
---- .class #id
+--- .class .small
 
-## Network Layout Sol &amp; Ceph Storage Cluster
+## Accounts and Allocation 
 
-<img class="fullwidth" src='assets/img/hpcnetwork.png'>
+* Annual charge of \$50/account paid by Lehigh Faculty or Research Staff
+    * provides 150GB storage per account
+* Annual charge for computing time
+    * Cost per core-hour or service unit (SU) is 1&cent;
+    * SU is defined as 1 hour of computing on 1 core of the Sol base compute node.
+         - One base compute node of Sol consumes 20 SU/hour, 480 SU/day and 175,200 SU/year
+* PIs can share allocations with their collaborators
+   - Minimum Annual Purchase of 50,000 SU - &#36;500/year
+   - Additional Increments of 10,000 SU - &#36;100 per 10K increments
+   - Fixed Allocation cycle: Oct 1 - Sep 30
+   - Unused allocations do not rollover to next allocation cycle
+* Total available computing time for purchase annually: 1.4M SUs or 1 year of continous computing on 8 nodes
+* PIs should contact Alex Pacheco or Steve Anthony to get started 
+* **Subject to change. More details will be made available via the HPC mailing list**
+
+
+--- .class .small
+
+## Example Allocation Request
+
+* PI requires 100K SUs of computing time per year
+<ul class="unilist">
+  <li><span class="unibull">&#x2776;</span> One Purchase:
+     <ul><li> 100K SU for &#36;1000/year</li></ul>
+  </li>
+  <li><span class="unibull">&#x2777;</span>Multiple Purchases:
+     <ul><li> Initial 50K SUs for &#36;500/year.</li>
+     <li> Multiple additional purchases of 10K SUs for &#36;100 each as required.</li></ul>
+  </li>
+</ul>
+* All 100K SUs (<span class="txtbull">&#x2776;</span> and <span class="txtbull">&#x2777;</span>) must be used up by Sep. 30 of next year.
+     * If rolling allocation cycle is implemented, then all 100K SUs (<span class="txtbull">&#x2776;</span> and <span class="txtbull">&#x2777;</span>) must be used up within 1 year of initial 50K purchase.
+
+* Need more than 175K SU/year or
+* BECOME A CONDO INVESTOR
+
+--- .class .small
+
+## Condo Investments
+
+* New sustainable model for High Performance Computing at Lehigh
+* Faculty (Condo Investor) purchase compute nodes from grants to increase overall capacity of Sol
+* LTS will provide for four years or length of hardware warranty purchased.
+   - System Administration, Power and Cooling, User Support for Condo Investments
+* Condo Investor
+   - receives annual allocation equivalent to their investment for the length of
+     investment
+   - can utilize allocations on all available nodes, including nodes from other Condo Investors
+   - allows idle cycles on investment to be used by other Sol users
+   - unused allocation will not rollover to the next allocation cycle.
+   - can purchase additional SUs in 10K increments (minimum 50K not required)
+       -  and must be consumed in current allocation cycle
+* Annual Allocation cycle is Oct. 1 - Sep. 30.
+
+--- .class .small
+
+## Condo Investors
+
+* Dimitrios Vavylonis, Physics (1 node)
+* Wonpil Im, Biological Sciences (37 nodes, 98 GPUs)
+* Anand Jagota, Chemical Engineering (1 node)
+* Brian Chen, Computer Science & Engineering (1 node)
+* Ed Webb & Alp Oztekin, Mechanical Engineering (6 nodes)
+* Jeetain Mittal & Srinivas Rangarajan, Chemical Engineering (13 nodes, 16 GPUs)
+* Seth Richards-Shubik, Economics (1 node)
+* Ganesh Balasubramanian, Mechanical Engineering (7 nodes)
+* Department of Industrial & Systems Engineering (2 nodes)
+* Paolo Bocchini, Civil and Structural Engineering (1 node)
+* Lisa Fredin, Chemistry (6 nodes)
+* Hannah Dailey, Mechanical Engineering (1 node)
+* College of Health (2 nodes)
+* Total SU on Sol after Condo Investments: 21,059,040
+
+--- .class .small
+
+## Storage resources
+
+* LTS provides various storage options for research and teaching.
+* Some are cloud based and subject to Lehigh&#39;s Cloud Policy.
+* For research, LTS provides a 768TB storage system called [Ceph](https://go.lehigh.edu/ceph).
+* Ceph is based on the Ceph software.
+* Research groups can purchase a sharable project space on Ceph @ &#36;375/TB with a 5 year duration.
+* Ceph is in-house, built, operated and administered by LTS Research Computing Staff.
+  - located in Data Center in EWFM with a backup cluster in Packard Lab
+* HPC users can write job output directly to their Ceph volume
+* Ceph volume can be mounted as a network drive on Windows or CIFS on Mac and Linux
+  - [See Ceph FAQ] (http://lts.lehigh.edu/services/faq/ceph-faq) for more details
+* Annual HPC User account fees waived for PIs who purchase a 1TB Ceph space for life of Ceph i.e. 5 years 
+
 
 
 --- .class #id
@@ -252,22 +336,6 @@ width="275px">
 
 --- .class
 
-## Coming Soon: Hawk
-
-* Funded by [NSF Campus Cyberinfrastructure award 2019035](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2019035&HistoricalAwards=false)
-* Compute
-  - 24 nodes, dual 26-core Intel Xeon Gold 6230R, 2.1GHz, 384GB RAM
-  - 4 nodes, dual 26-core Intel Xeon Gold 6230R, 1536GB RAM
-  - 4 nodes, dual 24-core Intel Xeon Gold 5220R, 384GB RAM
-* Storage
-  - 7 nodes, single 16-core AMD EPYC 7302P, 3.0GHz, 128GB RAM, two 240GB SSDs (for OS)
-  - Per node
-      - 3x 1.9TB SATA SSD (for CephFS)
-      - 9x 12TB SAS HDD (for Ceph)
-  - Total Storage: 796TB (raw) or 225TB (usable)
-
---- .class
-
 ## Total Computational Resources Supported
 
 ```{r hpc_cluster,echo=F, warning=F}
@@ -287,106 +355,35 @@ rbind(cluster,total) %>% kable()
 
 - Monocacy, Baltrusaitis and Pisces: decommissioning scheduled for Sep 30, 2021.
 
---- .class
+--- .class .tiny
 
-## Apply for an account
+## Upcoming: Hawk
 
-* PIs should contact Alex Pacheco or Steve Anthony. 
-    - Annual charge of \$50/account paid by Lehigh Faculty or Research Staff, and
-    - Annual charge for computing time
+* Funded by [NSF Campus Cyberinfrastructure award 2019035](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2019035&HistoricalAwards=false)
+   - PIs: Webb, and Balasubramanian (MEM), Fredin (Chemistry), Pacheco (LTS), and Rangarajan (ChemE)
+   - Sr. Personnel: Anthony (LTS), Reed (Physics), Rickman (MSE), and Tak&#225;&#269; (ISE) 
+* Compute
+  - 26 nodes, dual 26-core Intel Xeon Gold 6230R, 2.1GHz, 384GB RAM
+  - 4 nodes, dual 26-core Intel Xeon Gold 6230R, 1536GB RAM
+  - 4 nodes, dual 24-core Intel Xeon Gold 5220R, 192GB RAM, 8 nVIDIA Tesla T4
+  - **Total: 34 nodes, 1752 CPUs, 16.9TB RAM, 32 GPUs, 77TFLOPs, 15.3M SUs**
+      - 50% allocated to proposal team, 20% to Open Science Grid and 30% to Lehigh researchers
+* Storage
+  - 7 nodes, single 16-core AMD EPYC 7302P, 3.0GHz, 128GB RAM, two 240GB SSDs (for OS)
+  - Per node
+      - 3x 1.9TB SATA SSD (for CephFS)
+      - 9x 12TB SAS HDD (for Ceph)
+  - **Total Storage: 796TB (raw) or 225TB (usable)**
+      - 40% allocated to proposal team, 35% to Lehigh researchers, 25% to Provost and LTS (R Drive)  
+* Target Production: **Jan 1, 2021**
 
---- .class
+--- .class .small
 
-## Allocation Charges - Effective Oct. 1, 2016
+## Network Layout Sol, Hawk &amp; Ceph Storage Cluster
 
-* Cost per core-hour or service unit (SU) is 1&cent;
-* SU is defined as 1 hour of computing on 1 core of the Sol base compute node.
-   - One base compute node of Sol consumes 20 SU/hour, 480 SU/day and 175,200 SU/year
+<img class="fullwidth" src='assets/img/sol_crux.png'>
 
-* PIs can share allocations with their collaborators
-   - Minimum Annual Purchase of 50,000 SU - &#36;500/year
-   - Additional Increments of 10,000 SU - &#36;100 per 10K increments
-   - Fixed Allocation cycle: Oct 1 - Sep 30
-   - Unused allocations do not rollover to next allocation cycle
-* Total available computing time for purchase annually: 1.4M SUs or 1 year of continous computing on 8 nodes
-
-
---- .class
-
-## Example Allocation Request
-
-- PI requires 100K SUs of computing time per year
-<ul class="unilist">
-  <li><span class="unibull">&#x2776;</span> One Purchase:
-     <ul><li> 100K SU for &#36;1000/year</li></ul>
-  </li>
-  <li><span class="unibull">&#x2777;</span>Multiple Purchases:
-     <ul><li> Initial 50K SUs for &#36;500/year.</li>
-     <li> Multiple additional purchases of 10K SUs for &#36;100 each as required.</li></ul>
-  </li>
-</ul>
-* All 100K SUs (<span class="txtbull">&#x2776;</span> and <span class="txtbull">&#x2777;</span>) must be used up by Sep. 30 of next year.
-     * If rolling allocation cycle is implemented, then all 100K SUs (<span class="txtbull">&#x2776;</span> and <span class="txtbull">&#x2777;</span>) must be used up within 1 year of initial 50K purchase.
-
-* Need more than 175K SU/year or
-* BECOME A CONDO INVESTOR
-
---- .class
-
-## Condo Investments
-
-* New sustainable model for High Performance Computing at Lehigh
-* Faculty (Condo Investor) purchase compute nodes from grants to increase overall capacity of Sol
-* LTS will provide for four years or length of hardware warranty purchased.
-   - System Administration, Power and Cooling, User Support for Condo Investments
-* Condo Investor
-   - receives annual allocation equivalent to their investment for the length of
-     investment
-   - can utilize allocations on all available nodes, including nodes from other Condo Investors
-   - allows idle cycles on investment to be used by other Sol users
-   - unused allocation will not rollover to the next allocation cycle.
-   - can purchase additional SUs in 10K increments (minimum 50K not required)
-       -  and must be consumed in current allocation cycle
-* Annual Allocation cycle is Oct. 1 - Sep. 30.
-
---- .class
-
-## Condo Investors
-
-   - Dimitrios Vavylonis, Physics (1 node)
-   - Wonpil Im, Biological Sciences (37 nodes, 98 GPUs)
-   - Anand Jagota, Chemical Engineering (1 node)
-   - Brian Chen, Computer Science & Engineering (1 node)
-   - Ed Webb & Alp Oztekin, Mechanical Engineering (6 nodes)
-   - Jeetain Mittal & Srinivas Rangarajan, Chemical Engineering (13 nodes, 16 GPUs)
-   - Seth Richards-Shubik, Economics (1 node)
-   - Ganesh Balasubramanian, Mechanical Engineering (7 nodes)
-   - Department of Industrial & Systems Engineering (2 nodes)
-   - Paolo Bocchini, Civil and Structural Engineering (1 node)
-   - Lisa Fredin, Chemistry (6 nodes)
-   - Hannah Dailey, Mechanical Engineering (1 node)
-   - College of Health (2 nodes)
-
-* Total SU on Sol after Condo Investments: 21,059,040
-
-
---- .class
-
-## Storage resources
-
-* LTS provides various storage options for research and teaching.
-* Some are cloud based and subject to Lehigh&#39;s Cloud Policy.
-* For research, LTS provides a 768TB storage system called [Ceph](https://go.lehigh.edu/ceph).
-* Ceph is based on the Ceph software.
-* Research groups can purchase a sharable project space on Ceph @ &#36;375/TB with a 5 year duration.
-* Ceph is in-house, built, operated and administered by LTS Research Computing Staff.
-  - located in Data Center in EWFM with a backup cluster in Packard Lab
-* HPC users can write job output directly to their Ceph volume
-* Ceph volume can be mounted as a network drive on Windows or CIFS on Mac and Linux
-  - [See Ceph FAQ] (http://lts.lehigh.edu/services/faq/ceph-faq) for more details
-* Annual HPC User account fees waived for PIs who purchase a 1TB Ceph space for life of Ceph i.e. 5 years 
-
---- .class
+--- .class .small
 
 ## Data Transfer, ScienceDMZ and Globus
 
@@ -399,47 +396,53 @@ rbind(cluster,total) %>% kable()
   * [How to Use Globus at Lehigh?](https://researchcomputing.lehigh.edu/help/globus)
   * No special access required on DTN to transfer data via Globus
 
---- .class
+--- .class .small
 
-## Sol &amp; Ceph for Courses
+## HPC in the Classroom
 
-* Research Computing Resources; Sol, Maia & Ceph are available for use in registrar scheduled classes.
-* __Sol__: Provides  
-   * 1TB Ceph space per course (&#36;100 paid by department)
-   * An account per student (&#36;15/student) paid by department that provides 500SUs per student
-      - Allocations are given for the whole class based on number of students
-      - Additional allocations can be purchased in blocks of 1000 SUs @ $10/block upto 10K SU
-   * Accounts valid for current semester plus an additional two weeks
-* __Ceph__: 
-   * &#36;100 per TB per course.
-   * Paid for by department.
+* Research Computing Resources; Sol &amp; Ceph are available for use in registrar scheduled classes.
+* 1TB Ceph space per course.
+* An account per student.
+   - Sol allocations are given for the whole class based on number of students.
+* Accounts valid for current semester plus an additional two weeks.
+* Education, Outreach and Training is an integral part of the Hawk Cluster. 
+   * Contact Alex Pacheco if you plan to use HPC for Spring 2021 courses.
 
---- .class
+
+--- .class .small
 
 ## Accessing Research Computing Resources
 
-* All Research Computing resources are accessible using ssh while on Lehigh&#39;s network
-* Sol: `ssh username@sol.cc.lehigh.edu`
-* Hawk: Uses Sol login node
-  - can also accessed as `ssh username@hawk.cc.lehigh.edu`
-* If you are not on Lehigh&#39;s network, login to the ssh gateway to get to Research Computing resources.
-  - `ssh username@ssh.cc.lehigh.edu`
+* Using ssh on Lehigh&#39;s network or VPN
+   * Sol: `ssh username@sol.cc.lehigh.edu`
+   * Hawk: will use Sol login node
+       - can also accessed as `ssh username@hawk.cc.lehigh.edu`
+   * If you are not on Lehigh&#39;s network, login to the ssh gateway to get to Research Computing resources.
+       - `ssh username@ssh.cc.lehigh.edu`
+* Using [Open OnDemand web portal](https://hpcportal.cc.lehigh.edu) on Lehigh&#39;s network or VPN
+   * Open OnDemand seminar on Sep. 25 
 
---- .class
+
+--- &slidebg .segue bg:url(https://webapps.lehigh.edu/hpc/training/lutitle.png)
+
+## Which Software is available on Sol?
+
+
+--- .class .small
 
 ## Available Software
 
 * Commercial, Free and Open source software is installed on
-  - [Sol](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=sol#installed_software): /share/Apps
+  - [Sol](https://go.lehigh.edu/hpcsoftware): /share/Apps
 * Software is managed using module environment
   - Why? We may have different versions of same software or software built with different compilers
   - Module environment allows you to dynamically change your &#42;nix environment based on software being used
   - Standard on many University and national High Performance Computing resource since circa 2011
-* How to use Sol Software on your [linux](https://webapps.lehigh.edu/dokuwiki/sites/researchcomputing/doku.php?id=linux) workstation
+* How to use Sol Software on your [linux](https://confluence.cc.lehigh.edu/x/ygD5Bg) workstation
 * LTS provides [licensed and open source software](https://software.lehigh.edu) for Windows, Mac and Linux and [Gogs](https://gogs.cc.lehigh.eu), a self hosted Git Service or Github clone
 
 
---- .class &twocol_width
+--- .class .small &twocol_width
 
 ## Installed Software
 
@@ -449,6 +452,7 @@ rbind(cluster,total) %>% kable()
   - **CPMD**
   - **GAMESS**
   - Gaussian
+  - **OpenMolcas**
   - **NWCHEM**
   - **Quantum Espresso**
   - **VASP** (Restricted Access)
@@ -469,14 +473,16 @@ rbind(cluster,total) %>% kable()
   - **OpenFOAM**
   - OpenSees
 * Math
+  - GAMS
   - GNU Octave
+  - Gurobi
   - Magma
   - Maple
   - Mathematica
   - MATLAB
 
 
---- .class &twocol_width
+--- .class .small &twocol_width
 
 ## More Software
 
@@ -509,11 +515,12 @@ rbind(cluster,total) %>% kable()
   - SAMTools
   - tabix
   - trimmomatic
+  - Trinity
   - *barcode_splitter*
   - *phyluce* 
   - *VelvetOptimiser*
 
---- .class  &twocol_width
+--- .class .small  &twocol_width
 
 ## More Software
 
@@ -550,7 +557,7 @@ rbind(cluster,total) %>% kable()
   - SuiteSparse
   - SuperLU
 
---- .class &twocol_width
+--- .class .small &twocol_width
  
 ## More Software
 
@@ -559,8 +566,11 @@ rbind(cluster,total) %>% kable()
 * Visualization Tools
   - Atomic Simulation Environment 
   - Avogadro
+  - Blender
+  - Gabedit
   - GaussView
   - GNUPlot
+  - Paraview
   - PWGui
   - PyMol
   - RDKit
@@ -574,18 +584,15 @@ rbind(cluster,total) %>% kable()
   - Artleys Knitro
   - ROOT
   - CMake
+  - GIT
   - GNU Parallel
-  - Lmod
   - *Numba*
   - Scons
-  - SPACK
-  - *MD Tools*
-     * BioPython
-     * CCLib
-     * MDAnalysis
+  - Singularity
+  - Virtual Desktops
 
 
---- .class
+--- .class .small
 
 ## Using your own Software?
 
@@ -605,14 +612,14 @@ rbind(cluster,total) %>% kable()
 export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 ```
 
---- .class
+--- .class .small
 
 ## Module File Example
 
 <img width = '900px' src = 'assets/img/mcr.png'>
 
 
---- .class
+--- .class .small
 
 ## How to run jobs
 
@@ -629,7 +636,7 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
    - Which queue to submit jobs
 
 
---- .class
+--- .class .small
 
 ## Batch Queuing System
 
@@ -640,10 +647,15 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
           - Resource Manager: Torque
           - Allocation Manager: Gold
 
-* More details in upcoming HPC Training on [SLURM](https://webapps.lehigh.edu/hpc/training/lurc/slurm.html)
+* More details in upcoming HPC Seminar on [SLURM](https://webapps.lehigh.edu/hpc/training/lurc/slurm.html)
 
 
---- .class &twocol_width
+--- &slidebg .segue bg:url(https://webapps.lehigh.edu/hpc/training/lutitle.png)
+
+## National Supercomputing Resources
+
+
+--- .class .small &twocol_width
 
 ## XSEDE
 
@@ -666,42 +678,60 @@ export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
 <img width = '400px' src = 'assets/img/xsede.png'>
 
 
---- .class 
+--- .class .small 
 
 ## XSEDE Resources
 
 * XSEDE is composed of multiple partner institutions known as Service Providers or SPs, each of which contributes one or more allocatable services. 
-
 * Resources include High Performance Computing (HPC) machines, High Throughput Computing (HTC) machines, visualization, data storage, testbeds, and services. 
-
-
 * Texas Advanced Computing Center (TACC) 
-   - Stampede2: 18 PFlops 
-   - Wrangler for Data Analytics: 62 TFLops
-       - 0.5PB high speed flash storage
-       - 10PB file system at TACC and IU
+   - [Stampede2](https://www.tacc.utexas.edu/systems/stampede2): 18 PFlops
+        - 4,200 Intel Knights Landing nodes, 68 cores/node, 96GB DDR RAM, and 16GB MCDRAM
+        - 1,736 Intel Xeon Skylake nodes, 48 cores/node and 192GB of RAM 
+* San Diego Supercomputing Center (SDSC) 
+   - [Comet](https://www.sdsc.edu/support/user_guides/comet.html): Until Mar 31, 2021
+        - 1984 compute nodes, 47,776 cores, 2.76PFLOPs, 247TB memory
+   - [Expanse](https://www.sdsc.edu/services/hpc/expanse/): Oct 1, 2020
+        - 772 AMD EPYC 7742 nodes, 128 cpus/node, 256GB RAM
+        - 52 Intel Xeon Gold 6248 nodes, 40 cpus/node, 384GB RAM, 4 NVIDIA V100 SMX2 GPUs/node
+   - [Voyager](https://www.sdsc.edu/News%20Items/PR20200701_voyager.html): Fall 2021 
 
---- .class 
+--- .class .small 
 
 ## XSEDE Resources
 
-* San Diego Supercomputing Center (SDSC) 
-   - Comet: 2 PFlops
-
 * Indiana University 
-   - Jetstream: Cloud Computing Environment for IaaS, Paas and SaaS
+   - [Jetstream](https://jetstream-cloud.org/): Cloud Computing Environment for IaaS, Paas and SaaS (Until 2020-11-30)
          - 516 TFlops and 2 PB block and object storage
-
+   - [Jetstream 2](https://nsf.gov/awardsearch/showAward?AWD_ID=2005506&HistoricalAwards=false): Fall 2021
+         - AMD Milan CPUs and NVIDIA Tensor Core GPUs, 8PFLOPs, and 18.5PB storage  
 * Pittsburgh Supercomputing Center
-   - Bridges: 894 Flops and 144 TiB RAM 
+   - [Bridges](https://www.psc.edu/resources/computing/bridges): Until 2020-11-30
+   - [Bridges 2](https://www.psc.edu/bridges-2):  Oct 1, 2020
+        - 488 AMD EPYC 7742 nodes, 128 cores/node, 256GB RAM (16 nodes with 512GB RAM)
+        - 4 Intel Xeon Platinum 8260 nodes, 96 cores/node, 4TB RAM
+        - 24 Intel Xeon Gold 6248, 40 cores/nodes, 512GB RAM, 8 NVIDIA V100 SMX2
+   - [Neocortex](https://www.cmu.edu/psc/aibd/neocortex/): Fall 2021
 
+
+--- .class .small
+
+## XSEDE Resources
+
+* Purdue University
+   - [Anvil](https://www.rcac.purdue.edu/compute/anvil/): Fall 2021
+         - 1000 AMD Milan nodes, 128 cores/node, 256GB RAM 
+         - 32 AMD Milan nodes, 128 cores/node, 1TB RAM 
+         - 16 AMD Milan nodes, 128 cores/node, 256GB RAM, 4 NVIDIA A100 
+* NCSA
+    - [Delta](http://www.ncsa.illinois.edu/news/story/nsf_awards_ncsa_10_million_for_deployment_of_delta): Fall 2021
 * Open Science Grid: 50 TFLOPs
 
 <!--
 <img width = '400px' src = 'assets/img/xsede.png'>
 -->
 
---- .class 
+--- .class .small 
 
 ## How do I get started on XSEDE?
 
@@ -720,7 +750,7 @@ and high-throughput computing and other digital services, opportunities and reso
  local users with getting started on XSEDE resources.
 
 
---- .class
+--- .class .small
 
 ## National Science Foundation (NSF)
 
@@ -733,17 +763,7 @@ and high-throughput computing and other digital services, opportunities and reso
 * 55M node-hours will be made available through the NSF Petascale Computing Resource Allocation program.
 
 
---- .class
-
-## Upcoming Resources
-
-* Expanse
-* Bridges-2
-* Neocortex
-* Jetstream-2
-* Delta
-
---- .class
+--- .class .small
 
 ## Department of Energy (DOE)
 
@@ -759,7 +779,7 @@ and high-throughput computing and other digital services, opportunities and reso
    - Allocations will be reduced if not used within an allocation cycle. 
 
 
---- .class
+--- .class .small
 
 ## National Center for Atmospheric Research (NCAR)
 
@@ -770,32 +790,31 @@ and high-throughput computing and other digital services, opportunities and reso
    - Large requests >400K SUs: Requests accepted every six months, in March
      and September. 220M SUs available in spring and fall
    - Small requests <400K SUs: U.S. university researchers who are supported by NSF awards can request a small allocation for each NSF award. Requests accepted throughout the year and reviewed/awarded within a few business days.
-
-
---- .class
-
-## NCAR - CISL (contd)
-
 - Unsponsored Graduate Students and Postdocs: Small allocations are also available to graduate students and post-docs at U.S. universities; no NSF award or panel review is required.
    * The graduate student, postdoc, or faculty member must work in the atmospheric or related sciences;
    * Their work does not lie within the scope of an associated NSF grant; and
    * They do not have funding to pay for computer time.
+
+
+--- .class .small
+
+## NCAR - CISL (contd)
+
 - Classroom Allocation
    * CISL offers opportunities to undergraduate and graduate faculty to use high-performance computers in their college courses. 
    * Accounts are provided to individual students and the professor for assignments in numerical simulations, modeling, and studies of recently introduced computing architectures. 
    * CISL can provide consulting assistance to the professor or teaching assistant.
+- Climate Simulation Laboratory 
+    - Researchers must have funding from NSF awards to address the climate-related questions
+    - submission deadline is Spring 2020
+    - minimum request is 20M SUs
 
 
---- .class
+--- &slidebg .segue bg:url(https://webapps.lehigh.edu/hpc/training/lutitle.png)
 
-## NCAR - CSL
+## HPC Services
 
-  - Climate Simulation Laboratory 
-      - Researchers must have funding from NSF awards to address the climate-related questions
-      - submission deadline is Spring 2020
-      - minimum request is 20M SUs
-
---- .class &twocol
+--- .class .small &twocol
 
 ## HPC Seminars
 
@@ -826,7 +845,7 @@ and high-throughput computing and other digital services, opportunities and reso
   - Parallel Programming Concepts 
   - Saltstack Config Management
 
---- .class
+--- .class .small
 
 ## Workshops
 
@@ -843,11 +862,11 @@ and high-throughput computing and other digital services, opportunities and reso
   - XSEDE HPC Monthly Workshop: Big Data (Nov. 2015, May 2017)
 
 
---- .class
+--- .class .small
 
 ## Upcoming HPC Seminars
 
-* EWFM 292 on Friday from 1:10PM - 2:00PM.
+* Virtually every Friday from 2:00PM - 4:00PM.
   - Linux: Basic Commands & Environment (Sep. 11)
   - Using SLURM scheduler on Sol (Sep. 18)
   - Introduction to Open OnDemand (Sep. 25)
@@ -863,8 +882,18 @@ and high-throughput computing and other digital services, opportunities and reso
      * Research Computing Mailing List: <https://lists.lehigh.edu/mailman/listinfo/hpc-l>
      * HPC Training Google Groups: <mailto:hpctraining-list+subscribe@lehigh.edu>
 
+--- .class .small .vcenter
 
---- .class
+## Proposal Assistance
+
+* [Research Data Management Committee](https://libraryguides.lehigh.edu/researchdatamanagement) can help with writing DMP&#26;s for your proposal.
+    -  Committee consists of CISO, Subject Librarians and HPC Manager
+    - Contact Us: data-management-group-list@lehigh.edu
+    - [Sample DMP](https://confluence.cc.lehigh.edu/x/TYYuAg)
+
+* [Budget templates and LTS Facilities document](https://confluence.cc.lehigh.edu/x/FgL5Bg)
+
+--- .class .small
 
 ## Getting Help
 
