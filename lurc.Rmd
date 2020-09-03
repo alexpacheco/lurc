@@ -13,7 +13,7 @@ output:
       countIncrementalSlides: false
       ratio: "16:10"
       yolo: false
-      beforeInit: "imgscale.js"
+      beforeInit: "addons/imgscale.js"
     css: [addons/lehigh.css, addons/lehigh-fonts.css]
 ---
 class: myback
