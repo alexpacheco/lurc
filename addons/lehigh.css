@@ -1,0 +1,195 @@
+:root {
+/* 
+  Lehigh Colors from https://www1.lehigh.edu/communications/assets-resources 
+  As of Sep. 4, 2020
+  -old are colors from previous visual identity documents
+*/
+  --lu-brown: #502D0E;
+  --lu-cream: #F1E7C8;
+  --lu-gold: #FBDD40;
+  --lu-red: #F9423A;
+  --lu-patina: #88C6BC;
+  --lu-blue: #81B0D2;
+  --lu-grey: #D1CCBD;
+  --lu-brown-old: #643700;
+  --lu-lime-old: #D9E2DB;
+  --lu-green-old: #C3CF21;
+  --white: #FFFFFF;
+}
+
+.remark-slide-content {
+  border-top: 5px solid var(--lu-brown);
+  border-bottom: 5px solid var(--lu-brown);
+  border-left: 5px solid var(--lu-brown);
+  border-right: 5px solid var(--lu-brown);
+  font-size: 1.2em;
+  padding: 20px 60px;
+  background-color: var(--lu-cream);
+  color: #000;
+  background-image: url(https://webapps.lehigh.edu/hpc/training/lurc/assets/img/LehighU_official-logo_Color.png);
+  background-position: 98% 2%;
+  background-size: 4cm;
+}
+
+.remark-slide-content > h1 {
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+
+.inverse {
+  background-color: var(--lu-brown);
+  color: #d6d6d6;
+  text-shadow: 0 0 20px #333;
+  border-top: 5px solid var(--lu-cream);
+  border-bottom: 5px solid var(--lu-cream);
+  border-left: 5px solid var(--lu-cream);
+  border-right: 5px solid var(--lu-cream);
+  background-image: url(https://webapps.lehigh.edu/hpc/training/lurc/assets/img/lulogo.png);
+  background-position: 98% 2%;
+  background-size: 4cm;
+}
+
+.inverse, .inverse h1, .inverse h2, .inverse h3 {
+  color: var(--lu-cream);
+}
+
+.footnote {
+  border-top: 1px solid var(--lu-brown);
+  font-size: 0.6em;
+}
+
+.remark-code-line-highlighted { background-color: rgba(225, 224, 0, 0.6); }
+
+h1, h2 {
+  color: var(--lu-brown);
+}
+
+h3 {
+  color: var(--lu-brown);
+  margin: 0px;
+  padding: 0px;
+}
+
+code {
+  color: var(--lu-red);
+}
+
+a {
+  color: var(--lu-brown);
+  text-decoration: none;
+  transition: all .2s ease-in-out;
+}
+
+a:hover {
+    font-size: 1.2em;
+    color: #C3CF21;
+}
+
+.remark-slide-number {
+  font-size: 0.6em;
+}
+
+.title-slide {
+  background-image: url(https://webapps.lehigh.edu/hpc/training/lurc/assets/img/LehighU_official-logo_White.png);
+  background-position: 98% 2%;
+  background-size: 4cm;
+  border-top: 5px solid var(--lu-cream);
+  border-bottom: 5px solid var(--lu-cream);
+  border-left: 5px solid var(--lu-cream);
+  border-right: 5px solid var(--lu-cream);
+}
+
+.title-slide h1 {
+  padding-top: 260px;
+  font-size: 60px;
+  text-align: left;
+  padding-bottom: 18px;
+  margin-bottom: 18px;
+}
+
+.title-slide h2 {
+  font-size: 40px;
+  text-align: left;
+  padding-top: 0px;
+  margin-top: 0px;
+}
+
+.title-slide h3 {
+  font-size: 30px;
+  /*color: #26272A;*/
+  text-align: left;
+  text-shadow: none;
+  padding: 0px;
+  margin: 0px;
+  line-height: 1;
+}
+
+.title-slide a {
+  color: var(--lu-lime-old);
+  text-decoration: none;
+  transition: all .2s ease-in-out;
+}
+
+.title-slide a:hover {
+    font-size: 1.2em;
+    color: var(--lu-green-old);
+}
+
+.title-slide .remark-slide-number {
+  display: none;
+}
+
+.mjx-chtml { font-size: 100% !important; }
+
+
+/* Two-column layout (slightly wider for aspect ration) */
+.left-column {
+  color: #777;
+  width: 25%;
+  height: 92%;
+  float: left;
+}
+
+.left-column h2:last-of-type, .left-column h3:last-child {
+  color: #000;
+}
+
+/* slightly thiner to suppor aspect ration */
+.right-column {
+  width: 70%;
+  float: right;
+  padding-top: 1em;
+}
+
+.pull-left {
+  float: left;
+  width: 45%;
+}
+
+.pull-right {
+  float: right;
+  width: 45%;
+}
+
+.pull-right + * {
+  clear: both;
+}
+
+img, video, iframe {
+  max-width: 100%;
+}
+
+blockquote {
+  border-left: solid 5px lightgray;
+  padding-left: 1em;
+}
+
+img, video, iframe {
+  max-width: 100%;
+  max-height: 50%;
+}
+
+.remark-slide table thead th { border-bottom: 1px solid #ddd; background: #643700; color: #fff}
+.remark-slide thead, .remark-slide tfoot { background: #000 }
+.remark-slide tr:nth-child(odd) { background: #ddd }
+.remark-slide tr:nth-child(even) { background: #ccc }
