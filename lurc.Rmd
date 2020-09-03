@@ -448,7 +448,7 @@ rbind(rbind(sollts,totalhawk),total) %>%
 
 # Network Layout Sol, Hawk &amp; Ceph
 
-![:scale 100%](assets/img/sol_crux.png)
+![:scale 100%](assets/img/sol_hawk.png)
 
 ---
 
