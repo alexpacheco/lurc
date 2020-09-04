@@ -459,9 +459,10 @@ rbind(rbind(sollts,totalhawk),total) %>%
 # HPC in the Classroom
 
 * Sol &amp; Ceph are available for use in registrar scheduled classes.
-- 1TB Ceph space per course.
-* An account per student.
-- 50K SUs to be shared with everyone in the class.
+- CITL/HPC will cover the cost associated with the use of resources.
+  * 1TB Ceph space per course.
+  * An account per student.
+  * 50K SUs to be shared with everyone in the class.
 * Accounts valid for current semester plus an additional two weeks.
 - **Education, Outreach and Training is an integral part of the Hawk Cluster.**
    - Contact Alex Pacheco if you plan to use HPC for Spring 2021 courses.
@@ -497,7 +498,7 @@ class: inverse, middle
   - Why? We may have different versions of same software or software built with different compilers.
   - Module environment allows you to dynamically change your &#42;nix environment based on software being used.
   - Standard on many University and national High Performance Computing resource since circa 2011.
-* How to use HPC Software on your [linux](https://confluence.cc.lehigh.edu/x/ygD5Bg) workstation.
+* How to use HPC Software on your [linux](https://confluence.cc.lehigh.edu/x/ygD5Bg) workstation?
 - LTS provides [licensed and open source software](https://software.lehigh.edu) for Windows, Mac and Linux and [Gogs](https://gogs.cc.lehigh.eu), a self hosted Git Service or Github clone.
 
 
@@ -726,10 +727,11 @@ class: inverse, middle
 #XSEDE Resources
 
 * Indiana University 
-   * [Jetstream](https://jetstream-cloud.org/): Cloud Computing Environment for IaaS, Paas and SaaS (Until 2020-11-30).
+   * [Jetstream](https://jetstream-cloud.org/): Until 2020-11-30
+         * Cloud Computing Environment for IaaS, Paas and SaaS.
          * 516 TFlops and 2 PB block and object storage.
    * [Jetstream 2](https://nsf.gov/awardsearch/showAward?AWD_ID=2005506&HistoricalAwards=false): Upcoming Fall 2021.
-         () AMD Milan CPUs and NVIDIA Tensor Core GPUs, 8PFLOPs, and 18.5PB storage.  
+         * AMD Milan CPUs and NVIDIA Tensor Core GPUs, 8PFLOPs, and 18.5PB storage.  
 - National Center for Supercomputing Applications (NCSA)
     - [Delta](http://www.ncsa.illinois.edu/news/story/nsf_awards_ncsa_10_million_for_deployment_of_delta): Upcoming Fall 2021.
 * Open Science Grid (OSG): 
@@ -1026,8 +1028,8 @@ class: inverse, middle
 
 
 * Subscribe
-     * Research Computing Mailing List: <https://lists.lehigh.edu/mailman/listinfo/hpc-l>
-     * HPC Training Google Groups: <mailto:hpctraining-list+subscribe@lehigh.edu>
+     * [Research Computing Mailing List](https://lists.lehigh.edu/mailman/listinfo/hpc-l)
+     * [HPC Training Google Groups](mailto:hpctraining-list+subscribe@lehigh.edu)
 
 
 ---
