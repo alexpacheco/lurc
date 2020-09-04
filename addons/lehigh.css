@@ -75,7 +75,7 @@ code {
 }
 
 a {
-  color: var(--lu-brown);
+  color: var(--lu-blue);
   text-decoration: none;
   transition: all .2s ease-in-out;
 }
@@ -189,7 +189,17 @@ img, video, iframe {
   max-height: 50%;
 }
 
+table {
+  margin: auto;
+  font-size: 90%;
+  border-top: 1px solid #666;
+  border-bottom: 1px solid #666;
+}
+
 .remark-slide table thead th { border-bottom: 1px solid #ddd; background: #643700; color: #fff}
 .remark-slide thead, .remark-slide tfoot { background: #000 }
 .remark-slide tr:nth-child(odd) { background: #ddd }
 .remark-slide tr:nth-child(even) { background: #ccc }
+
+
+
