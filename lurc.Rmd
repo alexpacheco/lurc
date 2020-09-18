@@ -429,7 +429,7 @@ knitr::kable(rbind(hawk,totalhawk), format = 'html')
 ### Hawk and Lehigh&#39;s Investment in Sol
 
 ```{r echo=FALSE}
-rbind(rbind(sollts,totalhawk),total) %>%
+rbind(sollts,totalhawk) %>%
   select(Nodes,CPUs:SUs) %>%
   knitr::kable(format = 'html')
 ```
