@@ -1,0 +1,295 @@
+---
+title: "Introduction to Open OnDemand"
+subtitle: "Research Computing"
+author: "Library &amp; Technology Services"
+institute: "https://researchcomputing.lehigh.edu"
+date: ""
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    chakra: libs/remark-latest.min.js
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:10"
+      yolo: false
+      beforeInit: "addons/imgscale.js"
+    css: [addons/lehigh.css, addons/lehigh-fonts.css]
+---
+
+# Accessing Sol
+
+* Sol: accessible using ssh while on Lehigh&#39;s network.
+ ```{bash eval=F}
+ ssh username@sol.cc.lehigh.edu
+  ```
+   * Windows PC require a SSH client such as [MobaXterm](https://mobaxterm.mobatek.net/) or [Putty](https://putty.org/).
+   * Mac and Linux PC&#39;s, ssh is built in to the terminal application. 
+* Login to the ssh gateway to get on Lehigh&#39;s network or connect to VPN first 
+ ```{bash eval=F}
+ ssh username@ssh.cc.lehigh.edu
+ ``` 
+ and then login to Sol using the above ssh command.
+  *  Alternatively, use the following command while off campus.
+  ```{bash eval=F}
+  ssh -J username@ssh.cc.lehigh.edu username@sol.cc.lehigh.edu
+  ```
+  * [Configure MobaXterm to use the SSH Gateway](https://confluence.cc.lehigh.edu/x/JhH5Bg).
+
+
+---
+
+# Traditional Method 
+
+* Requires a SSH Client for logging in and a SCP client for transferring data.
+
+* Users need to write a script to submit jobs.
+  - Script needs to be written in Shell - bash, tcsh, csh or sh.
+  - Requires knowledge of *nix commands.
+  - Steep learning curve if you only need to use interactive applications such as Jupyter Notebooks and RStudio.
+
+* Most HPC clusters do not have X-enabled i.e. GUI tools cannot be used
+  
+* Many non-traditional HPC users are put off by these stringent restrictions.
+
+* Need a lower barrier of entry to HPC for _most_ users.
+
+---
+
+
+# ![:scale 30%](https://raw.githubusercontent.com/OSC/Open-OnDemand/gh-pages/assets/images/ood_logo_stack_rgb.png)
+
+* an NSF-funded open-source HPC portal based on Ohio Supercomputing Center’s original OnDemand portal. 
+
+* Goals: provide an easy way for system administrators to provide web access to their HPC resources, including, but not limited to:
+  - Plugin-free web experience
+  - Easy file management
+  - Command-line shell access
+  - Job management and monitoring across different batch servers and resource managers
+  - Graphical desktop environments and desktop applications
+
+
+---
+
+# Open OnDemand Architecture
+
+<span class="center">
+![:scale 65%](https://osc.github.io/ood-documentation/latest/_images/ood_overview.png)
+</span>
+
+
+
+---
+
+# Open OnDemand at Lehigh
+
+* In Production since Aug 12, 2020.
+
+* https://hpcportal.cc.lehigh.edu: Available on campus or VPN.
+
+* Features:
+  - Shell Access
+  - File Management
+  - Job Submission
+  - Virtual Desktops: MATE &amp; XFCE
+  - Jupyter Notebooks
+  - RStudio Server
+  - MATLAB
+  - Ansys Workbench
+  - Abaqus
+  - SAS
+  - Various Visualization Tools
+  
+
+---
+
+# Connecting to the HPC Portal
+
+* HPC Account required
+* Chrome or Firefox preferred
+   * At least one user has reported problems with Safari
+
+<span class="center">
+![:scale 65%](https://confluence.cc.lehigh.edu/download/attachments/123048063/OOD-url.png?api=v2)
+</span>
+
+
+---
+
+# Dashboard
+
+
+<span class="center">
+![:scale 85%](https://confluence.cc.lehigh.edu/download/attachments/123048063/OOD-dashboard.png?api=v2)
+</span>
+
+
+---
+
+# Get Shell Access
+
+* Click Clusters > Sol Shell Access
+
+<span class="center">
+![:scale 75%](https://confluence.cc.lehigh.edu/download/attachments/123048063/OOD-Clusters.png?api=v2)
+</span>
+
+
+---
+
+# Get Shell Access
+
+* Click Clusters > Sol Shell Access
+
+<span class="center">
+![:scale 75%](https://confluence.cc.lehigh.edu/download/attachments/123048063/OOD-Shell.png?api=v2)
+</span>
+
+---
+class: inverse, middle, center
+
+# File Management
+
+
+---
+
+
+.pull-left[
+* Launch File Explorer
+* Navigate Storage
+* Transfer Files to/from Sol
+* Create, Edit, Delete, Rename Files &amp; Directories
+
+
+<span class="center">
+![:scale 100%](https://confluence.cc.lehigh.edu/download/attachments/123048245/OOD-files.png?api=v2)
+</span>
+
+]
+
+.pull-right[
+<span class="center">
+![:scale 100%](https://confluence.cc.lehigh.edu/download/attachments/123048245/OOD-HomeDir.png?api=v2)
+![:scale 100%](https://confluence.cc.lehigh.edu/download/attachments/123048245/OOD-NavigateStorage.png?api=v2)
+</span>
+]
+
+
+---
+class: inverse, middle, center
+
+# Job Management
+
+
+---
+
+.pull-left[
+* Check Status of Jobs
+
+<span class="center">
+![:scale 100%](https://confluence.cc.lehigh.edu/download/attachments/123048248/OOD-jobs.png?api=v2)
+</span>
+]
+
+
+.pull-right[
+<span class="center">
+![:scale 100%](https://confluence.cc.lehigh.edu/download/attachments/123048248/OOD-joblist.png?api=v2)
+![:scale 100%](https://confluence.cc.lehigh.edu/download/attachments/123048248/OOD-jobs-all.png?api=v2)
+</span>
+]
+
+
+---
+class: inverse, middle, center
+
+# Job Composer
+
+
+---
+class: inverse, middle, center
+
+# Interactive Applications
+
+---
+
+# Virtual Desktop Interface (VDI)
+
+* THERE IS NO X OR DESKTOP ENVIRONMENT INSTALLED ON SOL COMPUTE NODES.
+
+* A singularity image of CENTOS 7 with MATE and XFCE desktop environment is used to provide a VDI.
+   - Dockerfile and Singularity definition files:   https://github.com/alexpacheco/lurc-ood-desktop
+   - Docker Images: https://hub.docker.com/r/alexpacheco/centos7
+   
+* No - we do not take requests to install your favorite desktop environments.
+
+
+* Demo
+
+
+---
+
+# Jupyter Notebooks
+
+* Launch Jupyter Notebooks with any Anaconda/Python 3.x module.
+
+* You can also own conda environment provided you have jupyter notebooks installed in your environment
+
+* By default,
+   - 1 node per job
+   - Only non gpu partitions enabled
+
+* See https://go.lehigh.edu/python for list of available packages in each anaconda/python module.
+
+* Demo
+
+---
+
+# RStudio
+
+* Launch RStudio Server on compute nodes.
+
+* Underlying R software in not visible via module command.
+
+* Available versions
+   - 3.5.3 and 3.6.3
+   - 4.0.2 with three different sets of package themes
+   - See [https://confluence.cc.lehigh.edu/display/hpc/RStudio](https://confluence.cc.lehigh.edu/x/NpBVBw) for list of available packages in each version.
+
+* By default,
+   - 1 node per job
+   - Only non gpu partitions enabled
+
+* Demo
+
+---
+
+# Other Applications
+
+* ANSYS Workbench
+* Abaqus
+* MATLAB
+* SAS
+* [VMD](https://confluence.cc.lehigh.edu/x/yJRVBw)
+* [Visualization Tools](https://confluence.cc.lehigh.edu/x/qan0BQ)
+- Demo
+
+
+
+---
+class: inverse middle center
+
+# Thank You!
+# Questions?
+# Comments?
+
+
+
+
+
+
+
+
+
+
