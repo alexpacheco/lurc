@@ -225,7 +225,7 @@ class: inverse, middle, center
 * No - we do not take requests to install your favorite desktop environments.
 
 
-* Demo
+* [Demo](https://confluence.cc.lehigh.edu/x/g5BVBw)
 
 
 ---
@@ -242,7 +242,7 @@ class: inverse, middle, center
 
 * See https://go.lehigh.edu/python for list of available packages in each anaconda/python module.
 
-* Demo
+* [Demo](https://confluence.cc.lehigh.edu/x/G5JVBw)
 
 ---
 
@@ -261,19 +261,27 @@ class: inverse, middle, center
    - 1 node per job
    - Only non gpu partitions enabled
 
-* Demo
+* [Demo](https://confluence.cc.lehigh.edu/x/NpBVBw)
 
 ---
 
 # Other Applications
 
-* ANSYS Workbench
-* Abaqus
-* MATLAB
-* SAS
+
+* [Abaqus CAE](https://confluence.cc.lehigh.edu/x/mKn0BQ)
+* [ANSYS Workbench](https://confluence.cc.lehigh.edu/x/yaX0BQ)
+* [MATLAB](https://confluence.cc.lehigh.edu/x/5ZBVBw)
+* [SAS](https://confluence.cc.lehigh.edu/x/85FVBw)
 * [VMD](https://confluence.cc.lehigh.edu/x/yJRVBw)
 * [Visualization Tools](https://confluence.cc.lehigh.edu/x/qan0BQ)
-- Demo
+
+
+
+
+---
+class: middle
+
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ-syHgWJDCC0ETFlAX1BmX9Ib8roiX55SjAF3xMhNmGEZEfGxnyEPLEEMqN7TfbDj2fzVjcXW8m5U1/pubhtml?widget=true&amp;headers=false" width="960" height="480"></iframe>
 
 
 
