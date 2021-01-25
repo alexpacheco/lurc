@@ -47,13 +47,13 @@ totalsol <- sol %>% summarise_if(is.numeric, sum) %>%
 
 - Lehigh&#39;s Shared High Performance Computing Cluster 
   - built by investments from Provost and Faculty.
-  - 9 nodes<sup>a</sup>, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 25MB Cache, 128GB RAM.
-  - 33 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache, 128GB RAM.
-  - 14 nodes, dual 12-core Intel Xeon E5-2650 v4 2.3Ghz CPU, 30 MB Cache, 64GB RAM.
-  - 1 node, dual 8-core Intel Xeon 2630 v3 2.4GHz CPU, 20 MB Cache, 512GB RAM.
-  - 24 nodes, dual 18-core Intel Xeon Gold 6140 2.3GHz CPU, 24.7 MB Cache, 192GB RAM.
-  - 6 nodes, dual 18-core Intel Xeon Gold 6240 2.6GHz, 24.75 MB Cache, 192GB RAM.
-  - 2 nodes, dual 26-core Intel Xeon Gold 6230R, 2.1GHz, 35.75 MB Cache, 384GB RAM
+  - 9 nodes<sup>a</sup>, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 128GB RAM.
+  - 33 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 128GB RAM.
+  - 14 nodes, dual 12-core Intel Xeon E5-2650 v4 2.3Ghz CPU, 64GB RAM.
+  - 1 node, dual 8-core Intel Xeon 2630 v3 2.4GHz CPU, 512GB RAM.
+  - 24 nodes, dual 18-core Intel Xeon Gold 6140 2.3GHz CPU, 192GB RAM.
+  - 6 nodes, dual 18-core Intel Xeon Gold 6240 2.6GHz, 192GB RAM.
+  - 2 nodes, dual 26-core Intel Xeon Gold 6230R, 2.1GHz, 384GB RAM
   - 72 nVIDIA GTX 1080 & 48 nVIDIA RTX 2080TI GPU cards.
   - 2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric.
   - `r sprintf("%4.2fM",totalsol$SUs/1e6)` core hours or service units (SUs) of computing available.
@@ -193,7 +193,7 @@ rbind(sollts,totalhawk) %>%
   knitr::kable(format = 'html')
 ```
 
----
+<!--
 
 # LTS Managed Faculty Resources 
 
@@ -210,7 +210,6 @@ rbind(sollts,totalhawk) %>%
   - Twenty nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM.
      - Theoretical Performance: 6.656TFlops.
 
----
 
 # Summary of Computational Resources 
 
@@ -239,13 +238,14 @@ rbind(cluster,total) %>% kable()
 a: 3 nodes available for short simulations or debug runs.
 ]
 
+-->
 ---
 
 # Network Layout Sol, Hawk &amp; Ceph
 
 ![:scale 100%](assets/img/sol_hawk.png)
 
----
+<!---
 
 # Data Transfer, ScienceDMZ and Globus
 
@@ -258,6 +258,7 @@ a: 3 nodes available for short simulations or debug runs.
   * [How to Use Globus at Lehigh?](https://researchcomputing.lehigh.edu/help/globus)
   * No special access required on DTN to transfer data via Globus.
 
+-->
 
 ---
 class: inverse, middle
@@ -268,16 +269,6 @@ class: inverse, middle
 
 # Resource Partition
 
-- 20% of resources with Open Science Grid (Grant requirement)
-- 25% of compute and 75TB to general Lehigh research community through XSEDE style proposal.
-  - reviewed by Research Computing Allocation Review Committee (RCARC)
-- 5% of compute and 20TB to be distributed at the Provost’s discretion.
-- 30TB to LTS’s R-Drive (provides all faculty up to 1TB of storage space)
-- 300K SUs allocated for educational, outreach and training (EOT).
-- Lehigh General is split into two groups
-   - 10% (380K) for small allocations similar to StartUp Allocations on XSEDE.
-   - 90% (3.45M) for large allocations similar to Research Allocations on XSEDE.
-
 | Investigator | Compute (SU) | Storage (TB)|
 |:------------:|:-------:|:-------:|
 | Proposing Team | 7.67M | 85 |
@@ -285,6 +276,16 @@ class: inverse, middle
 | Lehigh General | 3.84M | 75 |
 | Provost DF | 0.77M | 20 |
 | LTS | | 30TB |
+
+- 50% to proposing team including
+  - 300K SUs allocated for educational, outreach and training (EOT).
+- 20% of resources with Open Science Grid (Grant requirement)
+- 5% of compute and 20TB to be distributed at the Provost’s discretion.
+- 30TB to LTS’s R-Drive (provides all faculty up to 1TB of storage space)
+- 25% of compute and 75TB available Lehigh comnunity through XSEDE style proposal.
+  - reviewed by Research Computing Allocation Review Committee (RCARC)
+      - 10% (380K) for small allocations similar to StartUp Allocations on XSEDE.
+      - 90% (3.45M) for large allocations similar to Research Allocations on XSEDE.
 
 ---
 
@@ -332,7 +333,7 @@ class: inverse, middle
   - Total Available: 500K SUs
   - Up to 50K SUs per course, assuming 2 courses in Fall & Spring.
   - 100K for REU programs.
-  - 200K from Sol Hotel SUs for workshops, and other Summer programs.
+  - 200K for workshops, and other Summer programs.
   - Apply at https://go.lehigh.edu/hpcallocedu 
 
 ---
@@ -391,6 +392,7 @@ class: inverse, middle
 | Wonpil Im (co-chair) | CAS |
 | Ed Webb (co-chair) | RCEAS |
 | Ganesh Balasubramanian | RCEAS |
+| Brian Chen | RCEAS |
 | Ben Felzer | CAS |
 | Lisa Fredin | CAS |
 | Srinivas Rangarajan | RCEAS |
@@ -398,6 +400,7 @@ class: inverse, middle
 | Seth Richards-Shubik | CoB |
 | | CoH |
 | | CoE |
+| Alex Pacheco | LTS |
 
 
 ---
@@ -572,7 +575,7 @@ class: inverse, middle
 
 ---
 
-# Outlook
+# Future Plans for Growth
 
 * EWFM Data Center.
     * Add Row 4 for further expansion of Sol.
@@ -582,7 +585,7 @@ class: inverse, middle
 
 * Develop Indirect Cost Recovery plans to replace Hawk in 2024-25
 
-* Cluster Grants
+* Apply for Cluster Grants
     * NIH S10 within the next two years.
     * NSF MRI in 2023-24 to replace Hawk.
     * Any infrastructure grants we missed?
