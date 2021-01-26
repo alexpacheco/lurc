@@ -398,6 +398,7 @@ class: inverse, middle
 | Srinivas Rangarajan | RCEAS |
 | Rosi Reed | CAS |
 | Seth Richards-Shubik | CoB |
+| Yue Yu | CAS |
 | | CoH |
 | | CoE |
 | Alex Pacheco | LTS |
