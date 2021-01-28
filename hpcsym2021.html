@@ -5,6 +5,8 @@
     <meta charset="utf-8" />
     <meta name="author" content="Library &amp; Technology Services" />
     <script src="libs/header-attrs/header-attrs.js"></script>
+    <script src="libs/xaringanExtra-webcam/webcam.js"></script>
+    <script id="xaringanExtra-webcam-options" type="application/json">{"width":"200","height":"200","margin":"1em"}</script>
     <link rel="stylesheet" href="addons/lehigh.css" type="text/css" />
     <link rel="stylesheet" href="addons/lehigh-fonts.css" type="text/css" />
   </head>
@@ -22,6 +24,106 @@ class: center, middle, inverse, title-slide
 class: myback
 
 
+
+
+---
+class: inverse, middle
+
+# Welcome
+
+
+---
+
+# Research Computing Steering Committee (RCSC)
+
+* __Co-chairs__ 
+   - Wonpil Im (CAS)
+   - Ed Webb (RCEAS)
+
+* __Members__
+   - Ganesh Balasubramanian (RCEAS)
+   - Brian Chen (RCEAS)
+   - Ben Felzer (CAS)
+   - Lisa Fredin (CAS)
+   - Alex Pacheco (LTS)
+   - Srinivas Rangarajan (RCEAS)
+   - Rosi Reed (CAS)
+   - Seth Richards-Shubik (COB)
+   - Yue Yu (CAS)
+
+
+
+---
+
+# Research Computing Steering Committee (RCSC)
+
+* __Co-chairs__  
+   - Wonpil Im (CAS)
+   - __&lt;span style="color:red;"&gt;Ed Webb (RCEAS)&lt;/span&gt;__
+
+* __Members__
+   -  __&lt;span style="color:red;"&gt;Ganesh Balasubramanian (RCEAS)&lt;/span&gt;__
+   - Brian Chen (RCEAS)
+   - Ben Felzer (CAS)
+   -  __&lt;span style="color:red;"&gt;Lisa Fredin (CAS)&lt;/span&gt;__
+   -  __&lt;span style="color:red;"&gt;Alex Pacheco (LTS)&lt;/span&gt;__
+   -  __&lt;span style="color:red;"&gt;Srinivas Rangarajan (RCEAS)&lt;/span&gt;__
+   - __Rosi Reed (CAS)__
+   - Seth Richards-Shubik (COB)
+   - Yue Yu (CAS)
+
+
+
+---
+class: inverse,middle
+
+.center[
+# Celebration!
+]
+
+--
+
+.right[
+## with some history
+]
+
+
+
+---
+class: inverse, middle, center
+
+# HAWK
+
+
+---
+# Symposium Schedule
+
+| Time | Session |
+|:----:|:-------|
+| 1:00 - 1:15| 	Welcome |
+| 1:15- 1:30| 	Overview of Sol and Hawk |
+| 1:30 - 2:00| 	Yu Lab, Department of Mathematics |
+| 2:00 - 2:30| 	Im Lab, Department of Biological Sciences |
+| 2:30 - 3:00| 	Account &amp; Allocations |
+| 3:00 - 4:00| 	Lehigh Leadership's vision for HPC |
+| 4:00 - 4:30| 	Rangarajan Lab, Department of Chemical &amp; Biomolecular Engineering |
+| 4:30 - 5:00| 	New Features on Sol &amp; Hawk, Upcoming Events, Future Plans |
+| 5:00 - 5:30| 	Open Session, Q &amp; A |
+
+
+???
+
+* Huaiqian You, An Asymptotically Compatible Treatment for Traction Loading in Peridynamic Fracture.
+
+* Im Lab, need to check with Wonpil
+
+* Chris Rzepa
+
+ 
+
+
+
+---
 # Sol
 
 
@@ -182,8 +284,6 @@ a: 8 nodes invested by Provost available to all Lehigh researchers.
    * can utilize allocations on all available nodes, including nodes from other Condo Investors,
    * allows idle cycles on investment to be used by other Sol users,
    * unused allocation will not rollover to the next allocation cycle,
-   * can purchase additional SUs in 10K increments (minimum 50K not required)
-       *  must be consumed in current allocation cycle.
 * Annual Allocation cycle is Oct. 1 - Sep. 30.
 
 ---
@@ -207,9 +307,13 @@ a: 8 nodes invested by Provost available to all Lehigh researchers.
 - Lehigh Investments: 8 nodes, 160 CPUs,  1.40M  SUs
 - Total SU on Sol after Condo Investments: 21.97M
 
+???
+
+.pull-left[![:scale 90%](assets/img/sol-condo.png)]
+
 ---
 
-# Storage resources
+# Ceph Storage resource
 
 * LTS provides various storage options for research and teaching.
 * Some are cloud based and subject to Lehigh&amp;#39;s Cloud Policy.
@@ -225,8 +329,8 @@ a: 8 nodes invested by Provost available to all Lehigh researchers.
     * can share project space with anyone with a Lehigh ID at no additional charge.
 
 
----
 
+---
 # Hawk
 
 * Funded by [NSF Campus Cyberinfrastructure award 2019035](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2019035&amp;HistoricalAwards=false).
@@ -244,12 +348,6 @@ a: 8 nodes invested by Provost available to all Lehigh researchers.
       - 9x 12TB SATA HDD (for Ceph).
 * Production: **Feb 1, 2021**.
 
-???
-
-  - **Total: 34 nodes, 1752 CPUs, 16.9TB RAM, 32 GPUs, 77TFLOPs, 15.3M SUs**
-  - **Total Storage: 796TB (raw) or 225TB (usable)**
-      - 50% allocated to proposal team, 20% to Open Science Grid and 30% to Lehigh researchers
-      - 40% allocated to proposal team, 35% to Lehigh researchers, 25% to Provost and LTS (R Drive)  
 
 ---
 
@@ -365,67 +463,31 @@ a: 8 nodes invested by Provost available to all Lehigh researchers.
 &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;!--
-
-# LTS Managed Faculty Resources 
-
-* __Monocacy__: Ben Felzer, Earth &amp; Environmental Sciences.
-  * Eight nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM.
-     * Theoretical Performance: 2.662TFlops.
-- __Baltrusaitislab__: Jonas Baltrusaitis, Chemical Engineering.
-  - Three nodes, dual 16-core AMD Opteron 6376, 2.3Ghz, 128GB RAM.
-     - Theoretical Performance: 1.766TFlops.
-* __Pisces__: Keith Moored, Mechanical Engineering and Mechanics.
-  * Six nodes, dual 10-core Intel Xeon E5-2650v3, 2.3GHz, 64GB RAM, nVIDIA Tesla K80.
-     * Theoretical Performance: 3.840 TFlops (CPU) + 17.46TFlops (GPU).
-- __Pavo__: decommissioned faculty cluster for development and education.
-  - Twenty nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM.
-     - Theoretical Performance: 6.656TFlops.
-
-
-# Summary of Computational Resources 
-
-&lt;br /&gt;
-
-
-
-|Cluster          | Cores| CPU Memory| CPU TFLOPs| GPUs| CUDA Cores| GPU Memory| GPU TFLOPS|
-|:----------------|-----:|----------:|----------:|----:|----------:|----------:|----------:|
-|Monocacy         |   128|        512|     2.6620|    0|          0|          0|    0.00000|
-|Pavo&lt;sup&gt;a&lt;/sup&gt; |   320|       1280|     6.6560|    0|          0|          0|    0.00000|
-|Baltrusaitis     |    96|        384|     1.7660|    0|          0|          0|    0.00000|
-|Pisces           |   120|        384|     3.8400|   12|      29952|        144|   17.42200|
-|Sol              |  2508|      13184|    97.5104|  120|     393216|       1104|   36.89600|
-|Hawk             |  1752|      16896|    69.1968|   32|      81920|        512|    8.10816|
-|Total            |  4924|      32640|   181.6312|  164|     505088|       1760|   62.42616|
-
-- Monocacy, Baltrusaitis and Pisces: decommissioning scheduled for Sep 30, 2021.
-
-.footnote[
-a: 3 nodes available for short simulations or debug runs.
-]
-
---&gt;
 ---
 
 # Network Layout Sol, Hawk &amp;amp; Ceph
 
 ![:scale 100%](assets/img/sol_hawk.png)
 
-&lt;!---
 
-# Data Transfer, ScienceDMZ and Globus
 
-* NSF funded [Science DMZ](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1340992&amp;HistoricalAwards=false) to improve campus connectivity to the national research cyberinfrastructure.
-* Upto 50TB storage is available on the Data Transfer Node (DTN) on ScienceDMZ.
-  * Storage space is only for data transfer. Once transfer is complete, storage needs to be deleted from DTN.
-* Access to DTN with shell access provided on request.
-* [Globus](https://www.globus.org) is the preferred method to transfer data to and from NSF and DOE supercomputing centers.
-  * hosted service that manages the entire operation, monitoring performance and errors, retrying failed transfers, correcting problems automatically whenever possible, and reporting status to keep you informed while you focus on your research.
-  * [How to Use Globus at Lehigh?](https://researchcomputing.lehigh.edu/help/globus)
-  * No special access required on DTN to transfer data via Globus.
+---
+class: inverse, middle
 
---&gt;
+# Invited Talks
+
+## Yue Research Lab, Department of Mathematics
+
+## Im Research Lab, Department of Biological Sciences
+
+???
+
+* Huaiqian You, An Asymptotically Compatible Treatment for Traction Loading in Peridynamic Fracture.
+
+* Im Lab, need to check with Wonpil
+
+* Chris Rzepa
+
 
 ---
 class: inverse, middle
@@ -434,7 +496,7 @@ class: inverse, middle
 
 ---
 
-# Resource Partition
+# Resource Partitioning
 
 | Investigator | Compute (SU) | Storage (TB)|
 |:------------:|:-------:|:-------:|
@@ -449,7 +511,7 @@ class: inverse, middle
 - 20% of resources with Open Science Grid (Grant requirement)
 - 5% of compute and 20TB to be distributed at the Provost’s discretion.
 - 30TB to LTS’s R-Drive (provides all faculty up to 1TB of storage space)
-- 25% of compute and 75TB available Lehigh comnunity through XSEDE style proposal.
+- 25% of compute and 75TB available Lehigh community through XSEDE style proposal.
   - reviewed by Research Computing Allocation Review Committee (RCARC)
       - 10% (380K) for small allocations similar to StartUp Allocations on XSEDE.
       - 90% (3.45M) for large allocations similar to Research Allocations on XSEDE.
@@ -483,6 +545,11 @@ class: inverse, middle
 | Research | 3.45M | 40 | 550K | 4M |
 | Provost DF | 770K | 20 | 230K | 1M |
 | LTS R Drive| | 30TB | | | |
+
+???
+
+.pull-left[![:scale 90%](assets/img/sol-condo.png)]
+.pull-right[![:scale 90%](assets/img/sol-condo-hawk.png)]
 
 ---
 
@@ -626,6 +693,18 @@ class: inverse, middle
 ---
 class: inverse, middle
 
+# Lehigh Leadership
+
+
+---
+class: inverse, middle
+
+# Invited Talk
+
+
+---
+class: inverse, middle
+
 # New Features on Sol &amp; Hawk
 # Upcoming Events
 # Outlook 
@@ -739,6 +818,21 @@ class: inverse, middle
 
 * Volunteer as TA's
 * Interested in hosting a workshop, adding to or assisting with above topics
+
+
+---
+
+# LTS Seminars
+
+* Recordings of Winter Tech Talk Series
+   - https://go.lehigh.edu/ltsseminars
+* Spring Seminars to be announced soon
+
+* Upcoming CITL events: https://citl.lehigh.edu/events
+
+* Friends of Library event on April 5 at 5PM
+   - Prof. Osagie K. Obasogie, Haas Distinguished Chair and Professor of Bioethics from University of California, Berkeley, will discuss issues of diversity and inclusion and law as these relate to Bioethics and policy 
+
 
 
 ---
