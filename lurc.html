@@ -4,6 +4,7 @@
     <title>Research Computing Resources</title>
     <meta charset="utf-8" />
     <meta name="author" content="Library &amp; Technology Services" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
     <link rel="stylesheet" href="addons/lehigh.css" type="text/css" />
     <link rel="stylesheet" href="addons/lehigh-fonts.css" type="text/css" />
   </head>
@@ -60,7 +61,7 @@ class: inverse, middle
 
 # Background and Defintions
 
-* Computational Science and Engineering
+* Computational Science and Engineering (CSE)
     * Gain understanding, mainly through the analysis of mathematical models implemented on computers.
     * Construct mathematical models and quantitative analysis techniques, using computers to analyze and solve scientific problems.
     * Typically, these models require large amount of floating-point calculations not possible on desktops and laptops.
@@ -164,33 +165,11 @@ class: inverse, middle
 
 ---
 
-# Sol
+# Sol: Lehigh&amp;#39;s Shared HPC Cluster
 
 
 
-- Lehigh&amp;#39;s Shared High Performance Computing Cluster 
-  - built by investments from Provost and Faculty.
-  - 9 nodes&lt;sup&gt;a&lt;/sup&gt;, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 25MB Cache, 128GB RAM.
-  - 33 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache, 128GB RAM.
-  - 14 nodes, dual 12-core Intel Xeon E5-2650 v4 2.3Ghz CPU, 30 MB Cache, 64GB RAM.
-  - 1 node, dual 8-core Intel Xeon 2630 v3 2.4GHz CPU, 20 MB Cache, 512GB RAM.
-  - 24 nodes, dual 18-core Intel Xeon Gold 6140 2.3GHz CPU, 24.7 MB Cache, 192GB RAM.
-  - 6 nodes, dual 18-core Intel Xeon Gold 6240 2.6GHz, 24.75 MB Cache, 192GB RAM.
-  - 72 nVIDIA GTX 1080 &amp; 48 nVIDIA RTX 2080TI GPU cards.
-  - 2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric.
-  - 21.06M core hours or service units (SUs) of computing available.
-      - Only 1.40M from Provost investment available Lehigh researchers.
-&lt;br /&gt;
-
-.footnote[
-a: 8 nodes invested by Provost available to all Lehigh researchers.
-]
-
-
----
-
-# Sol Configuration
-
+- built by investments from Provost&lt;sup&gt;a&lt;/sup&gt; and Faculty.
 
 &lt;table&gt;
  &lt;thead&gt;
@@ -281,20 +260,37 @@ a: 8 nodes invested by Provost available to all Lehigh researchers.
    &lt;td style="text-align:right;"&gt; 1892160 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 87 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Gold 6230R &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 104 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 768 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.3264 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 911040 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 89 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 2404 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2508 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 120 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 12416 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 13184 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 1104 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 93.1840 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 97.5104 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 36.896 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 21059040 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 21970080 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+- 87 nodes interconnected by 2:1 oversubscribed Infiniband EDR (100Gb/s) fabric.
+- Only 1.40M SUs from Provost investment available to Lehigh researchers.
 
+.footnote[
+a: 8 Intel Xeon E5-2650 v3 nodes invested by Provost.
+]
 
 
 ---
@@ -311,8 +307,6 @@ a: 8 nodes invested by Provost available to all Lehigh researchers.
    * can utilize allocations on all available nodes, including nodes from other Condo Investors,
    * allows idle cycles on investment to be used by other Sol users,
    * unused allocation will not rollover to the next allocation cycle,
-   * can purchase additional SUs in 10K increments (minimum 50K not required)
-       *  must be consumed in current allocation cycle.
 * Annual Allocation cycle is Oct. 1 - Sep. 30.
 
 ---
@@ -322,7 +316,7 @@ a: 8 nodes invested by Provost available to all Lehigh researchers.
 * Dimitrios Vavylonis, Physics (1 node)
 * Wonpil Im, Biological Sciences (37 nodes, 98 GPUs)
 * Anand Jagota, Chemical Engineering (1 node)
-* Brian Chen, Computer Science &amp; Engineering (1 node)
+* Brian Chen, Computer Science &amp; Engineering (3 nodes)
 * Ed Webb &amp; Alp Oztekin, Mechanical Engineering (6 nodes)
 * Jeetain Mittal &amp; Srinivas Rangarajan, Chemical Engineering (13 nodes, 16 GPUs)
 * Seth Richards-Shubik, Economics (1 node)
@@ -332,24 +326,22 @@ a: 8 nodes invested by Provost available to all Lehigh researchers.
 * Lisa Fredin, Chemistry (6 nodes)
 * Hannah Dailey, Mechanical Engineering (1 node)
 * College of Health (2 nodes)
-- Condo Investments: 79 nodes, 2244 CPUs, 120 GPUs, 19.66M SUs
-- Lehigh Investments: 8 nodes, 160 CPUs, 1.4M SUs
-- Total SU on Sol after Condo Investments: 21.06M
-
-
----
-
-# Sol 
-
-.pull-left[![:scale 60%](assets/img/sol/20160627_153416.jpg)]
-
-.pull-right[![:scale 60%](assets/img/sol/20160509_133642.jpg)]
+- Condo Investments: 81 nodes, 2348 CPUs, 120 GPUs, 20.57M SUs
+- Lehigh Investments: 8 nodes, 160 CPUs,  1.40M  SUs
 
 
 
----
+&lt;!---
 
 # Sol 
+
+.pull-left[
+![:scale 60%](assets/img/sol/20160627_153416.jpg)
+]
+
+.pull-right[
+![:scale 60%](assets/img/sol/20160509_133642.jpg)
+]
 
 
 .pull-left[![:scale 60%](assets/img/sol/20171011_104200.jpg)]
@@ -357,33 +349,15 @@ a: 8 nodes invested by Provost available to all Lehigh researchers.
 
 .pull-right[![:scale 60%](assets/img/sol/20170301_112522.jpg)]
 
+--&gt;
 
 ---
 
-# Accounts and Allocation 
-
-* Annual charge of &amp;#36;50/account paid by Lehigh Faculty or Research Staff.
-    * provides 150GB storage per account.
-* Annual charge for computing time.
-    * Cost per core-hour or service unit (SU) is 1&amp;cent;.
-    * SU is defined as 1 hour of computing on 1 core of the Sol base compute node.
-         - One base compute node of Sol consumes 20 SU/hour, 480 SU/day and 175,200 SU/year.
-* PIs can share allocations with their collaborators.
-   - Minimum Annual Purchase of 50,000 SU - &amp;#36;500/year.
-   - Additional Increments of 10,000 SU - &amp;#36;100 per 10K increments.
-   - Fixed Allocation cycle: Oct 1 - Sep 30.
-   - Unused allocations do not rollover to next allocation cycle.
-* Total available computing time for purchase annually: 1.4M SUs or 1 year of continous computing on 8 nodes.
-* PIs should contact Alex Pacheco or Steve Anthony to get started.
-
-     
----
-
-# Storage resources
+# Ceph Storage
 
 * LTS provides various storage options for research and teaching.
 * Some are cloud based and subject to Lehigh&amp;#39;s Cloud Policy.
-* For research, LTS provides a 768TB storage system called [Ceph](https://go.lehigh.edu/ceph).
+* Research Computing provides a 768TB (206TB usable) storage system called [Ceph](https://go.lehigh.edu/ceph).
 * Ceph 
     * based on the Ceph software,
     * in-house, built, operated and administered by Research Computing Staff,
@@ -393,52 +367,10 @@ a: 8 nodes invested by Provost available to all Lehigh researchers.
         * [See Ceph FAQ](http://lts.lehigh.edu/services/faq/ceph-faq) for more details.
 * Research groups can purchase a sharable project space @ &amp;#36;375/TB for 5 years,
     * can share project space with anyone with a Lehigh ID at no additional charge.
-* Annual HPC User account fees waived for PIs who purchase a 1TB Ceph space for life of Ceph project i.e. 5 years.
 
 
 ---
-
-# LTS Managed Faculty Resources 
-
-* __Monocacy__: Ben Felzer, Earth &amp; Environmental Sciences.
-  * Eight nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM.
-     * Theoretical Performance: 2.662TFlops.
-- __Baltrusaitislab__: Jonas Baltrusaitis, Chemical Engineering.
-  - Three nodes, dual 16-core AMD Opteron 6376, 2.3Ghz, 128GB RAM.
-     - Theoretical Performance: 1.766TFlops.
-* __Pisces__: Keith Moored, Mechanical Engineering and Mechanics.
-  * Six nodes, dual 10-core Intel Xeon E5-2650v3, 2.3GHz, 64GB RAM, nVIDIA Tesla K80.
-     * Theoretical Performance: 3.840 TFlops (CPU) + 17.46TFlops (GPU).
-- __Pavo__: decommissioned faculty cluster for development and education.
-  - Twenty nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM.
-     - Theoretical Performance: 6.656TFlops.
-
----
-
-# Summary of Computational Resources 
-
-&lt;br /&gt;
-
-
-
-|Cluster          | Cores| CPU Memory| CPU TFLOPs| GPUs| CUDA Cores| GPU Memory| GPU TFLOPS|
-|:----------------|-----:|----------:|----------:|----:|----------:|----------:|----------:|
-|Monocacy         |   128|        512|      2.662|    0|          0|          0|      0.000|
-|Pavo&lt;sup&gt;a&lt;/sup&gt; |   320|       1280|      6.656|    0|          0|          0|      0.000|
-|Baltrusaitis     |    96|        384|      1.766|    0|          0|          0|      0.000|
-|Pisces           |   120|        384|      3.840|   12|      29952|        144|     17.422|
-|Sol              |  2404|      12544|     93.184|  120|     393216|       1104|     36.130|
-|Total            |  3068|      15104|    108.108|  132|     423168|       1248|     53.552|
-
-- Monocacy, Baltrusaitis and Pisces: decommissioning scheduled for Sep 30, 2021.
-
-.footnote[
-a: 3 nodes available for short simulations or debug runs.
-]
-
----
-
-# Upcoming: Hawk
+# Hawk
 
 * Funded by [NSF Campus Cyberinfrastructure award 2019035](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2019035&amp;HistoricalAwards=false).
    - PI: Ed Webb (MEM).
@@ -448,19 +380,13 @@ a: 3 nodes available for short simulations or debug runs.
   - 26 nodes, dual 26-core Intel Xeon Gold 6230R, 2.1GHz, 384GB RAM.
   - 4 nodes, dual 26-core Intel Xeon Gold 6230R, 1536GB RAM.
   - 4 nodes, dual 24-core Intel Xeon Gold 5220R, 192GB RAM, 8 nVIDIA Tesla T4.
-* Storage
+* Storage: 798TB (225TB usable)
   - 7 nodes, single 16-core AMD EPYC 7302P, 3.0GHz, 128GB RAM, two 240GB SSDs (for OS).
   - Per node
       - 3x 1.9TB SATA SSD (for CephFS).
       - 9x 12TB SATA HDD (for Ceph).
-* Target Production: **Jan 1, 2021**.
+* Production: **Feb 1, 2021**.
 
-???
-
-  - **Total: 34 nodes, 1752 CPUs, 16.9TB RAM, 32 GPUs, 77TFLOPs, 15.3M SUs**
-  - **Total Storage: 796TB (raw) or 225TB (usable)**
-      - 50% allocated to proposal team, 20% to Open Science Grid and 30% to Lehigh researchers
-      - 40% allocated to proposal team, 35% to Lehigh researchers, 25% to Provost and LTS (R Drive)  
 
 ---
 
@@ -582,6 +508,7 @@ a: 3 nodes available for short simulations or debug runs.
 
 ![:scale 100%](assets/img/sol_hawk.png)
 
+
 ---
 
 # Data Transfer, ScienceDMZ and Globus
@@ -596,34 +523,180 @@ a: 3 nodes available for short simulations or debug runs.
   * No special access required on DTN to transfer data via Globus.
 
 
+
 ---
+class: inverse, middle
 
-# HPC in the Classroom
-
-* Sol &amp;amp; Ceph are available for use in registrar scheduled classes.
-- CITL/HPC will cover the cost associated with the use of resources.
-  * 1TB Ceph space per course.
-  * An account per student.
-  * 50K SUs to be shared with everyone in the class.
-* Accounts valid for current semester plus an additional two weeks.
-- **Education, Outreach and Training is an integral part of the Hawk Cluster.**
-   - Contact Alex Pacheco if you plan to use HPC for Spring 2021 courses.
-
-
+# Accounts &amp; Allocations
 
 ---
 
+# Resource Partitioning
 
-# Accessing Sol
+| Investigator | Compute (SU) | Storage (TB)|
+|:------------:|:-------:|:-------:|
+| Proposing Team | 7.67M | 85 |
+| OSG | 3.07M | 5 |
+| Lehigh General | 3.84M | 75 |
+| Provost DF | 0.77M | 20 |
+| LTS | | 30TB |
 
-* Using ssh on Lehigh&amp;#39;s network or VPN.
-   * Sol: `ssh username@sol.cc.lehigh.edu`
-   * Hawk: will use Sol login node
-       * can also accessed as `ssh username@hawk.cc.lehigh.edu`
-   * If you are not on Lehigh&amp;#39;s network, login to the ssh gateway to get to Research Computing resources.
-       * `ssh username@ssh.cc.lehigh.edu`
-- Using [Open OnDemand web portal](https://hpcportal.cc.lehigh.edu) on Lehigh&amp;#39;s network or VPN.
-   - Attend seminar on Sep. 25 to learn more
+- 50% to proposing team including
+  - 300K SUs allocated for educational, outreach and training (EOT).
+- 20% of resources with Open Science Grid (Grant requirement)
+- 5% of compute and 20TB to be distributed at the Provost’s discretion.
+- 30TB to LTS’s R-Drive (provides all faculty up to 1TB of storage space)
+- 25% of compute and 75TB available Lehigh community through XSEDE style proposal.
+  - reviewed by Research Computing Allocation Review Committee (RCARC)
+      - 10% (380K) for small allocations similar to StartUp Allocations on XSEDE.
+      - 90% (3.45M) for large allocations similar to Research Allocations on XSEDE.
+
+---
+
+# Resource Management
+
+- Do away with charges for computing on Sol and add 1.4M SUs from Sol.
+
+| Investigator | Compute (SU) | Storage (TB)| Sol Compute (SU) | Total Compute (SU) |
+|:------------:|:------------:|:-----------:|:----------------:|:------------------:|
+| Proposing Team | 7.64M | 80 | | 7.64M |
+| DDF | 300K | 20 | 500K | 800K |
+| OSG | 3.07M | 5 | | 3.07M |
+| StartUp | 380K | 20 | 120K | 500K |
+| Research | 3.45M | 40 | 550K | 4M |
+| Provost DF | 770K | 20 | 230K | 1M |
+| LTS R Drive| | 30TB | | | |
+
+- Create Director's Discretionary Fund (DDF) to allow HPC Manager to distribute compute and storage.
+- Faculty PIs can request allocation and storage based on their needs:
+   - Trial: for researchers who want to try out Sol/Hawk (DDF).
+   - StartUp: for researchers with small computing needs.
+   - Research: for researchers with large computing or storage needs.
+   - Education: for EOT purposes (DDF).   
+
+???
+
+.pull-left[![:scale 90%](assets/img/sol-condo.png)]
+.pull-right[![:scale 90%](assets/img/sol-condo-hawk.png)]
+
+---
+
+# Director's Discretionary Fund
+
+- The Director's Discretionary Fund enables distributing compute and storage with minimal oversight from the Allocation Committee.
+- Total of 800K SUs and 40TB of storage when combined with StartUp storage quota
+- Use Cases
+  - Each PI receives a 1TB storage quota that is shared among all his/her sponsored users.
+  - 200GB per active user is recommended and larger groups can requst additional space.
+    - PIs who unneccessarily add inactive users to get a larger storage will have their storage reduced to default 1TB.
+    - Such PIs will have their storage request reviewed and approved by allocation committee.
+  - Trial Allocations: short term allocations designed for new users.
+  - Education Allocations: for courses, workshops and other EOT purposes.
+- Excess SUs will roll over to Provost --&gt; StartUp --&gt; Research.
+- Excess storage will roll over to Research.
+
+
+
+
+---
+
+# Trial Allocations
+
+  - Why?
+    - There are research groups that may benefit from HPC resources.
+    - Using HPC resources have a steep learning curve, this allows group to investigate if HPC resources fit their needs before committing to larger scale usage of HPC resources. 
+  - Trial Allocations have a maximum of 10K SUs per PI and a 6 month duration.
+  - Total Available: 300K SUs, 20TB.
+  - Requirement: Short abstract describing proposed work.
+  - Optional: What is your eventual goal?
+    - &lt;em&gt;This is both short-term computing for completing a project and also a trial to determine how well the resources will meet our future needs.&lt;/em&gt;
+    - &lt;em&gt;The purpose of this proposal is for my laboratory to evaluate use of HPC resources at Lehigh for the more computationally intensive steps of the workflow, highlighted in the figure below.&lt;/em&gt;
+  - Progress report will be required for renewals or subsequent allocation request.
+  - Apply anytime at https://go.lehigh.edu/hpcalloctrial
+
+
+---
+
+# Education Allocations
+  - Developing the next generation workforce is a cornerstone of NSF campus research cyberinfrastructure grants.
+  - Use of Hawk for education - course work and workshops, is strongly encouraged.
+  - __Courses__: A minimum of 500 SU/student is recommended. 
+     - The maximum available SU per course is 50K SUs and each course will receive a 1TB Ceph space. 
+     - __Capstone projects__: Capstone projects are considered to be a single course and are eligible for only one allocation.
+         - For additional allocations, please request a startup or research allocation
+     - Duration: 2 weeks past the end of the semester.
+  - __Workshops/Summer Programs__: Faculty, Departments, Institutes or Colleges will be eligible for allocations (max 10K) to support workshops and summer programs centered on scientific computing.
+     - Duration: Length of the workshop or 2 weeks.
+  - Total Available: 500K SUs
+  - Apply at https://go.lehigh.edu/hpcallocedu 
+
+---
+
+# StartUp Allocations
+
+- Startup Allocations are small allocation requests (&lt;25K) with a 1 year duration. 
+- A faculty can be a PI or collaborator on only two active Startup Allocation at any time.
+- __Requirements__: Short abstract (min 500 words, 1 page max) with the description of the work and the amount of computing time requested.
+- __Amount Requested__: Include a justification for the amount requested (required for renewals)
+  - &lt;em&gt;On the redacted cluster 30 grids took up to an average of 4 hours of wall clock time. For 63,676 grids, this would equate to 8,490 SUs. Given 6 experiments, this would total 50940 SU. With full AVX512 instructions enabled, Hawk should be twice as fast as redacted cluster, so that would total 25,470 SUs.  Therefore I am requesting 25K SUs as part of a StartUp allocation.&lt;/em&gt;
+- Reviewed &amp; approved on a rolling basis by at least one allocation committee member.
+- Renewal requires progress report, publication list, grants/ awards and list of graduated students if any.
+- Apply anytime at https://go.lehigh.edu/hpcallocstartup
+
+---
+
+# Research and Storage Allocations
+
+- For requests upto 300K SUs and/or storage up to 5TB.
+- Max allocation is 300K and 5TB per PI at any given time.
+- Requires a detailed proposal similar to XSEDE. Should contain
+  - Abstract, Description of the project and how resources will be used.
+  - Justify requested allocations based on benchmarks results.
+  - Report of prior work done.
+  - List of publications, presentations, awards and students graduated.
+- Non HPC PIs requesting storage allocations should also describe:
+  - why other forms of storage are not suitable and any plans to backup data stored, and
+  - plans to  move/save the data if project is not renewed/approved next year.  
+- Reviewed and Approved semi annually by allocation committee.
+- Allocations to begin on Jan1 and Jul 1 and last a year.
+  - Call for proposals will be issued in May and Nov in the HPC mailing list.
+  - Seminar on guidelines for requesting Research Allocations sometime in mid May.
+- Total time allocated is 4M annually or 2M for each semi annual request period.
+
+
+
+---
+
+# Steering Committee
+
+| Name | College | 
+|:----:|:-------:|
+| Wonpil Im (co-chair) | CAS |
+| Ed Webb (co-chair) | RCEAS |
+| Ganesh Balasubramanian | RCEAS |
+| Brian Chen | RCEAS |
+| Ben Felzer | CAS |
+| Lisa Fredin | CAS |
+| Srinivas Rangarajan | RCEAS |
+| Rosi Reed | CAS |
+| Seth Richards-Shubik | CoB |
+| Yue Yu | CAS |
+| | CoH |
+| | CoE |
+| Alex Pacheco | LTS |
+
+
+---
+
+# Steering Committe Responsibility
+
+| Allocation Type | Max SUs | Max TB | Approval Authority | Request Window | Approval Timeline |
+|:-----:|:----:|:----:|:----:|:----:|:----:|
+| Trial | 10K | 1 | HPC | Rolling | 2-3 Business days |
+| StartUp | 25K | 1 | One RCARC member | Rolling | 1 week |
+| Trial/StartUp Renewals | 25K | 1 | Two RCARC members | Rolling | 2-3 weeks |
+| Research/Storage | 300K | 5 | RCARC Committee | Every 6 months | Within a month of submission deadline |
+
 
 ---
 class: inverse, middle
@@ -755,7 +828,6 @@ class: inverse, middle
   - HDF5
   - NetCDF
   - METIS/PARMETIS
-  - PetSc
   - QHull/QRupdate
   - SuiteSparse
   - SuperLU
@@ -800,54 +872,6 @@ class: inverse, middle
 ]
 
 ---
-
-# Using your own Software?
-
-
-* You can always install a software in your home directory.
-   - [SPACK](https://spack.readthedocs.io) is an excellent package manager that can even create module files.
-* `Stay compliant with software licensing.`
-* Modify your .bashrc/.tcshrc to add software to your path, OR
-* create a module and dynamically load it so that it doesn&amp;#39;t interfere 
- with other software installed on the system.
-  - e.g. You might want to use a specific version (maybe modified) of a software, and 
-  - the system admin may not want install it system wide for just one user.
-* Add the directory where you will install the module files to the variable 
-  MODULEPATH in .bashrc/.tcshrc,
-
-```sh
-# My .bashrc file
-export MODULEPATH=${MODULEPATH}:/home/alp514/modulefiles
-```
-
----
-
-#Module File Example
-
-.center[
-![:scale 80%](assets/img/mcr.png)
-]
-
-
----
-
-# How to run jobs
-
-* All compute intensive jobs are batch scheduled.
-- Write a script to submit jobs to a scheduler.
-  - need to have some background in shell scripting (bash/tcsh).
-* Need to specify
-   * Resources required (which depends on configuration):
-       * number of nodes,
-       * number of processes per node,
-       * memory per node.
-   - How long do you want the resources?
-       - have an estimate for how long your job will run.
-   * Which queue to submit jobs?
-- More details in upcoming HPC Seminar on [SLURM](https://webapps.lehigh.edu/hpc/training/lurc/slurm.html).
-
-
----
 class: inverse, middle
 
 # Any Questions about Lehigh Resources?
@@ -870,34 +894,32 @@ class: inverse, middle
 #XSEDE Resources
 
 * Indiana University 
-   * [Jetstream](https://jetstream-cloud.org/): Until 2020-11-30
-         * Cloud Computing Environment for IaaS, Paas and SaaS.
+   * [Jetstream](https://jetstream-cloud.org/): Until 2021-11-30
+         * user-friendly cloud environment designed to give researchers and students access to computing and data analysis resources on demand.
          * 516 TFlops and 2 PB block and object storage.
    * [Jetstream 2](https://nsf.gov/awardsearch/showAward?AWD_ID=2005506&amp;HistoricalAwards=false): Upcoming Fall 2021.
          * AMD Milan CPUs and NVIDIA Tensor Core GPUs, 8PFLOPs, and 18.5PB storage.  
-- National Center for Supercomputing Applications (NCSA)
-    - [Delta](http://www.ncsa.illinois.edu/news/story/nsf_awards_ncsa_10_million_for_deployment_of_delta): Upcoming Fall 2021.
-* Open Science Grid (OSG): 
-    * 50 TFLOPs.
-    * _NSF CC* Award requires allocating 20% of Hawk resources to OSG_.
-
+* Open Storage Network (OSN): Production Start Date 2021-04-01
+      * an NSF-funded cloud storage resource, geographically distributed among several pods.
+      * each pod hosts 1PB storage and is connected to R&amp;E networks at 50 Gbps.
+      * pods currently hosted at SDSC, NCSA, MGHPCC, RENCI, and Johns Hopkins University.
+      * Cloud-style storage of project datasets for access using AWS S3-compatible tools like clone, cyberduck, or the AWS cli.
+      * For storage allocations larger than 10TB and up to 300TB.
 
 ---
 
 # XSEDE Resources
 
 * Pittsburgh Supercomputing Center (PSC)
-   * [Bridges](https://www.psc.edu/resources/computing/bridges): Until 2020-11-30
-   * [Bridges 2](https://www.psc.edu/bridges-2):  Oct 1, 2020
+   * [Bridges 2](https://www.psc.edu/bridges-2)
         * 488 AMD EPYC 7742 nodes, 128 cores/node, 256GB RAM (16 nodes with 512GB RAM).
-        * 4 Intel Xeon Platinum 8260 nodes, 96 cores/node, 4TB RAM.
+        * 4 Intel Xeon Platinum 8260M nodes, 48 cores/node, 4TB RAM.
         * 24 Intel Xeon Gold 6248, 40 cores/nodes, 512GB RAM, 8 NVIDIA V100 SMX2.
    * [Neocortex](https://www.cmu.edu/psc/aibd/neocortex/): Upcoming Fall 2021
-- Purdue University
-   - [Anvil](https://www.rcac.purdue.edu/compute/anvil/): Upcoming Fall 2021
-         - 1000 AMD Milan nodes, 128 cores/node, 256GB RAM.
-         - 32 AMD Milan nodes, 128 cores/node, 1TB RAM. 
-         - 16 AMD Milan nodes, 128 cores/node, 256GB RAM, 4 NVIDIA A100. 
+        * 2 Cerebras CS-1 systems
+            * 400,000 Sparse Linear Algebra Compute (SLAC) Cores, 18 GB SRAM on-chip memory, 9.6 PB/s memory bandwidth, 100 Pb/s interconnect bandwidth
+        * HPE Superdome Flex HPC server 
+            * 32 x Intel Xeon Platinum 8280L, 28 cores, 24 TiB RAM, 32 x 6.4 TB NVMe SSDs, 24 x 100 GbE interfaces
 
 ---
 
@@ -905,17 +927,53 @@ class: inverse, middle
 
 
 * San Diego Supercomputing Center (SDSC) 
-   * [Comet](https://www.sdsc.edu/support/user_guides/comet.html): Until Mar 31, 2021
-        * 1984 compute nodes, 47,776 cores, 2.76PFLOPs, 247TB memory.
-   * [Expanse](https://www.sdsc.edu/services/hpc/expanse/): Oct 1, 2020
-        * 772 AMD EPYC 7742 nodes, 128 cpus/node, 256GB RAM.
+   * [Expanse](https://www.sdsc.edu/services/hpc/expanse/)
+        * 728 AMD EPYC 7742 nodes, 128 cpus/node, 256GB RAM.
         * 52 Intel Xeon Gold 6248 nodes, 40 cpus/node, 384GB RAM, 4 NVIDIA V100 SMX2 GPUs/node.
+        * 4 AMD EPYC 7742 nodes, 128 cpus/node, 2TB RAM.
+        * 12PB Lustre Storage
+        * 7PB Ceph Storage
    * [Voyager](https://www.sdsc.edu/News%20Items/PR20200701_voyager.html): Upcoming Fall 2021 
+        * innovative system architecture uniquely optimized for deep learning (DL) operations and AI workloads
+        * three-year ‘test bed’ phase with a select set of research teams, 
+        * followed by a two-year phase, where the system will be more widely available using an NSF-approved allocation process.
+
+---
+
+# XSEDE Resources
+
 - Texas Advanced Computing Center (TACC) 
-   - [Stampede2](https://www.tacc.utexas.edu/systems/stampede2): 18 PFlops
+   - [Stampede2](https://www.tacc.utexas.edu/systems/stampede2): Until 2021-09-30
         - 4,200 Intel Knights Landing nodes, 68 cores/node, 96GB DDR RAM, and 16GB MCDRAM.
         - 1,736 Intel Xeon Skylake nodes, 48 cores/node and 192GB of RAM.
+        - Two dedicated high performance Lustre file systems with a storage capacity of 31PB
+* Open Science Grid (OSG): 
+    * A virtual HTCondor pool made up of resources from the Open Science Grid.
+    * High throughput jobs using a single core, or a small number of threads which can fit on a single compute node.
+    * _NSF CC* Award requires allocating 20% of Hawk resources to OSG_.
+- University of Kentucky 
+    - [KyRIC](https://docs.ccs.uky.edu/display/HPC/KyRIC+Cluster+User+Guide)
+         - 5 Intel Xeon E7-4820 v4, 40 cores/node, 3TB RAM dedicated to XSEDE
 
+---
+
+# Upcoming XSEDE Resources
+
+- Purdue University
+   - [Anvil](https://www.rcac.purdue.edu/compute/anvil/): Upcoming Fall 2021
+         - 1000 AMD Milan nodes, 128 cores/node, 256GB RAM.
+         - 32 AMD Milan nodes, 128 cores/node, 1TB RAM. 
+         - 16 AMD Milan nodes, 128 cores/node, 256GB RAM, 4 NVIDIA A100. 
+- National Center for Supercomputing Applications (NCSA)
+    - [Delta](http://www.ncsa.illinois.edu/news/story/nsf_awards_ncsa_10_million_for_deployment_of_delta): Upcoming Fall 2021.
+- Texas A &amp; M University
+    - [FASTER](https://hprc.tamu.edu/faster/)
+          - 180 dual Intel 32-core Ice Lake processors,
+          - about 270 NVIDIA GPUs (40 A100 and 230 T4/A40/A10 GPUs).
+- Johns Hopkins University
+    - [Rockfish](https://www.marcc.jhu.edu/rockfish-description/)
+          - 368 Intel Cascade Lake 6248R, 48 cores/node, 192GB RAM
+          - 10 Intel Cascade Lake 6248R, 48 cores/node, 1.5TB RAM
          
 ---
 
@@ -979,8 +1037,8 @@ and high-throughput computing and other digital services, opportunities and reso
 * Research requests are accepted and reviewed quarterly by the XSEDE Resource Allocations Committee (XRAC). 
 
 .center[
-| Submission Period | Allocation Begin Date |
-|:-----------------:|:---------------------:|
+| Submission Period  | Allocation Begin Date |
+|:------------------:|:---------------------:|
 | Dec 15 thru Jan 15 | April 1 |
 | Mar 15 thru Apr 15 | July 1 |
 | Jun 15 thru Jul 15 | October 1 |
@@ -1099,42 +1157,28 @@ and high-throughput computing and other digital services, opportunities and reso
 ---
 class: inverse, middle
 
-# Services 
+# LTS, Research Computing Services 
 
 
 ---
 
 # HPC Seminars
 
-* RC staff also guest lecture for various courses and provide various training
- seminars in collaboration with other LTS groups.
-
-.pull-left[
-- Research Computing at Lehigh 
-- Linux: Basic Commands &amp; Environment 
-- Using SLURM scheduler on Sol
-- Shell Scripting 
-- Python Programming
-- Data Visualization
-- RefWorks
-- Document Creation with LaTeX 
-- Using Virtualized Software at Lehigh
-- Machine Learning Concepts
-]
-
-.pull-right[
-- A Brief Introduction to Linux 
-- Storage Options at Lehigh 
-- Research Data Management
-- Version Control with GIT
-- Programming in MATLAB/GNU Octave
-- Programming in R
-- Enhancing Research Impact
-- Parallel Programming Concepts 
-- Saltstack Config Management
-- Text Mining Concepts
-]
-
+* Fridays, 2:00PM - 4:00PM via Zoom
+  - Research Computing Resources at Lehigh (Feb. 5)
+  - Linux: Basic Commands &amp; Environment (Feb. 12).
+  - Using SLURM scheduler on Sol (Feb. 19).
+  - Introduction to Open OnDemand (Feb. 26).
+  - Python Programming (Mar. 5).
+  - Build/Bring Your Own Software (Mar. 12)
+  - Python Data Structure (Mar. 19)
+  - Creating `\(\LaTeX\)` Documents using Overleaf (Mar. 26)
+  - R Programming (Apr. 2).
+  - Data Visualization with Python (Apr. 9).
+  - Data Visualization with R (Apr. 16).
+  - Machine Learning (Apr. 23).
+  - Shiny Apps in R (Apr. 30).
+* Register at https://go.lehigh.edu/hpcseminars
 * See [LTS Seminars](https://lts.lehigh.edu/lts-seminars) for topics like G Suite tools, Surveys, Library topics, etc.
 
 ---
@@ -1153,26 +1197,6 @@ class: inverse, middle
   - XSEDE HPC Monthly Workshop: Big Data (Nov. 2015, May 2017).
 
 
-
----
-
-# Upcoming HPC Seminars
-
-* Fridays from 2:00PM - 4:00PM.
-  - Linux: Basic Commands &amp; Environment (Sep. 11).
-  - Using SLURM scheduler on Sol (Sep. 18).
-  - Introduction to Open OnDemand (Sep. 25).
-  - Python Programming (Oct. 2).
-  - Data Visualization with Python (Oct. 9).
-  - Machine Learning (Oct. 16 &amp; 23).
-  - R Programming (Oct. 30).
-  - Data Visualization with R (Nov. 6).
-  - Text Mining (Nov. 13).
-
-
-* Subscribe
-     * [Research Computing Mailing List](https://lists.lehigh.edu/mailman/listinfo/hpc-l)
-     * [HPC Training Google Groups](mailto:hpctraining-list+subscribe@lehigh.edu)
 
 
 ---
@@ -1202,18 +1226,22 @@ class: inverse, middle
 - Investing in Sol
   - Contact Alex Pacheco or Steve Anthony
 * More Information
-  * [Research Computing](https://researchcomputing.lehigh.edu)
-  * [Research Computing Wiki](https://go.lehigh.edu/rcwiki)
-  * [Research Computing Training](https://go.lehigh.edu/hpcseminars)
+  * [Research Computing](https://go.lehigh.edu/hpc)
+  * [Research Computing Seminars](https://go.lehigh.edu/hpcseminars)
   * [Condo Program and Available Equipment](https://confluence.cc.lehigh.edu/x/EgL5Bg)
   * [Proposal Assistance](https://confluence.cc.lehigh.edu/x/FgL5Bg)
   * [Data Management Plans](http://libraryguides.lehigh.edu/researchdatamanagement)
+* Subscribe
+     * [Research Computing Mailing List](https://lists.lehigh.edu/mailman/listinfo/hpc-l)
+     * [HPC Training Google Groups](mailto:hpctraining-list+subscribe@lehigh.edu)
 
 ---
 class: inverse middle
 
 # Thank You!
 # Questions?
+
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="libs/remark-latest.min.js"></script>
