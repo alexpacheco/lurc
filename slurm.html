@@ -4,6 +4,7 @@
     <title>Using SLURM scheduler on Sol</title>
     <meta charset="utf-8" />
     <meta name="author" content="Library &amp; Technology Services" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
     <link rel="stylesheet" href="addons/lehigh.css" type="text/css" />
     <link rel="stylesheet" href="addons/lehigh-fonts.css" type="text/css" />
   </head>
@@ -33,15 +34,16 @@ class: inverse, middle
 
 - Lehigh&amp;#39;s Shared High Performance Computing Cluster 
   - built by investments from Provost and Faculty.
-  - 9 nodes&lt;sup&gt;a&lt;/sup&gt;, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 25MB Cache, 128GB RAM.
-  - 33 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 30 MB Cache, 128GB RAM.
-  - 14 nodes, dual 12-core Intel Xeon E5-2650 v4 2.3Ghz CPU, 30 MB Cache, 64GB RAM.
-  - 1 node, dual 8-core Intel Xeon 2630 v3 2.4GHz CPU, 20 MB Cache, 512GB RAM.
-  - 24 nodes, dual 18-core Intel Xeon Gold 6140 2.3GHz CPU, 24.7 MB Cache, 192GB RAM.
-  - 6 nodes, dual 18-core Intel Xeon Gold 6240 2.6GHz, 24.75 MB Cache, 192GB RAM.
+  - 9 nodes&lt;sup&gt;a&lt;/sup&gt;, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 128GB RAM.
+  - 33 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 128GB RAM.
+  - 14 nodes, dual 12-core Intel Xeon E5-2650 v4 2.3Ghz CPU, 64GB RAM.
+  - 1 node, dual 8-core Intel Xeon 2630 v3 2.4GHz CPU, 512GB RAM.
+  - 24 nodes, dual 18-core Intel Xeon Gold 6140 2.3GHz CPU, 192GB RAM.
+  - 6 nodes, dual 18-core Intel Xeon Gold 6240 2.6GHz, 192GB RAM.
   - 72 nVIDIA GTX 1080 &amp; 48 nVIDIA RTX 2080TI GPU cards.
+  - 2 nodes, dual 26-core Intel Xeon Gold 6230R, 2.1GHz, 384GB RAM
   - 2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric.
-  - 21.06M core hours or service units (SUs) of computing available.
+  - 21.97M core hours or service units (SUs) of computing available.
       - Only 1.40M from Provost investment available Lehigh researchers.
 &lt;br /&gt;
 
@@ -52,8 +54,53 @@ a: 8 nodes invested by Provost available to all Lehigh researchers.
 
 ---
 
-# Sol Configuration
+# Condo Investors
 
+* Dimitrios Vavylonis, Physics (1 node)
+* Wonpil Im, Biological Sciences (37 nodes, 98 GPUs)
+* Anand Jagota, Chemical Engineering (1 node)
+* Brian Chen, Computer Science &amp; Engineering (3 nodes)
+* Ed Webb &amp; Alp Oztekin, Mechanical Engineering (6 nodes)
+* Jeetain Mittal &amp; Srinivas Rangarajan, Chemical Engineering (13 nodes, 16 GPUs)
+* Seth Richards-Shubik, Economics (1 node)
+* Ganesh Balasubramanian, Mechanical Engineering (7 nodes)
+* Department of Industrial &amp; Systems Engineering (2 nodes)
+* Paolo Bocchini, Civil and Structural Engineering (1 node)
+* Lisa Fredin, Chemistry (6 nodes)
+* Hannah Dailey, Mechanical Engineering (1 node)
+* College of Health (2 nodes)
+- Condo Investments: 81 nodes, 2348 CPUs, 120 GPUs, 20.57M SUs
+
+
+---
+
+# Hawk
+
+* Funded by [NSF Campus Cyberinfrastructure award 2019035](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2019035&amp;HistoricalAwards=false).
+   - PI: Ed Webb (MEM).
+   - co-PIs: Balasubramanian (MEM), Fredin (Chemistry), Pacheco (LTS), and Rangarajan (ChemE).
+   - Sr. Personnel: Anthony (LTS), Reed (Physics), Rickman (MSE), and Tak&amp;#225;&amp;#269; (ISE). 
+* Compute
+  - 26 nodes, dual 26-core Intel Xeon Gold 6230R, 2.1GHz, 384GB RAM.
+  - 4 nodes, dual 26-core Intel Xeon Gold 6230R, 1536GB RAM.
+  - 4 nodes, dual 24-core Intel Xeon Gold 5220R, 192GB RAM, 8 nVIDIA Tesla T4.
+* Storage
+  - 7 nodes, single 16-core AMD EPYC 7302P, 3.0GHz, 128GB RAM, two 240GB SSDs (for OS).
+  - Per node
+      - 3x 1.9TB SATA SSD (for CephFS).
+      - 9x 12TB SATA HDD (for Ceph).
+* Production: **Feb 1, 2021**.
+
+???
+
+  - **Total: 34 nodes, 1752 CPUs, 16.9TB RAM, 32 GPUs, 77TFLOPs, 15.3M SUs**
+  - **Total Storage: 796TB (raw) or 225TB (usable)**
+      - 50% allocated to proposal team, 20% to Open Science Grid and 30% to Lehigh researchers
+      - 40% allocated to proposal team, 35% to Lehigh researchers, 25% to Provost and LTS (R Drive)  
+
+---
+
+# Configuration
 
 &lt;table&gt;
  &lt;thead&gt;
@@ -80,7 +127,7 @@ a: 8 nodes invested by Provost available to all Lehigh researchers.
    &lt;td style="text-align:right;"&gt; 1024 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 80 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 5.7600 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 2.570 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.57000 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 1576800 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
@@ -92,7 +139,7 @@ a: 8 nodes invested by Provost available to all Lehigh researchers.
    &lt;td style="text-align:right;"&gt; 4224 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 496 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 25.3440 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 15.934 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 15.93400 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 6937920 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
@@ -104,7 +151,7 @@ a: 8 nodes invested by Provost available to all Lehigh researchers.
    &lt;td style="text-align:right;"&gt; 896 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 9.6768 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.00000 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 2943360 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
@@ -116,7 +163,7 @@ a: 8 nodes invested by Provost available to all Lehigh researchers.
    &lt;td style="text-align:right;"&gt; 512 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0.5632 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.00000 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 140160 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
@@ -128,7 +175,7 @@ a: 8 nodes invested by Provost available to all Lehigh researchers.
    &lt;td style="text-align:right;"&gt; 4608 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 528 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 41.4720 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 18.392 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18.39200 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 7568640 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
@@ -140,113 +187,21 @@ a: 8 nodes invested by Provost available to all Lehigh researchers.
    &lt;td style="text-align:right;"&gt; 1152 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 10.3680 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.00000 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 1892160 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 87 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 2404 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 120 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 12416 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1104 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 93.1840 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 36.896 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 21059040 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Gold 6230R &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 104 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 768 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.3264 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.00000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 911040 &lt;/td&gt;
   &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
----
-
-# LTS Managed Faculty Resources 
-
-* __Monocacy__: Ben Felzer, Earth &amp; Environmental Sciences.
-  * Eight nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM.
-     * Theoretical Performance: 2.662TFlops.
-- __Baltrusaitislab__: Jonas Baltrusaitis, Chemical Engineering.
-  - Three nodes, dual 16-core AMD Opteron 6376, 2.3Ghz, 128GB RAM.
-     - Theoretical Performance: 1.766TFlops.
-* __Pisces__: Keith Moored, Mechanical Engineering and Mechanics.
-  * Six nodes, dual 10-core Intel Xeon E5-2650v3, 2.3GHz, 64GB RAM, nVIDIA Tesla K80.
-     * Theoretical Performance: 3.840 TFlops (CPU) + 17.46TFlops (GPU).
-- __Pavo__: decommissioned faculty cluster for development and education.
-  - Twenty nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM.
-     - Theoretical Performance: 6.656TFlops.
-
----
-
-# Summary of Computational Resources 
-
-
-
-
-|Cluster          | Cores| CPU Memory| CPU TFLOPs| GPUs| CUDA Cores| GPU Memory| GPU TFLOPS|
-|:----------------|-----:|----------:|----------:|----:|----------:|----------:|----------:|
-|Monocacy         |   128|        512|      2.662|    0|          0|          0|      0.000|
-|Pavo&lt;sup&gt;a&lt;/sup&gt; |   320|       1280|      6.656|    0|          0|          0|      0.000|
-|Baltrusaitis     |    96|        384|      1.766|    0|          0|          0|      0.000|
-|Pisces           |   120|        384|      3.840|   12|      29952|        144|     17.422|
-|Sol              |  2404|      12544|     93.184|  120|     393216|       1104|     36.130|
-|Total            |  3068|      15104|    108.108|  132|     423168|       1248|     53.552|
-
-- Monocacy, Baltrusaitis and Pisces: decommissioning scheduled for Sep 30, 2021.
-
-.footnote[
-a: 3 nodes available for short simulations or debug runs.
-]
-
-
----
-
-# Upcoming: Hawk
-
-* Funded by [NSF Campus Cyberinfrastructure award 2019035](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2019035&amp;HistoricalAwards=false).
-   - PI: Ed Webb (MEM).
-   - co-PIs: Balasubramanian (MEM), Fredin (Chemistry), Pacheco (LTS), and Rangarajan (ChemE).
-   - Sr. Personnel: Anthony (LTS), Reed (Physics), Rickman (MSE), and Tak&amp;#225;&amp;#269; (ISE). 
-* Compute
-  - 26 nodes, dual 26-core Intel Xeon Gold 6230R, 2.1GHz, 384GB RAM.
-  - 4 nodes, dual 26-core Intel Xeon Gold 6230R, 1536GB RAM.
-  - 4 nodes, dual 24-core Intel Xeon Gold 5220R, 192GB RAM, 8 nVIDIA Tesla T4.
-* Storage
-  - 7 nodes, single 16-core AMD EPYC 7302P, 3.0GHz, 128GB RAM, two 240GB SSDs (for OS).
-  - Per node
-      - 3x 1.9TB SATA SSD (for CephFS).
-      - 9x 12TB SATA HDD (for Ceph).
-* Target Production: **Jan 1, 2021**.
-
-???
-
-  - **Total: 34 nodes, 1752 CPUs, 16.9TB RAM, 32 GPUs, 77TFLOPs, 15.3M SUs**
-  - **Total Storage: 796TB (raw) or 225TB (usable)**
-      - 50% allocated to proposal team, 20% to Open Science Grid and 30% to Lehigh researchers
-      - 40% allocated to proposal team, 35% to Lehigh researchers, 25% to Provost and LTS (R Drive)  
-
----
-
-
-
-### Hawk
-
-
-&lt;table&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:right;"&gt; Nodes &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; Intel Xeon CPU Type &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; CPU Speed (GHz) &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; CPUs &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; GPUs &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; CPU Memory (GB) &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; GPU Memory (GB) &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; CPU TFLOPS &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; GPU TFLOPs &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; SUs &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
   &lt;tr&gt;
    &lt;td style="text-align:right;"&gt; 26 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; Gold 6230R &lt;/td&gt;
@@ -284,64 +239,64 @@ a: 3 nodes available for short simulations or debug runs.
    &lt;td style="text-align:right;"&gt; 1681920 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 34 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 123 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1752 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 32 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 16896 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 512 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 69.1968 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 8.10816 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 15347520 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4260 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 152 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 30080 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1616 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 166.7072 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 45.00416 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 37317600 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;br /&gt;
+* SUs available for general use: 4.80M
+   * rest allocated to investors, and grant distribution including education use.
 
---
+&lt;!---
 
-### Hawk and Lehigh&amp;#39;s Investment in Sol
+* Total SUs available: 37.32M
+# LTS Managed Faculty Resources 
+
+* __Monocacy__: Ben Felzer, Earth &amp; Environmental Sciences.
+  * Eight nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM.
+     * Theoretical Performance: 2.662TFlops.
+- __Baltrusaitislab__: Jonas Baltrusaitis, Chemical Engineering.
+  - Three nodes, dual 16-core AMD Opteron 6376, 2.3Ghz, 128GB RAM.
+     - Theoretical Performance: 1.766TFlops.
+* __Pisces__: Keith Moored, Mechanical Engineering and Mechanics.
+  * Six nodes, dual 10-core Intel Xeon E5-2650v3, 2.3GHz, 64GB RAM, nVIDIA Tesla K80.
+     * Theoretical Performance: 3.840 TFlops (CPU) + 17.46TFlops (GPU).
+- __Pavo__: decommissioned faculty cluster for development and education.
+  - Twenty nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM.
+     - Theoretical Performance: 6.656TFlops.
+
+
+# Summary of Computational Resources 
 
 
 
-&lt;table&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:right;"&gt; Nodes &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; CPUs &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; GPUs &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; CPU Memory (GB) &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; GPU Memory (GB) &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; CPU TFLOPS &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; GPU TFLOPs &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; SUs &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 8 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 160 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1024 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 5.8880 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.00000 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1401600 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 34 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1752 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 32 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 16896 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 512 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 69.1968 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 8.10816 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 15347520 &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
+
+|Cluster          | Cores| CPU Memory| CPU TFLOPs| GPUs| CUDA Cores| GPU Memory| GPU TFLOPS|
+|:----------------|-----:|----------:|----------:|----:|----------:|----------:|----------:|
+|Monocacy         |   128|        512|      2.662|    0|          0|          0|      0.000|
+|Pavo&lt;sup&gt;a&lt;/sup&gt; |   320|       1280|      6.656|    0|          0|          0|      0.000|
+|Baltrusaitis     |    96|        384|      1.766|    0|          0|          0|      0.000|
+|Pisces           |   120|        384|      3.840|   12|      29952|        144|     17.422|
+|Sol              |  2404|      12544|     93.184|  120|     393216|       1104|     36.130|
+|Total            |  3068|      15104|    108.108|  132|     423168|       1248|     53.552|
+
+- Monocacy, Baltrusaitis and Pisces: decommissioning scheduled for Sep 30, 2021.
+
+.footnote[
+a: 3 nodes available for short simulations or debug runs.
+]
+
+
+--&gt;
 
 ---
 
@@ -377,7 +332,42 @@ a: 3 nodes available for short simulations or debug runs.
 
 ---
 
-# Open Ondemand
+# SSH Config
+
+* Simplify by creating a ssh configuration file `~/.ssh/config`
+   * assign shortname for the host you are connecting to
+   * set username, port or jump host information  
+   * use the short hostnames with the `ssh` and `scp` commands
+
+.pull-left[
+
+```bash
+  Host *ssh
+  HostName ssh.cc.lehigh.edu
+  Port 22
+  User alp514
+
+  Host *sol
+  HostName sol.cc.lehigh.edu
+  Port 22
+  User alp514
+
+  Host *sun
+  HostName sol.cc.lehigh.edu
+  Port 22
+  User alp514
+  ProxyCommand ssh ssh nc %h %p
+```
+]
+.pull-right[
+&lt;script id="asciicast-THVibyFLRYsmtVsdOMtIdgEm0" src="https://asciinema.org/a/THVibyFLRYsmtVsdOMtIdgEm0.js" async data-rows=10&gt;&lt;/script&gt;
+]
+
+
+
+---
+
+# Open OnDemand
 
 - Open, Interactive HPC via the Web. 
     - Easy to use, plugin-free, web-based access to supercomputers,
@@ -395,9 +385,19 @@ a: 3 nodes available for short simulations or debug runs.
 
 
 ---
-class: inverse, middle
 
-# How to use Software on Sol?
+# Open OnDemand
+
+![:scale 90%](assets/img/OOD-Clusters.png)
+
+
+
+---
+
+# Open OnDemand
+
+![:scale 90%](assets/img/OOD-Shell.png)
+
 
 
 ---
@@ -409,8 +409,14 @@ class: inverse, middle
   - Why? We may have different versions of same software or software built with different compilers.
   - Module environment allows you to dynamically change your &amp;#42;nix environment based on software being used.
   - Standard on many University and national High Performance Computing resource since circa 2011.
+* OS upgrade should be complete by Feburary end.
+  - By default, old software built for CentOS 7.x is displayed.
+  - To see newer software, run the following command or add to `.bash_profile`
+    
+    ```bash
+    source /share/Apps/compilers/etc/lmod/zlmod.sh
+    ```
 * How to use HPC Software on your [linux](https://confluence.cc.lehigh.edu/x/ygD5Bg) workstation?
-- LTS provides [licensed and open source software](https://software.lehigh.edu) for Windows, Mac and Linux and [Gogs](https://gogs.cc.lehigh.eu), a self hosted Git Service or Github clone.
 
 
 
@@ -424,17 +430,26 @@ class: inverse, middle
 | &lt;code&gt;module avail&lt;/code&gt; | show list of software available on resource |
 | &lt;code&gt;module load abc&lt;/code&gt; | add software &lt;code&gt;abc&lt;/code&gt; to your environment (modify your &lt;code&gt;PATH&lt;/code&gt;, &lt;code&gt;LD_LIBRARY_PATH&lt;/code&gt; etc as needed) |
 | &lt;code&gt;module unload abc&lt;/code&gt; | remove &lt;code&gt;abc&lt;/code&gt; from your environment |
-| &lt;code&gt;module swap abc1 abc2&lt;/code&gt; | swap &lt;code&gt;abc1&lt;/code&gt; with &lt;code&gt;abc2&lt;/code&gt; in your environment |
 | &lt;code&gt;module purge&lt;/code&gt; | remove all modules from your environment |
 | &lt;code&gt;module show abc&lt;/code&gt; | display what variables are added or modified in your environment |
 | &lt;code&gt;module help abc&lt;/code&gt; | display help message for the module &lt;code&gt;abc&lt;/code&gt; |
+| &lt;code&gt;module spider abc&lt;/code&gt; | learn more about package &lt;code&gt;abc&lt;/code&gt; |
 
 * Users who prefer not to use the module environment will need to modify their
   .bashrc or .tcshrc files. Run `module show` for list variables that need
   modified, appended or prepended.
 
 
+
 ---
+
+# Module Command
+
+&lt;script id="asciicast-hGo9Uvwjh1sYYL4X50ZlqVMMn" src="https://asciinema.org/a/hGo9Uvwjh1sYYL4X50ZlqVMMn.js" async data-rows=20&gt;&lt;/script&gt;
+
+
+
+&lt;!--
 
 # Compilers
 
@@ -450,7 +465,7 @@ class: inverse, middle
 
 .center[
 | Language | GNU | Intel | PGI | nVIDIA HPC SDK |
-|:--------:|:---:|:-----:|:---:|:--------------:|
+|:--------:|:----:|:-----:|:----:|:-------------:|
 | Fortran  | `gfortran` | `ifort` | `pgfortran` | `nvfortran` |
 | C | `gcc` | `icc` | `pgcc` | `nvc`&lt;sup&gt;b&lt;/sup&gt; |
 | C++ | `g++` | `icpc` | `pgc++` | `nvc++` |
@@ -462,8 +477,6 @@ a. includes CUDA for compiling on GPUs.
 b. `nvcc` is the cuda compiler while `nvc` is the C compiler.
 ]
 
-
----
 
 # Compiling Code
 
@@ -478,7 +491,6 @@ b. `nvcc` is the cuda compiler while `nvc` is the C compiler.
   - `-I{directory path}`: directory to search for include files and fortran modules.
 
 
----
 
 # Compiling and Running Serial Codes
 
@@ -515,7 +527,6 @@ Total time was 4.099030 seconds.
 &lt;/pre&gt;
 
 
----
 
 # Compilers for OpenMP &amp; TBB
 
@@ -550,7 +561,6 @@ snip
 
 
 
----
 
 # Compiling and Running OpenMP Codes
 
@@ -588,7 +598,6 @@ Total time was 2.459961 seconds.
 &lt;/pre&gt;
 
 
----
 
 # Compilers for MPI Programming
 
@@ -621,7 +630,6 @@ ifort -fPIC -I/share/Apps/mvapich2/2.1/intel-16.0.3/include
 
 
 
----
 
 # MPI Libraries
 
@@ -639,7 +647,6 @@ ifort -fPIC -I/share/Apps/mvapich2/2.1/intel-16.0.3/include
    - `LAM/MPI` from Indiana University
 
 
----
 
 # Running MPI Programs
 
@@ -659,7 +666,6 @@ ifort -fPIC -I/share/Apps/mvapich2/2.1/intel-16.0.3/include
 * SLURM scheduler provides `srun` as a wrapper around all mpi launchers.
 
 
----
 
 # Compiling and Running MPI Codes
 
@@ -695,6 +701,7 @@ Max error at iteration 1000 was 0.034767
 Total time was 1.030180 seconds.
 &lt;/pre&gt;
 
+--&gt;
 
 ---
 class: inverse, middle
@@ -726,14 +733,29 @@ class: inverse, middle
 
 ---
 
+# How does a cluster look?
+
+
+.pull-left[
+![:scale 60%](assets/img/sol/20160627_153416.jpg)
+]
+
+.pull-right[
+![:scale 80%](assets/img/sol/20170301_112522.jpg)
+]
+
+
+
+
+---
+
 # Scheduler &amp;amp; Resource Management
 
 * A software that manages resources (CPU time, memory, etc) and schedules job execution.
-   - Sol: Simple Linux Utility for Resource Management (SLURM)
-   - Others:  Portable Batch System (PBS)
-          - Scheduler: Maui
-          - Resource Manager: Torque
-          - Allocation Manager: Gold
+- Simple Linux Utility for Resource Management (SLURM)
+    - Scheduler
+    - Resource Manager
+    - Allocation Manager
 
 * A job can be considered as a user’s request to use a certain amount of resources for a certain amount of time.
 
@@ -749,32 +771,17 @@ class: inverse, middle
 * All compute intensive jobs are scheduled.
 - Write a script to submit jobs to a scheduler.
   - need to have some background in shell scripting (bash/tcsh).
-* Need to specify:
+* Have an understanding of 
    * Resources required (which depends on configuration)
        * number of nodes,
        * number of processes per node, and
-       * memory per node.
-   - How long do you want the resources?
+       * memory required to run your job
+   - Amount of time resources are required?
        - have an estimate for how long your job will run.
+       - jobs have a max walltime of 2 or 3 days. 
+             - can your jobs be restarted from a checkpoint.
    * Which partition to submit jobs?
        * SLURM uses the term _partition_ instead of _queue_.
-
-
----
-
-# File Systems - Where to run jobs?
-
-* There are three distinct file spaces on Sol.
-   * __HOME__, your home directory on Sol, 150GB quota default. More if PI has purchased a CEPH space.
-   * __SCRATCH__, 500GB scratch storage on the local disk shared by all jobs running on the node.
-   * __CEPHFS__, 11TB global parallel scratch for running jobs with a lifetime of 14 days.
-- Best Practices
-   - Store all input files, submit scripts, and output files following job completion in HOME
-   - Single node jobs, use SCRATCH to run your jobs and store temporary files
-      - SCRATCH is deleted by the SLURM scheduler when job is complete, so make sure that you copy all required data back to HOME.
-      - SLURM automatically creates `/scratch/${USER}/${SLURM_JOBID}`
-   - All jobs, use CEPHFS. CEPHFS contents are kept for 14 days after your job ends.
-      - SLURM automatically creates &lt;code&gt;/share/ceph/scratch/${USER}/${SLURM_JOBID}&lt;/code&gt;
 
 
 ---
@@ -829,25 +836,35 @@ class: inverse, middle
 
 ---
 
+# How does backfilling work?
+
+![:scale 50%](http://docs.adaptivecomputing.com/suite/8-0/basic/Content/Resources/Graphics/backfill.gif)
+
+
+* [Adaptive Computing](http://docs.adaptivecomputing.com/suite/8-0/basic/help.htm#topics/moabWorkloadManager/topics/optimization/backfill.html%3FTocPath%3DMoab%2520Workload%2520Manager%7COptimizing%2520Scheduling%2520Behavior%2520-%2520Backfill%252C%2520Node%2520Sets%7C_____2)
+
+
+
+---
+
 # Available Queues on Sol
 
 | Partition Name | Max Runtime in hours | Max SU consumed node per hour |
 |:----------:|:--------------------:|:--------------------:|
-| lts | 72 | 19 |
-| lts-gpu | 72 | 20 |
-| im1080 | 48 | 20 | 
-| im1080-gpu | 48 | 24 |
-| eng | 72 | 22 |
-| eng-gpu | 72 | 24 |
+| lts/lts-gpu | 72 | 19/20 |
+| im1080/im1080-gpu | 48 | 20/24 | 
+| eng/eng-gpu | 72 | 22/24 |
 | engc | 72 | 24 |
 | himem | 72 | 48 |
-| enge | 72 | 36 |
-| engi | 72 | 36 |
-| im2080 | 48 | 28 |
+| enge/engi | 72 | 36 |
+| im2080/im2080-gpu | 48 | 28/36 |
 | im2080-gpu | 48 | 36 |
-| chem | 48 | 36 |
-| health | 48 | 36 |
+| chem/health | 48 | 36 |
 | debug | 1 | 16 |
+| hawkcpu | 72 | 52 |
+| hawkmem | 72 | 52 |
+| hawkgpu | 72 | 48 |
+| infolab | 72 | 52 |
 
 
 ---
@@ -860,10 +877,14 @@ class: inverse, middle
 
 | Partition | Max Memory/core (GB) | Recommended Memory/Core (GB) |
 |:---------:|:--------------------:|:----------------------------:|
-| lts | 6.4 | 6.2 |
-| eng/im1080/enge/engi/im2080/chem/health | 5.3 | 5.1 |
-| engc | 2.66 | 2.4 |
-| himem | 32 | 31.5 |
+| lts | 6.4 | 6.3 |
+| eng/im1080/enge/engi/im2080/chem/health | 5.3 | 5.2 |
+| engc | 2.66 | 2.5 |
+| himem | 32 | 31.8 |
+| hawkcpu/infolab | 7.38 | 7.3 |
+| hawkmem | 29.5 | 29.4 |
+| hawkgpu | 4.0 | 3.9 |
+
 
 
 *  &lt;code&gt;if you need to run a single core job that requires 10GB memory in the im1080 partition, you need to request 2 cores even though you are only using 1 core.&lt;/code&gt;  
@@ -875,6 +896,23 @@ class: inverse, middle
 | hawk | 7.38 | 7.2 |
 | hawk-tb | 29.54 | 29 | 
 | hawk-gpu | 3.7 | 3.6 |
+
+
+---
+
+# File Systems - Where to run jobs?
+
+* There are three distinct file spaces on Sol.
+   * __HOME__, your home directory on Sol, 150GB quota default. More if PI has purchased a CEPH space.
+   * __SCRATCH__, 500GB scratch storage on the local disk shared by all jobs running on the node.
+   * __CEPHFS__, 22TB global parallel scratch for running jobs with a lifetime of 7 days.
+- Best Practices
+   - Store all input files, submit scripts, and output files following job completion in HOME
+   - Single node jobs, use SCRATCH to run your jobs and store temporary files
+      - SCRATCH is deleted by the SLURM scheduler when job is complete, so make sure that you copy all required data back to HOME.
+      - SLURM automatically creates `/scratch/${USER}/${SLURM_JOBID}`
+   - All jobs, use CEPHFS. CEPHFS contents are kept for 14 days after your job ends.
+      - SLURM automatically creates &lt;code&gt;/share/ceph/scratch/${USER}/${SLURM_JOBID}&lt;/code&gt;
 
 
 ---
@@ -989,7 +1027,7 @@ class: inverse, middle
     * If you have `soltools` module loaded, then use `interact` with at least one SLURM Directive.
         * `interact -t 20` [Assumes `-p lts -n 1 -N 1`]
 * Run a job interactively replace `--pty /bin/bash --login` with the appropriate command. 
-    * For e.g. `srun -t 20 -n 1 -p imlab --qos=nogpu $(which lammps) -in in.lj -var x 1 -var n 1`
+    * For e.g. `srun -t 1 -n 52 -p hawkcpu $(which lammps) -in in.lj -var x 1 -var n 10000`
     * Default values are 3 days, 1 node, 1 task and lts partition.
 
 
@@ -1010,6 +1048,7 @@ class: inverse, middle
    #SBATCH --nodes=1
    #SBATCH --ntasks-per-node=20
    #SBATCH -p lts
+   source /etc/profile.d/zlmod.sh
    cd ${SLURM_SUBMIT_DIR}
 &lt;/pre&gt;
 * Submitting Batch Jobs:
@@ -1035,6 +1074,7 @@ class: inverse, middle
 #SBATCH --ntasks-per-node=1
 #SBATCH -J myjob
 
+source /etc/profile.d/zlmod.sh
 cd ${SLURM_SUBMIT_DIR}
 #SBATCH --mail-type=ALL &lt;--- this is a comment not a SLURM DIRECTIVE
 ./myjob &lt; filename.in &gt; filename.out
@@ -1059,6 +1099,7 @@ EOF
 #SBATCH --time=1:00:00 --nodes=1 --ntasks-per-node=20
 #SBATCH --job-name=myjob
 
+source /etc/profile.d/zlmod.csh
 cd ${SLURM_SUBMIT_DIR}
 # Use either
 setenv OMP_NUM_THREADS 20
@@ -1091,14 +1132,11 @@ exit
 ### and --qos=nogpu
 #SBATCH --job-name=myjob
 
+source /etc/profile.d/zlmod.sh
 module load mvapich2
 
 cd ${SLURM_SUBMIT_DIR}
 srun ./myjob &lt; filename.in &gt; filename.out
-
-# YMMV
-# scontrol -s hostname &gt; hostfile
-# mpiexec -n ${SLURM_NTASKS} -f hostfile ./myjob &lt; filename.in &gt; filename.out
 
 # Example
 srun -n 4 /share/Apps/examples/simple_jobs/laplace_mpi &lt;&lt; EOF
@@ -1115,20 +1153,21 @@ exit
 
 &lt;pre&gt;
 #!/bin/bash
-#SBATCH --partition=im1080
+#SBATCH --partition=hawkgpu
 # Directives can be combined on one line
 #SBATCH --time=1:00:00
 #SBATCH --nodes=1
 # 1 CPU can be be paired with only 1 GPU
 # 1 GPU can be paired with all 24 CPUs
-#SBATCH --ntasks-per-node=1
+#SBATCH --ntasks-per-node=6
 #SBATCH --gres=gpu:1
 # Need both GPUs, use --gres=gpu:2
 #SBATCH --job-name myjob
 
+source /etc/profile.d/zlmod.sh
 cd ${SLURM_SUBMIT_DIR}
 # Load LAMMPS Module
-module load lammps/17nov16-gpu
+module load lammps
 # Run LAMMPS for input file in.lj
 srun $(which lammps) -in in.lj -sf gpu -pk gpu 1 
 
@@ -1186,7 +1225,7 @@ exit
     * request gpus (when changing to one of the gpu partitions): `gres=gpu:&lt;1-4&gt;`
 * SPECIFICATIONs can be combined 
 * for e.g. command to move a queued job to `im1080` partition and change timelimit to 48 hours for a job 123456 
-   * `scontrol update partition=im1080 qos=nogpu timelimit=48:00:00 jobid=123456`
+   * `scontrol update partition=im1080 timelimit=48:00:00 jobid=123456`
 
 
 
@@ -1204,19 +1243,6 @@ exit
         - prints allocation usage on your login shell.
     -  `balance`
         - prints allocation usage summary.
-    -  `solreport`
-        - obtain your monthly usage report,
-        - PIs can obtain usage report for all or specific users on their
-	allocation,
-        - use `--help` for usage information.
-
-
----
-
-# Usage Reporting
-
-![:scale 85%](assets/img/slurmreport.png) 
-
 
 
 
@@ -1226,8 +1252,9 @@ exit
 
 * [Monthly usage summary](https://webapps.lehigh.edu/hpc/usage/dashboard.html) (updated daily)
 - [Scheduler Status](https://webapps.lehigh.edu/hpc/monitor) (updated every 15 mins)
-* [Current AY Usage Reports](https://webapps.lehigh.edu/hpc/monitor/ay1920.html) (updated daily)
+* [Current AY Usage Reports](https://webapps.lehigh.edu/hpc/monitor/ay2021.html) (updated daily)
 - Prior AY Usage Reports
+    * [AY1920](https://webapps.lehigh.edu/hpc/monitor/ay1920.html) 
     * [AY1819](https://webapps.lehigh.edu/hpc/monitor/ay1819.html)
     * [AY1718](https://webapps.lehigh.edu/hpc/monitor/ay1718.html)
     * [AY1617](https://webapps.lehigh.edu/hpc/monitor/ay1617.html)
@@ -1265,6 +1292,7 @@ class: inverse middle center
 &lt;br /&gt;
 # Next Week: Open OnDemand 
 ### Jupyter Notebooks, RStudio, MATLAB, Mathematica, SAS, Virtual Desktops and more
+ 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="libs/remark-latest.min.js"></script>
