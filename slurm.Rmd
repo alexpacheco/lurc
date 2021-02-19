@@ -1,5 +1,5 @@
 ---
-title: "Using SLURM scheduler on Sol"
+title: "Using SLURM scheduler on Sol and Hawk"
 subtitle: "Research Computing"
 author: "Library &amp; Technology Services"
 institute: "https://researchcomputing.lehigh.edu"
