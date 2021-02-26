@@ -46,7 +46,7 @@ output:
 
 * Users need to write a script to submit jobs.
   - Script needs to be written in Shell - bash, tcsh, csh or sh.
-  - Requires knowledge of *nix commands.
+  - Requires knowledge of \*nix commands.
   - Steep learning curve if you only need to use interactive applications such as Jupyter Notebooks and RStudio.
 
 * Most HPC clusters do not have X-enabled i.e. GUI tools cannot be used
@@ -58,7 +58,7 @@ output:
 ---
 
 
-# ![:scale 30%](https://raw.githubusercontent.com/OSC/Open-OnDemand/gh-pages/assets/images/ood_logo_stack_rgb.png)
+# ![:scale 30%](https://openondemand.org/assets/images/ood_logo_stack_rgb.svg)
 
 * an NSF-funded open-source HPC portal based on Ohio Supercomputing Center’s original OnDemand portal. 
 
@@ -92,7 +92,7 @@ output:
   - Shell Access
   - File Management
   - Job Submission
-  - Virtual Desktops: MATE &amp; XFCE
+  - Virtual Desktops: XFCE
   - Jupyter Notebooks
   - RStudio Server
   - MATLAB
@@ -204,12 +204,6 @@ class: inverse, middle, center
 ---
 class: inverse, middle, center
 
-# Job Composer
-
-
----
-class: inverse, middle, center
-
 # Interactive Applications
 
 ---
@@ -218,9 +212,10 @@ class: inverse, middle, center
 
 * THERE IS NO X OR DESKTOP ENVIRONMENT INSTALLED ON SOL COMPUTE NODES.
 
-* A singularity image of CENTOS 7 with MATE and XFCE desktop environment is used to provide a VDI.
+* A singularity image of CENTOS 8 with XFCE desktop environment is used to provide a VDI.
    - Dockerfile and Singularity definition files:   https://github.com/alexpacheco/lurc-ood-desktop
-   - Docker Images: https://hub.docker.com/r/alexpacheco/centos7
+   - Docker Images: https://hub.docker.com/r/alexpacheco/centos8
+   - Looking into openSUSE Leap for some applications that CentOS 8 does not support.
    
 * No - we do not take requests to install your favorite desktop environments.
 
@@ -232,13 +227,12 @@ class: inverse, middle, center
 
 # Jupyter Notebooks
 
-* Launch Jupyter Notebooks with any Anaconda/Python 3.x module.
+* Launch Jupyter Notebooks with the anaconda module.
 
-* You can also own conda environment provided you have jupyter notebooks installed in your environment
+* Use your own conda environment provided you have jupyter notebooks installed in your environment
 
 * By default,
    - 1 node per job
-   - Only non gpu partitions enabled
 
 * See https://go.lehigh.edu/python for list of available packages in each anaconda/python module.
 
@@ -259,7 +253,6 @@ class: inverse, middle, center
 
 * By default,
    - 1 node per job
-   - Only non gpu partitions enabled
 
 * [Demo](https://confluence.cc.lehigh.edu/x/NpBVBw)
 
@@ -275,13 +268,6 @@ class: inverse, middle, center
 * [VMD](https://confluence.cc.lehigh.edu/x/yJRVBw)
 * [Visualization Tools](https://confluence.cc.lehigh.edu/x/qan0BQ)
 
-
-
-
----
-class: middle
-
-<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ-syHgWJDCC0ETFlAX1BmX9Ib8roiX55SjAF3xMhNmGEZEfGxnyEPLEEMqN7TfbDj2fzVjcXW8m5U1/pubhtml?widget=true&amp;headers=false" width="960" height="480"></iframe>
 
 
 
