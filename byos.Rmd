@@ -42,8 +42,8 @@ sudo yum install build-essential git subversion dpkg-dev make g++ gcc binutils l
 However, I don't have permission to run sudo, and if I run it without sudo, I get the output you need to be root to perform this command. What do I do?
 </pre>
 
-![:scale 50%](mpierror.png)
-![:scale 100%](mpierror2.png)
+![:scale 50%](assets/img/mpierror.png)
+![:scale 100%](assets/img/mpierror2.png)
 
 * Want to learn how to use apt/yum/dnf/zypper? ===> **THIS SEMINAR IS NOT FOR YOU**
 * This seminar is for building applications from source code using a compiler.
