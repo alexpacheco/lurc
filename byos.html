@@ -1,0 +1,1526 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Bring/Build Your Own Software</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Research Computing" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="addons/lehigh.css" type="text/css" />
+    <link rel="stylesheet" href="addons/lehigh-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Bring/Build Your Own Software
+## for Sol &amp; Hawk
+### Research Computing
+### <a href="https://researchcomputing.lehigh.edu" class="uri">https://researchcomputing.lehigh.edu</a>
+
+---
+
+class: myback
+
+
+
+# Audience?
+
+* HPC users or any \*nix users who want to install software and do not have admin or root priviliges
+* If you want to install software and end up emailing HPC staff with the following content
+
+&lt;pre class="wrap"&gt;
+I need somehow to have swig installed
+sudo apt-get install libeigen3-dev swig 
+I believe not only I'm not a sudoer but apt-get is not being recognized. So, little help of yours is appreciated ;))
+&lt;/pre&gt; 
+
+&lt;pre class="wrap"&gt;
+Also, one of the installation instructions I'm following says to run the command:
+sudo yum install build-essential git subversion dpkg-dev make g++ gcc binutils libx11-dev libxpm-dev libxft-dev libxext-dev
+However, I don't have permission to run sudo, and if I run it without sudo, I get the output you need to be root to perform this command. What do I do?
+&lt;/pre&gt;
+
+![:scale 50%](mpierror.png)
+![:scale 100%](mpierror2.png)
+
+* Want to learn how to use apt/yum/dnf/zypper? ===&gt; **THIS SEMINAR IS NOT FOR YOU**
+* This seminar is for building applications from source code using a compiler.
+
+
+---
+
+# Outline
+
+* Basics: Compilers and Compiler options
+
+* Make &amp;amp; CMake
+
+* Autoconf Tools
+
+* SPACK
+
+* Singularity 
+    - Building containers (you are expected to be familiar with package managers for the distribution used to build a container)
+    - Running containers
+
+
+---
+class: inverse, middle
+
+# Basics: Compilers and Compiler options
+
+
+---
+
+# Compilers
+
+* Various versions of compilers installed on Sol. 
+* Open Source: GNU Compiler (also called gcc even though gcc is the c compiler)
+   - 8.3.1 (system default), and 9.3.0.
+* Commercial: Only two seats of each.
+   - Intel Compiler: 19.0.3 and 20.0.2
+   - nVIDIA HPC SDK&lt;sup&gt;a&lt;/sup&gt;: 20.9
+* _We are licensed to install any available version_.
+* On Sol &amp;amp; Hawk, all except gcc 8.3.1 are available via the module environment. 
+
+.center[
+| Language | GNU  | Intel | nVIDIA HPC SDK &lt;sup&gt;b&lt;/sup&gt; |
+|:--------:|:----:|:-----:|::-------------:|
+| Fortran  | `gfortran` | `ifort` | `nvfortran` |
+| C | `gcc` | `icc` | `nvc`&lt;sup&gt;c&lt;/sup&gt; |
+| C++ | `g++` | `icpc` | `nvc++` |
+]
+
+.footnote[
+a. includes CUDA for compiling on GPUs.
+
+b. NVIDIA HPC SDK replaces the old PGI compilers. `pgfortran`, `pgcc` and `pgc++` are available for now but you should change your commands to the new `nv` commands. 
+
+c. `nvcc` is the cuda compiler while `nvc` is the C compiler.
+]
+
+
+---
+
+# Compiling Code
+
+* Usage: `&lt;compiler&gt; &lt;options&gt; &lt;source code&gt;`
+* Common Compiler options or flags:
+  - `-o myexec`: compile code and create an executable `myexec`. If this option is not given, then a default `a.out` is created.
+  - `-l{libname}`: link compiled code to a library called `libname`. e.g. to use lapack libraries, add `-llapack` as a compiler flag.
+  - `-L{directory path}`: directory to search for libraries. e.g. `-L/usr/lib64 -llapack` will search for lapack libraries in `/usr/lib64`.
+  - `-I{directory path}`: directory to search for include files and fortran modules.
+  - `-On`: optmize code to level n where n=0,1,2,3.
+  - `-g`: generate a level of debugging information in the object file (-On supercedes -g).
+  - `-mcmodel=mem_model`: tells the compiler to use a specific memory model to generate code and store data where mem\_model=small, medium or large.
+  - `-fpic/-fPIC`: generate position independent code (PIC) suitable for use in a shared library. 
+* See [HPC Documentation](https://confluence.cc.lehigh.edu/display/hpc/Compilers#Compilers-CompilerFlags)
+
+
+
+---
+
+# Compilers for OpenMP, OpenACC &amp; TBB
+
+* OpenMP support is built-in.
+* OpenACC support is available only in NVIDIA HPC SDK and GNU compiler suite.
+  * Intel Compiler supports OpenMP 5.0 capable of GPU offloading
+
+| Compiler | OpenMP Flag | OpenACC Flag | TBB Flag |
+|:---:|:---:|:---:|:---:|
+| GNU | `-fopenmp` | `-fopenacc` | `-L$TBBROOT/lib/intel64_lin/gcc4.4 -ltbb` |
+| Intel | `-qopenmp` | |  `-L$TBBROOT/lib/intel64_lin/gcc4.4 -ltbb` |
+| NVIDIA HPC SDK | `-mp` | `-acc` |  ` ` |
+
+* TBB is available as part of Intel Compiler suite.
+* `$TBBROOT` depends on the Intel Compiler Suite you want to use.
+
+
+
+
+
+
+---
+
+&lt;pre class="wrap"&gt;
+[2021-03-09 10:12.17] ~/Workshop/sum2017/calc_pi/solution
+[alp514.hawk-b624](1044): ls
+calcpi-omp-acc.dat  compare.dat  Makefile_c  Makefile_f90  pi_acc.c  pi_acc.f90  pi_omp1.c  pi_omp1.f90  pi_omp.c  pi_omp.f90  pi_serial.c  pi_serial.f90  submit_omp.pbs
+[2021-03-09 10:12.18] ~/Workshop/sum2017/calc_pi/solution
+[alp514.hawk-b624](1045): nvc -o pic pi_serial.c
+[2021-03-09 10:12.23] ~/Workshop/sum2017/calc_pi/solution
+[alp514.hawk-b624](1046): nvc -acc=gpu -Minfo=accel -o pic_acc pi_acc.c
+main:
+     13, Generating copyout(sum) [if not already present]
+         Generating copyin(step) [if not already present]
+     16, Generating Tesla code
+         17, #pragma acc loop gang, vector(128) /* blockIdx.x threadIdx.x */
+             Generating reduction(+:sum)
+[2021-03-09 10:12.29] ~/Workshop/sum2017/calc_pi/solution
+[alp514.hawk-b624](1047): nvc -mp -Minfo=mp -o pic_omp pi_omp.c
+main:
+     14, Parallel region activated
+     16, Parallel loop activated with static block schedule
+     19, Barrier
+[2021-03-09 10:12.33] ~/Workshop/sum2017/calc_pi/solution
+[alp514.hawk-b624](1048): ./pic
+pi = 3.141592653589451
+time to compute = 22.631 seconds
+[2021-03-09 10:12.59] ~/Workshop/sum2017/calc_pi/solution
+[alp514.hawk-b624](1049): ./pic_acc
+pi = 3.141592653589794
+time to compute = 1.16009 seconds
+[2021-03-09 10:13.06] ~/Workshop/sum2017/calc_pi/solution
+[alp514.hawk-b624](1050): for i in 1 2 3 4 5 6 ; do echo OMP_NUM_THREADS=$i ; OMP_NUM_THREADS=$i ./pic_omp  ; done
+OMP_NUM_THREADS=1
+pi = 3.141592653589451
+time to compute = 22.6826 seconds
+OMP_NUM_THREADS=2
+pi = 3.141592653589563
+time to compute = 11.7445 seconds
+OMP_NUM_THREADS=3
+pi = 3.141592653589578
+time to compute = 7.95672 seconds
+OMP_NUM_THREADS=4
+pi = 3.141592653589577
+time to compute = 6.10444 seconds
+OMP_NUM_THREADS=5
+pi = 3.141592653589738
+time to compute = 7.37072 seconds
+OMP_NUM_THREADS=6
+pi = 3.141592653589770
+time to compute = 6.15213 seconds
+[2021-03-09 10:14.48] ~/Workshop/sum2017/calc_pi/solution
+[alp514.hawk-b624](1051):
+&lt;/pre&gt;
+
+
+---
+
+# Intel Compiler Options
+
+
+| Flag | Description |
+|:----|:--------|
+| `-ipo` | Enables interprocedural optimization between files. |
+| `-ax_code_/-x_code_` | Tells the compiler to generate multiple, feature-specific auto-dispatch code paths for Intel processors if there is a performance benefit. code can be COMMON-AVX512, CORE-AVX512, CORE-AVX2, CORE-AVX-I or AVX |
+| `-xHost` | Tells the compiler to generate instructions for the highest instruction set available on the compilation host processor. DO NOT USE THIS OPTION  |
+| `-fast` | Maximizes speed across the entire program. Also sets `-ipo`, `-O3`, `-no-prec-div`, `-static`, `-fp-model fast=2`, and `-xHost`. Not recommended |
+| `-funroll-all-loops` | Unroll all loops even if the number of iterations is uncertain when the loop is entered. |
+| `-mkl` | Tells the compiler to link to certain libraries in the Intel Math Kernel Library (Intel MKL) |
+| `-static-intel/libgcc` | Links to Intel/GNU libgcc libraries statically, use -static to link all libraries dynamically |
+
+
+
+---
+
+# GNU Compiler Options
+
+
+| Flag | Description |
+|:----|:--------|
+| `-march=processor` |  Generate instructions for the machine type processor . processor can be sandybridge, ivybridge, haswell, broadwell or skylake-avx512. |
+| `-Ofast` |  Disregard strict standards compliance. `-Ofast` enables all `-O3` optimizations. It also enables optimizations that are not valid for all standard-compliant programs. It turns on `-ffast-math` and the Fortran-specific `-fstack-arrays`, unless `-fmax-stack-var-size` is specified, and `-fno-protect-parens`. |
+| `-funroll-all-loops` |  Unroll all loops even if the number of iterations is uncertain when the loop is entered. |
+| `-shared`/`-static` | Links to libraries dynamically/statically |
+
+
+
+---
+
+# NVIDIA HPC Compiler Options
+
+
+| Flag | Description |
+|:----|:--------|
+| `-acc` | Enable OpenACC directives. |
+| `-tp processor` | Specify the type(s) of the target processor(s). processor can be sandybridge-64, haswell-64, or skylake-64. |
+| `-mtune=processor` | Tune to processor everything applicable about the generated code, except for the ABI and the set of available instructions. processor can be sandybridge, ivybridge, haswell, broadwell or skylake-avx512. Some older programs/makefile might use -mcpu that is deprecated |
+| `-fast` | Generally optimal set of flags. |
+| `-Mipa` | Invokes interprocedural analysis and optimization.  |
+| `-Munroll` | Controls loop unrolling. |
+| `-Minfo` |  Prints informational messages regarding optimization and code generation to standard output as compilation proceeds.|
+| `-shared` | Instructs the linker to generate a shared object file. Implies `-⁠fpi`. |
+| `-Bstatic` | Statically link all libraries, including the PGI runtime. |
+
+
+
+---
+
+# Compilers for MPI Programming
+
+* MPI is a library, not a compiler, built or compiled for different compilers.
+
+| Language | Compile Command |
+|:--------:|:---:|
+| Fortran  | `mpif90` |
+| C | `mpicc` |
+| C++ | `mpicxx` |
+
+* Usage: `&lt;compiler&gt; &lt;options&gt; &lt;source code&gt;`
+&lt;pre class="wrap"&gt;
+[2021-03-09 10:59.58] ~/Workshop/2018XSEDEBootCamp/MPI/Solutions
+[alp514.sol](1090): mpif90 -o laplacef laplace_mpi.f90
+&lt;/pre&gt;
+
+* The MPI compiler command is just a wrapper around the underlying compiler.
+&lt;pre class="wrap"&gt;
+[2021-03-09 11:01.59] ~/Workshop/2018XSEDEBootCamp/MPI/Solutions
+[alp514.sol](1095): mpicxx -show
+/share/Apps/intel/2020/compilers_and_libraries_2020.3.275/linux/bin/intel64/icpc -lmpicxx -lmpi -I/share/Apps/lusoft/opt/spack/linux-centos8-haswell/intel-20.0.3/mvapich2/2.3.4-wguydha/include -L/share/Apps/lusoft/opt/spack/linux-centos8-haswell/intel-20.0.3/mvapich2/2.3.4-wguydha/lib -Wl,-rpath -Wl,/share/Apps/lusoft/opt/spack/linux-centos8-haswell/intel-20.0.3/mvapich2/2.3.4-wguydha/lib
+&lt;/pre&gt;
+
+
+
+
+---
+
+# MPI Libraries
+
+* There are two different MPI implementations commonly used.
+* `MPICH`: Developed by Argonne National Laboratory.
+   - used as a starting point for various commercial and open source MPI libraries (default MPI on Hawk).
+   - `MVAPICH2`: Developed by D. K. Panda with support for  InfiniBand, iWARP, RoCE, and Intel Omni-Path. (default MPI on Sol),
+   - `Intel MPI`: Intel's version of MPI. __You need this for Xeon Phi MICs__,
+      - available in cluster edition of Intel Compiler Suite. Not available at Lehigh.
+   - `IBM MPI` for IBM BlueGene, and 
+   - `CRAY MPI` for Cray systems.
+* `OpenMPI`: A Free, Open Source implementation from merger of three well know MPI implementations. Can be used for commodity network as well as high speed network.
+   - `FT-MPI` from the University of Tennessee,
+   - `LA-MPI` from Los Alamos National Laboratory,
+   - `LAM/MPI` from Indiana University
+
+
+---
+
+# Case Study: bgc
+
+* Software available at https://sites.google.com/site/bgcsoftware/
+* Download and extract source
+&lt;pre&gt;
+[2021-03-09 12:07.28] ~/Workshop/Make
+[alp514.sol](1180): wget https://sites.google.com/site/bgcsoftware/home/bgcdist1.03.tar.gz
+[2021-03-09 12:07.32] ~/Workshop/Make
+[alp514.sol](1181): tar -xzf bgcdist1.03.tar.gz
+[2021-03-09 12:07.45] ~/Workshop/Make
+&lt;/pre&gt;
+* Read Manual, `bgc_manual.pdf`, specifically sec 2.1 for compilation instructions
+   * `h5c++ -Wall -O2 -o bgc bgc_main.C bgc_func_readdata.C bgc_func_initialize.C bgc_func_mcmc.C bgc_func_write.C bgc_func_linkage.C bgc_func_ngs.C bgc_func_hdf5.C mvrandist.c -lgsl -lgslcblas`
+* Uses HDF5 to compile code and links to GSL libraries 
+&lt;pre class="wrap"&gt;
+[alp514.sol](1199): h5c++ -show
+/usr/bin/g++ -I/share/Apps/lusoft/opt/spack/linux-centos8-haswell/gcc-8.3.1/zlib/1.2.11-ai5thdl/include -fPIC -L/share/Apps/lusoft/opt/spack/linux-centos8-haswell/gcc-8.3.1/hdf5/1.10.7-vuonnza/lib /share/Apps/lusoft/opt/spack/linux-centos8-haswell/gcc-8.3.1/hdf5/1.10.7-vuonnza/lib/libhdf5_hl_cpp.a /share/Apps/lusoft/opt/spack/linux-centos8-haswell/gcc-8.3.1/hdf5/1.10.7-vuonnza/lib/libhdf5_cpp.a /share/Apps/lusoft/opt/spack/linux-centos8-haswell/gcc-8.3.1/hdf5/1.10.7-vuonnza/lib/libhdf5_hl.a /share/Apps/lusoft/opt/spack/linux-centos8-haswell/gcc-8.3.1/hdf5/1.10.7-vuonnza/lib/libhdf5.a -L/share/Apps/lusoft/opt/spack/linux-centos8-haswell/gcc-8.3.1/zlib/1.2.11-ai5thdl/lib -lz -ldl -lm -Wl,-rpath -Wl,/share/Apps/lusoft/opt/spack/linux-centos8-haswell/gcc-8.3.1/hdf5/1.10.7-vuonnza/lib
+&lt;/pre&gt;
+
+
+---
+
+# Case Study: Compiling bgc
+
+&lt;pre class="wrap"&gt;
+[2021-03-09 12:15.52] ~/Workshop/Make/bgcdist
+[alp514.sol](1200): h5c++ -Wall -O2 -o bgc bgc_main.C bgc_func_readdata.C bgc_func_initialize.C bgc_func_mcmc.C bgc_func_write.C bgc_func_linkage.C bgc_func_ngs.C bgc_func_hdf5.C mvrandist.c -lgsl -lgslcblas
+/usr/bin/ld: cannot find -lgsl
+/usr/bin/ld: cannot find -lgslcblas
+collect2: error: ld returned 1 exit status
+&lt;/pre&gt;
+
+--
+
+* **We do not install software in standard locations.**
+* Need to add path to `libgsl.{so,a}` and `libgslcblas.{so,a}` using the `-L` flag.
+* Run the command `module show gsl` to find the path to the lib directory.
+
+&lt;pre class="wrap"&gt;
+[alp514.sol](1202): h5c++ -Wall -O2 -o bgc bgc_main.C bgc_func_readdata.C bgc_func_initialize.C bgc_func_mcmc.C bgc_func_write.C bgc_func_linkage.C bgc_func_ngs.C bgc_func_hdf5.C mvrandist.c -lgsl -lgslcblas -L/share/Apps/lusoft/opt/spack/linux-centos8-haswell/gcc-8.3.1/gsl/2.5-ixuujea/lib
+[alp514.sol](1203): ldd bgc
+	linux-vdso.so.1 (0x00007ffe0cd5c000)
+	libgsl.so.23 =&gt; /share/Apps/lusoft/opt/spack/linux-centos8-haswell/gcc-8.3.1/gsl/2.5-ixuujea/lib/libgsl.so.23 (0x00007fa8b5f21000)
+	libgslcblas.so.0 =&gt; /share/Apps/lusoft/opt/spack/linux-centos8-haswell/gcc-8.3.1/gsl/2.5-ixuujea/lib/libgslcblas.so.0 (0x00007fa8b5ce5000)
+	libz.so.1 =&gt; /lib64/libz.so.1 (0x00007fa8b5ace000)
+	libdl.so.2 =&gt; /lib64/libdl.so.2 (0x00007fa8b58ca000)
+	libstdc++.so.6 =&gt; /lib64/libstdc++.so.6 (0x00007fa8b5535000)
+	libm.so.6 =&gt; /lib64/libm.so.6 (0x00007fa8b51b3000)
+	libgcc_s.so.1 =&gt; /lib64/libgcc_s.so.1 (0x00007fa8b4f9b000)
+	libc.so.6 =&gt; /lib64/libc.so.6 (0x00007fa8b4bd8000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007fa8b638f000)
+&lt;/pre&gt;
+
+
+---
+
+# Compilation 
+
+* Two step process
+1. compiler generates the object files from source code
+2. linker generates the executable from the object files
+* Most compilers can do both steps by default
+   * Use `-c` to suppress linking
+
+&lt;pre class="wrap"&gt;
+h5c++ -Wall -O2 -c bgc_main.C
+h5c++ -Wall -O2 -c bgc_func_readdata.C
+h5c++ -Wall -O2 -c bgc_func_initialize.C
+h5c++ -Wall -O2 -c bgc_func_mcmc.C
+h5c++ -Wall -O2 -c bgc_func_write.C
+h5c++ -Wall -O2 -c bgc_func_linkage.C
+h5c++ -Wall -O2 -c bgc_func_ngs.C
+h5c++ -Wall -O2 -c bgc_func_hdf5.C
+h5c++ -Wall -O2 -c mvrandist.c
+h5c++ -Wall -O2 -o bgc -lgsl -lgslcblas -L/share/Apps/lusoft/opt/spack/linux-centos8-haswell/gcc-8.3.1/gsl/2.5-ixuujea/lib bgc_main.o bgc_func_readdata.o bgc_func_initialize.o bgc_func_mcmc.o bgc_func_write.o bgc_func_linkage.o bgc_func_ngs.o bgc_func_hdf5.o mvrandist.o
+&lt;/pre&gt; 
+
+* Cumbersome for  applications that have a large number of subroutines or functions
+* How about applications with mixed code - C, C++ and Fortran?
+* Make simplifies this process.
+
+
+
+---
+
+# Best Practices 
+
+* Build for 64 bit architecture by adding `-m64`
+* Use `-mcmodel=medium` if you have large static arrays
+* Intel Compiler
+  * DO NOT USE `-fast` (at least on Sol and Hawk)
+     * Instead use `-ipo -O3 -no-prec-div -static -fp-model fast=2`
+     * and `-x&lt;code&gt;` or `-ax&lt;code&gt;` instead.
+  * DO NOTE USE `-xHost`, use `-x&lt;code&gt;` or `-ax&lt;code&gt;` instead
+     * OR optimize for all available architectures using `-axCOMMON-AVX512,CORE-AVX512,CORE-AVX2,CORE-AVX-I,AVX`
+  * Use `-mkl` if using MKL libraries.
+     * If you need specific option see the [MKL Link Advisor](https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/onemkl/link-line-advisor.html)
+* GNU Compiler
+  * Use `-march=&lt;processor&gt;` to optimize for a specific processor.
+     * GNU compiler cannot build multi-architecture binaries.
+     * If you are building only one executable, then optimize for the lowest processor i.e. ivybridge (if you plan to use debug queue) or haswell
+
+
+
+
+---
+class: inverse, middle
+
+# Make and Makefiles
+
+
+---
+
+# What is Make?
+
+* Tool that
+   * Controls the generation of executable and other non‐source files (libraries
+etc.)
+   * Simplifies (a lot) the management of a program that has multiple source files
+
+* Variants
+  * GNU Make
+  * BSD Make
+  * Microsoft nmake
+
+* Similar utilities
+  * CMake
+  * SCons
+
+---
+
+# How Make works?
+
+* Two parts
+  - Makefile
+      * A text file that describes the dependency and specifies how source files should be compiled
+  - `make` command
+      * compile the program using the Makefile
+
+&lt;pre class="wrap"&gt;
+[2021-03-09 18:24.29] ~/Workshop/Make/bgcdist
+[alp514.sol](1014): ls
+bgc_func_hdf5.C        bgc_func_mcmc.C      bgc_func_write.C  bgc_manual.pdf  example        Makefile       Makefile.variables
+bgc_func_initialize.C  bgc_func_ngs.C       bgc.h             CVS             install.sh     Makefile.auto  mvrandist.c
+bgc_func_linkage.C     bgc_func_readdata.C  bgc_main.C        estpost_h5.c    install_v2.sh  Makefile.obj   mvrandist.h
+[2021-03-09 18:24.34] ~/Workshop/Make/bgcdist
+[alp514.sol](1016): make
+h5c++ -Wall -O2 -o bgc bgc_main.C bgc_func_readdata.C bgc_func_initialize.C \
+	bgc_func_mcmc.C bgc_func_write.C bgc_func_linkage.C bgc_func_ngs.C \
+	bgc_func_hdf5.C mvrandist.c \
+	-lgsl -lgslcblas -L/share/Apps/lusoft/opt/spack/linux-centos8-haswell/gcc-8.3.1/gsl/2.5-ixuujea/lib
+&lt;/pre&gt;
+
+
+---
+
+# Make rules and targets
+
+* A _rule_ in the makefile tells Make how to execute a series of commands in order to build a _target_ file from source files. 
+    * It also specifies a list of dependencies of the target file.
+
+&lt;pre class="tab"&gt;
+target: dependencies
+	commands
+&lt;/pre&gt;
+
+* A makefile can have multiple targets.
+* Specify the target you wish to update `make bgc`
+   * Default - update the first target
+
+&lt;pre class="tab"&gt;
+[alp514.sol](1018): cat Makefile
+all: bgc
+bgc:
+	h5c++ -Wall -O2 -o bgc bgc_main.C bgc_func_readdata.C bgc_func_initialize.C \
+		bgc_func_mcmc.C bgc_func_write.C bgc_func_linkage.C bgc_func_ngs.C \
+		bgc_func_hdf5.C mvrandist.c \
+		-lgsl -lgslcblas -L/share/Apps/lusoft/opt/spack/linux-centos8-haswell/gcc-8.3.1/gsl/2.5-ixuujea/lib
+&lt;/pre&gt;
+
+* __Note__: Use the tab key, do not indent using spaces.
+
+
+---
+
+# Makefile and Make 
+
+* Makefile Components
+  * Explicit rules: creates a target or re‐creates a target when any of prerequisites changes
+  * Implicit rules: how to build a certain type of targets
+  * Variables
+  * Directives
+
+* How does Make process a Makefile
+  * reads all components and makes a dependency graph
+  * determines which targets need to be built and invokes the recipe to do so
+
+
+
+
+---
+
+# Explicit Rules
+
+* Multiple rules can exist in the same Makefile
+  * The “make” command builds the first target by default
+  * To build other targets, one needs to specify the target name
+    * `make &lt;target name&gt;`
+* A single rule can have multiple targets separated by space
+* An action (or recipe) can consist of multiple commands
+  * They can be on multiple lines, or on the same line separated by semicolons
+  * Wildcards can be used
+  * By default all executed commands will be echoed on the screen
+    * Can be suppressed by adding “@” before the commands 
+
+
+
+---
+
+# Creating a Makefile: Step 1
+
+&lt;pre class="tab wrap"&gt;
+all: bgc
+bgc: 
+	h5c++ -Wall -O2 -o bgc bgc_main.o bgc_func_readdata.o bgc_func_initialize.o \
+		bgc_func_mcmc.o bgc_func_write.o bgc_func_linkage.o bgc_func_ngs.o \
+		bgc_func_hdf5.o mvrandist.o \
+		-I/share/Apps/lusoft/opt/spack/linux-centos8-haswell/gcc-8.3.1/gsl/2.5-ixuujea/include \
+		-lgsl -lgslcblas -L/share/Apps/lusoft/opt/spack/linux-centos8-haswell/gcc-8.3.1/gsl/2.5-ixuujea/lib
+bgc_main.o: bgc_main.C
+	h5c++ -c -Wall -O2 bgc_main.C -I/share/Apps/lusoft/opt/spack/linux-centos8-haswell/gcc-8.3.1/gsl/2.5-ixuujea/include
+bgc_func_readdata.o: bgc_func_readdata.C
+	h5c++ -c -Wall -O2 bgc_func_readdata.C -I/share/Apps/lusoft/opt/spack/linux-centos8-haswell/gcc-8.3.1/gsl/2.5-ixuujea/include
+bgc_func_initialize.o: bgc_func_initialize.C
+	h5c++ -c -Wall -O2 bgc_func_initialize.C -I/share/Apps/lusoft/opt/spack/linux-centos8-haswell/gcc-8.3.1/gsl/2.5-ixuujea/include
+bgc_func_mcmc.o: bgc_func_mcmc.C
+	h5c++ -c -Wall -O2 bgc_func_mcmc.C -I/share/Apps/lusoft/opt/spack/linux-centos8-haswell/gcc-8.3.1/gsl/2.5-ixuujea/include
+bgc_func_write.o: bgc_func_write.C
+	h5c++ -c -Wall -O2 bgc_func_write.C -I/share/Apps/lusoft/opt/spack/linux-centos8-haswell/gcc-8.3.1/gsl/2.5-ixuujea/include
+bgc_func_linkage.o: bgc_func_linkage.C
+	h5c++ -c -Wall -O2 bgc_func_linkage.C -I/share/Apps/lusoft/opt/spack/linux-centos8-haswell/gcc-8.3.1/gsl/2.5-ixuujea/include
+bgc_func_ngs.o: bgc_func_ngs.C
+	h5c++ -c -Wall -O2 bgc_func_ngs.C -I/share/Apps/lusoft/opt/spack/linux-centos8-haswell/gcc-8.3.1/gsl/2.5-ixuujea/include
+bgc_func_hdf5.o: bgc_func_hdf5.C
+	h5c++ -c -Wall -O2 bgc_func_hdf5.C -I/share/Apps/lusoft/opt/spack/linux-centos8-haswell/gcc-8.3.1/gsl/2.5-ixuujea/include
+mvrandist.o: mvrandist.c
+	h5c++ -c -Wall -O2 mvrandist.c -I/share/Apps/lusoft/opt/spack/linux-centos8-haswell/gcc-8.3.1/gsl/2.5-ixuujea/include
+clean:
+	rm -rf *.o bgc
+&lt;/pre&gt;
+
+
+---
+
+# Variables
+
+* Make permits the use if variables to prevent errors due to duplication of commands.
+
+* Standard variables used in Makefiles
+   * CC, CXX, FC, F77, F90: variables to specify C, C++, and Fortran compilers
+   * CFLAGS, CXXFLAGS, FCFLAGS: flags to give C, C++ and Fortran compilers
+   * CPPFLAGS: flags to give to the C preprocessor, `-I{path to include or mod files}`
+   * LDFLAGS: compiler flags when invoking linker. `-L{path to library}`
+   * LIBS: list of libraries to link
+
+* In general, OBJ is used for a list of object files
+
+
+
+---
+
+# Makefile using variables
+
+&lt;pre class="tab wrap"&gt;
+OBJ = bgc_main.o bgc_func_readdata.o bgc_func_initialize.o bgc_func_mcmc.o \
+	bgc_func_write.o bgc_func_linkage.o bgc_func_ngs.o bgc_func_hdf5.o mvrandist.o
+CXX = h5c++
+CXXFLAGS = -Wall -O2
+LIBS = -lgsl -lgslcblas
+LDFLAGS = -L/share/Apps/lusoft/opt/spack/linux-centos8-haswell/gcc-8.3.1/gsl/2.5-ixuujea/lib
+CPPFLAGS = -I/share/Apps/lusoft/opt/spack/linux-centos8-haswell/gcc-8.3.1/gsl/2.5-ixuujea/include
+EXEC = bgc
+
+all: $(EXEC)
+$(EXEC): $(OBJ)
+	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -o bgc $(OBJ) $(LIBS) $(LDFLAGS)
+bgc_main.o: bgc_main.C
+	$(CXX) -c $(CXXFLAGS) $(CPPFLAGS) bgc_main.C
+bgc_func_readdata.o: bgc_func_readdata.C
+	$(CXX) -c $(CXXFLAGS) $(CPPFLAGS) bgc_func_readdata.C
+bgc_func_initialize.o: bgc_func_initialize.C
+	$(CXX) -c $(CXXFLAGS) $(CPPFLAGS) bgc_func_initialize.C
+bgc_func_mcmc.o: bgc_func_mcmc.C
+	$(CXX) -c $(CXXFLAGS) $(CPPFLAGS) bgc_func_mcmc.C
+bgc_func_write.o: bgc_func_write.C
+	$(CXX) -c $(CXXFLAGS) $(CPPFLAGS) bgc_func_write.C
+bgc_func_linkage.o: bgc_func_linkage.C
+	$(CXX) -c $(CXXFLAGS) $(CPPFLAGS) bgc_func_linkage.C
+bgc_func_ngs.o: bgc_func_ngs.C
+	$(CXX) -c $(CXXFLAGS) $(CPPFLAGS) bgc_func_ngs.C
+bgc_func_hdf5.o: bgc_func_hdf5.C
+	$(CXX) -c $(CXXFLAGS) $(CPPFLAGS) bgc_func_hdf5.C
+mvrandist.o: mvrandist.c
+	$(CXX) -c $(CXXFLAGS) $(CPPFLAGS) mvrandist.c
+clean:
+	rm -rf $(OBJ) $(EXEC)
+&lt;/pre&gt; 
+
+
+
+---
+
+# Automatics variables &amp; Implicit rules
+
+* The values of automatic variables change every time a rule is executed
+* Automatic variables only have values within a rule
+* Most frequently used ones
+  *  $@: The name of the current target
+  *  $^: The names of all the prerequisites
+  *  $?: The names of all the prerequisites that are newer than the target
+  *  $&lt;: The name of the first prerequisite
+
+* Implicit rule specifies how to build a certain type of targets
+  * Similar to explicit rule but uses % in target
+  * makes use of automatic variables
+
+&lt;pre class="tab"&gt;
+%.o: %.c
+	command
+&lt;/pre&gt;
+
+
+
+---
+
+# Makefile using Implicit rules
+
+&lt;pre class="tab wrap"&gt;
+OBJ = bgc_main.o bgc_func_readdata.o bgc_func_initialize.o bgc_func_mcmc.o \
+	bgc_func_write.o bgc_func_linkage.o bgc_func_ngs.o bgc_func_hdf5.o mvrandist.o
+CXX = h5c++
+CXXFLAGS = -Wall -O2
+LIBS = -lgsl -lgslcblas
+LDFLAGS = -L/share/Apps/lusoft/opt/spack/linux-centos8-haswell/gcc-8.3.1/gsl/2.5-ixuujea/lib
+CPPFLAGS = -I/share/Apps/lusoft/opt/spack/linux-centos8-haswell/gcc-8.3.1/gsl/2.5-ixuujea/include
+EXEC = bgc
+
+all : $(EXEC)
+
+$(EXEC): $(OBJ)
+	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -o bgc $(OBJ) $(LIBS) $(LDFLAGS)
+
+%.o : %.C
+	$(CXX) -c $(CXXFLAGS) $(CPPFLAGS) $&lt; -o $@
+
+%.o : %.c
+	@$(CXX) -c $(CXXFLAGS) $(CPPFLAGS) $&lt; -o $@
+
+clean:
+	rm -rf $(OBJ) $(EXEC)
+&lt;/pre&gt;
+
+* Add an @ before a command to stop it from being printed
+
+
+---
+
+# Directives
+
+* Make directives are similar to the C preprocessor directives
+  * E.g. include, define, conditionals
+* Include directive
+  * Read the contents of other Makefiles before proceeding within the current one
+* Often used to read
+  * Top level and common definitions when there are multiple makefiles
+* Conditional directive
+  * Make supports `if .. else .. endif` conditional
+
+
+
+---
+
+# Command line options
+
+* `-f &lt;filename&gt;`: Specify the name of the file to be used as the makefile
+  * default is GNUmakefile, makefile and Makefile (in that order)
+
+* `-s`: turn on silent mode
+  * same as adding @ before all commands
+
+* `j num`: build target in parallel using `num` threads/commands
+  * we have only 2 licenses for Intel compiler. 
+  * `num &gt; 2` will not increase your overall compile time
+
+* `-i`: ignore all errors
+
+* `-k`: continue as much as possible after an error 
+
+
+---
+
+# Example Makefile with conditional if
+
+&lt;pre class="tab wrap"&gt;
+[alp514.sol](1149): cat /home/alp514/Workshop/sum2017/saxpy/solution/Makefile_f90
+ifeq ($(COMP),gnu)
+	CC = gcc
+	FC = gfortran
+	CFLAGS =
+	OFLAGS = -fopenmp
+	BIN = saxpyf saxpyf_omp
+else
+	CC = pgcc
+	FC = pgf90
+	CFLAGS =
+	OFLAGS = -mp
+	AFLAGS = -acc -Minfo=accel -ta=tesla:cc60 -Mcuda=kepler+
+	BIN = saxpyf saxpyf_omp saxpyf_acc saxpyf_cuda
+endif
+
+all: $(BIN)
+saxpyf:
+	$(FC) $(CFLAGS) -o saxpyf saxpy.f90
+saxpyf_omp:
+	$(FC) $(OFLAGS) -o saxpyf_omp saxpy_omp.f90
+saxpyf_acc:
+	$(FC) $(AFLAGS) -o saxpyf_acc saxpy_acc.f90
+saxpyf_cuda:
+	$(FC) $(CFLAGS) -o saxpyf_cuda saxpy.cuf
+clean:
+	rm -rf $(BIN) *~
+[alp514.sol](1156): make all  -f Makefile_f90 COMP=gnu
+gfortran  -o saxpyf saxpy.f90
+gfortran -fopenmp -o saxpyf_omp saxpy_omp.f90
+&lt;/pre&gt;  
+
+
+
+---
+
+# Software Installation
+
+* Install  from prepackaged binary
+    * RPMs – need root privilege (in most cases)
+      * install packages using yum, apt, zypper in your own container 
+    * Tarballs with interactive installation scripts 
+      * e.g. Anaconda Python Distribution
+  * Easy to install, but application may not be optimized for the cpu
+
+&lt;pre class="wrap"&gt;
+Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+&lt;/pre&gt;
+
+* Install from source
+  * compile the source files with own choice of compilers, options and libraries
+  * most flexible, but you need to choose the best/right compilers and options
+  * Many packages use GNU build system (autoconf etc.) to produce shell scripts that handle the configuration and build
+     * `configure &amp;&amp; make &amp;&amp; make install`
+     * `cmake &amp;&amp; make &amp;&amp; make install`
+     * Use SPACK to install packages including dependencies
+
+
+---
+
+# Install from source
+
+* configure the package, choose compilers and options
+  * with *autoconf*
+      * pass options to the `configure` script, which will generate Makefiles accordingly
+      * the `configure` script comes with a `--help` option which displays all options acceptable to `configure`
+  * without _autoconf_
+      * if using `cmake`: pass options to the cmake command
+      * else you need to edit the Makefile (or files that it includes)
+
+* `make`: compile the source files
+* `make install`: copy compiled files to desired location
+
+
+---
+
+# Case Study: LAPACK
+
+* No _autoconf_
+* Installation steps
+   * Download and extract source code
+   * Copy _make.inc.example_ as _make.inc_, edit as needed
+   * run make
+
+&lt;script id="asciicast-mi0DBVFKzkq5YBPe5WB9ecwhH" src="https://asciinema.org/a/mi0DBVFKzkq5YBPe5WB9ecwhH.js" async data-rows=20&gt;&lt;/script&gt;
+
+[View online](https://asciinema.org/a/mi0DBVFKzkq5YBPe5WB9ecwhH?autoplay=1&amp;speed=2&amp;size=8)
+
+
+
+---
+
+# Case Study: FFTW
+
+* Uses _autoconf_
+* Installation steps
+   * Download and extract source code
+   * run configure script (use --prefix to specify install location)
+   * run make, followed by make install
+
+&lt;script id="asciicast-RIdl1aGDbPLiSv3WCIvQw5tDW" src="https://asciinema.org/a/RIdl1aGDbPLiSv3WCIvQw5tDW.js" async data-rows=20&gt;&lt;/script&gt;
+
+[View online](https://asciinema.org/a/RIdl1aGDbPLiSv3WCIvQw5tDW?autoplay=1&amp;speed=2&amp;size=8)
+
+
+
+---
+
+# Using Autoconf 
+
+* Commonly used `./configure` options
+   * _--help_ : Print the help menu listing all available options
+   * _--prefix=_: Specify installation location
+       * default install location is /usr/local that requires admin right for `make install` to work
+   * _--with-pic_: generates position independent code, same as adding -fPIC compile flag
+   * _--enable-shared/static_: create shared/static libraries
+       * either shared or static is enabled by default and you need to specify the other if you need those libraries
+   * _--with-package_: if the application depends on _package_, then you may need to specify the path to install location of &lt;package&gt;. 
+       * required since we use non standard installation location
+       * actual option may vary
+       * sometime this option might not work and you may need to explicitly specify location of lib and include directories
+            * _--with-package-libdir_ OR _--with-package-includedir_
+       * e.g. --with-blas=/home/alp514/Workshop/Make/lapack-3.9.0
+
+
+ 
+---
+
+# Case Study: GROMACS 
+
+* Uses _CMAKE_
+* Installation steps
+  * Download and extract source code
+  * create build directory and run cmake 
+  * run make, followed by make install
+
+&lt;script id="asciicast-Zzgimy8rvfcrdwgai9ul3cnMO" src="https://asciinema.org/a/Zzgimy8rvfcrdwgai9ul3cnMO.js" async data-rows=20&gt;&lt;/script&gt;
+
+[View online](https://asciinema.org/a/Zzgimy8rvfcrdwgai9ul3cnMO?autoplay=1&amp;speed=2&amp;size=8)
+
+
+---
+
+# Using CMAKE
+
+* CMAKE requires building in a separate directory i.e. not the directory where source files or CMakeLists.txt is present.
+   * Autoconf can be run from the same directory where configure script is present. It's good practice to use a separate build directory but this doesn't work for some applications.
+* Usage: `cmake &lt;absolute or relative path to directory containing CMakeLists.txt&gt;`
+* Example (for gromacs example above): `cmake /home/alp514/Workshop/Make/gromacs-2020.4`
+* CMAKE configuration options (_-D variable=value_) vary by application.
+   * GROMACS uses `GMX_MPI=ON or OFF` while LAMMPS uses `BUILD_MPI=yes or no`
+   * Yes, you need to RTFM
+* Make sure that dependencies are in your path 
+   * set PATH, LD\_LIBRARY\_PATH, and LD\_INCLUDE\_PATH variables or load the appropriate modules 
+   * if dependencies are not found, you may need to explicitly add them as `cmake` options
+        *  `-D MKL_LIBRARIES` or `-D FFTW3_LIBRARY`
+
+
+
+---
+
+# CMAKE variables and commands
+
+* `-DCMAKE_INSTALL_PREFIX`: Specify installation location
+* `-DCMAKE_language_COMPILER`: Specify compiler for _language=C,CXX,Fortran_.
+    * Use default GNU compiler or those specified by CC,CXX and FC variables
+* `-D CMAKE_language_FLAGS`: Specify compiler flags for _language_ (C/CXX/Fortran)
+    * Can use environment variables _CFLAGS/CXXFLAGS/FFLAGS_
+* `cmake --build` and `cmake --install` to build and install instead of `make` and `make install`
+ 
+&lt;script id="asciicast-FtIKii3WOifa7HoY487SidMTV" src="https://asciinema.org/a/FtIKii3WOifa7HoY487SidMTV.js" async data-rows=20&gt;&lt;/script&gt;
+
+[View online](https://asciinema.org/a/FtIKii3WOifa7HoY487SidMTV?autoplay=1&amp;speed=2&amp;size=8)
+
+
+
+---
+
+# Manually building packages
+
+* Which one to use - Make, Autoconf, or CMAKE?
+   * This depends on the application.
+* Dependency Hell
+   * You still need to build or install dependencies.
+   * Some applications have a long list of dependencies that can consume an enormous amount of time installing.
+* Using a package manager can simplify the install process
+   * Build from source
+       * SPACK: Package manager of choice on Sol/Hawk
+       * Easybuild
+   * Install from binaries 
+       * Conda: Did you think conda is for Python or R packages only?
+       * Nix
+       * GUIX
+
+
+---
+class: inverse, middle
+
+# Supercomputer PACKage manager
+
+
+
+---
+
+# SPACK
+
+* package management tool designed to support multiple versions and configurations of software on a wide variety of platforms and environments.
+* designed for large supercomputing centers, 
+    * many users and application teams share common installations of software on clusters with exotic architectures, using libraries that do not have a standard ABI.
+* non-destructive
+    * installing a new version does not break existing installations
+    * many configurations can coexist on the same system
+* offers a simple spec syntax so that users can specify versions and configuration options concisely
+* simple for package authors
+    * package files are written in pure Python, and specs allow package authors to maintain a single file for many different builds of the same package
+
+* content used from SPACK tutorial slides available at https://spack-tutorial.readthedocs.io/
+
+
+---
+
+# HPC Software Complexity
+
+
+![:scale 90%](assets/img/spack-hpc-complexity.png)
+
+&lt;span style="font-size:12px"&gt;from SPACK tutorial slides presented at SC20&lt;/span&gt;
+
+
+---
+
+# SPACK: a flexible package manager
+
+* How to install SPACK?
+
+
+```bash
+git clone https://github.com/spack/spack
+source spack/share/spack/setup-env.sh
+```
+
+* How to install a package?
+
+
+```bash
+spack install hdf5
+```
+
+* What will be installed?
+
+
+```bash
+spack spec hdf5
+```
+
+```
+## Input spec
+## --------------------------------
+## hdf5
+## 
+## Concretized
+## --------------------------------
+## hdf5@1.10.7%gcc@8.3.0~cxx~debug~fortran~hl~java+mpi+pic+shared~szip~threadsafe api=none arch=darwin-mojave-x86_64
+##     ^openmpi@3.1.6%gcc@8.3.0~atomics~cuda~cxx~cxx_exceptions+gpfs~java~legacylaunchers~lustre~memchecker~pmi~singularity~sqlite3+static~thread_multiple+vt+wrapper-rpath fabrics=none schedulers=none arch=darwin-mojave-x86_64
+##         ^hwloc@1.11.11%gcc@8.3.0~cairo~cuda~gl~libudev+libxml2~netloc~nvml~pci+shared arch=darwin-mojave-x86_64
+##             ^libxml2@2.9.10%gcc@8.3.0~python arch=darwin-mojave-x86_64
+##                 ^libiconv@1.16%gcc@8.3.0 arch=darwin-mojave-x86_64
+##                 ^pkgconf@1.7.3%gcc@8.3.0 arch=darwin-mojave-x86_64
+##                 ^xz@5.2.5%gcc@8.3.0~pic arch=darwin-mojave-x86_64
+##                 ^zlib@1.2.11%gcc@8.3.0+optimize+pic+shared arch=darwin-mojave-x86_64
+```
+
+
+---
+
+# SPACK: syntax
+
+* spec syntax to describe customized DAG configurations
+
+
+```bash
+spack spec gromacs                                                  unconstrained
+spack spec gromacs@2020.4                                           @ custom version
+spack spec gromacs@2020.4 %intel@20.0.3                             % custom compiler
+spack spec gromacs@2020.4 %intel@20.0.3 +cuda ~mpi                  +/- build option
+spack spec gromacs@2020.4 %intel@20.0.3 cppflags="-O3"              set compiler flags
+spack spec gromacs@2020.4 %intel@20.0.3 target=haswell              set target architecture
+spack spec gromacs@2020.4 %intel@20.0.3 target=haswell ^mpich@3.3.2 ^ dependency information
+```
+
+* very large list of packages supported
+
+
+```bash
+spack list
+==&gt; 5373 packages.
+3dtk                       libmetalink                               py-dm-tree                         r-genomeinfodbdata
+3proxy                     libmicrohttpd                             py-dnaio                           r-genomicalignments
+abduco                     libmmtf-cpp                               py-docker                          r-genomicfeatures
+```
+
+* see list of packages installed
+
+```bash
+[alp514.sol](1001): spack find target=x86_64 os=centos8
+==&gt; 184 installed packages
+-- linux-centos8-x86_64 / gcc@8.3.1 -----------------------------
+anaconda3@2019.10            font-util@1.3.2               libatomic-ops@7.6.6   libxext@1.3.3        openjdk@1.8.0_222-b10             perl-net-http@6.17        tcl@8.6.8
+anaconda3@2020.07            fontconfig@2.13.1             libbsd@0.10.0         libxfixes@5.0.2      openssl@1.1.1h                    perl-test-needs@0.002005  tcl@8.6.10
+at-spi2-atk@2.34.2           fontsproto@2.1.3              libedit@3.1-20191231  libxfont@1.5.2       pango@1.41.0                      perl-try-tiny@0.28        texinfo@6.5
+at-spi2-core@2.38.0          freetype@2.10.1               libevent@2.1.8        libxft@2.3.2         parallel@20200822                 perl-uri@1.72             tk@8.6.8
+atk@2.36.0                   gawk@5.0.1                    libffi@3.3            libxi@1.7.6          patchelf@0.10                     perl-www-robotrules@6.02  tk@8.6.8
+```
+
+
+---
+
+# SPACK : Installation and Setup
+
+ &lt;script id="asciicast-NLNIoQnu8gvxDt1206gQoGs4D" src="https://asciinema.org/a/NLNIoQnu8gvxDt1206gQoGs4D.js" async data-speed=3 data-rows=25&gt;&lt;/script&gt;
+
+[View online](https://asciinema.org/a/NLNIoQnu8gvxDt1206gQoGs4D?autoplay=1&amp;speed=2&amp;size=8)
+
+
+
+---
+
+# SPACK: Installing packages
+
+ &lt;script id="asciicast-SBkLbuNYesRwcV0kklBn1LbgS" src="https://asciinema.org/a/SBkLbuNYesRwcV0kklBn1LbgS.js" async data-speed=2 data-rows=25&gt;&lt;/script&gt;
+
+[View online](https://asciinema.org/a/SBkLbuNYesRwcV0kklBn1LbgS?autoplay=1&amp;speed=2&amp;size=8)
+
+
+---
+
+# SPACK: Useful Commands
+
+* `spack compiler list`: show list of available compilers
+* `spack compiler find`: find compilers in your path and add new compilers
+* `spack compiler add &lt;path&gt;`: add compilers if present in `&lt;path&gt;`
+* `spack list`: show list of available packages
+   * if &lt;name&gt; is provided, then show all available packages that match `name`
+* `spack find`: show list of installed packages
+   * if &lt;name&gt; is provided, then show all installed packages that match `name`
+   * Options:
+      *  `-x, --explicit`: show only specs that were installed explicitly
+      * `-X, --implicit`: show only specs that were installed as dependencies
+      * `-l, --long`: show dependency versions as well as hashes
+      * `-p, --paths`: show paths to package install directories
+      * `-d, --deps`: output dependencies along with found specs 
+      * `-h, --help`: show this help message and exit
+* `spack module tcl/lmod refresh`: create tcl/lmod modules. tcl modules are created by default during installation
+   * Option: `--delete-tree`: delete entire module tree before creation
+       
+
+---
+
+# SPACK: Useful Commands
+
+* `spack install package@version constraints`: install package
+   * if `@version` is omitted, then either the latest available or preferred package is installed
+   * constraints can be
+     * `%comp@ver`: install using `comp` compiler version `ver`
+     * `+variant/~variant`: add/remove variant. Note there is no `-` since some packages have `-` in their name
+     * `^depend@ver`: install `depend@ver`as a dependency e.g. mpich instead of openmpi
+* `spack uninstall package@version constraints`: uninstall package
+   * Alternate: `spack uninstall /hash` delete package using it's hash
+   * Options:
+     * `--all`: uninstall all variants of `package@version`
+     * `--dependents`: uninstall all packages that depend on `package@version`
+        * SPACK will not allow you to delete a package if it is a dependency of another package  
+
+
+---
+
+# SPACK: Configuration
+
+* Copy configuration files from `/share/Apps/usr/etc/spack` to `~/.spack` if you want to match SOL's spack installation
+   * `config.yaml`: main configuration file.
+       * If you do not want to use SOL's configuration file, then create a config.yaml file that contains the following lines
+
+&lt;pre class="tab"&gt;
+config:
+	build_stage:
+	- $spack/var/spack/stage
+&lt;/pre&gt;   
+
+   * by default, spack uses /tmp for temporary builds. Some applications are quite large and can fill the 10GB /tmp space and make the Sol head node unusable.
+   * `compilers.yaml`: compiler specification (save this to `~/.spack/linux`)
+   * `modules.yaml`: configuration file for creating modules
+   * `packages.yaml`: set up default package configurations - paths, variants, providers
+   * `repo.yaml`: local repository of package configuration (e.g. bgc)
+   * `upstreams.yaml`: use `/share/Apps/lusoft` as an upstream install tree to avoid building duplicate packages
+
+
+---
+
+# SPACK: Final Thoughts
+
+* SPACK has a lot more features.
+   * environments to deploy a large set of software
+       * use environments to build entire software stack optimized for ivybridge, haswell and skylake architectures
+
+* If you are a developer, you can use SPACK to distribute your software on HPC systems.
+  
+
+
+
+---
+class: inverse, middle
+
+# Singularity Containers
+
+
+---
+
+# Containers?
+
+* Some applications are very hard to install:
+   * Complex dependencies that is cumbersome even for SPACK.
+   * Developers are too lazy to test on various architecture and distributions:
+       * How many of you use an application that  _works or is tested only on Ubuntu 14.04_?
+       * Provide docker images since supporting an application takes time away from doing research.
+
+* Can we just use docker?
+   * NO. Docker has two major issues with running on HPC systems.
+       * Docker requires you to run as root that is not permitted on shared resources such as HPC systems.
+       * Docker is not designed to run on HPC systems. It is not designed to run mpi applications across multiple nodes 
+
+  
+---
+
+# What is Singularity?
+
+* open-source container software that allows users to pack an application and all of its dependencies into a single image (file)
+* Developed by Greg Kurtzer at Lawrence Livermore National Laboratory
+* "Container for HPC"
+* Native command line interface
+   * Syntax: `singularity &lt;command&gt; &lt;options&gt; &lt;arguments&gt;`
+* Can use docker images as well as it's own .sif images.
+* Can run mpi applications provided the version of the mpi on the host and the container are the same.
+
+
+---
+
+# Singularity on Sol and Hawk
+
+* Singularity is installed on all compute nodes of Sol and Hawk.
+    * There is no module file for singularity
+
+* Singularity containers available for
+    * Virtual Desktop Environment on Open OnDemand
+    * RStudio Server on Open OnDemand
+    * Cactus uses singularity to run docker image 
+    
+* Want to use your image:
+    * You need to build on your local system and copy the .sif file to Sol 
+
+---
+
+# Singularity: pull docker images
+
+* pull docker images from hub.docker.com and convert to native .sif format
+
+&lt;pre class="wrap"&gt;
+[2021-03-11 21:22.53] ~/Workshop/singularity
+[apacheco@mira](1001): ls
+singularity.cast
+[2021-03-11 21:22.54] ~/Workshop/singularity
+[apacheco@mira](1002): singularity pull docker://godlovedc/lolcow
+INFO:    Converting OCI blobs to SIF format
+INFO:    Starting build...
+Getting image source signatures
+Copying blob 9fb6c798fa41 done
+Copying blob 3b61febd4aef done
+Copying blob 9d99b9777eb0 done
+Copying blob d010c8cf75d7 done
+Copying blob 7fac07fb303e done
+Copying blob 8e860504ff1e done
+Copying config 73d5b1025f done
+Writing manifest to image destination
+Storing signatures
+INFO:    Creating SIF file...
+[2021-03-11 21:23.24] ~/Workshop/singularity
+[apacheco@mira](1003): ls
+lolcow_latest.sif  singularity.cast
+&lt;/pre&gt;
+
+
+---
+
+# Singularity: run images
+
+* `singularity run image`: will run the default executing script
+   * similar to `docker run images` 
+
+&lt;pre class="wrap"&gt;
+[2021-03-11 21:23.27] ~/Workshop/singularity
+[apacheco@mira](1004): singularity run lolcow_latest.sif
+ _______________________________________
+/ Don't go around saying the world owes \
+| you a living. The world owes you      |
+| nothing. It was here first.           |
+|                                       |
+\ -- Mark Twain                         /
+ ---------------------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+&lt;/pre&gt;
+
+
+---
+
+# Singularity: execute a command 
+
+* `singularity exec image command`: execute command from within the container
+
+&lt;pre class="wrap"&gt;
+[2021-03-11 21:23.39] ~/Workshop/singularity
+[apacheco@mira](1006): singularity exec lolcow_latest.sif cat /etc/os-release
+NAME="Ubuntu"
+VERSION="16.04.3 LTS (Xenial Xerus)"
+ID=ubuntu
+ID_LIKE=debian
+PRETTY_NAME="Ubuntu 16.04.3 LTS"
+VERSION_ID="16.04"
+HOME_URL="http://www.ubuntu.com/"
+SUPPORT_URL="http://help.ubuntu.com/"
+BUG_REPORT_URL="http://bugs.launchpad.net/ubuntu/"
+VERSION_CODENAME=xenial
+UBUNTU_CODENAME=xenial
+&lt;/pre&gt;
+
+
+---
+
+# Singularity: run container as an executable
+
+* `./containername`: run the conatiner as an executable, 
+    * executes the default runscript
+    * executes ENTRYPOINT CMD for docker images
+
+&lt;pre  class="wrap"&gt;
+[2021-03-11 21:23.35] ~/Workshop/singularity
+[apacheco@mira](1005): ./lolcow_latest.sif
+ _________________________________
+&lt; So you're back... about time... &gt;
+ ---------------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+&lt;/pre&gt;
+
+
+
+---
+
+# Singularity: modify existing images
+
+* Singularity can build a sandboxed image so that you can install new packages or modify installed packages
+   * You need admin right for this and should be done on a system where you have admin rights
+       * No, you cannot get admin rights on Sol/Hawk.
+       * You can install singularity natively on linux
+
+&lt;pre class="wrap"&gt;
+[2021-03-11 21:23.50] ~/Workshop/singularity
+[apacheco@mira](1007): singularity exec lolcow_latest.sif which python
+[2021-03-11 21:24.41] ~/Workshop/singularity
+[apacheco@mira](1010): sudo singularity build -s lolcow lolcow_latest.sif
+INFO:    Starting build...
+INFO:    Creating sandbox directory...
+INFO:    Build complete: lolcow
+[2021-03-11 21:24.52] ~/Workshop/singularity
+[apacheco@mira](1011): sudo singularity shell -w lolcow
+... skip ..
+[2021-03-11 21:25.34] ~/Workshop/singularity
+[apacheco@mira](1012): sudo singularity build lolcow.sif lolcow
+INFO:    Starting build...
+INFO:    Creating SIF file...
+INFO:    Build complete: lolcow.sif
+[2021-03-11 21:26.05] ~/Workshop/singularity
+[apacheco@mira](1015): singularity exec lolcow.sif which python
+/usr/bin/python
+&lt;/pre&gt;
+
+---
+
+# Singularity: pull, modify and run
+
+&lt;script id="asciicast-zbtQSoIeSF9RsTspXGwrpqEfW" src="https://asciinema.org/a/zbtQSoIeSF9RsTspXGwrpqEfW.js" async data-speed=3 data-rows=25&gt;&lt;/script&gt;
+
+[View online](https://asciinema.org/a/zbtQSoIeSF9RsTspXGwrpqEfW?autoplay=1&amp;speed=2&amp;size=8)
+
+
+
+
+---
+
+# Singularity: building you own images
+
+* The preferred method to build singularity images is by creating a definition file (similar to Dockerfile for docker images)
+   * The method on the previous slide (pull image, create sandbox, install packages, create final image) is 
+	 * tedious to reproduce
+         * cannot set environment and other features that improve usability
+* A Singularity Definition file is divided into two parts
+* Header: describes the core operating system to build within the container.
+   * configure the base operating system features needed. 
+   * specify, the Linux distribution, the specific version, and the packages that must be part of the core install 
+* Sections: rest of the definition is comprised of sections
+   * Each section is defined by a `%` character followed by the name of the particular section
+   * sections are optional, and a def file may contain more than one instance of a given section
+
+
+---
+
+# Example definition file
+
+
+&lt;pre class="wrap"&gt;
+Bootstrap: docker
+From: centos:8
+
+%help
+	Python 3.8 and R 4.0.4 in CentOS 8
+
+%labels
+	Author: Alex Pacheco
+	Contact: alp514@lehigh.edu
+
+%runscript
+	exec python3 "$@"
+
+%apprun python
+	exec python3 "$@"
+
+%apprun R
+	exec R "$@"
+
+%post
+	yum update -y
+	yum install -y epel-release
+	yum --enablerepo epel install -y python38 python38-pip R-core
+
+&lt;/pre&gt;
+
+
+
+
+---
+
+# Bootstrap from docker 
+
+
+&lt;script id="asciicast-2ElkQPmGar1LgfjF0T5FjmQAA" src="https://asciinema.org/a/2ElkQPmGar1LgfjF0T5FjmQAA.js" async data-speed=2&gt;&lt;/script&gt;
+
+[View online](https://asciinema.org/a/3mt7pnRPC1oRePqN9kOdNioip?autoplay=1&amp;speed=2&amp;size=8)
+
+
+
+---
+
+# Bootstrap from local image
+
+
+&lt;script id="asciicast-3mt7pnRPC1oRePqN9kOdNioip" src="https://asciinema.org/a/3mt7pnRPC1oRePqN9kOdNioip.js" async data-speed=2&gt;&lt;/script&gt;
+
+[View online](https://asciinema.org/a/3mt7pnRPC1oRePqN9kOdNioip?autoplay=1&amp;speed=2&amp;size=8)
+
+
+
+---
+
+# Best Practices
+
+* Bootstrap from trusted sources
+    * preferably use base image from docker hub provided by OS vendor.
+    * avoid using an image from some random source.
+    * if you need to use a random source, review the dockerfile, definition file etc first.
+* Try to reuse existing images
+    * See my rstudio images.
+       * build base image with minimal packages -&gt;
+       * image with dependencies for installing a set of basic R packages -&gt;
+       * image with R packages for bioinformatics or geospatial
+* If possible, build docker images, upload to docker hub and bootstrap docker images
+    * docker builds images in layers and it is easier to build a singularity image by downloading various layers. 
+
+ 
+---
+class: inverse, middle
+
+
+# Questions?
+## Would you be interested in a deeper dive on each of the three topics in the summer?
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="libs/remark-latest.min.js"></script>
+<script src="addons/imgscale.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:10",
+"yolo": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
