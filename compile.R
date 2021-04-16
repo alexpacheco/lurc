@@ -12,6 +12,7 @@ if (length(args)==0){
   suffix <- "Rmd"
   filename=paste(prefix,suffix,sep=".")
   print(filename)
-  slidify(filename)
+#  slidify(filename)
+  rmarkdown::render(filename)
 #  slidify(filename, options = list(copy_libraries = TRUE, theme = "io2012"))
 }

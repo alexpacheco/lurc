@@ -1,0 +1,422 @@
+---
+title: "Research Computing "
+subtitle: "@ Lehigh University"
+author: "Library &amp; Technology Services"
+institute: "https://researchcomputing.lehigh.edu"
+date: ""
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    chakra: libs/remark-latest.min.js
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:10"
+      yolo: false
+      beforeInit: "addons/imgscale.js"
+    css: [addons/lehigh.css, addons/lehigh-fonts.css]
+---
+class: myback
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(tidyverse)
+library(knitr)
+```
+```{r xaringan-webcam, include = FALSE}
+#xaringanExtra::use_webcam()
+xaringanExtra::use_xaringan_extra(c("tileview", "webcam"))
+```
+
+# About Us?
+
+* Who?
+  * Unit of Lehigh&#39;s Library & Technology Services within the Center for Innovation in Teaching & Learning.
+- Our Mission
+  - We enable Lehigh Faculty, Researchers and Scholars achieve their goals by providing various computational resources; hardware, software, and storage; consulting and training.
+* Research Computing Staff
+  * __Alex Pacheco, Manager &#38; XSEDE Campus Champion__
+  * Steve Anthony, System Administrator
+  * Dan Brashler, CAS Computing Consultant
+  * Sachin Joshi, Data Analyst &amp; Visualization Specialist
+
+
+---
+
+# What do we do?
+
+* Hardware Support
+  * Provide system administration and support for Lehigh&#39;s HPC clusters.
+     * 2 University owned and 3 Faculty owned. 
+  * Assist with purchase, installation and administration of servers and clusters.
+- Data Storage
+  - Provide data management services including storing and sharing data. 
+* Software Support
+  * Provide technical support for software applications, install software as requested and assist with purchase of software.
+- Training & Consulting
+  - Provide education and training programs to facilitate use of HPC resources and general scientific computing needs.
+  - Provide consultation and support for code development and visualization.
+
+---
+
+# Sol: Lehigh&#39;s Shared HPC Cluster
+
+```{r sol_hawk, echo=F, warning=F}
+sol <- tribble(~"Nodes",~"Intel Xeon CPU Type",~"CPU Speed (GHz)",~"CPUs",~"GPUs",~"CPU Memory (GB)",~"GPU Memory (GB)",~"CPU TFLOPS",~"GPU TFLOPs",~"SUs",
+               9, "E5-2650 v3", "2.3", 180, 10, 8*128, 80, 5.76, 2.57,180*8760,
+               33, "E5-2670 v3", "2.3", 792, 62, 33*128, 496, 25.344, 15.934,792*8760,
+               14, "E5-2650 v4", "2.2", 336, 0, 14*64, 0, 9.6768, 0,336*8760,
+               1, "E5-2640 v3", "2.6", 16, 0, 512, 0, 0.5632, 0,16*8760,
+               24, "Gold 6140", "2.3", 864, 48, 24*192, 528, 41.472, 18.392,864*8760,
+               6, "Gold 6240", "2.6", 216, 0, 6*192, 0, 10.368, 0,216*8760,
+               2, "Gold 6230R", "2.1", 104, 0, 2*384, 0, 4.3264, 0, 104*8760
+               )
+sollts <- tribble(~"Nodes",~"Intel Xeon CPU Type",~"CPU Speed (GHz)",~"CPUs",~"GPUs",~"CPU Memory (GB)",~"GPU Memory (GB)",~"CPU TFLOPS",~"GPU TFLOPs",~"SUs",
+               8, "E5-2650 v3", "2.3", 160, 0, 8*128, 0, 736*8/1000, 0,160*8760
+               )
+
+totalsol <- sol %>% summarise_if(is.numeric, sum) %>% 
+  mutate("Intel Xeon CPU Type"="","CPU Speed (GHz)"="") %>% 
+  select(Nodes,"Intel Xeon CPU Type","CPU Speed (GHz)",CPUs:SUs)
+
+hawk <- tribble(~"Nodes",~"Intel Xeon CPU Type",~"CPU Speed (GHz)",~"CPUs",~"GPUs",~"CPU Memory (GB)",~"GPU Memory (GB)",~"CPU TFLOPS",~"GPU TFLOPs",~"SUs",
+               26, "Gold 6230R", "2.1", 26*52, 0, 26*384, 0, 26*52*1.3*32/1000, 0,26*52*8760,
+               4, "Gold 6230R", "2.1", 4*52, 0, 4*1536, 0, 4*52*1.3*32/1000, 0,4*52*8760,
+               4, "Gold 5220R", "2.2", 4*48, 32, 4*192, 32*16, 4*48*1.4*16/1000, 253.38*32/1000,4*48*8760
+               )
+totalhawk <- hawk %>% summarise_if(is.numeric, sum) %>% 
+  mutate("Intel Xeon CPU Type"="","CPU Speed (GHz)"="") %>% 
+  select(Nodes,"Intel Xeon CPU Type","CPU Speed (GHz)",CPUs:SUs)
+
+total <- rbind(sollts,totalhawk) %>% summarise_if(is.numeric, sum) %>% 
+  mutate("Intel Xeon CPU Type"="","CPU Speed (GHz)"="") %>% 
+  select(Nodes,"Intel Xeon CPU Type","CPU Speed (GHz)",CPUs:SUs)
+
+```
+
+- built by investments from Provost<sup>a</sup> and Faculty.
+
+```{r echo=FALSE}
+knitr::kable(rbind(sol,totalsol), format = 'html')
+```
+<!-- 87 nodes interconnected by 2:1 oversubscribed Infiniband EDR (100Gb/s) fabric.
+Only `r sprintf("%4.2fM",sollts$SUs/1e6)` SUs from Provost investment available to Lehigh researchers. -->
+
+.footnote[
+a: 8 Intel Xeon E5-2650 v3 nodes invested by Provost in 2016.
+]
+
+
+---
+
+# Condo Investments
+
+* Sustainable model for High Performance Computing at Lehigh.
+* Faculty (Condo Investor) purchase compute nodes from grants to increase overall capacity of Sol.
+* LTS will provide for four years or length of hardware warranty purchased,
+   * System Administration, Power and Cooling, User Support for Condo Investments.
+* Condo Investor
+   * receives annual allocation equivalent to their investment for the length of
+     investment,
+   * can utilize allocations on all available nodes, including nodes from other Condo Investors,
+   * allows idle cycles on investment to be used by other Sol users,
+   * unused allocation will not rollover to the next allocation cycle,
+* Annual Allocation cycle is Oct. 1 - Sep. 30.
+
+---
+
+# Condo Investors
+
+* __Dimitri Vavylonis__, Physics (1 node)
+* __Wonpil Im__, Biological Sciences (37 nodes, 98 GPUs)
+* __Anand Jagota__, Chemical Engineering (1 node)
+* Brian Chen, Computer Science & Engineering (3 nodes)
+* __Ed Webb__ & Alp Oztekin, Mechanical Engineering (6 nodes)
+* __Jeetain Mittal__ & __Srinivas Rangarajan__, Chemical Engineering (13 nodes, 16 GPUs)
+* Seth Richards-Shubik, Economics (1 node)
+* Ganesh Balasubramanian, Mechanical Engineering (7 nodes)
+* _Department of Industrial & Systems Engineering_ (2 nodes)
+* __Paolo Bocchini__, Civil and Structural Engineering (1 node)
+* __Lisa Fredin__, Chemistry (6 nodes)
+* Hannah Dailey, Mechanical Engineering (1 node)
+* _College of Health_ (2 nodes)
+- Condo Investments: `r sum(sol$Nodes)-sollts$Nodes` nodes, `r sum(sol$CPUs)-sollts$CPUs` CPUs, `r sum(sol$GPUs)-sollts$GPUs` GPUs, `r sprintf("%5.2fM",(sum(sol$SUs)-sollts$SUs)/1e6)` SUs
+- Lehigh Investments: `r sollts$Nodes` nodes, `r sollts$CPUs` CPUs, `r sprintf("%5.2fM",sollts$SUs/1e6)`  SUs
+<!-- Total SU on Sol after Condo Investments: `r sprintf("%4.2fM",totalsol$SUs/1e6)` -->
+
+???
+
+.pull-left[![:scale 90%](assets/img/sol-condo.png)]
+
+---
+
+# Ceph Storage resource
+
+* LTS provides various storage options for research and teaching.
+* Some are cloud based and subject to Lehigh&#39;s Cloud Policy.
+* For research, LTS provides a 1223TB (raw) storage system called [Ceph](https://go.lehigh.edu/ceph).
+* Ceph 
+    * based on the Ceph software,
+    * in-house, built, operated and administered by Research Computing Staff,
+        * located in the EWFM Data Center.
+    * provides storage for Research Computing resources,
+    * can be mounted as a network drive on Windows or CIFS on Mac and Linux.
+        * [See Ceph FAQ](http://lts.lehigh.edu/services/faq/ceph-faq) for more details.
+* Research groups can purchase a sharable project space @ &#36;375/TB for 5 years,
+    * can share project space with anyone with a Lehigh ID at no additional charge.
+
+
+
+---
+# Hawk
+
+* Funded by [NSF Campus Cyberinfrastructure award 2019035](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2019035&HistoricalAwards=false).
+   - PI: __Ed Webb__ (MEM).
+   - co-PIs: Balasubramanian (MEM), __Fredin__ (Chemistry), Pacheco (LTS), and __Rangarajan__ (ChemE).
+   - Sr. Personnel: Anthony (LTS), Reed (Physics), Rickman (MSE), and __Tak&#225;&#269;__ (ISE). 
+
+```{r echo=FALSE}
+knitr::kable(rbind(hawk,totalhawk), format = 'html')
+```
+* 798TB (raw) Ceph based storage 
+* Production: **Feb 1, 2021**.
+
+
+---
+
+# Network Layout Sol, Hawk &amp; Ceph
+
+![:scale 100%](assets/img/sol_hawk.png)
+
+
+
+---
+
+# Resource Partitioning
+
+| Investigator | Compute (SU) | Storage (TB)|
+|:------------:|:-------:|:-------:|
+| Proposing Team | 7.67M | 85 |
+| OSG | 3.07M | 5 |
+| Lehigh General | 3.84M | 75 |
+| Provost DF | 0.77M | 20 |
+| LTS | | 30TB |
+
+- 50% to proposing team including
+  - 300K SUs allocated for educational, outreach and training (EOT).
+- 20% of resources with Open Science Grid (Grant requirement).
+- 5% of compute and 20TB to be distributed at the Provost’s discretion.
+- 30TB to LTS’s R-Drive (provides all faculty up to 1TB of storage space).
+- 25% of compute and 75TB available Lehigh community.
+
+---
+
+# Resource Management
+
+- Do away with charges for computing on Sol and add 1.4M SUs from Sol.
+- Create an XSEDE style proposal based allocation request process.
+- Proposals reviewed by the Research Computing Steering Committee.
+- Create a Director's Discretionary Fund (DDF) from Lehigh General,
+  - to allow Manager of Research Computing to allocate Trial and 
+    Education requests and default storage.
+- Faculty PIs can request allocations based on their needs
+   - Trial: for researchers who want to try out Sol/Hawk. 
+   - Education: for courses, workshops and other education, outreach and training purposes.   
+   - StartUp: for researchers with small computing needs (up to 25K SUs).
+   - Research (including Storage): for researchers with large computing (up to 300K) or storage needs (up to 5TB).
+
+---
+
+# Total Resource
+
+| Investigator | Compute (SU) | Storage (TB)| Sol Compute (SU) | Total Compute (SU) |
+|:------------:|:------------:|:-----------:|:----------------:|:------------------:|
+| Proposing Team | 7.64M | 80 | | 7.64M |
+| DDF | 300K | 20 | 500K | 800K |
+| OSG | 3.07M | 5 | | 3.07M |
+| StartUp | 380K | 20 | 120K | 500K |
+| Research | 3.45M | 40 | 550K | 4M |
+| Provost DF | 770K | 20 | 230K | 1M |
+| LTS R Drive| | 30TB | | | |
+
+???
+
+.pull-left[![:scale 90%](assets/img/sol-condo.png)]
+.pull-right[![:scale 90%](assets/img/sol-condo-hawk.png)]
+
+---
+
+# Research Computing Steering Committee
+
+| Name | College | 
+|:----:|:-------:|
+| Wonpil Im (co-chair) | CAS |
+| Ed Webb (co-chair) | RCEAS |
+| Ganesh Balasubramanian | RCEAS |
+| Brian Chen | RCEAS |
+| Ben Felzer | CAS |
+| Lisa Fredin | CAS |
+| Srinivas Rangarajan | RCEAS |
+| Rosi Reed | CAS |
+| Seth Richards-Shubik | CoB |
+| Yue Yu | CAS |
+| | CoH |
+| | CoE |
+| Alex Pacheco | LTS |
+
+
+---
+
+# Committe Responsibility
+
+| Allocation Type | Max SUs | Max TB | Approval Authority | Request Window | Approval Timeline |
+|:-----:|:----:|:----:|:----:|:----:|:----:|
+| Trial | 10K | 1 | HPC | Rolling | 2-3 Business days |
+| StartUp | 25K | 1 | At least One member | Rolling | 1 week |
+| Trial/StartUp Renewals | 25K | 1 | Two members | Rolling | 2-3 weeks |
+| Research/Storage | 300K | 5 | RCSC Committee | Every 6 months | Within a month of submission deadline |
+
+---
+
+# Director's Discretionary Fund
+
+- Trial Allocations: short term allocations designed for new users. 
+  - Total Available: 300K SUs, 20TB.
+  - Max 10K per PI, 1TB Storage.
+  - 6 month duration.
+  - Requirement: Short abstract describing proposed work.
+  - Progress report will be required for renewals or subsequent allocation request.
+  - Apply anytime at https://go.lehigh.edu/hpcalloctrial
+
+- Education Allocations: for courses, workshops and other EOT purposes
+  - Total Available: 500K SUs
+  - Up to 50K SUs per course, assuming 2 courses in Fall & Spring.
+  - 100K for REU programs.
+  - 200K for workshops, and other Summer programs.
+  - Apply at https://go.lehigh.edu/hpcallocedu 
+
+---
+
+# StartUp Allocations
+
+- Maximum available: 500K SU.
+- Max 25K per request.
+- Max 2 startup allocations per PI.
+- 1TB per PI (across all projects).
+- Reviewed & approved on a rolling basis by at least one committee member.
+- Requirement: short abstract with the description of the work.
+- Can be renewed annually
+- Renewal requires progress report, publication list, grants/ awards and list of graduated students if any.
+- Apply anytime at https://go.lehigh.edu/hpcallocstartup
+
+---
+
+# Research Allocations
+
+- For requests &gt; 25K SUs but &lt; 300K SUs.
+- Max allocation is 300K per PI at any given time.
+- Requires a detailed proposal similar to XSEDE. Should contain
+  - Abstract, Description of the project and how Hawk will be used.
+  - If possible, justify requested allocations based on benchmarks results
+  - Report of prior work done using Sol or Hawk
+  - List of publications, presentations, awards and students graduated.  
+- Reviewed and Approved semi annually by committee.
+- Allocations to begin on Jan1 and Jul 1 and last a year.
+  - Call for proposals will be issued in May and Nov in the HPC mailing list
+- Total time allocated is 4M annually or 2M for each semi annual request period.
+
+
+
+
+
+---
+
+# Storage Allocations
+
+- Every PI will be allocated 1TB by the HPC Manager from the DDF and Lehigh StartUp allocation (40TB).
+- HPC PIs who need more storage can request additional storage by justify needs with their compute allocation request.
+- Non HPC PIs will need to submit a research proposal describing
+   - Abstract and description of project.
+   - Describe why other forms of storage are not suitable and any plans to backup data stored.
+   - Plans to  move/save the data if project is not renewed/approved next year.
+- Proposal reviewed and approved by committee.
+- Same timelines as Research Allocations
+
+
+---
+
+# HPC Seminars
+
+* Fridays, 2:00PM - 4:00PM via Zoom
+  - Research Computing Resources at Lehigh (Feb. 5)
+  - Linux: Basic Commands & Environment (Feb. 12).
+  - Using SLURM scheduler on Sol (Feb. 19).
+  - Introduction to Open OnDemand (Feb. 26).
+  - Python Programming (Mar. 5).
+  - Build/Bring Your Own Software (Mar. 12)
+  - Python Data Structure (Mar. 19)
+  - Creating $\LaTeX$ Documents using Overleaf (Mar. 26)
+  - R Programming (Apr. 2).
+  - Data Visualization with Python (Apr. 9).
+  - Data Visualization with R (Apr. 16).
+  - Machine Learning (Apr. 23).
+  - Shiny Apps in R (Apr. 30).
+* Register at https://go.lehigh.edu/hpcseminars
+* See [LTS Seminars](https://lts.lehigh.edu/lts-seminars) for topics like G Suite tools, Surveys, Library topics, etc.
+
+---
+
+# Workshops
+
+* We provide full day workshops on programming topics.
+- [Summer Workshops](https://go.lehigh.edu/hpcworkshops)
+  - Modern Fortran Programming (Summer 2015)
+  - C Programming (Summer 2015)
+  - HPC Parallel Programming Workshop (Summer 2017, 2018)
+* We also host full day XSEDE workshops.
+  - XSEDE HPC Monthly Workshop: OpenACC (Dec. 2014).
+  - XSEDE HPC Summer BootCamp: OpenMP, OpenACC, MPI and Hybrid Programming (Jun.
+    2015 - 2019).
+  - XSEDE HPC Monthly Workshop: Big Data (Nov. 2015, May 2017).
+
+
+
+
+---
+
+# Proposal Assistance
+
+- LTS strongly recommends that researchers, early on, develop long-range plans for a sustainable form of data storage. 
+   - facilitate compliance with future grant applications
+   - avoid the need to later reformat or migrate data to another storage option. 
+* [Research Data Management Committee](https://libraryguides.lehigh.edu/researchdatamanagement) can help with writing DMP&#39;s for your proposal.
+  * eMail us at data-management-group-list@lehigh.edu OR Contact
+     * General information - Subject Librarians
+     * Research Computing Resources &amp; Services - Alex Pacheco
+     * Data Security - Eric Zematis, Chief Information Security Officer
+     * Data storage - Help Desk or your Computing Consultant
+- [Sample DMPs](https://confluence.cc.lehigh.edu/x/TYYuAg)
+- [Budget templates and LTS Facilities document](https://confluence.cc.lehigh.edu/x/FgL5Bg)
+
+
+---
+
+# Future Plans for Growth
+
+* Short term: Upgrade EWFM Data Center.
+    * Row 4 for further expansion of Sol.
+         * Requests from various faculty will consume all available space and power in row 2 within 6 months.
+    * Power and Cooling for Row 4.
+    * Upgrade from 15KW/rack in Row 2 to 30KW/rack as nodes are decommissioned.
+
+* Long term plan: Build a new HPC Data Center.
+
+* Apply for Cluster Grants.
+    * NIH S10 within the next two years.
+    * NSF MRI in 2023-24 to replace Hawk.
+    * Any infrastructure grants we missed?
+
+
+
+
