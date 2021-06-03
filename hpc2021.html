@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Using SLURM scheduler on Sol and Hawk</title>
+    <title>Introduction to HPC &amp; Linux</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Library &amp; Technology Services" />
+    <meta name="author" content="Research Computing" />
+    <script src="libs/xaringanExtra-webcam/webcam.js"></script>
+    <script id="xaringanExtra-webcam-options" type="application/json">{"width":"200","height":"200","margin":"1em"}</script>
     <link rel="stylesheet" href="addons/lehigh.css" type="text/css" />
     <link rel="stylesheet" href="addons/lehigh-fonts.css" type="text/css" />
   </head>
@@ -11,91 +13,256 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# Using SLURM scheduler on Sol and Hawk
-## Research Computing
-### Library &amp; Technology Services
+# Introduction to HPC &amp; Linux
+## 2021 HPC Workshop
+### Research Computing
 ### <a href="https://researchcomputing.lehigh.edu" class="uri">https://researchcomputing.lehigh.edu</a>
 
 ---
 
-class: inverse, middle
-
-# Research Computing Resources
+class: myback
 
 
+
+
+# About Us?
+
+* Who?
+  * Unit of Lehigh&amp;#39;s Library &amp; Technology Services within the Center for Innovation in Teaching &amp; Learning.
+* Our Mission
+  - We enable Lehigh Faculty, Researchers and Scholars achieve their goals by providing various computational resources; hardware, software, and storage; consulting and training.
+* Research Computing Staff
+  * __Alex Pacheco, Manager &amp;#38; XSEDE Campus Champion__
+  * Steve Anthony, System Administrator
+  * Dan Brashler, CAS Computing Consultant
+  * Sachin Joshi, Data Analyst &amp;amp; Visualization Specialist
+  * Honorary Staff
+     * Jeremy Mack, Geospatial Data and Visualization Specialist, Digital Scholarship Team
 
 
 ---
 
-# Sol
+# What do we do?
+
+* Hardware Support
+  * Provide system administration and support for Lehigh&amp;#39;s HPC clusters.
+  * Assist with purchase, installation and administration of servers and clusters.
+- Data Storage
+  - Provide data management services including storing and sharing data. 
+* Software Support
+  * Provide technical support for software applications, install software as requested and assist with purchase of software.
+- Training &amp; Consulting
+  - Provide education and training programs to facilitate use of HPC resources and general scientific computing needs.
+  - Provide consultation and support for code development and visualization.
+
+---
+
+# Sol: Lehigh&amp;#39;s Shared HPC Cluster
 
 
 
-- Lehigh&amp;#39;s Shared High Performance Computing Cluster 
-  - built by investments from Provost and Faculty.
-  - 9 nodes&lt;sup&gt;a&lt;/sup&gt;, dual 10-core Intel Xeon E5-2650 v3 2.3GHz CPU, 128GB RAM.
-  - 33 nodes, dual 12-core Intel Xeon E5-2670 v3 2.3Ghz CPU, 128GB RAM.
-  - 14 nodes, dual 12-core Intel Xeon E5-2650 v4 2.3Ghz CPU, 64GB RAM.
-  - 1 node, dual 8-core Intel Xeon 2630 v3 2.4GHz CPU, 512GB RAM.
-  - 24 nodes, dual 18-core Intel Xeon Gold 6140 2.3GHz CPU, 192GB RAM.
-  - 6 nodes, dual 18-core Intel Xeon Gold 6240 2.6GHz, 192GB RAM.
-  - 72 nVIDIA GTX 1080 &amp; 48 nVIDIA RTX 2080TI GPU cards.
-  - 2 nodes, dual 26-core Intel Xeon Gold 6230R, 2.1GHz, 384GB RAM
-  - 2:1 oversubscribed Infiniband EDR (100Gb/s) interconnect fabric.
-  - 21.97M core hours or service units (SUs) of computing available.
-      - Only 1.40M from Provost investment available Lehigh researchers.
-&lt;br /&gt;
+- built by investments from Provost&lt;sup&gt;a&lt;/sup&gt; and Faculty.
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; Nodes &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Intel Xeon CPU Type &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; CPU Speed (GHz) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; CPUs &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; GPUs &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; CPU Memory (GB) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; GPU Memory (GB) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; CPU TFLOPS &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; GPU TFLOPs &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; SUs &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 9 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; E5-2650 v3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 180 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1024 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 80 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.7600 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.570 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1576800 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 33 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; E5-2670 v3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 792 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 62 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4224 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 496 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 25.3440 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 15.934 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6937920 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 14 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; E5-2650 v4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 336 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 896 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.6768 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2943360 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; E5-2640 v3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 16 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 512 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.5632 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 140160 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 24 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Gold 6140 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 864 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 48 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4608 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 528 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 41.4720 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18.392 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7568640 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Gold 6240 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 216 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1152 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10.3680 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1892160 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Gold 6230R &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 104 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 768 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.3264 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 911040 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 89 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2508 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 120 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 13184 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1104 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 97.5104 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 36.896 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 21970080 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;!-- 87 nodes interconnected by 2:1 oversubscribed Infiniband EDR (100Gb/s) fabric.
+Only 1.40M SUs from Provost investment available to Lehigh researchers. --&gt;
 
 .footnote[
-a: 8 nodes invested by Provost available to all Lehigh researchers.
+a: 8 Intel Xeon E5-2650 v3 nodes invested by Provost in 2016.
 ]
 
 
----
-
-# Condo Investors
-
-* Dimitrios Vavylonis, Physics (1 node)
-* Wonpil Im, Biological Sciences (37 nodes, 98 GPUs)
-* Anand Jagota, Chemical Engineering (1 node)
-* Brian Chen, Computer Science &amp; Engineering (3 nodes)
-* Ed Webb &amp; Alp Oztekin, Mechanical Engineering (6 nodes)
-* Jeetain Mittal &amp; Srinivas Rangarajan, Chemical Engineering (13 nodes, 16 GPUs)
-* Seth Richards-Shubik, Economics (1 node)
-* Ganesh Balasubramanian, Mechanical Engineering (7 nodes)
-* Department of Industrial &amp; Systems Engineering (2 nodes)
-* Paolo Bocchini, Civil and Structural Engineering (1 node)
-* Lisa Fredin, Chemistry (6 nodes)
-* Hannah Dailey, Mechanical Engineering (1 node)
-* College of Health (2 nodes)
-- Condo Investments: 81 nodes, 2348 CPUs, 120 GPUs, 20.57M SUs
-
 
 ---
-
 # Hawk
 
 * Funded by [NSF Campus Cyberinfrastructure award 2019035](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2019035&amp;HistoricalAwards=false).
-   - PI: Ed Webb (MEM).
-   - co-PIs: Balasubramanian (MEM), Fredin (Chemistry), Pacheco (LTS), and Rangarajan (ChemE).
-   - Sr. Personnel: Anthony (LTS), Reed (Physics), Rickman (MSE), and Tak&amp;#225;&amp;#269; (ISE). 
-* Compute
-  - 26 nodes, dual 26-core Intel Xeon Gold 6230R, 2.1GHz, 384GB RAM.
-  - 4 nodes, dual 26-core Intel Xeon Gold 6230R, 1536GB RAM.
-  - 4 nodes, dual 24-core Intel Xeon Gold 5220R, 192GB RAM, 8 nVIDIA Tesla T4.
-* Storage
-  - 7 nodes, single 16-core AMD EPYC 7302P, 3.0GHz, 128GB RAM, two 240GB SSDs (for OS).
-  - Per node
-      - 3x 1.9TB SATA SSD (for CephFS).
-      - 9x 12TB SATA HDD (for Ceph).
+   - PI: __Ed Webb__ (MEM).
+   - co-PIs: Balasubramanian (MEM), __Fredin__ (Chemistry), Pacheco (LTS), and __Rangarajan__ (ChemE).
+   - Sr. Personnel: Anthony (LTS), Reed (Physics), Rickman (MSE), and __Tak&amp;#225;&amp;#269;__ (ISE). 
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; Nodes &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Intel Xeon CPU Type &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; CPU Speed (GHz) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; CPUs &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; GPUs &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; CPU Memory (GB) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; GPU Memory (GB) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; CPU TFLOPS &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; GPU TFLOPs &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; SUs &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 26 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Gold 6230R &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1352 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9984 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 56.2432 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.00000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11843520 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Gold 6230R &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 208 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6144 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.6528 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.00000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1822080 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Gold 5220R &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 192 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 32 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 768 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 512 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.3008 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.10816 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1681920 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 34 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1752 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 32 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 16896 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 512 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 69.1968 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.10816 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 15347520 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+* 798TB (raw) Ceph based storage 
 * Production: **Feb 1, 2021**.
 
-???
-
-  - **Total: 34 nodes, 1752 CPUs, 16.9TB RAM, 32 GPUs, 77TFLOPs, 15.3M SUs**
-  - **Total Storage: 796TB (raw) or 225TB (usable)**
-      - 50% allocated to proposal team, 20% to Open Science Grid and 30% to Lehigh researchers
-      - 40% allocated to proposal team, 35% to Lehigh researchers, 25% to Provost and LTS (R Drive)  
 
 ---
 
@@ -252,50 +419,30 @@ a: 8 nodes invested by Provost available to all Lehigh researchers.
 &lt;/tbody&gt;
 &lt;/table&gt;
 
-* SUs available for general use: 4.80M
+* SUs available for general use: 4.80M available by proposal style allocation review process,
    * rest allocated to investors, and grant distribution including education use.
 
-&lt;!---
 
-* Total SUs available: 37.32M
-# LTS Managed Faculty Resources 
+---
 
-* __Monocacy__: Ben Felzer, Earth &amp; Environmental Sciences.
-  * Eight nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM.
-     * Theoretical Performance: 2.662TFlops.
-- __Baltrusaitislab__: Jonas Baltrusaitis, Chemical Engineering.
-  - Three nodes, dual 16-core AMD Opteron 6376, 2.3Ghz, 128GB RAM.
-     - Theoretical Performance: 1.766TFlops.
-* __Pisces__: Keith Moored, Mechanical Engineering and Mechanics.
-  * Six nodes, dual 10-core Intel Xeon E5-2650v3, 2.3GHz, 64GB RAM, nVIDIA Tesla K80.
-     * Theoretical Performance: 3.840 TFlops (CPU) + 17.46TFlops (GPU).
-- __Pavo__: decommissioned faculty cluster for development and education.
-  - Twenty nodes, dual 8-core Intel Xeon E5-2650v2, 2.6GHz, 64GB RAM.
-     - Theoretical Performance: 6.656TFlops.
+# Ceph Storage resource
 
-
-# Summary of Computational Resources 
-
+* LTS provides various storage options for research and teaching.
+* Some are cloud based and subject to Lehigh&amp;#39;s Cloud Policy.
+* For research, LTS provides a 2019TB (raw) storage system called [Ceph](https://go.lehigh.edu/ceph).
+* Ceph 
+    * based on the Ceph software,
+    * in-house, built, operated and administered by Research Computing Staff,
+        * located in the EWFM Data Center.
+    * provides storage for Research Computing resources,
+    * can be mounted as a network drive on Windows or CIFS on Mac and Linux.
+        * [See Ceph FAQ](http://lts.lehigh.edu/services/faq/ceph-faq) for more details.
+* Research groups 
+    * can purchase a sharable project space @ &amp;#36;375/TB for 5 years, OR 
+    * request up to 5TB of Hawk's Ceph space available by proposal style allocation review process.
+    * can share project space with anyone with a Lehigh ID at no additional charge.
 
 
-
-|Cluster          | Cores| CPU Memory| CPU TFLOPs| GPUs| CUDA Cores| GPU Memory| GPU TFLOPS|
-|:----------------|-----:|----------:|----------:|----:|----------:|----------:|----------:|
-|Monocacy         |   128|        512|      2.662|    0|          0|          0|      0.000|
-|Pavo&lt;sup&gt;a&lt;/sup&gt; |   320|       1280|      6.656|    0|          0|          0|      0.000|
-|Baltrusaitis     |    96|        384|      1.766|    0|          0|          0|      0.000|
-|Pisces           |   120|        384|      3.840|   12|      29952|        144|     17.422|
-|Sol              |  2404|      12544|     93.184|  120|     393216|       1104|     36.130|
-|Total            |  3068|      15104|    108.108|  132|     423168|       1248|     53.552|
-
-- Monocacy, Baltrusaitis and Pisces: decommissioning scheduled for Sep 30, 2021.
-
-.footnote[
-a: 3 nodes available for short simulations or debug runs.
-]
-
-
---&gt;
 
 ---
 
@@ -304,100 +451,471 @@ a: 3 nodes available for short simulations or debug runs.
 ![:scale 100%](assets/img/sol_hawk.png)
 
 
+
 ---
 
-# Accessing Resources
+# Accessing Sol &amp;amp; Hawk
 
-* Sol: accessible using ssh while on Lehigh&amp;#39;s network.
- 
- ```bash
- ssh username@sol.cc.lehigh.edu
- ```
+* Sol: accessible using ssh while on Lehigh&amp;#39;s network
+    
+    ```bash
+    ssh username@sol.cc.lehigh.edu
+    ```
    * Windows PC require a SSH client such as [MobaXterm](https://mobaxterm.mobatek.net/) or [Putty](https://putty.org/).
    * Mac and Linux PC&amp;#39;s, ssh is built in to the terminal application. 
-* Login to the ssh gateway to get on Lehigh&amp;#39;s network or connect to VPN first 
- 
- ```bash
- ssh username@ssh.cc.lehigh.edu
- ```
- and then login to Sol using the above ssh command.
-  *  Alternatively, use the following command while off campus.
+* If you are not on Lehigh&amp;#39;s network, login to the ssh gateway
+   
+   ```bash
+    ssh username@ssh.cc.lehigh.edu
+   ```
+   and then login to sol as above
+  -  Alternatively,
   
   ```bash
   ssh -J username@ssh.cc.lehigh.edu username@sol.cc.lehigh.edu
   ```
-  * [Configure MobaXterm to use the SSH Gateway](https://confluence.cc.lehigh.edu/x/JhH5Bg).
+  - [Click here](https://confluence.cc.lehigh.edu/x/JhH5Bg) to learn how to configure MobaXterm to use the SSH Gateway.
 
 
 ---
 
-# SSH Config
+# ![:scale 30%](https://openondemand.org/assets/images/ood_logo_stack_rgb.svg)
 
-* Simplify by creating a ssh configuration file `~/.ssh/config`
-   * assign shortname for the host you are connecting to
-   * set username, port or jump host information  
-   * use the short hostnames with the `ssh` and `scp` commands
+* an NSF-funded open-source HPC portal based on Ohio Supercomputing Center’s original OnDemand portal. 
+
+* Goals: provide an easy way for system administrators to provide web access to their HPC resources, including, but not limited to:
+  - Plugin-free web experience
+  - Easy file management
+  - Command-line shell access
+  - Job management and monitoring across different batch servers and resource managers
+  - Graphical desktop environments and desktop applications
+  
+  
+---
+
+# Open OnDemand at Lehigh
+
+* In Production since Aug 12, 2020.
+
+* https://hpcportal.cc.lehigh.edu: Available on campus or VPN.
+
+* Features:
+  - Shell Access
+  - File Management
+  - Job Submission
+  - Virtual Desktops: XFCE
+  - Jupyter Notebooks
+  - RStudio Server
+  - MATLAB
+  - Ansys Workbench
+  - Abaqus
+  - SAS
+  - Various Visualization Tools
+  
+
+---
+
+# Connecting to the HPC Portal
+
+* HPC Account required
+* Chrome or Firefox preferred
+   * At least one user has reported problems with Safari
+
+&lt;span class="center"&gt;
+![:scale 65%](https://confluence.cc.lehigh.edu/download/attachments/123048063/OOD-url.png?api=v2)
+&lt;/span&gt;
+
+
+---
+
+# Dashboard
+
+
+&lt;span class="center"&gt;
+![:scale 85%](https://confluence.cc.lehigh.edu/download/attachments/123048063/OOD-dashboard.png?api=v2)
+&lt;/span&gt;
+
+
+---
+
+#  Shell Access
+
+* Click Clusters &gt; Sol Shell Access
+
+&lt;span class="center"&gt;
+![:scale 75%](https://confluence.cc.lehigh.edu/download/attachments/123048063/OOD-Clusters.png?api=v2)
+&lt;/span&gt;
+
+
+---
+
+#  Shell Access
+
+* Click Clusters &gt; Sol Shell Access
+
+&lt;span class="center"&gt;
+![:scale 75%](https://confluence.cc.lehigh.edu/download/attachments/123048063/OOD-Shell.png?api=v2)
+&lt;/span&gt;
+
+---
+
+# File Management
 
 .pull-left[
+* Launch File Explorer
+* Navigate Storage
+* Transfer Files to/from Sol
+* Create, Edit, Delete, Rename Files &amp;amp; Directories
 
-```bash
-  Host *ssh
-  HostName ssh.cc.lehigh.edu
-  Port 22
-  User alp514
 
-  Host *sol
-  HostName sol.cc.lehigh.edu
-  Port 22
-  User alp514
+&lt;span class="center"&gt;
+![:scale 100%](https://confluence.cc.lehigh.edu/download/attachments/123048245/OOD-files.png?api=v2)
+&lt;/span&gt;
 
-  Host *sun
-  HostName sol.cc.lehigh.edu
-  Port 22
-  User alp514
-  ProxyCommand ssh ssh nc %h %p
-```
 ]
+
 .pull-right[
-&lt;script id="asciicast-THVibyFLRYsmtVsdOMtIdgEm0" src="https://asciinema.org/a/THVibyFLRYsmtVsdOMtIdgEm0.js" async data-rows=10&gt;&lt;/script&gt;
+&lt;span class="center"&gt;
+![:scale 100%](https://confluence.cc.lehigh.edu/download/attachments/123048245/OOD-HomeDir.png?api=v2)
+![:scale 100%](https://confluence.cc.lehigh.edu/download/attachments/123048245/OOD-NavigateStorage.png?api=v2)
+&lt;/span&gt;
 ]
 
 
+---
+class: inverse, middle
+
+#  Linux
+  
+  
+---
+
+# What is Linux?
+
+* an operating system that evolved from a kernel created by Linus Torvalds when he was a student at the University of Helsinki.
+* meant to be used as an alternative to other operating systems, Windows, Mac OS, MS-DOS, Solaris and others.
+* most popular OS used in a Supercomputer&lt;sup&gt;a,b&lt;/sup&gt;
+
+| OS Family | Count | Share % |
+|:---------:| -----:| -------:|
+| Linux | 498 | 99.6 |
+| Unix  |   2 |   .4 |
+
+
+* It is required/neccessary/mandatory to learn Linux Programming (commands, shell scripting) if your research involves use of High Performance Computing or Supercomputing resources.
+
+.footnote[
+a: June 2017 Top 500 list.
+
+b: June 2015 was the last Top 500 list featuring a Windows based supercomputer. 
+]
 
 ---
 
-# Open OnDemand
+# Where is Linux used?
 
-- Open, Interactive HPC via the Web. 
-    - Easy to use, plugin-free, web-based access to supercomputers,
-    - File Management,
-    - Command-line shell access,
-    - Job management and monitoring, and 
-    - Various Interactive Applications.
-* NSF-funded project. 
-    * SI2-SSE-1534949 and CSSI-Software-Frameworks-1835725,
-    * Developed by [Ohio Supercomputing Center](https://openondemand.org/), 
-    * Deployed at dozens of sites (universities, supercomputing centers).
-- At Lehigh: https://hpcportal.cc.lehigh.edu.
-    - Lehigh IP or VPN required.
-    - More details in next week&amp;#39;s Seminar. 
+* Linux distributions are tailored to different requirements such as
+  - Server
+  - Desktop
+  - Workstation
+  - Routers
+  - Embedded devices
+  - Mobile devices (Android is a Linux-based OS)
+* Almost any software that you use on windows has a roughly equivalent software on Linux, most often multiple equivalent software
+  - e.g. Microsoft Office equivalents are OpenOffice.org, LibreOffice, KOffice
+  - [Visit for complete list](http://wiki.linuxquestions.org/wiki/Linux_software_equivalent_to_Windows_software)
+* Linux offers you freedom, to choose your desktop environment, software.
 
 
 ---
 
-# Open OnDemand
+# What is a Linux OS and Distro?
 
-![:scale 90%](assets/img/OOD-Clusters.png)
+* Many software vendors release their own packaged Linux OS (kernel, applications) known as distribution
+* Linux distribution = Linux kernel + GNU system utilities and libraries + Installation scripts + Management utilities etc.
+- Debian, Ubuntu, Mint
+- Red Hat, Fedora, __CentOS__
+- Slackware, openSUSE, SLES, SLED
+- Gentoo
+* Application packages on Linux can be installed from source or from customized packages
+- deb: Debian based distros e.g. Debian, Ubuntu, Mint
+- rpm: Red Hat based distros, Slackware based distros.
 
 
 
 ---
 
-# Open OnDemand
-
-![:scale 90%](assets/img/OOD-Shell.png)
+# What is a Desktop Environment?
 
 
+* Linux distributions offer a variety of desktop environment.
+- K Desktop Environment (KDE)
+- GNOME
+- __XFCE__
+- Lightweight X11 Desktop Environment (LXDE)
+- Cinnamon
+- MATE
+- Dynamic Window Manager
+
+
+---
+
+# Shell versus Command
+
+
+* What is a command and how do you use it?
+  - __command__ is a directive to a computer program acting as an interpreter of some kind,
+in order to perform a specific task.
+  - __command prompt__ (or just __prompt__) is a sequence of (one or more) characters used in a command-line interface to indicate readiness to accept commands.
+  - Its intent is to literally prompt the user to take action.
+  - A prompt usually ends with one of the characters $, %, #, :, &amp;gt; and often includes other information, such as the path of the current working directory.
+* What is a Shell?
+  - The command line interface is the primary interface to Linux/Unix operating
+systems.
+  - Shells are how command-line interfaces are implemented in Linux/Unix.
+  - Each shell has varying capabilities and features and the user should choose the shell that best suits their needs.
+  - The shell is simply an application running on top of the kernel and provides a powerful interface to the system.
+
+
+---
+
+# Types of Shell
+
+* __sh__ : Bourne Shell
+  - Developed by Stephen Bourne at AT&amp;amp;T Bell Labs
+* __csh__ : C Shell
+  - Developed by Bill Joy at University of California, Berkeley
+* __ksh__ : Korn Shell
+  - Developed by David Korn at AT&amp;amp;T Bell Labs
+  - backward-compatible with the Bourne shell and includes many features of the C shell
+* __bash__ : Bourne Again Shell
+  - Developed by Brian Fox for the GNU Project as a free software replacement for the Bourne shell (sh).
+  - Default Shell on Linux and Mac OSX
+* __tcsh__ : TENEX C Shell
+  - Developed by Ken Greer at Carnegie Mellon University
+  - It is essentially the C shell with programmable command line completion, command-line editing, and a few other features.
+
+
+---
+
+# Shell Comparison
+
+| Software | sh  | csh | ksh | bash | tcsh |
+|:--------:|:---:|:---:|:---:|:----:|:----:|
+| Programming Languages | &amp;#10004; | &amp;#10004; | &amp;#10004; | &amp;#10004; | &amp;#10004; |
+| Shell Variables |  &amp;#10004; | &amp;#10004; | &amp;#10004; | &amp;#10004; | &amp;#10004; |
+| Command alias | &amp;#10008; | &amp;#10004; | &amp;#10004; | &amp;#10004; | &amp;#10004; |
+| Command history | &amp;#10008; | &amp;#10004; | &amp;#10004; | &amp;#10004; | &amp;#10004; |
+| Filename completion | &amp;#10008; | &amp;#10070; | &amp;#10070; | &amp;#10004; | &amp;#10004; |
+| Command line editing | &amp;#10008; | &amp;#10008; | &amp;#10070; | &amp;#10004; | &amp;#10004; |
+| Job control | &amp;#10008; | &amp;#10004; | &amp;#10004; | &amp;#10004; | &amp;#10004; |
+
+
+&amp;#10004; : Yes
+
+&amp;#10008; : No
+
+&amp;#10070; : Yes, not set by default
+
+http://www.cis.rit.edu/class/simg211/unixintro/Shell.html
+
+---
+
+# Directory Structure
+
+* All files are arranged in a hierarchial structure, like an inverted tree.
+*  The top of the hierarchy is traditionally called __root__ (written as a slash / )
+
+&lt;img width = '900px' src = 'assets/img/LinuxFS.png'&gt;
+
+
+
+
+
+---
+
+# Relative &amp; Absolute Path
+* Path means a position in the directory tree.
+* You can use either the relative path or absolute path
+* In relative path expression
+  -  . (one dot or period) is the current working directory
+  -  .. (two dots or periods) is one directory up
+  -  You can combine . and .. to navigate the filee system hierarchy.
+  -  the path is not defined uniquely and does depend on the current path.
+  -  ../../tmp is unique only if your current working directory is your home directory.
+* In absolute path expression
+  -  the path is defined uniquely and does not depend on the current path
+  -  /tmp is unique since /tmp is the abolute path
+
+
+---
+
+# Some Linux Terms (also called variables)
+
+* __HOME__ : Your Home Directory on the system, /home/username
+  - This is where you should be when you login the first time
+  - Don&amp;#39;t believe me, type `pwd` and hit enter
+* __PATH__ : List of directories to search when executing a command
+  - Enter `avogadro` at the command prompt
+  - You should see an error saying `command not found`
+* __LD_LIBRARY_PATH__ : List of directories to look for libraries executing code
+
+
+
+
+---
+
+# Linux Commands
+
+* `man` shows the manual for a command or program.
+  - `man pwd`
+* `pwd`: print working directory, gives the absolute path of your current location in the directory hierarchy
+* `echo`: prints whatever follows to the screen
+  - `echo $HOME`: prints the contents of the variable __HOME__ i.e. your home directory to the screen
+* `cd dirname`: change to folder called `dirname`
+  - default `dirname` is your home directory
+  - Useful option 
+       - `cd -` go to previous directory
+* `mkdir dirname`: create a directory called `dirname`
+  - Create a directory, any name you want and cd to that directory 
+       - `mkdir me450` followed by `cd me450`
+  - Useful option
+       - `mkdir -p dir1/dir2/dir3` create intermediate directories if they do not exist
+  
+
+---
+
+# Linux Command (contd)
+
+* `cp file1 file2`: command to copy file1 to file2
+      - `cp -r /home/alp514/Workshop/sum2017 .` copy directories recursively
+      - `cp -p ~alp514/in.lj ${HOME}/` preserve time stamps
+* `rm file1`: delete a file called file1 
+      - `rm -i` to be prompted for confirmation
+      - `rm -r` to delete directories recursively 
+      - `rm -f` delete without prompting - VERY DANGEROUS
+* `ls dirname`: list contents of _dirname_ (leave blank for current directory)
+      - `ls -l` show long form listing
+      - `ls -a` show hidden files
+      - `ls -t` sort by timestamp newest first, best when combined with `-l`
+      - `ls -r` reverse sort (default alphabetical), best when combined with `-l -t` or `-lt`
+* `alias`: create a shortcut to another command or name to execute a long string.
+  - `alias rm="/bin/rm -i"`
+
+
+---
+
+# File Editing
+
+* The two most commonly used editors on Linux/Unix systems are:
+  -  `vi` or `vim` (vi improved)
+  -  `emacs`
+* `vi/vim` is installed by default on Linux/Unix systems and has only a command line interface (CLI).
+* `emacs` has both a CLI and a graphical user interface (GUI).
+* Other editors that you may come across on \*nix systems
+  - `kate`: default editor for KDE.
+  - `gedit`: default text editor for GNOME desktop environment.
+  - `gvim`: GUI version of vim
+  - `pico`: console based plain text editor
+  - `nano`: GNU.org clone of pico
+  - `kwrite`: editor by KDE.
+  
+
+
+---
+
+# vi/emacs commands
+
+* `vi/vim` and `emacs` are the two most popular \*nix file editors.
+* Which one to use is up to you.
+* `vi/vim` has two modes
+  * Editing mode
+  * Command mode
+* `emacs` has only one mode as in any editor that you use.
+
+| Inserting/Appending Text | Command |
+|:------------------------:|:-------:|
+| insert at cursor | i |
+| insert at beginning of line | I |
+| append after cursor | a |
+| append at end of line | A |
+| newline after cursor in insert mode | o |
+| newline before cursor in insert mode | O |
+| append at end of line | ea |
+| exit insert mode | ESC |
+
+
+---
+
+# Editor Commands
+
+.pull-left[
+| Cursor Movement | vi | emacs |
+|:---------------:|:-------:|:-----:|
+| move left | h | Ctrl-b |
+| move down | j | Ctrl-n |
+| move up | k | Ctrl-p |
+| move right | l | Ctrl-f |
+| jump to beginning of line | ^ | Ctrl-a |
+| jump to end of line | $ | Ctrl-e |
+| goto line n | nG | ESC-x goto-line Enter n |
+| goto top of file | 1G | ESC-&amp;lt; |
+| goto end of file | G | ESC-&amp;gt; |
+| move one page up | CNTRL-u | ESC-v |
+| move one page down | CNTRL-d | Ctrl-v |
+]
+
+.pull-right[
+| File Manipulation | vi | emacs |
+|:-----------------:|:-------:|:-----:|
+| edit/open a __file__ | :e __file__ | Ctrl-x Ctrl-f __file__ |
+| insert file __file__ | :r __file__ | Ctrl-x i __file__ |
+| save file | :w | Ctrl-x Ctrl-s | 
+| save file and exit | :wq |  |
+| quit without saving | :q! |   |
+| exit | :q |  Ctrl-x Ctrl-c | 
+
+
+| Window Management | vim | emacs |
+|:-----------------:|:---:|:-----:|
+| split window horizontally | :split or Ctrl-w s  | Ctrl-x 2 |
+| split window vertically   | :vsplit or Ctrl-w v | Ctrl-x 3 |
+| switch windows | Ctrl-w w | Ctrl-x o | 
+
+]
+
+
+---
+
+# Editor Commands
+
+| Text Manipulation | vi | emacs |
+|:-----------------:|:-------:|:-----:|
+| delete a line | dd | Ctrl-a Ctrl-k |
+| delete n lines | ndd | Ctrl-a Esc n Ctrl-k |
+| paste deleted line after cursor | p | Ctrl-y |
+| paste before cursor | P | |
+| undo edit | u | Ctrl-\_ or Ctrl-x u | 
+| delete from cursor to end of line | D | Ctrl-k |
+| replace a character | r | |
+| join next line to current | J | | 
+| change a line | cc | |
+| change a word | cw | |
+| change to end of line | c$ | |
+| delete a character | x | Ctrl-d |
+| delete a word | dw | Esc-d |
+
+
+---
+
+# Editor Cheatsheets
+
+- Do a google search for more detailed cheatsheets
+   * [vi](https://www.google.com/search?q=vi+cheatsheet)
+   *   [emacs](https://www.google.com/search?q=emacs+cheatsheet)
+
+- More on the **set -o** command
+   *   The **set -o** command can be used to change the command line editor mode among other things (Do **man set** to find out more)
 
 ---
 
@@ -408,13 +926,7 @@ a: 3 nodes available for short simulations or debug runs.
   - Why? We may have different versions of same software or software built with different compilers.
   - Module environment allows you to dynamically change your &amp;#42;nix environment based on software being used.
   - Standard on many University and national High Performance Computing resource since circa 2011.
-* OS upgrade should be complete by Feburary end.
-  - By default, old software built for CentOS 7.x is displayed.
-  - To see newer software, run the following command or add to `.bash_profile`
-    
-    ```bash
-    source /share/Apps/compilers/etc/lmod/zlmod.sh
-    ```
+
 * How to use HPC Software on your [linux](https://confluence.cc.lehigh.edu/x/ygD5Bg) workstation?
 
 
@@ -438,9 +950,160 @@ a: 3 nodes available for short simulations or debug runs.
   .bashrc or .tcshrc files. Run `module show` for list variables that need
   modified, appended or prepended.
 
+---
+
+# Installed Software
+
+.pull-left[
+
+* [Chemistry/Materials Science](https://confluence.cc.lehigh.edu/x/3KX0BQ)
+  - Gaussian
+  - **OpenMolcas**
+  - **NWCHEM**
+  - **Quantum Espresso**
+  - **VASP** (Restricted Access)
+* [Molecular Dynamics](https://confluence.cc.lehigh.edu/x/6qX0BQ)
+  - **Desmond**
+  - **GROMACS**
+  - **LAMMPS**
+  - **NAMD**
+
+&lt;span class="tiny strong"&gt;__MPI enabled__&lt;/span&gt;
+]
+
+.pull-right[
+
+* [Computational Fluid Dynamics](https://confluence.cc.lehigh.edu/x/BZFVBw)
+  - Abaqus
+  - Ansys
+  - Comsol
+  - **OpenFOAM**
+  - OpenSees
+* [Math](https://confluence.cc.lehigh.edu/x/1QL5Bg)
+  - GAMS
+  - GNU Octave
+  - Gurobi
+  - Magma
+  - Maple
+  - Mathematica
+  - MATLAB]
+
+---
+
+# More Software
+
+.pull-left[
+
+* *Machine &amp;amp; Deep Learning* 
+   - TensorFlow
+   - Caffe
+   - SciKit-Learn
+   - SciKit-Image
+   - Theano
+   - Keras
+
+* *Natural Language Processing (NLP)*
+   - Natural Language Toolkit (NLTK)
+   - Stanford NLP    
+
+
+&lt;span class="tiny"&gt;_[Python packages](https://go.lehigh.edu/python)_&lt;/span&gt;
+]
+
+.pull-right[
+
+* [Bioinformatics](https://confluence.cc.lehigh.edu/x/y6X0BQ)
+  - BamTools
+  - BayeScan
+  - bgc
+  - BWA
+  - FreeBayes
+  - SAMTools
+  - tabix
+  - trimmomatic
+  - Trinity
+  - *barcode_splitter*
+  - *phyluce* 
+  - *VelvetOptimiser*]
 
 
 ---
+
+#More Software
+
+.pull-left[
+
+* Scripting Languages
+  - [R](https://confluence.cc.lehigh.edu/x/5aX0BQ)
+  - Perl
+  - [Python](https://go.lehigh.edu/python)
+* [Compilers](https://confluence.cc.lehigh.edu/x/Sab0BQ)
+  - GNU
+  - Intel
+  - JAVA
+  - PGI/NVIDIA HPC SDK
+  - CUDA
+* [Parallel Programming](https://confluence.cc.lehigh.edu/x/Sab0BQ#Compilers-MPI)
+  - MVAPICH2
+  - MPICH
+  - OpenMPI
+]
+
+.pull-right[
+
+* Libraries
+  - BLAS/LAPACK/GSL/SCALAPACK
+  - Boost
+  - FFTW
+  - Intel MKL
+  - HDF5
+  - NetCDF
+  - METIS/PARMETIS
+  - QHull/QRupdate
+  - SuiteSparse
+  - SuperLU
+]
+
+
+---
+
+# More Software
+
+.pull-left[
+
+* [Visualization Tools](https://confluence.cc.lehigh.edu/x/qan0BQ)
+  - Atomic Simulation Environment 
+  - Avogadro
+  - Blender
+  - Gabedit
+  - GaussView
+  - GNUPlot
+  - Paraview
+  - PWGui
+  - PyMol
+  - RDKit
+  - VESTA
+  - VMD
+  - XCrySDen
+]
+
+.pull-right[
+
+* Other Tools
+  - Artleys Knitro
+  - ROOT
+  - CMake
+  - GIT
+  - [GNU Parallel](https://confluence.cc.lehigh.edu/x/B6b0BQ)
+  - *Numba*
+  - [RStudio Server](https://confluence.cc.lehigh.edu/x/NpBVBw)
+  - Scons
+  - Singularity
+  - [Virtual Desktops](https://confluence.cc.lehigh.edu/x/g5BVBw)
+]
+
+
+&lt;!---
 
 # Module Command
 
@@ -710,6 +1373,21 @@ class: inverse, middle
 
 ---
 
+# How does a cluster look?
+
+
+.pull-left[
+![:scale 60%](assets/img/sol/20160627_153416.jpg)
+]
+
+.pull-right[
+![:scale 80%](assets/img/sol/20170301_112522.jpg)
+]
+
+
+
+---
+
 # Cluster Environment
 
 * A cluster is a group of computers (nodes) that works together closely.
@@ -728,21 +1406,6 @@ class: inverse, middle
 .pull-right[
 &lt;img width = '640px' src = 'assets/img/solnetwork.png'&gt;
 ]
-
-
----
-
-# How does a cluster look?
-
-
-.pull-left[
-![:scale 60%](assets/img/sol/20160627_153416.jpg)
-]
-
-.pull-right[
-![:scale 80%](assets/img/sol/20170301_112522.jpg)
-]
-
 
 
 
@@ -902,16 +1565,17 @@ class: inverse, middle
 # File Systems - Where to run jobs?
 
 * There are three distinct file spaces on Sol.
-   * __HOME__, your home directory on Sol, 150GB quota default. More if PI has purchased a CEPH space.
+   * __HOME__, your home directory. Each research group is provided with a 1TB quota shared among all group members.
    * __SCRATCH__, 500GB scratch storage on the local disk shared by all jobs running on the node.
-   * __CEPHFS__, 22TB global parallel scratch for running jobs with a lifetime of 7 days.
-- Best Practices
+   * __CEPHFS__, 29TB global parallel scratch for running jobs with a lifetime of 7 days.
+* Best Practices
    - Store all input files, submit scripts, and output files following job completion in HOME
    - Single node jobs, use SCRATCH to run your jobs and store temporary files
       - SCRATCH is deleted by the SLURM scheduler when job is complete, so make sure that you copy all required data back to HOME.
       - SLURM automatically creates `/scratch/${USER}/${SLURM_JOBID}`
    - All jobs, use CEPHFS. CEPHFS contents are kept for 14 days after your job ends.
       - SLURM automatically creates &lt;code&gt;/share/ceph/scratch/${USER}/${SLURM_JOBID}&lt;/code&gt;
+   - Most modules set `SCRATCH` and `CEPHFS_SCRATCH` variables to these directories.
 
 
 ---
@@ -1176,6 +1840,31 @@ exit
 
 ---
 
+# Submit script for Gaussian job
+
+&lt;pre&gt;
+#!/bin/bash
+
+#SBATCH --partition=lts
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=12
+#SBATCH --time=12:00:00
+
+
+cd ${SLURM_SUBMIT_DIR}
+cp /share/Apps/examples/gaussian/water-hexamer-cage-opt-freq.com .
+
+module load gaussian
+
+g09 &lt; water-hexamer-cage-opt-freq.com &gt; water-hexamer-cage-opt-freq.log
+
+&lt;/pre&gt;
+
+* Gaussian module sets `GAUSS_SCRDIR` to `CEPHFS_SCRATCH` to store temporary files.
+
+
+---
+
 # Need to run multiple jobs
 
 * In sequence or serially:
@@ -1271,9 +1960,7 @@ exit
   * Training
      * [Seminars](https://go.lehigh.edu/hpcseminars)
      * [Workshops](https://go.lehigh.edu/hpcworkshops)
-* Subscribe
-     * HPC Training Google Groups: &lt;mailto:hpctraining-list+subscribe@lehigh.edu&gt;
-     * Research Computing Mailing List: &lt;https://lists.lehigh.edu/mailman/listinfo/hpc-l&gt;
+
 - My contact info
   * eMail:  &lt;alp514@lehigh.edu&gt;
   * Tel: (610) 758-6735 
@@ -1281,16 +1968,24 @@ exit
   * [Schedule](https://www.google.com/calendar/embed?src=alp514%40lehigh.edu&amp;ctz=America/New_York )
 
 
+---
+class: inverse, middle
+
+
 
 ---
-class: inverse middle center
 
-# Thank You!
-# Questions?
-&lt;br /&gt;
-&lt;br /&gt;
-# Next Week: Open OnDemand 
-### Jupyter Notebooks, RStudio, MATLAB, Mathematica, SAS, Virtual Desktops and more
+# Getting Started
+
+* Login to Open OnDemand portal: https://hpcportal.cc.lehigh.edu
+* Select "Interactive Apps" &gt; "Quantum Chemistry"
+   - This app pre-selects hawkcpu partition for you
+   - The only options you need to enter are _Number of hours_ and _Number of cpus_ required.
+       * The maximum cpus you can request is 8.
+       * 4 nodes are reserved for this workshop providing around 6 cores for each of the 30 attendees.
+   - Click "Launch" to submit your job.
+   - When resources are ready, click "Launch Quantum Chemistry" to start a desktop session.
+   - Click Gauss View desktop icon to start Gauss View
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="libs/remark-latest.min.js"></script>
