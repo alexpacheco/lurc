@@ -1849,6 +1849,9 @@ exit
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=12
 #SBATCH --time=12:00:00
+# For workshop only
+#SBATCH --account=hpc2021_qc_073121
+#SBATCH --reservation=hpc2021_qc_073121_161
 
 
 cd ${SLURM_SUBMIT_DIR}
