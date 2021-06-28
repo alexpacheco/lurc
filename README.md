@@ -2,10 +2,10 @@
 Slides for presentation specific to Lehigh University Research Computing and guest lectures for various courses
 
 
-# Author
-Alex Pacheco
-  Manager, Research Computing
-  Lehigh University
+# Contributer
+Alex Pacheco  
+ Manager, Research Computing, 
+ Lehigh University (Sep. 2014 - Present)  
 
 Shield: [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
 
