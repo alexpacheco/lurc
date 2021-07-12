@@ -53,6 +53,7 @@ xaringanExtra::use_xaringan_extra(c("tileview", "webcam"))
 # Attendee Summary
 
 ```{r echo=FALSE, warning=F, message=F}
+suppressMessages(suppressWarnings(library(plotly)))
 status <- tribble(
                    ~"Status",~"Count",~"Yes",~"No",
                    "Graduate",24,14,10,
@@ -97,20 +98,24 @@ lingo <- tribble(
                 )
 ```
 
-```{r echo =F, warning=F}
-suppressMessages(suppressWarnings(library(plotly)))
+```{r echo =F, warning=F, eval=F}
 suppressMessages(suppressWarnings(
   plot_ly(status, labels=~Status, values=~Count, type = 'pie', textinfo = "values", text = status$Count) %>%
     layout(plot_bgcolor='#F1E7C8', paper_bgcolor='#F1E7C8')
 ))
 ```
 
+
+![Attendee Status](parprog_status.png)
+
+
+
+
 ---
 
 # Attendee Summary
 
-```{r echo =F, warning=F}
-suppressMessages(suppressWarnings(library(plotly)))
+```{r echo =F, warning=F, eval=F}
 suppressMessages(suppressWarnings(
   plot_ly(status, x=~Status, y=~Yes, type = 'bar', name="Yes") %>%
     add_trace(y=~No, name="No") %>%
@@ -118,13 +123,15 @@ suppressMessages(suppressWarnings(
 ))
 ```
 
+![Attendee Status](parprog_hpc.png)
+
+
 ---
 
 # Attendee Summary
 
 
-```{r echo =F, warning=F}
-suppressMessages(suppressWarnings(library(plotly)))
+```{r echo =F, warning=F, eval=F}
 suppressMessages(suppressWarnings(
   plot_ly(department, x=~Department, y=~Count, type = 'bar') %>% 
     layout(legend = list(orientation = 'h')) %>%
@@ -132,14 +139,16 @@ suppressMessages(suppressWarnings(
 ))
 ```
 
+![Attendee Status](parprog_dept.png)
+
+
 
 ---
 
 # Attendee Summary
 
 
-```{r echo =F, warning=F}
-suppressMessages(suppressWarnings(library(plotly)))
+```{r echo =F, warning=F, eval=F}
 suppressMessages(suppressWarnings(
   plot_ly(language, x=~Language, y=~Count, type = 'bar') %>% 
     layout(legend = list(orientation = 'h')) %>%
@@ -147,20 +156,25 @@ suppressMessages(suppressWarnings(
 ))
 ```
 
+![Attendee Status](parprog_lang.png)
+
+
 
 ---
 
 # Attendee Summary
 
 
-```{r echo =F, warning=F}
-suppressMessages(suppressWarnings(library(plotly)))
+```{r echo =F, warning=F, eval=F}
 suppressMessages(suppressWarnings(
   plot_ly(lingo, x=~Languages, y=~Number, type = 'bar') %>% 
     layout(legend = list(orientation = 'h')) %>%
     layout(plot_bgcolor='#F1E7C8', paper_bgcolor='#F1E7C8', xaxis = list(title="Number of Languages"), yaxis = list(title=""))
 ))
 ```
+
+![Attendee Status](parprog_lingo.png)
+
 
 ---
 
