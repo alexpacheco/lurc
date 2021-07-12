@@ -98,15 +98,16 @@ lingo <- tribble(
                 )
 ```
 
-```{r echo =F, warning=F, eval=F}
+```{r echo =F, warning=F, eval=T}
 suppressMessages(suppressWarnings(
   plot_ly(status, labels=~Status, values=~Count, type = 'pie', textinfo = "values", text = status$Count) %>%
     layout(plot_bgcolor='#F1E7C8', paper_bgcolor='#F1E7C8')
 ))
 ```
 
-
+<!--
 ![Attendee Status](parprog_status.png)
+-->
 
 
 
@@ -115,7 +116,7 @@ suppressMessages(suppressWarnings(
 
 # Attendee Summary
 
-```{r echo =F, warning=F, eval=F}
+```{r echo =F, warning=F, eval=T}
 suppressMessages(suppressWarnings(
   plot_ly(status, x=~Status, y=~Yes, type = 'bar', name="Yes") %>%
     add_trace(y=~No, name="No") %>%
@@ -123,7 +124,9 @@ suppressMessages(suppressWarnings(
 ))
 ```
 
+<!--
 ![Attendee Status](parprog_hpc.png)
+-->
 
 
 ---
@@ -131,7 +134,7 @@ suppressMessages(suppressWarnings(
 # Attendee Summary
 
 
-```{r echo =F, warning=F, eval=F}
+```{r echo =F, warning=F, eval=T}
 suppressMessages(suppressWarnings(
   plot_ly(department, x=~Department, y=~Count, type = 'bar') %>% 
     layout(legend = list(orientation = 'h')) %>%
@@ -139,7 +142,9 @@ suppressMessages(suppressWarnings(
 ))
 ```
 
+<!--
 ![Attendee Status](parprog_dept.png)
+-->
 
 
 
@@ -148,7 +153,7 @@ suppressMessages(suppressWarnings(
 # Attendee Summary
 
 
-```{r echo =F, warning=F, eval=F}
+```{r echo =F, warning=F, eval=T}
 suppressMessages(suppressWarnings(
   plot_ly(language, x=~Language, y=~Count, type = 'bar') %>% 
     layout(legend = list(orientation = 'h')) %>%
@@ -156,7 +161,9 @@ suppressMessages(suppressWarnings(
 ))
 ```
 
+<!--
 ![Attendee Status](parprog_lang.png)
+-->
 
 
 
@@ -165,7 +172,7 @@ suppressMessages(suppressWarnings(
 # Attendee Summary
 
 
-```{r echo =F, warning=F, eval=F}
+```{r echo =F, warning=F, eval=T}
 suppressMessages(suppressWarnings(
   plot_ly(lingo, x=~Languages, y=~Number, type = 'bar') %>% 
     layout(legend = list(orientation = 'h')) %>%
@@ -173,7 +180,9 @@ suppressMessages(suppressWarnings(
 ))
 ```
 
+<!--
 ![Attendee Status](parprog_lingo.png)
+-->
 
 
 ---
