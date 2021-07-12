@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>HPC Parallel Programming Workshop</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Yue Yu and Alex Pacheco" />
+    <script src="libs/xaringanExtra-webcam/webcam.js"></script>
+    <script id="xaringanExtra-webcam-options" type="application/json">{"width":"200","height":"200","margin":"1em"}</script>
+    <script src="libs/htmlwidgets/htmlwidgets.js"></script>
+    <script src="libs/plotly-binding/plotly.js"></script>
+    <script src="libs/typedarray/typedarray.min.js"></script>
+    <script src="libs/jquery/jquery.min.js"></script>
+    <link href="libs/crosstalk/css/crosstalk.css" rel="stylesheet" />
+    <script src="libs/crosstalk/js/crosstalk.min.js"></script>
+    <link href="libs/plotly-htmlwidgets-css/plotly-htmlwidgets.css" rel="stylesheet" />
+    <script src="libs/plotly-main/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="addons/lehigh.css" type="text/css" />
+    <link rel="stylesheet" href="addons/lehigh-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# HPC Parallel Programming Workshop
+## July 13-15, 2021
+### Yue Yu and Alex Pacheco
+### Department of Mathematics and Library &amp; Technology Services<br />Lehigh University
+
+---
+
+class: myback
+
+
+
+
+# Workshop Schedule
+
+|   Day   |    Time    |     Session   |
+|:-------:|:----------:|:-------------:|
+| July 13 | 9AM - 12PM | Introduction to HPC &amp; Linux |
+|         | 1PM -  2PM | Research Talk: Xiu Yang, &lt;br /&gt;Industrial &amp; Systems Engineering, Lehigh University |
+|         | 2PM -  5PM | Parallel Programming Concepts |
+| July 14 | 9AM - 12PM | Introduction to OpenMP |
+|         | 1PM -  2PM | Research Talk: Emily Johnson, &lt;br /&gt;Aerospace &amp; Mechanical Engineering, University of Notre Dame|
+|         | 2PM -  5PM | Introduction to OpenACC |
+| July 15 | 9AM - 12PM | Introduction to MPI |
+|         | 1PM -  5PM | MPI (contd), Additional Exercise Time |
+
+* 8:50AM - 9AM check in on all days with a break for lunch between Noon and 1PM.
+* Computing time for Workshop provided by [NSF CC&amp;#42; award 2019035](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2019035&amp;HistoricalAwards=false).
+* Attendees will have access to HPC resources until August 31, 2021.
+
+
+---
+
+# Attendee Summary
+
+
+
+<div id="htmlwidget-73fc5afd681fe282c94c" style="width:864px;height:432px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-73fc5afd681fe282c94c">{"x":{"visdat":{"e3552970a341":["function () ","plotlyVisDat"]},"cur_data":"e3552970a341","attrs":{"e3552970a341":{"labels":{},"values":{},"textinfo":"values","text":[24,5,3,2],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"pie"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"plot_bgcolor":"#F1E7C8","paper_bgcolor":"#F1E7C8","hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"labels":["Graduate","Undergraduate","Faculty","Postdoc/Staff"],"values":[24,5,3,2],"textinfo":"values","text":[24,5,3,2],"type":"pie","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(241,231,200,1)"}},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+
+---
+
+# Attendee Summary
+
+<div id="htmlwidget-bcc6801a05ca4ca5a5ae" style="width:864px;height:432px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-bcc6801a05ca4ca5a5ae">{"x":{"visdat":{"e35515cfd9ff":["function () ","plotlyVisDat"]},"cur_data":"e35515cfd9ff","attrs":{"e35515cfd9ff":{"x":{},"y":{},"name":"Yes","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"},"e35515cfd9ff.1":{"x":{},"y":{},"name":"No","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"plot_bgcolor":"#F1E7C8","paper_bgcolor":"#F1E7C8","xaxis":{"domain":[0,1],"automargin":true,"title":"","type":"category","categoryorder":"array","categoryarray":["Faculty","Graduate","Postdoc/Staff","Undergraduate"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"HPC Experience"},"barmode":"group","hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"x":["Graduate","Undergraduate","Faculty","Postdoc/Staff"],"y":[14,1,1,2],"name":"Yes","type":"bar","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["Graduate","Undergraduate","Faculty","Postdoc/Staff"],"y":[10,4,2,0],"name":"No","type":"bar","marker":{"color":"rgba(255,127,14,1)","line":{"color":"rgba(255,127,14,1)"}},"error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+
+---
+
+# Attendee Summary
+
+
+<div id="htmlwidget-a9a1b371b4a35e2ab492" style="width:864px;height:432px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a9a1b371b4a35e2ab492">{"x":{"visdat":{"e3554e187bda":["function () ","plotlyVisDat"]},"cur_data":"e3554e187bda","attrs":{"e3554e187bda":{"x":{},"y":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"legend":{"orientation":"h"},"plot_bgcolor":"#F1E7C8","paper_bgcolor":"#F1E7C8","xaxis":{"domain":[0,1],"automargin":true,"title":"","type":"category","categoryorder":"array","categoryarray":["Applied Mathematics","ATLSS","Civil Enigneering","Computer Science","Computer Science and Business ","Computer Science and Engineering","Electrical and Computer Engineering","Industrial and Systems Engineering","LTS","Mathematics","Mechanical Engineering"]},"yaxis":{"domain":[0,1],"automargin":true,"title":""},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"x":["Mechanical Engineering","Computer Science","Mathematics","Electrical and Computer Engineering","Applied Mathematics","Industrial and Systems Engineering","Computer Science and Business ","Civil Enigneering","Computer Science and Engineering","ATLSS","LTS"],"y":[16,1,4,1,1,5,1,2,1,1,1],"type":"bar","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+
+
+---
+
+# Attendee Summary
+
+
+<div id="htmlwidget-3f6358d511ffd68be151" style="width:864px;height:432px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3f6358d511ffd68be151">{"x":{"visdat":{"e355439dc09a":["function () ","plotlyVisDat"]},"cur_data":"e355439dc09a","attrs":{"e355439dc09a":{"x":{},"y":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"legend":{"orientation":"h"},"plot_bgcolor":"#F1E7C8","paper_bgcolor":"#F1E7C8","xaxis":{"domain":[0,1],"automargin":true,"title":"","type":"category","categoryorder":"array","categoryarray":["C","C#","C++","Fortran","Java","MATLAB","Python","R","Rust"]},"yaxis":{"domain":[0,1],"automargin":true,"title":""},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"x":["Fortran","C","C++","MATLAB","Python","R","Java","C#","Rust"],"y":[6,19,14,27,25,9,13,1,1],"type":"bar","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+
+
+---
+
+# Attendee Summary
+
+
+<div id="htmlwidget-8ac71bf19629732ff857" style="width:864px;height:432px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8ac71bf19629732ff857">{"x":{"visdat":{"e355ec617ee":["function () ","plotlyVisDat"]},"cur_data":"e355ec617ee","attrs":{"e355ec617ee":{"x":{},"y":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"legend":{"orientation":"h"},"plot_bgcolor":"#F1E7C8","paper_bgcolor":"#F1E7C8","xaxis":{"domain":[0,1],"automargin":true,"title":"Number of Languages","type":"category","categoryorder":"array","categoryarray":["1","2","3","4","5","6"]},"yaxis":{"domain":[0,1],"automargin":true,"title":""},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"x":["1","2","3","4","5","6"],"y":[2,6,9,13,2,2],"type":"bar","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+
+---
+
+# HPC Workshop 
+
+* We have reserved the hawkgpu nodes for this workshop
+* Only request as many resources as you need
+      * Maximum of 6 cpus, 30 min walltime, and 1 gpu per job
+* To run jobs interactively
+
+```bash
+srun -p hawkgpu -n 6 -N 1 --gres=gpu:1 -t 30 -A hpc2021_prog_083121 &lt;program name&gt;
+```
+
+* Example submit script
+
+```bash
+#!/bin/bash
+
+#SBATCH -p hawkgpu
+#SBATCH -n 6 -N 1
+#SBATCH --gres=gpu:1
+#SBATCH -t 30
+#SBATCH -A hpc2021_prog_083121
+
+&lt;program name&gt;
+```
+
+---
+
+# Workshop Material
+
+* Copy Workshop material to your current location
+
+```bash
+cp -r /home/alp514/Workshop/2021HPC/parprog .
+```
+
+* Directory Contents
+   * `get_started`: for users who haven't used HPC or compiled code to get started with using Hawk 
+   * `exercises`: sample serial codes to parallelize 
+   * `solution`: directory containing solutions for exercises
+* You have a choice of using GNU, Intel and NVIDIA HPC SDK compiler.
+   * OpenACC: requires NVIDIA HPC SDK
+* Exercise folder contains Makefiles that default to NVIDIA HPC SDK
+* To use other compilers, specify the compiler as follows
+
+```bash
+make -f Makefile_c COMP=gnu
+make -f Makefile_f90 COMP=intel
+```
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="libs/remark-latest.min.js"></script>
+<script src="addons/imgscale.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:10",
+"yolo": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

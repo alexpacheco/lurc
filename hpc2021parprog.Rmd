@@ -1,0 +1,210 @@
+---
+title: "HPC Parallel Programming Workshop"
+subtitle: "July 13-15, 2021"
+author: "Yue Yu and Alex Pacheco"
+institute: "Department of Mathematics and Library & Technology Services<br />Lehigh University"
+date: ""
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    chakra: libs/remark-latest.min.js
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:10"
+      yolo: false
+      beforeInit: "addons/imgscale.js"
+    css: [addons/lehigh.css, addons/lehigh-fonts.css]
+---
+class: myback
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(tidyverse)
+library(knitr)
+knitr::opts_chunk$set(echo = TRUE, fig.width = 12, fig.height = 6)
+```
+```{r xaringan-webcam, include = FALSE}
+#xaringanExtra::use_webcam()
+xaringanExtra::use_xaringan_extra(c("tileview", "webcam"))
+```
+
+# Workshop Schedule
+
+|   Day   |    Time    |     Session   |
+|:-------:|:----------:|:-------------:|
+| July 13 | 9AM - 12PM | Introduction to HPC & Linux |
+|         | 1PM -  2PM | Research Talk: Xiu Yang, <br />Industrial & Systems Engineering, Lehigh University |
+|         | 2PM -  5PM | Parallel Programming Concepts |
+| July 14 | 9AM - 12PM | Introduction to OpenMP |
+|         | 1PM -  2PM | Research Talk: Emily Johnson, <br />Aerospace & Mechanical Engineering, University of Notre Dame|
+|         | 2PM -  5PM | Introduction to OpenACC |
+| July 15 | 9AM - 12PM | Introduction to MPI |
+|         | 1PM -  5PM | MPI (contd), Additional Exercise Time |
+
+* 8:50AM - 9AM check in on all days with a break for lunch between Noon and 1PM.
+* Computing time for Workshop provided by [NSF CC&#42; award 2019035](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2019035&HistoricalAwards=false).
+* Attendees will have access to HPC resources until August 31, 2021.
+
+
+---
+
+# Attendee Summary
+
+```{r echo=FALSE, warning=F, message=F}
+status <- tribble(
+                   ~"Status",~"Count",~"Yes",~"No",
+                   "Graduate",24,14,10,
+                   "Undergraduate",5,1,4,
+                   "Faculty",3,1,2,
+                   "Postdoc/Staff",2,2,0
+                  )
+department <- tribble(
+                     ~"Department", ~"Count",
+                      "Mechanical Engineering",16,
+                      "Computer Science",1,
+                      "Mathematics",4,
+                      "Electrical and Computer Engineering",1,
+                      "Applied Mathematics",1,
+                      "Industrial and Systems Engineering",5,
+                      "Computer Science and Business ",1,
+                      "Civil Enigneering",2,
+                      "Computer Science and Engineering",1,
+                      "ATLSS",1,
+                      "LTS",1
+                     )
+language <- tribble(
+                   ~"Language",~"Count",
+                    "Fortran",6,
+                    "C",19,
+                    "C++",14,
+                    "MATLAB",27,
+                    "Python",25,
+                    "R",9,
+                    "Java",13,
+                    "C#",1,
+                    "Rust",1
+                   )
+lingo <- tribble(
+                ~"Languages",~"Number",
+                 "1",2,
+                 "2",6,
+                 "3",9,
+                 "4",13,
+                 "5",2,
+                 "6",2
+                )
+```
+
+```{r echo =F, warning=F}
+suppressMessages(suppressWarnings(library(plotly)))
+suppressMessages(suppressWarnings(
+  plot_ly(status, labels=~Status, values=~Count, type = 'pie', textinfo = "values", text = status$Count) %>%
+    layout(plot_bgcolor='#F1E7C8', paper_bgcolor='#F1E7C8')
+))
+```
+
+---
+
+# Attendee Summary
+
+```{r echo =F, warning=F}
+suppressMessages(suppressWarnings(library(plotly)))
+suppressMessages(suppressWarnings(
+  plot_ly(status, x=~Status, y=~Yes, type = 'bar', name="Yes") %>%
+    add_trace(y=~No, name="No") %>%
+    layout(plot_bgcolor='#F1E7C8', paper_bgcolor='#F1E7C8', xaxis = list(title=""), yaxis = list(title="HPC Experience"), barmode = 'group')
+))
+```
+
+---
+
+# Attendee Summary
+
+
+```{r echo =F, warning=F}
+suppressMessages(suppressWarnings(library(plotly)))
+suppressMessages(suppressWarnings(
+  plot_ly(department, x=~Department, y=~Count, type = 'bar') %>% 
+    layout(legend = list(orientation = 'h')) %>%
+    layout(plot_bgcolor='#F1E7C8', paper_bgcolor='#F1E7C8', xaxis = list(title=""), yaxis = list(title=""))
+))
+```
+
+
+---
+
+# Attendee Summary
+
+
+```{r echo =F, warning=F}
+suppressMessages(suppressWarnings(library(plotly)))
+suppressMessages(suppressWarnings(
+  plot_ly(language, x=~Language, y=~Count, type = 'bar') %>% 
+    layout(legend = list(orientation = 'h')) %>%
+    layout(plot_bgcolor='#F1E7C8', paper_bgcolor='#F1E7C8', xaxis = list(title=""), yaxis = list(title=""))
+))
+```
+
+
+---
+
+# Attendee Summary
+
+
+```{r echo =F, warning=F}
+suppressMessages(suppressWarnings(library(plotly)))
+suppressMessages(suppressWarnings(
+  plot_ly(lingo, x=~Languages, y=~Number, type = 'bar') %>% 
+    layout(legend = list(orientation = 'h')) %>%
+    layout(plot_bgcolor='#F1E7C8', paper_bgcolor='#F1E7C8', xaxis = list(title="Number of Languages"), yaxis = list(title=""))
+))
+```
+
+---
+
+# HPC Workshop 
+
+* We have reserved the hawkgpu nodes for this workshop
+* Only request as many resources as you need
+      * Maximum of 6 cpus, 30 min walltime, and 1 gpu per job
+* To run jobs interactively
+```{bash eval=F}
+srun -p hawkgpu -n 6 -N 1 --gres=gpu:1 -t 30 -A hpc2021_prog_083121 <program name>
+```
+
+* Example submit script
+```{bash eval=F}
+#!/bin/bash
+
+#SBATCH -p hawkgpu
+#SBATCH -n 6 -N 1
+#SBATCH --gres=gpu:1
+#SBATCH -t 30
+#SBATCH -A hpc2021_prog_083121
+
+<program name>
+```
+
+---
+
+# Workshop Material
+
+* Copy Workshop material to your current location
+```{bash eval=F}
+cp -r /home/alp514/Workshop/2021HPC/parprog .
+```
+
+* Directory Contents
+   * `get_started`: for users who haven't used HPC or compiled code to get started with using Hawk 
+   * `exercises`: sample serial codes to parallelize 
+   * `solution`: directory containing solutions for exercises
+* You have a choice of using GNU, Intel and NVIDIA HPC SDK compiler.
+   * OpenACC: requires NVIDIA HPC SDK
+* Exercise folder contains Makefiles that default to NVIDIA HPC SDK
+* To use other compilers, specify the compiler as follows
+```{bash eval=F}
+make -f Makefile_c COMP=gnu
+make -f Makefile_f90 COMP=intel
+```
