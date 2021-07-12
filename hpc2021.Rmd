@@ -23,10 +23,11 @@ class: myback
 options(htmltools.dir.version = FALSE)
 library(tidyverse)
 library(knitr)
+knitr::opts_chunk$set(tidy.opts=list(width.cutoff=60),tidy=TRUE)
 ```
 ```{r xaringan-webcam, include = FALSE}
 #xaringanExtra::use_webcam()
-xaringanExtra::use_xaringan_extra(c("tileview", "webcam"))
+#xaringanExtra::use_xaringan_extra(c("tileview", "webcam"))
 ```
 
 # About Us?
@@ -40,8 +41,6 @@ xaringanExtra::use_xaringan_extra(c("tileview", "webcam"))
   * Steve Anthony, System Administrator
   * Dan Brashler, CAS Computing Consultant
   * Sachin Joshi, Data Analyst &amp; Visualization Specialist
-  * Honorary Staff
-     * Jeremy Mack, Geospatial Data and Visualization Specialist, Digital Scholarship Team
 
 
 ---
@@ -132,7 +131,7 @@ knitr::kable(rbind(hawk,totalhawk), format = 'html')
 knitr::kable(rbind(rbind(sol,hawk),total), format = 'html')
 ```
 
-* SUs available for general use: `r  sprintf("%4.2fM",4.8)` available by proposal style allocation review process,
+* `r  sprintf("%4.2fM",4.8)` SUs available for general use by proposal style allocation review process,
    * rest allocated to investors, and grant distribution including education use.
 
 
@@ -248,27 +247,6 @@ knitr::kable(rbind(rbind(sol,hawk),total), format = 'html')
 
 ---
 
-#  Shell Access
-
-* Click Clusters > Sol Shell Access
-
-<span class="center">
-![:scale 75%](https://confluence.cc.lehigh.edu/download/attachments/123048063/OOD-Clusters.png?api=v2)
-</span>
-
-
----
-
-#  Shell Access
-
-* Click Clusters > Sol Shell Access
-
-<span class="center">
-![:scale 75%](https://confluence.cc.lehigh.edu/download/attachments/123048063/OOD-Shell.png?api=v2)
-</span>
-
----
-
 # File Management
 
 .pull-left[
@@ -291,6 +269,27 @@ knitr::kable(rbind(rbind(sol,hawk),total), format = 'html')
 </span>
 ]
 
+
+---
+
+#  Shell Access
+
+* Click Clusters > Sol Shell Access
+
+<span class="center">
+![:scale 75%](https://confluence.cc.lehigh.edu/download/attachments/123048063/OOD-Clusters.png?api=v2)
+</span>
+
+
+---
+
+#  Shell Access
+
+* Click Clusters > Sol Shell Access
+
+<span class="center">
+![:scale 75%](https://confluence.cc.lehigh.edu/download/attachments/123048063/OOD-Shell.png?api=v2)
+</span>
 
 ---
 class: inverse, middle
@@ -498,7 +497,7 @@ http://www.cis.rit.edu/class/simg211/unixintro/Shell.html
 # Linux Command (contd)
 
 * `cp file1 file2`: command to copy file1 to file2
-      - `cp -r /home/alp514/Workshop/sum2017 .` copy directories recursively
+      - `cp -r /home/alp514/Workshop/2021HPC .` copy directories recursively
       - `cp -p ~alp514/in.lj ${HOME}/` preserve time stamps
 * `rm file1`: delete a file called file1 
       - `rm -i` to be prompted for confirmation
@@ -628,6 +627,12 @@ http://www.cis.rit.edu/class/simg211/unixintro/Shell.html
    *   The **set -o** command can be used to change the command line editor mode among other things (Do **man set** to find out more)
 
 ---
+class: inverse, middle
+
+# Software
+
+
+---
 
 # Available Software
 
@@ -688,7 +693,7 @@ http://www.cis.rit.edu/class/simg211/unixintro/Shell.html
   - Ansys
   - Comsol
   - **OpenFOAM**
-  - OpenSees
+  - **OpenSees**
 * [Math](https://confluence.cc.lehigh.edu/x/1QL5Bg)
   - GAMS
   - GNU Octave
@@ -820,53 +825,66 @@ http://www.cis.rit.edu/class/simg211/unixintro/Shell.html
 <script id="asciicast-hGo9Uvwjh1sYYL4X50ZlqVMMn" src="https://asciinema.org/a/hGo9Uvwjh1sYYL4X50ZlqVMMn.js" async data-rows=20></script>
 
 
+-->
 
-<!--
+---
+class: inverse, middle
+
+# Compilers and Compiler options
+
+
+---
 
 # Compilers
 
-* Various versions of compilers installed on Sol. 
 * Open Source: GNU Compiler (also called gcc even though gcc is the c compiler)
-   - 4.8.5 (system default), 5.3.0, 6.1.0, 7.1.0 and 8.1.0.
+   - 8.3.1 (system default), and 9.3.0.
 * Commercial: Only two seats of each.
-   - Intel Compiler: 16.0.3, 17.0.0, 17.0.3 and 18.0.1
-   - Portland Group or PGI: 16.5, 16.10, 17.4, 17.7, 18.3 and 19.1
-   - nVIDIA HPC SDK<sup>a</sup>: 20.7
-* _We are licensed to install any available version_.
-* On Sol, all except gcc 4.8.5 are available via the module environment.
+   - Intel Compiler: 19.0.3 and 20.0.3
+* Commercial but available free of charge
+   - NVIDIA HPC SDK<sup>a</sup>: 20.9
+   - Intel OneAPI: 2021.3
+* All except gcc 8.3.1 and OneAPI are available via the module environment. 
 
 .center[
-| Language | GNU | Intel | PGI | nVIDIA HPC SDK |
-|:--------:|:----:|:-----:|:----:|:-------------:|
-| Fortran  | `gfortran` | `ifort` | `pgfortran` | `nvfortran` |
-| C | `gcc` | `icc` | `pgcc` | `nvc`<sup>b</sup> |
-| C++ | `g++` | `icpc` | `pgc++` | `nvc++` |
+| Language | GNU  | Intel | NVIDIA HPC SDK <sup>b</sup> | OneAPI<sup>d</sup> |
+|:--------:|:----:|:-----:|::-------------:|:--------:|
+| Fortran  | `gfortran` | `ifort` | `nvfortran` | `ifx` |
+| C | `gcc` | `icc` | `nvc`<sup>c</sup> | `icx` |
+| C++ | `g++` | `icpc` | `nvc++` | `icpx` |
 ]
 
 .footnote[
-a. includes CUDA for compiling on GPUs.
-
-b. `nvcc` is the cuda compiler while `nvc` is the C compiler.
+a. includes CUDA for compiling on GPUs.<br />
+b. NVIDIA HPC SDK replaces the old PGI compilers. `pgfortran`, `pgcc` and `pgc++` are available for now but you should change your commands to the new `nv` commands.<br />
+c. `nvcc` is the cuda compiler while `nvc` is the C compiler. <br />
+d. `source /share/Apps/intel-oneapi/2021/setvars.sh` to setup environment.
 ]
 
+
+---
 
 # Compiling Code
 
 * Usage: `<compiler> <options> <source code>`
-* Example:
-  - `ifort -o saxpyf saxpy.f90`
-  - `gcc -o saxpyc saxpy.c`
 * Common Compiler options or flags:
   - `-o myexec`: compile code and create an executable `myexec`. If this option is not given, then a default `a.out` is created.
   - `-l{libname}`: link compiled code to a library called `libname`. e.g. to use lapack libraries, add `-llapack` as a compiler flag.
   - `-L{directory path}`: directory to search for libraries. e.g. `-L/usr/lib64 -llapack` will search for lapack libraries in `/usr/lib64`.
   - `-I{directory path}`: directory to search for include files and fortran modules.
+  - `-On`: optmize code to level n where n=0,1,2,3.
+  - `-g`: generate a level of debugging information in the object file (-On supercedes -g).
+  - `-mcmodel=mem_model`: tells the compiler to use a specific memory model to generate code and store data where mem\_model=small, medium or large.
+  - `-fpic/-fPIC`: generate position independent code (PIC) suitable for use in a shared library. 
+* See [HPC Documentation](https://confluence.cc.lehigh.edu/display/hpc/Compilers#Compilers-CompilerFlags)
 
 
+
+---
 
 # Compiling and Running Serial Codes
 
-<pre>
+<pre class="wrap" style="font-size: 14px">
 [2018-02-22 08:47.27] ~/Workshop/2017XSEDEBootCamp/OpenMP
 [alp514.sol-d118](842): icc -o laplacec laplace_serial.c
 [2018-02-22 08:47.46] ~/Workshop/2017XSEDEBootCamp/OpenMP
@@ -899,6 +917,57 @@ Total time was 4.099030 seconds.
 </pre>
 
 
+---
+
+# Intel Compiler Options
+
+
+| Flag | Description |
+|:----|:--------|
+| `-ipo` | Enables interprocedural optimization between files. |
+| `-ax_code_/-x_code_` | Tells the compiler to generate multiple, feature-specific auto-dispatch code paths for Intel processors if there is a performance benefit. code can be COMMON-AVX512, CORE-AVX512, CORE-AVX2, CORE-AVX-I or AVX |
+| `-xHost` | Tells the compiler to generate instructions for the highest instruction set available on the compilation host processor. DO NOT USE THIS OPTION  |
+| `-fast` | Maximizes speed across the entire program. Also sets `-ipo`, `-O3`, `-no-prec-div`, `-static`, `-fp-model fast=2`, and `-xHost`. Not recommended |
+| `-funroll-all-loops` | Unroll all loops even if the number of iterations is uncertain when the loop is entered. |
+| `-mkl` | Tells the compiler to link to certain libraries in the Intel Math Kernel Library (Intel MKL) |
+| `-static-intel/libgcc` | Links to Intel/GNU libgcc libraries statically, use -static to link all libraries dynamically |
+
+
+
+---
+
+# GNU Compiler Options
+
+
+| Flag | Description |
+|:----|:--------|
+| `-march=processor` |  Generate instructions for the machine type processor . processor can be sandybridge, ivybridge, haswell, broadwell or skylake-avx512. |
+| `-Ofast` |  Disregard strict standards compliance. `-Ofast` enables all `-O3` optimizations. It also enables optimizations that are not valid for all standard-compliant programs. It turns on `-ffast-math` and the Fortran-specific `-fstack-arrays`, unless `-fmax-stack-var-size` is specified, and `-fno-protect-parens`. |
+| `-funroll-all-loops` |  Unroll all loops even if the number of iterations is uncertain when the loop is entered. |
+| `-shared`/`-static` | Links to libraries dynamically/statically |
+
+
+
+---
+
+# NVIDIA HPC Compiler Options
+
+
+| Flag | Description |
+|:----|:--------|
+| `-acc` | Enable OpenACC directives. |
+| `-tp processor` | Specify the type(s) of the target processor(s). processor can be sandybridge-64, haswell-64, or skylake-64. |
+| `-mtune=processor` | Tune to processor everything applicable about the generated code, except for the ABI and the set of available instructions. processor can be sandybridge, ivybridge, haswell, broadwell or skylake-avx512. Some older programs/makefile might use -mcpu that is deprecated |
+| `-fast` | Generally optimal set of flags. |
+| `-Mipa` | Invokes interprocedural analysis and optimization.  |
+| `-Munroll` | Controls loop unrolling. |
+| `-Minfo` |  Prints informational messages regarding optimization and code generation to standard output as compilation proceeds.|
+| `-shared` | Instructs the linker to generate a shared object file. Implies `-⁠fpi`. |
+| `-Bstatic` | Statically link all libraries, including the PGI runtime. |
+
+
+
+<!---
 
 # Compilers for OpenMP & TBB
 
@@ -908,7 +977,7 @@ Total time was 4.099030 seconds.
 |:---:|:---:|:---:|
 | GNU | `-fopenmp` | `-L$TBBROOT/lib/intel64_lin/gcc4.4 -ltbb` |
 | Intel | `-qopenmp` | `-L$TBBROOT/lib/intel64_lin/gcc4.4 -ltbb` |
-| PGI/nVIDIA HPC SDK | `-mp` |
+| PGI/NVIDIA HPC SDK | `-mp` |
 
 * TBB is available as part of Intel Compiler suite.
 * `$TBBROOT` depends on the Intel Compiler Suite you want to use.
@@ -929,8 +998,6 @@ setenv           TBBROOT /share/Apps/intel/compilers_and_libraries_2016.3.210/li
 snip
 ...
 </pre>
-
-
 
 
 
@@ -1076,6 +1143,54 @@ Total time was 1.030180 seconds.
 -->
 
 ---
+
+# Best Practices 
+
+* Build for 64 bit architecture by adding `-m64`
+* Use `-mcmodel=medium` if you have large static arrays
+* Intel Compiler
+  * DO NOTE USE `-xHost`, use `-x<code>` or `-ax<code>` instead
+     * OR optimize for all available architectures using `-axCOMMON-AVX512,CORE-AVX512,CORE-AVX2,CORE-AVX-I,AVX`
+  * DO NOT USE `-fast` (at least on Sol and Hawk)
+     * Instead use `-ipo -O3 -no-prec-div -static -fp-model fast=2`
+     * and `-x<code>` or `-ax<code>` instead.
+  * Use `-mkl` if using MKL libraries.
+     * If you need specific option see the [MKL Link Advisor](https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/onemkl/link-line-advisor.html)
+* GNU Compiler
+  * Use `-march=<processor>` to optimize for a specific processor.
+     * GNU compiler cannot build multi-architecture binaries.
+     * If you are building only one executable, then optimize for the lowest processor i.e. ivybridge (if you plan to use debug queue) or haswell
+
+
+
+---
+class: inverse, middle
+
+
+# Exercise
+
+
+---
+
+# Get Started with Linux and HPC
+
+
+* Login to Sol using a SSH client or Open OnDemand portal
+    * `ssh <username>@sol.cc.lehigh.edu`
+    * https://hpcportal.cc.lehigh.edu
+
+* Copy Workshop material
+    * `cp -r /home/alp514/Workshop/2021HPC/parprog .`
+
+* Compile the fortran and c code in the `get_started` directory. Edit the code 
+    * `cd parprog/get_started`
+    * `gcc -o helloc hello.c`
+    * `gfortran -o hellof hello.f90`
+
+* Load another compiler for e.g. intel 20.0.3 and compile again
+    * `module load intel/20.0.3`
+
+---
 class: inverse, middle
 
 # Scheduler Basics
@@ -1084,6 +1199,7 @@ class: inverse, middle
 ---
 
 # How does a cluster look?
+
 
 
 .pull-left[
@@ -1684,6 +1800,57 @@ g09 < water-hexamer-cage-opt-freq.com > water-hexamer-cage-opt-freq.log
 ---
 class: inverse, middle
 
+# Exercise
+
+
+---
+
+# Submitting Jobs on the Cluster
+
+* Submit a job to run the code you just compiled
+<pre class="wrap" style="background-color: var(--white); font-size: 12px">
+srun -p hawkgpu -n 1 -N 1 -t 10 -A hpc2021_prog_083121 &lt;executable&gt;
+</pre>
+* Submit a job to run on a gpu
+<pre class="wrap" style="background-color: var(--white); font-size: 12px">
+module load nvhpc
+nvcc -o saxpy saxpy.cu
+srun -p hawkgpu -n 1 -N 1 -t 10 --gres=gpu:1 -A hpc2021_prog_083121 ./saxpy
+</pre>
+* Submit a LAMMPS job or any other of your choice and compare timing results
+<pre class="wrap" style="background-color: var(--white); font-size: 12px">
+module load hawkgpu
+module load lammps
+srun -p hawkgpu -n 1 -N 1 --gpu:gres=1 -t 10 -A hpc2021_prog_083121 $(which lmp) -in in.lj -var n 1 -var x 4 -sf gpu -pk gpu 1
+</pre>
+
+.pull-left[
+| CPUs | Time (0 GPU) | Speed Up |
+|:----:|:-----:|:----:|
+| 1 | 111.235 | `r sprintf("%4.2f",111.235/111.235)` |
+| 2 | 55.2948 | `r sprintf("%4.2f",111.235/55.2948)` |
+| 3 | 38.5418 | `r sprintf("%4.2f",111.235/38.5418)` |
+| 4 | 30.2332 | `r sprintf("%4.2f",111.235/30.2332)` |
+| 5 | 25.0032 | `r sprintf("%4.2f",111.235/25.0032)` |
+| 6 | 20.4588 | `r sprintf("%4.2f",111.235/20.4588)` |
+]
+
+.pull-right[
+| CPUs | Time (1 GPU) | SpeedUp | SpeedUp vs CPU |
+|:----:|:-----:|:----:|:---:|
+| 1 |  8.62814 | `r sprintf("%4.2f",8.62814/8.62814)` | `r sprintf("%4.2f",111.235/8.62814)` |
+| 2 |  5.48937 | `r sprintf("%4.2f",8.62814/5.48937)` | `r sprintf("%4.2f",55.2948/5.48937)` |
+| 3 |  4.43548 | `r sprintf("%4.2f",8.62814/4.43548)` | `r sprintf("%4.2f",38.5418/4.43548)` |
+| 4 |  3.9407  | `r sprintf("%4.2f",8.62814/3.9407)` | `r sprintf("%4.2f",30.2332/3.9407)` |
+| 5 |  3.85239 | `r sprintf("%4.2f",8.62814/3.85239)` | `r sprintf("%4.2f",25.0032/3.85239)` |
+| 6 |  3.78487 | `r sprintf("%4.2f",8.62814/3.78487)` | `r sprintf("%4.2f",20.4588/3.78487)` |
+]
+
+
+---
+class: inverse, middle
+
+# Quantum Chemistry Workshop
 
 
 ---
@@ -1700,3 +1867,4 @@ class: inverse, middle
    - When resources are ready, click "Launch Quantum Chemistry" to start a desktop session.
    - Click Gauss View desktop icon to start Gauss View
    
+
