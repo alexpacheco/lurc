@@ -1821,7 +1821,7 @@ srun -p hawkgpu -n 1 -N 1 -t 10 --gres=gpu:1 -A hpc2021_prog_083121 --reservatio
 <pre class="wrap" style="background-color: var(--white); font-size: 12px">
 module load hawkgpu
 module load lammps
-srun -p hawkgpu -n 1 -N 1 --gpu:gres=1 -t 10 -A hpc2021_prog_083121 --reservation=lts_165 $(which lmp) -in in.lj -var n 1 -var x 4 -sf gpu -pk gpu 1
+srun -p hawkgpu -n 1 -N 1 --gres=gpu:1 -t 10 -A hpc2021_prog_083121 --reservation=lts_165 $(which lmp) -in in.lj -var n 1 -var x 4 -sf gpu -pk gpu 1
 </pre>
 
 .pull-left[
