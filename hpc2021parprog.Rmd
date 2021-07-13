@@ -99,15 +99,15 @@ lingo <- tribble(
 ```
 
 ```{r echo =F, warning=F, eval=T}
-suppressMessages(suppressWarnings(
+fig1 <- suppressMessages(suppressWarnings(
   plot_ly(status, labels=~Status, values=~Count, type = 'pie', textinfo = "values", text = status$Count) %>%
     layout(plot_bgcolor='#F1E7C8', paper_bgcolor='#F1E7C8')
 ))
 ```
 
 <!--
-![Attendee Status](parprog_status.png)
 -->
+![Attendee Status](parprog_status.png)
 
 
 
@@ -117,7 +117,7 @@ suppressMessages(suppressWarnings(
 # Attendee Summary
 
 ```{r echo =F, warning=F, eval=T}
-suppressMessages(suppressWarnings(
+fig2 <- suppressMessages(suppressWarnings(
   plot_ly(status, x=~Status, y=~Yes, type = 'bar', name="Yes") %>%
     add_trace(y=~No, name="No") %>%
     layout(plot_bgcolor='#F1E7C8', paper_bgcolor='#F1E7C8', xaxis = list(title=""), yaxis = list(title="HPC Experience"), barmode = 'group')
@@ -125,8 +125,8 @@ suppressMessages(suppressWarnings(
 ```
 
 <!--
-![Attendee Status](parprog_hpc.png)
 -->
+![Attendee Status](parprog_hpc.png)
 
 
 ---
@@ -135,7 +135,7 @@ suppressMessages(suppressWarnings(
 
 
 ```{r echo =F, warning=F, eval=T}
-suppressMessages(suppressWarnings(
+fig3 <- suppressMessages(suppressWarnings(
   plot_ly(department, x=~Department, y=~Count, type = 'bar') %>% 
     layout(legend = list(orientation = 'h')) %>%
     layout(plot_bgcolor='#F1E7C8', paper_bgcolor='#F1E7C8', xaxis = list(title=""), yaxis = list(title=""))
@@ -143,8 +143,8 @@ suppressMessages(suppressWarnings(
 ```
 
 <!--
-![Attendee Status](parprog_dept.png)
 -->
+![Attendee Status](parprog_dept.png)
 
 
 
@@ -154,7 +154,7 @@ suppressMessages(suppressWarnings(
 
 
 ```{r echo =F, warning=F, eval=T}
-suppressMessages(suppressWarnings(
+fig4 <- suppressMessages(suppressWarnings(
   plot_ly(language, x=~Language, y=~Count, type = 'bar') %>% 
     layout(legend = list(orientation = 'h')) %>%
     layout(plot_bgcolor='#F1E7C8', paper_bgcolor='#F1E7C8', xaxis = list(title=""), yaxis = list(title=""))
@@ -162,8 +162,8 @@ suppressMessages(suppressWarnings(
 ```
 
 <!--
-![Attendee Status](parprog_lang.png)
 -->
+![Attendee Status](parprog_lang.png)
 
 
 
@@ -173,7 +173,7 @@ suppressMessages(suppressWarnings(
 
 
 ```{r echo =F, warning=F, eval=T}
-suppressMessages(suppressWarnings(
+fig5 <- suppressMessages(suppressWarnings(
   plot_ly(lingo, x=~Languages, y=~Number, type = 'bar') %>% 
     layout(legend = list(orientation = 'h')) %>%
     layout(plot_bgcolor='#F1E7C8', paper_bgcolor='#F1E7C8', xaxis = list(title="Number of Languages"), yaxis = list(title=""))
@@ -181,8 +181,8 @@ suppressMessages(suppressWarnings(
 ```
 
 <!--
-![Attendee Status](parprog_lingo.png)
 -->
+![Attendee Status](parprog_lingo.png)
 
 
 ---
@@ -194,7 +194,7 @@ suppressMessages(suppressWarnings(
       * Maximum of 6 cpus, 30 min walltime, and 1 gpu per job
 * To run jobs interactively
 ```{bash eval=F}
-srun -p hawkgpu -n 6 -N 1 --gres=gpu:1 -t 30 -A hpc2021_prog_083121 <program name>
+srun -p hawkgpu -n 6 -N 1 --gres=gpu:1 -t 30 -A hpc2021_prog_083121 --reservation=lts_165 <program name>
 ```
 
 * Example submit script
@@ -206,6 +206,7 @@ srun -p hawkgpu -n 6 -N 1 --gres=gpu:1 -t 30 -A hpc2021_prog_083121 <program nam
 #SBATCH --gres=gpu:1
 #SBATCH -t 30
 #SBATCH -A hpc2021_prog_083121
+#SBATCH --reservation=lts_165
 
 <program name>
 ```
