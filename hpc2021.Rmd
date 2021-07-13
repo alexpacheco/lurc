@@ -1809,19 +1809,19 @@ class: inverse, middle
 
 * Submit a job to run the code you just compiled
 <pre class="wrap" style="background-color: var(--white); font-size: 12px">
-srun -p hawkgpu -n 1 -N 1 -t 10 -A hpc2021_prog_083121 &lt;executable&gt;
+srun -p hawkgpu -n 1 -N 1 -t 10 -A hpc2021_prog_083121 --reservation=lts_165 &lt;executable&gt;
 </pre>
 * Submit a job to run on a gpu
 <pre class="wrap" style="background-color: var(--white); font-size: 12px">
 module load nvhpc
 nvcc -o saxpy saxpy.cu
-srun -p hawkgpu -n 1 -N 1 -t 10 --gres=gpu:1 -A hpc2021_prog_083121 ./saxpy
+srun -p hawkgpu -n 1 -N 1 -t 10 --gres=gpu:1 -A hpc2021_prog_083121 --reservation=lts_165 ./saxpy
 </pre>
 * Submit a LAMMPS job or any other of your choice and compare timing results
 <pre class="wrap" style="background-color: var(--white); font-size: 12px">
 module load hawkgpu
 module load lammps
-srun -p hawkgpu -n 1 -N 1 --gpu:gres=1 -t 10 -A hpc2021_prog_083121 $(which lmp) -in in.lj -var n 1 -var x 4 -sf gpu -pk gpu 1
+srun -p hawkgpu -n 1 -N 1 --gpu:gres=1 -t 10 -A hpc2021_prog_083121 --reservation=lts_165 $(which lmp) -in in.lj -var n 1 -var x 4 -sf gpu -pk gpu 1
 </pre>
 
 .pull-left[

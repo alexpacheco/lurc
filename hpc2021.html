@@ -4,7 +4,6 @@
     <title>Introduction to HPC &amp; Linux</title>
     <meta charset="utf-8" />
     <meta name="author" content="Research Computing" />
-    <script src="libs/header-attrs/header-attrs.js"></script>
     <link rel="stylesheet" href="addons/lehigh.css" type="text/css" />
     <link rel="stylesheet" href="addons/lehigh-fonts.css" type="text/css" />
   </head>
@@ -2097,19 +2096,19 @@ class: inverse, middle
 
 * Submit a job to run the code you just compiled
 &lt;pre class="wrap" style="background-color: var(--white); font-size: 12px"&gt;
-srun -p hawkgpu -n 1 -N 1 -t 10 -A hpc2021_prog_083121 &amp;lt;executable&amp;gt;
+srun -p hawkgpu -n 1 -N 1 -t 10 -A hpc2021_prog_083121 --reservation=lts_165 &amp;lt;executable&amp;gt;
 &lt;/pre&gt;
 * Submit a job to run on a gpu
 &lt;pre class="wrap" style="background-color: var(--white); font-size: 12px"&gt;
 module load nvhpc
 nvcc -o saxpy saxpy.cu
-srun -p hawkgpu -n 1 -N 1 -t 10 --gres=gpu:1 -A hpc2021_prog_083121 ./saxpy
+srun -p hawkgpu -n 1 -N 1 -t 10 --gres=gpu:1 -A hpc2021_prog_083121 --reservation=lts_165 ./saxpy
 &lt;/pre&gt;
 * Submit a LAMMPS job or any other of your choice and compare timing results
 &lt;pre class="wrap" style="background-color: var(--white); font-size: 12px"&gt;
 module load hawkgpu
 module load lammps
-srun -p hawkgpu -n 1 -N 1 --gpu:gres=1 -t 10 -A hpc2021_prog_083121 $(which lmp) -in in.lj -var n 1 -var x 4 -sf gpu -pk gpu 1
+srun -p hawkgpu -n 1 -N 1 --gpu:gres=1 -t 10 -A hpc2021_prog_083121 --reservation=lts_165 $(which lmp) -in in.lj -var n 1 -var x 4 -sf gpu -pk gpu 1
 &lt;/pre&gt;
 
 .pull-left[
@@ -2154,8 +2153,6 @@ class: inverse, middle
    - Click "Launch" to submit your job.
    - When resources are ready, click "Launch Quantum Chemistry" to start a desktop session.
    - Click Gauss View desktop icon to start Gauss View
-   
-
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="libs/remark-latest.min.js"></script>
