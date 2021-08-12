@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Research Computing Resources</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Library &amp; Technology Services" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <script src="libs/xaringanExtra-webcam/webcam.js"></script>
+    <script id="xaringanExtra-webcam-options" type="application/json">{"width":"200","height":"200","margin":"1em"}</script>
+    <link rel="stylesheet" href="addons/lehigh.css" type="text/css" />
+    <link rel="stylesheet" href="addons/lehigh-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Research Computing Resources
+## @ Lehigh University
+### Library &amp; Technology Services
+### <a href="https://researchcomputing.lehigh.edu" class="uri">https://researchcomputing.lehigh.edu</a>
+
+---
+
+class: myback
+
+
+
+
+# About Us?
+
+* Who?
+  * Unit of Lehigh&amp;#39;s Library &amp; Technology Services
+
+* Our Mission
+  - We enable Lehigh Faculty, Researchers and Scholars achieve their goals by providing various computational resources; hardware, software, and storage; consulting and training.
+
+* Research Computing Staff
+  * __Alex Pacheco, Manager &amp;#38; XSEDE Campus Champion__
+  * Steve Anthony, System Administrator
+  * Dan Brashler, CAS Computing Consultant
+  * Sachin Joshi, Data Analyst &amp;amp; Visualization Specialist
+
+
+---
+
+# What do we do?
+
+* Hardware Support
+  * Provide system administration and support for Lehigh&amp;#39;s HPC clusters.
+  * Assist with purchase, installation and administration of servers and clusters.
+- Data Storage
+  - Provide data management services including storing and sharing data. 
+* Software Support
+  * Provide technical support for software applications, install software as requested and assist with purchase of software.
+- Training &amp; Consulting
+  - Provide education and training programs to facilitate use of HPC resources and general scientific computing needs.
+  - Provide consultation and support for code development and visualization.
+
+
+---
+
+# Sol: Lehigh&amp;#39;s Shared HPC Cluster
+
+
+
+- built by investments from Provost&lt;sup&gt;a&lt;/sup&gt; and Faculty.
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; Nodes &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Intel Xeon CPU Type &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; CPU Speed (GHz) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; CPUs &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; GPUs &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; CPU Memory (GB) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; GPU Memory (GB) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; CPU TFLOPS &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; GPU TFLOPs &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; SUs &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 9 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; E5-2650 v3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 180 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1024 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 80 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.7600 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.570 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1576800 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 33 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; E5-2670 v3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 792 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 62 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4224 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 496 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 25.3440 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 15.934 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6937920 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 14 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; E5-2650 v4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 336 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 896 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.6768 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2943360 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; E5-2640 v3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 16 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 512 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.5632 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 140160 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 24 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Gold 6140 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 864 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 48 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4608 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 528 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 41.4720 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18.392 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7568640 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Gold 6240 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 216 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1152 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10.3680 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1892160 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Gold 6230R &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 104 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 768 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.3264 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 911040 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 89 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2508 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 120 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 13184 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1104 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 97.5104 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 36.896 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 21970080 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+- 87 nodes interconnected by 2:1 oversubscribed Infiniband EDR (100Gb/s) fabric.
+- Only 1.40M SUs from Provost investment available to Lehigh researchers. 
+
+.footnote[
+a: 8 Intel Xeon E5-2650 v3 nodes invested by Provost in 2016.
+]
+
+
+---
+
+# Condo Investments
+
+* Sustainable model for High Performance Computing at Lehigh.
+* Faculty (Condo Investor) purchase compute nodes from grants to increase overall capacity of Sol.
+* LTS will provide for four years or length of hardware warranty purchased,
+   * System Administration, Power and Cooling, User Support for Condo Investments.
+* Condo Investor
+   * receives annual allocation equivalent to their investment for the length of
+     investment,
+   * can utilize allocations on all available nodes, including nodes from other Condo Investors,
+   * allows idle cycles on investment to be used by other Sol users,
+   * unused allocation will not rollover to the next allocation cycle,
+* Annual Allocation cycle is Oct. 1 - Sep. 30.
+
+---
+
+# Condo Investors
+
+* Dimitrios Vavylonis, Physics (1 node)
+* Wonpil Im, Biological Sciences (37 nodes, 98 GPUs)
+* Anand Jagota, Chemical Engineering (1 node)
+* Brian Chen, Computer Science &amp; Engineering (3 nodes)
+* Ed Webb &amp; Alp Oztekin, Mechanical Engineering (6 nodes)
+* Jeetain Mittal &amp; Srinivas Rangarajan, Chemical Engineering (13 nodes, 16 GPUs)
+* Seth Richards-Shubik, Economics (1 node)
+* Ganesh Balasubramanian, Mechanical Engineering (7 nodes)
+* Department of Industrial &amp; Systems Engineering (2 nodes)
+* Paolo Bocchini, Civil and Structural Engineering (1 node)
+* Lisa Fredin, Chemistry (6 nodes)
+* Hannah Dailey, Mechanical Engineering (1 node)
+* College of Health (2 nodes)
+- Condo Investments: 81 nodes, 2348 CPUs, 120 GPUs, 20.57M SUs
+- Lehigh Investments: 8 nodes, 160 CPUs,  1.40M  SUs
+
+
+
+---
+# Hawk
+
+* Funded by [NSF Campus Cyberinfrastructure award 2019035](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2019035&amp;HistoricalAwards=false).
+   - PI: __Ed Webb__ (MEM).
+   - co-PIs: Balasubramanian (MEM), Fredin (Chemistry), Pacheco (LTS), and Rangarajan (ChemE).
+   - Sr. Personnel: Anthony (LTS), Reed (Physics), Rickman (MSE), and Tak&amp;#225;&amp;#269; (ISE). 
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; Nodes &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Intel Xeon CPU Type &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; CPU Speed (GHz) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; CPUs &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; GPUs &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; CPU Memory (GB) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; GPU Memory (GB) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; CPU TFLOPS &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; GPU TFLOPs &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; SUs &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 26 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Gold 6230R &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1352 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9984 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 56.2432 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.00000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11843520 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Gold 6230R &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 208 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6144 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.6528 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.00000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1822080 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Gold 5220R &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 192 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 32 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 768 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 512 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.3008 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.10816 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1681920 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 34 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1752 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 32 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 16896 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 512 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 69.1968 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.10816 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 15347520 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+* 798TB (raw) Ceph based storage 
+* Production: **Feb 1, 2021**.
+
+---
+
+# Ceph Storage
+
+* LTS provides various storage options for research and teaching.
+* Some are cloud based and subject to Lehigh&amp;#39;s Cloud Policy.
+* Research Computing provides a 768TB (206TB usable) storage system called [Ceph](https://go.lehigh.edu/ceph).
+* Ceph 
+    * based on the Ceph software,
+    * in-house, built, operated and administered by Research Computing Staff,
+        * located in the EWFM Data Center.
+    * provides storage for Research Computing resources,
+    * can be mounted as a network drive on Windows or CIFS on Mac and Linux.
+        * [See Ceph FAQ](http://lts.lehigh.edu/services/faq/ceph-faq) for more details.
+* Research groups can purchase a sharable project space @ &amp;#36;375/TB for 5 years,
+    * can share project space with anyone with a Lehigh ID at no additional charge.
+
+
+
+---
+
+# Network Layout Sol, Hawk &amp;amp; Ceph
+
+![:scale 100%](assets/img/sol_hawk.png)
+
+
+---
+
+# Installed Software
+
+.pull-left[
+
+* [Chemistry/Materials Science](https://confluence.cc.lehigh.edu/x/3KX0BQ)
+  - **DL\_POLY\_4**
+  - Gaussian
+  - **OpenMolcas**
+  - **NWCHEM**
+  - **Quantum Espresso**
+  - **VASP** (Restricted Access)
+* [Molecular Dynamics](https://confluence.cc.lehigh.edu/x/6qX0BQ)
+  - **ESPResSo**
+  - **GROMACS**
+  - **LAMMPS**
+  - **NAMD**
+
+&lt;span class="tiny strong"&gt;__MPI enabled__&lt;/span&gt;
+]
+
+.pull-right[
+
+* [Computational Fluid Dynamics](https://confluence.cc.lehigh.edu/x/BZFVBw)
+  - Abaqus
+  - Ansys
+  - Comsol
+  - **OpenFOAM**
+  - OpenSees
+* [Math](https://confluence.cc.lehigh.edu/x/1QL5Bg)
+  - GNU Octave
+  - Gurobi
+  - Magma
+  - Maple
+  - Mathematica
+  - MATLAB]
+
+---
+
+# More Software
+
+.pull-left[
+
+* *Machine &amp;amp; Deep Learning* 
+   - TensorFlow
+   - Caffe
+   - SciKit-Learn
+   - SciKit-Image
+   - Theano
+   - Keras
+
+* *Natural Language Processing (NLP)*
+   - Natural Language Toolkit (NLTK)
+   - Stanford NLP    
+
+
+&lt;span class="tiny"&gt;_[Python packages](https://go.lehigh.edu/python)_&lt;/span&gt;
+]
+
+.pull-right[
+
+* [Bioinformatics](https://confluence.cc.lehigh.edu/x/y6X0BQ)
+  - BamTools
+  - BayeScan
+  - bgc
+  - BWA
+  - FreeBayes
+  - NCBI BLAST
+  - SAMTools
+  - tabix
+  - trimmomatic
+  - Trinity
+  - *barcode_splitter*
+  - *phyluce* 
+  - *VelvetOptimiser*]
+
+
+---
+
+#More Software
+
+.pull-left[
+
+* Scripting Languages
+  - [R](https://confluence.cc.lehigh.edu/x/5aX0BQ)
+  - Perl
+  - [Python](https://go.lehigh.edu/python)
+  - Julia
+* [Compilers](https://confluence.cc.lehigh.edu/x/Sab0BQ)
+  - GNU
+  - Intel/Intel OneAPI
+  - JAVA
+  - PGI/NVIDIA HPC SDK
+  - CUDA
+* [Parallel Programming](https://confluence.cc.lehigh.edu/x/Sab0BQ#Compilers-MPI)
+  - MVAPICH2
+  - MPICH
+  - OpenMPI
+]
+
+.pull-right[
+
+* Libraries
+  - BLAS/LAPACK/GSL/SCALAPACK
+  - Boost
+  - FFTW
+  - Intel MKL
+  - HDF5
+  - NetCDF
+  - METIS/PARMETIS
+  - QHull/QRupdate
+  - SuiteSparse
+  - SuperLU
+]
+
+
+---
+
+# More Software
+
+.pull-left[
+
+* [Visualization Tools](https://confluence.cc.lehigh.edu/x/qan0BQ)
+  - Atomic Simulation Environment 
+  - Avogadro
+  - Blender
+  - Gabedit
+  - GaussView
+  - GNUPlot
+  - Paraview
+  - PWGui
+  - PyMol
+  - RDKit
+  - VESTA
+  - VMD
+  - XCrySDen
+]
+
+.pull-right[
+
+* Other Tools
+  - Artleys Knitro
+  - ROOT
+  - CMake
+  - GIT
+  - [GNU Parallel](https://confluence.cc.lehigh.edu/x/B6b0BQ)
+  - [Jupyter Notebooks](https://confluence.cc.lehigh.edu/x/G5JVBw)
+  - *Numba*
+  - [RStudio Server](https://confluence.cc.lehigh.edu/x/NpBVBw)
+  - Scons
+  - Singularity
+  - [Virtual Desktops](https://confluence.cc.lehigh.edu/x/g5BVBw)
+]
+
+---
+
+# HPC Seminars
+
+* Fridays, 2:00PM - 4:00PM via Zoom
+
+| Date | Topic |
+|:-----|:------|
+| Sep. 3 | Research Computing Resources at Lehigh |
+| Sep. 10 | Linux: Basic Commands &amp; Environment |
+| Sep. 17 | Using SLURM scheduler on Sol |
+| Sep. 24 | Introduction to Open OnDemand |
+| Oct. 1 | Python Programming |
+| Oct. 8 | R Programming |
+| Oct. 15 | Data Visualization with Python |
+| Oct. 22 | Data Visualization with R |
+| Oct. 29 | Text Mining |
+| Nov. 5 | MATLAB |
+| Nov. 12 | Shiny Apps in R |
+
+* Register at https://go.lehigh.edu/hpcseminars
+
+---
+
+# Workshops
+
+* We provide full day workshops on programming topics.
+- [Summer Workshops](https://go.lehigh.edu/hpcworkshops)
+  - Modern Fortran Programming (Summer 2015, 2021)
+  - C Programming (Summer 2015, 2021)
+  - HPC Parallel Programming Workshop (Summer 2017, 2018, 2021)
+  - Quantum Chemistry Workshop (Summer 2021)
+* We also host full day XSEDE workshops.
+  - XSEDE HPC Monthly Workshop: OpenACC (Dec. 2014).
+  - XSEDE HPC Summer BootCamp: OpenMP, OpenACC, MPI and Hybrid Programming (Jun.
+    2015 - 2019).
+  - XSEDE HPC Monthly Workshop: Big Data (Nov. 2015, May 2017).
+
+
+
+
+---
+
+# Proposal Assistance
+
+- LTS strongly recommends that researchers, early on, develop long-range plans for a sustainable form of data storage. 
+   - facilitate compliance with future grant applications
+   - avoid the need to later reformat or migrate data to another storage option. 
+* [Research Data Management Committee](https://libraryguides.lehigh.edu/researchdatamanagement) can help with writing DMP&amp;#39;s for your proposal.
+  * eMail us at data-management-group-list@lehigh.edu OR Contact
+     * General information - Subject Librarians
+     * Research Computing Resources &amp;amp; Services - Alex Pacheco
+     * Data Security - Eric Zematis, Chief Information Security Officer
+     * Data storage - Help Desk or your Computing Consultant
+- [Sample DMPs](https://confluence.cc.lehigh.edu/x/TYYuAg)
+- [Budget templates and LTS Facilities document](https://confluence.cc.lehigh.edu/x/FgL5Bg)
+
+
+---
+
+# Getting Help
+
+* Issue with running jobs or need help to get started: 
+  * Open a help ticket: &lt;http://lts.lehigh.edu/help&gt;
+  * See [guidelines for faster response](https://confluence.cc.lehigh.edu/x/KJVVBw)
+- Investing in Sol
+  - Contact Alex Pacheco or Steve Anthony
+* More Information
+  * [Research Computing](https://go.lehigh.edu/hpc)
+  * [Research Computing Seminars](https://go.lehigh.edu/hpcseminars)
+  * [Condo Program and Available Equipment](https://confluence.cc.lehigh.edu/x/EgL5Bg)
+  * [Proposal Assistance](https://confluence.cc.lehigh.edu/x/FgL5Bg)
+  * [Data Management Plans](http://libraryguides.lehigh.edu/researchdatamanagement)
+* Subscribe
+     * [Research Computing Mailing List](https://lists.lehigh.edu/mailman/listinfo/hpc-l)
+     * [HPC Training Google Groups](mailto:hpctraining-list+subscribe@lehigh.edu)
+
+---
+class: inverse middle
+
+# Thank You!
+# Questions?
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="libs/remark-latest.min.js"></script>
+<script src="addons/imgscale.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:10",
+"yolo": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
