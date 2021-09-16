@@ -3,7 +3,7 @@
 
 args <- commandArgs(trailingOnly = TRUE)
 
-library(slidify)
+#library(slidify)
 
 if (length(args)==0){
   print("Usage: Rscript compile.R filename")
