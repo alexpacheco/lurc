@@ -243,4 +243,13 @@ table {
 .remark-slide tr:nth-child(even) { background: #ccc }
 
 
+.center2 {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
 
