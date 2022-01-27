@@ -990,7 +990,7 @@ class: inverse, middle
     * If you have `soltools` module loaded, then use `interact` with at least one SLURM Directive.
         * `interact -t 20` [Assumes `-p lts -n 1 -N 1`]
 * Run a job interactively replace `--pty /bin/bash --login` with the appropriate command. 
-    * For e.g. `srun -t 1 -n 52 -p hawkcpu $(which lammps) -in in.lj -var x 1 -var n 10000`
+    * For e.g. `srun -t 1 -n 52 -p hawkcpu $(which lmp) -in in.lj -var x 1 -var n 10000`
     * Default values are 3 days, 1 node, 1 task and lts partition.
 
 
@@ -1132,7 +1132,7 @@ cd ${SLURM_SUBMIT_DIR}
 # Load LAMMPS Module
 module load lammps
 # Run LAMMPS for input file in.lj
-srun $(which lammps) -in in.lj -sf gpu -pk gpu 1 
+srun $(which lmp) -in in.lj -sf gpu -pk gpu 1 
 
 exit
 </pre>
