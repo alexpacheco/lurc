@@ -146,7 +146,8 @@ totalsol <- sol %>% summarise_if(is.numeric, sum) %>%
 
 
 ```{r echo=FALSE}
-knitr::kable(rbind(sol,totalsol), format = 'html')
+knitr::kable(rbind(sol,totalsol), format = 'html') %>%
+  row_spec(8, bold = T, color = "white", background = "#643700")
 ```
 - built by investments from Provost<sup>a</sup> and Faculty.
 - 87 nodes interconnected by 2:1 oversubscribed Infiniband EDR (100Gb/s) fabric.
@@ -197,7 +198,8 @@ total <- rbind(sollts,totalhawk) %>% summarise_if(is.numeric, sum) %>%
 ### Hawk
 
 ```{r echo=FALSE}
-knitr::kable(rbind(hawk,totalhawk), format = 'html')
+knitr::kable(rbind(hawk,totalhawk), format = 'html') %>%
+  row_spec(4, bold = T, color = "white", background = "#643700")
 ```
 
 --
