@@ -23,6 +23,7 @@ class: myback
 options(htmltools.dir.version = FALSE)
 library(tidyverse)
 library(knitr)
+library(kableExtra)
 ```
 
 # About Us?
@@ -37,7 +38,7 @@ library(knitr)
   * Dan Brashler, CAS Computing Consultant
   * Sachin Joshi, Data Analyst &amp; Visualization Specialist
 * Volunteer Staff
-  * Keith Erekson, SET/System Administration
+  * Keith Erekson, SET/System Architect
   * Jeremy Mack, DST/Geospatial Data and Visualization Specialist
 
 
@@ -193,7 +194,8 @@ totalsol <- sol %>% summarise_if(is.numeric, sum) %>%
 
 
 ```{r echo=FALSE}
-knitr::kable(rbind(sol,totalsol), format = 'html')
+knitr::kable(rbind(sol,totalsol), format = 'html') %>%
+  row_spec(8, bold = T, color = "white", background = "#643700")
 ```
 - built by investments from Provost<sup>a</sup> and Faculty.
 - 87 nodes interconnected by 2:1 oversubscribed Infiniband EDR (100Gb/s) fabric.
@@ -282,7 +284,8 @@ total <- rbind(sollts,totalhawk) %>% summarise_if(is.numeric, sum) %>%
 ### Hawk
 
 ```{r echo=FALSE}
-knitr::kable(rbind(hawk,totalhawk), format = 'html')
+knitr::kable(rbind(hawk,totalhawk), format = 'html') %>%
+  row_spec(4, bold = T, color = "white", background = "#643700")
 ```
 
 --
@@ -290,9 +293,10 @@ knitr::kable(rbind(hawk,totalhawk), format = 'html')
 ### Hawk and Lehigh&#39;s Investment in Sol
 
 ```{r echo=FALSE}
-rbind(sollts,totalhawk) %>%
+rbind(sollts,totalhawk,total) %>%
   select(Nodes,CPUs:SUs) %>%
-  knitr::kable(format = 'html')
+  knitr::kable(format = 'html') %>%
+  row_spec(3, bold = T, color = "white", background = "#643700")
 ```
 
 ---
@@ -438,8 +442,6 @@ class: inverse, middle
 | OSG | 3.07M | 5 | | 3.07M |
 | StartUp | 380K | 20 | 120K | 500K |
 | Research | 3.45M | 40 | 550K | 4M |
-| Provost DF | 770K | 20 | 230K | 1M |
-| LTS R Drive| | 30TB | | | |
 
 <!--
 - Director's Discretionary Fund (DDF) to allow HPC Manager to distribute compute and storage.
@@ -469,7 +471,7 @@ class: inverse, middle
     - Such PIs will have their storage request reviewed and approved by allocation committee.
   - Trial Allocations: short term allocations designed for new users.
   - Education Allocations: for courses, workshops and other EOT purposes.
-- Excess SUs will roll over to Provost --> StartUp --> Research.
+- Excess SUs will roll over to  StartUp --> Research.
 - Excess storage will roll over to Research.
 
 
@@ -516,7 +518,7 @@ class: inverse, middle
 - __Requirements__: Short abstract (min 500 words, 1 page max) with the description of the work and the amount of computing time requested.
 - __Amount Requested__: Include a justification for the amount requested (required for renewals)
   - <em>On the redacted cluster 30 grids took up to an average of 4 hours of wall clock time. For 63,676 grids, this would equate to 8,490 SUs. Given 6 experiments, this would total 50940 SU. With full AVX512 instructions enabled, Hawk should be twice as fast as redacted cluster, so that would total 25,470 SUs.  Therefore I am requesting 25K SUs as part of a StartUp allocation.</em>
-- Reviewed & approved on a rolling basis by at least one allocation committee member.
+- Reviewed & approved monthly by at least one allocation committee member.
 - Renewal requires progress report, publication list, grants/ awards and list of graduated students if any.
 - Apply anytime at https://go.lehigh.edu/hpcallocstartup
 
@@ -828,7 +830,7 @@ class: inverse, middle
 # XSEDE Resources
 
 - Purdue University
-   - [Anvil](https://www.rcac.purdue.edu/compute/anvil/): from 2021-10-01
+   - [Anvil](https://www.rcac.purdue.edu/compute/anvil/):
          - 1000 AMD Milan nodes, 128 cores/node, 256GB RAM.
          - 32 AMD Milan nodes, 128 cores/node, 1TB RAM. 
          - 16 AMD Milan nodes, 128 cores/node, 256GB RAM, 4 NVIDIA A100. 
@@ -1056,31 +1058,30 @@ and high-throughput computing and other digital services, opportunities and reso
 ---
 class: inverse, middle
 
-# LTS, Research Computing Services 
+# Research Computing Services 
 
 
 ---
 
 # HPC Seminars
 
-* Fridays, 2:00PM - 4:00PM via Zoom
+* Thursday, 2:00PM - 4:00PM via Zoom
+* Register at https://go.lehigh.edu/hpcseminars
 
 | Date | Topic |
 |:-----|:------|
-| Sep. 3 | Research Computing Resources at Lehigh |
-| Sep. 10 | Linux: Basic Commands & Environment |
-| Sep. 17 | Using SLURM scheduler on Sol |
-| Sep. 24 | Introduction to Open OnDemand |
-| Oct. 1 | Python Programming |
-| Oct. 8 | R Programming |
-| Oct. 15 | Data Visualization with Python |
-| Oct. 22 | Data Visualization with R |
-| Oct. 29 | Text Mining |
-| Nov. 5 | MATLAB |
-| Nov. 12 | Shiny Apps in R |
+| Feb. 3 | Research Computing Resources at Lehigh |
+| Feb. 10 | Linux: Basic Commands & Environment |
+| Feb. 17 | Using SLURM scheduler on Sol |
+| Feb. 24 | Python Programming |
+| Mar. 3 | R Programming |
+| Mar. 10 | Introduction to Open OnDemand |
+| Mar. 17 | Data Visualization with Python |
+| Mar. 24 | Data Visualization with R |
+| Mar. 31 | BYOS: Container on HPC resources |
+| Apr. 7 | Object Oriented Programming with Python |
+| Apr. 14 | Shiny Apps in R |
 
-* Register at https://go.lehigh.edu/hpcseminars
-* See [LTS Seminars](https://lts.lehigh.edu/lts-seminars) for topics like G Suite tools, Surveys, Library topics, etc.
 
 ---
 
