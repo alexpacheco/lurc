@@ -1,5 +1,5 @@
 ---
-title: "Using SLURM scheduler on Sol and Hawk"
+title: "Using SLURM scheduler on Lehigh's HPC clusters"
 subtitle: "Research Computing"
 author: "Library &amp; Technology Services"
 institute: "https://researchcomputing.lehigh.edu"
@@ -25,6 +25,7 @@ class: inverse, middle
 options(htmltools.dir.version = FALSE)
 library(tidyverse)
 library(knitr)
+library(kableExtra)
 ```
 
 
@@ -135,7 +136,8 @@ a: 8 nodes invested by Provost available to all Lehigh researchers.
 # Configuration
 
 ```{r echo=FALSE}
-knitr::kable(rbind(rbind(sol,hawk),total), format = 'html')
+knitr::kable(rbind(rbind(sol,hawk),total), format = 'html') %>%
+  row_spec(11, bold = T, color = "white", background = "#643700")
 ```
 
 * SUs available for general use: `r  sprintf("%4.2fM",4.8)`
@@ -267,7 +269,7 @@ a: 3 nodes available for short simulations or debug runs.
     * Deployed at dozens of sites (universities, supercomputing centers).
 - At Lehigh: https://hpcportal.cc.lehigh.edu.
     - Lehigh IP or VPN required.
-    - More details in next week&#39;s Seminar. 
+    - More details in Open OnDemand Seminar on March 10. 
 
 
 ---
@@ -1215,8 +1217,10 @@ exit
 
 * [Monthly usage summary](https://webapps.lehigh.edu/hpc/usage/dashboard.html) (updated daily)
 - [Scheduler Status](https://webapps.lehigh.edu/hpc/monitor) (updated every 15 mins)
-* [Current AY Usage Reports](https://webapps.lehigh.edu/hpc/monitor/ay2021.html) (updated daily)
+* [Current AY Usage Reports](https://webapps.lehigh.edu/hpc/monitor/ay2122.html) (updated daily)
+* [Current CY Usage Reports](https://webapps.lehigh.edu/hpc/monitor/cy2022.html) (updated daily)
 - Prior AY Usage Reports
+    * [AY2021](https://webapps.lehigh.edu/hpc/monitor/ay2021.html) 
     * [AY1920](https://webapps.lehigh.edu/hpc/monitor/ay1920.html) 
     * [AY1819](https://webapps.lehigh.edu/hpc/monitor/ay1819.html)
     * [AY1718](https://webapps.lehigh.edu/hpc/monitor/ay1718.html)
@@ -1251,8 +1255,9 @@ class: inverse middle center
 
 # Thank You!
 # Questions?
+<!--
 <br />
 <br />
 # Next Week: Open OnDemand 
 ### Jupyter Notebooks, RStudio, MATLAB, Mathematica, SAS, Virtual Desktops and more
- 
+ -->

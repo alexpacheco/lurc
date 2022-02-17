@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Using SLURM scheduler on Sol and Hawk</title>
+    <title>Using SLURM scheduler on Lehigh’s HPC clusters</title>
     <meta charset="utf-8" />
     <meta name="author" content="Library &amp; Technology Services" />
     <script src="libs/header-attrs/header-attrs.js"></script>
+    <script src="libs/kePrint/kePrint.js"></script>
+    <link href="libs/lightable/lightable.css" rel="stylesheet" />
     <link rel="stylesheet" href="addons/lehigh.css" type="text/css" />
     <link rel="stylesheet" href="addons/lehigh-fonts.css" type="text/css" />
   </head>
@@ -12,7 +14,7 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# Using SLURM scheduler on Sol and Hawk
+# Using SLURM scheduler on Lehigh’s HPC clusters
 ## Research Computing
 ### Library &amp; Technology Services
 ### <a href="https://researchcomputing.lehigh.edu" class="uri">https://researchcomputing.lehigh.edu</a>
@@ -239,16 +241,16 @@ a: 8 nodes invested by Provost available to all Lehigh researchers.
    &lt;td style="text-align:right;"&gt; 1681920 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 123 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 4260 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 152 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 30080 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1616 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 166.7072 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 45.00416 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 37317600 &lt;/td&gt;
+   &lt;td style="text-align:right;font-weight: bold;color: white !important;background-color: #643700 !important;"&gt; 123 &lt;/td&gt;
+   &lt;td style="text-align:left;font-weight: bold;color: white !important;background-color: #643700 !important;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;font-weight: bold;color: white !important;background-color: #643700 !important;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:right;font-weight: bold;color: white !important;background-color: #643700 !important;"&gt; 4260 &lt;/td&gt;
+   &lt;td style="text-align:right;font-weight: bold;color: white !important;background-color: #643700 !important;"&gt; 152 &lt;/td&gt;
+   &lt;td style="text-align:right;font-weight: bold;color: white !important;background-color: #643700 !important;"&gt; 30080 &lt;/td&gt;
+   &lt;td style="text-align:right;font-weight: bold;color: white !important;background-color: #643700 !important;"&gt; 1616 &lt;/td&gt;
+   &lt;td style="text-align:right;font-weight: bold;color: white !important;background-color: #643700 !important;"&gt; 166.7072 &lt;/td&gt;
+   &lt;td style="text-align:right;font-weight: bold;color: white !important;background-color: #643700 !important;"&gt; 45.00416 &lt;/td&gt;
+   &lt;td style="text-align:right;font-weight: bold;color: white !important;background-color: #643700 !important;"&gt; 37317600 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -279,15 +281,82 @@ a: 8 nodes invested by Provost available to all Lehigh researchers.
 
 
 
-
-|Cluster          | Cores| CPU Memory| CPU TFLOPs| GPUs| CUDA Cores| GPU Memory| GPU TFLOPS|
-|:----------------|-----:|----------:|----------:|----:|----------:|----------:|----------:|
-|Monocacy         |   128|        512|      2.662|    0|          0|          0|      0.000|
-|Pavo&lt;sup&gt;a&lt;/sup&gt; |   320|       1280|      6.656|    0|          0|          0|      0.000|
-|Baltrusaitis     |    96|        384|      1.766|    0|          0|          0|      0.000|
-|Pisces           |   120|        384|      3.840|   12|      29952|        144|     17.422|
-|Sol              |  2404|      12544|     93.184|  120|     393216|       1104|     36.130|
-|Total            |  3068|      15104|    108.108|  132|     423168|       1248|     53.552|
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Cluster &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Cores &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; CPU Memory &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; CPU TFLOPs &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; GPUs &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; CUDA Cores &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; GPU Memory &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; GPU TFLOPS &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Monocacy &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 128 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 512 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.662 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Pavo&amp;lt;sup&amp;gt;a&amp;lt;/sup&amp;gt; &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 320 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1280 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6.656 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Baltrusaitis &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 96 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 384 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.766 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Pisces &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 120 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 384 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.840 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 29952 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 144 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 17.422 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Sol &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2404 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12544 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 93.184 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 120 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 393216 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1104 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 36.130 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Total &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3068 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 15104 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 108.108 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 132 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 423168 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1248 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 53.552 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 
 - Monocacy, Baltrusaitis and Pisces: decommissioning scheduled for Sep 30, 2021.
 
@@ -381,7 +450,7 @@ a: 3 nodes available for short simulations or debug runs.
     * Deployed at dozens of sites (universities, supercomputing centers).
 - At Lehigh: https://hpcportal.cc.lehigh.edu.
     - Lehigh IP or VPN required.
-    - More details in next week&amp;#39;s Seminar. 
+    - More details in Open OnDemand Seminar on March 10. 
 
 
 ---
@@ -1104,7 +1173,7 @@ class: inverse, middle
     * If you have `soltools` module loaded, then use `interact` with at least one SLURM Directive.
         * `interact -t 20` [Assumes `-p lts -n 1 -N 1`]
 * Run a job interactively replace `--pty /bin/bash --login` with the appropriate command. 
-    * For e.g. `srun -t 1 -n 52 -p hawkcpu $(which lammps) -in in.lj -var x 1 -var n 10000`
+    * For e.g. `srun -t 1 -n 52 -p hawkcpu $(which lmp) -in in.lj -var x 1 -var n 10000`
     * Default values are 3 days, 1 node, 1 task and lts partition.
 
 
@@ -1246,7 +1315,7 @@ cd ${SLURM_SUBMIT_DIR}
 # Load LAMMPS Module
 module load lammps
 # Run LAMMPS for input file in.lj
-srun $(which lammps) -in in.lj -sf gpu -pk gpu 1 
+srun $(which lmp) -in in.lj -sf gpu -pk gpu 1 
 
 exit
 &lt;/pre&gt;
@@ -1329,8 +1398,10 @@ exit
 
 * [Monthly usage summary](https://webapps.lehigh.edu/hpc/usage/dashboard.html) (updated daily)
 - [Scheduler Status](https://webapps.lehigh.edu/hpc/monitor) (updated every 15 mins)
-* [Current AY Usage Reports](https://webapps.lehigh.edu/hpc/monitor/ay2021.html) (updated daily)
+* [Current AY Usage Reports](https://webapps.lehigh.edu/hpc/monitor/ay2122.html) (updated daily)
+* [Current CY Usage Reports](https://webapps.lehigh.edu/hpc/monitor/cy2022.html) (updated daily)
 - Prior AY Usage Reports
+    * [AY2021](https://webapps.lehigh.edu/hpc/monitor/ay2021.html) 
     * [AY1920](https://webapps.lehigh.edu/hpc/monitor/ay1920.html) 
     * [AY1819](https://webapps.lehigh.edu/hpc/monitor/ay1819.html)
     * [AY1718](https://webapps.lehigh.edu/hpc/monitor/ay1718.html)
@@ -1365,11 +1436,12 @@ class: inverse middle center
 
 # Thank You!
 # Questions?
+&lt;!--
 &lt;br /&gt;
 &lt;br /&gt;
 # Next Week: Open OnDemand 
 ### Jupyter Notebooks, RStudio, MATLAB, Mathematica, SAS, Virtual Desktops and more
- 
+ --&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="libs/remark-latest.min.js"></script>
