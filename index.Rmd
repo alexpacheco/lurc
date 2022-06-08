@@ -14,8 +14,6 @@ license     : by-sa
 
 ## Training Presentation
 
-* [CHM488: Introduction to Linux & HPC](chm488.html)
-* [CSE411: Lehigh University Research Computing](cse411.html)
-* [Research Computing Resources at Lehigh](lurc.html)
-* [Using SLURM scheduler on Sol](slurm.html)
-
+```{bash echo=F}
+ls *html
+```

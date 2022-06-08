@@ -1,0 +1,2410 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Introduction to HPC &amp; SLURM</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Research Computing" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="addons/lehigh.css" type="text/css" />
+    <link rel="stylesheet" href="addons/lehigh-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Introduction to HPC &amp; SLURM
+## 2<sup>nd</sup> Annual Lehigh Quantum Chemistry Workshop
+### Research Computing
+### <a href="https://researchcomputing.lehigh.edu" class="uri">https://researchcomputing.lehigh.edu</a>
+
+---
+
+
+
+&lt;!--
+# About Us?
+
+* Who?
+  * Unit of Lehigh&amp;#39;s Library &amp; Technology Services.
+* Our Mission
+  - We enable Lehigh Faculty, Researchers and Scholars achieve their goals by providing various computational resources; hardware, software, and storage; consulting and training.
+* Research Computing Staff
+  * __Alex Pacheco, Manager &amp;#38; XSEDE Campus Champion__
+  * Steve Anthony, System Administrator
+  * Dan Brashler, CAS Computing Consultant
+
+
+
+# What do we do?
+
+* Hardware Support
+  * Provide system administration and support for Lehigh&amp;#39;s HPC clusters.
+  * Assist with purchase, installation and administration of servers and clusters.
+- Data Storage
+  - Provide data management services including storing and sharing data. 
+* Software Support
+  * Provide technical support for software applications, install software as requested and assist with purchase of software.
+- Training &amp; Consulting
+  - Provide education and training programs to facilitate use of HPC resources and general scientific computing needs.
+  - Provide consultation and support for code development and visualization.
+
+--&gt;
+
+# Why use HPC?
+
+*  HPC may be the only way to achieve computational goals in a given amount of time
+
+     * **Size**: Many problems that are interesting to scientists and engineers cannot fit on a PC usually because they need more than a few GB of RAM, or more than a few hundred GB of disk.
+
+     * **Speed**: Many problems that are interesting to scientists and engineers would take a very long time to run on a PC: months or even years; but a problem that would take a month on a PC might only take a few hours on a supercomputer.
+
+&lt;br /&gt;
+.center[
+&lt;img src="assets/img/irma-at201711_ensmodel_10-5PM.gif" alt="Irma Ensemble
+Model" width="200px"&gt;
+&lt;img src="assets/img/irma-at201711_model-10-5PM.gif" alt="Irma High Probability"
+width="200px"&gt;
+&lt;img src="assets/img/jose-at201712_ensmodel.gif" alt="Jose Ensemble Model"
+width="200px"&gt;
+&lt;img src="assets/img/jose-euro-sep11.png" alt="Jose Euro Model Track Forecast"
+width="210px"&gt;
+]
+
+---
+
+#  Parallel Computing
+
+* many calculations are carried out simultaneously.
+- based on principle that large problems can often be divided into smaller ones, which are then solved in parallel.
+*  Parallel computers can be roughly classified according to the level at which the hardware supports parallelism.
+    * Multicore computing
+    * Symmetric multiprocessing
+    * Distributed computing
+    * Grid computing
+    * General-purpose computing on graphics processing units (GPGPU)
+
+---
+
+# What does HPC do?
+
+
+.pull-left[
+* Simulation of Physical Phenomena
+     * Storm Surge Prediction
+     *  Black Holes Colliding
+     *  Molecular Dynamics
+- Data analysis and Mining
+     -  Bioinformatics
+     -  Signal Processing
+     -  Fraud detection
+* Visualization
+.center[
+&lt;img src="assets/img/Isaac-Storm-Surge.jpeg" alt="Isaac Storm Surge" width="200px"&gt;
+&lt;img src="assets/img/Colliding-Black-Holes.jpeg" alt="Colliding Black Holes" width="170px"&gt;]
+]
+
+.pull-right[
+* Design
+     *  Supersonic ballute
+     *  Boeing 787 design
+     *  Drug Discovery
+     *  Oil Exploration and Production
+     *  Automotive Design
+     *  Art and Entertainment
+.center[
+&lt;img src="assets/img/Molecular-Dynamics.jpeg" alt="Molecular Dynamics" width="180px"&gt;
+&lt;img src="assets/img/Plane-Design.jpg" alt="Plane Design" width="180px"&gt;]
+]
+
+
+
+---
+
+# HPC by Disciplines
+
+* Traditional Disciplines
+    * Science: Physics, Chemistry, Biology, Material Science
+    * Engineering: Mechanical, Structural, Civil, Environmental, Chemical
+
+- Non Traditional Disciplines
+    - Finance
+        - Preditive Analytics
+        - Trading
+    - Humanities
+         - Culturomics or cultural analytics: study human behavior and cultural trends through quantitative analysis of digitized texts, images and videos.
+
+
+---
+class: inverse, middle
+
+# Research Computing Resources
+
+---
+# Sol: Lehigh&amp;#39;s Shared HPC Cluster
+
+
+
+
+- built by investments from Provost&lt;sup&gt;a&lt;/sup&gt; and Faculty.
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; Nodes &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; CPU Type &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; CPU Speed (GHz) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; CPUs &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; GPUs &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; CPU Memory (GB) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; GPU Memory (GB) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; CPU TFLOPS &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; GPU TFLOPs &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; SUs &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 9 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Xeon E5-2650 v3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 180 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1024 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 80 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.7600 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.570 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1576800 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 33 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Xeon E5-2670 v3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 792 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 62 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4224 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 496 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 25.3440 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 15.934 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6937920 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 14 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Xeon E5-2650 v4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 336 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 896 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.6768 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2943360 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Xeon E5-2640 v3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 16 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 512 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.5632 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 140160 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 24 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Xeon Gold 6140 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 864 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 48 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4608 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 528 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 41.4720 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18.392 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7568640 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Xeon Gold 6240 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 216 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1152 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10.3680 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1892160 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Xeon Gold 6230R &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 104 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 768 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.3264 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 911040 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Xeon Gold 6348R &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 3.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 48 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 192 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 200 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.0720 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 48.500 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 420480 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; EPYC 7302 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 3.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 96 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 24 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 768 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1152 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.3008 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 28.080 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 840960 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 93 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2652 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 149 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 14144 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2456 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 104.8832 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 113.476 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23231520 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;!-- 87 nodes interconnected by 2:1 oversubscribed Infiniband EDR (100Gb/s) fabric.
+Only 1.40M SUs from Provost investment available to Lehigh researchers. --&gt;
+
+.footnote[
+a: 8 Intel Xeon E5-2650 v3 nodes invested by Provost in 2016.
+]
+
+
+
+---
+# Hawk
+
+* Funded by [NSF Campus Cyberinfrastructure award 2019035](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2019035&amp;HistoricalAwards=false).
+   - PI: __Ed Webb__ (MEM).
+   - co-PIs: Balasubramanian (MEM), __Fredin__ (Chemistry), Pacheco (LTS), and __Rangarajan__ (ChemE).
+   - Sr. Personnel: Anthony (LTS), Reed (Physics), Rickman (MSE), and __Tak&amp;#225;&amp;#269;__ (ISE). 
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; Nodes &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; CPU Type &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; CPU Speed (GHz) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; CPUs &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; GPUs &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; CPU Memory (GB) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; GPU Memory (GB) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; CPU TFLOPS &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; GPU TFLOPs &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; SUs &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 26 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Gold 6230R &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1352 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9984 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 56.2432 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.00000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11843520 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Gold 6230R &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 208 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6144 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.6528 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.00000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1822080 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Gold 5220R &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 192 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 32 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 768 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 512 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.3008 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.10816 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1681920 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 34 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1752 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 32 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 16896 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 512 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 69.1968 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.10816 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 15347520 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+* 798TB (raw) Ceph based storage 
+* Production: **Feb 1, 2021**.
+
+
+---
+
+# Configuration
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; Nodes &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; CPU Type &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; CPU Speed (GHz) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; CPUs &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; GPUs &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; CPU Memory (GB) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; GPU Memory (GB) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; CPU TFLOPS &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; GPU TFLOPs &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; SUs &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 9 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Xeon E5-2650 v3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 180 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1024 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 80 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.7600 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.57000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1576800 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 33 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Xeon E5-2670 v3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 792 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 62 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4224 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 496 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 25.3440 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 15.93400 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6937920 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 14 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Xeon E5-2650 v4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 336 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 896 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.6768 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.00000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2943360 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Xeon E5-2640 v3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 16 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 512 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.5632 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.00000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 140160 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 24 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Xeon Gold 6140 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 864 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 48 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4608 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 528 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 41.4720 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18.39200 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7568640 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Xeon Gold 6240 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 216 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1152 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10.3680 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.00000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1892160 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Xeon Gold 6230R &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 104 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 768 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.3264 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.00000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 911040 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Xeon Gold 6348R &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 3.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 48 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 192 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 200 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.0720 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 48.50000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 420480 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; EPYC 7302 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 3.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 96 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 24 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 768 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1152 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.3008 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 28.08000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 840960 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 26 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Gold 6230R &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1352 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9984 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 56.2432 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.00000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11843520 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Gold 6230R &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 208 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6144 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.6528 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.00000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1822080 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Gold 5220R &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 192 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 32 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 768 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 512 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.3008 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.10816 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1681920 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 127 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4404 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 181 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 31040 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2968 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 174.0800 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 121.58416 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 38579040 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+* 4.80M SUs available for general use by proposal style allocation review process,
+   * rest allocated to investors, and grant distribution including education use.
+
+
+---
+
+# Ceph Storage resource
+
+* LTS provides various storage options for research and teaching.
+* Some are cloud based and subject to Lehigh&amp;#39;s Cloud Policy.
+* For research, LTS provides a 2019TB (raw) storage system called [Ceph](https://go.lehigh.edu/ceph).
+* Ceph 
+    * based on the Ceph software,
+    * in-house, built, operated and administered by Research Computing Staff,
+        * located in the EWFM Data Center.
+    * provides storage for Research Computing resources,
+    * can be mounted as a network drive on Windows or CIFS on Mac and Linux.
+        * [See Ceph FAQ](http://lts.lehigh.edu/services/faq/ceph-faq) for more details.
+* Research groups 
+    * can purchase a sharable project space @ &amp;#36;375/TB for 5 years, OR 
+    * request up to 5TB of Hawk's Ceph space available by proposal style allocation review process.
+    * can share project space with anyone with a Lehigh ID at no additional charge.
+
+
+
+---
+
+# Network Layout Sol, Hawk &amp;amp; Ceph
+
+![:scale 100%](assets/img/sol_hawk.png)
+
+
+
+---
+
+# Accessing Sol &amp;amp; Hawk
+
+* Sol: accessible using ssh while on Lehigh&amp;#39;s network
+    
+    ```bash
+    ssh username@sol.cc.lehigh.edu
+    ```
+   * Windows PC require a SSH client such as [MobaXterm](https://mobaxterm.mobatek.net/) or [Putty](https://putty.org/).
+   * Mac and Linux PC&amp;#39;s, ssh is built in to the terminal application. 
+* If you are not on Lehigh&amp;#39;s network, login to the ssh gateway
+   
+   ```bash
+    ssh username@ssh.cc.lehigh.edu
+   ```
+   and then login to sol as above
+  -  Alternatively,
+  
+  ```bash
+  ssh -J username@ssh.cc.lehigh.edu username@sol.cc.lehigh.edu
+  ```
+  - [Click here](https://confluence.cc.lehigh.edu/x/JhH5Bg) to learn how to configure MobaXterm to use the SSH Gateway.
+
+
+---
+
+# ![:scale 30%](https://openondemand.org/assets/images/ood_logo_stack_rgb.svg)
+
+* an NSF-funded open-source HPC portal based on Ohio Supercomputing Center’s original OnDemand portal. 
+
+* Goals: provide an easy way for system administrators to provide web access to their HPC resources, including, but not limited to:
+  - Plugin-free web experience
+  - Easy file management
+  - Command-line shell access
+  - Job management and monitoring across different batch servers and resource managers
+  - Graphical desktop environments and desktop applications
+  
+  
+---
+
+# Open OnDemand at Lehigh
+
+* In Production since Aug 12, 2020.
+
+* https://hpcportal.cc.lehigh.edu: Available on campus or VPN.
+
+* Features:
+  - Shell Access
+  - File Management
+  - Job Submission
+  - Virtual Desktops: XFCE
+  - Jupyter Notebooks
+  - RStudio Server
+  - MATLAB
+  - Ansys Workbench
+  - Abaqus
+  - SAS
+  - Various Visualization Tools
+  
+
+---
+
+# Connecting to the HPC Portal
+
+* HPC Account required
+* Chrome or Firefox preferred
+   * At least one user has reported problems with Safari
+
+&lt;span class="center"&gt;
+![:scale 65%](https://confluence.cc.lehigh.edu/download/attachments/123048063/OOD-url.png?api=v2)
+&lt;/span&gt;
+
+
+---
+
+# Dashboard
+
+
+&lt;span class="center"&gt;
+![:scale 85%](https://confluence.cc.lehigh.edu/download/attachments/123048063/OOD-dashboard.png?api=v2)
+&lt;/span&gt;
+
+
+---
+
+# File Management
+
+.pull-left[
+* Launch File Explorer
+* Navigate Storage
+* Transfer Files to/from Sol
+* Create, Edit, Delete, Rename Files &amp;amp; Directories
+
+
+&lt;span class="center"&gt;
+![:scale 100%](https://confluence.cc.lehigh.edu/download/attachments/123048245/OOD-files.png?api=v2)
+&lt;/span&gt;
+
+]
+
+.pull-right[
+&lt;span class="center"&gt;
+![:scale 100%](https://confluence.cc.lehigh.edu/download/attachments/123048245/OOD-HomeDir.png?api=v2)
+![:scale 100%](https://confluence.cc.lehigh.edu/download/attachments/123048245/OOD-NavigateStorage.png?api=v2)
+&lt;/span&gt;
+]
+
+
+---
+
+#  Shell Access
+
+* Click Clusters &gt; Sol Shell Access
+
+&lt;span class="center"&gt;
+![:scale 75%](https://confluence.cc.lehigh.edu/download/attachments/123048063/OOD-Clusters.png?api=v2)
+&lt;/span&gt;
+
+
+---
+
+#  Shell Access
+
+* Click Clusters &gt; Sol Shell Access
+
+&lt;span class="center"&gt;
+![:scale 75%](https://confluence.cc.lehigh.edu/download/attachments/123048063/OOD-Shell.png?api=v2)
+&lt;/span&gt;
+
+&lt;!--
+
+
+class: inverse, middle
+
+#  Linux
+  
+  
+
+# What is Linux?
+
+* an operating system that evolved from a kernel created by Linus Torvalds when he was a student at the University of Helsinki.
+* meant to be used as an alternative to other operating systems, Windows, Mac OS, MS-DOS, Solaris and others.
+* most popular OS used in a Supercomputer&lt;sup&gt;a,b&lt;/sup&gt;
+
+| OS Family | Count | Share % |
+|:---------:| -----:| -------:|
+| Linux | 498 | 99.6 |
+| Unix  |   2 |   .4 |
+
+
+* It is required/neccessary/mandatory to learn Linux Programming (commands, shell scripting) if your research involves use of High Performance Computing or Supercomputing resources.
+
+.footnote[
+a: June 2017 Top 500 list.
+
+b: June 2015 was the last Top 500 list featuring a Windows based supercomputer. 
+]
+
+
+# Where is Linux used?
+
+* Linux distributions are tailored to different requirements such as
+  - Server
+  - Desktop
+  - Workstation
+  - Routers
+  - Embedded devices
+  - Mobile devices (Android is a Linux-based OS)
+* Almost any software that you use on windows has a roughly equivalent software on Linux, most often multiple equivalent software
+  - e.g. Microsoft Office equivalents are OpenOffice.org, LibreOffice, KOffice
+  - [Visit for complete list](http://wiki.linuxquestions.org/wiki/Linux_software_equivalent_to_Windows_software)
+* Linux offers you freedom, to choose your desktop environment, software.
+
+
+
+# What is a Linux OS and Distro?
+
+* Many software vendors release their own packaged Linux OS (kernel, applications) known as distribution
+* Linux distribution = Linux kernel + GNU system utilities and libraries + Installation scripts + Management utilities etc.
+- Debian, Ubuntu, Mint
+- Red Hat, Fedora, __CentOS__
+- Slackware, openSUSE, SLES, SLED
+- Gentoo
+* Application packages on Linux can be installed from source or from customized packages
+- deb: Debian based distros e.g. Debian, Ubuntu, Mint
+- rpm: Red Hat based distros, Slackware based distros.
+
+
+
+
+# What is a Desktop Environment?
+
+
+* Linux distributions offer a variety of desktop environment.
+- K Desktop Environment (KDE)
+- GNOME
+- __XFCE__
+- Lightweight X11 Desktop Environment (LXDE)
+- Cinnamon
+- MATE
+- Dynamic Window Manager
+
+
+
+# Shell versus Command
+
+
+* What is a command and how do you use it?
+  - __command__ is a directive to a computer program acting as an interpreter of some kind,
+in order to perform a specific task.
+  - __command prompt__ (or just __prompt__) is a sequence of (one or more) characters used in a command-line interface to indicate readiness to accept commands.
+  - Its intent is to literally prompt the user to take action.
+  - A prompt usually ends with one of the characters $, %, #, :, &amp;gt; and often includes other information, such as the path of the current working directory.
+* What is a Shell?
+  - The command line interface is the primary interface to Linux/Unix operating
+systems.
+  - Shells are how command-line interfaces are implemented in Linux/Unix.
+  - Each shell has varying capabilities and features and the user should choose the shell that best suits their needs.
+  - The shell is simply an application running on top of the kernel and provides a powerful interface to the system.
+
+
+
+# Types of Shell
+
+* __sh__ : Bourne Shell
+  - Developed by Stephen Bourne at AT&amp;amp;T Bell Labs
+* __csh__ : C Shell
+  - Developed by Bill Joy at University of California, Berkeley
+* __ksh__ : Korn Shell
+  - Developed by David Korn at AT&amp;amp;T Bell Labs
+  - backward-compatible with the Bourne shell and includes many features of the C shell
+* __bash__ : Bourne Again Shell
+  - Developed by Brian Fox for the GNU Project as a free software replacement for the Bourne shell (sh).
+  - Default Shell on Linux and Mac OSX
+* __tcsh__ : TENEX C Shell
+  - Developed by Ken Greer at Carnegie Mellon University
+  - It is essentially the C shell with programmable command line completion, command-line editing, and a few other features.
+
+
+
+# Shell Comparison
+
+| Software | sh  | csh | ksh | bash | tcsh |
+|:--------:|:---:|:---:|:---:|:----:|:----:|
+| Programming Languages | &amp;#10004; | &amp;#10004; | &amp;#10004; | &amp;#10004; | &amp;#10004; |
+| Shell Variables |  &amp;#10004; | &amp;#10004; | &amp;#10004; | &amp;#10004; | &amp;#10004; |
+| Command alias | &amp;#10008; | &amp;#10004; | &amp;#10004; | &amp;#10004; | &amp;#10004; |
+| Command history | &amp;#10008; | &amp;#10004; | &amp;#10004; | &amp;#10004; | &amp;#10004; |
+| Filename completion | &amp;#10008; | &amp;#10070; | &amp;#10070; | &amp;#10004; | &amp;#10004; |
+| Command line editing | &amp;#10008; | &amp;#10008; | &amp;#10070; | &amp;#10004; | &amp;#10004; |
+| Job control | &amp;#10008; | &amp;#10004; | &amp;#10004; | &amp;#10004; | &amp;#10004; |
+
+
+&amp;#10004; : Yes
+
+&amp;#10008; : No
+
+&amp;#10070; : Yes, not set by default
+
+http://www.cis.rit.edu/class/simg211/unixintro/Shell.html
+
+
+# Directory Structure
+
+* All files are arranged in a hierarchial structure, like an inverted tree.
+*  The top of the hierarchy is traditionally called __root__ (written as a slash / )
+
+&lt;img width = '900px' src = 'assets/img/LinuxFS.png'&gt;
+
+
+
+
+
+
+# Relative &amp; Absolute Path
+* Path means a position in the directory tree.
+* You can use either the relative path or absolute path
+* In relative path expression
+  -  . (one dot or period) is the current working directory
+  -  .. (two dots or periods) is one directory up
+  -  You can combine . and .. to navigate the filee system hierarchy.
+  -  the path is not defined uniquely and does depend on the current path.
+  -  ../../tmp is unique only if your current working directory is your home directory.
+* In absolute path expression
+  -  the path is defined uniquely and does not depend on the current path
+  -  /tmp is unique since /tmp is the abolute path
+
+
+
+# Some Linux Terms (also called variables)
+
+* __HOME__ : Your Home Directory on the system, /home/username
+  - This is where you should be when you login the first time
+  - Don&amp;#39;t believe me, type `pwd` and hit enter
+* __PATH__ : List of directories to search when executing a command
+  - Enter `avogadro` at the command prompt
+  - You should see an error saying `command not found`
+* __LD_LIBRARY_PATH__ : List of directories to look for libraries executing code
+
+
+
+
+
+# Linux Commands
+
+* `man` shows the manual for a command or program.
+  - `man pwd`
+* `pwd`: print working directory, gives the absolute path of your current location in the directory hierarchy
+* `echo`: prints whatever follows to the screen
+  - `echo $HOME`: prints the contents of the variable __HOME__ i.e. your home directory to the screen
+* `cd dirname`: change to folder called `dirname`
+  - default `dirname` is your home directory
+  - Useful option 
+       - `cd -` go to previous directory
+* `mkdir dirname`: create a directory called `dirname`
+  - Create a directory, any name you want and cd to that directory 
+       - `mkdir me450` followed by `cd me450`
+  - Useful option
+       - `mkdir -p dir1/dir2/dir3` create intermediate directories if they do not exist
+  
+
+
+# Linux Command (contd)
+
+* `cp file1 file2`: command to copy file1 to file2
+      - `cp -r /home/alp514/Workshop/2021HPC .` copy directories recursively
+      - `cp -p ~alp514/in.lj ${HOME}/` preserve time stamps
+* `rm file1`: delete a file called file1 
+      - `rm -i` to be prompted for confirmation
+      - `rm -r` to delete directories recursively 
+      - `rm -f` delete without prompting - VERY DANGEROUS
+* `ls dirname`: list contents of _dirname_ (leave blank for current directory)
+      - `ls -l` show long form listing
+      - `ls -a` show hidden files
+      - `ls -t` sort by timestamp newest first, best when combined with `-l`
+      - `ls -r` reverse sort (default alphabetical), best when combined with `-l -t` or `-lt`
+* `alias`: create a shortcut to another command or name to execute a long string.
+  - `alias rm="/bin/rm -i"`
+
+
+
+# File Editing
+
+* The two most commonly used editors on Linux/Unix systems are:
+  -  `vi` or `vim` (vi improved)
+  -  `emacs`
+* `vi/vim` is installed by default on Linux/Unix systems and has only a command line interface (CLI).
+* `emacs` has both a CLI and a graphical user interface (GUI).
+* Other editors that you may come across on \*nix systems
+  - `kate`: default editor for KDE.
+  - `gedit`: default text editor for GNOME desktop environment.
+  - `gvim`: GUI version of vim
+  - `pico`: console based plain text editor
+  - `nano`: GNU.org clone of pico
+  - `kwrite`: editor by KDE.
+  
+
+
+
+# vi/emacs commands
+
+* `vi/vim` and `emacs` are the two most popular \*nix file editors.
+* Which one to use is up to you.
+* `vi/vim` has two modes
+  * Editing mode
+  * Command mode
+* `emacs` has only one mode as in any editor that you use.
+
+| Inserting/Appending Text | Command |
+|:------------------------:|:-------:|
+| insert at cursor | i |
+| insert at beginning of line | I |
+| append after cursor | a |
+| append at end of line | A |
+| newline after cursor in insert mode | o |
+| newline before cursor in insert mode | O |
+| append at end of line | ea |
+| exit insert mode | ESC |
+
+
+
+# Editor Commands
+
+.pull-left[
+| Cursor Movement | vi | emacs |
+|:---------------:|:-------:|:-----:|
+| move left | h | Ctrl-b |
+| move down | j | Ctrl-n |
+| move up | k | Ctrl-p |
+| move right | l | Ctrl-f |
+| jump to beginning of line | ^ | Ctrl-a |
+| jump to end of line | $ | Ctrl-e |
+| goto line n | nG | ESC-x goto-line Enter n |
+| goto top of file | 1G | ESC-&amp;lt; |
+| goto end of file | G | ESC-&amp;gt; |
+| move one page up | CNTRL-u | ESC-v |
+| move one page down | CNTRL-d | Ctrl-v |
+]
+
+.pull-right[
+| File Manipulation | vi | emacs |
+|:-----------------:|:-------:|:-----:|
+| edit/open a __file__ | :e __file__ | Ctrl-x Ctrl-f __file__ |
+| insert file __file__ | :r __file__ | Ctrl-x i __file__ |
+| save file | :w | Ctrl-x Ctrl-s | 
+| save file and exit | :wq |  |
+| quit without saving | :q! |   |
+| exit | :q |  Ctrl-x Ctrl-c | 
+
+
+| Window Management | vim | emacs |
+|:-----------------:|:---:|:-----:|
+| split window horizontally | :split or Ctrl-w s  | Ctrl-x 2 |
+| split window vertically   | :vsplit or Ctrl-w v | Ctrl-x 3 |
+| switch windows | Ctrl-w w | Ctrl-x o | 
+
+]
+
+
+
+# Editor Commands
+
+| Text Manipulation | vi | emacs |
+|:-----------------:|:-------:|:-----:|
+| delete a line | dd | Ctrl-a Ctrl-k |
+| delete n lines | ndd | Ctrl-a Esc n Ctrl-k |
+| paste deleted line after cursor | p | Ctrl-y |
+| paste before cursor | P | |
+| undo edit | u | Ctrl-\_ or Ctrl-x u | 
+| delete from cursor to end of line | D | Ctrl-k |
+| replace a character | r | |
+| join next line to current | J | | 
+| change a line | cc | |
+| change a word | cw | |
+| change to end of line | c$ | |
+| delete a character | x | Ctrl-d |
+| delete a word | dw | Esc-d |
+
+
+
+# Editor Cheatsheets
+
+- Do a google search for more detailed cheatsheets
+   * [vi](https://www.google.com/search?q=vi+cheatsheet)
+   *   [emacs](https://www.google.com/search?q=emacs+cheatsheet)
+
+- More on the **set -o** command
+   *   The **set -o** command can be used to change the command line editor mode among other things (Do **man set** to find out more)
+
+--&gt;
+
+---
+class: inverse, middle
+
+# Software
+
+
+---
+
+# Available Software
+
+* [Commercial, Free and Open source software](https://go.lehigh.edu/hpcsoftware). 
+- Software is managed using module environment.
+  - Why? We may have different versions of same software or software built with different compilers.
+  - Module environment allows you to dynamically change your &amp;#42;nix environment based on software being used.
+  - Standard on many University and national High Performance Computing resource since circa 2011.
+
+* How to use HPC Software on your [linux](https://confluence.cc.lehigh.edu/x/ygD5Bg) workstation?
+- LTS provides [licensed and open source software](https://software.lehigh.edu) for Windows, Mac and Linux and [Gogs](https://gogs.cc.lehigh.eu), a self hosted Git Service or Github clone.
+
+
+
+---
+
+# Module Command
+
+
+| Command | Description |
+|:-------:|:-----------:|
+| &lt;code&gt;module avail&lt;/code&gt; | show list of software available on resource |
+| &lt;code&gt;module load abc&lt;/code&gt; | add software &lt;code&gt;abc&lt;/code&gt; to your environment (modify your &lt;code&gt;PATH&lt;/code&gt;, &lt;code&gt;LD_LIBRARY_PATH&lt;/code&gt; etc as needed) |
+| &lt;code&gt;module unload abc&lt;/code&gt; | remove &lt;code&gt;abc&lt;/code&gt; from your environment |
+| &lt;code&gt;module purge&lt;/code&gt; | remove all modules from your environment |
+| &lt;code&gt;module show abc&lt;/code&gt; | display what variables are added or modified in your environment |
+| &lt;code&gt;module help abc&lt;/code&gt; | display help message for the module &lt;code&gt;abc&lt;/code&gt; |
+| &lt;code&gt;module spider abc&lt;/code&gt; | learn more about package &lt;code&gt;abc&lt;/code&gt; |
+
+* Users who prefer not to use the module environment will need to modify their
+  .bashrc or .tcshrc files. Run `module show` for list variables that need
+  modified, appended or prepended.
+
+---
+
+# Installed Software
+
+.pull-left[
+
+* [Chemistry/Materials Science](https://confluence.cc.lehigh.edu/x/3KX0BQ)
+  - **CRYSTAL17** (Restricted Access)
+  - **GAMESS**
+  - Gaussian (Restricted Access)
+  - **OpenMolcas**
+  - **NWCHEM**
+  - **Quantum Espresso**
+  - **VASP** (Restricted Access)
+* [Molecular Dynamics](https://confluence.cc.lehigh.edu/x/6qX0BQ)
+  - **ESPResSo**
+  - **GROMACS**
+  - **LAMMPS**
+  - **NAMD**
+
+&lt;span class="tiny strong"&gt;__MPI enabled__&lt;/span&gt;
+]
+
+.pull-right[
+
+* [Computational Fluid Dynamics](https://confluence.cc.lehigh.edu/x/BZFVBw)
+  - Abaqus
+  - Ansys
+  - Comsol
+  - **OpenFOAM**
+  - OpenSees
+* [Math](https://confluence.cc.lehigh.edu/x/1QL5Bg)
+  - Artleys Knitro (node restricted)
+  - GNU Octave
+  - Gurobi
+  - Magma
+  - Maple
+  - Mathematica
+  - MATLAB]
+
+---
+
+# More Software
+
+.pull-left[
+
+* *Machine &amp;amp; Deep Learning* 
+   - TensorFlow
+   - SciKit-Learn
+   - SciKit-Image
+   - Theano
+   - Keras
+
+* *Natural Language Processing (NLP)*
+   - Natural Language Toolkit (NLTK)
+   - Stanford NLP    
+
+
+&lt;span class="tiny"&gt;_[Python packages](https://go.lehigh.edu/python)_&lt;/span&gt;
+]
+
+.pull-right[
+
+* [Bioinformatics](https://confluence.cc.lehigh.edu/x/y6X0BQ)
+  - BamTools
+  - BayeScan
+  - bgc
+  - BWA
+  - FreeBayes
+  - SAM Tools
+  - tabix
+  - trimmomatic
+  - Trinity
+  - *barcode_splitter*
+  - *phyluce* 
+  - VCF Tools
+  - *VelvetOptimiser*]
+
+
+---
+
+#More Software
+
+.pull-left[
+
+* Scripting Languages
+  - Julia
+  - Perl
+  - [Python](https://go.lehigh.edu/python)
+  - [R](https://confluence.cc.lehigh.edu/x/5aX0BQ)
+* [Compilers](https://confluence.cc.lehigh.edu/x/Sab0BQ)
+  - GNU
+  - Intel
+  - JAVA
+  - NVIDIA HPC SDK
+  - CUDA
+* [Parallel Programming](https://confluence.cc.lehigh.edu/x/Sab0BQ#Compilers-MPI)
+  - MVAPICH2
+  - MPICH
+  - OpenMPI
+]
+
+.pull-right[
+
+* Libraries
+  - ARPACK/BLAS/LAPACK/GSL
+  - FFTW/Intel MKL/Intel TBB
+  - Boost
+  - Global Arrays
+  - HDF5
+  - HYPRE
+  - NetCDF
+  - METIS/PARMETIS
+  - MUMPS
+  - PetSc
+  - QHull/QRupdate
+  - SuiteSparse
+  - SuperLU
+  - TCL/TK
+]
+
+
+---
+
+# More Software
+
+.pull-left[
+
+* [Visualization Tools](https://confluence.cc.lehigh.edu/x/qan0BQ)
+  - Atomic Simulation Environment 
+  - Avogadro
+  - Blender
+  - Gabedit
+  - GaussView
+  - GNUPlot
+  - GraphViz
+  - Paraview
+  - POV-RAY
+  - PWGui
+  - PyMol
+  - RDKit
+  - VESTA
+  - VMD
+  - XCrySDen
+]
+
+.pull-right[
+
+* Other Tools
+  - GNU Make/CMake
+  - GDB/DDD
+  - GIT
+  - Intel Advisor/Inspector/Vtune Amplifier
+  - [GNU Parallel](https://confluence.cc.lehigh.edu/x/B6b0BQ)
+  - [Jupyter Lab/Notebooks](https://confluence.cc.lehigh.edu/x/G5JVBw)
+  - [RStudio Server](https://confluence.cc.lehigh.edu/x/NpBVBw)
+  - Scons
+  - Singularity
+  - SWIG
+  - TMUX/GNU Screen
+  - Valgrind/QCacheGrind
+  - [Virtual Desktops](https://confluence.cc.lehigh.edu/x/g5BVBw)
+]
+
+&lt;!---
+
+# Module Command
+
+&lt;script id="asciicast-hGo9Uvwjh1sYYL4X50ZlqVMMn" src="https://asciinema.org/a/hGo9Uvwjh1sYYL4X50ZlqVMMn.js" async data-rows=20&gt;&lt;/script&gt;
+
+
+class: inverse, middle
+
+# Compilers and Compiler options
+
+
+
+# Compilers
+
+* Open Source: GNU Compiler (also called gcc even though gcc is the c compiler)
+   - 8.3.1 (system default), and 9.3.0.
+* Commercial: Only two seats of each.
+   - Intel Compiler: 19.0.3 and 20.0.3
+* Commercial but available free of charge
+   - NVIDIA HPC SDK&lt;sup&gt;a&lt;/sup&gt;: 20.9
+   - Intel OneAPI: 2021.3
+* All except gcc 8.3.1 and OneAPI are available via the module environment. 
+
+.center[
+| Language | GNU  | Intel | NVIDIA HPC SDK &lt;sup&gt;b&lt;/sup&gt; | OneAPI&lt;sup&gt;d&lt;/sup&gt; |
+|:--------:|:----:|:-----:|::-------------:|:--------:|
+| Fortran  | `gfortran` | `ifort` | `nvfortran` | `ifx` |
+| C | `gcc` | `icc` | `nvc`&lt;sup&gt;c&lt;/sup&gt; | `icx` |
+| C++ | `g++` | `icpc` | `nvc++` | `icpx` |
+]
+
+.footnote[
+a. includes CUDA for compiling on GPUs.&lt;br /&gt;
+b. NVIDIA HPC SDK replaces the old PGI compilers. `pgfortran`, `pgcc` and `pgc++` are available for now but you should change your commands to the new `nv` commands.&lt;br /&gt;
+c. `nvcc` is the cuda compiler while `nvc` is the C compiler. &lt;br /&gt;
+d. `source /share/Apps/intel-oneapi/2021/setvars.sh` to setup environment.
+]
+
+
+
+# Compiling Code
+
+* Usage: `&lt;compiler&gt; &lt;options&gt; &lt;source code&gt;`
+* Common Compiler options or flags:
+  - `-o myexec`: compile code and create an executable `myexec`. If this option is not given, then a default `a.out` is created.
+  - `-l{libname}`: link compiled code to a library called `libname`. e.g. to use lapack libraries, add `-llapack` as a compiler flag.
+  - `-L{directory path}`: directory to search for libraries. e.g. `-L/usr/lib64 -llapack` will search for lapack libraries in `/usr/lib64`.
+  - `-I{directory path}`: directory to search for include files and fortran modules.
+  - `-On`: optmize code to level n where n=0,1,2,3.
+  - `-g`: generate a level of debugging information in the object file (-On supercedes -g).
+  - `-mcmodel=mem_model`: tells the compiler to use a specific memory model to generate code and store data where mem\_model=small, medium or large.
+  - `-fpic/-fPIC`: generate position independent code (PIC) suitable for use in a shared library. 
+* See [HPC Documentation](https://confluence.cc.lehigh.edu/display/hpc/Compilers#Compilers-CompilerFlags)
+
+
+
+
+# Compiling and Running Serial Codes
+
+&lt;pre class="wrap" style="font-size: 14px"&gt;
+[2018-02-22 08:47.27] ~/Workshop/2017XSEDEBootCamp/OpenMP
+[alp514.sol-d118](842): icc -o laplacec laplace_serial.c
+[2018-02-22 08:47.46] ~/Workshop/2017XSEDEBootCamp/OpenMP
+[alp514.sol-d118](843): ./laplacec
+Maximum iterations [100-4000]?
+1000
+---------- Iteration number: 100 ------------
+[995,995]: 63.33  [996,996]: 72.67  [997,997]: 81.40  [998,998]: 88.97  [999,999]: 94.86  [1000,1000]: 98.67
+---------- Iteration number: 200 ------------
+[995,995]: 79.11  [996,996]: 84.86  [997,997]: 89.91  [998,998]: 94.10  [999,999]: 97.26  [1000,1000]: 99.28
+---------- Iteration number: 300 ------------
+[995,995]: 85.25  [996,996]: 89.39  [997,997]: 92.96  [998,998]: 95.88  [999,999]: 98.07  [1000,1000]: 99.49
+---------- Iteration number: 400 ------------
+[995,995]: 88.50  [996,996]: 91.75  [997,997]: 94.52  [998,998]: 96.78  [999,999]: 98.48  [1000,1000]: 99.59
+---------- Iteration number: 500 ------------
+[995,995]: 90.52  [996,996]: 93.19  [997,997]: 95.47  [998,998]: 97.33  [999,999]: 98.73  [1000,1000]: 99.66
+---------- Iteration number: 600 ------------
+[995,995]: 91.88  [996,996]: 94.17  [997,997]: 96.11  [998,998]: 97.69  [999,999]: 98.89  [1000,1000]: 99.70
+---------- Iteration number: 700 ------------
+[995,995]: 92.87  [996,996]: 94.87  [997,997]: 96.57  [998,998]: 97.95  [999,999]: 99.01  [1000,1000]: 99.73
+---------- Iteration number: 800 ------------
+[995,995]: 93.62  [996,996]: 95.40  [997,997]: 96.91  [998,998]: 98.15  [999,999]: 99.10  [1000,1000]: 99.75
+---------- Iteration number: 900 ------------
+[995,995]: 94.21  [996,996]: 95.81  [997,997]: 97.18  [998,998]: 98.30  [999,999]: 99.17  [1000,1000]: 99.77
+---------- Iteration number: 1000 ------------
+[995,995]: 94.68  [996,996]: 96.15  [997,997]: 97.40  [998,998]: 98.42  [999,999]: 99.22  [1000,1000]: 99.78
+
+Max error at iteration 1000 was 0.034767
+Total time was 4.099030 seconds.
+&lt;/pre&gt;
+
+
+
+# Intel Compiler Options
+
+
+| Flag | Description |
+|:----|:--------|
+| `-ipo` | Enables interprocedural optimization between files. |
+| `-ax_code_/-x_code_` | Tells the compiler to generate multiple, feature-specific auto-dispatch code paths for Intel processors if there is a performance benefit. code can be COMMON-AVX512, CORE-AVX512, CORE-AVX2, CORE-AVX-I or AVX |
+| `-xHost` | Tells the compiler to generate instructions for the highest instruction set available on the compilation host processor. DO NOT USE THIS OPTION  |
+| `-fast` | Maximizes speed across the entire program. Also sets `-ipo`, `-O3`, `-no-prec-div`, `-static`, `-fp-model fast=2`, and `-xHost`. Not recommended |
+| `-funroll-all-loops` | Unroll all loops even if the number of iterations is uncertain when the loop is entered. |
+| `-mkl` | Tells the compiler to link to certain libraries in the Intel Math Kernel Library (Intel MKL) |
+| `-static-intel/libgcc` | Links to Intel/GNU libgcc libraries statically, use -static to link all libraries dynamically |
+
+
+
+
+# GNU Compiler Options
+
+
+| Flag | Description |
+|:----|:--------|
+| `-march=processor` |  Generate instructions for the machine type processor . processor can be sandybridge, ivybridge, haswell, broadwell or skylake-avx512. |
+| `-Ofast` |  Disregard strict standards compliance. `-Ofast` enables all `-O3` optimizations. It also enables optimizations that are not valid for all standard-compliant programs. It turns on `-ffast-math` and the Fortran-specific `-fstack-arrays`, unless `-fmax-stack-var-size` is specified, and `-fno-protect-parens`. |
+| `-funroll-all-loops` |  Unroll all loops even if the number of iterations is uncertain when the loop is entered. |
+| `-shared`/`-static` | Links to libraries dynamically/statically |
+
+
+
+
+# NVIDIA HPC Compiler Options
+
+
+| Flag | Description |
+|:----|:--------|
+| `-acc` | Enable OpenACC directives. |
+| `-tp processor` | Specify the type(s) of the target processor(s). processor can be sandybridge-64, haswell-64, or skylake-64. |
+| `-mtune=processor` | Tune to processor everything applicable about the generated code, except for the ABI and the set of available instructions. processor can be sandybridge, ivybridge, haswell, broadwell or skylake-avx512. Some older programs/makefile might use -mcpu that is deprecated |
+| `-fast` | Generally optimal set of flags. |
+| `-Mipa` | Invokes interprocedural analysis and optimization.  |
+| `-Munroll` | Controls loop unrolling. |
+| `-Minfo` |  Prints informational messages regarding optimization and code generation to standard output as compilation proceeds.|
+| `-shared` | Instructs the linker to generate a shared object file. Implies `-⁠fpi`. |
+| `-Bstatic` | Statically link all libraries, including the PGI runtime. |
+
+
+
+&lt;!---
+
+# Compilers for OpenMP &amp; TBB
+
+* OpenMP support is built-in.
+
+| Compiler | OpenMP Flag | TBB Flag |
+|:---:|:---:|:---:|
+| GNU | `-fopenmp` | `-L$TBBROOT/lib/intel64_lin/gcc4.4 -ltbb` |
+| Intel | `-qopenmp` | `-L$TBBROOT/lib/intel64_lin/gcc4.4 -ltbb` |
+| PGI/NVIDIA HPC SDK | `-mp` |
+
+* TBB is available as part of Intel Compiler suite.
+* `$TBBROOT` depends on the Intel Compiler Suite you want to use.
+
+&lt;pre&gt;
+[alp514.sol](1083): module show intel
+-------------------------------------------------------------------
+/share/Apps/share/Modules/modulefiles/toolchain/intel/16.0.3:
+
+module-whatis    Set up Intel 16.0.3 compilers. 
+conflict         pgi 
+conflict         gcc 
+setenv           INTEL_LICENSE_FILE /share/Apps/intel/licenses/server.lic 
+setenv           IPPROOT /share/Apps/intel/compilers_and_libraries_2016.3.210/linux/ipp 
+setenv           MKLROOT /share/Apps/intel/compilers_and_libraries_2016.3.210/linux/mkl 
+setenv           TBBROOT /share/Apps/intel/compilers_and_libraries_2016.3.210/linux/tbb 
+...
+snip
+...
+&lt;/pre&gt;
+
+
+
+# Compiling and Running OpenMP Codes
+
+
+&lt;pre&gt;
+[2018-02-22 08:47.56] ~/Workshop/2017XSEDEBootCamp/OpenMP/Solutions
+[alp514.sol-d118](845): icc -qopenmp -o laplacec laplace_omp.c
+[2018-02-22 08:48.09] ~/Workshop/2017XSEDEBootCamp/OpenMP/Solutions
+[alp514.sol-d118](846): OMP_NUM_THREADS=4 ./laplacec
+Maximum iterations [100-4000]?
+1000
+---------- Iteration number: 100 ------------
+[995,995]: 63.33  [996,996]: 72.67  [997,997]: 81.40  [998,998]: 88.97  [999,999]: 94.86  [1000,1000]: 98.67
+---------- Iteration number: 200 ------------
+[995,995]: 79.11  [996,996]: 84.86  [997,997]: 89.91  [998,998]: 94.10  [999,999]: 97.26  [1000,1000]: 99.28
+---------- Iteration number: 300 ------------
+[995,995]: 85.25  [996,996]: 89.39  [997,997]: 92.96  [998,998]: 95.88  [999,999]: 98.07  [1000,1000]: 99.49
+---------- Iteration number: 400 ------------
+[995,995]: 88.50  [996,996]: 91.75  [997,997]: 94.52  [998,998]: 96.78  [999,999]: 98.48  [1000,1000]: 99.59
+---------- Iteration number: 500 ------------
+[995,995]: 90.52  [996,996]: 93.19  [997,997]: 95.47  [998,998]: 97.33  [999,999]: 98.73  [1000,1000]: 99.66
+---------- Iteration number: 600 ------------
+[995,995]: 91.88  [996,996]: 94.17  [997,997]: 96.11  [998,998]: 97.69  [999,999]: 98.89  [1000,1000]: 99.70
+---------- Iteration number: 700 ------------
+[995,995]: 92.87  [996,996]: 94.87  [997,997]: 96.57  [998,998]: 97.95  [999,999]: 99.01  [1000,1000]: 99.73
+---------- Iteration number: 800 ------------
+[995,995]: 93.62  [996,996]: 95.40  [997,997]: 96.91  [998,998]: 98.15  [999,999]: 99.10  [1000,1000]: 99.75
+---------- Iteration number: 900 ------------
+[995,995]: 94.21  [996,996]: 95.81  [997,997]: 97.18  [998,998]: 98.30  [999,999]: 99.17  [1000,1000]: 99.77
+---------- Iteration number: 1000 ------------
+[995,995]: 94.68  [996,996]: 96.15  [997,997]: 97.40  [998,998]: 98.42  [999,999]: 99.22  [1000,1000]: 99.78
+
+Max error at iteration 1000 was 0.034767
+Total time was 2.459961 seconds.
+&lt;/pre&gt;
+
+
+
+# Compilers for MPI Programming
+
+* MPI is a library, not a compiler, built or compiled for different compilers.
+
+| Language | Compile Command |
+|:--------:|:---:|
+| Fortran  | `mpif90` |
+| C | `mpicc` |
+| C++ | `mpicxx` |
+
+* Usage: `&lt;compiler&gt; &lt;options&gt; &lt;source code&gt;`
+&lt;pre&gt;
+[2017-10-30 08:40.30] ~/Workshop/2017XSEDEBootCamp/MPI/Solutions
+[alp514.sol](1096): mpif90 -o laplace_f90 laplace_mpi.f90 
+[2017-10-30 08:40.45] ~/Workshop/2017XSEDEBootCamp/MPI/Solutions
+[alp514.sol](1097): mpicc -o laplace_c laplace_mpi.c
+[2017-10-30 08:40.57] ~/Workshop/2017XSEDEBootCamp/MPI/Solutions
+&lt;/pre&gt;
+
+* The MPI compiler command is just a wrapper around the underlying compiler.
+&lt;pre&gt;
+[alp514.sol](1080): mpif90 -show
+ifort -fPIC -I/share/Apps/mvapich2/2.1/intel-16.0.3/include
+   -I/share/Apps/mvapich2/2.1/intel-16.0.3/include  
+   -L/share/Apps/mvapich2/2.1/intel-16.0.3/lib -lmpifort -Wl,
+   -rpath -Wl,/share/Apps/mvapich2/2.1/intel-16.0.3/lib -Wl,
+   --enable-new-dtags -lmpi
+&lt;/pre&gt;
+
+
+
+
+# MPI Libraries
+
+* There are two different MPI implementations commonly used.
+* `MPICH`: Developed by Argonne National Laboratory.
+   - used as a starting point for various commercial and open source MPI libraries
+   - `MVAPICH2`: Developed by D. K. Panda with support for  InfiniBand, iWARP, RoCE, and Intel Omni-Path. (default MPI on Sol),
+   - `Intel MPI`: Intel's version of MPI. __You need this for Xeon Phi MICs__,
+      - available in cluster edition of Intel Compiler Suite. Not available at Lehigh.
+   - `IBM MPI` for IBM BlueGene, and 
+   - `CRAY MPI` for Cray systems.
+* `OpenMPI`: A Free, Open Source implementation from merger of three well know MPI implementations. Can be used for commodity network as well as high speed network.
+   - `FT-MPI` from the University of Tennessee,
+   - `LA-MPI` from Los Alamos National Laboratory,
+   - `LAM/MPI` from Indiana University
+
+
+
+# Running MPI Programs
+
+
+* Every MPI implementation come with their own job launcher: `mpiexec` (MPICH,OpenMPI &amp;amp; MVAPICH2), `mpirun` (OpenMPI)  or `mpirun_rsh` (MVAPICH2).
+* Example: `mpiexec [options] &lt;program name&gt; [program options]`
+* Required options: number of processes and list of hosts on which to run program.
+
+| Option Description | mpiexec | mpirun | mpirun_rsh |
+|:-----------:|:-------:|:------:|:----------:|
+| run on `x` cores | -n x | -np x | -n x |
+| location of the hostfile | -f filename | -machinefile filename | -hostfile filename |
+
+* To run a MPI code, you need to use the launcher from the same implementation that was used to compile the code.
+* For e.g.: You cannot compile code with OpenMPI and run using the MPICH and MVAPICH2's launcher.
+   - Since MVAPICH2 is based on MPICH, you can launch MVAPICH2 compiled code using MPICH's launcher.
+* SLURM scheduler provides `srun` as a wrapper around all mpi launchers.
+
+
+
+# Compiling and Running MPI Codes
+
+&lt;pre&gt;
+[2018-02-22 08:48.27] ~/Workshop/2017XSEDEBootCamp/MPI/Solutions
+[alp514.sol-d118](848): mpicc -o laplacec laplace_mpi.c
+[2018-02-22 08:48.41] ~/Workshop/2017XSEDEBootCamp/MPI/Solutions
+[alp514.sol-d118](849): mpiexec -n 4 ./laplacec
+Maximum iterations [100-4000]?
+1000
+---------- Iteration number: 100 ------------
+[995,995]: 63.33  [996,996]: 72.67  [997,997]: 81.40  [998,998]: 88.97  [999,999]: 94.86  [1000,1000]: 98.67
+---------- Iteration number: 200 ------------
+[995,995]: 79.11  [996,996]: 84.86  [997,997]: 89.91  [998,998]: 94.10  [999,999]: 97.26  [1000,1000]: 99.28
+---------- Iteration number: 300 ------------
+[995,995]: 85.25  [996,996]: 89.39  [997,997]: 92.96  [998,998]: 95.88  [999,999]: 98.07  [1000,1000]: 99.49
+---------- Iteration number: 400 ------------
+[995,995]: 88.50  [996,996]: 91.75  [997,997]: 94.52  [998,998]: 96.78  [999,999]: 98.48  [1000,1000]: 99.59
+---------- Iteration number: 500 ------------
+[995,995]: 90.52  [996,996]: 93.19  [997,997]: 95.47  [998,998]: 97.33  [999,999]: 98.73  [1000,1000]: 99.66
+---------- Iteration number: 600 ------------
+[995,995]: 91.88  [996,996]: 94.17  [997,997]: 96.11  [998,998]: 97.69  [999,999]: 98.89  [1000,1000]: 99.70
+---------- Iteration number: 700 ------------
+[995,995]: 92.87  [996,996]: 94.87  [997,997]: 96.57  [998,998]: 97.95  [999,999]: 99.01  [1000,1000]: 99.73
+---------- Iteration number: 800 ------------
+[995,995]: 93.62  [996,996]: 95.40  [997,997]: 96.91  [998,998]: 98.15  [999,999]: 99.10  [1000,1000]: 99.75
+---------- Iteration number: 900 ------------
+[995,995]: 94.21  [996,996]: 95.81  [997,997]: 97.18  [998,998]: 98.30  [999,999]: 99.17  [1000,1000]: 99.77
+---------- Iteration number: 1000 ------------
+[995,995]: 94.68  [996,996]: 96.15  [997,997]: 97.40  [998,998]: 98.42  [999,999]: 99.22  [1000,1000]: 99.78
+
+Max error at iteration 1000 was 0.034767
+Total time was 1.030180 seconds.
+&lt;/pre&gt;
+
+# Second comment block ends here
+
+
+# Best Practices 
+
+* Build for 64 bit architecture by adding `-m64`
+* Use `-mcmodel=medium` if you have large static arrays
+* Intel Compiler
+  * DO NOTE USE `-xHost`, use `-x&lt;code&gt;` or `-ax&lt;code&gt;` instead
+     * OR optimize for all available architectures using `-axCOMMON-AVX512,CORE-AVX512,CORE-AVX2,CORE-AVX-I,AVX`
+  * DO NOT USE `-fast` (at least on Sol and Hawk)
+     * Instead use `-ipo -O3 -no-prec-div -static -fp-model fast=2`
+     * and `-x&lt;code&gt;` or `-ax&lt;code&gt;` instead.
+  * Use `-mkl` if using MKL libraries.
+     * If you need specific option see the [MKL Link Advisor](https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/onemkl/link-line-advisor.html)
+* GNU Compiler
+  * Use `-march=&lt;processor&gt;` to optimize for a specific processor.
+     * GNU compiler cannot build multi-architecture binaries.
+     * If you are building only one executable, then optimize for the lowest processor i.e. ivybridge (if you plan to use debug queue) or haswell
+
+
+
+class: inverse, middle
+
+
+# Exercise
+
+
+
+# Get Started with Linux and HPC
+
+
+* Login to Sol using a SSH client or Open OnDemand portal
+    * `ssh &lt;username&gt;@sol.cc.lehigh.edu`
+    * https://hpcportal.cc.lehigh.edu
+
+* Copy Workshop material
+    * `cp -r /home/alp514/Workshop/2021HPC/parprog .`
+
+* Compile the fortran and c code in the `get_started` directory. Edit the code 
+    * `cd parprog/get_started`
+    * `gcc -o helloc hello.c`
+    * `gfortran -o hellof hello.f90`
+
+* Load another compiler for e.g. intel 20.0.3 and compile again
+    * `module load intel/20.0.3`
+
+--&gt;
+
+---
+class: inverse, middle
+
+# Scheduler Basics
+
+
+---
+
+# How does a cluster look?
+
+
+
+.pull-left[
+![:scale 60%](assets/img/sol/20160627_153416.jpg)
+]
+
+.pull-right[
+![:scale 80%](assets/img/sol/20170301_112522.jpg)
+]
+
+
+
+---
+
+# Cluster Environment
+
+* A cluster is a group of computers (nodes) that works together closely.
+
+.pull-left[
+
+* Two types of nodes:
+   - Head/Login Node,
+   - Compute Node
+
+* Multi-user environment.
+
+* Each user may have multiple jobs running simultaneously.
+]
+
+.pull-right[
+&lt;img width = '640px' src = 'assets/img/solnetwork.png'&gt;
+]
+
+
+
+---
+
+# Scheduler &amp;amp; Resource Management
+
+* A software that manages resources (CPU time, memory, etc) and schedules job execution.
+- Simple Linux Utility for Resource Management (SLURM)
+    - Scheduler
+    - Resource Manager
+    - Allocation Manager
+
+* A job can be considered as a user’s request to use a certain amount of resources for a certain amount of time.
+
+* The Scheduler or queuing system determines
+    -  order jobs are executed, and
+    -  which node(s) jobs are executed.
+
+
+---
+
+# How to run jobs
+
+* All compute intensive jobs are scheduled.
+- Write a script to submit jobs to a scheduler.
+  - need to have some background in shell scripting (bash/tcsh).
+* Have an understanding of 
+   * Resources required (which depends on configuration)
+       * number of nodes,
+       * number of processes per node, and
+       * memory required to run your job
+   - Amount of time resources are required?
+       - have an estimate for how long your job will run.
+       - jobs have a max walltime of 2 or 3 days. 
+             - can your jobs be restarted from a checkpoint.
+   * Which partition to submit jobs?
+       * SLURM uses the term _partition_ instead of _queue_.
+
+
+---
+ 
+# Job Scheduling
+
+.pull-left[
+
+* Map jobs onto the node-time space.
+    - Assuming CPU time is the only resource.
+
+* Need to find a balance between
+    - honoring the order in which jobs are received, and
+    - maximizing resource utilization.
+]
+
+.pull-right[
+![:scale 90%](assets/img/JobSchedule-1.png)
+]
+
+
+---
+ 
+# Backfilling
+
+.pull-left[
+* A strategy to improve utilization:
+   - Allow a job to jump ahead of others when there are enough idle nodes.
+   - Must not affect the estimated start time of the job with the highest priority.
+]
+.pull-right[
+![:scale 90%](assets/img/JobSchedule-2.png)]
+
+
+
+---
+ 
+# How much time must I request
+
+* Ask for an amount of time that is
+    - long enough for your job to complete, and
+    - as short as possible to increase the chance of backfilling.
+
+.pull-left[
+![:scale 75%](assets/img/JobSchedule-3.png)
+]
+--
+.pull-right[
+![:scale 75%](assets/img/JobSchedule-4.png)
+]
+
+
+---
+
+# How does backfilling work?
+
+![:scale 50%](http://docs.adaptivecomputing.com/suite/8-0/basic/Content/Resources/Graphics/backfill.gif)
+
+
+* [Adaptive Computing](http://docs.adaptivecomputing.com/suite/8-0/basic/help.htm#topics/moabWorkloadManager/topics/optimization/backfill.html%3FTocPath%3DMoab%2520Workload%2520Manager%7COptimizing%2520Scheduling%2520Behavior%2520-%2520Backfill%252C%2520Node%2520Sets%7C_____2)
+
+
+
+---
+
+# Available Queues on Sol
+
+| Partition Name | Max Runtime in hours | Max SU consumed node per hour |
+|:----------:|:--------------------:|:--------------------:|
+| lts/lts-gpu | 72 | 19/20 |
+| im1080/im1080-gpu | 48 | 20/24 | 
+| eng/eng-gpu | 72 | 22/24 |
+| engc | 72 | 24 |
+| himem | 72 | 48 |
+| enge/engi | 72 | 36 |
+| im2080/im2080-gpu | 48 | 28/36 |
+| chem/health | 48 | 36 |
+| debug | 1 | 16 |
+| hawkcpu | 72 | 52 |
+| hawkmem | 72 | 52 |
+| hawkgpu | 72 | 48 |
+| infolab | 72 | 52 |
+| pisces&lt;sup&gt;a&lt;/sup&gt; | 24 | 288 |
+| ima40-gpu&lt;sup&gt;b&lt;/sup&gt; | 48 | 224 |  
+
+
+.footnote[
+a: 5 A100 GPUs/node charged at 48SU/hour
+
+b: 8 A40 GPUs/node charged at 24SU/hour
+]
+
+
+---
+
+# How much memory?
+
+* The amount of installed memory less the amount that is used by the operating system and other utilities.
+
+* A general rule of thumb on most HPC resources: leave 1-2GB for the OS to run. 
+
+| Partition | Max Memory/core (GB) | Recommended Memory/Core (GB) |
+|:---------:|:--------------------:|:----------------------------:|
+| lts | 6.4 | 6.3 |
+| eng/im1080/enge/engi/im2080/chem/health | 5.3 | 5.2 |
+| engc | 2.66 | 2.5 |
+| himem | 32 | 31.8 |
+| hawkcpu/infolab/ima40-gpu | 7.38 | 7.3 |
+| hawkmem | 29.5 | 29.4 |
+| hawkgpu/pisces | 4.0 | 3.9 |
+
+
+
+*  &lt;code&gt;if you need to run a single core job that requires 10GB memory in the im1080 partition, you need to request 2 cores even though you are only using 1 core.&lt;/code&gt;  
+
+
+---
+
+# File Systems - Where to run jobs?
+
+* There are three distinct file spaces on Sol.
+   * __HOME__, your home directory. Each research group is provided with a 1TB quota shared among all group members.
+   * __SCRATCH__, 500GB scratch storage on the local disk shared by all jobs running on the node.
+   * __CEPHFS__, 29TB global parallel scratch for running jobs with a lifetime of 7 days.
+* Best Practices
+   - Store all input files, submit scripts, and output files following job completion in HOME
+   - Single node jobs, use SCRATCH to run your jobs and store temporary files
+      - SCRATCH is deleted by the SLURM scheduler when job is complete, so make sure that you copy all required data back to HOME.
+      - SLURM automatically creates `/scratch/${USER}/${SLURM_JOBID}`
+   - All jobs, use CEPHFS. CEPHFS contents are kept for 14 days after your job ends.
+      - SLURM automatically creates &lt;code&gt;/share/ceph/scratch/${USER}/${SLURM_JOBID}&lt;/code&gt;
+   - Most modules set `SCRATCH` and `CEPHFS_SCRATCH` variables to these directories.
+
+
+---
+class: inverse, middle
+
+#  Job Manager Commands
+
+* Submission
+* Monitoring
+* Manipulating
+* Reporting
+
+---
+
+# Job Types
+
+* Interactive Jobs:
+  - Set up an interactive environment on compute nodes for users.
+  - Will log you into a compute node and wait for your prompt.
+  - Purpose: testing and debugging code. __Do not run jobs on head node!!!__
+      * All compute node have a naming convention __sol-[a,b,c,d,e]###__ 
+      * head node is __sol__.
+* Batch Jobs:
+   - Executed using a batch script without user intervention.
+       - Advantage: system takes care of running the job.
+       - Disadvantage: cannot change sequence of commands after submission.
+   - Useful for Production runs.
+   - Workflow: write a script -&gt; submit script -&gt; take mini vacation -&gt;
+   analyze results.
+
+---
+
+# Useful SLURM Directives
+
+| SLURM Directive | Description |
+|:---------------:|:-----------:|
+|  --partition=queuename | Submit job to the &lt;em&gt;queuename&lt;/em&gt; partition | 
+|  --time=hh:mm:ss | Request resources to run job for &lt;em&gt;hh&lt;/em&gt; hours, &lt;em&gt;mm&lt;/em&gt; minutes and &lt;em&gt;ss&lt;/em&gt; seconds |
+|  --nodes=m | Request resources to run job on &lt;em&gt;m&lt;/em&gt; nodes |
+|  --ntasks-per-node=n | Request resources to run job on &lt;em&gt;n&lt;/em&gt; processors on each node requested |
+|  --ntasks=n | Request resources to run job on a total of &lt;em&gt;n&lt;/em&gt; processors | 
+|  --job-name=jobname | Provide a name, &lt;em&gt;jobname&lt;/em&gt; to your job |
+|  --output=filename.out | Write SLURM standard output to file filename.out |
+|  --error=filename.err | Write SLURM standard error to file filename.err |
+|  --mail-type=events | Send an email after job status events is reached. events can be NONE, BEGIN, END, FAIL, REQUEUE, ALL, TIME&amp;#95;LIMIT(&amp;#95;90,80)|
+|  --mail-user=address | Address to send email |
+|  --account=mypi | charge job to the __mypi__ account |
+|  --gres=gpu:# | Specifies number of gpus requested in the gpu partitions, min 1 cpu per gpu | 
+
+---
+
+# Useful SLURM Directives (contd)
+
+* SLURM can also take short hand notation for the directives
+
+| Long Form | Short Form |
+|:---------:|:----------:|
+| --partition=queuename | -p queuename |
+| --time=hh:mm:ss | -t hh:mm:ss |
+| --nodes=m | -N m |
+| --ntasks=n | -n n |
+| --account=mypi | -A mypi |
+| --job-name=jobname | -J jobname |
+| --output=filename.out | -o filename.out |
+
+
+---
+
+# SLURM Filename Patterns
+
+* SLURM allows for a filename pattern to contain one or more replacement
+  symbols, which are a percent sign "%" followed by a letter (e.g. %j). 
+
+| Pattern | Description |
+|:-------:|:-----------:|
+| %A |    Job array's master job allocation number |
+| %a |    Job array ID (index) number |
+| %J |    jobid.stepid of the running job (e.g. "128.0") |
+| %j |    jobid of the running job |
+| %N |    short hostname. This will create a separate IO file per node |
+| %n |    Node identifier relative to current job (e.g. "0" is the first node of the running job) This will create a separate IO file per node |
+| %s |    stepid of the running job |
+| %t |    task identifier (rank) relative to current job. This will create a separate IO file per task |
+| %u |    User name |
+| %x |    Job name |
+
+
+
+---
+
+# Useful SLURM environmental variables
+
+* SLURM creates environmental variables that can be used in the submit script.
+
+| SLURM Command | Description | 
+|:-------------:|:-----------:|
+| SLURM_SUBMIT_DIR | Directory where job was submitted |
+| SLURM_NTASKS | Total number of cores for job |
+| SLURM_JOB_NUM_NODES | Total number of nodes for job |
+| SLURM_JOB_NODELIST | List of nodes assigned to your job |
+| SLURM_JOB_ID or SLURM_JOBID | Job ID number given to this job |
+| SLURM_JOB_PARTITION | Partition job is running on |
+| SLURM_JOB_NAME | Name of the job |
+
+
+---
+
+# Job Types: Interactive
+
+- Use `srun` command with SLURM Directives followed by `--pty /bin/bash`.
+    * `srun --time=&lt;hh:mm:ss&gt; --nodes=&lt;# of nodes&gt; --ntasks-per-node=&lt;# of core/node&gt; -p &lt;queue name&gt; --pty /bin/bash`
+    * If you have `soltools` module loaded, then use `interact` with at least one SLURM Directive.
+        * `interact -t 20` [Assumes `-p lts -n 1 -N 1`]
+* Run a job interactively replace `--pty /bin/bash --login` with the appropriate command. 
+    * For e.g. `srun -t 1 -n 52 -p hawkcpu $(which lammps) -in in.lj -var x 1 -var n 10000`
+    * Default values are 3 days, 1 node, 1 task and lts partition.
+
+
+
+---
+
+# Job Types: Batch 
+
+* Workflow: write a script -&gt; submit script -&gt; take mini vacation -&gt; analyze
+  results.
+
+* Batch scripts are written in bash, tcsh, csh or sh.
+
+* Add SLURM directives after the shebang line but before any shell commands.
+&lt;pre&gt;
+   #!/bin/bash
+   #SBATCH --time=1:00:00
+   #SBATCH --nodes=1
+   #SBATCH --ntasks-per-node=20
+   #SBATCH -p lts
+   source /etc/profile.d/zlmod.sh
+   cd ${SLURM_SUBMIT_DIR}
+&lt;/pre&gt;
+* Submitting Batch Jobs:
+&lt;pre&gt;
+   sbatch myjob.slr
+&lt;/pre&gt;
+* `sbatch` can take `#SBATCH DIRECTIVES` as command line arguments.
+&lt;pre&gt;
+   sbatch --time=1:00:00 --nodes=1 --ntasks-per-node=20 -p lts myjob.slr
+&lt;/pre&gt;
+
+
+---
+
+# Submit script for Serial Jobs
+
+
+&lt;pre&gt;
+#!/bin/bash
+#SBATCH --partition=lts
+#SBATCH --time=1:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH -J myjob
+
+source /etc/profile.d/zlmod.sh
+cd ${SLURM_SUBMIT_DIR}
+#SBATCH --mail-type=ALL &lt;--- this is a comment not a SLURM DIRECTIVE
+./myjob &lt; filename.in &gt; filename.out
+
+# Example
+/share/Apps/examples/simple_jobs/laplace_serial &lt;&lt; EOF
+400
+EOF
+
+
+&lt;/pre&gt;
+
+
+---
+
+# Submit script for OpenMP Job
+
+&lt;pre&gt;
+#!/bin/tcsh
+#SBATCH --partition=im1080
+# Directives can be combined on one line
+#SBATCH --time=1:00:00 --nodes=1 --ntasks-per-node=20
+#SBATCH --job-name=myjob
+
+source /etc/profile.d/zlmod.csh
+cd ${SLURM_SUBMIT_DIR}
+# Use either
+setenv OMP_NUM_THREADS 20
+./myjob &lt; filename.in &gt; filename.out
+
+# OR
+OMP_NUM_THREADS=20 ./myjob &lt; filename.in &gt; filename.out
+
+# Example
+OMP_NUM_THREADS=4 /share/Apps/examples/simple_jobs/laplace_omp &lt;&lt; EOF
+400
+EOF
+
+exit
+&lt;/pre&gt;
+
+
+---
+
+# Submit script for MPI Job
+
+&lt;pre&gt;
+#!/bin/bash
+#SBATCH --partition=lts
+#SBATCH --time=1:00:00
+#SBATCH --nodes=2
+#SBATCH --ntasks-per-node=2
+## For --partition=im1080, 
+###  use --ntasks-per-node=20
+### and --qos=nogpu
+#SBATCH --job-name=myjob
+
+source /etc/profile.d/zlmod.sh
+module load mvapich2
+
+cd ${SLURM_SUBMIT_DIR}
+srun ./myjob &lt; filename.in &gt; filename.out
+
+# Example
+srun -n 4 /share/Apps/examples/simple_jobs/laplace_mpi &lt;&lt; EOF
+400
+EOF
+
+exit
+&lt;/pre&gt;
+
+
+---
+
+# Submit script for LAMMPS GPU job
+
+&lt;pre&gt;
+#!/bin/bash
+#SBATCH --partition=hawkgpu
+# Directives can be combined on one line
+#SBATCH --time=1:00:00
+#SBATCH --nodes=1
+# 1 CPU can be be paired with only 1 GPU
+# 1 GPU can be paired with all 24 CPUs
+#SBATCH --ntasks-per-node=6
+#SBATCH --gres=gpu:1
+# Need both GPUs, use --gres=gpu:2
+#SBATCH --job-name myjob
+
+source /etc/profile.d/zlmod.sh
+cd ${SLURM_SUBMIT_DIR}
+# Load LAMMPS Module
+module load lammps
+# Run LAMMPS for input file in.lj
+srun $(which lammps) -in in.lj -sf gpu -pk gpu 1 
+
+exit
+&lt;/pre&gt;
+
+
+---
+
+# Submit script for Gaussian job
+
+&lt;pre&gt;
+#!/bin/bash
+
+#SBATCH --partition=hawkcpu
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=12
+#SBATCH --time=12:00:00
+# For workshop only
+#SBATCH --account=hpc2022_qc_083222
+#SBATCH --reservation=hpc2022_qc_083122_181
+
+
+cd ${SLURM_SUBMIT_DIR}
+cp /share/Apps/examples/gaussian/water-hexamer-cage-opt-freq.com .
+
+module load gaussian/g16
+
+g09 &lt; water-hexamer-cage-opt-freq.com &gt; water-hexamer-cage-opt-freq.log
+
+&lt;/pre&gt;
+
+* Gaussian module sets `GAUSS_SCRDIR` to `CEPHFS_SCRATCH` to store temporary files.
+
+
+---
+
+# Need to run multiple jobs
+
+* In sequence or serially:
+    * Option 1: Submit jobs as soon as previous jobs complete.
+    * Option 2: Submit jobs with a dependency.
+       * [SLURM](https://confluence.cc.lehigh.edu/x/FqH0BQ#SLURM-SubmittingDependencyjobs):
+  `sbatch --dependency=afterok:&lt;JobID&gt; &lt;Submit Script&gt;`
+
+* In parallel, use [GNU Parallel](https://confluence.cc.lehigh.edu/x/B6b0BQ).
+
+
+---
+
+# Monitoring &amp;amp; Manipulating Jobs
+
+
+| SLURM Command | Description |
+|:-----------:|:-----------:|:-------------:|
+| squeue | check job status (all jobs) |
+| squeue -u username | check job status of user &lt;em&gt;username&lt;/em&gt; |
+| squeue --start | Show &lt;strong&gt;estimated&lt;/strong&gt; start time of jobs in queue |
+| scontrol show job jobid | Check status of your job identified by &lt;em&gt;jobid&lt;/em&gt; |
+| scancel jobid | Cancel your job identified by &lt;em&gt;jobid&lt;/em&gt; |
+| scontrol hold jobid | Put your job identified by &lt;em&gt;jobid&lt;/em&gt; on hold |
+| scontrol release jobid | Release the hold that &lt;strong&gt;you put&lt;/strong&gt; on &lt;em&gt;jobid&lt;/em&gt; |
+
+* The following scripts written by RC staff can also be used for monitoring
+  jobs. 
+   * __checkq__: `squeue` with additional useful option. 
+   * __checkload__: `sinfo` with additional options to show load on compute nodes.  
+- load the `soltools` module to get access to RC staff created scripts.
+
+
+
+---
+
+# Modifying Resources for Queued Jobs
+
+* Modify a job after submission but before starting: 
+    * `scontrol update SPECIFICATION jobid=&lt;jobid&gt;`
+- Examples of `SPECIFICATION`:
+    * add dependency after a job has been submitted: `dependency=&lt;attributes&gt;`
+    * change job name: `jobname=&lt;name&gt;`
+    * change partition: `partition=&lt;name&gt;`
+    * modify requested runtime: `timelimit=&lt;hh:mm:ss&gt;`
+    * request gpus (when changing to one of the gpu partitions): `gres=gpu:&lt;1-4&gt;`
+* SPECIFICATIONs can be combined 
+* for e.g. command to move a queued job to `im1080` partition and change timelimit to 48 hours for a job 123456 
+   * `scontrol update partition=im1080 timelimit=48:00:00 jobid=123456`
+
+
+
+
+---
+
+# Usage Reporting
+
+* [sacct](http://slurm.schedmd.com/sacct.html): displays accounting data for all jobs and job steps in the SLURM job accounting log or Slurm database.
+* [sshare](http://slurm.schedmd.com/sshare.html): Tool for listing the shares of associations to a cluster. 
+
+* We have created scripts based on these to provide usage reporting:
+    -  `alloc_summary.sh`
+        - included in your .bash_profile,
+        - prints allocation usage on your login shell.
+    -  `balance`
+        - prints allocation usage summary.
+
+
+
+---
+
+# Online Usage Reporting  
+
+* [Monthly usage summary](https://webapps.lehigh.edu/hpc/usage/dashboard.html) (updated daily)
+- [Scheduler Status](https://webapps.lehigh.edu/hpc/monitor) (updated every 15 mins)
+* [Current AY Usage Reports](https://webapps.lehigh.edu/hpc/monitor/ay2122.html) (updated daily)
+- [Annual Usage Summary](https://webapps.lehigh.edu/hpc/usage/annualusage.html) (updated daily)
+* Prior AY Usage Reports
+    * [AY2021](https://webapps.lehigh.edu/hpc/monitor/ay2021.html) 
+    * [AY1920](https://webapps.lehigh.edu/hpc/monitor/ay1920.html) 
+    * [AY1819](https://webapps.lehigh.edu/hpc/monitor/ay1819.html)
+    * [AY1718](https://webapps.lehigh.edu/hpc/monitor/ay1718.html)
+    * [AY1617](https://webapps.lehigh.edu/hpc/monitor/ay1617.html)
+* &lt;span class="alert"&gt;Usage reports restricted to Lehigh IPs&lt;/span&gt;
+
+
+
+---
+
+# Additional Help &amp;amp; Information
+
+* Issue with running jobs or need help to get started: &lt;https://lts.lehigh.edu/help&gt;
+- More Information
+  * [Research Computing](https://go.lehigh.edu/rcwiki)
+  * Training
+     * [Seminars](https://go.lehigh.edu/hpcseminars)
+     * [Workshops](https://go.lehigh.edu/hpcworkshops)
+
+- My contact info
+  * eMail:  &lt;alp514@lehigh.edu&gt;
+  * Tel: (610) 758-6735 
+  * Location: Room 296, EWFM Computing Center
+  * [Schedule](https://www.google.com/calendar/embed?src=alp514%40lehigh.edu&amp;ctz=America/New_York )
+
+
+---
+class: inverse, middle
+
+# Exercise
+
+
+---
+
+# Submitting Jobs on the Cluster
+
+* Submit a job to run the code you just compiled
+&lt;pre class="wrap" style="background-color: var(--white); font-size: 12px"&gt;
+srun -p hawkgpu -n 1 -N 1 -t 10 -A hpc2021_prog_083121 --reservation=lts_165 &amp;lt;executable&amp;gt;
+&lt;/pre&gt;
+* Submit a job to run on a gpu
+&lt;pre class="wrap" style="background-color: var(--white); font-size: 12px"&gt;
+module load nvhpc
+nvcc -o saxpy saxpy.cu
+srun -p hawkgpu -n 1 -N 1 -t 10 --gres=gpu:1 -A hpc2021_prog_083121 --reservation=lts_165 ./saxpy
+&lt;/pre&gt;
+* Submit a LAMMPS job or any other of your choice and compare timing results
+&lt;pre class="wrap" style="background-color: var(--white); font-size: 12px"&gt;
+module load hawkgpu
+module load lammps
+srun -p hawkgpu -n 1 -N 1 --gres=gpu:1 -t 10 -A hpc2021_prog_083121 --reservation=lts_165 $(which lmp) -in in.lj -var n 1 -var x 4 -sf gpu -pk gpu 1
+&lt;/pre&gt;
+
+.pull-left[
+| CPUs | Time (0 GPU) | Speed Up |
+|:----:|:-----:|:----:|
+| 1 | 111.235 | 1.00 |
+| 2 | 55.2948 | 2.01 |
+| 3 | 38.5418 | 2.89 |
+| 4 | 30.2332 | 3.68 |
+| 5 | 25.0032 | 4.45 |
+| 6 | 20.4588 | 5.44 |
+]
+
+.pull-right[
+| CPUs | Time (1 GPU) | SpeedUp | SpeedUp vs CPU |
+|:----:|:-----:|:----:|:---:|
+| 1 |  8.62814 | 1.00 | 12.89 |
+| 2 |  5.48937 | 1.57 | 10.07 |
+| 3 |  4.43548 | 1.95 | 8.69 |
+| 4 |  3.9407  | 2.19 | 7.67 |
+| 5 |  3.85239 | 2.24 | 6.49 |
+| 6 |  3.78487 | 2.28 | 5.41 |
+]
+
+
+---
+class: inverse, middle
+
+# Quantum Chemistry Workshop
+
+
+---
+
+# Getting Started
+
+* Login to Open OnDemand portal: https://hpcportal.cc.lehigh.edu
+* Select "Interactive Apps" &gt; "Quantum Chemistry"
+   - This app pre-selects hawkcpu partition for you
+   - The only options you need to enter are _Number of hours_ and _Number of cpus_ required.
+       * The maximum cpus you can request is 8.
+       * 4 nodes are reserved for this workshop providing around 6 cores for each of the 30 attendees.
+   - Click "Launch" to submit your job.
+   - When resources are ready, click "Launch Quantum Chemistry" to start a desktop session.
+   - Click Gauss View desktop icon to start Gauss View
+   
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="libs/remark-latest.min.js"></script>
+<script src="addons/imgscale.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:10",
+"yolo": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
