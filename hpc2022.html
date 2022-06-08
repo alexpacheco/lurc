@@ -2211,13 +2211,21 @@ g09 &lt; water-hexamer-cage-opt-freq.com &gt; water-hexamer-cage-opt-freq.log
   * [Schedule](https://www.google.com/calendar/embed?src=alp514%40lehigh.edu&amp;ctz=America/New_York )
 
 
----
+&lt;!---
 class: inverse, middle
 
 # Exercise
 
 
----
+# Linux &amp; SLURM
+
+* Login to Sol and change to the `hpc2022_qc_083122/&lt;my username&gt;` directory
+* Create a directory
+* Copy a .com file from /share/Apps/examples/gaussian
+* Create a submit script to run a gaussian job i.e. g16 &lt; water-hexamer-cage-opt-freq.com &gt; water-hexamer-cage-opt-freq.log
+     * Use maximum of 1 node and upto 26 cpus
+* Submit the job and monitor it
+
 
 # Submitting Jobs on the Cluster
 
@@ -2261,13 +2269,11 @@ srun -p hawkgpu -n 1 -N 1 --gres=gpu:1 -t 10 -A hpc2021_prog_083121 --reservatio
 ]
 
 
----
 class: inverse, middle
 
 # Quantum Chemistry Workshop
 
 
----
 
 # Getting Started
 
@@ -2281,6 +2287,8 @@ class: inverse, middle
    - When resources are ready, click "Launch Quantum Chemistry" to start a desktop session.
    - Click Gauss View desktop icon to start Gauss View
    
+--&gt;
+
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
