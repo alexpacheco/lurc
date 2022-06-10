@@ -1751,7 +1751,7 @@ exit
 #SBATCH --ntasks-per-node=12
 #SBATCH --time=12:00:00
 # For workshop only
-#SBATCH --account=hpc2022_qc_083222
+#SBATCH --account=hpc2022_qc_083122
 #SBATCH --reservation=hpc2022_qc_083122_181
 
 
@@ -1760,7 +1760,7 @@ cp /share/Apps/examples/gaussian/water-hexamer-cage-opt-freq.com .
 
 module load gaussian/g16
 
-g09 < water-hexamer-cage-opt-freq.com > water-hexamer-cage-opt-freq.log
+g16 < water-hexamer-cage-opt-freq.com > water-hexamer-cage-opt-freq.log
 
 </pre>
 
