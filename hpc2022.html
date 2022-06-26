@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Introduction to HPC &amp; SLURM</title>
+    <title>Introduction to HPC</title>
     <meta charset="utf-8" />
     <meta name="author" content="Research Computing" />
     <script src="libs/header-attrs/header-attrs.js"></script>
@@ -12,8 +12,8 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# Introduction to HPC &amp; SLURM
-## 2<sup>nd</sup> Annual Lehigh Quantum Chemistry Workshop
+# Introduction to HPC
+## 2022 HPC Workshops
 ### Research Computing
 ### <a href="https://researchcomputing.lehigh.edu" class="uri">https://researchcomputing.lehigh.edu</a>
 
@@ -714,15 +714,13 @@ a: 8 Intel Xeon E5-2650 v3 nodes invested by Provost in 2016.
 ![:scale 75%](https://confluence.cc.lehigh.edu/download/attachments/123048063/OOD-Shell.png?api=v2)
 &lt;/span&gt;
 
-&lt;!--
-
-
+---
 class: inverse, middle
 
 #  Linux
   
-  
 
+---
 # What is Linux?
 
 * an operating system that evolved from a kernel created by Linus Torvalds when he was a student at the University of Helsinki.
@@ -734,8 +732,14 @@ class: inverse, middle
 | Linux | 498 | 99.6 |
 | Unix  |   2 |   .4 |
 
+* Where else is Linux used? 
+  - Servers, Desktops and Workstations
+  - Routers and Embedded devices
+  - Mobile devices (Android is a Linux-based OS)
 
+&lt;!--
 * It is required/neccessary/mandatory to learn Linux Programming (commands, shell scripting) if your research involves use of High Performance Computing or Supercomputing resources.
+--&gt;
 
 .footnote[
 a: June 2017 Top 500 list.
@@ -744,6 +748,7 @@ b: June 2015 was the last Top 500 list featuring a Windows based supercomputer.
 ]
 
 
+&lt;!--
 # Where is Linux used?
 
 * Linux distributions are tailored to different requirements such as
@@ -786,7 +791,6 @@ b: June 2015 was the last Top 500 list featuring a Windows based supercomputer.
 - Cinnamon
 - MATE
 - Dynamic Window Manager
-
 
 
 # Shell versus Command
@@ -846,7 +850,9 @@ systems.
 
 http://www.cis.rit.edu/class/simg211/unixintro/Shell.html
 
+--&gt;
 
+---
 # Directory Structure
 
 * All files are arranged in a hierarchial structure, like an inverted tree.
@@ -859,6 +865,7 @@ http://www.cis.rit.edu/class/simg211/unixintro/Shell.html
 
 
 
+---
 # Relative &amp; Absolute Path
 * Path means a position in the directory tree.
 * You can use either the relative path or absolute path
@@ -874,6 +881,7 @@ http://www.cis.rit.edu/class/simg211/unixintro/Shell.html
 
 
 
+---
 # Some Linux Terms (also called variables)
 
 * __HOME__ : Your Home Directory on the system, /home/username
@@ -888,6 +896,7 @@ http://www.cis.rit.edu/class/simg211/unixintro/Shell.html
 
 
 
+---
 # Linux Commands
 
 * `man` shows the manual for a command or program.
@@ -907,6 +916,7 @@ http://www.cis.rit.edu/class/simg211/unixintro/Shell.html
   
 
 
+---
 # Linux Command (contd)
 
 * `cp file1 file2`: command to copy file1 to file2
@@ -926,6 +936,7 @@ http://www.cis.rit.edu/class/simg211/unixintro/Shell.html
 
 
 
+&lt;!--
 # File Editing
 
 * The two most commonly used editors on Linux/Unix systems are:
@@ -941,7 +952,6 @@ http://www.cis.rit.edu/class/simg211/unixintro/Shell.html
   - `nano`: GNU.org clone of pico
   - `kwrite`: editor by KDE.
   
-
 
 
 # vi/emacs commands
@@ -1036,6 +1046,22 @@ http://www.cis.rit.edu/class/simg211/unixintro/Shell.html
 
 --&gt;
 
+
+---
+# Get Started with Linux
+
+* Login to Sol using a SSH client
+    * `ssh &lt;username&gt;@sol.cc.lehigh.edu`
+* OR us the Open OnDemand portal and start a Shell on Sol
+    * https://hpcportal.cc.lehigh.edu
+
+* Explore your home directory using the `ls command`
+* You should see a directory called `hpc2022prog_083122` and within it a directory corresponding to your username
+* Change to the `hpc2022prog_083122/&lt;my username directory&gt;`
+* Copy Workshop material
+    * `cp -r /home/alp514/Workshop/2021HPC/parprog .`
+
+
 ---
 class: inverse, middle
 
@@ -1052,9 +1078,10 @@ class: inverse, middle
   - Module environment allows you to dynamically change your &amp;#42;nix environment based on software being used.
   - Standard on many University and national High Performance Computing resource since circa 2011.
 
+&lt;!--
 * How to use HPC Software on your [linux](https://confluence.cc.lehigh.edu/x/ygD5Bg) workstation?
 - LTS provides [licensed and open source software](https://software.lehigh.edu) for Windows, Mac and Linux and [Gogs](https://gogs.cc.lehigh.eu), a self hosted Git Service or Github clone.
-
+--&gt;
 
 
 ---
@@ -1246,13 +1273,15 @@ class: inverse, middle
 
 &lt;script id="asciicast-hGo9Uvwjh1sYYL4X50ZlqVMMn" src="https://asciinema.org/a/hGo9Uvwjh1sYYL4X50ZlqVMMn.js" async data-rows=20&gt;&lt;/script&gt;
 
+--&gt;
 
+---
 class: inverse, middle
 
 # Compilers and Compiler options
 
 
-
+---
 # Compilers
 
 * Open Source: GNU Compiler (also called gcc even though gcc is the c compiler)
@@ -1262,7 +1291,7 @@ class: inverse, middle
 * Commercial but available free of charge
    - NVIDIA HPC SDK&lt;sup&gt;a&lt;/sup&gt;: 20.9
    - Intel OneAPI: 2021.3
-* All except gcc 8.3.1 and OneAPI are available via the module environment. 
+* All except gcc 8.3.1 are available via the module environment. 
 
 .center[
 | Language | GNU  | Intel | NVIDIA HPC SDK &lt;sup&gt;b&lt;/sup&gt; | OneAPI&lt;sup&gt;d&lt;/sup&gt; |
@@ -1276,11 +1305,11 @@ class: inverse, middle
 a. includes CUDA for compiling on GPUs.&lt;br /&gt;
 b. NVIDIA HPC SDK replaces the old PGI compilers. `pgfortran`, `pgcc` and `pgc++` are available for now but you should change your commands to the new `nv` commands.&lt;br /&gt;
 c. `nvcc` is the cuda compiler while `nvc` is the C compiler. &lt;br /&gt;
-d. `source /share/Apps/intel-oneapi/2021/setvars.sh` to setup environment.
+d. You can use either `intel/2021.3.0` or `oneapi/2021.3.0`. Applications built with `ifort/icc/icpc` are provided by `intel/2021.3.0` while those built with `ifx/icx/icpx` are provided by `oneapi/2021.3.0`.
 ]
 
 
-
+---
 # Compiling Code
 
 * Usage: `&lt;compiler&gt; &lt;options&gt; &lt;source code&gt;`
@@ -1297,7 +1326,7 @@ d. `source /share/Apps/intel-oneapi/2021/setvars.sh` to setup environment.
 
 
 
-
+---
 # Compiling and Running Serial Codes
 
 &lt;pre class="wrap" style="font-size: 14px"&gt;
@@ -1334,6 +1363,7 @@ Total time was 4.099030 seconds.
 
 
 
+---
 # Intel Compiler Options
 
 
@@ -1350,6 +1380,7 @@ Total time was 4.099030 seconds.
 
 
 
+---
 # GNU Compiler Options
 
 
@@ -1363,6 +1394,7 @@ Total time was 4.099030 seconds.
 
 
 
+---
 # NVIDIA HPC Compiler Options
 
 
@@ -1553,9 +1585,10 @@ Max error at iteration 1000 was 0.034767
 Total time was 1.030180 seconds.
 &lt;/pre&gt;
 
-# Second comment block ends here
+--&gt;
 
 
+---
 # Best Practices 
 
 * Build for 64 bit architecture by adding `-m64`
@@ -1574,14 +1607,7 @@ Total time was 1.030180 seconds.
      * If you are building only one executable, then optimize for the lowest processor i.e. ivybridge (if you plan to use debug queue) or haswell
 
 
-
-class: inverse, middle
-
-
-# Exercise
-
-
-
+---
 # Get Started with Linux and HPC
 
 
@@ -1600,7 +1626,6 @@ class: inverse, middle
 * Load another compiler for e.g. intel 20.0.3 and compile again
     * `module load intel/20.0.3`
 
---&gt;
 
 ---
 class: inverse, middle
@@ -2226,24 +2251,26 @@ class: inverse, middle
      * Use maximum of 1 node and upto 26 cpus
 * Submit the job and monitor it
 
+--&gt;
 
+---
 # Submitting Jobs on the Cluster
 
 * Submit a job to run the code you just compiled
 &lt;pre class="wrap" style="background-color: var(--white); font-size: 12px"&gt;
-srun -p hawkgpu -n 1 -N 1 -t 10 -A hpc2021_prog_083121 --reservation=lts_165 &amp;lt;executable&amp;gt;
+srun -p hawkgpu -n 1 -N 1 -t 10 -A hpc2022_prog_083122 --reservation=hpc2022_prog_083122_183 &amp;lt;executable&amp;gt;
 &lt;/pre&gt;
 * Submit a job to run on a gpu
 &lt;pre class="wrap" style="background-color: var(--white); font-size: 12px"&gt;
 module load nvhpc
 nvcc -o saxpy saxpy.cu
-srun -p hawkgpu -n 1 -N 1 -t 10 --gres=gpu:1 -A hpc2021_prog_083121 --reservation=lts_165 ./saxpy
+srun -p hawkgpu -n 1 -N 1 -t 10 --gres=gpu:1 -A hpc2022_prog_083122 --reservation=hpc2022_prog_083122_183 ./saxpy
 &lt;/pre&gt;
 * Submit a LAMMPS job or any other of your choice and compare timing results
 &lt;pre class="wrap" style="background-color: var(--white); font-size: 12px"&gt;
 module load hawkgpu
-module load lammps
-srun -p hawkgpu -n 1 -N 1 --gres=gpu:1 -t 10 -A hpc2021_prog_083121 --reservation=lts_165 $(which lmp) -in in.lj -var n 1 -var x 4 -sf gpu -pk gpu 1
+module load lammps/20210310-cuda-11.6.0
+srun -p hawkgpu -n 1 -N 1 --gres=gpu:1 -t 10 -A hpc2022_prog_083122 --reservation=hpc2022_prog_083122_183 $(which lmp) -in in.lj -var n 1 -var x 4 -sf gpu -pk gpu 1
 &lt;/pre&gt;
 
 .pull-left[
@@ -2269,6 +2296,7 @@ srun -p hawkgpu -n 1 -N 1 --gres=gpu:1 -t 10 -A hpc2021_prog_083121 --reservatio
 ]
 
 
+&lt;!--
 class: inverse, middle
 
 # Quantum Chemistry Workshop
