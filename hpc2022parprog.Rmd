@@ -1,0 +1,299 @@
+---
+title: "HPC Parallel Programming Workshop"
+subtitle: "June 28-30, 2022"
+author: "Yue Yu and Alex Pacheco"
+institute: "Department of Mathematics and Library & Technology Services<br />Lehigh University"
+date: ""
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    chakra: libs/remark-latest.min.js
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:10"
+      yolo: false
+      beforeInit: "addons/imgscale.js"
+    css: [addons/lehigh.css, addons/lehigh-fonts.css]
+---
+class: myback
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(tidyverse)
+library(knitr)
+knitr::opts_chunk$set(echo = TRUE, fig.width = 12, fig.height = 6)
+```
+```{r xaringan-webcam, include = FALSE}
+#xaringanExtra::use_webcam()
+xaringanExtra::use_xaringan_extra(c("tileview", "webcam"))
+```
+
+# Workshop Schedule
+
+|   Day   |    Time    |     Session   |
+|:-------:|:----------:|:-------------:|
+| June 28 | 9AM - 12PM | Introduction to HPC & Linux |
+|         | 1PM -  2PM | High performance computing for multiphase flows, <br />Amanda Howard, Pacific Northwest National Laboratory |
+|         | 2PM -  3:30PM | Introduction to Fortran Programming |
+|         | 3:30PM - 5PM | Introduction to C Programming |
+| June 29 | 9AM - 12PM | Parallel Programming Concepts |
+|         | 1PM -  2PM | Modeling of Dynamic Fragmentation of Tempered Glass, <br /> Ross Stewart, Corning Inc |
+|         | 2PM -  5PM | Introduction to OpenMP |
+| June 30 | 9AM - 12PM | Introduction to OpenACC |
+|         | 1PM -  2PM | Many-Physics Computations with High-Performance Computing,  <br /> Xianyi Zeng, Department of Mathematics, Lehigh University |
+|         | 2PM -  5PM | Introduction to MPI |     
+
+* 8:50AM - 9AM check in on all days with a break for lunch between Noon and 1PM.
+* Computing time for Workshop provided by [NSF CC&#42; award 2019035](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2019035&HistoricalAwards=false).
+* Attendees will have access to HPC resources until August 31, 2022.
+
+
+---
+
+# Attendee Summary
+
+```{r echo=FALSE, warning=F, message=F}
+suppressMessages(suppressWarnings(library(plotly)))
+status <- tribble(
+                   ~"Status",~"Count",~"Yes",~"No",~"Linux",~"NoLinux",
+                   "Graduate",23,12,11,17,6,
+                   "Undergraduate",6,3,3,6,0,
+                   "Faculty",3,2,1,3,0,
+                   "Postdoc/Staff",3,2,1,2,1
+                  )
+
+urm <- tribble(
+              ~"Gender",~"Count",~"Yes",~"No",
+              "Female",11,7,4,
+              "Male",24,9,15
+              )
+
+department <- tribble(
+                     ~"Department", ~"Count",
+"Applied Mathematics",2,
+"Mathematics",1,
+"Computer Science & Engineering",6,
+"Civil Engineering",3,
+"Computer Science",4,
+"Mechanical Engineering",6,
+"Physics",3,
+"Mechanical Engineering & Mechanics",2,
+"Industrial & Systems Engineering",1,
+"Population Health",1,
+"Civil & Environmental Engineering",1,
+"Political Science",1,
+"Computer Science & Business",1,
+"Biological Sciences",2,
+"Biology",1
+                     )
+language <- tribble(
+                   ~"Language",~"Count",
+                    "Fortran",3,
+                    "C",13,
+                    "C++",16,
+                    "MATLAB",20,
+                    "Python",29,
+                    "R",15,
+                    "Java",16,
+                    "Shell",6,
+                    "PHP",1
+                   )
+lingo <- tribble(
+                ~"Languages",~"Number",
+                 "1",4,
+                 "2",7,
+                 "3",6,
+                 "4",11,
+                 "5",3,
+                 "6",4
+                )
+```
+
+```{r echo =F, warning=F, eval=T}
+suppressMessages(suppressWarnings(
+  plot_ly(status, labels=~Status, values=~Count, type = 'pie', textinfo = "values", text = status$Count) %>%
+    layout(plot_bgcolor='#F1E7C8', paper_bgcolor='#F1E7C8')
+))
+suppressMessages(suppressWarnings(ggsave("parprog_status22.png")))
+```
+
+<!--
+![Attendee Status](parprog_status22.png)
+-->
+
+
+---
+
+# Attendee Summary
+```{r echo =F, warning=F, eval=T}
+suppressMessages(suppressWarnings(
+  plot_ly(urm, labels=~Gender, values=~Count, type = 'pie', textinfo = "values", text = urm$Count) %>%
+    layout(plot_bgcolor='#F1E7C8', paper_bgcolor='#F1E7C8')
+))
+#suppressMessages(suppressWarnings(ggsave("parprog_status22.png")))
+```
+
+<!--
+![Attendee Status](parprog_status22.png)
+-->
+
+
+---
+
+# Attendee Summary
+
+```{r echo =F, warning=F, eval=T}
+suppressMessages(suppressWarnings(
+  plot_ly(urm, x=~Gender, y=~Yes, type = 'bar', name="Yes/Maybe") %>%
+    add_trace(y=~No, name="No") %>%
+    layout(plot_bgcolor='#F1E7C8', paper_bgcolor='#F1E7C8', xaxis = list(title=""), yaxis = list(title="Under Represented Groups"), barmode = 'group')
+))
+suppressMessages(suppressWarnings(ggsave("parprog_urm22.png")))
+```
+
+
+
+
+
+---
+
+# Attendee Summary
+
+```{r echo =F, warning=F, eval=T}
+suppressMessages(suppressWarnings(
+  plot_ly(status, x=~Status, y=~Yes, type = 'bar', name="Yes") %>%
+    add_trace(y=~No, name="No") %>%
+    layout(plot_bgcolor='#F1E7C8', paper_bgcolor='#F1E7C8', xaxis = list(title=""), yaxis = list(title="HPC Experience"), barmode = 'group')
+))
+suppressMessages(suppressWarnings(ggsave("parprog_hpc22.png")))
+```
+
+<!--
+![Attendee Status](parprog_hpc22.png)
+-->
+
+
+---
+
+# Attendee Summary
+
+```{r echo =F, warning=F, eval=T}
+suppressMessages(suppressWarnings(
+  plot_ly(status, x=~Status, y=~Linux, type = 'bar', name="Yes") %>%
+    add_trace(y=~NoLinux, name="No") %>%
+    layout(plot_bgcolor='#F1E7C8', paper_bgcolor='#F1E7C8', xaxis = list(title=""), yaxis = list(title="Linux Experience"), barmode = 'group')
+))
+suppressMessages(suppressWarnings(ggsave("parprog_linux22.png")))
+```
+
+
+---
+
+# Attendee Summary
+
+
+```{r echo =F, warning=F, eval=T}
+suppressMessages(suppressWarnings(
+  plot_ly(department, x=~Department, y=~Count, type = 'bar') %>% 
+    layout(legend = list(orientation = 'h')) %>%
+    layout(plot_bgcolor='#F1E7C8', paper_bgcolor='#F1E7C8', xaxis = list(title="", categoryorder = "total descending"), yaxis = list(title=""))
+))
+suppressMessages(suppressWarnings(ggsave("parprog_dept22.png")))
+```
+
+<!--
+![Attendee Status](parprog_dept22.png)
+-->
+
+
+
+---
+
+# Attendee Summary
+
+
+```{r echo =F, warning=F, eval=T}
+suppressMessages(suppressWarnings(
+  plot_ly(language, x=~Language, y=~Count, type = 'bar') %>% 
+    layout(legend = list(orientation = 'h')) %>%
+    layout(plot_bgcolor='#F1E7C8', paper_bgcolor='#F1E7C8', xaxis = list(title="", categoryorder = "total descending"), yaxis = list(title=""))
+))
+suppressMessages(suppressWarnings(ggsave("parprog_lang22.png")))
+```
+
+<!--
+![Attendee Status](parprog_lang22.png)
+-->
+
+
+
+---
+
+# Attendee Summary
+
+
+```{r echo =F, warning=F, eval=T}
+suppressMessages(suppressWarnings(
+  plot_ly(lingo, x=~Languages, y=~Number, type = 'bar') %>% 
+    layout(legend = list(orientation = 'h')) %>%
+    layout(plot_bgcolor='#F1E7C8', paper_bgcolor='#F1E7C8', xaxis = list(title="Number of Languages"), yaxis = list(title=""))
+))
+suppressMessages(suppressWarnings(ggsave("parprog_lingo22.png")))
+```
+
+<!--
+![Attendee Status](parprog_lingo22.png)
+-->
+
+
+---
+
+# HPC Workshop 
+
+* We have reserved the hawkgpu nodes for this workshop
+* Only request as many resources as you need
+      * Maximum of 6 cpus, 30 min walltime, and 1 gpu per job
+* To run jobs interactively
+```{bash eval=F}
+srun -p hawkgpu -n 6 -N 1 --gres=gpu:1 -t 30 -A hpc2021_prog_083122 --reservation=hpc2022_prog_083122_183 <program name>
+```
+
+* Example submit script
+```{bash eval=F}
+#!/bin/bash
+
+#SBATCH -p hawkgpu
+#SBATCH -n 6 -N 1
+#SBATCH --gres=gpu:1
+#SBATCH -t 30
+#SBATCH -A hpc2022_prog_083122
+#SBATCH --reservation=hpc2022_prog_083122_183
+
+<program name>
+```
+
+---
+
+# Workshop Material
+
+* Copy Workshop material to your current location
+```{bash eval=F}
+cp -r /home/alp514/Workshop/2022HPC/ .
+```
+
+* Directory Contents
+   * `fortran/cprog`: directory containing Fortran and C Programming examples and exercise solutions.
+   * `parprog`: directory for Parallel Programming Workshop
+       * `get_started`: for users who haven't used HPC or compiled code to get started with using Hawk 
+       * `exercises`: sample serial codes to parallelize 
+       * `solution`: directory containing solutions for exercises
+* You have a choice of using GNU, Intel and NVIDIA HPC SDK compiler.
+   * OpenACC: requires NVIDIA HPC SDK
+* Exercise folder contains Makefiles that default to NVIDIA HPC SDK
+* To use other compilers, specify the compiler as follows
+```{bash eval=F}
+make -f Makefile_c COMP=gnu
+make -f Makefile_f90 COMP=intel
+```

@@ -4,8 +4,17 @@
     <title>HPC Parallel Programming Workshop</title>
     <meta charset="utf-8" />
     <meta name="author" content="Yue Yu and Alex Pacheco" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
     <script src="libs/xaringanExtra-webcam/webcam.js"></script>
     <script id="xaringanExtra-webcam-options" type="application/json">{"width":"200","height":"200","margin":"1em"}</script>
+    <script src="libs/htmlwidgets/htmlwidgets.js"></script>
+    <script src="libs/plotly-binding/plotly.js"></script>
+    <script src="libs/typedarray/typedarray.min.js"></script>
+    <script src="libs/jquery/jquery.min.js"></script>
+    <link href="libs/crosstalk/css/crosstalk.css" rel="stylesheet" />
+    <script src="libs/crosstalk/js/crosstalk.min.js"></script>
+    <link href="libs/plotly-htmlwidgets-css/plotly-htmlwidgets.css" rel="stylesheet" />
+    <script src="libs/plotly-main/plotly-latest.min.js"></script>
     <link rel="stylesheet" href="addons/lehigh.css" type="text/css" />
     <link rel="stylesheet" href="addons/lehigh-fonts.css" type="text/css" />
   </head>
@@ -49,11 +58,12 @@ class: myback
 
 
 
-
+<div id="htmlwidget-671bc29a998ae29f6f02" style="width:864px;height:432px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-671bc29a998ae29f6f02">{"x":{"visdat":{"272b48ad637d":["function () ","plotlyVisDat"]},"cur_data":"272b48ad637d","attrs":{"272b48ad637d":{"labels":{},"values":{},"textinfo":"values","text":[24,5,3,2],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"pie"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"plot_bgcolor":"#F1E7C8","paper_bgcolor":"#F1E7C8","hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"labels":["Graduate","Undergraduate","Faculty","Postdoc/Staff"],"values":[24,5,3,2],"textinfo":"values","text":[24,5,3,2],"type":"pie","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(241,231,200,1)"}},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 
 &lt;!--
---&gt;
 ![Attendee Status](parprog_status.png)
+--&gt;
 
 
 
@@ -62,11 +72,12 @@ class: myback
 
 # Attendee Summary
 
-
+<div id="htmlwidget-0b30897673cfeecc3336" style="width:864px;height:432px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0b30897673cfeecc3336">{"x":{"visdat":{"272b37d24a76":["function () ","plotlyVisDat"]},"cur_data":"272b37d24a76","attrs":{"272b37d24a76":{"x":{},"y":{},"name":"Yes","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"},"272b37d24a76.1":{"x":{},"y":{},"name":"No","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"plot_bgcolor":"#F1E7C8","paper_bgcolor":"#F1E7C8","xaxis":{"domain":[0,1],"automargin":true,"title":"","type":"category","categoryorder":"array","categoryarray":["Faculty","Graduate","Postdoc/Staff","Undergraduate"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"HPC Experience"},"barmode":"group","hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"x":["Graduate","Undergraduate","Faculty","Postdoc/Staff"],"y":[14,1,1,2],"name":"Yes","type":"bar","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["Graduate","Undergraduate","Faculty","Postdoc/Staff"],"y":[10,4,2,0],"name":"No","type":"bar","marker":{"color":"rgba(255,127,14,1)","line":{"color":"rgba(255,127,14,1)"}},"error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 
 &lt;!--
---&gt;
 ![Attendee Status](parprog_hpc.png)
+--&gt;
 
 
 ---
@@ -74,11 +85,12 @@ class: myback
 # Attendee Summary
 
 
-
+<div id="htmlwidget-d29e669aefe2cd25eb48" style="width:864px;height:432px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d29e669aefe2cd25eb48">{"x":{"visdat":{"272b57d28bad":["function () ","plotlyVisDat"]},"cur_data":"272b57d28bad","attrs":{"272b57d28bad":{"x":{},"y":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"legend":{"orientation":"h"},"plot_bgcolor":"#F1E7C8","paper_bgcolor":"#F1E7C8","xaxis":{"domain":[0,1],"automargin":true,"title":"","type":"category","categoryorder":"array","categoryarray":["Applied Mathematics","ATLSS","Civil Enigneering","Computer Science","Computer Science and Business ","Computer Science and Engineering","Electrical and Computer Engineering","Industrial and Systems Engineering","LTS","Mathematics","Mechanical Engineering"]},"yaxis":{"domain":[0,1],"automargin":true,"title":""},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"x":["Mechanical Engineering","Computer Science","Mathematics","Electrical and Computer Engineering","Applied Mathematics","Industrial and Systems Engineering","Computer Science and Business ","Civil Enigneering","Computer Science and Engineering","ATLSS","LTS"],"y":[16,1,4,1,1,5,1,2,1,1,1],"type":"bar","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 
 &lt;!--
---&gt;
 ![Attendee Status](parprog_dept.png)
+--&gt;
 
 
 
@@ -87,11 +99,12 @@ class: myback
 # Attendee Summary
 
 
-
+<div id="htmlwidget-164f0a92ef3bf44e40be" style="width:864px;height:432px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-164f0a92ef3bf44e40be">{"x":{"visdat":{"272b7f05fdc4":["function () ","plotlyVisDat"]},"cur_data":"272b7f05fdc4","attrs":{"272b7f05fdc4":{"x":{},"y":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"legend":{"orientation":"h"},"plot_bgcolor":"#F1E7C8","paper_bgcolor":"#F1E7C8","xaxis":{"domain":[0,1],"automargin":true,"title":"","type":"category","categoryorder":"array","categoryarray":["C","C#","C++","Fortran","Java","MATLAB","Python","R","Rust"]},"yaxis":{"domain":[0,1],"automargin":true,"title":""},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"x":["Fortran","C","C++","MATLAB","Python","R","Java","C#","Rust"],"y":[6,19,14,27,25,9,13,1,1],"type":"bar","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 
 &lt;!--
---&gt;
 ![Attendee Status](parprog_lang.png)
+--&gt;
 
 
 
@@ -100,11 +113,12 @@ class: myback
 # Attendee Summary
 
 
-
+<div id="htmlwidget-48fa8408728d8258b3cb" style="width:864px;height:432px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-48fa8408728d8258b3cb">{"x":{"visdat":{"272b62afa5be":["function () ","plotlyVisDat"]},"cur_data":"272b62afa5be","attrs":{"272b62afa5be":{"x":{},"y":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"legend":{"orientation":"h"},"plot_bgcolor":"#F1E7C8","paper_bgcolor":"#F1E7C8","xaxis":{"domain":[0,1],"automargin":true,"title":"Number of Languages","type":"category","categoryorder":"array","categoryarray":["1","2","3","4","5","6"]},"yaxis":{"domain":[0,1],"automargin":true,"title":""},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"x":["1","2","3","4","5","6"],"y":[2,6,9,13,2,2],"type":"bar","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 
 &lt;!--
---&gt;
 ![Attendee Status](parprog_lingo.png)
+--&gt;
 
 
 ---

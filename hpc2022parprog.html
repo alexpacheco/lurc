@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>HPC Parallel Programming Workshop</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Yue Yu and Alex Pacheco" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <script src="libs/xaringanExtra-webcam/webcam.js"></script>
+    <script id="xaringanExtra-webcam-options" type="application/json">{"width":"200","height":"200","margin":"1em"}</script>
+    <script src="libs/htmlwidgets/htmlwidgets.js"></script>
+    <script src="libs/plotly-binding/plotly.js"></script>
+    <script src="libs/typedarray/typedarray.min.js"></script>
+    <script src="libs/jquery/jquery.min.js"></script>
+    <link href="libs/crosstalk/css/crosstalk.css" rel="stylesheet" />
+    <script src="libs/crosstalk/js/crosstalk.min.js"></script>
+    <link href="libs/plotly-htmlwidgets-css/plotly-htmlwidgets.css" rel="stylesheet" />
+    <script src="libs/plotly-main/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="addons/lehigh.css" type="text/css" />
+    <link rel="stylesheet" href="addons/lehigh-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# HPC Parallel Programming Workshop
+## June 28-30, 2022
+### Yue Yu and Alex Pacheco
+### Department of Mathematics and Library &amp; Technology Services<br />Lehigh University
+
+---
+
+class: myback
+
+
+
+
+# Workshop Schedule
+
+|   Day   |    Time    |     Session   |
+|:-------:|:----------:|:-------------:|
+| June 28 | 9AM - 12PM | Introduction to HPC &amp; Linux |
+|         | 1PM -  2PM | High performance computing for multiphase flows, &lt;br /&gt;Amanda Howard, Pacific Northwest National Laboratory |
+|         | 2PM -  3:30PM | Introduction to Fortran Programming |
+|         | 3:30PM - 5PM | Introduction to C Programming |
+| June 29 | 9AM - 12PM | Parallel Programming Concepts |
+|         | 1PM -  2PM | Modeling of Dynamic Fragmentation of Tempered Glass, &lt;br /&gt; Ross Stewart, Corning Inc |
+|         | 2PM -  5PM | Introduction to OpenMP |
+| June 30 | 9AM - 12PM | Introduction to OpenACC |
+|         | 1PM -  2PM | Many-Physics Computations with High-Performance Computing,  &lt;br /&gt; Xianyi Zeng, Department of Mathematics, Lehigh University |
+|         | 2PM -  5PM | Introduction to MPI |     
+
+* 8:50AM - 9AM check in on all days with a break for lunch between Noon and 1PM.
+* Computing time for Workshop provided by [NSF CC&amp;#42; award 2019035](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2019035&amp;HistoricalAwards=false).
+* Attendees will have access to HPC resources until August 31, 2022.
+
+
+---
+
+# Attendee Summary
+
+
+
+<div id="htmlwidget-f89c1867977e17f84561" style="width:864px;height:432px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f89c1867977e17f84561">{"x":{"visdat":{"5e232e8f9817":["function () ","plotlyVisDat"]},"cur_data":"5e232e8f9817","attrs":{"5e232e8f9817":{"labels":{},"values":{},"textinfo":"values","text":[23,6,3,3],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"pie"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"plot_bgcolor":"#F1E7C8","paper_bgcolor":"#F1E7C8","hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"labels":["Graduate","Undergraduate","Faculty","Postdoc/Staff"],"values":[23,6,3,3],"textinfo":"values","text":[23,6,3,3],"type":"pie","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(241,231,200,1)"}},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+
+&lt;!--
+![Attendee Status](parprog_status22.png)
+--&gt;
+
+
+---
+
+# Attendee Summary
+<div id="htmlwidget-17e0e672daa2225e2b84" style="width:864px;height:432px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-17e0e672daa2225e2b84">{"x":{"visdat":{"5e2376fd442c":["function () ","plotlyVisDat"]},"cur_data":"5e2376fd442c","attrs":{"5e2376fd442c":{"labels":{},"values":{},"textinfo":"values","text":[11,24],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"pie"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"plot_bgcolor":"#F1E7C8","paper_bgcolor":"#F1E7C8","hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"labels":["Female","Male"],"values":[11,24],"textinfo":"values","text":[11,24],"type":"pie","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(241,231,200,1)"}},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+
+&lt;!--
+![Attendee Status](parprog_status22.png)
+--&gt;
+
+
+---
+
+# Attendee Summary
+
+<div id="htmlwidget-7b82b70d67fb26f6c536" style="width:864px;height:432px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7b82b70d67fb26f6c536">{"x":{"visdat":{"5e23324df42a":["function () ","plotlyVisDat"]},"cur_data":"5e23324df42a","attrs":{"5e23324df42a":{"x":{},"y":{},"name":"Yes/Maybe","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"},"5e23324df42a.1":{"x":{},"y":{},"name":"No","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"plot_bgcolor":"#F1E7C8","paper_bgcolor":"#F1E7C8","xaxis":{"domain":[0,1],"automargin":true,"title":"","type":"category","categoryorder":"array","categoryarray":["Female","Male"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"Under Represented Groups"},"barmode":"group","hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"x":["Female","Male"],"y":[7,9],"name":"Yes/Maybe","type":"bar","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["Female","Male"],"y":[4,15],"name":"No","type":"bar","marker":{"color":"rgba(255,127,14,1)","line":{"color":"rgba(255,127,14,1)"}},"error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+
+
+
+
+
+---
+
+# Attendee Summary
+
+<div id="htmlwidget-e14ed22d2113000dc6e5" style="width:864px;height:432px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e14ed22d2113000dc6e5">{"x":{"visdat":{"5e23466e4f8d":["function () ","plotlyVisDat"]},"cur_data":"5e23466e4f8d","attrs":{"5e23466e4f8d":{"x":{},"y":{},"name":"Yes","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"},"5e23466e4f8d.1":{"x":{},"y":{},"name":"No","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"plot_bgcolor":"#F1E7C8","paper_bgcolor":"#F1E7C8","xaxis":{"domain":[0,1],"automargin":true,"title":"","type":"category","categoryorder":"array","categoryarray":["Faculty","Graduate","Postdoc/Staff","Undergraduate"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"HPC Experience"},"barmode":"group","hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"x":["Graduate","Undergraduate","Faculty","Postdoc/Staff"],"y":[12,3,2,2],"name":"Yes","type":"bar","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["Graduate","Undergraduate","Faculty","Postdoc/Staff"],"y":[11,3,1,1],"name":"No","type":"bar","marker":{"color":"rgba(255,127,14,1)","line":{"color":"rgba(255,127,14,1)"}},"error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+
+&lt;!--
+![Attendee Status](parprog_hpc22.png)
+--&gt;
+
+
+---
+
+# Attendee Summary
+
+<div id="htmlwidget-358bd92946b866ca47b2" style="width:864px;height:432px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-358bd92946b866ca47b2">{"x":{"visdat":{"5e232500808a":["function () ","plotlyVisDat"]},"cur_data":"5e232500808a","attrs":{"5e232500808a":{"x":{},"y":{},"name":"Yes","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"},"5e232500808a.1":{"x":{},"y":{},"name":"No","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"plot_bgcolor":"#F1E7C8","paper_bgcolor":"#F1E7C8","xaxis":{"domain":[0,1],"automargin":true,"title":"","type":"category","categoryorder":"array","categoryarray":["Faculty","Graduate","Postdoc/Staff","Undergraduate"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"Linux Experience"},"barmode":"group","hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"x":["Graduate","Undergraduate","Faculty","Postdoc/Staff"],"y":[17,6,3,2],"name":"Yes","type":"bar","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["Graduate","Undergraduate","Faculty","Postdoc/Staff"],"y":[6,0,0,1],"name":"No","type":"bar","marker":{"color":"rgba(255,127,14,1)","line":{"color":"rgba(255,127,14,1)"}},"error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+
+
+---
+
+# Attendee Summary
+
+
+<div id="htmlwidget-52e70738296edf9dd4a5" style="width:864px;height:432px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-52e70738296edf9dd4a5">{"x":{"visdat":{"5e23ad243dc":["function () ","plotlyVisDat"]},"cur_data":"5e23ad243dc","attrs":{"5e23ad243dc":{"x":{},"y":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"legend":{"orientation":"h"},"plot_bgcolor":"#F1E7C8","paper_bgcolor":"#F1E7C8","xaxis":{"domain":[0,1],"automargin":true,"title":"","categoryorder":"total descending","type":"category","categoryarray":["Applied Mathematics","Biological Sciences","Biology","Civil & Environmental Engineering","Civil Engineering","Computer Science","Computer Science & Business","Computer Science & Engineering","Industrial & Systems Engineering","Mathematics","Mechanical Engineering","Mechanical Engineering & Mechanics","Physics","Political Science","Population Health"]},"yaxis":{"domain":[0,1],"automargin":true,"title":""},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"x":["Applied Mathematics","Mathematics","Computer Science & Engineering","Civil Engineering","Computer Science","Mechanical Engineering","Physics","Mechanical Engineering & Mechanics","Industrial & Systems Engineering","Population Health","Civil & Environmental Engineering","Political Science","Computer Science & Business","Biological Sciences","Biology"],"y":[2,1,6,3,4,6,3,2,1,1,1,1,1,2,1],"type":"bar","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+
+&lt;!--
+![Attendee Status](parprog_dept22.png)
+--&gt;
+
+
+
+---
+
+# Attendee Summary
+
+
+<div id="htmlwidget-45aabd4ad8c610e951c0" style="width:864px;height:432px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-45aabd4ad8c610e951c0">{"x":{"visdat":{"5e234ea61f1c":["function () ","plotlyVisDat"]},"cur_data":"5e234ea61f1c","attrs":{"5e234ea61f1c":{"x":{},"y":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"legend":{"orientation":"h"},"plot_bgcolor":"#F1E7C8","paper_bgcolor":"#F1E7C8","xaxis":{"domain":[0,1],"automargin":true,"title":"","categoryorder":"total descending","type":"category","categoryarray":["C","C++","Fortran","Java","MATLAB","PHP","Python","R","Shell"]},"yaxis":{"domain":[0,1],"automargin":true,"title":""},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"x":["Fortran","C","C++","MATLAB","Python","R","Java","Shell","PHP"],"y":[3,13,16,20,29,15,16,6,1],"type":"bar","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+
+&lt;!--
+![Attendee Status](parprog_lang22.png)
+--&gt;
+
+
+
+---
+
+# Attendee Summary
+
+
+<div id="htmlwidget-195e08364fb905efef0b" style="width:864px;height:432px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-195e08364fb905efef0b">{"x":{"visdat":{"5e2379300732":["function () ","plotlyVisDat"]},"cur_data":"5e2379300732","attrs":{"5e2379300732":{"x":{},"y":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"legend":{"orientation":"h"},"plot_bgcolor":"#F1E7C8","paper_bgcolor":"#F1E7C8","xaxis":{"domain":[0,1],"automargin":true,"title":"Number of Languages","type":"category","categoryorder":"array","categoryarray":["1","2","3","4","5","6"]},"yaxis":{"domain":[0,1],"automargin":true,"title":""},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"x":["1","2","3","4","5","6"],"y":[4,7,6,11,3,4],"type":"bar","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+
+&lt;!--
+![Attendee Status](parprog_lingo22.png)
+--&gt;
+
+
+---
+
+# HPC Workshop 
+
+* We have reserved the hawkgpu nodes for this workshop
+* Only request as many resources as you need
+      * Maximum of 6 cpus, 30 min walltime, and 1 gpu per job
+* To run jobs interactively
+
+```bash
+srun -p hawkgpu -n 6 -N 1 --gres=gpu:1 -t 30 -A hpc2021_prog_083122 --reservation=hpc2022_prog_083122_183 &lt;program name&gt;
+```
+
+* Example submit script
+
+```bash
+#!/bin/bash
+
+#SBATCH -p hawkgpu
+#SBATCH -n 6 -N 1
+#SBATCH --gres=gpu:1
+#SBATCH -t 30
+#SBATCH -A hpc2022_prog_083122
+#SBATCH --reservation=hpc2022_prog_083122_183
+
+&lt;program name&gt;
+```
+
+---
+
+# Workshop Material
+
+* Copy Workshop material to your current location
+
+```bash
+cp -r /home/alp514/Workshop/2022HPC/ .
+```
+
+* Directory Contents
+   * `fortran/cprog`: directory containing Fortran and C Programming examples and exercise solutions.
+   * `parprog`: directory for Parallel Programming Workshop
+       * `get_started`: for users who haven't used HPC or compiled code to get started with using Hawk 
+       * `exercises`: sample serial codes to parallelize 
+       * `solution`: directory containing solutions for exercises
+* You have a choice of using GNU, Intel and NVIDIA HPC SDK compiler.
+   * OpenACC: requires NVIDIA HPC SDK
+* Exercise folder contains Makefiles that default to NVIDIA HPC SDK
+* To use other compilers, specify the compiler as follows
+
+```bash
+make -f Makefile_c COMP=gnu
+make -f Makefile_f90 COMP=intel
+```
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="libs/remark-latest.min.js"></script>
+<script src="addons/imgscale.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:10",
+"yolo": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
