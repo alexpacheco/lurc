@@ -257,7 +257,7 @@ suppressMessages(suppressWarnings(ggsave("parprog_lingo22.png")))
       * Maximum of 6 cpus, 30 min walltime, and 1 gpu per job
 * To run jobs interactively
 ```{bash eval=F}
-srun -p hawkgpu -n 6 -N 1 --gres=gpu:1 -t 30 -A hpc2021_prog_083122 --reservation=hpc2022_prog_083122_183 <program name>
+srun -p hawkgpu -n 6 -N 1 --gres=gpu:1 -t 30 -A hpc2022_prog_083122 --reservation=hpc2022_prog_083122_183 <program name>
 ```
 
 * Example submit script
